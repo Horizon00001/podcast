@@ -1,0 +1,21 @@
+{
+  "title": "每日科技速递",
+  "summary": "双人对话播客脚本示例",
+  "sections": [
+    {
+      "title": "开场",
+      "dialogues": [
+        {
+          "speaker": "主持人A",
+          "content": "欢迎收听每日科技速递，今天我们看三条热点。",
+          "timestamp_placeholder": "00:00"
+        },
+        {
+          "speaker": "主持人B",
+          "content": "第一条是 AI 终端生态的新进展。",
+          "timestamp_placeholder": "00:15"
+        }
+      ]
+    }
+  ]
+}

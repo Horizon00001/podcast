@@ -1,0 +1,18 @@
+{
+    "feeds": [
+        {
+            "id": "espn-rpm",
+            "name": "ESPN RPM",
+            "url": "https://www.espn.com/espn/rss/rpm/news",
+            "enabled": true,
+            "category": "sports"
+        },
+        {
+            "id": "bbc-sci",
+            "name": "BBC Science",
+            "url": "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+            "enabled": true,
+            "category": "science"
+        }
+    ]
+}

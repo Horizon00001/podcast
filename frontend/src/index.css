@@ -109,3 +109,32 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  #root {
+    border-inline: none;
+  }
+  
+  h1 {
+    font-size: 28px !important;
+  }
+  
+  .podcast-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 脚本高亮区域滚动条美化 */
+.timeline-highlighter::-webkit-scrollbar {
+  width: 6px;
+}
+.timeline-highlighter::-webkit-scrollbar-track {
+  background: var(--border);
+  border-radius: 3px;
+}
+.timeline-highlighter::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}

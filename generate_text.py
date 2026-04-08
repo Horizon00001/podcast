@@ -49,6 +49,10 @@ import json
 import asyncio
 from pathlib import Path
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
 # ============ 第三方库导入 ============
 # python-dotenv（dotenv）：从 .env 文件加载环境变量，便于本地开发与部署环境隔离。
 # pydantic：声明式数据模型与字段校验；Field 提供描述与默认值。

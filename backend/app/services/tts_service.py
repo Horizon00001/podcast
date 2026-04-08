@@ -20,6 +20,11 @@ class TTSService:
         self.output_dir = Path(output_dir)
         self.audio_dir = self.output_dir / "audio"
         self.audio_dir.mkdir(parents=True, exist_ok=True)
+        self._cleanup_old_files()
+
+    def _cleanup_old_files(self):
+        for f in self.audio_dir.glob("segment_*.mp3"):
+            f.unlink(missing_ok=True)
 
     def clean_text(self, text: str) -> str:
         return re.sub(r"[\(（].*?[\)）]", "", text).strip()

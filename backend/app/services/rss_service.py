@@ -1,9 +1,12 @@
 import json
 import re
+import warnings
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path as Path
 
 import feedparser
+
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="feedparser")
 
 
 class RSSService:

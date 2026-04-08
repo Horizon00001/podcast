@@ -99,6 +99,7 @@ class ScriptService:
 
     async def generate_script(self, news_content: str, max_retries: int = 3):
         for attempt in range(max_retries):
+
             try:
                 async with self.agent.run_stream(news_content) as result:
                     async for partial_script in result.stream_output(debounce_by=None):

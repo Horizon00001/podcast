@@ -24,9 +24,9 @@
 - prompt.txt：用于描述播客生成行为规范（角色设定、风格、格式），请确保文件存在且内容清晰。
 
 快速上手
-1. 在项目根目录创建并填写 .env（例如：DEEPSEEK_API_KEY=xxx）。
+1. 在项目根目录创建并填写 .env（例如：OPENAI_API_KEY=xxx）。
 2. 编写/完善 prompt.txt（例如定义“开场/过渡/主要内容/结尾”等段落生成规则）。
-3. 运行本文件：python test.py（或在 IDE 中直接执行）。
+3. 运行本文件：python generate_text.py（或在 IDE 中直接执行）。
 4. 观察控制台的“流式”输出与 output 目录中的实时文件变更。
 
 文件与目录约定
@@ -343,7 +343,7 @@ async def generate_podcast_script(news_content: str, max_retries: int = 3):
     """
     print(">>> 开始调用 AI 模型生成播客脚本...")
     print(f">>> 输入内容长度：{len(news_content)} 字符")
-    
+    print(">>> 正在生成播客脚本中...")
     for attempt in range(max_retries):
         try:
             if attempt > 0:

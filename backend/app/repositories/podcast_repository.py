@@ -15,7 +15,12 @@ class PodcastRepository:
         return self.db.query(Podcast).filter(Podcast.id == podcast_id).first()
 
     def create_podcast(self, payload: PodcastCreate) -> Podcast:
-        podcast = Podcast(title=payload.title, summary=payload.summary)
+        podcast = Podcast(
+            title=payload.title,
+            summary=payload.summary,
+            audio_url=payload.audio_url,
+            script_path=payload.script_path,
+        )
         self.db.add(podcast)
         self.db.commit()
         self.db.refresh(podcast)

@@ -1,12 +1,20 @@
 import asyncio
-from dataclasses import dataclass
+import subprocess
+import os
+import sys
+import json
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 from threading import Lock
+from typing import Optional, Callable, Awaitable
 
 from app.services.rss_service import RSSService
 from app.services.script_service import ScriptService
 from app.services.tts_service import TTSService
+from app.services.podcast_service import PodcastService
+from app.schemas.podcast import PodcastCreate
+from app.db.session import SessionLocal
 
 
 @dataclass
@@ -18,6 +26,8 @@ class GenerationTask:
     updated_at: datetime
     rss_source: str
     topic: str
+    logs: list = field(default_factory=list)
+    _log_callback: Optional[Callable[[str], Awaitable[None]]] = field(default=None, repr=False)
 
 
 class GenerationService:
@@ -47,31 +57,129 @@ class GenerationService:
         with self._lock:
             return self._tasks.get(task_id)
 
+    async def _add_log(self, task_id: str, log_message: str):
+        with self._lock:
+            task = self._tasks.get(task_id)
+            if task:
+                task.logs.append(log_message)
+
+    async def _save_to_database(self, task_id: str):
+        """将生成的结果保存到数据库"""
+        try:
+            json_path = self.output_dir / "podcast_script.json"
+            audio_path = self.output_dir / "audio" / "podcast_full.mp3"
+            
+            if not json_path.exists() or not audio_path.exists():
+                await self._add_log(task_id, "⚠️ 未能找到生成的文件，入库失败")
+                return
+
+            # 读取元数据
+            with open(json_path, 'r', encoding='utf-8') as f:
+                script_data = json.load(f)
+            
+            title = script_data.get("title", "未命名播客")
+            summary = script_data.get("intro", "")
+            
+            # 复制文件以保证唯一性
+            final_audio_name = f"podcast_{task_id}.mp3"
+            final_audio_path = self.output_dir / "audio" / final_audio_name
+            import shutil
+            shutil.copy2(audio_path, final_audio_path)
+            
+            # 复制脚本文件（可选）
+            final_script_name = f"podcast_{task_id}.json"
+            final_script_path = self.output_dir / "audio" / final_script_name
+            shutil.copy2(json_path, final_script_path)
+
+            # 调用服务入库
+            db = SessionLocal()
+            try:
+                podcast_service = PodcastService(db)
+                payload = PodcastCreate(
+                    title=title,
+                    summary=summary,
+                    audio_url=f"/audio/{final_audio_name}",
+                    script_path=str(final_script_path)
+                )
+                podcast = podcast_service.create_podcast(payload)
+                await self._add_log(task_id, f"✅ 播客已成功添加到列表: ID={podcast.id}")
+            finally:
+                db.close()
+                
+        except Exception as e:
+            await self._add_log(task_id, f"❌ 入库过程中出现错误: {str(e)}")
+
     async def run_pipeline(self, task_id: str):
         self._update_task(task_id, "running", "正在抓取 RSS 数据")
+        
         try:
-            rss_service = RSSService(self.config_path, self.output_dir)
-            rss_path = rss_service.fetch_and_save()
-
-            self._update_task(task_id, "running", "正在生成播客脚本")
-            script_service = ScriptService(self.project_root, self.output_dir)
-            news_content = rss_service.load_rss_news(rss_path)
-            if not news_content:
-                self._update_task(task_id, "failed", "RSS 数据为空，请检查 feed.json 配置")
+            main_py = self.project_root / "main.py"
+            env = os.environ.copy()
+            
+            await self._add_log(task_id, "=" * 50)
+            await self._add_log(task_id, "🚀 开始执行播客生成全流程")
+            await self._add_log(task_id, "=" * 50)
+            
+            await self._add_log(task_id, "\n[1/3] 抓取 RSS 数据")
+            
+            process = await asyncio.create_subprocess_exec(
+                 sys.executable,
+                 "-u",  # 禁用缓冲，确保实时输出
+                 str(main_py),
+                 stdout=asyncio.subprocess.PIPE,
+                 stderr=asyncio.subprocess.STDOUT,
+                 cwd=str(self.project_root),
+                 env=env,
+             )
+            
+            # 改进读取逻辑：使用块读取以支持 end=" " 的实时效果
+            buffer = ""
+            while True:
+                # 读取一小块内容，而不是等待一整行
+                chunk = await process.stdout.read(1024)
+                if not chunk:
+                    break
+                
+                text = chunk.decode("utf-8", errors="replace")
+                buffer += text
+                
+                # 如果有内容，立即推送到日志中
+                # 我们不再简单地按行切分，而是直接把这块文本发出去
+                await self._add_log(task_id, text)
+            
+            await process.wait()
+            
+            if process.returncode != 0:
+                await self._add_log(task_id, f"❌ 执行失败，退出码: {process.returncode}")
+                self._update_task(task_id, "failed", f"执行失败，退出码: {process.returncode}")
                 return
-            script_json_path = self.output_dir / "podcast_script.json"
-            await script_service.generate_and_save(news_content)
-
-            self._update_task(task_id, "running", "正在合成播客音频")
-            tts_service = TTSService(self.output_dir)
-            await tts_service.synthesize_podcast(script_json_path)
-
-            self._update_task(task_id, "succeeded", "播客生成任务执行完成")
+            
+            audio_dir = self.output_dir / "audio"
+            podcast_file = audio_dir / "podcast_full.mp3"
+            
+            await self._add_log(task_id, "\n" + "=" * 50)
+            await self._add_log(task_id, "✅ 全流程执行完成")
+            await self._add_log(task_id, f"📁 音频文件: {podcast_file}")
+            await self._add_log(task_id, "=" * 50)
+            
+            # 入库逻辑
+            await self._save_to_database(task_id)
+            
+            self._update_task(task_id, "succeeded", f"播客生成完成，文件: {podcast_file}")
+            
         except Exception as exc:
+            await self._add_log(task_id, f"❌ 任务执行异常: {str(exc)}")
             self._update_task(task_id, "failed", f"任务执行异常: {exc}")
 
     def run_task(self, task_id: str):
         asyncio.run(self.run_pipeline(task_id))
+
+    def get_new_logs(self, task_id: str, last_count: int) -> list:
+        with self._lock:
+            task = self._tasks.get(task_id)
+            if not task:
+                return []
+            return task.logs[last_count:]
 
     def _update_task(self, task_id: str, status: str, message: str):
         with self._lock:

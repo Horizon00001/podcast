@@ -9,7 +9,8 @@ class PodcastBase(BaseModel):
 
 
 class PodcastCreate(PodcastBase):
-    pass
+    audio_url: str = ""
+    script_path: str = ""
 
 
 class PodcastResponse(PodcastBase):

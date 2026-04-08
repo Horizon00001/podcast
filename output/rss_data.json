@@ -3,7 +3,7 @@
         "id": "espn-rpm",
         "name": "ESPN RPM",
         "category": "sports",
-        "last_updated": "2026-04-02T23:43:36.224362",
+        "last_updated": "2026-04-08T13:49:57.000001",
         "entries": [
             {
                 "title": "From IndyCar royalty to NASCAR dynasty: How Penske conquered American racing",
@@ -34,44 +34,6 @@
                 "link": "https://www.espn.com/f1/story/_/id/48366271/martin-brundle-boring-max-verstappen-leave-f1-stop-talking-it",
                 "published": "Wed, 1 Apr 2026 04:55:46 EST",
                 "summary": "Martin Brundle has said Max Verstappen should either leave Formula 1 \"or stop talking about it,\" claiming his comments are \"boring\" and that no driver is \"indispensable.\""
-            }
-        ]
-    },
-    {
-        "id": "bbc-sci",
-        "name": "BBC Science",
-        "category": "science",
-        "last_updated": "2026-04-02T23:43:36.807542",
-        "entries": [
-            {
-                "title": "Artemis II is in orbit - what happens next?",
-                "link": "https://www.bbc.com/news/articles/c7vqre914pzo?at_medium=RSS&at_campaign=rss",
-                "published": "Thu, 02 Apr 2026 12:20:34 GMT",
-                "summary": "What are the mission's four astronauts doing and when will they go to the Moon?"
-            },
-            {
-                "title": "High above Earth, Artemis II crew prepare to thrust on to the Moon",
-                "link": "https://www.bbc.com/news/articles/c75kr702z75o?at_medium=RSS&at_campaign=rss",
-                "published": "Thu, 02 Apr 2026 14:22:07 GMT",
-                "summary": "After a spectacular launch the astronauts are preparing for a high-stakes engine burn out of Earth's orbit."
-            },
-            {
-                "title": "Watch the moment Artemis II blasts into space",
-                "link": "https://www.bbc.com/news/videos/cwydnrmggnno?at_medium=RSS&at_campaign=rss",
-                "published": "Wed, 01 Apr 2026 23:00:39 GMT",
-                "summary": "After delays and technical issues, the first crewed Moon mission in 50 years finally took off from Florida and is now in Earth's orbit."
-            },
-            {
-                "title": "'God squad' waives animal protections to expand oil drilling in Gulf of Mexico",
-                "link": "https://www.bbc.com/news/articles/cre19zrg5dxo?at_medium=RSS&at_campaign=rss",
-                "published": "Tue, 31 Mar 2026 18:51:48 GMT",
-                "summary": "Secretary of Defence Pete Hegseth said exempting oil drilling was a matter of national security."
-            },
-            {
-                "title": "England sewage spills nearly halved in 2025 due mostly to drier weather",
-                "link": "https://www.bbc.com/news/articles/cwyjp2d3x12o?at_medium=RSS&at_campaign=rss",
-                "published": "Thu, 26 Mar 2026 10:13:19 GMT",
-                "summary": "Water companies said the country was also seeing the effect of greater infrastructure investment."
             }
         ]
     }

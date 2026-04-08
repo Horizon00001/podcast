@@ -1,6 +1,7 @@
 import type { Podcast, RecommendationResponse } from '../types/podcast'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000/api/v1'
+export const MEDIA_BASE_URL = BASE_URL.replace('/api/v1', '')
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${BASE_URL}${path}`, {
@@ -18,9 +19,19 @@ export const api = {
   getPodcast: (id: number) => request<Podcast>(`/podcasts/${id}`),
   getRecommendations: (userId: number) =>
     request<RecommendationResponse>(`/recommendations/${userId}`),
+  getRSSSources: () =>
+    request<{ sources: Array<{ id: string; name: string; url: string; category: string }> }>(
+      '/generation/sources'
+    ),
   triggerGeneration: (payload: { rss_source: string; topic: string }) =>
     request<{ task_id: string; status: string; message: string }>('/generation/trigger', {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+  getGenerationStatus: (taskId: string) =>
+    request<{ task_id: string; status: string; message: string }>(`/generation/${taskId}`),
+  createEventSource: (taskId: string) => {
+    const url = `${BASE_URL}/generation/${taskId}/stream`
+    return new EventSource(url)
+  },
 }

@@ -1,6 +1,17 @@
 from pydantic import BaseModel, Field
 
 
+class RSSSource(BaseModel):
+    id: str
+    name: str
+    url: str
+    category: str
+
+
+class RSSSourceListResponse(BaseModel):
+    sources: list[RSSSource]
+
+
 class GenerationTriggerRequest(BaseModel):
     rss_source: str = Field(default="default")
     topic: str = Field(default="daily-news")

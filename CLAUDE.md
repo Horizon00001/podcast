@@ -35,7 +35,7 @@ npm run dev                              # 开发服务器 (localhost:5173)
 npm run lint && npm run build           # 检查 + 构建
 
 # Standalone 管道（无需 Web UI）
-cd /home/default/Projects/podcast && python main.py
+cd /home/default/Projects/podcast/backend && python -m app.cli run-pipeline
 ```
 
 ## 关键约定
@@ -124,14 +124,14 @@ Base URL: `VITE_API_BASE_URL ?? 'http://localhost:8000/api/v1'`
 
 ## Pipeline 管道
 
-4 步流水线（定义在根 `main.py`）：
+4 步流水线（当前由后端 CLI 调度）：
 
-### Step 1: RSS Fetch (`rss_fetch.py`)
+### Step 1: RSS Fetch (`python -m app.cli fetch-rss`)
 - 读取 `config/feed.json`
 - 抓取所有 `enabled: true` 的 RSS 源
 - 输出 `output/rss_data.json`
 
-### Step 2: Episode Planning (`episode_planner.py`)
+### Step 2: Episode Planning
 - 读取 `output/rss_data.json`
 - **分类**：基于关键词分类（tech_ai, business, sports, general）
 - **聚类**：TF-IDF + 余弦相似度 + 并查集（阈值 0.5）
@@ -139,7 +139,7 @@ Base URL: `VITE_API_BASE_URL ?? 'http://localhost:8000/api/v1'`
 - 输出 per-group `episode_plan.json` 到 `output/podcasts/<category>/<slug>/`
 - 不足 2 条的聚类存入 `pending_groups.json` 跨运行合并
 
-### Step 3: Script Generation (`generate_text.py`)
+### Step 3: Script Generation (`python -m app.cli generate-text`)
 - 读取 `episode_plan.json` 和 `rss_data.json`
 - 使用 `pydantic-ai` + `openai:deepseek-chat`
 - 流式输出 `PodcastScript`（Pydantic 模型）
@@ -164,7 +164,7 @@ DialogueTurn
   └── emotion: Optional[str]
 ```
 
-### Step 4: TTS Synthesis (`tts_synthesize.py`)
+### Step 4: TTS Synthesis (`python -m app.cli synthesize-tts`)
 - 读取 `podcast_script.json`
 - 调用 `TTSService.synthesize_podcast()`
 - 输出 `output/podcasts/<category>/<slug>/audio/podcast_full.mp3`

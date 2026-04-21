@@ -1,10 +1,7 @@
 import asyncio
-import argparse
 from pathlib import Path
 
-from backend.app.services.script_service import ScriptService
-from backend.app.services.tts_service import TTSService
-from episode_planner import (
+from app.pipelines.episode_planner import (
     PENDING_GROUPS_FILENAME,
     build_group_name,
     build_group_plan,
@@ -12,17 +9,19 @@ from episode_planner import (
     group_items_for_podcasts,
     load_pending_groups,
     load_rss_items,
-    merge_pending_groups,
     merge_clusters_by_signature,
+    merge_pending_groups,
     save_episode_plan,
     save_pending_groups,
 )
-from rss_fetch import fetch_rss_feeds
-from generate_text import build_generation_input
+from app.pipelines.generate_text_pipeline import build_generation_input
+from app.pipelines.rss_pipeline import fetch_rss_feeds
+from app.services.script_service import ScriptService
+from app.services.tts_service import TTSService
 
 
 async def run_pipeline(topic: str = "daily-news"):
-    base_dir = Path(__file__).parent
+    base_dir = Path(__file__).resolve().parents[3]
     config_path = base_dir / "config" / "feed.json"
     output_dir = base_dir / "output"
     rss_data_path = output_dir / "rss_data.json"
@@ -30,7 +29,7 @@ async def run_pipeline(topic: str = "daily-news"):
     pending_groups_path = podcasts_dir / PENDING_GROUPS_FILENAME
 
     print("=" * 50)
-    print("开始执行播客生成全流程")
+    print("开始执行播客生成全流程（4 步）")
     print("=" * 50)
 
     def log(message: str):
@@ -55,7 +54,6 @@ async def run_pipeline(topic: str = "daily-news"):
     grouped_items = merge_clusters_by_signature(group_items_for_podcasts(fresh_items))
     print(f"已分类到类别数: {len(grouped_items)}")
 
-    generated_jobs: list[tuple[Path, Path, Path]] = []
     generated_links = set()
 
     async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
@@ -71,11 +69,7 @@ async def run_pipeline(topic: str = "daily-news"):
         episode_plan_path = group_dir / "episode_plan.json"
         save_episode_plan(plan, episode_plan_path)
 
-        news_content = build_generation_input(
-            topic=category,
-            rss_data_path=rss_data_path,
-            episode_plan_path=episode_plan_path,
-        )
+        news_content = build_generation_input(topic=category, rss_data_path=rss_data_path, episode_plan_path=episode_plan_path)
         if not news_content:
             raise ValueError(f"未能为分组 {group_dir.name} 构建脚本输入")
 
@@ -102,15 +96,10 @@ async def run_pipeline(topic: str = "daily-news"):
                 log(f"[TTS Done] {group_label} {describe_section(section_index, section_data)} -> {audio_path}")
                 return audio_path
 
-            section_tasks.append(
-                asyncio.create_task(render_section())
-            )
+            section_tasks.append(asyncio.create_task(render_section()))
 
         log(f"[Script Start] {group_label}")
-        await script_service.generate_and_save_streaming_sections(
-            news_content,
-            on_section_ready=on_section_ready,
-        )
+        await script_service.generate_and_save_streaming_sections(news_content, on_section_ready=on_section_ready)
         log(f"[Script Done] {group_label}")
 
         script_json_path = group_dir / "podcast_script.json"
@@ -122,10 +111,10 @@ async def run_pipeline(topic: str = "daily-news"):
         log(f"[Merge Start] {group_label} merging {len(section_files)} section files")
         await tts_service.merge_section_audio_files(section_files)
         log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
-        generated_jobs.append((episode_plan_path, script_json_path, group_dir / "audio" / "podcast_full.mp3"))
         generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
 
     tasks = []
+    log("\n[3/4] 生成脚本并合成音频")
     for category, clusters in grouped_items.items():
         for index, cluster in enumerate(clusters, start=1):
             if len(cluster) < 2:
@@ -149,6 +138,7 @@ async def run_pipeline(topic: str = "daily-news"):
     if generated_links:
         used_link_set.update(generated_links)
 
+    log("\n[4/4] 保存待处理分组和使用记录")
     save_pending_groups(remaining_pending, sorted(used_link_set), pending_groups_path)
 
     print("\n" + "=" * 50)
@@ -157,10 +147,3 @@ async def run_pipeline(topic: str = "daily-news"):
     print(f"播客目录: {podcasts_dir}")
     print(f"待补充文件: {pending_groups_path}")
     print("=" * 50)
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run podcast generation pipeline")
-    parser.add_argument("--topic", default="daily-news", help="Episode topic profile id or custom topic")
-    args = parser.parse_args()
-    asyncio.run(run_pipeline(topic=args.topic))

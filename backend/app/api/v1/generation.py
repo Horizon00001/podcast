@@ -1,12 +1,11 @@
 import uuid
 import json
-import sys
-from pathlib import Path
 from typing import AsyncGenerator
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException
 from fastapi.responses import StreamingResponse
 
+from app.core.config import settings
 from app.schemas.generation import (
     GenerationTaskStatusResponse,
     GenerationTriggerRequest,
@@ -16,12 +15,7 @@ from app.schemas.generation import (
 )
 from app.services.generation_service import generation_service
 from app.services.rss_service import RSSService
-
-PROJECT_ROOT = Path(__file__).resolve().parents[4]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.append(str(PROJECT_ROOT))
-
-from episode_planner import load_topic_profiles
+from app.services.topic_service import topic_service
 
 
 router = APIRouter(prefix="/generation", tags=["generation"])
@@ -29,8 +23,7 @@ router = APIRouter(prefix="/generation", tags=["generation"])
 
 @router.get("/sources", response_model=RSSSourceListResponse)
 def get_rss_sources():
-    config_path = Path(__file__).parent.parent.parent.parent.parent / "config" / "feed.json"
-    rss_service = RSSService(config_path=config_path, output_dir=Path("output"))
+    rss_service = RSSService(config_path=settings.feed_config_path, output_dir=settings.output_dir)
     feeds = rss_service.load_config()
     enabled_feeds = [
         {
@@ -47,18 +40,7 @@ def get_rss_sources():
 
 @router.get("/topics", response_model=TopicOptionListResponse)
 def get_topic_options():
-    topics_path = Path(__file__).parent.parent.parent.parent.parent / "config" / "topics.json"
-    profiles = load_topic_profiles(topics_path)
-    return TopicOptionListResponse(
-        topics=[
-            {
-                "id": profile.id,
-                "name": profile.name,
-                "description": profile.description,
-            }
-            for profile in profiles.values()
-        ]
-    )
+    return TopicOptionListResponse(topics=topic_service.list_topics())
 
 
 @router.post("/trigger", response_model=GenerationTriggerResponse)
@@ -123,6 +105,7 @@ def get_generation_task(task_id: str):
     task = generation_service.get_task(task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
+    logs = task.logs if isinstance(task.logs, list) else []
     return GenerationTaskStatusResponse(
         task_id=task.task_id,
         status=task.status,

@@ -7,12 +7,12 @@
 - `backend/app/models/`、`backend/app/db/`：模型与数据库配置
 
 ## 资讯与脚本组（2.x）
-- 根目录 `rss_fetch.py`、`generate_text.py`
+- 后端 CLI `backend/app/cli`
 - `config/feed.json`：RSS 源管理
 - `common/examples/`：脚本格式样例维护
 
 ## 音频组（3.x）
-- 根目录 `tts_synthesize.py`
+- 后端 CLI `backend/app/cli`
 - `output/audio/`：音频产物目录
 
 ## 推荐组（4.x）

@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
 
 
 class Settings(BaseSettings):
@@ -27,6 +28,34 @@ class Settings(BaseSettings):
         if self.postgres_url:
             return self.postgres_url
         return self.database_url
+
+    @property
+    def backend_dir(self) -> Path:
+        return Path(__file__).resolve().parents[2]
+
+    @property
+    def project_root(self) -> Path:
+        return self.backend_dir.parent
+
+    @property
+    def output_dir(self) -> Path:
+        return self.project_root / "output"
+
+    @property
+    def audio_dir(self) -> Path:
+        return self.output_dir / "audio"
+
+    @property
+    def feed_config_path(self) -> Path:
+        return self.project_root / "config" / "feed.json"
+
+    @property
+    def topics_config_path(self) -> Path:
+        return self.project_root / "config" / "topics.json"
+
+    @property
+    def pipeline_module(self) -> str:
+        return "app.cli"
 
 
 settings = Settings()

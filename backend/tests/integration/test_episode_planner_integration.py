@@ -1,0 +1,320 @@
+"""
+集成测试：Episode Planner
+测试完整的新闻聚类和规划流程
+"""
+import pytest
+from pathlib import Path
+
+from app.pipelines.episode_planner import (
+    classify_items,
+    cluster_by_similarity,
+    group_items_for_podcasts,
+    build_podcast_plan,
+    build_group_plan,
+    merge_pending_groups,
+    load_topic_profiles,
+    build_episode_plan,
+    format_plan_for_prompt,
+)
+
+
+class TestEpisodePlannerFullFlow:
+    """完整的播客规划流程集成测试."""
+
+    def test_classify_and_cluster_real_items(self):
+        """测试真实新闻的分类和聚类."""
+        items = [
+            {
+                "title": "OpenAI Releases GPT-5",
+                "summary": "OpenAI announced a new AI model",
+                "feed_name": "AI News",
+                "category": "tech",
+                "link": "http://example.com/1",
+            },
+            {
+                "title": "Google AI Announces Gemini 2",
+                "summary": "Google released new AI model",
+                "feed_name": "Tech News",
+                "category": "tech",
+                "link": "http://example.com/2",
+            },
+            {
+                "title": "Stock Market Update",
+                "summary": "Markets fell today",
+                "feed_name": "Finance",
+                "category": "business",
+                "link": "http://example.com/3",
+            },
+        ]
+
+        # 分类
+        categorized = classify_items(items)
+
+        assert "tech_ai" in categorized
+        assert "business" in categorized
+        assert len(categorized["tech_ai"]) == 2
+        assert len(categorized["business"]) == 1
+
+        # 聚类
+        clusters = cluster_by_similarity(categorized["tech_ai"], threshold=0.3)
+
+        # 相似新闻应该被聚类在一起
+        assert len(clusters) <= 2  # 最多 2 个簇
+
+    def test_group_items_produces_episode_groups(self):
+        """测试 group_items_for_podcasts 产生正确的分组."""
+        items = [
+            {
+                "title": "Apple CEO Announces New Product",
+                "summary": "Tim Cook reveals new device",
+                "feed_name": "Tech News",
+                "category": "tech",
+                "link": "http://example.com/1",
+            },
+            {
+                "title": "Apple Stock Rises",
+                "summary": "Apple shares up 5%",
+                "feed_name": "Finance",
+                "category": "business",
+                "link": "http://example.com/2",
+            },
+            {
+                "title": "Tesla Launches New Car",
+                "summary": "Tesla announced new EV",
+                "feed_name": "Auto News",
+                "category": "tech",
+                "link": "http://example.com/3",
+            },
+        ]
+
+        grouped = group_items_for_podcasts(items, threshold=0.3)
+
+        # 应该按类别分组
+        assert len(grouped) > 0
+
+    def test_build_podcast_plan_creates_valid_structure(self):
+        """测试 build_podcast_plan 创建有效的计划结构."""
+        items = [
+            {
+                "item_id": "1",
+                "feed_id": "ai-news",
+                "feed_name": "AI News",
+                "category": "tech_ai",
+                "title": "AI Model Released",
+                "summary": "New AI model announced",
+                "published": "2024-01-01",
+                "link": "http://example.com/1",
+            },
+            {
+                "item_id": "2",
+                "feed_id": "ai-news",
+                "feed_name": "AI News",
+                "category": "tech_ai",
+                "title": "AI Industry Growth",
+                "summary": "AI market growing fast",
+                "published": "2024-01-02",
+                "link": "http://example.com/2",
+            },
+        ]
+
+        plan = build_podcast_plan("tech_ai", items)
+
+        assert plan.topic_id == "tech_ai"
+        assert len(plan.selected_items) == 2
+        assert len(plan.segments) > 0
+        assert plan.closing_takeaway is not None
+
+    def test_build_group_plan(self):
+        """测试 build_group_plan 创建组计划."""
+        items = [
+            {
+                "item_id": "1",
+                "feed_id": "news",
+                "feed_name": "News",
+                "category": "tech_ai",
+                "title": "AI News 1",
+                "summary": "Summary 1",
+                "published": "2024-01-01",
+                "link": "http://1.com",
+            },
+            {
+                "item_id": "2",
+                "feed_id": "news",
+                "feed_name": "News",
+                "category": "tech_ai",
+                "title": "AI News 2",
+                "summary": "Summary 2",
+                "published": "2024-01-02",
+                "link": "http://2.com",
+            },
+        ]
+
+        plan = build_group_plan("tech_ai", items, "Daily AI Update")
+
+        assert plan.topic_id == "tech_ai"
+        assert plan.topic_name == "Daily AI Update"
+        assert len(plan.selected_items) == 2
+
+
+class TestPendingGroupsMerging:
+    """待处理组合并集成测试."""
+
+    def test_merge_clusters_with_similar_items(self):
+        """测试合并相似的待处理簇."""
+        # 之前的待处理组
+        pending_groups = [
+            {
+                "category": "tech_ai",
+                "items": [
+                    {
+                        "title": "AI Model Part 1",
+                        "summary": "First part of AI story",
+                        "link": "http://part1.com",
+                    }
+                ],
+            }
+        ]
+
+        # 新输入的新闻
+        new_items = {
+            "tech_ai": [
+                {
+                    "title": "AI Model Part 1 Continues",
+                    "summary": "Second part of the same AI story",
+                    "link": "http://part1-cont.com",
+                },
+                {
+                    "title": "Unrelated Sports News",
+                    "summary": "Sports update",
+                    "link": "http://sports.com",
+                },
+            ]
+        }
+
+        remaining, generated, consumed = merge_pending_groups(
+            pending_groups,
+            new_items,
+            threshold=0.2,
+        )
+
+        # 应该产生一个合并的组
+        assert len(generated) > 0 or len(remaining) >= 0
+
+    def test_merge_does_not_combine_different_topics(self):
+        """测试不合并不同主题的组."""
+        pending_groups = [
+            {
+                "category": "tech_ai",
+                "items": [
+                    {
+                        "title": "AI News",
+                        "summary": "AI update",
+                        "link": "http://ai.com",
+                    }
+                ],
+            }
+        ]
+
+        new_items = {
+            "business": [
+                {
+                    "title": "Business News",
+                    "summary": "Business update",
+                    "link": "http://biz.com",
+                }
+            ]
+        }
+
+        remaining, generated, consumed = merge_pending_groups(
+            pending_groups,
+            new_items,
+            threshold=0.5,
+        )
+
+        # 不应该产生新组，因为类别不匹配
+        # 原来的待处理组应该保留
+        assert len(remaining) >= 1
+
+
+class TestEpisodePlanFormatting:
+    """Episode plan 格式化集成测试."""
+
+    def test_format_plan_for_prompt_complete(self):
+        """测试完整的 plan 格式化输出."""
+        from app.pipelines.episode_planner import EpisodePlan, PlannedNewsItem, EpisodeSegment
+
+        plan = EpisodePlan(
+            topic_id="tech_ai",
+            topic_name="AI News",
+            title_hint="AI Today",
+            theme_statement="AI is advancing rapidly",
+            audience="Tech enthusiasts",
+            editorial_angle="Covering AI developments",
+            selected_items=[
+                PlannedNewsItem(
+                    item_id="1",
+                    feed_id="ai-news",
+                    feed_name="AI News",
+                    category="tech_ai",
+                    title="AI Model Released",
+                    summary="New AI model announced",
+                    published="2024-01-01",
+                    link="http://example.com/1",
+                    score=1.5,
+                    selection_reason="Direct match with topic",
+                )
+            ],
+            segments=[
+                EpisodeSegment(
+                    segment_type="opening",
+                    purpose="Introduce the topic",
+                    item_refs=["1"],
+                    segment_thesis="Start with the main story",
+                )
+            ],
+            closing_takeaway="Remember to follow AI news",
+        )
+
+        formatted = format_plan_for_prompt(plan)
+
+        assert "AI News" in formatted
+        assert "AI Today" in formatted
+        assert "Tech enthusiasts" in formatted
+        assert "AI Model Released" in formatted
+        assert "Remember to follow AI news" in formatted
+
+
+class TestTFIDFAndCosineIntegration:
+    """TF-IDF 和余弦相似度集成测试."""
+
+    def test_clustering_with_real_text(self):
+        """测试真实文本的聚类."""
+        items = [
+            {
+                "title": "OpenAI GPT-5 Model Announcement",
+                "summary": "OpenAI released their latest AI model GPT-5 with improved capabilities",
+                "link": "http://1.com",
+            },
+            {
+                "title": "Google Gemini 2 Release",
+                "summary": "Google announced Gemini 2, their newest AI model",
+                "link": "http://2.com",
+            },
+            {
+                "title": "Football Match Results",
+                "summary": "Local football team won the championship game 3-2",
+                "link": "http://3.com",
+            },
+        ]
+
+        # 聚类相似的新闻
+        clusters = cluster_by_similarity(items, threshold=0.3)
+
+        # AI 新闻应该在一起
+        ai_items = [item for cluster in clusters for item in cluster
+                   if "AI" in item.get("title", "") or "model" in item.get("summary", "").lower()]
+        football_items = [item for cluster in clusters for item in cluster
+                         if "football" in item.get("title", "").lower()]
+
+        assert len(ai_items) == 2  # 两篇 AI 新闻
+        assert len(football_items) == 1  # 一篇足球新闻

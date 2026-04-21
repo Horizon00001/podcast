@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Scope
-- This repo is split into a Python backend in `backend/`, a Vite React frontend in `frontend/`, and root-level pipeline scripts (`main.py`, `rss_fetch.py`, `generate_text.py`, `tts_synthesize.py`). There is no monorepo task runner.
+- This repo is split into a Python backend in `backend/`, a Vite React frontend in `frontend/`, and backend CLI commands in `backend/app/cli`. There is no monorepo task runner.
 
 ## Source Of Truth
 - Treat executable config as authoritative over docs. The root `README.md` is partially aspirational: it mentions routes and files that do not all match the current code.
@@ -30,8 +30,8 @@
 - DashScope config lives in `.env`, `.env.example`, and `backend/app/core/config.py`; all must be kept in sync.
 
 ## Pipeline
-- The generation API shells out to `python -u main.py` from the repo root and streams stdout over SSE.
-- Root `main.py` actually runs 4 steps (comment says `[1/3]` — out of date).
+- The generation API shells out to `python -m app.cli run-pipeline` from `backend/` and streams stdout over SSE.
+- The CLI pipeline actually runs 4 steps (comment says `[1/3]` — out of date).
 - Pipeline inputs/outputs: `config/feed.json`, `prompt.txt`, `output/audio/`.
 - `config/feed.json` has one enabled source `espn-rpm`; frontend source picker reads it via `/api/v1/generation/sources`.
 - Script generation uses `pydantic-ai` with `openai:deepseek-chat` and reads `prompt.txt` from repo root.

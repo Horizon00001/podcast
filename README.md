@@ -69,10 +69,7 @@
 │  ├─ podcast_script.txt      # 脚本文本
 │  └─ audio/                  # 音频文件目录
 │
-├─ rss_fetch.py               # RSS 抓取脚本（独立可运行）
-├─ generate_text.py           # 脚本生成脚本（独立可运行）
-├─ tts_synthesize.py          # TTS 合成脚本（独立可运行）
-├─ main.py                    # 完整流水线入口
+├─ backend/app/cli/           # 后端统一 CLI 入口
 └─ prompt.txt                 # AI 生成规则提示词
 ```
 
@@ -157,7 +154,8 @@ npm run dev
 如需独立运行完整流水线（不启动 Web 服务）：
 
 ```bash
-python main.py
+cd backend
+python -m app.cli run-pipeline --topic daily-news
 ```
 
 ## API 接口
@@ -202,7 +200,7 @@ pytest
 
 ### Step 1: RSS 抓取
 
-调用 `rss_service.py` 或 `rss_fetch.py`：
+调用 `rss_service.py` 或后端 CLI 的 `fetch-rss` 子命令：
 
 1. 读取 `config/feed.json` 配置
 2. 使用 feedparser 解析 RSS XML
@@ -212,7 +210,7 @@ pytest
 
 ### Step 2: AI 脚本生成
 
-调用 `script_service.py` 或 `generate_text.py`：
+调用 `script_service.py` 或后端 CLI 的 `generate-text` 子命令：
 
 1. 根据 `topic` 从 RSS 数据中挑选合适素材
 2. 生成 `episode_plan.json`，确定这一集的主线和段落结构
@@ -230,7 +228,7 @@ pytest
 
 ### Step 3: TTS 语音合成
 
-调用 `tts_service.py` 或 `tts_synthesize.py`：
+调用 `tts_service.py` 或后端 CLI 的 `synthesize-tts` 子命令：
 
 1. 读取生成的脚本 JSON
 2. 调用 TTS API 合成语音

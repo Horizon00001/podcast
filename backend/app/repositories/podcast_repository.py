@@ -18,6 +18,7 @@ class PodcastRepository:
         podcast = Podcast(
             title=payload.title,
             summary=payload.summary,
+            category=payload.category,
             audio_url=payload.audio_url,
             script_path=payload.script_path,
         )

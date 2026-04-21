@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel, Field
 
 
@@ -9,7 +11,17 @@ class RSSSource(BaseModel):
 
 
 class RSSSourceListResponse(BaseModel):
-    sources: list[RSSSource]
+    sources: List[RSSSource]
+
+
+class TopicOption(BaseModel):
+    id: str
+    name: str
+    description: str
+
+
+class TopicOptionListResponse(BaseModel):
+    topics: List[TopicOption]
 
 
 class GenerationTriggerRequest(BaseModel):

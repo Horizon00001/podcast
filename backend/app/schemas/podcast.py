@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class PodcastBase(BaseModel):
     title: str
     summary: str = ""
+    category: str = "general"
 
 
 class PodcastCreate(PodcastBase):

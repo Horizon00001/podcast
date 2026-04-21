@@ -4,6 +4,7 @@ import { TimelineHighlighter } from '../components/TimelineHighlighter'
 import { api } from '../services/api'
 import type { Podcast, ScriptLine } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
+import { useUser } from '../context/UserContext'
 
 export function PodcastDetailPage() {
   const { id } = useParams()
@@ -11,6 +12,7 @@ export function PodcastDetailPage() {
   const [scriptLines, setScriptLines] = useState<ScriptLine[]>([])
   const [error, setError] = useState('')
   const { currentPodcast, isPlaying, play, toggle, currentTime, seek } = usePlayer()
+  const { user } = useUser()
 
   useEffect(() => {
     if (!id) return
@@ -45,6 +47,9 @@ export function PodcastDetailPage() {
       toggle()
     } else {
       play(podcast)
+      if (user) {
+        void api.reportInteraction({ user_id: user.id, podcast_id: podcast.id, action: 'play' })
+      }
     }
   }
 

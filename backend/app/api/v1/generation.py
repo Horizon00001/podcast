@@ -1,5 +1,6 @@
 import uuid
 import json
+import sys
 from pathlib import Path
 from typing import AsyncGenerator
 
@@ -11,9 +12,16 @@ from app.schemas.generation import (
     GenerationTriggerRequest,
     GenerationTriggerResponse,
     RSSSourceListResponse,
+    TopicOptionListResponse,
 )
 from app.services.generation_service import generation_service
 from app.services.rss_service import RSSService
+
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from episode_planner import load_topic_profiles
 
 
 router = APIRouter(prefix="/generation", tags=["generation"])
@@ -35,6 +43,22 @@ def get_rss_sources():
         if f.get("enabled", False)
     ]
     return RSSSourceListResponse(sources=enabled_feeds)
+
+
+@router.get("/topics", response_model=TopicOptionListResponse)
+def get_topic_options():
+    topics_path = Path(__file__).parent.parent.parent.parent.parent / "config" / "topics.json"
+    profiles = load_topic_profiles(topics_path)
+    return TopicOptionListResponse(
+        topics=[
+            {
+                "id": profile.id,
+                "name": profile.name,
+                "description": profile.description,
+            }
+            for profile in profiles.values()
+        ]
+    )
 
 
 @router.post("/trigger", response_model=GenerationTriggerResponse)

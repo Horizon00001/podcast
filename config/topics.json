@@ -1,0 +1,64 @@
+{
+  "topics": [
+    {
+      "id": "daily-news",
+      "name": "今日新闻简报",
+      "description": "按当天最值得关注的重点新闻组织一集节目。",
+      "audience": "泛科技与新闻播客听众",
+      "editorial_angle": "从多条新闻中提炼当天最值得关注的共同主线。",
+      "allowed_categories": ["general", "technology", "business", "sports"],
+      "preferred_keywords": [],
+      "excluded_keywords": [],
+      "selection": {
+        "max_items": 4,
+        "prefer_diversity": true
+      },
+      "structure_template": ["opening", "top_story", "related_signals", "closing"]
+    },
+    {
+      "id": "daily-ai-brief",
+      "name": "今日 AI 快讯",
+      "description": "围绕 AI 领域的重要发布、产品动向和行业信号组织节目。",
+      "audience": "关注 AI 的从业者和爱好者",
+      "editorial_angle": "强调 AI 行业当天最重要的变化，以及它们之间的关联。",
+      "allowed_categories": ["technology", "business", "general"],
+      "preferred_keywords": ["ai", "artificial intelligence", "llm", "model", "agent", "openai", "deepseek", "anthropic", "gpu"],
+      "excluded_keywords": ["sports"],
+      "selection": {
+        "max_items": 4,
+        "prefer_diversity": true
+      },
+      "structure_template": ["opening", "top_story", "related_signals", "impact", "closing"]
+    },
+    {
+      "id": "developer-industry-news",
+      "name": "面向程序员的产业新闻",
+      "description": "聚焦会影响程序员工具链、平台选择和工作方式的产业变化。",
+      "audience": "程序员、工程师、技术经理",
+      "editorial_angle": "从开发者影响的角度解读产业变化，而不是停留在公司层面的新闻罗列。",
+      "allowed_categories": ["technology", "business", "general"],
+      "preferred_keywords": ["developer", "programming", "coding", "cloud", "open source", "framework", "api", "chip", "platform", "ai"],
+      "excluded_keywords": ["sports", "celebrity"],
+      "selection": {
+        "max_items": 4,
+        "prefer_diversity": true
+      },
+      "structure_template": ["opening", "top_story", "related_signals", "developer_impact", "closing"]
+    },
+    {
+      "id": "weekly-business-headlines",
+      "name": "一周商业头条",
+      "description": "围绕商业趋势、财报、并购和市场信号组织一集节目。",
+      "audience": "关注商业动态和公司战略的听众",
+      "editorial_angle": "强调商业事件背后的趋势，而不是逐条播报。",
+      "allowed_categories": ["business", "technology", "general"],
+      "preferred_keywords": ["earnings", "revenue", "funding", "acquisition", "market", "strategy", "ipo"],
+      "excluded_keywords": ["sports"],
+      "selection": {
+        "max_items": 4,
+        "prefer_diversity": true
+      },
+      "structure_template": ["opening", "top_story", "related_signals", "impact", "closing"]
+    }
+  ]
+}

@@ -11,6 +11,18 @@ export interface Podcast {
   cover_url?: string
 }
 
+export interface RecommendationItem {
+  podcast_id: number
+  score: number
+  reason: string
+}
+
+export interface RecommendationResponse {
+  user_id: number
+  strategy: string
+  items: RecommendationItem[]
+}
+
 // 脚本行（带时间戳）
 export interface ScriptLine {
   id: number

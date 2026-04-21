@@ -1,17 +1,13 @@
 import asyncio
-import subprocess
 import os
 import sys
 import json
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from threading import Lock
-from typing import Optional, Callable, Awaitable
+from typing import Optional, Callable, Awaitable, Dict, List
 
-from app.services.rss_service import RSSService
-from app.services.script_service import ScriptService
-from app.services.tts_service import TTSService
 from app.services.podcast_service import PodcastService
 from app.schemas.podcast import PodcastCreate
 from app.db.session import SessionLocal
@@ -26,7 +22,7 @@ class GenerationTask:
     updated_at: datetime
     rss_source: str
     topic: str
-    logs: list = field(default_factory=list)
+    logs: List[str] = field(default_factory=list)
     _log_callback: Optional[Callable[[str], Awaitable[None]]] = field(default=None, repr=False)
 
 
@@ -35,11 +31,11 @@ class GenerationService:
         self.project_root = Path(__file__).resolve().parents[3]
         self.config_path = self.project_root / "config" / "feed.json"
         self.output_dir = self.project_root / "output"
-        self._tasks: dict[str, GenerationTask] = {}
+        self._tasks: Dict[str, GenerationTask] = {}
         self._lock = Lock()
 
     def create_task(self, rss_source: str, topic: str, task_id: str) -> GenerationTask:
-        now = datetime.now(UTC)
+        now = datetime.now(timezone.utc)
         task = GenerationTask(
             task_id=task_id,
             status="queued",
@@ -53,7 +49,7 @@ class GenerationService:
             self._tasks[task_id] = task
         return task
 
-    def get_task(self, task_id: str) -> GenerationTask | None:
+    def get_task(self, task_id: str) -> Optional[GenerationTask]:
         with self._lock:
             return self._tasks.get(task_id)
 
@@ -110,7 +106,11 @@ class GenerationService:
             await self._add_log(task_id, f"❌ 入库过程中出现错误: {str(e)}")
 
     async def run_pipeline(self, task_id: str):
-        self._update_task(task_id, "running", "正在抓取 RSS 数据")
+        task = self.get_task(task_id)
+        if not task:
+            return
+
+        self._update_task(task_id, "running", f"正在按主题生成节目: {task.topic}")
         
         try:
             main_py = self.project_root / "main.py"
@@ -124,11 +124,13 @@ class GenerationService:
             
             process = await asyncio.create_subprocess_exec(
                  sys.executable,
-                 "-u",  # 禁用缓冲，确保实时输出
-                 str(main_py),
-                 stdout=asyncio.subprocess.PIPE,
-                 stderr=asyncio.subprocess.STDOUT,
-                 cwd=str(self.project_root),
+                  "-u",  # 禁用缓冲，确保实时输出
+                  str(main_py),
+                  "--topic",
+                  task.topic,
+                  stdout=asyncio.subprocess.PIPE,
+                  stderr=asyncio.subprocess.STDOUT,
+                  cwd=str(self.project_root),
                  env=env,
              )
             
@@ -188,7 +190,7 @@ class GenerationService:
                 return
             task.status = status
             task.message = message
-            task.updated_at = datetime.now(UTC)
+            task.updated_at = datetime.now(timezone.utc)
 
 
 generation_service = GenerationService()

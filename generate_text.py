@@ -63,6 +63,8 @@ from pydantic import BaseModel, Field, ValidationError, model_validator
 from typing import List, Literal, Optional
 from pydantic_ai import Agent
 
+from episode_planner import EpisodePlan, format_plan_for_prompt
+
 # ============ 环境变量加载 ============
 # 目的：在运行之前将 .env 中定义的密钥/配置注入进程环境（os.environ），避免把密钥写死在代码中。
 # 注意：不要在日志中打印真实密钥；此处仅提示加载是否完成。
@@ -318,6 +320,73 @@ def load_rss_news(rss_data_path: Path) -> str:
         print(f">>> 读取 RSS 数据失败: {e}")
         return ""
 
+
+def load_episode_plan(episode_plan_path: Path) -> Optional[EpisodePlan]:
+    if not episode_plan_path.exists():
+        return None
+
+    try:
+        with open(episode_plan_path, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+        return EpisodePlan(
+            topic_id=raw["topic_id"],
+            topic_name=raw["topic_name"],
+            title_hint=raw["title_hint"],
+            theme_statement=raw["theme_statement"],
+            audience=raw["audience"],
+            editorial_angle=raw["editorial_angle"],
+            selected_items=[],
+            segments=[],
+            closing_takeaway=raw["closing_takeaway"],
+        )
+    except Exception as e:
+        print(f">>> 警告：读取节目计划失败，将回退到原始新闻内容模式: {e}")
+        return None
+
+
+def build_generation_input(topic: str, rss_data_path: Path, episode_plan_path: Optional[Path] = None) -> str:
+    if episode_plan_path:
+        try:
+            with open(episode_plan_path, "r", encoding="utf-8") as f:
+                raw_plan = json.load(f)
+            plan = EpisodePlan(
+                topic_id=raw_plan["topic_id"],
+                topic_name=raw_plan["topic_name"],
+                title_hint=raw_plan["title_hint"],
+                theme_statement=raw_plan["theme_statement"],
+                audience=raw_plan["audience"],
+                editorial_angle=raw_plan["editorial_angle"],
+                selected_items=[],
+                segments=[],
+                closing_takeaway=raw_plan["closing_takeaway"],
+            )
+            plan.selected_items = [
+                type("SelectedItem", (), item)() for item in raw_plan.get("selected_items", [])
+            ]
+            plan.segments = [
+                type("Segment", (), segment)() for segment in raw_plan.get("segments", [])
+            ]
+            return format_plan_for_prompt(plan)
+        except Exception as e:
+            print(f">>> 警告：节目计划格式化失败，将回退到原始新闻内容模式: {e}")
+
+    news_content = load_rss_news(rss_data_path)
+    if not news_content:
+        return ""
+    return f"节目主题: {topic}\n请围绕这个主题组织本期节目，而不是逐条罗列新闻。\n\n原始新闻池:\n{news_content}"
+
+
+def _load_plan_from_path(episode_plan_path: Path) -> Optional[EpisodePlan]:
+    return load_episode_plan(episode_plan_path)
+
+
+def _resolve_output_dir(output_dir: Optional[Path], episode_plan_path: Optional[Path]) -> Path:
+    if output_dir:
+        return Path(output_dir)
+    if episode_plan_path:
+        return Path(episode_plan_path).parent
+    return Path("output")
+
 async def generate_podcast_script(news_content: str, max_retries: int = 3):
     """
     生成播客脚本（流式输出异步生成器）
@@ -378,18 +447,24 @@ async def generate_podcast_script(news_content: str, max_retries: int = 3):
 # 主程序入口
 # ============================================================
 
-async def main():
+async def main(
+    topic: str = "daily-news",
+    episode_plan_path: Optional[Path] = None,
+    rss_data_path: Optional[Path] = None,
+    output_dir: Optional[Path] = None,
+):
     """
     程序主函数
     """
     # 初始化 output 目录
-    output_dir = Path("output")
-    output_dir.mkdir(exist_ok=True)
-    rss_data_path = output_dir / "rss_data.json"
+    output_dir = _resolve_output_dir(output_dir, episode_plan_path)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    rss_data_path = rss_data_path or (output_dir / "rss_data.json")
+    episode_plan_path = episode_plan_path or (output_dir / "episode_plan.json")
     
-    # 从 rss_data.json 加载新闻内容
-    print(f">>> 正在从 {rss_data_path} 加载新闻内容...")
-    news_content = load_rss_news(rss_data_path)
+    # 从节目编排计划或 rss_data.json 加载生成输入
+    print(f">>> 正在准备主题化节目输入，topic={topic} ...")
+    news_content = build_generation_input(topic, rss_data_path, episode_plan_path)
     
     if not news_content:
         print(">>> 错误：未获取到有效的新闻内容，请先运行 rss_fetch.py")
@@ -403,8 +478,6 @@ async def main():
     print("-" * 50)
     
     partial_count = 0
-    printed_dialogues = set()
-    title_shown = ""
     final_script = None
 
     txt_path = output_dir / "podcast_script.txt"
@@ -422,17 +495,6 @@ async def main():
         with open(json_path, "w", encoding="utf-8") as f:
             # 兼容 Pydantic v2 的模型转 dict
             json.dump(script.model_dump(), f, ensure_ascii=False, indent=2)
-
-        if script.title and script.title != title_shown:
-            title_shown = script.title
-            print(f"\n>>> 正在生成标题：{script.title}")
-        
-        for s_idx, section in enumerate(script.sections):
-            for d_idx, dialogue in enumerate(section.dialogues):
-                dialogue_key = (s_idx, d_idx, dialogue.speaker, dialogue.content)
-                if dialogue_key not in printed_dialogues:
-                    printed_dialogues.add(dialogue_key)
-                    print(f"\n[{dialogue.speaker}] {dialogue.content}")
 
     # 最终输出完整的格式化结果
     if final_script:

@@ -165,6 +165,9 @@ python main.py
 ### 生成任务
 
 ```bash
+# 获取可选节目主题
+GET /api/v1/generation/topics
+
 # 触发生成任务
 POST /api/v1/generation/trigger
 Body: { "rss_source": "default", "topic": "daily-news" }
@@ -172,6 +175,8 @@ Body: { "rss_source": "default", "topic": "daily-news" }
 # 查询任务状态
 GET /api/v1/generation/{task_id}
 ```
+
+`topic` 现在表示节目主题模板，而不是普通字符串参数。后端会先按主题做选材和节目编排，再把编排结果交给脚本生成器。
 
 ### 播客管理
 
@@ -209,18 +214,19 @@ pytest
 
 调用 `script_service.py` 或 `generate_text.py`：
 
-1. 读取 RSS 数据
-2. 加载 `prompt.txt` 中的生成规则
-3. 使用 pydantic-ai Agent 生成脚本
-4. Pydantic 模型保证输出格式：
-   - title: 播客标题
-   - intro: 简介
-   - sections: 段落列表
-     - section_type: opening/transition/main_content/closing
-     - dialogues: A/B 对话轮次
-     - audio_effect: 音效标注
-   - total_duration: 预估时长
-5. 流式输出，实时写入文件
+1. 根据 `topic` 从 RSS 数据中挑选合适素材
+2. 生成 `episode_plan.json`，确定这一集的主线和段落结构
+3. 加载 `prompt.txt` 中的生成规则
+4. 使用 pydantic-ai Agent 基于节目计划生成脚本
+5. Pydantic 模型保证输出格式：
+    - title: 播客标题
+    - intro: 简介
+    - sections: 段落列表
+      - section_type: opening/transition/main_content/closing
+      - dialogues: A/B 对话轮次
+      - audio_effect: 音效标注
+    - total_duration: 预估时长
+6. 流式输出，实时写入文件
 
 ### Step 3: TTS 语音合成
 

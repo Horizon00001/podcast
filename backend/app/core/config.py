@@ -8,6 +8,12 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./podcast.db"
     postgres_url: str | None = None
     cors_origins: str = "http://localhost:5173"
+    tts_provider: str = "dashscope"
+    tts_model: str = "cosyvoice-v2"
+    dashscope_api_key: str | None = None
+    dashscope_base_websocket_api_url: str = "wss://dashscope.aliyuncs.com/api-ws/v1/inference"
+    dashscope_default_male_voice: str = "loongdavid_v2"
+    dashscope_default_female_voice: str = "longanwen"
 
     model_config = SettingsConfigDict(
         env_file=".env",

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { api } from '../services/api'
 import type { Podcast } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
+import { useUser } from '../context/UserContext'
 
 const CATEGORIES = [
   { id: 'all', name: '全部', icon: '📻' },
@@ -15,15 +16,24 @@ const CATEGORIES = [
 
 export function PodcastListPage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
+  const [recommendedIds, setRecommendedIds] = useState<number[]>([])
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [error, setError] = useState('')
   const { currentPodcast, isPlaying, play, toggle } = usePlayer()
+  const { user, loading: userLoading } = useUser()
 
   useEffect(() => {
     api.listPodcasts()
       .then(setPodcasts)
       .catch((e) => setError((e as Error).message))
   }, [])
+
+  useEffect(() => {
+    if (!user) return
+    api.getRecommendations(user.id)
+      .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
+      .catch((e) => setError((e as Error).message))
+  }, [user])
 
   const filteredPodcasts = selectedCategory === 'all'
     ? podcasts
@@ -34,12 +44,72 @@ export function PodcastListPage() {
       toggle()
     } else {
       play(podcast)
+      if (user) {
+        void api.reportInteraction({ user_id: user.id, podcast_id: podcast.id, action: 'play' })
+      }
     }
   }
+
+  const handleAction = (podcastId: number, action: 'like' | 'favorite' | 'skip') => {
+    if (!user) return
+    void api.reportInteraction({ user_id: user.id, podcast_id: podcastId, action })
+      .then(() => api.getRecommendations(user.id))
+      .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
+      .catch((e) => setError((e as Error).message))
+  }
+
+  const recommendedPodcasts = recommendedIds
+    .map((id) => podcasts.find((podcast) => podcast.id === id))
+    .filter((podcast): podcast is Podcast => Boolean(podcast))
 
   return (
     <main style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '32px', marginBottom: '24px' }}>我的播客库</h1>
+
+      <div style={{ marginBottom: '20px', color: 'var(--text)' }}>
+        {userLoading ? '正在同步用户身份...' : `当前推荐用户：${user?.username ?? '未设置'}`}
+      </div>
+
+      {recommendedPodcasts.length > 0 && (
+        <section style={{ marginBottom: '28px' }}>
+          <h2 style={{ fontSize: '20px', marginBottom: '12px' }}>为你推荐</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
+            {recommendedPodcasts.slice(0, 6).map((podcast) => (
+              <div
+                key={`rec-${podcast.id}`}
+                style={{
+                  border: '1px solid var(--border)',
+                  borderRadius: '14px',
+                  padding: '14px',
+                  background: 'var(--accent-bg)',
+                }}
+              >
+                <Link
+                  to={`/podcasts/${podcast.id}`}
+                  style={{ fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none' }}
+                >
+                  {podcast.title}
+                </Link>
+                <p style={{ fontSize: '13px', margin: '8px 0', color: 'var(--text)' }}>{podcast.summary}</p>
+                <button
+                  onClick={() => handlePlay(podcast)}
+                  style={{
+                    background: 'var(--accent)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '20px',
+                    padding: '6px 12px',
+                    cursor: 'pointer',
+                    fontSize: '12px',
+                  }}
+                >
+                  立即播放
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
       
       {/* 筛选栏 */}
       <div style={{
@@ -126,20 +196,40 @@ export function PodcastListPage() {
                 <span style={{ fontSize: '12px', color: 'var(--text)' }}>
                   {new Date(podcast.published_at).toLocaleDateString()}
                 </span>
-                <button
-                  onClick={() => handlePlay(podcast)}
-                  style={{
-                    background: isActive ? 'var(--accent)' : 'transparent',
-                    color: isActive ? 'white' : 'var(--accent)',
-                    border: `1px solid var(--accent)`,
-                    borderRadius: '20px',
-                    padding: '6px 12px',
-                    cursor: 'pointer',
-                    fontSize: '12px'
-                  }}
-                >
-                  {isActive && isPlaying ? '暂停' : '播放'}
-                </button>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                  <button
+                    onClick={() => handleAction(podcast.id, 'like')}
+                    style={{ border: '1px solid var(--border)', background: 'transparent', borderRadius: '20px', padding: '4px 8px', cursor: 'pointer' }}
+                  >
+                    👍
+                  </button>
+                  <button
+                    onClick={() => handleAction(podcast.id, 'favorite')}
+                    style={{ border: '1px solid var(--border)', background: 'transparent', borderRadius: '20px', padding: '4px 8px', cursor: 'pointer' }}
+                  >
+                    ⭐
+                  </button>
+                  <button
+                    onClick={() => handleAction(podcast.id, 'skip')}
+                    style={{ border: '1px solid var(--border)', background: 'transparent', borderRadius: '20px', padding: '4px 8px', cursor: 'pointer' }}
+                  >
+                    ⏭️
+                  </button>
+                  <button
+                    onClick={() => handlePlay(podcast)}
+                    style={{
+                      background: isActive ? 'var(--accent)' : 'transparent',
+                      color: isActive ? 'white' : 'var(--accent)',
+                      border: `1px solid var(--accent)`,
+                      borderRadius: '20px',
+                      padding: '6px 12px',
+                      cursor: 'pointer',
+                      fontSize: '12px'
+                    }}
+                  >
+                    {isActive && isPlaying ? '暂停' : '播放'}
+                  </button>
+                </div>
               </div>
             </div>
           )

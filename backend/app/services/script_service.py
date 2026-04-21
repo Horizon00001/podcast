@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from typing import Awaitable, Callable
 
 import dotenv
 from pydantic import BaseModel, Field, model_validator
@@ -18,17 +19,17 @@ class AudioEffect(BaseModel):
 
 class DialogueTurn(BaseModel):
     speaker: Literal["A", "B"] = Field(description="说话者名称，只能是 A 或 B")
-    content: str = Field(description="对话内容，需口语化、自然")
+    content: str = Field(description="对话内容，需口语化、自然，并具备适合音频收听的节奏感")
     emotion: Optional[str] = Field(default="", description="情感标注")
 
 
 class PodcastSection(BaseModel):
     section_type: Literal["opening", "transition", "main_content", "closing"] = Field(
-        description="段落类型"
+        description="段落类型，分别承担开场立题、承上启下、主体推进、结尾收束的节目职责"
     )
     audio_effect: Optional[AudioEffect] = Field(default=None, description="该段落的音频效果")
-    dialogues: List[DialogueTurn] = Field(description="该段落的所有对话")
-    summary: str = Field(default="", description="内部总结")
+    dialogues: List[DialogueTurn] = Field(description="该段落的所有对话，需体现 A 主播与 B 分析师的分工")
+    summary: str = Field(default="", description="内部总结，说明该段完成的节目功能与听众应带走的重点")
 
     @model_validator(mode="after")
     def validate_alternating_dialogues(self):
@@ -42,8 +43,8 @@ class PodcastSection(BaseModel):
 
 class PodcastScript(BaseModel):
     title: str = Field(description="播客标题")
-    intro: str = Field(description="播客简介/导语")
-    sections: List[PodcastSection] = Field(description="播客的所有段落")
+    intro: str = Field(description="播客简介/导语，需快速说明本期主题、价值和讨论路径")
+    sections: List[PodcastSection] = Field(description="播客的所有段落，整体需形成可听的节目编排结构")
     total_duration: str = Field(description="预估总时长，如'8分钟'")
 
     @model_validator(mode="after")
@@ -119,10 +120,54 @@ class ScriptService:
 
         async for script in self.generate_script(news_content):
             final_script = script
-            formatted_output = script.format_for_output()
-            with open(txt_path, "w", encoding="utf-8") as f:
-                f.write(formatted_output)
-            with open(json_path, "w", encoding="utf-8") as f:
-                json.dump(script.model_dump(), f, ensure_ascii=False, indent=2)
+            self._write_script_files(script, txt_path, json_path)
 
         return txt_path, json_path
+
+    async def generate_and_save_streaming_sections(
+        self,
+        news_content: str,
+        on_section_ready: Callable[[int, dict, bool], Awaitable[None]] | None = None,
+    ) -> tuple[Path, Path]:
+        txt_path = self.output_dir / "podcast_script.txt"
+        json_path = self.output_dir / "podcast_script.json"
+        final_script = None
+        flushed_sections = 0
+
+        async for script in self.generate_script(news_content):
+            final_script = script
+            self._write_script_files(script, txt_path, json_path)
+
+            if on_section_ready is None:
+                continue
+
+            # Once a new section appears, the previous one is stable enough to start TTS.
+            while flushed_sections + 1 < len(script.sections):
+                await on_section_ready(
+                    flushed_sections,
+                    script.sections[flushed_sections].model_dump(),
+                    True,
+                )
+                flushed_sections += 1
+
+        if final_script is None:
+            raise RuntimeError("脚本生成失败：未收到任何有效输出")
+
+        if on_section_ready is not None:
+            while flushed_sections < len(final_script.sections):
+                await on_section_ready(
+                    flushed_sections,
+                    final_script.sections[flushed_sections].model_dump(),
+                    flushed_sections < len(final_script.sections) - 1,
+                )
+                flushed_sections += 1
+
+        return txt_path, json_path
+
+    @staticmethod
+    def _write_script_files(script: PodcastScript, txt_path: Path, json_path: Path) -> None:
+        formatted_output = script.format_for_output()
+        with open(txt_path, "w", encoding="utf-8") as f:
+            f.write(formatted_output)
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(script.model_dump(), f, ensure_ascii=False, indent=2)

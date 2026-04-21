@@ -27,3 +27,11 @@ def test_generation_trigger_and_status(monkeypatch):
     status_payload = status_response.json()
     assert status_payload["task_id"] == task_id
     assert status_payload["status"] == "succeeded"
+
+
+def test_generation_topics():
+    response = client.get("/api/v1/generation/topics")
+    assert response.status_code == 200
+    payload = response.json()
+    assert "topics" in payload
+    assert any(topic["id"] == "daily-news" for topic in payload["topics"])

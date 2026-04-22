@@ -19,7 +19,7 @@ export function PodcastListPage() {
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [error, setError] = useState('')
-  const { currentPodcast, isPlaying, play, toggle } = usePlayer()
+  const { currentPodcast, isPlaying, play, toggle, reportAction } = usePlayer()
   const { user, loading: userLoading } = useUser()
 
   useEffect(() => {
@@ -45,17 +45,21 @@ export function PodcastListPage() {
     } else {
       play(podcast)
       if (user) {
-        void api.reportInteraction({ user_id: user.id, podcast_id: podcast.id, action: 'play' })
+        void reportAction('play', podcast, { listen_duration_ms: 0, progress_pct: 0 })
       }
     }
   }
 
   const handleAction = (podcastId: number, action: 'like' | 'favorite' | 'skip') => {
     if (!user) return
-    void api.reportInteraction({ user_id: user.id, podcast_id: podcastId, action })
-      .then(() => api.getRecommendations(user.id))
-      .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
-      .catch((e) => setError((e as Error).message))
+    const podcast = podcasts.find((item) => item.id === podcastId)
+    const result = reportAction(action, podcast, { listen_duration_ms: 0, progress_pct: action === 'skip' ? 0 : 0 })
+    if (result) {
+      void result
+        .then(() => api.getRecommendations(user.id))
+        .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
+        .catch((e) => setError((e as Error).message))
+    }
   }
 
   const recommendedPodcasts = recommendedIds

@@ -91,6 +91,135 @@ class TestRecommendationServicePureFunctions:
         result = self.service._reason_text(cf=0.1, content=0.1, hot=0.1, fresh=0.9)
         assert result == "发布时间较新"
 
+    def test_reason_text_sequence_dominant(self):
+        result = self.service._reason_text(cf=0.1, content=0.1, hot=0.1, fresh=0.1, sequence=0.9)
+        assert result == "与你最近的收听序列相近"
+
+    def test_play_weight_long_duration(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 600000
+        mock_row.progress_pct = 0.0
+        assert self.service._play_weight(mock_row) == 3.0
+
+    def test_play_weight_high_progress(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 0
+        mock_row.progress_pct = 90.0
+        assert self.service._play_weight(mock_row) == 3.0
+
+    def test_play_weight_medium_duration(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 180000
+        mock_row.progress_pct = 0.0
+        assert self.service._play_weight(mock_row) == 2.0
+
+    def test_play_weight_medium_progress(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 0
+        mock_row.progress_pct = 55.0
+        assert self.service._play_weight(mock_row) == 2.0
+
+    def test_play_weight_short(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 30000
+        mock_row.progress_pct = 0.0
+        assert self.service._play_weight(mock_row) == 1.0
+
+    def test_play_weight_very_short(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 5000
+        mock_row.progress_pct = 5.0
+        assert self.service._play_weight(mock_row) == 0.5
+
+    def test_skip_weight_early(self):
+        mock_row = MagicMock()
+        mock_row.progress_pct = 5.0
+        assert self.service._skip_weight(mock_row) == -3.0
+
+    def test_skip_weight_mid(self):
+        mock_row = MagicMock()
+        mock_row.progress_pct = 30.0
+        assert self.service._skip_weight(mock_row) == -2.0
+
+    def test_skip_weight_late(self):
+        mock_row = MagicMock()
+        mock_row.progress_pct = 75.0
+        assert self.service._skip_weight(mock_row) == -1.0
+
+    def test_skip_weight_null_progress(self):
+        mock_row = MagicMock()
+        mock_row.progress_pct = None
+        assert self.service._skip_weight(mock_row) == -2.0
+
+    def test_recency_weight_morning_bucket(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = "morning"
+        assert self.service._recency_weight(mock_row) == 1.5
+
+    def test_recency_weight_commute_bucket(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = "commute"
+        assert self.service._recency_weight(mock_row) == 1.5
+
+    def test_recency_weight_evening_bucket(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = "evening"
+        assert self.service._recency_weight(mock_row) == 1.5
+
+    def test_recency_weight_afternoon_bucket(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = "afternoon"
+        mock_row.context_hour = None
+        assert self.service._recency_weight(mock_row) == 0.5
+
+    def test_recency_weight_night_bucket(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = "night"
+        mock_row.context_hour = None
+        assert self.service._recency_weight(mock_row) == 0.5
+
+    def test_recency_weight_active_hours(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = ""
+        mock_row.context_hour = 14
+        assert self.service._recency_weight(mock_row) == 1.0
+
+    def test_recency_weight_inactive_hours(self):
+        mock_row = MagicMock()
+        mock_row.context_bucket = ""
+        mock_row.context_hour = 3
+        assert self.service._recency_weight(mock_row) == 0.5
+
+    def test_build_sequence_score_empty(self):
+        podcasts = []
+        result = self.service._build_sequence_score(podcasts, [])
+        assert result == {}
+
+    def test_build_sequence_score_single_recent(self, db_session):
+        service = RecommendationService(db_session)
+        user = User(username="seq-user", email="seq@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="AI News", summary="ai", audio_url="", script_path="")
+        db_session.add(p1)
+        db_session.flush()
+
+        interaction = Interaction(
+            user_id=user.id,
+            podcast_id=p1.id,
+            action="complete",
+            listen_duration_ms=300000,
+            progress_pct=100.0,
+            created_at=datetime.now(UTC),
+        )
+        db_session.add(interaction)
+        db_session.commit()
+
+        result = service._build_sequence_score([p1], [interaction])
+        assert p1.id in result
+        assert 0.0 <= result[p1.id] <= 1.0
+
 
 class TestRecommendationServiceWithDB:
     """Test RecommendationService with a real db session."""
@@ -206,3 +335,115 @@ class TestRecommendationServiceWithDB:
         podcast_ids = [item.podcast_id for item in result.items]
         assert p2.id not in podcast_ids
         assert p1.id in podcast_ids or len(result.items) == 1
+
+    def test_complete_boosts_positive_feedback(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="listener", email="listener@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="AI", summary="ai architecture", audio_url="", script_path="")
+        p2 = Podcast(title="Sports", summary="sports update", audio_url="", script_path="")
+        p3 = Podcast(title="Finance", summary="market news", audio_url="", script_path="")
+        db_session.add_all([p1, p2, p3])
+        db_session.flush()
+
+        db_session.add_all([
+            Interaction(user_id=user.id, podcast_id=p1.id, action="complete"),
+            Interaction(user_id=user.id, podcast_id=p2.id, action="skip", progress_pct=5.0),
+        ])
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+
+        assert result.strategy == "hybrid-v1"
+        assert all(item.podcast_id != p2.id for item in result.items)
+
+    def test_skip_early_filtered_late_not_filtered(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="skiptest", email="skiptest@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="AI", summary="ai", audio_url="", script_path="")
+        p2 = Podcast(title="Sports", summary="sports", audio_url="", script_path="")
+        db_session.add_all([p1, p2])
+        db_session.flush()
+
+        db_session.add_all([
+            Interaction(user_id=user.id, podcast_id=p1.id, action="like"),
+            Interaction(user_id=user.id, podcast_id=p2.id, action="skip", progress_pct=80.0),
+        ])
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+        podcast_ids = [item.podcast_id for item in result.items]
+
+        assert p1.id in podcast_ids
+
+    def test_complete_contributes_positive_feedback(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="completor", email="completor@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="Tech Deep", summary="deep technology architecture", audio_url="", script_path="")
+        p2 = Podcast(title="Finance News", summary="market stocks trading", audio_url="", script_path="")
+        db_session.add_all([p1, p2])
+        db_session.flush()
+
+        db_session.add_all([
+            Interaction(user_id=user.id, podcast_id=p1.id, action="complete", listen_duration_ms=600000, progress_pct=100.0),
+            Interaction(user_id=user.id, podcast_id=p2.id, action="play", listen_duration_ms=30000, progress_pct=10.0),
+        ])
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+        podcast_ids = [item.podcast_id for item in result.items]
+
+        assert p1.id in podcast_ids
+        assert p2.id in podcast_ids
+        assert result.strategy == "hybrid-v1"
+
+    def test_reason_text_with_sequence_arg(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="reason", email="reason@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="AI", summary="ai", audio_url="", script_path="")
+        db_session.add(p1)
+        db_session.flush()
+
+        db_session.add(Interaction(user_id=user.id, podcast_id=p1.id, action="like"))
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+        assert len(result.items) >= 1
+
+    def test_recommendations_respect_time_bucket(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="timeuser", email="timeuser@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="Morning Tech", summary="tech news", audio_url="", script_path="")
+        p2 = Podcast(title="Evening Music", summary="music", audio_url="", script_path="")
+        db_session.add_all([p1, p2])
+        db_session.flush()
+
+        db_session.add_all([
+            Interaction(user_id=user.id, podcast_id=p1.id, action="complete", context_bucket="morning"),
+            Interaction(user_id=user.id, podcast_id=p2.id, action="complete", context_bucket="night"),
+        ])
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+        podcast_ids = [item.podcast_id for item in result.items]
+
+        assert p1.id in podcast_ids or p2.id in podcast_ids

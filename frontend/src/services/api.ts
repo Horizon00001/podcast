@@ -3,6 +3,20 @@ import type { Podcast, RecommendationResponse } from '../types/podcast'
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000/api/v1'
 export const MEDIA_BASE_URL = BASE_URL.replace('/api/v1', '')
 
+export type InteractionAction = 'play' | 'pause' | 'resume' | 'like' | 'favorite' | 'skip' | 'complete'
+
+export type InteractionPayload = {
+  user_id: number
+  podcast_id: number
+  action: InteractionAction
+  listen_duration_ms?: number
+  progress_pct?: number
+  session_id?: string
+  context_hour?: number
+  context_weekday?: number
+  context_bucket?: string
+}
+
 class RequestError extends Error {
   status: number
 
@@ -28,7 +42,7 @@ export const api = {
   getPodcast: (id: number) => request<Podcast>(`/podcasts/${id}`),
   getRecommendations: (userId: number) =>
     request<RecommendationResponse>(`/recommendations/${userId}`),
-  reportInteraction: (payload: { user_id: number; podcast_id: number; action: 'play' | 'like' | 'favorite' | 'skip' }) =>
+  reportInteraction: (payload: InteractionPayload) =>
     request<{ id: number; user_id: number; podcast_id: number; action: string; created_at: string }>('/interactions', {
       method: 'POST',
       body: JSON.stringify(payload),

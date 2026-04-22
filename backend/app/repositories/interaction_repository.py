@@ -13,6 +13,12 @@ class InteractionRepository:
             user_id=payload.user_id,
             podcast_id=payload.podcast_id,
             action=payload.action,
+            listen_duration_ms=payload.listen_duration_ms,
+            progress_pct=payload.progress_pct,
+            session_id=payload.session_id,
+            context_hour=payload.context_hour,
+            context_weekday=payload.context_weekday,
+            context_bucket=payload.context_bucket,
         )
         self.db.add(record)
         self.db.commit()

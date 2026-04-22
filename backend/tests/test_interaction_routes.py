@@ -48,13 +48,26 @@ def test_report_interaction_play():
 
     response = client.post(
         "/api/v1/interactions",
-        json={"user_id": user_id, "podcast_id": podcast_id, "action": "play"},
+        json={
+            "user_id": user_id,
+            "podcast_id": podcast_id,
+            "action": "play",
+            "listen_duration_ms": 120000,
+            "progress_pct": 25.0,
+            "session_id": "session-test",
+            "context_hour": 9,
+            "context_weekday": 2,
+            "context_bucket": "morning",
+        },
     )
     assert response.status_code == 201
     payload = response.json()
     assert payload["user_id"] == user_id
     assert payload["podcast_id"] == podcast_id
     assert payload["action"] == "play"
+    assert payload["listen_duration_ms"] == 120000
+    assert payload["progress_pct"] == 25.0
+    assert payload["session_id"] == "session-test"
     assert "id" in payload
     assert "created_at" in payload
 
@@ -99,6 +112,27 @@ def test_report_interaction_skip():
     )
     assert response.status_code == 201
     assert response.json()["action"] == "skip"
+
+
+def test_report_interaction_complete():
+    init_db()
+    _reset_test_data()
+
+    user_id, podcast_id = _create_test_user_and_podcast()
+
+    response = client.post(
+        "/api/v1/interactions",
+        json={
+            "user_id": user_id,
+            "podcast_id": podcast_id,
+            "action": "complete",
+            "listen_duration_ms": 600000,
+            "progress_pct": 100,
+            "session_id": "session-test",
+        },
+    )
+    assert response.status_code == 201
+    assert response.json()["action"] == "complete"
 
 
 def test_report_interaction_invalid_action():

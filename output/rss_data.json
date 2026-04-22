@@ -3,7 +3,7 @@
         "id": "espn-rpm",
         "name": "ESPN RPM",
         "category": "sports",
-        "last_updated": "2026-04-21T22:43:10.789921",
+        "last_updated": "2026-04-22T11:02:20.110293",
         "entries": [
             {
                 "title": "Gen Z is shaking up IndyCar's Millennial, Gen X established order",
@@ -131,8 +131,50 @@
         "id": "hacker-news",
         "name": "Hacker News",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:11.756523",
+        "last_updated": "2026-04-22T11:02:20.529329",
         "entries": [
+            {
+                "title": "ChatGPT Images 2.0",
+                "link": "https://openai.com/index/introducing-chatgpt-images-2-0/",
+                "published": "Tue, 21 Apr 2026 18:50:00 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47852835\">Comments</a>"
+            },
+            {
+                "title": "Windows Server 2025 Runs Better on ARM",
+                "link": "https://jasoneckert.github.io/myblog/server-2025-arm64/",
+                "published": "Sun, 19 Apr 2026 04:28:31 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47821801\">Comments</a>"
+            },
+            {
+                "title": "SpaceX says it has agreement to acquire Cursor for $60B",
+                "link": "https://twitter.com/spacex/status/2046713419978453374",
+                "published": "Tue, 21 Apr 2026 22:13:18 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47855293\">Comments</a>"
+            },
+            {
+                "title": "The Vercel breach: OAuth attack exposes risk in platform environment variables",
+                "link": "https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html",
+                "published": "Tue, 21 Apr 2026 17:14:35 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47851634\">Comments</a>"
+            },
+            {
+                "title": "San Diego rents declined more than 19 of 20 top US markets after surge in supply",
+                "link": "https://www.kpbs.org/news/economy/2026/03/27/san-diego-rents-declined-more-than-19-of-nations-top-20-markets-following-surge-in-supply",
+                "published": "Wed, 22 Apr 2026 01:21:09 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47857477\">Comments</a>"
+            },
+            {
+                "title": "CrabTrap: An LLM-as-a-judge HTTP proxy to secure agents in production",
+                "link": "https://www.brex.com/crabtrap",
+                "published": "Tue, 21 Apr 2026 15:29:16 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47850212\">Comments</a>"
+            },
+            {
+                "title": "Britannica11.org – a structured edition of the 1911 Encyclopædia Britannica",
+                "link": "https://britannica11.org/",
+                "published": "Tue, 21 Apr 2026 17:33:50 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47851885\">Comments</a>"
+            },
             {
                 "title": "Laws of Software Engineering",
                 "link": "https://lawsofsoftwareengineering.com",
@@ -140,118 +182,76 @@
                 "summary": "<a href=\"https://news.ycombinator.com/item?id=47847179\">Comments</a>"
             },
             {
-                "title": "Show HN: VidStudio, a browser based video editor that doesn't upload your files",
-                "link": "https://vidstudio.app/video-editor",
-                "published": "Tue, 21 Apr 2026 11:58:16 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47847558\">Comments</a>"
+                "title": "Stephen's Sausage Roll remains one of the most influential puzzle games",
+                "link": "https://thinkygames.com/features/10-years-of-grilling-stephens-sausage-roll-remains-one-of-the-most-influential-puzzle-games-ever-created/",
+                "published": "Sat, 18 Apr 2026 10:53:42 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47814874\">Comments</a>"
             },
             {
-                "title": "John Ternus to become Apple CEO",
-                "link": "https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/",
-                "published": "Mon, 20 Apr 2026 20:39:32 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47840219\">Comments</a>"
+                "title": "The Mystery in the Medicine Cabinet: Acetaminophen, ibuprofen, and what to know",
+                "link": "https://asteriskmag.com/issues/14/the-mystery-in-the-medicine-cabinet",
+                "published": "Mon, 20 Apr 2026 15:21:16 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47835635\">Comments</a>"
             },
             {
-                "title": "Tim Cook's Impeccable Timing",
-                "link": "https://stratechery.com/2026/tim-cooks-impeccable-timing/",
-                "published": "Tue, 21 Apr 2026 11:30:03 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47847324\">Comments</a>"
+                "title": "Framework Laptop 13 Pro",
+                "link": "https://frame.work/laptop13pro",
+                "published": "Tue, 21 Apr 2026 18:00:34 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47852177\">Comments</a>"
             },
             {
-                "title": "A type-safe, realtime collaborative Graph Database in a CRDT",
-                "link": "https://codemix.com/graph",
-                "published": "Tue, 21 Apr 2026 10:33:24 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47846946\">Comments</a>"
+                "title": "Cal.diy: open-source community edition of cal.com",
+                "link": "https://github.com/calcom/cal.diy",
+                "published": "Tue, 21 Apr 2026 17:58:21 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47852155\">Comments</a>"
             },
             {
-                "title": "Running a Minecraft Server and More on a 1960s Univac Computer",
-                "link": "https://farlow.dev/2026/04/17/running-a-minecraft-server-and-more-on-a-1960s-univac-computer",
-                "published": "Sat, 18 Apr 2026 12:41:00 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47815462\">Comments</a>"
+                "title": "Drunk Post: Things I've Learned as a Senior Engineer",
+                "link": "https://luminousmen.substack.com/p/drunk-post-things-ive-learned-as",
+                "published": "Tue, 21 Apr 2026 23:53:45 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47856535\">Comments</a>"
             },
             {
-                "title": "Tindie store under \"scheduled maintenance\" for days",
-                "link": "https://www.tindie.com/",
-                "published": "Tue, 21 Apr 2026 13:02:00 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47848195\">Comments</a>"
+                "title": "OpenAI reinvents Recall except everything is stored remotely",
+                "link": "https://developers.openai.com/codex/memories/chronicle",
+                "published": "Wed, 22 Apr 2026 02:21:47 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47858014\">Comments</a>"
             },
             {
-                "title": "Anthropic says OpenClaw-style Claude CLI usage is allowed again",
-                "link": "https://docs.openclaw.ai/providers/anthropic",
-                "published": "Tue, 21 Apr 2026 03:43:03 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47844269\">Comments</a>"
+                "title": "Meta to start capturing employee mouse movements, keystrokes for AI training",
+                "link": "https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/",
+                "published": "Tue, 21 Apr 2026 17:40:39 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47851948\">Comments</a>"
             },
             {
-                "title": "MNT Reform is an open hardware laptop, designed and assembled in Germany",
-                "link": "http://mnt.stanleylieber.com/reform/",
-                "published": "Mon, 20 Apr 2026 14:14:52 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47834689\">Comments</a>"
+                "title": "I'm Sick of AI Everything",
+                "link": "https://news.ycombinator.com/item?id=47857461",
+                "published": "Wed, 22 Apr 2026 01:19:30 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47857461\">Comments</a>"
             },
             {
-                "title": "Fusion Power Plant Simulator",
-                "link": "https://www.fusionenergybase.com/fusion-power-plant-simulator",
-                "published": "Tue, 21 Apr 2026 14:26:52 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47849315\">Comments</a>"
+                "title": "Changes to GitHub Copilot individual plans",
+                "link": "https://github.blog/news-insights/company-news/changes-to-github-copilot-individual-plans/",
+                "published": "Mon, 20 Apr 2026 18:24:05 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47838508\">Comments</a>"
             },
             {
-                "title": "Anthropic takes $5B from Amazon and pledges $100B in cloud spending in return",
-                "link": "https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/",
-                "published": "Tue, 21 Apr 2026 13:08:25 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47848276\">Comments</a>"
+                "title": "Edit store price tags using Flipper Zero",
+                "link": "https://github.com/i12bp8/TagTinker",
+                "published": "Sun, 19 Apr 2026 09:26:04 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47822978\">Comments</a>"
             },
             {
-                "title": "Slava's Monoid Zoo",
-                "link": "https://factorcode.org/slava/monoids.html",
-                "published": "Sun, 19 Apr 2026 23:13:46 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47828568\">Comments</a>"
+                "title": "Global growth in solar \"the largest ever observed for any source\"",
+                "link": "https://arstechnica.com/science/2026/04/global-growth-in-solar-the-largest-ever-observed-for-any-source/",
+                "published": "Wed, 22 Apr 2026 01:25:04 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47857509\">Comments</a>"
             },
             {
-                "title": "Salmon exposed to cocaine and its main byproduct roam more widely",
-                "link": "https://www.science.org/content/article/cocaine-pollution-gives-salmon-wanderlust",
-                "published": "Tue, 21 Apr 2026 05:27:35 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47844890\">Comments</a>"
-            },
-            {
-                "title": "The Beauty of Bonsai Styles",
-                "link": "https://longwoodgardens.org/blog/2023-05-17/beauty-bonsai-styles",
-                "published": "Tue, 21 Apr 2026 04:31:30 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47844539\">Comments</a>"
-            },
-            {
-                "title": "Apple ignores DMA interoperability requests and contradicts own documentation",
-                "link": "https://fsfe.org/news/2026/news-20260420-01.html",
-                "published": "Tue, 21 Apr 2026 10:57:53 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47847124\">Comments</a>"
-            },
-            {
-                "title": "A Roblox cheat and one AI tool brought down Vercel's platform",
-                "link": "https://webmatrices.com/post/how-a-roblox-cheat-and-one-ai-tool-brought-down-vercel-s-entire-platform",
-                "published": "Tue, 21 Apr 2026 04:12:12 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47844431\">Comments</a>"
-            },
-            {
-                "title": "Louis Zocchi, games industry pioneer, has died",
-                "link": "https://icv2.com/articles/news/view/62176/r-i-p-louis-zocchi-the-godfather-dice",
-                "published": "Tue, 21 Apr 2026 06:19:15 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47845231\">Comments</a>"
-            },
-            {
-                "title": "Leonardo, Borgia, and Machiavelli: A Fateful Collusion",
-                "link": "https://www.historytoday.com/archive/leonardo-borgia-and-machiavelli-fateful-collusion",
-                "published": "Thu, 16 Apr 2026 06:38:43 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47789445\">Comments</a>"
-            },
-            {
-                "title": "High-Fidelity KV Cache Summarization Using Entropy and Low-Rank Reconstruction",
-                "link": "https://jchandra.com/posts/hae-ols/",
-                "published": "Sun, 19 Apr 2026 11:35:23 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47823549\">Comments</a>"
-            },
-            {
-                "title": "The purist's guide to phở in Hanoi",
-                "link": "https://connla.substack.com/p/pho-in-hanoi-a-purists-guide",
-                "published": "Sun, 19 Apr 2026 08:34:10 +0000",
-                "summary": "<a href=\"https://news.ycombinator.com/item?id=47822742\">Comments</a>"
+                "title": "Optimizing Tail Sampling in OpenTelemetry with Retroactive Sampling",
+                "link": "https://victoriametrics.com/blog/kubecon-eu-2026-sampling/index.html",
+                "published": "Sat, 18 Apr 2026 14:45:41 +0000",
+                "summary": "<a href=\"https://news.ycombinator.com/item?id=47816333\">Comments</a>"
             }
         ]
     },
@@ -259,8 +259,110 @@
         "id": "techcrunch",
         "name": "TechCrunch",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:11.981769",
+        "last_updated": "2026-04-22T11:02:19.841525",
         "entries": [
+            {
+                "title": "Redwood Materials lays off 10% in restructuring to chase energy storage business",
+                "link": "https://techcrunch.com/2026/04/21/redwood-materials-lays-off-10-in-restructuring-to-chase-energy-storage-business/",
+                "published": "Wed, 22 Apr 2026 00:37:33 +0000",
+                "summary": "The company is restructuring some teams to accommodate a booming energy storage business, according to emails viewed by TechCrunch."
+            },
+            {
+                "title": "Meta will record employees’ keystrokes and use it to train its AI models",
+                "link": "https://techcrunch.com/2026/04/21/meta-will-record-employees-keystrokes-and-use-it-to-train-its-ai-models/",
+                "published": "Tue, 21 Apr 2026 23:45:21 +0000",
+                "summary": "Meta says that it has a new internal tool that is converting mouse movements and button clicks into data that can train its AI models."
+            },
+            {
+                "title": "Unauthorized group has gained access to Anthropic’s exclusive cyber tool Mythos, report claims",
+                "link": "https://techcrunch.com/2026/04/21/unauthorized-group-has-gained-access-to-anthropics-exclusive-cyber-tool-mythos-report-claims/",
+                "published": "Tue, 21 Apr 2026 23:26:45 +0000",
+                "summary": "Anthropic told TechCrunch it is investigating the claims, but maintains that there is no evidence that its systems have been impacted."
+            },
+            {
+                "title": "SpaceX is working with Cursor and has an option to buy the startup for $60B",
+                "link": "https://techcrunch.com/2026/04/21/spacex-is-working-with-cursor-and-has-an-option-to-buy-the-startup-for-60-billion/",
+                "published": "Tue, 21 Apr 2026 22:58:22 +0000",
+                "summary": "The move could shore up weaknesses at each company, but it also reveals them. Neither Cursor nor xAI has proprietary models that can match the leading offerings from Anthropic and OpenAI — the same companies now competing directly with Cursor for the developer market."
+            },
+            {
+                "title": "Tim Cook is stepping down as CEO of Apple: Here’s a look at his 15-year legacy, from new products and services to China expansion",
+                "link": "https://techcrunch.com/2026/04/21/apple-tim-cook-ceo-15-year-legacy-takeaways-ios-silicon-china-trillion-ai/",
+                "published": "Tue, 21 Apr 2026 21:09:09 +0000",
+                "summary": "Cook, who joined Apple in 1998, succeeded Steve Jobs as CEO in 2011 and went on to transform Apple into a $4 trillion powerhouse."
+            },
+            {
+                "title": "Apple’s John Ternus will run one of the world’s most powerful companies; the job is a minefield",
+                "link": "https://techcrunch.com/2026/04/21/apples-john-ternus-will-run-one-of-the-worlds-most-powerful-companies-the-job-is-a-minefield/",
+                "published": "Tue, 21 Apr 2026 20:23:24 +0000",
+                "summary": "Apple's top job comes with almost unrivaled power and money, but it comes with plenty of baggage, too."
+            },
+            {
+                "title": "AI research lab NeoCognition lands $40M seed to build agents that learn like humans",
+                "link": "https://techcrunch.com/2026/04/21/ai-research-lab-neocognition-lands-40m-seed-to-build-agents-that-learn-like-humans/",
+                "published": "Tue, 21 Apr 2026 19:11:29 +0000",
+                "summary": "Founded by an OSU researcher, the startup is developing AI agents that can become experts in any domain."
+            },
+            {
+                "title": "Apple’s Cal AI crackdown signals it’s still policing the App Store",
+                "link": "https://techcrunch.com/2026/04/21/apples-cal-ai-crackdown-signals-its-still-policing-the-app-store/",
+                "published": "Tue, 21 Apr 2026 19:09:12 +0000",
+                "summary": "Apple tells TechCrunch Cal AI was removed not for web payments alone, but for deceptive billing, manipulative tactics, and App Store rule violations."
+            },
+            {
+                "title": "SusHi Tech Tokyo isn’t a conference — it’s a deal room with 60,000 people",
+                "link": "https://techcrunch.com/2026/04/21/sushi-tech-tokyo-isnt-a-conference-its-a-deal-room-with-60000-people/",
+                "published": "Tue, 21 Apr 2026 19:02:35 +0000",
+                "summary": "When 60,000 attendees descend on Tokyo Big Sight April 27–29, the headline numbers are hard to ignore: 750 startup exhibitors, 151 sessions, city leaders from 49 countries. But the stat that tells you what kind of event this actually is? It's 10,000 facilitated business meetings — brokered, booked, and tracked before most attendees even land."
+            },
+            {
+                "title": "ChatGPT’s new Images 2.0 model is surprisingly good at generating text",
+                "link": "https://techcrunch.com/2026/04/21/chatgpts-new-images-2-0-model-is-surprisingly-good-at-generating-text/",
+                "published": "Tue, 21 Apr 2026 19:00:00 +0000",
+                "summary": "ChatGPT Images 2.0, the newest image-generation model from OpenAI, shows just how much AI capabilities have evolved over the last few years."
+            },
+            {
+                "title": "Sam Altman throws shade at Anthropic’s cyber model, Mythos: ‘fear-based marketing’",
+                "link": "https://techcrunch.com/2026/04/21/sam-altman-throws-shade-at-anthropics-cyber-model-mythos-fear-based-marketing/",
+                "published": "Tue, 21 Apr 2026 18:51:52 +0000",
+                "summary": "This week, during a podcast appearance, OpenAI CEO Sam Altman called out his competitor's new cybersecurity model, noting that the company was using fear to make its product sound more impressive than it actually is."
+            },
+            {
+                "title": "Clarifai deletes 3 million photos that OkCupid provided to train facial recognition AI, report says",
+                "link": "https://techcrunch.com/2026/04/21/clarifai-okcupid-facial-recognition-ai-ftc-settlement/",
+                "published": "Tue, 21 Apr 2026 17:11:01 +0000",
+                "summary": "The photo deletion comes after an FTC settlement with Clarifai. The company had asked OkCupid — whose executives had invested in Clarifai — to share data in 2014, according to court documents."
+            },
+            {
+                "title": "Former Pinterest team redesigns email with Extra — and it’s actually good",
+                "link": "https://techcrunch.com/2026/04/21/former-pinterest-team-redesigns-email-with-extra-and-its-actually-good/",
+                "published": "Tue, 21 Apr 2026 16:00:00 +0000",
+                "summary": "Extra, from a team of former Pinterest designers and engineers, reimagines email around your life instead of the traditional inbox."
+            },
+            {
+                "title": "AI Dungeon maker Latitude unveils Voyage, a platform for creating AI-powered RPGs",
+                "link": "https://techcrunch.com/2026/04/21/voyage-is-an-ai-rpg-platform-for-creating-custom-gaming-worlds-with-ai-generated-npc-interactions/",
+                "published": "Tue, 21 Apr 2026 16:00:00 +0000",
+                "summary": "Latitude's new AI-native platform, Voyage, aims to help gamers create their very own role-playing game."
+            },
+            {
+                "title": "Ransomware negotiator pleads guilty to helping ransomware gang",
+                "link": "https://techcrunch.com/2026/04/21/ransomware-negotiator-pleads-guilty-to-helping-ransomware-gang/",
+                "published": "Tue, 21 Apr 2026 15:56:53 +0000",
+                "summary": "A former employee of a cybersecurity firm pleaded guilty to aiding ransomware criminals to maximize their profits, with the goal of taking a cut of the ransom."
+            },
+            {
+                "title": "Bond, a new social media platform, wants to use AI to help you kick your doomscrolling habit",
+                "link": "https://techcrunch.com/2026/04/21/bond-social-media-platform-ai-memories-kick-doomscrolling-habit/",
+                "published": "Tue, 21 Apr 2026 15:24:29 +0000",
+                "summary": "Bond wants you to get off the couch and get back into the real world, its creator says. The new platform's AI system is designed to motivate users to do things away from the app."
+            },
+            {
+                "title": "YouTube expands its AI likeness detection technology to celebrities",
+                "link": "https://techcrunch.com/2026/04/21/youtube-expands-its-ai-likeness-detection-technology-to-celebrities/",
+                "published": "Tue, 21 Apr 2026 15:02:06 +0000",
+                "summary": "YouTube is expanding its AI likeness detection tool to celebrities, giving talent and their reps a way to find and remove deepfakes."
+            },
             {
                 "title": "Amazon taps Sweden’s Einride for its electric big rigs",
                 "link": "https://techcrunch.com/2026/04/21/amazon-taps-swedens-einride-for-its-electric-big-rigs/",
@@ -278,108 +380,6 @@
                 "link": "https://techcrunch.com/2026/04/21/with-us-spy-laws-set-to-expire-lawmakers-are-split-over-protecting-americans-from-warrantless-surveillance/",
                 "published": "Tue, 21 Apr 2026 13:00:00 +0000",
                 "summary": "Some lawmakers are calling for widespread reforms following years of surveillance scandals and abuses across successive U.S. administrations. But even if the spy law known as Section 702 expires on April 30, the government's spy powers will not automatically lapse."
-            },
-            {
-                "title": "What’s the key to better vegan cheese? Microbreweries, one startup says",
-                "link": "https://techcrunch.com/2026/04/21/whats-the-key-to-better-vegan-cheese-microbreweries-one-startup-says/",
-                "published": "Tue, 21 Apr 2026 13:00:00 +0000",
-                "summary": "AuX Labs says it has found a better way to make vegan cheese that tastes and feels like the real thing — and costs the same."
-            },
-            {
-                "title": "Cash App is targeting a new kind of customer: 6-12 year olds",
-                "link": "https://techcrunch.com/2026/04/21/cash-app-is-targeting-a-new-kind-of-customer-6-12-year-olds/",
-                "published": "Tue, 21 Apr 2026 13:00:00 +0000",
-                "summary": "Tech companies are constantly on the hunt for new customers, and Cash App, the fintech company owned by Jack Dorsey&#8217;s Block, believes it has found a promising new demographic: children. The company, which already offers financial services to teens, said this week that it is expanding its youth-focused services in an effort to build a [&#8230;]"
-            },
-            {
-                "title": "GRAI believes AI can make music more social, not replace artists",
-                "link": "https://techcrunch.com/2026/04/21/grai-believes-ai-can-make-music-more-social-not-replace-artists/",
-                "published": "Tue, 21 Apr 2026 13:00:00 +0000",
-                "summary": "AI music startup GRAI says fans want to remix tracks, not generate songs from scratch."
-            },
-            {
-                "title": "Yelp’s updated AI assistant can answer questions and book a restaurant or service in one conversation",
-                "link": "https://techcrunch.com/2026/04/21/yelps-updated-ai-assistant-can-answer-questions-and-book-a-restaurant-or-service-in-one-conversation/",
-                "published": "Tue, 21 Apr 2026 11:00:00 +0000",
-                "summary": "Yelp said that users can ask questions about a restaurant and place an order or book a table in one conversation"
-            },
-            {
-                "title": "Blue Energy raises $380M to build grid-scale nuclear reactors in shipyards",
-                "link": "https://techcrunch.com/2026/04/21/blue-energy-raises-380m-to-build-grid-scale-nuclear-reactors-in-shipyards/",
-                "published": "Tue, 21 Apr 2026 10:00:00 +0000",
-                "summary": "By building reactors in shipyards, Blue Energy says it will tame nuclear power's cost problems, giving it access to cheaper financing."
-            },
-            {
-                "title": "Who is John Ternus, the incoming Apple CEO?",
-                "link": "https://techcrunch.com/2026/04/20/who-is-john-ternus-the-incoming-apple-ceo/",
-                "published": "Tue, 21 Apr 2026 01:02:04 +0000",
-                "summary": "Starting on September 1, Ternus will lead one of the world's most valuable companies, but if you're not a dedicated Apple enthusiast, you've probably never heard of this man, who has largely remained out of the spotlight until now."
-            },
-            {
-                "title": "Anthropic takes $5B from Amazon and pledges $100B in cloud spending in return",
-                "link": "https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/",
-                "published": "Mon, 20 Apr 2026 23:10:27 +0000",
-                "summary": "Amazon has made another circular AI deal: It's investing another $5 billion in Anthropic. Anthropic has agreed to spend $100 billion on AWS in return."
-            },
-            {
-                "title": "Google rolls out Gemini in Chrome in APAC countries",
-                "link": "https://techcrunch.com/2026/04/20/google-rolls-out-gemini-in-chrome-in-seven-new-countries/",
-                "published": "Mon, 20 Apr 2026 22:00:00 +0000",
-                "summary": "Google is rolling out Gemini in Chrome in Australia, Indonesia, Japan, the Philippines, Singapore, South Korea, and Vietnam. The company is rolling this feature out to both desktop and iOS in all of these countries except Japan."
-            },
-            {
-                "title": "Tim Cook stepping down as Apple CEO, John Ternus taking over",
-                "link": "https://techcrunch.com/2026/04/20/tim-cook-stepping-down-as-apple-ceo-john-ternus-taking-over/",
-                "published": "Mon, 20 Apr 2026 20:42:01 +0000",
-                "summary": "The transition has been expected for some time and ends one of the longer and more impactful runs a CEO has had at any company. Cook had inherited a company that many industry watchers and enthusiasts struggled to separate from its famed founder. What he leaves behind is a $4 trillion business with annual revenue that has more than quadrupled on his watch."
-            },
-            {
-                "title": "Google Photos adds new touch-up tools for ‘quick’ fixes",
-                "link": "https://techcrunch.com/2026/04/20/google-photos-adds-new-touch-up-tools-for-quick-fixes/",
-                "published": "Mon, 20 Apr 2026 20:20:29 +0000",
-                "summary": "You can use the new tools to remove blemishes, refine skin texture, brighten eyes, or whiten teeth in photos."
-            },
-            {
-                "title": "It’s not just one thing — it’s another thing",
-                "link": "https://techcrunch.com/2026/04/20/ai-writing-its-not-just-this-its-that-barrons/",
-                "published": "Mon, 20 Apr 2026 19:37:07 +0000",
-                "summary": "This sentence construction (\"It's not just this — it's that\") has become so common in AI-generated writing that it's no longer just a clue that a piece of writing may be synthetic — it's almost a guarantee."
-            },
-            {
-                "title": "North Korean hackers blamed for $290M crypto theft",
-                "link": "https://techcrunch.com/2026/04/20/north-korea-hackers-blamed-for-290m-crypto-theft/",
-                "published": "Mon, 20 Apr 2026 17:04:05 +0000",
-                "summary": "The hack against Kelp DAO is the largest crypto heist of the year so far."
-            },
-            {
-                "title": "Mastodon says its flagship server was hit by a DDoS attack",
-                "link": "https://techcrunch.com/2026/04/20/mastodon-says-its-flagship-server-was-hit-by-a-ddos-attack/",
-                "published": "Mon, 20 Apr 2026 16:58:33 +0000",
-                "summary": "The DDoS attack against Mastodon's flagship server comes less than a week after Bluesky was targeted with junk web traffic."
-            },
-            {
-                "title": "FAA orders investigation into Blue Origin’s New Glenn mishap",
-                "link": "https://techcrunch.com/2026/04/20/faa-orders-investigation-into-blue-origins-new-glenn-mishap/",
-                "published": "Mon, 20 Apr 2026 16:11:41 +0000",
-                "summary": "The New Glenn rocket will have to stay grounded while the company investigates what caused the apparent failure of its upper stage."
-            },
-            {
-                "title": "NSA spies are reportedly using Anthropic’s Mythos, despite Pentagon feud",
-                "link": "https://techcrunch.com/2026/04/20/nsa-spies-are-reportedly-using-anthropics-mythos-despite-pentagon-feud/",
-                "published": "Mon, 20 Apr 2026 16:06:21 +0000",
-                "summary": "NSA is said to be using Anthropic's restricted Mythos AI model."
-            },
-            {
-                "title": "WhatsApp is testing a premium subscription, but it is mainly cosmetic",
-                "link": "https://techcrunch.com/2026/04/20/whatsapp-is-testing-a-premium-subscription-put-it-is-mainly-cosmetic/",
-                "published": "Mon, 20 Apr 2026 15:59:26 +0000",
-                "summary": "WhatsApp is testing a subscription after Meta debuted a similar subscription for Instagram earlier this year."
-            },
-            {
-                "title": "CEO and CFO suddenly depart AI nuclear power upstart Fermi",
-                "link": "https://techcrunch.com/2026/04/20/fermi-ceo-and-cfo-depart-texas-nuclear-power-ai/",
-                "published": "Mon, 20 Apr 2026 15:30:19 +0000",
-                "summary": "The startup, co-founded by former U.S. Energy Secretary Rick Perry, has faced headwinds with its AI campus in Texas."
             }
         ]
     },
@@ -387,67 +387,67 @@
         "id": "the-verge",
         "name": "The Verge",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:12.205467",
+        "last_updated": "2026-04-22T11:02:19.831541",
         "entries": [
             {
-                "title": "Apple TV has another busy summer of sci-fi with Silo season 3 in July",
-                "link": "https://www.theverge.com/entertainment/915640/silo-season-2-apple-tv-date-trailer",
-                "published": "2026-04-21T10:00:00-04:00",
-                "summary": "Over the last few years Apple TV has established itself as a force in sci-fi, and that trend looks to continue through 2026. Up next: the post-apocalyptic thriller Silo is returning for its third season on July 3rd. The 10 episode-long season will span 10 episodes and wrap up on September 4th, with new episodes [&#8230;]"
+                "title": "SpaceX cuts a deal to maybe buy Cursor for $60 billion",
+                "link": "https://www.theverge.com/science/916427/spacex-cursor-potential-deal-acquisition",
+                "published": "2026-04-21T18:45:37-04:00",
+                "summary": "With an IPO looming for Elon Musk's SpaceX / xAI / X combo platter of companies, SpaceX has announced an odd arrangement to either acquire the automated programming platform Cursor for $60 billion or pay a fee of $10 billion. Buying this startup that's focused on AI coding could help xAI's tools compete with market [&#8230;]"
             },
             {
-                "title": "The Vergecast Vergecast, 2026 edition",
-                "link": "https://www.theverge.com/podcast/915682/how-the-verge-works-vergecast",
-                "published": "2026-04-21T09:41:38-04:00",
-                "summary": "We get a lot of questions about how The Verge works. And how The Vergecast works. And how we make money. And whether some of that money helps Nilay buy more jackets, several yachts, or something else entirely. So, every once in a while, we spend an episode of the podcast answering as many questions [&#8230;]"
+                "title": "We translated the Palantir manifesto for actual human beings",
+                "link": "https://www.theverge.com/policy/915237/palantir-manifesto",
+                "published": "2026-04-21T17:06:21-04:00",
+                "summary": "Palantir CEO Alex Karp is a man in charge of one of the most important and frightening companies in the world. Karp's new book, cowritten with Nicholas Zamiska, is called The Technological Republic. After claiming \"because we get asked a lot,\" Palantir posted a 22-point summary of the book that reads like a corporate manifesto. [&#8230;]"
             },
             {
-                "title": "John Ternus’s first big problem is AI",
-                "link": "https://www.theverge.com/ai-artificial-intelligence/915662/john-ternus-apple-ceo-tim-cook-ai-problem-siri",
-                "published": "2026-04-21T09:37:55-04:00",
-                "summary": "Less than a year ago, Apple made headlines for a lack of AI announcements at its annual WWDC event. Ten months later, the company has announced that hardware executive John Ternus will succeed longtime CEO Tim Cook as chief executive - and the official release doesn't mention AI once. Ternus, currently Apple's SVP of hardware [&#8230;]"
+                "title": "ISS astronauts are getting new laptops",
+                "link": "https://www.theverge.com/science/916300/nasa-iss-computer-upgrades-hp-zbook-fury-g9",
+                "published": "2026-04-21T16:12:02-04:00",
+                "summary": "Even astronauts need to level up their laptops once in a while - including the crew of Expedition 74 on board the ISS, which NASA announced last week is in the process of some computer upgrades. According to NASA, the crew met on Friday to review plans to \"first replace network servers then activate their [&#8230;]"
             },
             {
-                "title": "Splatoon Raiders hits the Switch 2 in July",
-                "link": "https://www.theverge.com/games/915655/splatoon-raiders-switch-2-release-date-trailer",
-                "published": "2026-04-21T09:10:54-04:00",
-                "summary": "The squid kids will be back this summer. Nintendo announced this morning that Splatoon Raiders, a single-player spinoff of its competitive shooter series, will launch on the Nintendo Switch 2 on July 23rd. It'll be the first new entry in the series since Splatoon 3 in 2022. In addition to the date, Nintendo also released [&#8230;]"
+                "title": "Tim Cook was an innovator — just not the Jobs kind",
+                "link": "https://www.theverge.com/tech/916172/tim-cook-apple-legacy-supply-chain-ceo",
+                "published": "2026-04-21T15:15:00-04:00",
+                "summary": "Under Steve Jobs, Apple released the groundbreaking products that defined the company. But the company wouldn't be what it is today without Tim Cook's reign of ruthless efficiency. Jobs' legacy has long been written at this point. He was stubborn, unpleasant, and a generational visionary. He pushed the limits of industrial design and brought technologies [&#8230;]"
             },
             {
-                "title": "The SpaceX IPO is a trillion-dollar gamble on the future of space",
-                "link": "https://www.theverge.com/science/915244/spacex-ipo-trillion-dollar-commercial-iss-nasa-launch",
-                "published": "2026-04-21T08:38:20-04:00",
-                "summary": "The great SpaceX IPO is looming, allowing outside investors - including regular Joe Schmoes, or retail investors - to buy a stake in one of the buzziest and most controversial companies on the planet for the first time. Depending on who you ask, it's either the best investment opportunity you'll see this decade or a [&#8230;]"
+                "title": "AI backlash is coming for elections",
+                "link": "https://www.theverge.com/policy/916210/ai-midterm-elections-data-centers-jobs",
+                "published": "2026-04-21T15:00:05-04:00",
+                "summary": "Ask Americans how they feel about AI and most say they have concerns. Communities have mounted resistance to data center projects, stalling them across the US. On social media, anger at AI companies and executives is unrestrained - sometimes to the point of condoning violence. But look at the issues that most campaigns are focused [&#8230;]"
             },
             {
-                "title": "Apple will have a product guy as CEO again",
-                "link": "https://www.theverge.com/tech/915388/apple-ceo-john-ternus-tim-cook",
-                "published": "2026-04-21T07:49:34-04:00",
-                "summary": "John Ternus is going to be Apple's next CEO. And while outgoing CEO Tim Cook was lauded for his approach to logistics, Ternus' history is that of a product person. Ternus, Apple's SVP of hardware engineering before being officially tapped to take over the top job, has been increasingly in the public eye to help [&#8230;]"
+                "title": "OpenAI’s updated image generator can now pull information from the web",
+                "link": "https://www.theverge.com/ai-artificial-intelligence/916166/openai-chatgpt-images-2",
+                "published": "2026-04-21T15:00:00-04:00",
+                "summary": "OpenAI is rolling out the latest version of its AI-powered image generator with new \"thinking capabilities,\" allowing it to search the web to help it create multiple images from a single prompt. On Tuesday, OpenAI announced that ChatGPT Images 2.0 can now create more \"sophisticated\" images, with improvements to its ability to follow instructions, preserve [&#8230;]"
             },
             {
-                "title": "Yelp is making its AI chatbot way more useful",
-                "link": "https://www.theverge.com/ai-artificial-intelligence/915626/yelp-ai-assistant-chatbot-major-upgrade",
-                "published": "2026-04-21T07:00:00-04:00",
-                "summary": "Yelp is giving its chatbot assistant a major upgrade, turning the platform into something closer to a digital concierge with a suite of new features designed for \"getting things done.\" The move, one of several AI-focused updates in recent months, is part of a broader industry push to make AI more relevant and practically useful [&#8230;]"
+                "title": "Framework’s Laptop 13 Pro launch event",
+                "link": "https://www.theverge.com/gadgets/916168/framework-next-gen-laptop-13-pro-event",
+                "published": "2026-04-21T14:41:08-04:00",
+                "summary": "Framework CEO Nirav Patel is showing off his company&#8217;s latest modular, repairable laptops in San Francisco today. The headliner is the new Laptop 13 Pro, which is its first machine fully machined out of aluminum, and Patel says its goal is to be “the MacBook Pro for Linux users.” Read on below for all the [&#8230;]"
             },
             {
-                "title": "Microsoft Teams is trying to fix accidental hand-raising",
-                "link": "https://www.theverge.com/tech/915586/microsoft-teams-accidental-hand-raising-fix",
-                "published": "2026-04-21T05:14:16-04:00",
-                "summary": "If you've ever had the embarrassing displeasure of interrupting a Microsoft Teams meeting by accidentally hitting the \"raise hand\" feature, then I have some good news for you. Microsoft is redesigning its online meeting software, which will move the raise hand button from the main toolbar and allow users to personalize the controls displayed there. [&#8230;]"
+                "title": "X makes it 1,900 percent more expensive to post links",
+                "link": "https://www.theverge.com/tech/916178/x-link-post-api-expensive-techmeme",
+                "published": "2026-04-21T14:27:18-04:00",
+                "summary": "Posting links to X through custom social media software just got a lot more expensive. On Monday, X significantly increased how much it costs to post a URL via the X API, which is what third-party tools use to hook into the platform. It now costs $0.20 when a link is posted, up from $0.01. [&#8230;]"
             },
             {
-                "title": "Ikea and Samsung promise glitch-free Matter integration",
-                "link": "https://www.theverge.com/tech/915560/ikea-and-samsung-promise-glitch-free-smartthings-integration",
-                "published": "2026-04-21T05:13:06-04:00",
-                "summary": "Ikea's two dozen Matter-over-Thread devices have proved problematic since launch, but Samsung says its SmartThings platform now has it all sorted. If true, it means Ikea's sensors and complex remotes should actually display correctly, function flawlessly, and plug directly into Samsung's advanced home automation routines without any issues. To achieve this, Samsung says it has [&#8230;]"
+                "title": "Framework announces Laptop 13 Pro, ‘the MacBook Pro for Linux users’",
+                "link": "https://www.theverge.com/gadgets/915508/framework-announces-laptop-13-pro-the-macbook-pro-for-linux-users",
+                "published": "2026-04-21T14:08:00-04:00",
+                "summary": "Every time we review a Framework laptop, we find familiar pros and cons. They're truly upgradable, incredibly repairable, but we always wish the battery lasted longer. We always wish the build quality were top notch. Today, Framework is announcing what could be the answer: the Framework Laptop 13 Pro. I just tried it at Framework's [&#8230;]"
             },
             {
-                "title": "Apple Sports now lets you follow scores in a CarPlay widget",
-                "link": "https://www.theverge.com/news/915564/apple-sports-widget-carplay",
-                "published": "2026-04-21T05:08:22-04:00",
-                "summary": "I was disappointed when Apple launched a new Sports iOS widget last year without CarPlay support, but I'm pleased to report that's changing this week. The latest Apple Sports update includes widget support in CarPlay, allowing you to follow live sports scores for your favorite teams or leagues all within the new widgets interface in [&#8230;]"
+                "title": "Framework’s first eGPUs turn its laptop into a desktop PC",
+                "link": "https://www.theverge.com/gadgets/915328/framework-oculink-egpu-dev-kit-laptop-16",
+                "published": "2026-04-21T14:07:24-04:00",
+                "summary": "Remember when Framework made the first laptop where you can easily upgrade its entire internal video card in three minutes flat? The company's getting into the external graphics game, too. As promised last August, you'll be able to turn the Framework Laptop 16's GPU modules into external ones instead. Or, you can plug in a [&#8230;]"
             }
         ]
     },
@@ -455,8 +455,104 @@
         "id": "ars-technica",
         "name": "Ars Technica",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:13.591853",
+        "last_updated": "2026-04-22T11:02:19.863080",
         "entries": [
+            {
+                "title": "Pentagon wants $54B for drones, more than most nations’ military budgets",
+                "link": "https://arstechnica.com/ai/2026/04/pentagon-wants-54b-for-drones-more-than-most-nations-military-budgets/",
+                "published": "Tue, 21 Apr 2026 21:57:54 +0000",
+                "summary": "The proposed Pentagon drone investment rivals Ukraine’s entire military budget."
+            },
+            {
+                "title": "Mozilla: Anthropic's Mythos found 271 security vulnerabilities in Firefox 150",
+                "link": "https://arstechnica.com/ai/2026/04/mozilla-anthropics-mythos-found-271-zero-day-vulnerabilities-in-firefox-150/",
+                "published": "Tue, 21 Apr 2026 21:40:41 +0000",
+                "summary": "CTO says new AI model is \"every bit as capable\" as world's best security researchers."
+            },
+            {
+                "title": "Supreme Court arguments make it clear that FCC fines are \"nonbinding\"",
+                "link": "https://arstechnica.com/tech-policy/2026/04/supreme-court-arguments-make-it-clear-that-fcc-fines-are-nonbinding/",
+                "published": "Tue, 21 Apr 2026 21:28:27 +0000",
+                "summary": "FCC tells Supreme Court its fines are nonbinding unless a jury upholds penalty."
+            },
+            {
+                "title": "Silo S3 teaser hints at the wasteland's origins",
+                "link": "https://arstechnica.com/culture/2026/04/silo-s3-teaser-turns-back-the-clock-to-a-greener-past/",
+                "published": "Tue, 21 Apr 2026 20:53:06 +0000",
+                "summary": "\"Before we can know how it will all end, we need to understand how it all began.\""
+            },
+            {
+                "title": "Framework's CEO on the RAM crisis and creating a \"MacBook Pro for Linux users\"",
+                "link": "https://arstechnica.com/gadgets/2026/04/frameworks-ceo-on-the-ram-crisis-and-creating-a-macbook-pro-for-linux-users/",
+                "published": "Tue, 21 Apr 2026 20:22:20 +0000",
+                "summary": "\"We actually have slightly more Linux users than Windows users.\""
+            },
+            {
+                "title": "Florida probes ChatGPT role in mass shooting. OpenAI says bot \"not responsible.\"",
+                "link": "https://arstechnica.com/tech-policy/2026/04/florida-probes-chatgpt-role-in-mass-shooting-openai-says-bot-not-responsible/",
+                "published": "Tue, 21 Apr 2026 20:01:36 +0000",
+                "summary": "Can ChatGPT be blamed for a mass shooting? Florida is investigating."
+            },
+            {
+                "title": "Report: Meta will train AI agents by tracking employees' mouse, keyboard use",
+                "link": "https://arstechnica.com/ai/2026/04/meta-will-use-employee-tracking-software-to-help-train-ai-agents-report/",
+                "published": "Tue, 21 Apr 2026 19:30:52 +0000",
+                "summary": "Move highlights the difficulty of finding high-quality interactive training data."
+            },
+            {
+                "title": "Microsoft removes Call of Duty from Game Pass, lowers subscription pricing",
+                "link": "https://arstechnica.com/gaming/2026/04/microsofts-game-pass-gets-cheaper-loses-launch-day-call-of-duty-access/",
+                "published": "Tue, 21 Apr 2026 18:18:27 +0000",
+                "summary": "New Xbox CEO says subscription \"has become too expensive for too many players.\""
+            },
+            {
+                "title": "Framework Laptop 13 Pro is a major overhaul for the modular, upgradeable laptop",
+                "link": "https://arstechnica.com/gadgets/2026/04/framework-laptop-13-pro-is-the-first-major-revision-to-the-original-framework-laptop/",
+                "published": "Tue, 21 Apr 2026 18:15:15 +0000",
+                "summary": "Laptop includes Core Ultra Series 3 CPUs, a bigger battery, and a touchscreen."
+            },
+            {
+                "title": "Framework Laptop 16 upgrades make it look less like an unfinished prototype",
+                "link": "https://arstechnica.com/gadgets/2026/04/framework-laptop-16-upgrades-make-it-look-less-like-an-unfinished-prototype/",
+                "published": "Tue, 21 Apr 2026 18:15:03 +0000",
+                "summary": "A lower-end Ryzen AI 340 CPU option will also bring the price down, for now."
+            },
+            {
+                "title": "Internal emails show how Amazon raises prices across the Internet, lawsuit says",
+                "link": "https://arstechnica.com/tech-policy/2026/04/internal-emails-show-how-amazon-raises-prices-across-the-internet-lawsuit-says/",
+                "published": "Tue, 21 Apr 2026 18:06:06 +0000",
+                "summary": "“It’s working!“: Amazon emails with vendors show pattern of disappearing deals."
+            },
+            {
+                "title": "Anthropic gets $5B investment from Amazon, will use it to buy Amazon chips",
+                "link": "https://arstechnica.com/ai/2026/04/anthropic-gets-5b-investment-from-amazon-will-use-it-to-buy-amazon-chips/",
+                "published": "Tue, 21 Apr 2026 17:00:04 +0000",
+                "summary": "Anthropic secures 5 gigawatts of Amazon’s custom silicon as Claude demand soars."
+            },
+            {
+                "title": "CATL's new LFP battery can charge from 10 to 98% in less than 7 minutes",
+                "link": "https://arstechnica.com/cars/2026/04/catls-new-lfp-battery-can-charge-from-10-to-98-in-less-than-7-minutes/",
+                "published": "Tue, 21 Apr 2026 15:01:43 +0000",
+                "summary": "The self-heating Shenxing battery still performs even in Arctic temperatures."
+            },
+            {
+                "title": "AMD Ryzen 9 9950X3D2 Dual Edition review: Tons of cache for tons of dollars",
+                "link": "https://arstechnica.com/gadgets/2026/04/amd-ryzen-9-9950x3d2-dual-edition-review-tons-of-cache-for-tons-of-dollars/",
+                "published": "Tue, 21 Apr 2026 14:45:36 +0000",
+                "summary": "There are some practical benefits to this $899 chip, but not many."
+            },
+            {
+                "title": "What's the deal with spacesuits for the Moon? Will they be ready in time?",
+                "link": "https://arstechnica.com/space/2026/04/whats-the-deal-with-spacesuits-for-the-moon-will-they-be-ready-in-time/",
+                "published": "Tue, 21 Apr 2026 14:24:09 +0000",
+                "summary": "NASA is down to a single provider for a critical link in its lunar architecture."
+            },
+            {
+                "title": "Loneliness in older adults can often lead to memory impairment",
+                "link": "https://arstechnica.com/health/2026/04/loneliness-in-older-adults-can-often-lead-to-memory-impairment/",
+                "published": "Tue, 21 Apr 2026 14:23:24 +0000",
+                "summary": "A longitudinal study finds links to lapses in immediate and delayed recall."
+            },
             {
                 "title": "Contrary to popular superstition, AES 128 is just fine in a post-quantum world",
                 "link": "https://arstechnica.com/security/2026/04/contrary-to-popular-superstition-aes-128-is-just-fine-in-a-post-quantum-world/",
@@ -480,102 +576,6 @@
                 "link": "https://arstechnica.com/apple/2026/04/john-ternus-will-replace-tim-cook-as-apple-ceo/",
                 "published": "Mon, 20 Apr 2026 21:05:35 +0000",
                 "summary": "Cook will be executive chairman but will no longer run the company day to day."
-            },
-            {
-                "title": "Absurd study suggests eating fruits and vegetables leads to cancer",
-                "link": "https://arstechnica.com/health/2026/04/absurdly-bad-study-spurs-headlines-linking-healthy-diet-to-lung-cancer/",
-                "published": "Mon, 20 Apr 2026 20:53:04 +0000",
-                "summary": "Experts point out a series of flaws, including small size and no control group."
-            },
-            {
-                "title": "US opens refund portal to start paying back Trump's illegal tariffs",
-                "link": "https://arstechnica.com/tech-policy/2026/04/us-opens-refund-portal-to-start-paying-back-trumps-illegal-tariffs/",
-                "published": "Mon, 20 Apr 2026 18:53:21 +0000",
-                "summary": "Importers can now request refunds, two months after Trump's Supreme Court loss."
-            },
-            {
-                "title": "Here's how F1 is tweaking its hybrid systems to try to save the show",
-                "link": "https://arstechnica.com/cars/2026/04/f1-new-hybrid-rules-will-come-into-effect-at-the-miami-grand-prix-in-may/",
-                "published": "Mon, 20 Apr 2026 18:15:50 +0000",
-                "summary": "Energy management and speed differentials are the problems of the day."
-            },
-            {
-                "title": "Robot runner handily beats humans in half-marathon, setting new record",
-                "link": "https://arstechnica.com/ai/2026/04/robot-runner-handily-beats-humans-in-half-marathon-setting-new-record/",
-                "published": "Mon, 20 Apr 2026 17:56:27 +0000",
-                "summary": "A humanoid robot's record half-marathon run shows China's speed in robotics."
-            },
-            {
-                "title": "Deezer says 44% of new music uploads are AI-generated, most streams are fraudulent",
-                "link": "https://arstechnica.com/ai/2026/04/deezer-says-44-of-new-music-uploads-are-ai-generated-most-streams-are-fraudulent/",
-                "published": "Mon, 20 Apr 2026 17:15:51 +0000",
-                "summary": "AI tracks account for a small fraction of Deezer streams, and most are demonetized for fraud."
-            },
-            {
-                "title": "Rogue Trooper brings the Genetic Infantry to the silver screen",
-                "link": "https://arstechnica.com/culture/2026/04/rogue-trooper-brings-the-genetic-infantry-to-the-silver-screen/",
-                "published": "Mon, 20 Apr 2026 16:58:28 +0000",
-                "summary": "The future war film, from the director of <em>Moon</em>, is adapted from 2000 AD's comic series."
-            },
-            {
-                "title": "Meet Bruce, the \"beak-jousting\" parrot",
-                "link": "https://arstechnica.com/science/2026/04/meet-bruce-the-beak-jousting-parrot/",
-                "published": "Mon, 20 Apr 2026 15:00:22 +0000",
-                "summary": "Kea parrot missing his upper beak \"has rewritten what disability means for behaviorally complex species.\""
-            },
-            {
-                "title": "Anthropic's Mythos AI model sparks fears of turbocharged hacking",
-                "link": "https://arstechnica.com/ai/2026/04/anthropics-mythos-ai-model-sparks-fears-of-turbocharged-hacking/",
-                "published": "Mon, 20 Apr 2026 14:21:40 +0000",
-                "summary": "Cyberdefenses could be exposed faster than fixes could be deployed."
-            },
-            {
-                "title": "Clarifying HEVC licensing fees, royalties, and why vendors kill HEVC support",
-                "link": "https://arstechnica.com/gadgets/2026/04/lawsuits-licensing-and-royalties-are-complicating-4k-video-support-in-gadgets/",
-                "published": "Mon, 20 Apr 2026 11:00:07 +0000",
-                "summary": "How does HEVC implementation <em>really</em> work these days?"
-            },
-            {
-                "title": "Blue Origin's rocket reuse achievement marred by upper stage failure",
-                "link": "https://arstechnica.com/space/2026/04/errant-upper-stage-spoils-blue-origins-success-in-reusing-new-glenn-booster/",
-                "published": "Sun, 19 Apr 2026 18:19:19 +0000",
-                "summary": "Blue Origin's reused first stage hit its targets, but New Glenn's upper stage did not."
-            },
-            {
-                "title": "I’ve fired one of America’s most powerful lasers—here’s what a shot day looks like",
-                "link": "https://arstechnica.com/science/2026/04/ive-fired-one-of-americas-most-powerful-lasers-heres-what-a-shot-day-looks-like/",
-                "published": "Sun, 19 Apr 2026 11:17:28 +0000",
-                "summary": "The laser was used to study the physics of stellar interiors and fusion energy, among other things."
-            },
-            {
-                "title": "Great white sharks are overheating",
-                "link": "https://arstechnica.com/science/2026/04/great-white-sharks-are-overheating/",
-                "published": "Sat, 18 Apr 2026 11:07:59 +0000",
-                "summary": "The sharks might also be the most physiologically vulnerable to warming waters."
-            },
-            {
-                "title": "US-sanctioned currency exchange says $15 million heist done by \"unfriendly states\"",
-                "link": "https://arstechnica.com/security/2026/04/russia-friendly-exchange-says-western-special-service-behind-15-million-cyberattack/",
-                "published": "Fri, 17 Apr 2026 21:28:35 +0000",
-                "summary": "Grinex says needed hacking resources \"available exclusively to... unfriendly states.\""
-            },
-            {
-                "title": "Man with @ihackedthegovernment Instagram account tells judge, “I made a mistake\"",
-                "link": "https://arstechnica.com/tech-policy/2026/04/man-with-ihackedthegovernment-instagram-account-tells-judge-i-made-a-mistake/",
-                "published": "Fri, 17 Apr 2026 19:31:48 +0000",
-                "summary": "Probation for man who used stolen logins and posted private info on social media."
-            },
-            {
-                "title": "Trump picks qualified, normal health leader to head CDC; experts still cautious",
-                "link": "https://arstechnica.com/health/2026/04/trump-picks-qualified-normal-health-leader-to-head-cdc-experts-still-cautious/",
-                "published": "Fri, 17 Apr 2026 19:19:47 +0000",
-                "summary": "She's well qualified but will need to navigate RFK Jr.'s anti-vaccine agenda."
-            },
-            {
-                "title": "$25,000 buys plenty of used EVs: Here are some options",
-                "link": "https://arstechnica.com/cars/2026/04/25000-buys-plenty-of-used-evs-here-are-some-options/",
-                "published": "Fri, 17 Apr 2026 18:31:48 +0000",
-                "summary": "Is $20,000–$25,000 a sweet spot for secondhand electric cars? We think so."
             }
         ]
     },
@@ -583,19 +583,31 @@
         "id": "npr-technology",
         "name": "NPR Technology",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:13.938544",
+        "last_updated": "2026-04-22T11:02:19.868705",
         "entries": [
             {
-                "title": "She raised concerns about her company's contracts with ICE. Then she lost her job",
-                "link": "https://www.npr.org/2026/04/21/nx-s1-5786915/ice-immigration-enforcement-data-thomson-reuters",
-                "published": "Tue, 21 Apr 2026 05:00:00 -0400",
-                "summary": "Billie Little had worked for Thomson Reuters for about two decades. She was fired after questioning whether federal immigration agents unlawfully used their products."
+                "title": "What having a product guy as Apple's CEO might mean for the company",
+                "link": "https://www.npr.org/2026/04/21/nx-s1-5793865/what-having-a-product-guy-as-apples-ceo-might-mean-for-the-company",
+                "published": "Tue, 21 Apr 2026 16:10:51 -0400",
+                "summary": "Apple's next CEO has been responsible for developing the hardware for many products. NPR's Juana Summers talks to Jay Peters of The Verge about what the company could look like under his leadership."
+            },
+            {
+                "title": "Florida AG launches criminal investigation into ChatGPT over FSU shooting",
+                "link": "https://www.npr.org/2026/04/21/nx-s1-5793967/florida-openai-investigation-mass-shooting-fsu",
+                "published": "Tue, 21 Apr 2026 16:02:06 -0400",
+                "summary": "Florida's attorney general is launching a criminal investigation into the alleged role of ChatGPT in a mass shooting at Florida State University last year."
             },
             {
                 "title": "The surprising origin of 4 features that superglue kids — and adults — to screens",
                 "link": "https://www.npr.org/2026/04/21/nx-s1-5776665/surprising-origin-features-superglue-kids-adults-to-screens",
                 "published": "Tue, 21 Apr 2026 05:00:00 -0400",
                 "summary": "Taken together, these four features can create a trancelike state that can keep us stuck on social media apps or video games for hours. Children are particularly vulnerable."
+            },
+            {
+                "title": "She raised concerns about her company's contracts with ICE. Then she lost her job",
+                "link": "https://www.npr.org/2026/04/21/nx-s1-5786915/ice-immigration-enforcement-data-thomson-reuters",
+                "published": "Tue, 21 Apr 2026 05:00:00 -0400",
+                "summary": "Billie Little had worked for Thomson Reuters for about two decades. She was fired after questioning whether federal immigration agents unlawfully used their products."
             },
             {
                 "title": "Apple's Tim Cook to step down as CEO",
@@ -632,18 +644,6 @@
                 "link": "https://www.npr.org/2026/04/18/nx-s1-5788990/ev-battery-charge-long-china-nio",
                 "published": "Sat, 18 Apr 2026 07:31:50 -0400",
                 "summary": "Chinese car company NIO is putting up EV battery swapping stations all around the world. NPR took a ride in one car for the experience."
-            },
-            {
-                "title": "The Labor Department wants to teach you to use AI more. Here's what we found",
-                "link": "https://www.npr.org/2026/04/17/nx-s1-5771629/labor-department-ai-course-ethics",
-                "published": "Fri, 17 Apr 2026 05:00:00 -0400",
-                "summary": "The short course provides solid basics for using AI. But it also misidentifies AI products, links out to bad advice and raises ethical concerns about the products it promotes"
-            },
-            {
-                "title": "A Polymarket trader made $300,000 betting on Biden's pardons, a new analysis shows",
-                "link": "https://www.npr.org/2026/04/16/nx-s1-5786580/a-polymarket-trader-made-300-000-betting-on-bidens-pardons",
-                "published": "Thu, 16 Apr 2026 08:00:00 -0400",
-                "summary": "In the final hours of President Biden's term, an anonymous prediction market trader placed lucrative bets on who would be pardoned even as the odds were nearly zero."
             }
         ]
     },
@@ -651,8 +651,14 @@
         "id": "sspai",
         "name": "少数派",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:14.204993",
+        "last_updated": "2026-04-22T11:02:19.682226",
         "entries": [
+            {
+                "title": "派早报：OPPO Find X9 Ultra 发布等",
+                "link": "https://sspai.com/post/108962",
+                "published": "Wed, 22 Apr 2026 08:21:51 +0800",
+                "summary": "OpenAI 发布 ChatGPT Images 2.0，宁德时代发布神行超充与多款动力电池等。<a href=\"https://sspai.com/post/108962\" target=\"_blank\">查看全文</a>"
+            },
             {
                 "title": "Tim Cook 将要转任的「执行董事长」是什么职务？",
                 "link": "https://sspai.com/post/108945",
@@ -696,12 +702,6 @@
                 "summary": "这个游戏绝对会把我吃得死死的，但是真正玩起来才发现真的被吃得不是一般的死。要不是我的 Switch 没电了，必须要充电，我可能会继续沉迷在这个小世界里。<a href=\"https://sspai.com/post/108805\" target=\"_blank\">查看全文</a>"
             },
             {
-                "title": "派早报：低空司回应无人机「起飞难」",
-                "link": "https://sspai.com/post/108885",
-                "published": "Mon, 20 Apr 2026 07:06:53 +0800",
-                "summary": "<p>低空司回应无人机「起飞难」</p><p>7 家电商平台因幽灵外卖被罚没 35.97 亿元</p><p>Kindle for PC 将停止运行，去 DRM 途径再减</p><p>Claude Opus 4.7 token 消耗量显著提高</p><p>谷歌 IPv6 流量占比首次过半</p><p>数码和智能产品成消费品以旧换新热点</p><p>不妨一看的简讯</p><p>少数派的近期动态</p><p>你可能错过的好文章</p><a href=\"https://sspai.com/post/108885\" target=\"_blank\">查看全文</a>"
-            },
-            {
                 "title": "AI 输出中的 ** 是怎么来的：谈中文 Markdown 强调标记的渲染问题",
                 "link": "https://sspai.com/post/108768",
                 "published": "Sun, 19 Apr 2026 14:10:43 +0800",
@@ -716,11 +716,163 @@
         ]
     },
     {
+        "id": "ithome",
+        "name": "IT之家",
+        "category": "tech",
+        "last_updated": "2026-04-22T11:02:19.586290",
+        "entries": [
+            {
+                "title": "联想来酷 AI MINI PRO 迷你主机上架：\"Lunar Lake\" 平台，3799 元起",
+                "link": "https://www.ithome.com/0/941/959.htm",
+                "published": "Wed, 22 Apr 2026 02:48:42 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，联想 (Lenovo) 来酷 (Lecoo) 今日正式推出了 AI MINI PRO 迷你主机，这一型号基于英特尔酷睿 Ultra 200V \"Lunar Lake\" 处理器平台，<strong>当前可用的最低起始价格为 3799 元</strong>。</p><ul class=\"medium-size list-paddingleft-2\"><li><p>Ultra 5 226V (+ 16GB LPDDR5X) + 512GB SSD：3799 元（IT之家注：该配置在联想官方商城提供）；</p></li><li><p>Ultra 5 228V (+ 32GB LPDDR5X) + 512GB SSD：4299 元；</p></li><li><p>Ultra 5 228V (+ 32GB LPDDR5X) + 1TB SSD：4799 元；</p></li><li><p>Ultra 7 258V (+ 32GB LPDDR5X) + 1TB SSD：5799 元。</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/1a1d3137-b7e0-44e1-8c95-c2b3bc89830d.jpg?x-bce-process=image/format,f_auto\" /></p><p>这款迷你主机拥有一体化铝合金机身，三维 128×134×52 (mm)，体积 0.9L，厚度 52mm，采用乾坤散热架构，高负载噪声 34.5 dB(A)，具备 2 个 M.2 2280 SSD 盘位，搭载 Wi-Fi 6 无线网卡。</p><p>外部 I/O 方面，来酷 AI MINI PRO 正面提供 1 个 USB-C 40Gbps、2 个 USB-A 10Gbps、1 个 3.5mm 音频插孔；反面则是 2 个 2.5GbE RJ45、1 个 HDMI 2.1 TMDS、1 个 DisplayPort 1.4、2 个 USB-A 480Mbps。</p>"
+            },
+            {
+                "title": "暴雪称《暗黑破坏神 4》将持续更新至停服，因为玩家会不断发现新问题",
+                "link": "https://www.ithome.com/0/941/958.htm",
+                "published": "Wed, 22 Apr 2026 02:48:09 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，据 GamesRadar+ 报道，自 2023 年 5 月《暗黑破坏神 4》发售不久后，暴雪便一直在采纳玩家反馈，并以此规划游戏更新。暴雪表示，《暗黑破坏神 4》将持续更新直至停服，因为玩家会在“一万小时的游戏过程中”不断发现新问题。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/96bb1c64-bfb6-41c7-afd0-4e40b88ac5c3.png?x-bce-process=image/format,f_auto\" /></p><p>在最新一期《PC Gamer》杂志中，游戏副总监扎文 · 哈鲁图尼安与游戏设计师艾斯琳 · 霍尔谈及了相关挑战：这款旨在让玩家投入数年、数百小时游玩的游戏，要让所有人满意并非易事。通常来说，游戏终局内容最容易引发玩家激烈讨论，而《暗黑破坏神 4》即将推出的资料片《憎恨之王》，正是专门为那些觉得每个赛季末期无事可做的玩家量身打造。</p><p>“每个赛季我都会玩很久，而我结束一个赛季的常态，就是陷入重复操作的倦怠循环里，”霍尔说道，“我认为我们目前做出的所有改动，都是为了帮玩家摆脱这种倦怠，让大家能在更长时间里以全新思路体验游戏。”</p><p>距离《暗黑破坏神 4》发售已近三年，终局挑战不足从游戏上线之初就是其他玩家反馈最多的痛点之一。即便经历了无数次更新、多个赛季更迭，以及 2024 年 10 月推出的首部大型资料片《憎恨之躯》，这一问题依旧存在。</p><p>哈鲁图尼安认为这种情况不会改变，因为玩家游玩时间越长，自身需求与偏好就会发生变化，想要的内容也会不同。</p><p>“从一开始就接触这款动作角色扮演游戏的玩家，随着游玩时长增加，自身会发生改变，需求也会变得不一样，”他表示，“那些我们乃至玩家都从未设想过的矛盾点，会在累计上万小时的游玩过程中逐渐显现。”</p><p>《憎恨之王》是《暗黑破坏神 4》首部资料片《憎恨之躯》的续作，也将为长达三年的墨菲斯托剧情篇章画上句号。据IT之家了解，该资料片将于 4 月 28 日正式发售。</p>"
+            },
+            {
+                "title": "“聆听博物馆”上线：收录 IBM Model M 等 36 款机械键盘音频样本",
+                "link": "https://www.ithome.com/0/941/957.htm",
+                "published": "Wed, 22 Apr 2026 02:47:22 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，科技媒体 Tom's Hardware 昨日（4 月 21 日）发布博文，报道称 <span class=\"link-text-start-with-http\">sheets.works</span> 团队利用 Google Sheets 技术，<strong>构建了一个名为“聆听博物馆”的互动网站，收录了 36 款机械键盘的音频样本。</strong></p><p>该网站专门面向机械键盘音频爱好者，收录了 36 款从经典到现代的机械键盘样本，用户只需点击页面上的键盘图标，即可通过扬声器试听其独特的敲击声音。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/6cb30cdf-ac5a-4888-a7da-935e83f0b7ac.jpg?x-bce-process=image/format,f_auto\" /></p><p>在收录的机械键盘中，涵盖键盘发展史上的多个里程碑产品，包括被誉为经典的 IBM Model M、多款 Cherry MX 轴体型号，以及 SteelSeries 和 Logitech 等现代品牌的热门产品。</p><p>网站不仅提供音频，还深入解析了声音背后的物理机制。例如，在介绍 IBM Model M 时，详细阐述了其独特的发声原理：线圈弹簧侧向弯曲，驱动旋转锤击打薄膜，弹簧在空心 ABS 桶内像音叉一样共振，钢背板放大声响，外壳则充当共鸣箱，造就了无法被现代产品复制的经典声音。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/363f7cc6-a65f-441c-92c4-5e79b305af6e.jpg?x-bce-process=image/format,f_auto\" /></p><p>关于音频准确性，该媒体编辑对比其使用的 Cherry MX Blue 轴键盘后，发现样本声音与实物存在差异。对此，<span class=\"link-text-start-with-http\">sheets.works</span> 团队在页面底部特别说明，声音测试受麦克风、房间环境、主板、键帽、编解码器及扬声器等多种因素影响，结果存在固有局限性。</p><p><span class=\"referenceTitle\">IT之家附上参考地址</span></p><ul class=\"custom_reference list-paddingleft-1\"><li class=\"list-undefined list-reference-paddingleft\"><p><a href=\"https://sheets.works/data-viz/keyboard-sounds\" target=\"_blank\">The Listening Museum</a></p></li></ul>"
+            },
+            {
+                "title": "小米 Vision Gran Turismo 概念超跑定制手机主题 / 手表表盘上线",
+                "link": "https://www.ithome.com/0/941/956.htm",
+                "published": "Wed, 22 Apr 2026 02:42:24 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，小米手机官方今日宣布，Xiaomi Vision Gran Turismo 手机定制主题上线主题商店。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/77e3557c-ee04-43bf-ad3e-562819afa2b1.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/2202387347/QBWOHCCTz\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/c8c3633d-2fae-4cc6-bbd0-60db2bf5dd58.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>据介绍，这套定制主题包含专属壁纸与定制图标，还内含手稿设计展，探秘未来超跑诞生之路。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/54670fd3-d9c8-414e-9e1e-47e7dc305716.jpg?x-bce-process=image/format,f_auto\" /></p><p>此外小米还上线了<strong>同系定制表盘</strong>，宣称将轮毂设计融于腕间。现已支持 Xiaomi Watch 5、Xiaomi Watch S4、Xiaomi Watch S4 41cm，即将支持 Xiaomi Watch S5。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ae228d76-199d-45e9-b9d9-81b55946f5cd.jpg?x-bce-process=image/format,f_auto\" /></p><p>据IT之家昨日报道，<a href=\"https://www.ithome.com/0/941/422.htm\" target=\"_blank\">Xiaomi Vision Gran Turismo 即将亮相 2026 北京国际车展</a>，这也是<strong>它首次在国内车展与大家见面</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/faeeed49-c6af-42f7-8d8e-ab1aef3cca4a.png?x-bce-process=image/format,f_auto\" /></p>"
+            },
+            {
+                "title": "启境 GT7“帕米尔黑”外观正式亮相，灵感取自海拔 4000 米原始岩层",
+                "link": "https://www.ithome.com/0/941/955.htm",
+                "published": "Wed, 22 Apr 2026 02:41:50 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，今天上午，华为乾崑公布了全新启境 GT7“帕米尔黑版”外观。根据介绍，此次发布的特别版本，不仅是一次色彩设计的革新，也是品牌“天生玩家”精神内核的深度外化。同时，黄景瑜将担任启境汽车全球品牌代言人。</p><p style=\"text-align: center;\"><img alt=\"图片 1\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/5f21f0a4-cf03-4087-82d7-1b686e1157ec.jpg?x-bce-process=image/format,f_auto\" /></p><p>此次亮相的启境 GT7 帕米尔黑版，其设计初衷在于致敬“在喧嚣世界中仍保有探索欲的灵魂”。色彩灵感取自海拔 4000 米帕米尔高原的原始岩层，未经雕琢却蕴含巨大力量。</p><p style=\"text-align: center;\"><img alt=\"图片 2\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d9f7c62e-88e8-4889-a57a-f804e1034f99.jpg?x-bce-process=image/format,f_auto\" /></p><p>该配色采用高镜面度的漆面工艺，呈现出如云中倒影般的豪华质感，号称是一种“温润而有力量”的高级感。</p><p style=\"text-align: center;\"><img alt=\"图片 3\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/9cea2377-ab7f-4f3e-9615-d66444ba3e46.jpg?x-bce-process=image/format,f_auto\" /></p><p>据悉，启境 GT7 帕米尔黑版<strong>将在北京车展现场设立专属展区</strong>，观众将可以通过沉浸式装置体验帕米尔黑在不同光线下的微妙变化。</p><p>此前，启境 GT7 已经陆续揭晓尼斯蓝、梅里白、茶卡银、普罗旺斯紫等一系列配色。</p><p style=\"text-align: justify;\">据IT之家了解，启境 GT7 为广汽与华为乾崑合作的首款车型，<strong>计划 6 月上市发布</strong>，届时会公布正式售价、配置及交付细则；新车预计上市即交付，交付周期会因车型配置、锁单及确认交付方案时间的变化而变化。</p><p style=\"text-align: justify;\">新车定位为智能猎装车型，将搭载十大智能技术，含全球量产最高规格 896 线激光雷达、预埋华为乾崑智驾 L3 级架构，全链路冗余、全维安全系统、新一代小艺智能体、HUAWEI SOUND AI 交互式星环散射体、华为乾崑赤兔平台等。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/939/573.htm\" target=\"_blank\">华为乾崑 | 启境 GT7 猎装车「尼斯蓝」配色亮相，新车定档 6 月上市</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/938/291.htm\" target=\"_blank\">启境 GT7“梅里白”车色官图公布，华为乾崑合作猎装</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/935/120.htm\" target=\"_blank\">华为乾崑 | 启境 GT7 智能猎装车「茶卡银」实车官图发布，6 月上市发布</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/933/799.htm\" target=\"_blank\">华为乾崑 | 启境 GT7 智能猎装车「普罗旺斯紫」车色亮相，新车 6 月上市</a>》</p></li></ul>"
+            },
+            {
+                "title": "时隔 27 年重返格斗游戏？蒂法被曝将加入《街头霸王 6》",
+                "link": "https://www.ithome.com/0/941/945.htm",
+                "published": "Wed, 22 Apr 2026 02:35:31 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，科技媒体 Wccftech 昨日（4 月 21 日）发布博文，报道称在《街头霸王 6》第四年角色阵容中，有望出现《最终幻想 7》人气角色蒂法 · 洛克哈特（Tifa Lockhart）。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/a5ffe4a2-21e6-4447-a540-94607211ac80.jpg?x-bce-process=image/format,f_auto\" /></p><p>消息源 RnK_Clan 昨日在 Reddit 社区发帖（IT之家发稿前访问，该帖子已被下架），指出《街头霸王 6》第四年角色阵容中，卡普空将引入维加（Vega）、哈格（Haggar）、刚拳（Gouken）以及蒂法 · 洛克哈特（Tifa）。</p><p>该媒体指出 RnK_Clan 此前准确报告特瑞 · 博加德（Terry Bogard）和不知火舞（Mai Shiranui）等角色阵容，因此有较高的可信度。</p><p>尽管《街头霸王》与《最终幻想》分属不同世界观，但蒂法的格斗风格被认为非常适合融入游戏机制，且明年恰逢《最终幻想 7》发售 30 周年，这一时间节点为联动增添了极高可信度。</p><p>对于老玩家而言，蒂法的回归更具特殊意义。自 1998 年在 3D 格斗游戏《神佑擂台》（Ehrgeiz: God Bless the Ring）中登场以来，<strong>这位人气女角已缺席格斗领域长达 27 年。</strong>此次回归若成真，不仅可能配合《最终幻想 7 重制版》第三部的发售节奏，更将填补无数玩家的情怀空白。</p>"
+            },
+            {
+                "title": "宁德时代 CTO 高焕：第三代神行超充电池预计今年第四季度落地",
+                "link": "https://www.ithome.com/0/941/941.htm",
+                "published": "Wed, 22 Apr 2026 02:34:54 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，在今天上午的 2026 宁德时代超级科技日媒体沟通会上，宁德时代首席技术官（CTO）高焕透露，第三代神行超充电池的落地时间<strong>预计在今年第四季度</strong>，“当然我们作为供应商，主要还是要去配合主机厂。”</p><p>高焕还提到，5C 等电池会“很快普及到”6 万-10 万元级别车型。</p><p>昨晚发布的第三代神行超充电池，据称具备“安心满电 6 分钟”的特性。同时，第三代神行超充电池拥有“全球超充最低内阻”平均 0.25mΩ，相比行业其他超充电池降低 50%。</p><ul class=\" list-paddingleft-2\"><li><p>10%-35% SOC：1 分钟</p></li><li><p>10%-80% SOC：3 分 44 秒</p></li><li><p>10%-98% SOC：6 分 27 秒</p></li><li><p>20%-98% SOC（-30℃）：9 分钟 +</p></li></ul><p>据IT之家了解，宁德时代第三代麒麟电池超充 1000 次，<strong>容量保持率 SOH&gt;90%</strong>。同时得益于自加热技术、超换一体解决方案，该电池将能够解决电池低温超充难题。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/741f3847-09be-4a4b-bbe1-2b0d7cee56cb.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/941/796.htm\" target=\"_blank\">10%-98% 电量最快 6 分 27 秒！宁德时代发布第三代神行超充电池</a>》</p></li></ul>"
+            },
+            {
+                "title": "SOLAI 推出 AI 智能体专用终端 Solode Neo：基于 N150 的迷你主机",
+                "link": "https://www.ithome.com/0/941/939.htm",
+                "published": "Wed, 22 Apr 2026 02:34:44 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，企业 SOLAI 美国当地时间 21 日宣布推出自主 AI 智能体专用私人终端设备 Solode Neo，早鸟价 369 美元（IT之家注：现汇率约合 2523 元人民币）。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/f47f2892-9dd5-476d-a7cd-1f45df4f10b5.jpg?x-bce-process=image/format,f_auto\" /></p><p>Solode Neo 在<strong>硬件上是一款基于英特尔 N150 处理器的迷你主机</strong>，拥有铝制机身，配备 12GB LPDDR5 内存、128GB SSD 存储，配备 1GbE RJ45 网口，支持双频 Wi-Fi 与蓝牙无线连接。</p><p>软件系统上，其搭载基于 Linux 的 Solode AI OS 发行版，自带 Whisper STT、Kokoro TTS 语音模型，预装 OpenClaw 框架，仅需 3 分钟即可配置接入 Grok、Gemini、ChatGPT、Minimax 模型，支持全天候浏览器代理等应用场景。</p>"
+            },
+            {
+                "title": "爱奇艺将推《灵魂摆渡》首部全 AI 生成电影，《凡人修仙传》动画电影明年上映",
+                "link": "https://www.ithome.com/0/941/931.htm",
+                "published": "Wed, 22 Apr 2026 02:32:33 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，在 4 月 20 日的 2026 爱奇艺世界大会上，爱奇艺官方公布了 2026-2027 片单信息。</p><p>IT之家注意到，爱奇艺公布了<strong>《灵魂摆渡》首部全 AI 生成电影</strong>，将于 2026 年上映。</p><p>官方介绍显示，这部 AI 电影的编剧依然是《灵魂摆渡》原剧集的编剧小吉祥天，由爱奇艺与长信传媒携手打造。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/00ee3a5b-3945-4b47-b233-47c41cc0c131.jpg?x-bce-process=image/format,f_auto\" /></p><p>片单还显示，爱奇艺将出品《<strong>捕风追影 2</strong>》电影，新片的导演和编剧依然是杨子，目前尚不清楚成龙和梁家辉是否会回归。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/71c06ac8-c1ed-4fe6-8286-0d55da63eca4.jpg?x-bce-process=image/format,f_auto\" /></p><p>还有一部<strong>《凡人修仙传之瀚海迷踪》动画电影将于 2027 年上映</strong>，由动画原班团队打造。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/218528a1-6b7a-427b-83c7-446b064c803d.png?x-bce-process=image/format,f_auto\" /></p>"
+            },
+            {
+                "title": "SpaceX 招股书披露：IPO 后马斯克将拥有 79% 投票控制权",
+                "link": "https://www.ithome.com/0/941/930.htm",
+                "published": "Wed, 22 Apr 2026 02:31:01 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，根据 SpaceX 向美国证券交易委员会（SEC）提交的 IPO 招股书显示，公司上市后，埃隆 · 马斯克将继续拥有绝对主导的投票控制权。文件披露，SpaceX 将采用双层股权结构：B 类普通股每股拥有 10 票投票权，权力集中在马斯克及少数内部人士手中；面向公众投资者发行的 A 类普通股则每股仅 1 票。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/910c8c7d-172d-49df-b545-2bd634f84d22.jpg?x-bce-process=image/format,f_auto\" /></p><p><strong>马斯克持有 SpaceX 约 42% 的股权，并通过超级投票权股份控制着公司约 79% 的投票权</strong>。上市后，他将同时担任首席执行官（CEO）、首席技术官（CTO）以及由九人组成的董事会主席。此外，招股书中还包含限制股东对董事会选举及法律诉讼影响力的条款，要求相关争议通过仲裁解决，并对诉讼管辖地作出限制。</p><p>马斯克能够掌握如此高度的控制权，其依据源于 SpaceX 的发展历程。该公司做出的一系列关键决策 —— 从可重复使用火箭到全球卫星互联网星座，均违背了航空航天领域的传统思路，若董事会以投资者收益为导向，这些举措很可能会遭到强烈反对。多年来，成熟行业参与者一直认为完全可重复使用火箭在经济上并不合理；如今年营业利润已超 40 亿美元（IT之家注：现汇率约合 273.46 亿元人民币）的星链（Starlink），在最初提出时也普遍被外界判定为不具备财务可行性。支持创始人集中控制权的理由十分直白：造就今日 SpaceX 的那些决策，需要一个敢于无视行业共识、甘愿承受多年亏损的人来推动。</p><p>作为对比，特斯拉 2010 年上市时并未采用双层股权结构。直到近年，马斯克才推动强化投票权保障，2024 年，他因出售股票为收购推特（X）提供资金，持股比例降至约 13%，随后便提议在特斯拉至少掌握 25% 的控制权。</p><p>SpaceX 显然吸取了这一经验，对本次 IPO 架构作出调整，计划向散户投资者分配至多 30% 的股份，这一比例约为大型 IPO 常规水平的三倍。公司路演预计于 6 月 8 日当周启动，有消息称其将在纳斯达克上市，估值或达 1.75 万亿美元（现汇率约合 11.96 万亿元人民币），募资规模 750 亿美元（现汇率约合 5127.28 亿元人民币）。</p>"
+            },
+            {
+                "title": "黄仁勋：英伟达生产昂贵 AI 硬件，但也生产全球成本最低 Token",
+                "link": "https://www.ithome.com/0/941/929.htm",
+                "published": "Wed, 22 Apr 2026 02:26:16 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，英伟达官方账号 @NVIDIAAI 今天（4 月 22 日）在 X 平台发布推文，分享了一段 Cadence Live 2026 活动演讲视频，<strong>英伟达首席执行官黄仁勋强调全栈策略是 AI 领导地位的核心，并提出“生产全球成本最低 Token”的观点。</strong></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/88c1e38e-1051-4149-921e-63736e2f3059.jpg?x-bce-process=image/format,f_auto\" /></p><p><strong>黄仁勋表示英伟达虽然生产昂贵的 AI 硬件，但同时也在生产全球成本最低的词元（Token）。</strong>Token 作为 AI 处理语言的基本单元，其生成速度与成本直接决定了 AI 系统的效率与价值。</p><p>黄仁勋强调，单纯依赖硬件的暴力计算并非高效路径，必须依靠软件栈的深度引导才能最大化硬件潜能。IT之家附上视频如下：</p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/tv/show/1034:5290446503739474?mid=5290446641439344\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/f37699bb-cf03-45d4-8945-62994c39afbc.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>黄仁勋表示，未来的计算世界将是全栈式的，企业必须深入理解顶层的软件栈、中间的系统架构以及底层的应用场景。英伟达耗时多年打磨的 CUDA 生态系统，正是连接硬件算力与软件应用的核心桥梁，让其硬件在 Token 生成效率上建立了竞争壁垒。</p><p>针对硬件价格高昂的质疑，黄仁勋给出了独特的成本逻辑。虽然 Blackwell 或即将推出的 Rubin 平台造价高达数百万美元，但这些系统能产生前所未有的 Token 数量。</p><p>通过将巨额硬件成本分摊至海量的产出中，英伟达实现了最低的单位 Token 成本。同时，系统在能效比上也达到了最低的 Token / 瓦特，进一步降低了运营支出。</p><p>黄仁勋提出，衡量 AI 系统价值的核心指标不应仅是最大吞吐量，而应是 \" 单位 Token 成本 \"。这一新指标综合考量系统的购置成本、运行功耗与产出效率，为客户提供了更精准的投资回报分析依据。</p>"
+            },
+            {
+                "title": "“西楚霸王代言新公路之王”官宣，何润东成为极氪 8X“交付官”",
+                "link": "https://www.ithome.com/0/941/928.htm",
+                "published": "Wed, 22 Apr 2026 02:25:51 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，今天上午，极氪通过公众号宣布：近日关注到何润东先生光临极氪门店的相关报道，也收到大家关于“西楚霸王”跟“新公路之王”进一步互动的建议。因此，极氪特邀何润东先生作为极氪 8X 的交付官，见证“关中王”们成为尊贵的极氪 8X 车主。</p><p style=\"text-align: center;\"><img alt=\"图片\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/34162ff4-12e2-468e-8d55-44cfbfd78a0d.jpg?x-bce-process=image/format,f_auto\" /></p><p>据IT之家了解，华语影视男演员、歌手、导演何润东凭借着自己所饰演过的西楚霸王项羽、飞将吕布等硬汉形象近期再度“翻红”。在 2026 苏超联赛现场，何润东更是再度 COS 了一把项羽，为宿迁队主场加油。</p><p>此后，便有网友提出“西楚霸王代言新公路之王”的建议，希望让演过西楚霸王的何润东代言极氪 8X 这款新车。随后，极氪官方曾作出回应：“建议很好，何润东先生饰演的经典角色散发的勇敢、刚毅等气质和极氪 8X 的气场相合，挺搭，我们也欢迎并期待接下来跟何润东先生有更多的互动。”</p><p>极氪 8X 于 4 月 17 日正式上市，官方指导价 35.68 万元起。</p><ul class=\" list-paddingleft-2\"><li><p>极氪 8X Max 版本 35.68 万元，叠加首发权益 32.98 万元起</p></li><li><p>极氪 8X Ultra 版本 37.68 万元，叠加首发权益 34.98 万元起</p></li><li><p>极氪 8X Ultra+ 版本 42.68 万元，叠加首发权益 39.98 万元起</p></li><li><p>极氪 8X 曜影 50.08 万元，叠加首发权益 47.38 万元起</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b6cddefc-8800-4b2a-8abc-a9a647ee0654.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2855f770-6e34-40e0-81d1-5c242bfba266.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/099c1e8d-2674-4d05-bf9a-04414a1fd45e.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/137fd18f-8217-4da4-a451-5645d85f6b1d.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/06921d1b-f07b-41af-9833-7862cf90346a.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/88e12537-2be8-4094-990b-2f217f06dddd.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/80f44097-d347-4b44-8e10-2b54113b394b.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/54395c17-d2e8-4c60-ae2b-81ef36cabbd4.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/941/353.htm\" target=\"_blank\">极氪官方回应网友“西楚霸王代言新公路之王”呼声：建议很好，期待接下来跟何润东有更多互动</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/940/576.htm\" target=\"_blank\">极氪 8X 正式上市：搭载 2.0T 插混与 G-ASD 智驾系统，上市权益价 32.98 万元起</a>》</p></li></ul>"
+            },
+            {
+                "title": "承诺“你敢付我敢赔”，支付宝 AI 付支持 OpenClaw 龙虾类智能体",
+                "link": "https://www.ithome.com/0/941/927.htm",
+                "published": "Wed, 22 Apr 2026 02:24:46 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，支付宝官方今日宣布，支付宝 AI 付正式发布新能力，<strong>新增对 OpenClaw（俗称“龙虾”）类 AI 智能体的支持</strong>，让用户在使用“龙虾”类智能体时具备支付能力，完成缴费、买 Token、购物等服务。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8d2628cf-4395-4d67-88a8-3e7d89f2d9da.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家获悉，阿里云龙虾平台 JVS Claw 已经率先预装支付宝 AI 付首发上线，蚂蚁数科 DTClaw 也已上线。与此同时，其他“龙虾”类智能体如 Claude Code、Hermes Agent 也可以一键安装使用支付宝 AI 付。</p><p>在<a href=\"https://aipay.alipay.com/\" target=\"_blank\">官网</a>根据引导安装支付宝 AI 付后，“龙虾”用户只需要跟“龙虾”说一句“开启支付宝支付功能”，按指引完成授权开通，后续就能在“龙虾”中调用支付宝 AI 付完成付款。以会员充值续费为例，用户三步即可让“龙虾”帮忙搞定：</p><ul class=\" list-paddingleft-2\"><li><p>对“龙虾”说出支付需求，如，告诉 DTClaw“我要续费”</p></li><li><p>确认订单</p></li><li><p>通过“支付宝 AI 付”授权并完成支付</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/fd6efc38-7981-4e44-b435-2f0d0f9aca3a.jpg?x-bce-process=image/format,f_auto\" /></p><p>安全方面，官方表示也大可以放心：</p><ul class=\" list-paddingleft-2\"><li><p>开通服务需用户手动操作并完成身份核验</p></li><li><p>支付时需本人授权确认</p></li><li><p>支付宝 7*24 小时智能风控系统，保障每一笔交易的可控可信</p></li><li><p><strong>支付宝还承诺“你敢付我敢赔”</strong></p></li></ul>"
+            },
+            {
+                "title": "千问推出 AI 助手数字人形象“小酒窝”，将接入阿里各生态应用中",
+                "link": "https://www.ithome.com/0/941/926.htm",
+                "published": "Wed, 22 Apr 2026 02:19:26 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，今天，阿里巴巴正式发布生态级 AI 助手数字人形象 —— 千问“小酒窝”。</p><p>据官方介绍，用户可以在千问 App 中找到“小酒窝”，不论做规划、解难题，还是订餐、买票、打车，都能在简单对话中，轻松完成。接下来，千问“小酒窝”也会在阿里生态各应用中，为用户提供统一、便捷的智能体验。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1a95ef33-be0e-4c41-a29b-4f67f00e6c84.png?x-bce-process=image/format,f_auto\" /></p><p>现在，用户已经可以在千问 App 中和“小酒窝”互动，比如在音色设置中选择“小酒窝”就能进行对话陪伴，或者用千问 App 生成自己和“小酒窝”的专属奶茶合照。</p><p>同时，千问“小酒窝”拥有强大的 AI 大脑，不仅能从容解答用户的千般疑问，还能联动阿里生态的各伙伴，从学习工作到日常生活，帮用户把大小事项一一办妥。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ca564762-aa75-4e86-87b3-c94116c12e72.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，春节以来，千问 App 陆续接入淘宝、淘宝闪购、飞猪、高德、支付宝、大麦等阿里生态业务，实现智能外卖点单、行程规划、演出选座购票，一句话完成打车、预订机票酒店并安排接送机等跨服务串联执行。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d61d798d-a8e7-4692-97a9-ad55e86c8931.png?x-bce-process=image/format,f_auto\" /></p><p>未来，千问小酒窝也将出现在阿里各个生态应用中。</p>"
+            },
+            {
+                "title": "铠侠向 EXCERIA G3 (VC10) 固态硬盘推送新版固件，强烈建议用户更新",
+                "link": "https://www.ithome.com/0/941/925.htm",
+                "published": "Wed, 22 Apr 2026 02:16:37 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，KIOXIA 铠侠株式会社本月 20 日表示，<strong>该企业已为 EXCERIA G3 SSD（也称 VC10）提供最新的 EVFATR.1 版本固件</strong>，强烈建议使用原版 EVFATR.0 的用户更新固件。</p><p>铠侠并未详细提供本次固件更新的变化细节，仅是按此前惯例表示“<strong>此固件更新旨在解决关键错误和 / 或提高 SSD 的可靠性和性能</strong>”。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/b81c1592-2eaa-47d2-a866-8eff2e63000d.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，EXCERIA G3 SSD (VC10) 发布于去年末，基于 BiCS8 QLC，采用 DRAM-less HMB 方案，提供 1TB 和 2TB 版本，最大顺序读取可达 10000MB/s。</p>"
+            },
+            {
+                "title": "特斯拉得州锂精炼厂废水检出致癌物，被勒令暂停排放",
+                "link": "https://www.ithome.com/0/941/923.htm",
+                "published": "Wed, 22 Apr 2026 02:15:43 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，据 Electrek 报道，独立实验室检测发现，特斯拉位于得克萨斯州罗布敦、耗资近 10 亿美元（IT之家注：现汇率约合 68.36 亿元人民币）的锂精炼厂所排放的废水中，含有六价铬（一种已知致癌物）、砷，且锂含量超标。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8ef90617-6119-457d-a12c-be30d62e8608.png?x-bce-process=image/format,f_auto\" /></p><p>负责接纳特斯拉每日 23.1 万加仑废水排放沟渠的努埃塞斯县 2 号排水区，已向该公司发出勒令停止通知，要求其在进一步协商前暂停废水排放。</p><p>IT之家注意到，特斯拉在今年早些时候揭幕罗布敦锂精炼厂时，曾大肆宣传该设施采用“无酸”工艺，是相较于传统锂精炼技术更环保的替代方案。该公司声称，其碱性浸出法产生的副产物为无害物质，可用于制作混凝土的砂石与石灰石原料，而非传统酸性焙烧工艺通常产生的有害硫酸钠废料。</p><p>经权威环境检测机构 Eurofins Environment Testing 于 4 月 10 日出具的实验室报告，详细披露了该精炼厂废水的成分。4 月 7 日采集的 24 小时混合水样显示：</p><ul class=\" list-paddingleft-2\"><li><p>六价铬含量为 0.0104 毫克 / 升，略高于实验室 0.01 毫克 / 升的报告限值。尽管仅为痕量，但六价铬已被美国国家毒理学计划列为已知人类致癌物，也是因《永不妥协》电影而臭名昭著的同一种物质。</p></li><li><p>砷含量为 0.0025 毫克 / 升，虽低于联邦饮用水标准 0.01 毫克 / 升，但仍被检出。</p></li></ul><p>上述两种物质均未出现在得克萨斯州环境质量委员会为特斯拉核发的废水排放许可中。</p><p>除重金属外，水质化学指标更暴露了深层问题：钠含量达 302 毫克 / 升，氯化物含量为 382 毫克 / 升，形成微咸水质。排水区顾问称，该水体盐度是正常河道的 10 至 20 倍。此外还检出锶（1.17 毫克 / 升）、磷（0.527 毫克 / 升）和氨（1.68 毫克 / 升）含量超标，各类物质分别会引发骨密度影响、水藻爆发、水生生物直接中毒等不同环境问题。</p><p>排放废水经排水沟汇入彼得罗尼拉溪，最终注入巴芬湾，这片传统渔业胜地的生态系统本已持续退化。</p><p>该事件暴露出锂精炼厂相关监管框架存在重大漏洞。得克萨斯州环境质量委员会于 2025 年 1 月向特斯拉核发排放许可，并于 2026 年 2 月开展自查，认定特斯拉符合许可要求，但该机构仅检测了溶解性固体、氯化物、硫酸盐、油脂等常规污染物，并未检测重金属。</p><p>关键问题在于，尽管锂是该厂核心加工原料，特斯拉废水排放许可的监测要求中却未包含锂元素。据排水区律师弗兰克 · 拉萨尔特通过《得克萨斯论坛报》透露，该委员会在审批许可过程中并未通知当地排水区，他称实验室检测结果“令人极为不安”。</p><p>特斯拉现场运营高级经理杰森 · 贝文表示，公司“会定期监测并检测获批排放的废水”，目前正“审阅排水区的通知函”，并“期待开展合作”。</p><p>排水区工程顾问建议特斯拉在厂区安装多级废水处理设施，配备反渗透技术、重金属去除系统，同时制定浓缩盐水危险废物处置方案，或采用零液体排放系统。</p><p>这场废水争议恰逢该地区最严峻的时刻。精炼厂以东仅 16 英里的科珀斯克里斯蒂市正遭遇严重水危机：科珀斯克里斯蒂湖库容仅剩约 9%，乔克峡谷水库库容低于 8%。市政官员预测，若状况无改善，2026 年 9 月将实施紧急限水措施，而当前工业设施用水量已占城市供水的 60%。</p><p>特斯拉并非马斯克旗下近期因用水问题受质疑的唯一企业。据报道，xAI 位于孟菲斯的数据中心每日冷却用水量高达 150 万加仑，且计划大幅扩容，为此还启动了耗资 8000 万美元的废水处理厂项目。</p><p>这也并非特斯拉旗下工厂首次遭遇环境监管问题。该车企此前因得州超级工厂被划出城市域外管辖权，规避了奥斯汀市环保规定；柏林超级工厂也曾面临水污染相关刑事指控。</p>"
+            },
+            {
+                "title": "涉嫌“参与策划枪击案”，佛罗里达州对 OpenAI 和 ChatGPT 展开刑事调查",
+                "link": "https://www.ithome.com/0/941/922.htm",
+                "published": "Wed, 22 Apr 2026 02:15:28 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，据路透社报道，当地时间周二（4 月 21 日），佛罗里达州总检察长詹姆斯 · 乌特迈尔表示，该州将对 OpenAI 及其人工智能应用 ChatGPT 展开刑事调查，原因是去年佛罗里达州立大学发生的一起枪击案造成两人死亡。</p><p>IT之家从报道中获悉，去年 4 月，一名枪手在佛罗里达州立大学<strong>杀害两人，打伤六人</strong>后，被警方击毙。该嫌疑人被控多项谋杀罪和谋杀未遂罪。</p><p>乌特迈尔披露，“聊天机器人建议枪手使用哪种枪支，哪种弹药与哪种枪支匹配，以及枪支在近距离是否有效。如果屏幕另一端是个人，我们就会以谋杀罪起诉他们。”</p><p>其办公室表示，调查将确定 OpenAI <strong>是否对 ChatGPT 在枪击事件中的行为负有刑事责任</strong>。州检察官办公室已向 OpenAI 发出传票，要求其提供有关信息和记录。</p><p>OpenAI 的一位女发言人回应称，这起枪击事件是一场悲剧，但该公司不承担任何责任。在得知此事后，OpenAI 识别出了一个据信与嫌疑人相关的 ChatGPT 账户，并“主动与执法部门分享了这一信息”。“在这种情况下，ChatGPT 对问题提供了事实性回答，这些信息可以在互联网上的公共资源中广泛找到，并且它<strong>没有鼓励或宣传非法或有害活动</strong>。”</p>"
+            },
+            {
+                "title": "小米 REDMI 手机：发布 4 小时，K90 Max 刷新近一年全渠道 3K-4K 新机首销纪录",
+                "link": "https://www.ithome.com/0/941/920.htm",
+                "published": "Wed, 22 Apr 2026 02:12:55 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，小米 REDMI 手机今日宣布，K90 Max 成为销量冠军，发布 4 小时，<strong>刷新近一年全渠道 3K-4K 新机首销纪录</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/4e880046-883d-48fb-bd52-2158b1c98dc7.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2e3c435a-df82-43eb-afef-3eb864df5e82.jpg?x-bce-process=image/format,f_auto\" /></p><p>小米 <span class=\"hot-topic\">REDMI K90 Max</span> 手机昨日正式发布，售价 3499 元起，首销期全版本补贴 300 元，<strong>首销价 2999 元起，国补价 2549.15 元起：</strong></p><ul class=\" list-paddingleft-2\"><li><p>12GB + 256GB 首销价 2999 元，国补价 2549.15 元</p></li><li><p>16GB + 256GB 首销价 3499 元，国补价 2999 元</p></li><li><p>12GB + 512GB 首销价 3499 元，国补价 2999 元</p></li><li><p>16GB + 512GB 首销价 3999 元，国补价 3499 元</p></li><li><p>16GB + 1TB 首销价 4699 元，国补价 4199 元</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/608ba8d2-9331-4645-b06f-a8945fea9f73.png?x-bce-process=image/format,f_auto\" /></p><p><strong>REDMI K90 Max 是小米首款内置风扇散热手机</strong>，配备天玑 9500 芯片，还有 AI 独显芯片 D2。新机搭载独立密闭风道、全金属轴承结构，支持 IP66/IP68/IP69 整机防尘防水，通过 5 万小时老化测试。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/deae15c0-930d-45cc-b4c6-3d6c180f3924.png?x-bce-process=image/format,f_auto\" /></p><p>据IT之家昨日报道，小米集团合伙人、总裁、手机部总裁、小米品牌总经理卢伟冰刚刚在微博发文总结该机参数。其中一名网友询问道：“卢总，2999 太香了还赚钱吗？”，<a href=\"https://www.ithome.com/0/941/795.htm\" target=\"_blank\"><strong>卢伟冰回应：“亏损”</strong></a>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/755c9989-9e6e-4dd7-b8a3-ca6c9e7054a3.png?x-bce-process=image/format,f_auto\" /></p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/941/789.htm\" target=\"_blank\">小米首款内置风扇手机：REDMI K90 Max 发布，噪音最高 32dB、终身免费清洁，2999 元起</a>》</p></li></ul>"
+            },
+            {
+                "title": "iOS 测试版谷歌 Chrome 浏览器扩展支持快捷指令，Siri 语音可直达 Dino 游戏",
+                "link": "https://www.ithome.com/0/941/919.htm",
+                "published": "Wed, 22 Apr 2026 02:10:29 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，科技媒体 macobserver 今天（4 月 22 日）发布博文，报道称在最新 TestFlight 测试 iOS 版 Chrome 浏览器中，<strong>谷歌扩展支持快捷指令（Shortcuts），并深度集成 Siri 体验。</strong></p><p>IT之家援引博文介绍，在现有 iOS 稳定版 Chrome 浏览器中，通过系统快捷指令仅支持打开应用或网址等通用操作，而在最新 TestFlight 测试版本中，谷歌提供了一套完整的专属操作列表，支持用户直接调用浏览器的深层功能，通过语音指令或自动化流程。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/804c7071-5187-4265-9d5c-d5296f864f14.png?x-bce-process=image/format,f_auto\" /></p><p>最新 TestFlight 测试版本中，用户可以创建快捷指令来管理设置、密码及付款方式，以及快速查看历史记录、最近标签页、书签和阅读列表。此外，操作列表还包括打开新标签页或隐身标签页、运行安全检查、将 Chrome 设为默认浏览器等实用选项。</p><p>其中，最引人注目的是支持直接启动 Chrome 内置的恐龙（Dino）游戏。在实际应用场景中，用户可以预设语音指令“Hey Siri, play Chrome Dino game”，系统将直接跳转至游戏界面，省去了打开浏览器并输入地址的繁琐步骤。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a2e671c4-6b7a-46a4-9d49-e6c06ae4393b.png?x-bce-process=image/format,f_auto\" /></p><p>同样，用户无需在应用内层层点击，也可以创建直达密码管理或安全检查页面的快捷方式，从锁屏界面或 Siri 直接进入特定功能模块。这一功能目前仅出现在 Chrome for iOS 的 TestFlight 测试版本中，Google 尚未公布其向 App Store 正式版推送的具体时间表。</p>"
+            },
+            {
+                "title": "比亚迪第二代腾势 D9 官宣 4 月 27 日上市，预售价 38.98 万元起",
+                "link": "https://www.ithome.com/0/941/918.htm",
+                "published": "Wed, 22 Apr 2026 02:10:07 GMT",
+                "summary": "<p>IT之家 4 月 22 日消息，比亚迪第二代腾势 D9 上市发布会今日官宣定档 <strong>4 月 27 日 19:30</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/bf8f8632-3a2c-429a-a68a-463d0f6ddf1a.jpg?x-bce-process=image/format,f_auto\" /></p><p>据IT之家 3 月 29 日报道，<a href=\"https://www.ithome.com/0/933/781.htm\" target=\"_blank\">比亚迪第二代腾势 D9 MPV 车型开启预售</a>，新车共推出 6 款配置车型，预售价格为 38.98 万元-48.98 万元，混动与纯电版本同价。</p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/507fc66c-136f-4086-9dba-75d3649113ad.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第 1600 万辆新能源汽车：全球首台第二代腾势 D9 下线\" /></p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/11e02282-7f5e-4afd-93ec-b37f9bfa8f04.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第 1600 万辆新能源汽车：全球首台第二代腾势 D9 下线\" /></p><p>第二代腾势 D9 全系搭载比亚迪最新的天神之眼 5.0 智能驾驶辅助系统。同时，腾势官方对搭载天神之眼-B 的老款腾势 D9 进行天神之眼 5.0 全量推送。</p><p>车身尺寸方面，第二代腾势 D9 长宽高分别为 5250mm、1960mm、1900mm，轴距达 3110mm。</p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/2c55c32c-ff79-4890-8306-22a43f33c4e7.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/a4661ead-b076-41bc-a845-73141efb4bae.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p style=\"text-align: center;\"><img alt=\"http://img3.autoimg.cn/chejiahaodfs/g34/M01/78/0F/620x0_1_autohomecar__ChxpV2nEmjqAavf-AAFVD_iH8q0497.jpg\" class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/b31dc878-8d0d-4db0-b64a-9128c628423d.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><figcaption></figcaption><p>内饰方面，第二代腾势 D9 采用经典 T 字形布局，第二排配备航空座椅及小桌板，并在座椅后方增设两块液晶显示屏，同时提供二排娱乐屏幕，满足商务与家庭场景的多元需求。</p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://qimg.ithome.com/newfiles/2026/3/fdc7d083-0db4-4f25-9baa-17272f2eb685.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://qimg.ithome.com/newfiles/2026/3/2f1b967d-bb3d-4585-be3d-357987a3aaa1.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p style=\"text-align: center;\"><img class=\"lazy no-alt-img\" src=\"https://qimg.ithome.com/newfiles/2026/3/7e151b4a-7cf2-4286-9b4f-3aa75cbf7215.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p style=\"text-align: center;\"><img alt=\"http://img3.autoimg.cn/chejiahaodfs/g34/M01/A1/F4/620x0_1_autohomecar__ChxpWGnIorWATdNZAByOz36fStg404.png\" class=\"lazy no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/75ad32ef-f0fc-45be-9f3f-9bab8d486ee7.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"比亚迪第二代腾势 D9 开启预售：二代刀片电池 + 闪充，预售价 38.98 万元起\" /></p><p>动力方面，第二代腾势 D9 提供插电混动与纯电两种动力形式。插混版车型搭载由 1.5T 发动机与双电机组成的混动系统，发动机最大功率 115kW，前电机最大功率 200kW，后电机最大功率 45kW，配备第二代刀片电池，CLTC 纯电续航里程突破 400 公里，并支持闪充技术，馈电油耗为 6.35L/100km。</p><p>纯电版车型则提供单电机及双电机四驱两种版本，同样配备第二代刀片电池并支持闪充技术，续航里程为 750km 和 800km。</p><p>第二代刀片电池从 10%-70% 充电时间只要 5 分钟，从 10%-97% 充电时间只要 9 分钟，在零下 20 度极寒情况下，20%-97% 充电实测为 12 分钟，零下 30 度只比常温多 3 分钟，20%-97% 充电实测同样为 12 分钟。</p><p class=\"j_iframe_show ithome-content-placeholder\" style=\"text-align: center;\"></p>"
+            }
+        ]
+    },
+    {
         "id": "solidot",
         "name": "Solidot",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:14.790944",
+        "last_updated": "2026-04-22T11:02:19.671615",
         "entries": [
+            {
+                "title": "创意软件行业向 Adobe 宣战",
+                "link": "https://www.solidot.org/story?sid=84109",
+                "published": "Tue, 21 Apr 2026 23:01:48 +0800",
+                "summary": "帝国终将陨落，创意软件行业如今一致认为 Adobe 结束的时代即将到来，它们纷纷以免费或更低的价格提供与 Adobe 竞争的产品——Adobe 的创意软件过去几十年一直被视为行业标准。Cinema 4D 开发商 Maxon 在收购 Autograph 之后向个人用户提供了免费版本，Autograph 是类似 Adobe After Effects 的 动态图形设计软件，此前的永久授权费用高达 1795 美元；Canva 在收购 Affinity 之后将功能上类似 Adobe Illustrator、Photoshop 和 InDesign 的软件 Affinity Designer 2、Affinity Photo 2 和 Affinity Publisher 2 免费提供给用户，它在收购 Cavalry 之后也将其免费，Cavalry 类似 After Effects；苹果于今年 1 月推出了 Creator Studio 套件，包含了 Final Cut Pro、Logic Pro、Pixelmator Pro、Motion、Compressor 和 MainStage 等创意软件，月订费 12.99 美元，相比下 Adob​​e的 Creative Cloud Pro 每月订阅费用 69.99 美元，苹果没有强制用户订阅，用户仍可购买单个应用的单次授权。\n<p></p>"
+            },
+            {
+                "title": "吸入可卡因的鲑鱼有更强的冒险精神",
+                "link": "https://www.solidot.org/story?sid=84108",
+                "published": "Tue, 21 Apr 2026 22:43:10 +0800",
+                "summary": "人类使用的毒品不可避免的渗透到环境中，被动物如鲨鱼摄入。但动物摄入毒品之后会有什么影响？实验室研究表明，接触过可卡因的水蚤游得更快，小龙虾会冒险游到藏身处之外，在自然界里这是一种危险的行为。根据发表在《Current Biology》期刊上的一项研究，科学家首次在野外环境测试了毒品对鲑鱼的影响。一组 35 条鲑鱼植入了含有可卡因的小型装置，另一组植入了含有可卡因主要代谢物苯甲酰爱康宁（benzoylecgonine）的装置，第三组则是对照组。实验结果显示，对照组的鱼多数生活在距离其放流点 20 公里的地方，可卡因组则生活在更遥远的地方，苯甲酰爱康宁组最远生活在 32 公里外。代谢物相对于可卡因对动物的影响更大，这与实验室观察一致。毒品对动物行为的影响会带来什么长期后果暂时还不清楚，需要进一步研究。\n<p></p>"
+            },
+            {
+                "title": "Palantir 发表受争议的技术共和国宣言",
+                "link": "https://www.solidot.org/story?sid=84107",
+                "published": "Tue, 21 Apr 2026 21:57:37 +0800",
+                "summary": "Palantir CEO Alex Karp 及法务主管 Nicholas W. Zamiska 联合发表的《技术共和国（The Technological Republic）》一书 22 点宣言过去几天引发了广泛争议。Palantir 是硅谷亿万富翁 Peter Thiel 联合创办的军事承包商。批评者认为这一宣言是法西斯主义，充斥着保守派对自由主义的陈词滥调。宣言称，自由民主社会要赢需要的不只是道德诉求，它需要硬实力，而本世纪的硬实力将建立在软件之上。宣言要求对宗教信仰更宽容，抵制空洞的多元主义的诱惑；认为制造人们喜欢且觉得有用的产品是颓废，硅谷公司应该提供安全；问题不在于 AI 武器是否会被制造出来；问题在于谁建造它们，以及建造的目的是什么，就 AI 武器展开作秀式的辩论纯属浪费时间；兵役应是一种普遍义务，民众同时要对精英保持敬畏和宽容，不应嘲笑马斯克（Elon Musk），反对无情曝光公众人物私生活。宣言还批评西方以包容性之名拒绝定义民族文化。\n<p></p>"
+            },
+            {
+                "title": "F-35 是为不同战争而造的尖端战斗机",
+                "link": "https://www.solidot.org/story?sid=84106",
+                "published": "Tue, 21 Apr 2026 20:25:28 +0800",
+                "summary": "美国的 F-35 战斗机项目始于上世纪末到本世纪初，整个项目总生命周期成本预计超两万亿美元，为美国历史上最昂贵的国防采购项目。然而过去几年爆发的战争凸显了现代战争越来越趋向于能大批量生产且损失之后能迅速替换的系统。而 F-35 战斗机数量少，造价昂贵，无法迅速替换，使其并不适合此类持久战。大规模发射的廉价导弹或无人机也让今天昂贵的导弹防御系统面临性价比问题。爱国者和萨德是最先进的导弹防御系统，但造价昂贵且产量有限。F-35 的情况类似。俄乌战争证明，无人系统能以比怀疑者预期更快的速度重塑战场。\n<p></p>"
+            },
             {
                 "title": "英国计划学校期间禁止使用手机",
                 "link": "https://www.solidot.org/story?sid=84105",
@@ -816,30 +968,6 @@
                 "link": "https://www.solidot.org/story?sid=84090",
                 "published": "Mon, 20 Apr 2026 13:47:50 +0800",
                 "summary": "欧盟委员会将鼓励远程办公，并为公共交通提供补贴，以减少化石燃料使用；目前，各国正艰难应对中东战事引发的能源价格冲击。欧委会将于本周向成员国提出一系列措施，以降低能源需求、提高能效，并推动向清洁电力转型。这些举措旨在为高企的能源价格提供“即时缓解”。这些建议基于俄罗斯入侵乌克兰后引发的上一轮能源危机期间实施的各项措施。它们旨在减少对化石燃料的依赖，并鼓励使用绿色能源。\n<p></p>"
-            },
-            {
-                "title": "蚂蚁也有清洁工",
-                "link": "https://www.solidot.org/story?sid=84089",
-                "published": "Mon, 20 Apr 2026 13:44:56 +0800",
-                "summary": "鱼类中有“清洁鱼”——即帮助清洁大鱼身上寄生虫的小鱼，蚂蚁中也有给大蚂蚁清洁身体的小蚂蚁。根据发表在《Ecology and Evolution》期刊上的一项研究，昆虫学家观察到体型巨大的收获蚁涌到体型很小的锥蚁（cone ants）巢穴入口，双腿伸开，大颚张开，静静等待小蚂蚁爬上它们身上，舔舐啃啃。一只收获蚁身上有时会有五只小锥蚁。收获蚁会彼此清理身上的垃圾和寄生虫，但可能这种清洁并不彻底，因此需要小蚂蚁进行更深入的清理工作。但其他科学家提出了不同的意见，有昆虫学家认为它们是在交换信息素彼此安抚，或者交换有益的微生物为两种蚂蚁创造更健康的微生物群落。\n<p></p>"
-            },
-            {
-                "title": "NASA 关闭旅行者 1 号的 LECP 仪器以节省电力维持运行",
-                "link": "https://www.solidot.org/story?sid=84088",
-                "published": "Sun, 19 Apr 2026 22:40:56 +0800",
-                "summary": "NASA JPL 工程师于 4 月 17 日向旅行者 1 号发送指令，关闭低能带电粒子仪（LECP）以节省电力维持探测器的运行。旅行者 1 号与旅行者 2 号都携带了 10 个科学仪器，过去 49 年已有 7 个仪器关闭，剩下 3 个仪器——LECP，三轴磁通门磁强计（MAG）和电浆波系统（PWS）还在运行中。LECP 被用于测量低能带电粒子，包括来自太阳系和银河系的离子、电子和宇宙射线。LECP 提供了星际介质结构的关键数据，探测到日球层外的压力锋面和粒子密度变化区域。旅行者 1 号是距离地球最遥远的人造探测器，也是唯一能探测此类信息的探测器。旅行者号使用放射性同位素热电机作为动力，每年损失约 4 瓦的功率，今年 2 月 27 日工程师检测到功率的意外下降，如果功率再下降将会触发低电压故障保护系统，为保护探测器而关闭组件。而恢复组件将是一个漫长且充满风险的过程。工程团队因此决定主动关闭仪器以节省电力，他们在三个仍正常工作的仪器中选择了 LECP。工程师估计关闭 LECP 能为旅行者 1 号提供一年的喘息时间，计划在此期间完善名为“Big Bang”的节能方案，以进一步延长旅行者号的运行时间。\n<p></p>"
-            },
-            {
-                "title": "人形机器人打破人类半马世界纪录",
-                "link": "https://www.solidot.org/story?sid=84087",
-                "published": "Sun, 19 Apr 2026 21:09:39 +0800",
-                "summary": "在周日（4 月 19 日）举行的 2026 北京亦庄人形机器人半程马拉松赛上，机器人首次跑赢了人类半马世界纪录，前三名成绩全部优于人类纪录。荣耀旗下的齐天大圣队、雷霆闪电队、星火燎原队分别夺得冠军、亚军、季军，净用时分别为 50 分 26 秒、50 分 56 秒、53 分 01 秒，均优于乌干达名将基普利莫在今年 3 月里斯本半程马拉松赛中创造的 57 分 20 秒人类男子半马世界纪录。这一成绩与去年相比进步显著：一年前在亦庄举行的首届人形机器人半程马拉松上，天工队的人形机器人以 2 小时 40 分 42 秒的成绩夺冠。一年后，参赛队伍数量从 20 支增至百余支，是去年的五倍。整体完赛成绩大幅提升，人形机器人续航更稳、步态更顺、算法更稳。途中仍有部分机器人摔倒，或撞上赛道护栏。技术层面同样有进步：去年工程师们还可以跟着机器人一路小跑“陪跑\"，今年很多机器人的速度大幅提升，工作人员不得不改坐高尔夫球车跟在后面。去年，天工是赛场上唯一采用\"半自主\"方式参赛的选手，其余几乎全部依赖遥控。今年，约四成队伍已实现自主导航。为鼓励这一趋势，赛事规则规定遥控操作组成绩须乘以 1.2 加权系数，变相惩罚依赖人工遥控的队伍。\n<p></p>"
-            },
-            {
-                "title": "卫星无人机图像显示美国四成数据中心可能延期",
-                "link": "https://www.solidot.org/story?sid=84086",
-                "published": "Sun, 19 Apr 2026 21:00:04 +0800",
-                "summary": "硅谷科技巨头斥资数千亿美元建造 AI 数据中心，然而大规模的数据中心建设面临巨大的施工和电力挑战。卫星无人机图像显示美国近四成数据中心项目可能无法按计划在今年内完工。分析显示，微软、甲骨文和 OpenAI 等公司的数据中心项目很可能延期三个月以上完工。数据中心项目延误的原因包括劳动力、电力和设备长期短缺，以及获得必要许可的繁琐流程。参与 OpenAI 项目的建筑公司高管提到，他们缺乏足够的技工如电工和管道工去同时开展多个数据中心项目。因巨大的电力需求，科技巨头甚至在建自己的发电厂，大量使用安装在半挂式卡车上的移动式燃气发电机，以及最初为飞机和军舰设计的涡轮发动机。\n<p></p>"
             }
         ]
     },
@@ -847,8 +975,68 @@
         "id": "oschina-news",
         "name": "OSCHINA 社区新闻",
         "category": "tech",
-        "last_updated": "2026-04-21T22:43:14.997909",
+        "last_updated": "2026-04-22T11:02:19.881118",
         "entries": [
+            {
+                "title": "Token Plan：能力越强，工资越少？",
+                "link": "https://my.oschina.net/u/4487475",
+                "published": "Wed, 22 Apr 2026 10:39:10 +0800",
+                "summary": "自费 token plan 的话，能力越强烧 token 越多，烧 token 越多费用越高，费用越高到手工资越少，所以能力越强到手工资越少。"
+            },
+            {
+                "title": "福布斯发布 2026 年全球 AI 50 榜单",
+                "link": "https://www.oschina.net/news/436261",
+                "published": "Wed, 22 Apr 2026 10:32:51 +0800",
+                "summary": "《福布斯》日前发布了 2026 年 AI 50 强榜单。 从融资规模来看，这些公司共筹集了 3056 亿美元，其中 AI 巨头 OpenAI 和 Anthropic 累计融资2426亿美元，约占今年AI 50上榜企业总融资额3056亿美元的80%。 截至2月底，OpenAI年化收入据称超250亿美元；4月初，Anthropic宣布其收入运行率突破300亿美元。这两家AI实验室凭借..."
+            },
+            {
+                "title": "Semi Design v2.95.0 发布，抖音企业级 UI 库",
+                "link": "https://www.oschina.net/news/436255/semi-design-2-95-0-released",
+                "published": "Wed, 22 Apr 2026 10:10:33 +0800",
+                "summary": "Semi Design 是现代、全面、灵活的设计系统和 UI 库，由字节跳动抖音前端与 UED 团队设计、开发并维护，是一款包含设计语言、React 组件、主题等开箱即用的中后台解决方案，可用于快速搭建美观的 React 应用。 Semi Design v2.95.0 已发布，此版本带来如下更新内容： 【Feature】 Input 和 TextArea 组件新增composition..."
+            },
+            {
+                "title": "MySQL 8.0 结束生命周期，8.4.9 LTS、9.7.0 LTS 发版上线：一个时代的交接与新生",
+                "link": "https://my.oschina.net/mysqloffice/blog/19589388",
+                "published": "Wed, 22 Apr 2026 09:58:36 +0800",
+                "summary": "2026 年 4 月 21 日，MySQL 官方同时发布了三个重要版本：8.0.46（8.0 线的最后一个版本）、8.4.9 LTS（当前 LTS 线的维护更新），以及 9.7.0 LTS（从创新版本正式转为长期支持版本）。这意味着陪伴我们八年的 MySQL 8.0 正式谢幕，而全新的 LTS 时代正在开启。☕..."
+            },
+            {
+                "title": "VuReact 全合集：Vue 转 React 语义编译对照指南（附官网文档）",
+                "link": "https://www.oschina.net/news/436237",
+                "published": "Wed, 22 Apr 2026 09:30:51 +0800",
+                "summary": "VuReact 是一款将 Vue 3 代码编译为标准、可维护 React 代码的强大编译工具，支持渐进式迁移、智能编译、零运行时开销、全链路工程化等企业级特性。 在前端技术栈迁移与跨框架开发场景中，Vue 与 React 作为两大主流框架，在语法、API、响应式模型与渲染机制上存在明显差异，成为团队从 Vue 转向 React 时最核心的痛点。..."
+            },
+            {
+                "title": "gt-checksum 2.0.0 已经发布，静态数据库校验修复工具",
+                "link": "https://www.oschina.net/news/436234",
+                "published": "Wed, 22 Apr 2026 09:09:44 +0800",
+                "summary": "gt-checksum 2.0.0 已经发布，静态数据库校验修复工具。 gt-checksum v2.0.0下载列表 Changelog gt-checksum v2.0.0版本更新说明，主要变化有： [功能新增]: 支持Oracle→MySQL data/struct 模式，采用列类型映射方式实现宽松兼容，支持 VARCHAR2/CHAR/NCHAR/NVARCHAR2/NUMBER/FLOAT/TIMESTAMP/DATE/CLOB/BLOB/RAW 等。 ..."
+            },
+            {
+                "title": "VuReact 1.6.2 发布，下一代 Vue 3 转 React 编译工具",
+                "link": "https://www.oschina.net/news/436232",
+                "published": "Wed, 22 Apr 2026 09:05:47 +0800",
+                "summary": "前端开源编译工具 VuReact 发布 1.6.2 版本，作为专注于 Vue3 代码无感转换为 React 代码的核心工具，本次版本聚焦修复关键编译问题、优化版本兼容性，进一步提升 Vue3 转 React 的编译稳定性与开发体验。 VuReact 致力于跨框架开发与降低 Vue3 技术栈迁移至 React 栈的成本，通过自动化编译能力，减少手动重构代码，即可..."
+            },
+            {
+                "title": "禅道开源版 22.1.stable 发布，新增空间界面功能，支持接口方式导入 Jira 数据",
+                "link": "https://www.oschina.net/news/436227",
+                "published": "Wed, 22 Apr 2026 08:47:08 +0800",
+                "summary": "大家好， 禅道开源版22.1.stable发布啦！本次发布 新增了产品、项目、执行空间界面，帮助用户告别信息杂乱与频繁切换，让每个人都拥有独立、安静、不被打扰的沉浸式工作空间，专注当下，高效工作。 支持接口方式导入Jira数据，让数据迁移更高效。 项目自定义权限设置中，重新优化交互，增加执行导航下的权限，方便用户对..."
+            },
+            {
+                "title": "小蚂蚁云 XiaoMaYi-Nacos-EleVue 微服务框架 v1.2.0 发布",
+                "link": "https://www.oschina.net/news/436223",
+                "published": "Wed, 22 Apr 2026 08:05:31 +0800",
+                "summary": "v1.2.0 更新内容： 1、优化核心类库功能； 2、优化 OSS 云存储功能； 3、修复近期用户反馈的 BUG； 项目介绍 基于 SpringCloud、SpringSecurity、OAuth2、Nacos、Seata、MybatisPlus、Vue3、TypeScript、ElementPlus、MySQL 等技术栈实现的单体前后端分离后台管理系统；后端基于 Java 语言采用 SpringCloud、SpringBoot3..."
+            },
+            {
+                "title": "CedarLicenseTool v1.0.1 软件授权许可证工具发布说明",
+                "link": "https://www.oschina.net/news/435967",
+                "published": "Tue, 21 Apr 2026 21:24:21 +0800",
+                "summary": "概述 CedarLicenseTool 是一款许可证分发工具，用于为客户生成授权许可证文件，无需登录管理后台即可完成许可证的创建与导出。 生成的许可证与 license-manager完全兼容。 功能 密钥管理 一键生成 RSA 密钥对，自动保存到本地 应用启动时自动加载已有密钥，无需重复生成 支持复制私钥或公钥到剪贴板 许可证生成 填写客户..."
+            },
             {
                 "title": "openKylin 2.0 SP2 重要更新 | 优化商店装包体验、新增软件包“直装”功能",
                 "link": "https://www.oschina.net/news/435743",
@@ -908,66 +1096,6 @@
                 "link": "https://www.oschina.net/news/435357",
                 "published": "Tue, 21 Apr 2026 10:40:08 +0800",
                 "summary": "月之暗面宣布正式发布并开源其迄今最强的代码模型 Kimi K2.6 模型，“带来行业领先（state-of-the-art）的代码、长程任务执行和 Agent 集群能力”。 目前，Kimi K2.6 已面向所有免费用户、付费订阅用户、Kimi Code 和企业 API 用户开放。 根据介绍，Kimi K2.6 的通用 Agent、代码、视觉理解等综合能力得到全面提升，其中..."
-            },
-            {
-                "title": "中国词元，世界 AI 元语，这是 AI 时代下一个你该关注的焦点",
-                "link": "https://www.oschina.net/news/435355",
-                "published": "Tue, 21 Apr 2026 10:34:04 +0800",
-                "summary": "Chinese Tokens = Chinese Models + Chinese GPUs + Chinese Green Power 中国词元 = 中国模型 + 中国 GPU + 中国绿色能源 当下的 AI 产业正陷入一种危险的“单极依赖”。 当所有人都在谈论大厂的“超级大脑”时，我们似乎默认了一个前提：AI 的未来只能由几家巨头定义的封闭云帝国来承载。 它们拥有最强的模型、最密集的..."
-            },
-            {
-                "title": "Docker 29.4.1 发布",
-                "link": "https://www.oschina.net/news/435354/docker-29-4-1-released",
-                "published": "Tue, 21 Apr 2026 10:28:53 +0800",
-                "summary": "Docker 29.4.1 现已发布，具体更新内容如下： 错误修复和功能增强 containerd image store：修复docker image prune --filter label!=key=value错误地跳过未指定标签的镜像的问题。moby/moby#52338 修复--log-opt &quot;tag={{.ImageID}}&quot;未剥离摘要算法的问题。moby/moby#52343 修复繁忙的 Swarm 节点上间歇性容器启动失败（..."
-            },
-            {
-                "title": "技术日报｜金融终端 FinceptTerminal 连续两日夺冠今日揽星 3109，pi-hole 广告拦截神器突破 5.7 万星",
-                "link": "https://www.oschina.net/news/435347",
-                "published": "Tue, 21 Apr 2026 10:09:32 +0800",
-                "summary": "🌟 TrendForge 每日精选 - 发现最具潜力的开源项目 📊 今日共收录 9 个热门项目 🌐 智能中文翻译版 - 项目描述已自动翻译，便于理解 🏆 今日最热项目 Top 10 🥇 Fincept-Corporation/FinceptTerminal 项目简介: FinceptTerminal是一款现代金融应用程序，提供先进的市场分析、投资研究及经济数据工具，旨在用户..."
-            },
-            {
-                "title": "苹果换帅：库克 9 月卸任 CEO，特努斯接任",
-                "link": "https://www.oschina.net/news/435346",
-                "published": "Tue, 21 Apr 2026 10:02:33 +0800",
-                "summary": "苹果公司宣布，蒂姆·库克（Tim Cook）将卸任首席执行官一职，并出任苹果公司董事会执行主席。硬件工程高级副总裁约翰·特努斯（John Ternus）将于 2026 年 9 月 1 日接任苹果公司首席执行官。 这是苹果自 2011 年以来首次 CEO 换届。“此次人事变动已获得董事会一致批准，是经过深思熟虑的长期继任计划后做出的决定。”..."
-            },
-            {
-                "title": "DataEase Skills 技能体系上线，DataEase 开源 BI 工具 v2.10.21 LTS 版本发布",
-                "link": "https://my.oschina.net/u/4736111/blog/19585719",
-                "published": "Tue, 21 Apr 2026 09:51:36 +0800",
-                "summary": "在这一版本中，DataEase 推出了 Skills 技能体系，并进行了安全漏洞修复。智能体方面，引入 DataEase Skills 技能体系；图表方面，新增多维散点图支持，支持明细表分页字体大小配置；仪表板 / 数据大屏方面，新增默认标签字体颜色设置功能；移动端方面，新增移动端改密和骨架屏显示功能。..."
-            },
-            {
-                "title": ":fire: SolonCode CLI v2026.4.22 发布（编码智能体）",
-                "link": "https://www.oschina.net/news/435305",
-                "published": "Mon, 20 Apr 2026 23:47:43 +0800",
-                "summary": "1、关于 SolonCode CLI（终端编码智能体） SolonCode CLI 是由杭州无耳科技有限公司，基于 Java + Solon AI 开发的 “终端编码智能体”。基于“全中文”提示词构建。 常见问题：它和 Claude Code 有什么不同？ 功能上很相似，关键差异： 采用 Java 实现，提供基于 Java 的扩展能力，100% 开源。 使用 “全中文” 提示词构..."
-            },
-            {
-                "title": "Vercel 确认遭入侵：第三方 AI 工具成突破口，黑客索要 200 万美元赎金",
-                "link": "https://www.oschina.net/news/434713",
-                "published": "Mon, 20 Apr 2026 19:38:56 +0800",
-                "summary": "云开发平台Vercel近日披露一起安全入侵事件。该公司确认，攻击者通过第三方AI工具Context.ai的Google Workspace OAuth应用获取了初始访问权限，进而入侵内部系统。与此同时，一名自称&quot;ShinyHunters&quot;的黑客声称正在暗网论坛出售窃取的数据，并向Vercel索要200万美元赎金。 Vercel是全球知名的云开发平台，以Next.js React..."
-            },
-            {
-                "title": "通义实验室推出 Fun-ASR1.5，“方言工业级可用”模型",
-                "link": "https://www.oschina.net/news/434699",
-                "published": "Mon, 20 Apr 2026 18:06:00 +0800",
-                "summary": "通义实验室宣布正式推出 Fun-ASR1.5，实现了「方言工业级可用」的语音识别大模型。 Fun-ASR1.5 基于统一的大模型架构，单模型即可无缝覆盖 30 种语言、汉语七大方言体系及 20+ 地方口音，古诗词吟诵也能精准转写。测试显示，典型方言场景字错误率（CER）相对下降 56.2%。目前已有 5 种方言准确率突破 90%，15 种超过 80..."
-            },
-            {
-                "title": "老牌开源项目该不该接受 AI 代码？",
-                "link": "https://my.oschina.net/u/4487475/blog/19585524",
-                "published": "Mon, 20 Apr 2026 17:56:34 +0800",
-                "summary": "对于是否接受由 AI 生成的代码，开源界的 OG 们似乎分成了两大派别。"
-            },
-            {
-                "title": "HarmonyOS 6.1.0(23) Release 版本更新速览，关键技术特性抢先看！",
-                "link": "https://www.oschina.net/news/434695",
-                "published": "Mon, 20 Apr 2026 17:55:20 +0800",
-                "summary": "概述： 今天，HarmonyOS 6.1.0(23) Release 版本正式发布！本次版本更新聚焦系统能力增强、创新场景升级以及开发工具体验优化，带来多项关键能力更新，为开发者打造更高质量应用提供坚实支撑，进一步提升整体开发效率。 从系统能力到创新特性，再到工具链升级，HarmonyOS持续优化开发体验，让应用开发更加高效，用户体验..."
             }
         ]
     }

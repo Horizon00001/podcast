@@ -1,7 +1,10 @@
+import asyncio
 import json
 import pytest
 from pathlib import Path
-from unittest.mock import MagicMock
+from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
+
+from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from app.schemas.script import (
     AudioEffect,
@@ -253,6 +256,55 @@ class TestScriptServiceInitialization:
         service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
 
         assert service.prompt_path == prompt_file
+
+
+class TestScriptServiceFallback:
+    def test_generate_and_save_falls_back_to_run(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test prompt", encoding="utf-8")
+
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+        test_script = PodcastScript(
+            title="Fallback Script",
+            intro="Intro",
+            sections=[
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Hello"),
+                        DialogueTurn(speaker="B", content="Hi there"),
+                    ],
+                )
+            ],
+            total_duration="5分钟",
+        )
+
+        class MockRunStreamResult:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, exc_type, exc, tb):
+                return None
+
+            def stream_output(self, debounce_by=None):
+                async def _raise_unexpected_model_behavior():
+                    raise UnexpectedModelBehavior("streaming failed")
+                    yield  # pragma: no cover
+
+                return _raise_unexpected_model_behavior()
+
+        mock_agent_instance = MagicMock()
+        mock_agent_instance.run_stream = MagicMock(return_value=MockRunStreamResult())
+        mock_agent_instance.run = AsyncMock(return_value=MagicMock(output=test_script))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent_instance)):
+            txt_path, json_path = asyncio.run(service.generate_and_save("some news content"))
+
+        assert txt_path.exists()
+        assert json_path.exists()
+        assert "标题：Fallback Script" in txt_path.read_text(encoding="utf-8")
+        assert mock_agent_instance.run_stream.called
+        assert mock_agent_instance.run.called
 
 
 class TestScriptServiceModelDump:

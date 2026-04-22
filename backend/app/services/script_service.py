@@ -4,6 +4,7 @@ from typing import Awaitable, Callable
 
 import dotenv
 from pydantic_ai import Agent
+from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from app.schemas.script import PodcastScript
 
@@ -31,14 +32,29 @@ class ScriptService:
             )
         return self._agent
 
+    async def _stream_script(self, news_content: str):
+        """Prefer streaming output, then fall back to a blocking run if needed."""
+        try:
+            async with self.agent.run_stream(news_content) as result:
+                latest_script = None
+                async for partial_script in result.stream_output(debounce_by=None):
+                    latest_script = partial_script
+                    yield partial_script
+
+                if latest_script is None:
+                    raise RuntimeError("脚本生成失败：未收到任何有效输出")
+                return
+        except UnexpectedModelBehavior:
+            final_result = await self.agent.run(news_content)
+            yield final_result.output
+
     async def generate_script(self, news_content: str, max_retries: int = 3):
         for attempt in range(max_retries):
 
             try:
-                async with self.agent.run_stream(news_content) as result:
-                    async for partial_script in result.stream_output(debounce_by=None):
-                        yield partial_script
-                    return
+                async for script in self._stream_script(news_content):
+                    yield script
+                return
             except Exception as e:
                 if attempt < max_retries - 1:
                     import asyncio

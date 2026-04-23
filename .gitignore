@@ -32,3 +32,4 @@ Thumbs.db
 # Outputs
 output/
 package-lock.json
+"output/" 

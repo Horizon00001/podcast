@@ -101,6 +101,8 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         const baseUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api/v1', '') || 'http://localhost:8000';
         const fullUrl = podcast.audio_url.startsWith('http') ? podcast.audio_url : `${baseUrl}${podcast.audio_url}`;
         audioRef.current.src = fullUrl;
+       // ✅ 新音频加载后，立即应用当前的播放速度
+        audioRef.current.playbackRate = playbackRate;
       }
     }
     audioRef.current?.play();

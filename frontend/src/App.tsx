@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import { PlayerProvider } from './context/PlayerContext'
 import { UserProvider, useUser } from './context/UserContext'
+import { FavoritesProvider } from './context/FavoritesContext'
 import { GlobalPlayer } from './components/GlobalPlayer'
 
 function Header() {
@@ -20,6 +21,13 @@ function Header() {
       zIndex: 100,
       flexWrap: 'wrap'
     }}>
+      <div style={{ display: 'flex', gap: 'clamp(16px, 4vw, 28px)', alignItems: 'center', flexWrap: 'wrap' }}>
+        <Link to="/" style={linkStyle}>📻 播客库</Link>
+        <Link to="/generate" style={linkStyle}>✨ 生成</Link>
+        <Link to="/subscriptions" style={linkStyle}>📋 订阅</Link>
+        <Link to="/favorites" style={linkStyle}>❤️ 收藏</Link>   {/* 新增 */}
+        <Link to="/settings" style={linkStyle}>⚙️ 设置</Link>
+      </div>
       <div style={{ display: 'flex', gap: 'clamp(16px, 4vw, 28px)', alignItems: 'center', flexWrap: 'wrap' }}>
         <Link to="/" style={linkStyle}>📻 播客库</Link>
         <Link to="/generate" style={linkStyle}>✨ 生成</Link>
@@ -68,17 +76,18 @@ function Header() {
 }
 
 function App() {
-
   return (
     <UserProvider>
       <PlayerProvider>
-        <div style={{ paddingBottom: '100px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <Header />
-          <div style={{ flexGrow: 1 }}>
-            <Outlet />
+        <FavoritesProvider>   {/* ✅ 包裹收藏功能 */}
+          <div style={{ paddingBottom: '100px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <Header />
+            <div style={{ flexGrow: 1 }}>
+              <Outlet />
+            </div>
+            <GlobalPlayer />
           </div>
-          <GlobalPlayer />
-        </div>
+        </FavoritesProvider>
       </PlayerProvider>
     </UserProvider>
   )

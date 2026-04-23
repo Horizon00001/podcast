@@ -4,6 +4,7 @@ import { api } from '../services/api'
 import type { Podcast } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
+import { useFavorites } from '../context/FavoritesContext'
 
 const CATEGORIES = [
   { id: 'all', name: '全部', icon: '📻' },
@@ -15,6 +16,7 @@ const CATEGORIES = [
 ]
 
 export function PodcastListPage() {
+  const {isFavorite, toggleFavorite } = useFavorites();
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -208,10 +210,10 @@ export function PodcastListPage() {
                     👍
                   </button>
                   <button
-                    onClick={() => handleAction(podcast.id, 'favorite')}
+                    onClick={() => toggleFavorite(podcast)}
                     style={{ border: '1px solid var(--border)', background: 'transparent', borderRadius: '20px', padding: '4px 8px', cursor: 'pointer' }}
-                  >
-                    ⭐
+  >
+                    {isFavorite(podcast.id) ? '❤️' : '🤍'}
                   </button>
                   <button
                     onClick={() => handleAction(podcast.id, 'skip')}

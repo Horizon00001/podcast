@@ -62,6 +62,8 @@
 从 `backend/` 目录启动：
 
 ```bash
+# 设置 Python 输出编码为 UTF-8
+set PYTHONIOENCODING=utf-8
 cd backend
 source .venv/bin/activate
 uvicorn app.main:app --reload

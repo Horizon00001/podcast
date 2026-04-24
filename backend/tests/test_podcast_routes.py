@@ -1,3 +1,7 @@
+import json
+import tempfile
+from pathlib import Path
+
 from fastapi.testclient import TestClient
 
 from app.db.init_db import init_db
@@ -147,3 +151,162 @@ def test_create_podcast_invalid_category():
         json={"title": "Test", "category": "tech"},
     )
     assert response.status_code == 201
+
+
+def test_get_podcast_script_success():
+    init_db()
+    _reset_test_data()
+
+    script_data = {
+        "title": "Test Script",
+        "intro": "Welcome",
+        "sections": [
+            {
+                "section_type": "opening",
+                "dialogues": [
+                    {"speaker": "A", "content": "Hello from host.", "emotion": ""},
+                    {"speaker": "B", "content": "Hello from guest.", "emotion": ""},
+                ],
+                "summary": "Opening section",
+            },
+        ],
+        "total_duration": "1min",
+    }
+
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        json.dump(script_data, f)
+        temp_path = f.name
+
+    try:
+        db = SessionLocal()
+        try:
+            podcast = Podcast(
+                title="Test",
+                summary="Summary",
+                audio_url="/audio/test.mp3",
+                script_path=temp_path,
+            )
+            db.add(podcast)
+            db.commit()
+            podcast_id = podcast.id
+        finally:
+            db.close()
+
+        response = client.get(f"/api/v1/podcasts/{podcast_id}/script")
+        assert response.status_code == 200
+        lines = response.json()
+        assert len(lines) == 2
+        assert lines[0]["speaker"] == "host"
+        assert lines[0]["text"] == "Hello from host."
+        assert lines[1]["speaker"] == "guest"
+        assert lines[1]["text"] == "Hello from guest."
+        assert lines[0]["startTime"] == 0
+        assert lines[0]["endTime"] > 0
+        assert lines[1]["startTime"] == lines[0]["endTime"]
+    finally:
+        Path(temp_path).unlink(missing_ok=True)
+
+
+def test_get_podcast_script_not_found():
+    init_db()
+    _reset_test_data()
+
+    response = client.get("/api/v1/podcasts/99999/script")
+    assert response.status_code == 404
+
+
+def test_get_podcast_script_no_script_path():
+    init_db()
+    _reset_test_data()
+
+    db = SessionLocal()
+    try:
+        podcast = Podcast(
+            title="No Script",
+            summary="N/A",
+            audio_url="/audio/test.mp3",
+            script_path="",
+        )
+        db.add(podcast)
+        db.commit()
+        podcast_id = podcast.id
+    finally:
+        db.close()
+
+    response = client.get(f"/api/v1/podcasts/{podcast_id}/script")
+    assert response.status_code == 404
+
+
+def test_get_podcast_script_file_missing():
+    init_db()
+    _reset_test_data()
+
+    db = SessionLocal()
+    try:
+        podcast = Podcast(
+            title="Missing File",
+            summary="N/A",
+            audio_url="/audio/test.mp3",
+            script_path="/nonexistent/path/script.json",
+        )
+        db.add(podcast)
+        db.commit()
+        podcast_id = podcast.id
+    finally:
+        db.close()
+
+    response = client.get(f"/api/v1/podcasts/{podcast_id}/script")
+    assert response.status_code == 404
+
+
+def test_get_podcast_script_prefers_timing_file():
+    """When podcast_timing.json exists, use real durations instead of estimation."""
+    init_db()
+    _reset_test_data()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        script_path = Path(tmpdir) / "podcast_script.json"
+        script_data = {
+            "title": "Test",
+            "intro": "",
+            "sections": [
+                {
+                    "section_type": "opening",
+                    "dialogues": [
+                        {"speaker": "A", "content": "A very long sentence that would be estimated to many seconds.", "emotion": ""},
+                    ],
+                    "summary": "",
+                },
+            ],
+            "total_duration": "1min",
+        }
+        script_path.write_text(json.dumps(script_data))
+
+        timing_path = Path(tmpdir) / "podcast_timing.json"
+        timing_data = [
+            {"item_type": "speech", "speaker": "A", "text": "A very long sentence that would be estimated to many seconds.", "start_ms": 0, "end_ms": 1500, "duration_ms": 1500},
+        ]
+        timing_path.write_text(json.dumps(timing_data))
+
+        db = SessionLocal()
+        try:
+            podcast = Podcast(
+                title="Timing Test",
+                summary="N/A",
+                audio_url="/audio/test.mp3",
+                script_path=str(script_path),
+            )
+            db.add(podcast)
+            db.commit()
+            podcast_id = podcast.id
+        finally:
+            db.close()
+
+        response = client.get(f"/api/v1/podcasts/{podcast_id}/script")
+        assert response.status_code == 200
+        lines = response.json()
+        assert len(lines) == 1
+        # The sentence is 65 chars, which would be estimated to ~16 seconds.
+        # But the timing file says 1.5 seconds.
+        assert lines[0]["startTime"] == 0
+        assert lines[0]["endTime"] == 1500

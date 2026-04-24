@@ -333,3 +333,172 @@ class TestScriptServiceModelDump:
         assert "sections" in data
         assert "total_duration" in data
         assert data["sections"][0]["section_type"] == "main_content"
+
+
+def _make_script(title: str, num_sections: int) -> PodcastScript:
+    """Build a PodcastScript with *num_sections* main_content sections."""
+    sections = []
+    for i in range(num_sections):
+        sections.append(
+            PodcastSection(
+                section_type="main_content",
+                dialogues=[
+                    DialogueTurn(speaker="A", content=f"Section {i} A opening"),
+                    DialogueTurn(speaker="B", content=f"Section {i} B response"),
+                ],
+            )
+        )
+    return PodcastScript(
+        title=title,
+        intro="Intro text",
+        sections=sections,
+        total_duration=f"{num_sections * 3}分钟",
+    )
+
+
+def _make_stream_ctx(scripts: list[PodcastScript]):
+    """Return an async context manager whose stream_output yields each script."""
+
+    class _Ctx:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, exc_type, exc, tb):
+            return None
+
+        async def stream_output(self, debounce_by=None):
+            for s in scripts:
+                yield s
+
+    return _Ctx()
+
+
+class TestScriptServiceStreamingSections:
+    """Test generate_and_save_streaming_sections with mocked agent."""
+
+    def test_no_callback_works(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test", encoding="utf-8")
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+        script = _make_script("Test", 2)
+
+        mock_agent = MagicMock()
+        mock_agent.run_stream = MagicMock(return_value=_make_stream_ctx([script]))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent)):
+            txt_path, json_path = asyncio.run(
+                service.generate_and_save_streaming_sections("news", on_section_ready=None)
+            )
+
+        assert txt_path.exists()
+        assert json_path.exists()
+
+    def test_callback_called_for_stable_sections(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test", encoding="utf-8")
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+
+        # Simulate progressive generation: 1 section → 2 sections → 3 sections.
+        s1 = _make_script("T", 1)
+        s2 = _make_script("T", 2)
+        s3 = _make_script("T", 3)
+
+        mock_agent = MagicMock()
+        mock_agent.run_stream = MagicMock(return_value=_make_stream_ctx([s1, s2, s3]))
+
+        calls = []
+
+        async def cb(index, data, is_streaming):
+            calls.append((index, data["section_type"], is_streaming))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent)):
+            asyncio.run(
+                service.generate_and_save_streaming_sections("news", on_section_ready=cb)
+            )
+
+        # Section 0 flushed when s2 arrives (len=2, flush 0), is_streaming=True
+        # Section 1 flushed when s3 arrives (len=3, flush 1), is_streaming=True
+        # Section 2 flushed after stream ends, is_streaming=False
+        assert len(calls) == 3
+        assert calls[0] == (0, "main_content", True)
+        assert calls[1] == (1, "main_content", True)
+        assert calls[2] == (2, "main_content", False)
+
+    def test_final_sections_flushed_after_stream(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test", encoding="utf-8")
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+
+        # Only one yield with all 3 sections — nothing flushed mid-stream.
+        s_final = _make_script("T", 3)
+        mock_agent = MagicMock()
+        mock_agent.run_stream = MagicMock(return_value=_make_stream_ctx([s_final]))
+
+        calls = []
+
+        async def cb(index, data, is_streaming):
+            calls.append((index, is_streaming))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent)):
+            asyncio.run(
+                service.generate_and_save_streaming_sections("news", on_section_ready=cb)
+            )
+
+        assert len(calls) == 3
+        assert calls == [(0, True), (1, True), (2, False)]
+
+    def test_empty_script_raises(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test", encoding="utf-8")
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+
+        mock_agent = MagicMock()
+        # Stream that yields nothing → final_script stays None.
+        mock_agent.run_stream = MagicMock(return_value=_make_stream_ctx([]))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent)):
+            with pytest.raises(RuntimeError, match="脚本生成失败"):
+                asyncio.run(
+                    service.generate_and_save_streaming_sections("news", on_section_ready=None)
+                )
+
+    def test_fallback_to_run(self, monkeypatch, tmp_path):
+        prompt_file = tmp_path / "prompt.txt"
+        prompt_file.write_text("Test", encoding="utf-8")
+        service = ScriptService(project_root=tmp_path, output_dir=tmp_path / "output")
+
+        fallback_script = _make_script("Fallback", 2)
+
+        class _FailingCtx:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, exc_type, exc, tb):
+                return None
+
+            def stream_output(self, debounce_by=None):
+                async def _raise():
+                    raise UnexpectedModelBehavior("stream failed")
+                    yield
+                return _raise()
+
+        mock_agent = MagicMock()
+        mock_agent.run_stream = MagicMock(return_value=_FailingCtx())
+        mock_agent.run = AsyncMock(return_value=MagicMock(output=fallback_script))
+
+        calls = []
+
+        async def cb(index, data, is_streaming):
+            calls.append((index, data["section_type"], is_streaming))
+
+        with patch.object(type(service), "agent", PropertyMock(return_value=mock_agent)):
+            txt_path, json_path = asyncio.run(
+                service.generate_and_save_streaming_sections("news", on_section_ready=cb)
+            )
+
+        assert mock_agent.run_stream.called
+        assert mock_agent.run.called
+        assert len(calls) == 2
+        assert calls == [(0, "main_content", True), (1, "main_content", False)]
+        assert txt_path.exists()
+        assert json_path.exists()

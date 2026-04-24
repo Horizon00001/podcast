@@ -70,7 +70,7 @@ async def stream_generation_logs(task_id: str) -> StreamingResponse:
             if not task:
                 break
             
-            if task.status in ("succeeded", "failed"):
+            if task.status in ("succeeded", "failed", "cancelled"):
                 yield f"data: {json.dumps(['status', task.status, task.message])}\n\n"
                 break
             
@@ -114,4 +114,17 @@ def get_generation_task(task_id: str):
         topic=task.topic,
         created_at=task.created_at.isoformat(),
         updated_at=task.updated_at.isoformat(),
+    )
+
+
+@router.delete("/{task_id}", response_model=GenerationTriggerResponse)
+def cancel_generation_task(task_id: str):
+    success = generation_service.cancel_task(task_id)
+    if not success:
+        raise HTTPException(status_code=409, detail="任务无法取消（可能已完成或不存在）")
+    task = generation_service.get_task(task_id)
+    return GenerationTriggerResponse(
+        task_id=task.task_id,
+        status=task.status,
+        message=task.message,
     )

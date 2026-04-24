@@ -26,8 +26,18 @@ class EdgeTTSProvider:
         "zh-CN-XiaoyiNeural",
     )
 
+    VOICE_MAP = {
+        "male": "zh-CN-YunxiNeural",
+        "female": "zh-CN-XiaoxiaoNeural",
+    }
+
     def __init__(self, default_voice: str = "zh-CN-XiaoxiaoNeural"):
         self.default_voice = default_voice
+
+    def _resolve_voice(self, voice: str | None) -> str | None:
+        if voice in self.VOICE_MAP:
+            return self.VOICE_MAP[voice]
+        return voice
 
     async def synthesize(
         self,
@@ -44,7 +54,7 @@ class EdgeTTSProvider:
             raise RuntimeError("edge_tts is not installed") from exc
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        voices_to_try = [voice or self.default_voice]
+        voices_to_try = [self._resolve_voice(voice) or self.default_voice]
         for fallback_voice in self.FALLBACK_VOICES:
             if fallback_voice not in voices_to_try:
                 voices_to_try.append(fallback_voice)

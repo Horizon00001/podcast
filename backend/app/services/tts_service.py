@@ -5,19 +5,28 @@ import subprocess
 import shutil
 from pathlib import Path
 
+from app.core.config import settings
+
 from .audio_plan import RenderPlan, RenderPlanItem, RenderPlanner
 from .speech_provider import SpeechProvider, create_speech_provider
 
 
 class TTSService:
+    MUSIC_FILES = [
+        "opening_theme_10s_fadeout.mp3",
+        "background_music.mp3",
+    ]
+
     def __init__(self, output_dir: str | Path, speech_provider: SpeechProvider | None = None):
         self.output_dir = Path(output_dir)
         self.audio_dir = self.output_dir / "audio"
         self.audio_dir.mkdir(parents=True, exist_ok=True)
-        self.opening_music_candidates = [
-            self.audio_dir / "播客音乐_开头10秒_fadeout.mp3",
-            self.audio_dir / "播客音乐.mp3",
-        ]
+        self.assets_audio_dir = settings.project_root / "assets" / "audio"
+        self.opening_music_candidates = []
+        for fname in self.MUSIC_FILES:
+            self.opening_music_candidates.append(self.assets_audio_dir / fname)
+        for fname in self.MUSIC_FILES:
+            self.opening_music_candidates.append(self.audio_dir / fname)
         self._cleanup_old_files()
         self.speech_provider = speech_provider or create_speech_provider()
 
@@ -136,20 +145,23 @@ class TTSService:
     async def _render_plan(self, plan: RenderPlan, output_path: Path, temp_prefix: str) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        try:
-            tasks = [
-                asyncio.to_thread(
-                    self._render_plan_item_sync,
-                    item,
-                    str(self.audio_dir / f"{temp_prefix}_{idx:03d}.mp3"),
-                )
-                for idx, item in enumerate(plan.items)
-            ]
-            rendered_paths = await asyncio.gather(*tasks)
-            temp_files = [str(path) for path in rendered_paths if path]
-            return await self.merge_audio_files(temp_files, output_path=output_path)
-        finally:
-            pass
+        tasks = [
+            asyncio.to_thread(
+                self._render_plan_item_sync,
+                item,
+                str(self.audio_dir / f"{temp_prefix}_{idx:03d}.mp3"),
+            )
+            for idx, item in enumerate(plan.items)
+        ]
+        rendered_paths = await asyncio.gather(*tasks)
+
+        timing_data = self._build_timing_data(plan.items, rendered_paths)
+        timing_path = output_path.parent / f"{output_path.stem}_timing.json"
+        with open(timing_path, "w", encoding="utf-8") as f:
+            json.dump(timing_data, f, ensure_ascii=False, indent=2)
+
+        temp_files = [str(path) for path in rendered_paths if path]
+        return await self.merge_audio_files(temp_files, output_path=output_path)
 
     def _render_plan_item_sync(self, item: RenderPlanItem, temp_filename: str) -> Path | None:
         if item.item_type == "speech":
@@ -268,6 +280,36 @@ class TTSService:
     @staticmethod
     def _seconds_to_ms(seconds: float) -> int:
         return int(max(seconds, 0) * 1000)
+
+    def _build_timing_data(self, items: list[RenderPlanItem], rendered_paths: list) -> list[dict]:
+        timing = []
+        cumulative_ms = 0
+
+        for item, path in zip(items, rendered_paths):
+            if path is not None:
+                duration_ms = self._seconds_to_ms(self._probe_audio_duration_seconds(Path(str(path))))
+            elif item.item_type == "speech":
+                duration_ms = 0
+            else:
+                duration_ms = item.duration_ms or 0
+
+            entry = {
+                "item_type": item.item_type,
+                "start_ms": cumulative_ms,
+                "end_ms": cumulative_ms + duration_ms,
+                "duration_ms": duration_ms,
+            }
+            if item.speaker:
+                entry["speaker"] = item.speaker
+            if item.text:
+                entry["text"] = item.text
+            if item.metadata:
+                entry["metadata"] = item.metadata
+
+            timing.append(entry)
+            cumulative_ms += duration_ms
+
+        return timing
 
     def _render_silence(self, output_path: Path, duration_ms: int) -> Path:
         duration_sec = max(duration_ms, 1) / 1000

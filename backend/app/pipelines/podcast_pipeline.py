@@ -1,4 +1,5 @@
 import asyncio
+import json
 from pathlib import Path
 from typing import Any, Callable
 
@@ -21,7 +22,32 @@ from app.services.script_service import ScriptService
 from app.services.tts_service import TTSService
 
 
-async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], Any] = print):
+def _save_combined_timing(audio_dir: Path, group_dir: Path, filename: str) -> None:
+    timing_files = sorted(audio_dir.glob("section_*_timing.json"))
+    if not timing_files:
+        return
+
+    combined = []
+    cumulative_offset = 0
+
+    for tf in timing_files:
+        with open(tf, "r", encoding="utf-8") as f:
+            section_timing = json.load(f)
+
+        for entry in section_timing:
+            entry["start_ms"] += cumulative_offset
+            entry["end_ms"] += cumulative_offset
+            combined.append(entry)
+
+        if section_timing:
+            cumulative_offset = section_timing[-1]["end_ms"]
+
+    output_path = group_dir / filename
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(combined, f, ensure_ascii=False, indent=2)
+
+
+async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], Any] = print, check_cancelled: Callable[[], bool] | None = None):
     base_dir = Path(__file__).resolve().parents[3]
     config_path = base_dir / "config" / "feed.json"
     output_dir = base_dir / "output"
@@ -40,6 +66,10 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
     fetch_rss_feeds(config_path, output_dir)
     if not rss_data_path.exists():
         raise FileNotFoundError(f"未生成 RSS 数据文件: {rss_data_path}")
+
+    if check_cancelled and check_cancelled():
+        log("\n[取消] 任务已取消，停止执行")
+        raise asyncio.CancelledError("任务已取消")
 
     log("\n[2/4] 分类并聚类新闻")
     all_items = load_rss_items(rss_data_path)
@@ -111,6 +141,7 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
         section_files = await asyncio.gather(*section_tasks)
         log(f"[Merge Start] {group_label} merging {len(section_files)} section files")
         await tts_service.merge_section_audio_files(section_files)
+        _save_combined_timing(tts_service.audio_dir, group_dir, "podcast_timing.json")
         log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
         generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
 
@@ -135,6 +166,10 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
 
     if tasks:
         await asyncio.gather(*tasks)
+
+    if check_cancelled and check_cancelled():
+        log("\n[取消] 任务已取消，停止执行")
+        raise asyncio.CancelledError("任务已取消")
 
     if generated_links:
         used_link_set.update(generated_links)

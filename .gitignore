@@ -29,6 +29,12 @@ Thumbs.db
 # Env
 .env
 
+# Claude Code
+.claude/
+
+# Coverage
+*.coverage
+.coverage
+
 # Outputs
-output/
-*.mp3
+output/*

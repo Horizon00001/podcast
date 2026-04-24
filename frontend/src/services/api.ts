@@ -1,4 +1,4 @@
-import type { Podcast, RecommendationResponse } from '../types/podcast'
+import type { Podcast, RecommendationResponse, ScriptLine } from '../types/podcast'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000/api/v1'
 export const MEDIA_BASE_URL = BASE_URL.replace('/api/v1', '')
@@ -95,4 +95,10 @@ export const api = {
     const url = `${BASE_URL}/generation/${taskId}/stream`
     return new EventSource(url)
   },
+  cancelGeneration: (taskId: string) =>
+    request<{ task_id: string; status: string; message: string }>(`/generation/${taskId}`, {
+      method: 'DELETE',
+    }),
+  getPodcastScript: (id: number) =>
+    request<ScriptLine[]>(`/podcasts/${id}/script`),
 }

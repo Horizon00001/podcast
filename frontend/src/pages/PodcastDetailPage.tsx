@@ -19,17 +19,9 @@ export function PodcastDetailPage() {
     api.getPodcast(Number(id))
       .then(async (pod) => {
         setPodcast(pod)
-        // 尝试获取脚本（如果后端未实现，使用 mock）
         try {
-          // 假设后端有接口 /podcasts/${id}/script
-          // 如果没有，暂时用 mock 数据演示
-          const mockScript: ScriptLine[] = [
-            { id: 1, speaker: 'host', text: '大家好，欢迎收听本期科技新闻。', startTime: 0, endTime: 5000 },
-            { id: 2, speaker: 'guest', text: '今天我们来聊聊AI的最新进展。', startTime: 5000, endTime: 10000 },
-            { id: 3, speaker: 'host', text: '首先，OpenAI发布了GPT-5的预览版。', startTime: 10000, endTime: 15000 },
-            { id: 4, speaker: 'guest', text: '这真是一个重磅消息！据说推理能力大幅提升。', startTime: 15000, endTime: 20000 },
-          ]
-          setScriptLines(mockScript)
+          const lines = await api.getPodcastScript(Number(id))
+          setScriptLines(lines)
         } catch {
           setScriptLines([])
         }

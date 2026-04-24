@@ -207,7 +207,7 @@ class TestGenerationServiceRunPipeline:
 
         captured = {}
 
-        async def fake_run_pipeline(topic=None, log_callback=None):
+        async def fake_run_pipeline(topic=None, log_callback=None, check_cancelled=None):
             captured["topic"] = topic
             captured["log_callback"] = log_callback
             log_callback("test log output")
@@ -242,7 +242,7 @@ class TestGenerationServiceRunPipeline:
 
         captured = {}
 
-        async def fake_run_pipeline(topic=None, log_callback=None):
+        async def fake_run_pipeline(topic=None, log_callback=None, check_cancelled=None):
             captured["topic"] = topic
             captured["log_callback"] = log_callback
             log_callback("pipeline step 1")
@@ -272,7 +272,7 @@ class TestGenerationServiceRunPipeline:
 
         monkeypatch.setattr(gs_module, "SessionLocal", _make_test_session_factory(tmp_path))
 
-        async def fake_failing_pipeline(topic=None, log_callback=None):
+        async def fake_failing_pipeline(topic=None, log_callback=None, check_cancelled=None):
             log_callback("starting pipeline...")
             raise ValueError("RSS feed not available")
 

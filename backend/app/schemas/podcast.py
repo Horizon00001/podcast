@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -21,3 +22,11 @@ class PodcastResponse(PodcastBase):
     published_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+class ScriptLineResponse(BaseModel):
+    id: int
+    speaker: Literal["host", "guest"]
+    text: str
+    startTime: int
+    endTime: int

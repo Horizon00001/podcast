@@ -40,10 +40,25 @@ class GenerationService:
     async def _add_log(self, task_id: str, log_message: str):
         self._with_repository(lambda repository: repository.append_log(task_id, log_message))
 
+    def cancel_task(self, task_id: str):
+        task = self.get_task(task_id)
+        if not task:
+            return False
+        if task.status in ("succeeded", "failed", "cancelled"):
+            return False
+        self._update_task(task_id, "cancelled", "任务已取消")
+        return True
+
+    def _check_cancelled(self, task_id: str) -> bool:
+        task = self.get_task(task_id)
+        return task is not None and task.status == "cancelled"
+
     async def run_pipeline(self, task_id: str):
         task = self.get_task(task_id)
         if not task:
             return
+
+        check_cancelled = lambda: self._check_cancelled(task_id)
 
         self._update_task(task_id, "running", f"正在按主题生成节目: {task.topic}")
 
@@ -51,16 +66,24 @@ class GenerationService:
             await run_pipeline(
                 topic=task.topic,
                 log_callback=lambda message: asyncio.create_task(self._add_log(task_id, message)),
+                check_cancelled=check_cancelled,
             )
             podcast_file = self.output_dir / "audio" / "podcast_full.mp3"
             await self.result_service.save_generated_podcast(task_id, self._add_log)
 
             self._update_task(task_id, "succeeded", f"播客生成完成，文件: {podcast_file}")
 
+        except asyncio.CancelledError:
+            await self._add_log(task_id, "任务已被用户取消")
+            self._update_task(task_id, "cancelled", "任务已取消")
         except Exception as exc:
-            error_message = str(exc)
-            await self._add_log(task_id, f"❌ 任务执行异常: {error_message}")
-            self._update_task(task_id, "failed", f"任务执行异常: {exc}")
+            if self._check_cancelled(task_id):
+                await self._add_log(task_id, "任务已被用户取消")
+                self._update_task(task_id, "cancelled", "任务已取消")
+            else:
+                error_message = str(exc)
+                await self._add_log(task_id, f"❌ 任务执行异常: {error_message}")
+                self._update_task(task_id, "failed", f"任务执行异常: {exc}")
 
     def run_task(self, task_id: str):
         asyncio.run(self.run_pipeline(task_id))

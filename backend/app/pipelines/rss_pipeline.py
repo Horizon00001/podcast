@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 import feedparser
+import requests
 
 
 def _fetch_single_feed(feed_info):
@@ -12,7 +13,9 @@ def _fetch_single_feed(feed_info):
     feed_id = feed_info["id"]
 
     try:
-        d = feedparser.parse(feed_url)
+        response = requests.get(feed_url, timeout=5, headers={"User-Agent": "PodcastPipeline/1.0"})
+        response.raise_for_status()
+        d = feedparser.parse(response.content)
 
         if d.get("status") == 404:
             return {"feed_id": feed_id, "feed_name": feed_name, "success": False, "message": "失败 (404)", "feed_data": None}

@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     dashscope_base_websocket_api_url: str = "wss://dashscope.aliyuncs.com/api-ws/v1/inference"
     dashscope_default_male_voice: str = "loongdavid_v2"
     dashscope_default_female_voice: str = "longanwen"
+    script_llm_model: str = "openai:deepseek-chat"
 
     model_config = SettingsConfigDict(
         env_file=".env",

@@ -12,4 +12,6 @@ dashscope==1.25.17
 mutagen==1.47.0
 imageio-ffmpeg==0.6.0
 pytest==8.4.2
+pytest-cov==7.1.0
+coverage==7.13.5
 httpx==0.28.1

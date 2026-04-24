@@ -36,4 +36,9 @@ app.include_router(api_router, prefix=settings.api_prefix)
 # 挂载音频静态文件
 audio_dir = settings.audio_dir
 audio_dir.mkdir(parents=True, exist_ok=True)
+
+podcast_audio_dir = settings.output_dir / "podcasts"
+podcast_audio_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/audio/podcasts", StaticFiles(directory=str(podcast_audio_dir)), name="podcast_audio")
+
 app.mount("/audio", StaticFiles(directory=str(audio_dir)), name="audio")

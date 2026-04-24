@@ -312,6 +312,10 @@ export function GeneratePage() {
             appendOutput(`\n\n❌ 任务失败: ${statusMessage}\n`)
             setIsGenerating(false)
             cleanupEventSource()
+          } else if (status === 'cancelled') {
+            appendOutput(`\n\n🛑 任务已取消\n`)
+            setIsGenerating(false)
+            cleanupEventSource()
           }
         } else if (data[0] === 'error') {
           appendOutput(`\n❌ 系统错误: ${data[1]}\n`)
@@ -342,17 +346,29 @@ export function GeneratePage() {
     setIsGenerating(true)
     resetProgressState()
     appendOutput('🚀 准备启动生成流程...\n')
-    
+
     try {
       const result = await api.triggerGeneration({ rss_source: rssSource, topic })
       setCurrentTaskId(result.task_id)
       appendOutput(`📋 任务已分配: ${result.task_id}\n`)
       appendOutput('⏳ 正在建立实时日志连接...\n\n')
-      
+
       setTimeout(() => startListeningToLogs(result.task_id), 500)
     } catch (error) {
       appendOutput(`❌ 任务提交失败: ${(error as Error).message}\n`)
       setIsGenerating(false)
+    }
+  }
+
+  async function handleCancel() {
+    if (!currentTaskId) return
+    try {
+      const result = await api.cancelGeneration(currentTaskId)
+      appendOutput(`\n\n🛑 ${result.message} (状态: ${result.status})\n`)
+      setIsGenerating(false)
+      cleanupEventSource()
+    } catch (error) {
+      appendOutput(`\n⚠️ 取消失败: ${(error as Error).message}\n`)
     }
   }
 
@@ -393,12 +409,12 @@ export function GeneratePage() {
             </p>
           )}
         </div>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           disabled={isGenerating}
-          style={{ 
-            padding: '8px 20px', 
-            borderRadius: '4px', 
+          style={{
+            padding: '8px 20px',
+            borderRadius: '4px',
             backgroundColor: isGenerating ? '#ccc' : '#007bff',
             color: 'white',
             border: 'none',
@@ -407,6 +423,22 @@ export function GeneratePage() {
         >
           {isGenerating ? '正在执行...' : '触发生成'}
         </button>
+        {isGenerating && (
+          <button
+            type="button"
+            onClick={handleCancel}
+            style={{
+              padding: '8px 20px',
+              borderRadius: '4px',
+              backgroundColor: '#dc3545',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            取消任务
+          </button>
+        )}
       </form>
 
       {(isGenerating || terminalOutput) && (

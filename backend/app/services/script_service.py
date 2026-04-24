@@ -6,6 +6,7 @@ import dotenv
 from pydantic_ai import Agent
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
+from app.core.config import settings
 from app.schemas.script import PodcastScript
 
 
@@ -26,7 +27,7 @@ class ScriptService:
             with open(self.prompt_path, "r", encoding="utf-8") as f:
                 system_prompt = f.read()
             self._agent = Agent(
-                model="openai:deepseek-chat",
+                model=settings.script_llm_model,
                 output_type=PodcastScript,
                 system_prompt=system_prompt,
             )

@@ -6,9 +6,7 @@ export interface Podcast {
   audio_url: string
   script_path: string
   published_at: string
-  category?: string      // 领域：technology, finance, sports, entertainment, health
-  duration?: number      // 秒
-  cover_url?: string
+  category: string      // 领域：technology, finance, sports, entertainment, health
 }
 
 export interface RecommendationItem {

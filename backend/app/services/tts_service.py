@@ -10,15 +10,14 @@ from .speech_provider import SpeechProvider, create_speech_provider
 
 
 class TTSService:
-    OPENING_MUSIC_CANDIDATES = [
-        Path("/home/default/Projects/podcast/播客音乐_开头10秒_fadeout.mp3"),
-        Path("/home/default/Projects/podcast/播客音乐.mp3"),
-    ]
-
     def __init__(self, output_dir: str | Path, speech_provider: SpeechProvider | None = None):
         self.output_dir = Path(output_dir)
         self.audio_dir = self.output_dir / "audio"
         self.audio_dir.mkdir(parents=True, exist_ok=True)
+        self.opening_music_candidates = [
+            self.audio_dir / "播客音乐_开头10秒_fadeout.mp3",
+            self.audio_dir / "播客音乐.mp3",
+        ]
         self._cleanup_old_files()
         self.speech_provider = speech_provider or create_speech_provider()
 
@@ -51,7 +50,7 @@ class TTSService:
         )
 
     def _inject_default_assets(self, plan: RenderPlan) -> RenderPlan:
-        opening_music = self._find_existing_asset(self.OPENING_MUSIC_CANDIDATES)
+        opening_music = self._find_existing_asset(self.opening_music_candidates)
         if not opening_music:
             return plan
 

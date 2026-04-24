@@ -5,6 +5,7 @@ from app.db.session import engine
 
 def run_migrations() -> None:
     _ensure_podcasts_category_column()
+    _ensure_users_preferences_column()
     _ensure_generation_tasks_table()
     _ensure_interactions_columns()
 
@@ -51,6 +52,22 @@ def _ensure_generation_tasks_table() -> None:
         )
 
 
+def _ensure_users_preferences_column() -> None:
+    inspector = inspect(engine)
+    table_names = set(inspector.get_table_names())
+    if "users" not in table_names:
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("users")}
+    if "preferences" in columns:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(
+            text("ALTER TABLE users ADD COLUMN preferences TEXT")
+        )
+
+
 def _ensure_interactions_columns() -> None:
     inspector = inspect(engine)
     table_names = set(inspector.get_table_names())
@@ -65,6 +82,7 @@ def _ensure_interactions_columns() -> None:
         ("context_hour", "ALTER TABLE interactions ADD COLUMN context_hour INTEGER"),
         ("context_weekday", "ALTER TABLE interactions ADD COLUMN context_weekday INTEGER"),
         ("context_bucket", "ALTER TABLE interactions ADD COLUMN context_bucket VARCHAR(32)"),
+        ("recommendation_request_id", "ALTER TABLE interactions ADD COLUMN recommendation_request_id VARCHAR(64)"),
     ]
 
     with engine.begin() as connection:

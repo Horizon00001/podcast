@@ -15,6 +15,7 @@ export type InteractionPayload = {
   context_hour?: number
   context_weekday?: number
   context_bucket?: string
+  recommendation_request_id?: string
 }
 
 class RequestError extends Error {
@@ -42,6 +43,11 @@ export const api = {
   getPodcast: (id: number) => request<Podcast>(`/podcasts/${id}`),
   getRecommendations: (userId: number) =>
     request<RecommendationResponse>(`/recommendations/${userId}`),
+  setPreferences: (userId: number, categories: string[]) =>
+    request<{ ok: boolean; preferences: string[] }>(`/recommendations/${userId}/preferences`, {
+      method: 'POST',
+      body: JSON.stringify({ categories }),
+    }),
   reportInteraction: (payload: InteractionPayload) =>
     request<{ id: number; user_id: number; podcast_id: number; action: string; created_at: string }>('/interactions', {
       method: 'POST',

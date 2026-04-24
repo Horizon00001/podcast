@@ -14,6 +14,7 @@ class InteractionCreate(BaseModel):
     context_hour: int | None = None
     context_weekday: int | None = None
     context_bucket: str | None = None
+    recommendation_request_id: str | None = None
 
 
 class InteractionResponse(InteractionCreate):

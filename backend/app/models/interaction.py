@@ -19,4 +19,5 @@ class Interaction(Base):
     context_hour: Mapped[int | None] = mapped_column(Integer, nullable=True)
     context_weekday: Mapped[int | None] = mapped_column(Integer, nullable=True)
     context_bucket: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    recommendation_request_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)

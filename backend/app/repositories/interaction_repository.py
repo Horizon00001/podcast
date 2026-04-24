@@ -19,6 +19,7 @@ class InteractionRepository:
             context_hour=payload.context_hour,
             context_weekday=payload.context_weekday,
             context_bucket=payload.context_bucket,
+            recommendation_request_id=payload.recommendation_request_id,
         )
         self.db.add(record)
         self.db.commit()

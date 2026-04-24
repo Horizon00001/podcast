@@ -66,7 +66,7 @@ def test_recommendations_cold_start_returns_hot_and_fresh_items():
     response = client.get(f"/api/v1/recommendations/{user_id}")
     assert response.status_code == 200
     payload = response.json()
-    assert payload["strategy"] == "hybrid-v1"
+    assert payload["strategy"] == "warm-up"
     assert isinstance(payload["items"], list)
 
 
@@ -117,7 +117,7 @@ def test_recommendations_personalized_and_skip_filtered():
     response = client.get(f"/api/v1/recommendations/{user_a_id}")
     assert response.status_code == 200
     payload = response.json()
-    assert payload["strategy"] == "hybrid-v1"
+    assert payload["strategy"] == "warm-up"
 
     ids = [item["podcast_id"] for item in payload["items"]]
     scores = [item["score"] for item in payload["items"]]

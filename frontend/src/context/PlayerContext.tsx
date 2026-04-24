@@ -9,7 +9,8 @@ interface PlayerContextType {
   play: (podcast: Podcast) => void;
   pause: () => void;
   toggle: () => void;
-  reportAction: (action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite', podcast?: Podcast, payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string }) => Promise<unknown> | undefined;
+  reportAction: (action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite', podcast?: Podcast, payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string; recommendation_request_id?: string }) => Promise<unknown> | undefined;
+  setRecommendationRequestId: (id: string) => void;
   progress: number; // 0-100
   duration: number; // in seconds
   currentTime: number; // in seconds
@@ -30,6 +31,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [playbackRate, setPlaybackRateState] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sessionIdRef = useRef(`session-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`);
+  const recommendationRequestIdRef = useRef('');
   const currentPodcastRef = useRef<Podcast | null>(null);
   const userRef = useRef(user);
 
@@ -66,6 +68,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           listen_duration_ms: Math.round(audio.currentTime * 1000),
           progress_pct: 100,
           session_id: sessionIdRef.current,
+          recommendation_request_id: recommendationRequestIdRef.current || undefined,
           context_hour: new Date().getHours(),
           context_weekday: new Date().getDay(),
           context_bucket: new Date().getHours() >= 6 && new Date().getHours() < 12
@@ -150,7 +153,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const reportAction = (
     action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite',
     podcast?: Podcast,
-    payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string },
+    payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string; recommendation_request_id?: string },
   ) => {
     const currentUser = userRef.current;
     const target = podcast ?? currentPodcastRef.current;
@@ -164,6 +167,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       listen_duration_ms: payload?.listen_duration_ms,
       progress_pct: payload?.progress_pct,
       session_id: payload?.session_id ?? sessionIdRef.current,
+      recommendation_request_id: payload?.recommendation_request_id || recommendationRequestIdRef.current || undefined,
       context_hour: now.getHours(),
       context_weekday: now.getDay(),
       context_bucket: now.getHours() >= 6 && now.getHours() < 12
@@ -175,6 +179,10 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             : 'night',
     })
   }
+
+  const setRecommendationRequestId = (id: string) => {
+    recommendationRequestIdRef.current = id;
+  };
 
   const setPlaybackRate = (rate: number) => {
     setPlaybackRateState(rate);
@@ -192,6 +200,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         pause,
         toggle,
         reportAction,
+        setRecommendationRequestId,
         progress,
         duration,
         currentTime,

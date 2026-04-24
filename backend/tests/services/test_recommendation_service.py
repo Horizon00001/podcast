@@ -151,44 +151,24 @@ class TestRecommendationServicePureFunctions:
         mock_row.progress_pct = None
         assert self.service._skip_weight(mock_row) == -2.0
 
-    def test_recency_weight_morning_bucket(self):
+    def test_recency_weight_now_approx_one(self):
         mock_row = MagicMock()
-        mock_row.context_bucket = "morning"
-        assert self.service._recency_weight(mock_row) == 1.5
+        mock_row.created_at = datetime.now(UTC)
+        assert self.service._recency_weight(mock_row) == pytest.approx(1.0, rel=0.01)
 
-    def test_recency_weight_commute_bucket(self):
+    def test_recency_weight_7_days_ago(self):
         mock_row = MagicMock()
-        mock_row.context_bucket = "commute"
-        assert self.service._recency_weight(mock_row) == 1.5
+        mock_row.created_at = datetime.now(UTC) - timedelta(days=7)
+        result = self.service._recency_weight(mock_row)
+        expected = math.exp(-1.0)
+        assert abs(result - expected) < 0.01
 
-    def test_recency_weight_evening_bucket(self):
+    def test_recency_weight_14_days_ago(self):
         mock_row = MagicMock()
-        mock_row.context_bucket = "evening"
-        assert self.service._recency_weight(mock_row) == 1.5
-
-    def test_recency_weight_afternoon_bucket(self):
-        mock_row = MagicMock()
-        mock_row.context_bucket = "afternoon"
-        mock_row.context_hour = None
-        assert self.service._recency_weight(mock_row) == 0.5
-
-    def test_recency_weight_night_bucket(self):
-        mock_row = MagicMock()
-        mock_row.context_bucket = "night"
-        mock_row.context_hour = None
-        assert self.service._recency_weight(mock_row) == 0.5
-
-    def test_recency_weight_active_hours(self):
-        mock_row = MagicMock()
-        mock_row.context_bucket = ""
-        mock_row.context_hour = 14
-        assert self.service._recency_weight(mock_row) == 1.0
-
-    def test_recency_weight_inactive_hours(self):
-        mock_row = MagicMock()
-        mock_row.context_bucket = ""
-        mock_row.context_hour = 3
-        assert self.service._recency_weight(mock_row) == 0.5
+        mock_row.created_at = datetime.now(UTC) - timedelta(days=14)
+        result = self.service._recency_weight(mock_row)
+        expected = math.exp(-2.0)
+        assert abs(result - expected) < 0.01
 
     def test_build_sequence_score_empty(self):
         podcasts = []
@@ -303,7 +283,7 @@ class TestRecommendationServiceWithDB:
 
         result = service.get_recommendations(user.id, limit=10)
 
-        assert result.strategy == "hybrid-v1"
+        assert result.strategy == "cold-start"
         assert len(result.items) == 2  # Both podcasts returned
         # Scores should be sorted descending
         scores = [item.score for item in result.items]
@@ -357,7 +337,7 @@ class TestRecommendationServiceWithDB:
 
         result = service.get_recommendations(user.id, limit=10)
 
-        assert result.strategy == "hybrid-v1"
+        assert result.strategy == "warm-up"
         assert all(item.podcast_id != p2.id for item in result.items)
 
     def test_skip_early_filtered_late_not_filtered(self, db_session):
@@ -406,7 +386,7 @@ class TestRecommendationServiceWithDB:
 
         assert p1.id in podcast_ids
         assert p2.id in podcast_ids
-        assert result.strategy == "hybrid-v1"
+        assert result.strategy == "warm-up"
 
     def test_reason_text_with_sequence_arg(self, db_session):
         service = RecommendationService(db_session)

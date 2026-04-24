@@ -15,13 +15,22 @@ const CATEGORIES = [
   { id: 'health', name: '健康', icon: '💪' },
 ]
 
+const ONBOARDED_KEY = 'podcast_onboarded'
+const PREFERENCE_CATEGORIES = CATEGORIES.filter(c => c.id !== 'all')
+
 export function PodcastListPage() {
   const {isFavorite, toggleFavorite } = useFavorites();
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
+  const [recommendationRequestId, setRecommendationRequestId] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [error, setError] = useState('')
-  const { currentPodcast, isPlaying, play, toggle, reportAction } = usePlayer()
+  const [strategy, setStrategy] = useState('')
+  const [showPrefModal, setShowPrefModal] = useState(false)
+  const [isEditingPrefs, setIsEditingPrefs] = useState(false)
+  const [pickedTags, setPickedTags] = useState<string[]>([])
+  const [saving, setSaving] = useState(false)
+  const { currentPodcast, isPlaying, play, toggle, reportAction, setRecommendationRequestId: setPlayerRecommendationRequestId } = usePlayer()
   const { user, loading: userLoading } = useUser()
 
   useEffect(() => {
@@ -33,7 +42,16 @@ export function PodcastListPage() {
   useEffect(() => {
     if (!user) return
     api.getRecommendations(user.id)
-      .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
+      .then((response) => {
+        setRecommendedIds(response.items.map((item) => item.podcast_id))
+        setRecommendationRequestId(response.request_id)
+        setPlayerRecommendationRequestId(response.request_id)
+        setStrategy(response.strategy)
+        if (response.strategy === 'cold-start' && !localStorage.getItem(ONBOARDED_KEY)) {
+          setShowPrefModal(true)
+          setIsEditingPrefs(false)
+        }
+      })
       .catch((e) => setError((e as Error).message))
   }, [user])
 
@@ -47,7 +65,7 @@ export function PodcastListPage() {
     } else {
       play(podcast)
       if (user) {
-        void reportAction('play', podcast, { listen_duration_ms: 0, progress_pct: 0 })
+        void reportAction('play', podcast, { listen_duration_ms: 0, progress_pct: 0, recommendation_request_id: recommendationRequestId })
       }
     }
   }
@@ -55,11 +73,75 @@ export function PodcastListPage() {
   const handleAction = (podcastId: number, action: 'like' | 'favorite' | 'skip') => {
     if (!user) return
     const podcast = podcasts.find((item) => item.id === podcastId)
-    const result = reportAction(action, podcast, { listen_duration_ms: 0, progress_pct: action === 'skip' ? 0 : 0 })
+    const result = reportAction(action, podcast, {
+      listen_duration_ms: 0,
+      progress_pct: action === 'skip' ? 0 : 0,
+      recommendation_request_id: recommendationRequestId,
+    })
     if (result) {
       void result
         .then(() => api.getRecommendations(user.id))
-        .then((response) => setRecommendedIds(response.items.map((item) => item.podcast_id)))
+        .then((response) => {
+          setRecommendedIds(response.items.map((item) => item.podcast_id))
+          setRecommendationRequestId(response.request_id)
+          setPlayerRecommendationRequestId(response.request_id)
+          setStrategy(response.strategy)
+        })
+        .catch((e) => setError((e as Error).message))
+    }
+  }
+
+  const toggleTag = (tagId: string) => {
+    setPickedTags((prev) =>
+      prev.includes(tagId) ? prev.filter((t) => t !== tagId) : [...prev, tagId]
+    )
+  }
+
+  const handleSavePreferences = async () => {
+    if (!user || pickedTags.length === 0) return
+    setSaving(true)
+    try {
+      await api.setPreferences(user.id, pickedTags)
+      localStorage.setItem(ONBOARDED_KEY, '1')
+      setShowPrefModal(false)
+      const resp = await api.getRecommendations(user.id)
+      setRecommendedIds(resp.items.map((item) => item.podcast_id))
+      setRecommendationRequestId(resp.request_id)
+      setPlayerRecommendationRequestId(resp.request_id)
+      setStrategy(resp.strategy)
+    } catch (e) {
+      setError((e as Error).message)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const handleSkipOnboarding = () => {
+    localStorage.setItem(ONBOARDED_KEY, '1')
+    setShowPrefModal(false)
+  }
+
+  const handleOpenPrefEditor = () => {
+    setIsEditingPrefs(true)
+    setPickedTags([])
+    setShowPrefModal(true)
+  }
+
+  const handleFavoriteToggle = (podcastId: number) => {
+    const podcast = podcasts.find((item) => item.id === podcastId)
+    if (!podcast || !user) return
+    const wasFavorite = isFavorite(podcastId)
+    toggleFavorite(podcast)
+    if (!wasFavorite) {
+      void reportAction('favorite', podcast, {
+        recommendation_request_id: recommendationRequestId,
+      })?.then(() => api.getRecommendations(user.id))
+        .then((response) => {
+          setRecommendedIds(response.items.map((item) => item.podcast_id))
+          setRecommendationRequestId(response.request_id)
+          setPlayerRecommendationRequestId(response.request_id)
+          setStrategy(response.strategy)
+        })
         .catch((e) => setError((e as Error).message))
     }
   }
@@ -73,8 +155,115 @@ export function PodcastListPage() {
       <h1 style={{ fontSize: '32px', marginBottom: '24px' }}>我的播客库</h1>
 
       <div style={{ marginBottom: '20px', color: 'var(--text)' }}>
-        {userLoading ? '正在同步用户身份...' : `当前推荐用户：${user?.username ?? '未设置'}`}
+        {userLoading
+          ? '正在同步用户身份...'
+          : `当前推荐用户：${user?.username ?? '未设置'}${strategy ? ` · 推荐策略：${strategy}` : ''}`}
+        {user && (
+          <button
+            onClick={handleOpenPrefEditor}
+            style={{
+              marginLeft: '12px',
+              padding: '4px 12px',
+              borderRadius: '12px',
+              border: '1px solid var(--border)',
+              background: 'transparent',
+              color: 'var(--text)',
+              cursor: 'pointer',
+              fontSize: '12px',
+            }}
+          >
+            编辑偏好
+          </button>
+        )}
       </div>
+
+      {showPrefModal && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.55)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              background: 'var(--bg)',
+              borderRadius: '20px',
+              padding: '32px',
+              maxWidth: '480px',
+              width: '90%',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.25)',
+            }}
+          >
+            <h2 style={{ margin: '0 0 8px', fontSize: '22px' }}>{isEditingPrefs ? '编辑偏好' : '欢迎来到 AI 播客'}</h2>
+            <p style={{ margin: '0 0 20px', color: 'var(--text)', fontSize: '14px' }}>
+              {isEditingPrefs
+                ? '调整你感兴趣的话题，推荐会同步更新'
+                : '选几个你感兴趣的话题，我会为你推荐更合口味的播客内容'}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '24px' }}>
+              {PREFERENCE_CATEGORIES.map((cat) => {
+                const active = pickedTags.includes(cat.id)
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => toggleTag(cat.id)}
+                    style={{
+                      padding: '8px 16px',
+                      borderRadius: '40px',
+                      border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
+                      background: active ? 'var(--accent-bg)' : 'transparent',
+                      color: active ? 'var(--accent)' : 'var(--text)',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                    }}
+                  >
+                    <span>{cat.icon}</span> {cat.name}
+                  </button>
+                )
+              })}
+            </div>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+              <button
+                onClick={isEditingPrefs ? (() => setShowPrefModal(false)) : handleSkipOnboarding}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '20px',
+                  border: '1px solid var(--border)',
+                  background: 'transparent',
+                  color: 'var(--text)',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                }}
+              >
+                {isEditingPrefs ? '取消' : '先看看'}
+              </button>
+              <button
+                onClick={handleSavePreferences}
+                disabled={pickedTags.length === 0 || saving}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '20px',
+                  border: 'none',
+                  background: pickedTags.length > 0 ? 'var(--accent)' : 'var(--border)',
+                  color: 'white',
+                  cursor: pickedTags.length > 0 ? 'pointer' : 'not-allowed',
+                  fontSize: '14px',
+                }}
+              >
+                {saving ? '保存中...' : isEditingPrefs ? '保存偏好' : '开启个性化推荐'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {recommendedPodcasts.length > 0 && (
         <section style={{ marginBottom: '28px' }}>
@@ -210,7 +399,7 @@ export function PodcastListPage() {
                     👍
                   </button>
                   <button
-                    onClick={() => toggleFavorite(podcast)}
+                    onClick={() => handleFavoriteToggle(podcast.id)}
                     style={{ border: '1px solid var(--border)', background: 'transparent', borderRadius: '20px', padding: '4px 8px', cursor: 'pointer' }}
   >
                     {isFavorite(podcast.id) ? '❤️' : '🤍'}

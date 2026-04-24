@@ -20,6 +20,7 @@ export interface RecommendationItem {
 export interface RecommendationResponse {
   user_id: number
   strategy: string
+  request_id: string
   items: RecommendationItem[]
 }
 

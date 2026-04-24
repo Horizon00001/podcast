@@ -3,8 +3,8 @@ from pathlib import Path
 
 from app.core.config import settings
 from app.db.session import SessionLocal
+from app.pipelines.podcast_pipeline import run_pipeline
 from app.repositories.generation_task_repository import GenerationTaskRepository
-from app.services.generation_pipeline import GenerationPipelineRunner
 from app.services.generation_result_service import GenerationResultService
 
 
@@ -13,7 +13,6 @@ class GenerationService:
         self.project_root = settings.project_root
         self.config_path = settings.feed_config_path
         self.output_dir = settings.output_dir
-        self.pipeline_runner = GenerationPipelineRunner(self.project_root, self.output_dir)
         self.result_service = GenerationResultService(self.output_dir)
         self._session_factory = SessionLocal
 
@@ -47,23 +46,19 @@ class GenerationService:
             return
 
         self._update_task(task_id, "running", f"正在按主题生成节目: {task.topic}")
-        
+
         try:
-            podcast_file = await self.pipeline_runner.run(
-                task.topic,
-                lambda message: self._add_log(task_id, message),
+            await run_pipeline(
+                topic=task.topic,
+                log_callback=lambda message: asyncio.create_task(self._add_log(task_id, message)),
             )
+            podcast_file = self.output_dir / "audio" / "podcast_full.mp3"
             await self.result_service.save_generated_podcast(task_id, self._add_log)
-            
+
             self._update_task(task_id, "succeeded", f"播客生成完成，文件: {podcast_file}")
-             
+
         except Exception as exc:
             error_message = str(exc)
-            if error_message.startswith("执行失败，退出码:"):
-                await self._add_log(task_id, f"❌ {error_message}")
-                self._update_task(task_id, "failed", error_message)
-                return
-
             await self._add_log(task_id, f"❌ 任务执行异常: {error_message}")
             self._update_task(task_id, "failed", f"任务执行异常: {exc}")
 

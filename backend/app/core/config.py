@@ -53,9 +53,4 @@ class Settings(BaseSettings):
     def topics_config_path(self) -> Path:
         return self.project_root / "config" / "topics.json"
 
-    @property
-    def pipeline_module(self) -> str:
-        return "app.cli"
-
-
 settings = Settings()

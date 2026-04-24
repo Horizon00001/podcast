@@ -27,6 +27,7 @@ cd backend && source .venv/bin/activate
 uvicorn app.main:app --reload          # 开发服务器
 pytest                                  # 运行所有测试
 pytest tests/test_health.py             # 单个测试文件
+pytest tests/test_tts_provider.py      # TTS provider 测试
 
 # Frontend
 cd frontend
@@ -36,6 +37,10 @@ npm run lint && npm run build           # 检查 + 构建
 
 # Standalone 管道（无需 Web UI）
 cd /home/default/Projects/podcast/backend && python -m app.cli run-pipeline
+# 或分步执行：
+python -m app.cli fetch-rss
+python -m app.cli generate-text
+python -m app.cli synthesize-tts
 ```
 
 ## 关键约定
@@ -58,6 +63,12 @@ cd /home/default/Projects/podcast/backend && python -m app.cli run-pipeline
 - `config/topics.json` - 话题定义
 - `prompt.txt` - AI 生成规则（pydantic-ai 读取）
 - `.env` - 环境变量（DashScope API key 等）
+
+### 注意事项
+- `requirements.txt` 可能缺少某些依赖（如 dashscope 版本问题）
+- `frontend/package.json` 定义了实际的 npm scripts
+- `AGENTS.md` 是开发者笔记的权威来源
+- API keys 暴露需轮换
 
 ## 数据库模型
 

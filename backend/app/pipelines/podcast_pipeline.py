@@ -1,5 +1,6 @@
 import asyncio
 from pathlib import Path
+from typing import Any, Callable
 
 from app.pipelines.episode_planner import (
     PENDING_GROUPS_FILENAME,
@@ -20,7 +21,7 @@ from app.services.script_service import ScriptService
 from app.services.tts_service import TTSService
 
 
-async def run_pipeline(topic: str = "daily-news"):
+async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], Any] = print):
     base_dir = Path(__file__).resolve().parents[3]
     config_path = base_dir / "config" / "feed.json"
     output_dir = base_dir / "output"
@@ -28,12 +29,12 @@ async def run_pipeline(topic: str = "daily-news"):
     podcasts_dir = output_dir / "podcasts"
     pending_groups_path = podcasts_dir / PENDING_GROUPS_FILENAME
 
-    print("=" * 50)
-    print("开始执行播客生成全流程（4 步）")
-    print("=" * 50)
+    log_callback("=" * 50)
+    log_callback("开始执行播客生成全流程（4 步）")
+    log_callback("=" * 50)
 
     def log(message: str):
-        print(message, flush=True)
+        log_callback(message)
 
     log("\n[1/4] 抓取 RSS 数据")
     fetch_rss_feeds(config_path, output_dir)
@@ -52,7 +53,7 @@ async def run_pipeline(topic: str = "daily-news"):
     fresh_items = [item for item in fresh_items if item.get("link") not in consumed_link_set]
 
     grouped_items = merge_clusters_by_signature(group_items_for_podcasts(fresh_items))
-    print(f"已分类到类别数: {len(grouped_items)}")
+    log_callback(f"已分类到类别数: {len(grouped_items)}")
 
     generated_links = set()
 
@@ -141,9 +142,9 @@ async def run_pipeline(topic: str = "daily-news"):
     log("\n[4/4] 保存待处理分组和使用记录")
     save_pending_groups(remaining_pending, sorted(used_link_set), pending_groups_path)
 
-    print("\n" + "=" * 50)
-    print("全流程执行完成")
-    print(f"RSS 数据: {rss_data_path}")
-    print(f"播客目录: {podcasts_dir}")
-    print(f"待补充文件: {pending_groups_path}")
-    print("=" * 50)
+    log_callback("\n" + "=" * 50)
+    log_callback("全流程执行完成")
+    log_callback(f"RSS 数据: {rss_data_path}")
+    log_callback(f"播客目录: {podcasts_dir}")
+    log_callback(f"待补充文件: {pending_groups_path}")
+    log_callback("=" * 50)

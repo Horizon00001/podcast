@@ -198,50 +198,95 @@ class TestGenerationTaskModel:
         assert updated_task.updated_at >= original_updated
 
 
-class TestGenerationPipelineRunner:
-    """GenerationPipelineRunner 集成测试."""
+class TestGenerationServiceRunPipeline:
+    """GenerationService.run_pipeline 直接调用测试."""
 
-    def test_pipeline_runner_import(self):
-        """测试可以导入 PipelineRunner."""
-        from app.services.generation_pipeline import GenerationPipelineRunner
+    def test_run_pipeline_direct_call(self, monkeypatch):
+        """测试 run_pipeline 被直接调用而非通过子进程."""
+        from app.pipelines import podcast_pipeline
 
-        assert GenerationPipelineRunner is not None
+        captured = {}
 
-    def test_pipeline_runner_init(self):
-        """测试 PipelineRunner 初始化."""
-        from app.services.generation_pipeline import GenerationPipelineRunner
+        async def fake_run_pipeline(topic=None, log_callback=None):
+            captured["topic"] = topic
+            captured["log_callback"] = log_callback
+            log_callback("test log output")
 
-        runner = GenerationPipelineRunner(Path("/tmp"), Path("/tmp/output"))
-        assert runner is not None
+        monkeypatch.setattr(podcast_pipeline, "run_pipeline", fake_run_pipeline)
 
-    def test_pipeline_runner_has_run_method(self):
-        """测试 PipelineRunner 有 run 方法."""
-        from app.services.generation_pipeline import GenerationPipelineRunner
+        async def _run():
+            await podcast_pipeline.run_pipeline(topic="tech", log_callback=lambda msg: captured.setdefault("logs", []).append(msg))
 
-        runner = GenerationPipelineRunner(Path("/tmp"), Path("/tmp/output"))
-        assert hasattr(runner, "run")
-        assert callable(runner.run)
+        asyncio.run(_run())
 
-    def test_pipeline_runner_invokes_cli_module(self, monkeypatch):
-        """测试 PipelineRunner 通过 app.cli 启动子进程."""
-        from app.services.generation_pipeline import GenerationPipelineRunner
+        assert captured["topic"] == "tech"
+        assert captured["log_callback"] is not None
+        assert "test log output" in captured.get("logs", [])
 
-        runner = GenerationPipelineRunner(Path("/tmp/project"), Path("/tmp/project/output"))
-        add_log = AsyncMock()
+    def test_run_pipeline_default_log_callback(self, monkeypatch):
+        """测试 run_pipeline 默认使用 print 作为日志回调."""
+        from app.pipelines.podcast_pipeline import run_pipeline
+        import inspect
 
-        mock_process = MagicMock()
-        mock_process.stdout = MagicMock()
-        mock_process.stdout.read = AsyncMock(side_effect=[b"CLI output\n", b""])
-        mock_process.wait = AsyncMock(return_value=None)
-        mock_process.returncode = 0
+        sig = inspect.signature(run_pipeline)
+        params = sig.parameters
+        assert "log_callback" in params
+        assert params["log_callback"].default == print
 
-        create_exec = AsyncMock(return_value=mock_process)
-        monkeypatch.setattr("app.services.generation_pipeline.asyncio.create_subprocess_exec", create_exec)
+    def test_generation_service_calls_run_pipeline_directly(self, monkeypatch, tmp_path):
+        """测试 GenerationService 直接调用 run_pipeline 而非子进程."""
+        from app.services import generation_service as gs_module
+        from app.services.generation_service import GenerationService
 
-        result = asyncio.run(runner.run("daily-news", add_log))
+        monkeypatch.setattr(gs_module, "SessionLocal", _make_test_session_factory(tmp_path))
 
-        assert result == Path("/tmp/project/output/audio/podcast_full.mp3")
-        create_exec.assert_awaited_once()
-        called_args = create_exec.call_args.args
-        assert called_args[1:7] == ("-u", "-m", "app.cli", "run-pipeline", "--topic", "daily-news")
-        assert any("CLI output" in str(call.args[0]) for call in add_log.await_args_list)
+        captured = {}
+
+        async def fake_run_pipeline(topic=None, log_callback=None):
+            captured["topic"] = topic
+            captured["log_callback"] = log_callback
+            log_callback("pipeline step 1")
+            log_callback("pipeline step 2")
+
+        monkeypatch.setattr(gs_module, "run_pipeline", fake_run_pipeline)
+
+        service = GenerationService()
+        task_id = "test-task-direct"
+        service.create_task("default", "tech", task_id)
+
+        async def _run():
+            await service.run_pipeline(task_id)
+
+        asyncio.run(_run())
+
+        assert captured["topic"] == "tech"
+        assert captured["log_callback"] is not None
+
+        updated_task = service.get_task(task_id)
+        assert updated_task.status == "succeeded"
+
+    def test_generation_service_handles_pipeline_error(self, monkeypatch, tmp_path):
+        """测试直接调用时 pipeline 异常能被正确处理."""
+        from app.services import generation_service as gs_module
+        from app.services.generation_service import GenerationService
+
+        monkeypatch.setattr(gs_module, "SessionLocal", _make_test_session_factory(tmp_path))
+
+        async def fake_failing_pipeline(topic=None, log_callback=None):
+            log_callback("starting pipeline...")
+            raise ValueError("RSS feed not available")
+
+        monkeypatch.setattr(gs_module, "run_pipeline", fake_failing_pipeline)
+
+        service = GenerationService()
+        task_id = "test-task-failing"
+        service.create_task("default", "tech", task_id)
+
+        async def _run():
+            await service.run_pipeline(task_id)
+
+        asyncio.run(_run())
+
+        updated_task = service.get_task(task_id)
+        assert updated_task.status == "failed"
+        assert "RSS feed not available" in updated_task.message

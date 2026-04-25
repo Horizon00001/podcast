@@ -105,6 +105,16 @@ class TestGenerationResultService:
         assert (tmp_path / "audio" / "podcast_task-1.mp3").exists()
         assert (tmp_path / "audio" / "podcast_task-1.json").exists()
 
+    def test_normalize_display_title_falls_back_for_slug(self):
+        assert GenerationResultService._normalize_display_title(
+            "21-tim-cook-is-stepping-down-as-ceo-of-apple"
+        ) == "本期新闻深度解读"
+
+    def test_normalize_display_title_keeps_chinese_title(self):
+        assert GenerationResultService._normalize_display_title(
+            "苹果权力结构生变，Tim Cook 时代走到哪一步"
+        ) == "苹果权力结构生变，Tim Cook 时代"
+
     def test_save_exception_handled(self, tmp_path):
         script = {"title": "Test"}
         (tmp_path / "podcast_script.json").write_text(

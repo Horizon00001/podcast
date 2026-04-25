@@ -17,9 +17,24 @@ interface PlayerContextType {
   seek: (time: number) => void;
   playbackRate: number;
   setPlaybackRate: (rate: number) => void;
+  error: string;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
+
+function normalizeAudioPath(audioUrl: string) {
+  if (!audioUrl) return '';
+  if (audioUrl.startsWith('http')) return audioUrl;
+  if (audioUrl.startsWith('/audio/podcasts/')) return audioUrl;
+
+  const legacyPodcastMatch = audioUrl.match(/^\/audio\/([^/]+)\/(.+)\/podcast_full\.mp3$/);
+  if (legacyPodcastMatch) {
+    const [, category, slug] = legacyPodcastMatch;
+    return `/audio/podcasts/${category}/${slug}/audio/podcast_full.mp3`;
+  }
+
+  return audioUrl;
+}
 
 export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useUser();
@@ -29,6 +44,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [playbackRate, setPlaybackRateState] = useState(1);
+  const [error, setError] = useState('');
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sessionIdRef = useRef(`session-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`);
   const recommendationRequestIdRef = useRef('');
@@ -46,6 +62,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio();
+      audioRef.current.preload = 'auto';
     }
 
     const audio = audioRef.current;
@@ -56,7 +73,13 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
 
     const handleLoadedMetadata = () => {
+      setError('');
       setDuration(audio.duration);
+    };
+
+    const handleError = () => {
+      setIsPlaying(false);
+      setError('当前播客音频加载失败，请稍后重试');
     };
 
     const handleEnded = () => {
@@ -88,28 +111,56 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     audio.addEventListener('timeupdate', updateProgress);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
 
     return () => {
       audio.removeEventListener('timeupdate', updateProgress);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
     };
   }, []);
 
   const play = (podcast: Podcast) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const normalizedAudioUrl = normalizeAudioPath(podcast.audio_url);
+    if (!normalizedAudioUrl) {
+      setCurrentPodcast(podcast);
+      setIsPlaying(false);
+      setDuration(0);
+      setCurrentTime(0);
+      setProgress(0);
+      setError('当前播客暂无可用音频');
+      audio.pause();
+      audio.removeAttribute('src');
+      audio.load();
+      return;
+    }
+
     if (currentPodcast?.id !== podcast.id) {
       setCurrentPodcast(podcast);
-      if (audioRef.current) {
-        // Handle media base URL if needed
-        const baseUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api/v1', '') || 'http://localhost:8000';
-        const fullUrl = podcast.audio_url.startsWith('http') ? podcast.audio_url : `${baseUrl}${podcast.audio_url}`;
-        audioRef.current.src = fullUrl;
-       // ✅ 新音频加载后，立即应用当前的播放速度
-        audioRef.current.playbackRate = playbackRate;
-      }
+      setError('');
+      // Handle media base URL if needed
+      const baseUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api/v1', '') || 'http://localhost:8000';
+      const fullUrl = normalizedAudioUrl.startsWith('http') ? normalizedAudioUrl : `${baseUrl}${normalizedAudioUrl}`;
+      audio.src = fullUrl;
+      audio.currentTime = 0;
+      audio.preload = 'auto';
+      // 新音频加载后，立即应用当前的播放速度
+      audio.playbackRate = playbackRate;
+      audio.load();
     }
-    audioRef.current?.play();
-    setIsPlaying(true);
+
+    void audio.play().then(() => {
+      setError('');
+      setIsPlaying(true);
+    }).catch((error) => {
+      setIsPlaying(false);
+      setError('当前播客暂时无法播放，请检查音频文件是否存在');
+      console.error('音频播放失败', error);
+    });
   };
 
   const pause = () => {
@@ -131,8 +182,12 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         listen_duration_ms: Math.round((audioRef.current?.currentTime ?? 0) * 1000),
         progress_pct: progress,
       })
-      audioRef.current?.play();
-      setIsPlaying(true);
+      void audioRef.current?.play().then(() => {
+        setIsPlaying(true);
+      }).catch((error) => {
+        setIsPlaying(false);
+        console.error('音频继续播放失败', error);
+      })
     }
   };
 
@@ -207,6 +262,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         seek,
         playbackRate,
         setPlaybackRate,
+        error,
       }}
     >
       {children}

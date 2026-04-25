@@ -46,7 +46,14 @@ def get_topic_options():
 @router.post("/trigger", response_model=GenerationTriggerResponse)
 def trigger_generation(payload: GenerationTriggerRequest, background_tasks: BackgroundTasks):
     task_id = str(uuid.uuid4())
-    task = generation_service.create_task(payload.rss_source, payload.topic, task_id)
+    task = generation_service.create_task(
+        payload.rss_source,
+        payload.topic,
+        task_id,
+        user_id=payload.user_id,
+        use_subscriptions=payload.use_subscriptions,
+        custom_rss=[feed.model_dump() for feed in payload.custom_rss],
+    )
     background_tasks.add_task(generation_service.run_task, task_id)
     return GenerationTriggerResponse(
         task_id=task.task_id,

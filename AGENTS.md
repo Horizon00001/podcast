@@ -1,60 +1,71 @@
 # AGENTS.md
 
 ## Scope
-- This repo is split into a Python backend in `backend/`, a Vite React frontend in `frontend/`, and backend CLI commands in `backend/app/cli`. There is no monorepo task runner.
+- Repo split: `backend/` FastAPI app + CLI, `frontend/` standalone Vite/React app. No monorepo task runner.
 
 ## Source Of Truth
-- Treat executable config as authoritative over docs. The root `README.md` is partially aspirational: it mentions routes and files that do not all match the current code.
-- There are no repo-local OpenCode, Cursor, Copilot, Claude, CI, or pre-commit instruction files as of now.
+- Prefer executable config over docs. `README.md` and `CLAUDE.md` contain useful context, but some route and workflow details are stale.
+- `frontend/README.md` is the default Vite template and can be ignored.
 
-## Backend
-- Backend app entrypoint is `backend/app/main.py`; run it from `backend/` with `uvicorn app.main:app --reload`.
-- `Settings` loads `.env` from the current working directory. For backend runs from `backend/`, keep the env file there or export vars in the shell.
-- Default database URL is `sqlite:///./podcast.db`, so the active SQLite file is relative to the process cwd. Running from `backend/` uses `backend/podcast.db`.
-- Startup always calls `init_db()`, which runs `Base.metadata.create_all()` and then `run_migrations()`. Expect schema side effects on app start and in tests.
-- Static audio is served from `/audio` using the repo root `output/audio` directory, not `backend/output`.
+## Required Runtime
+- Always use `backend/.venv/bin/python` for backend commands. The global Python environments are missing backend deps such as `pydantic_ai` and `dashscope`.
+- Run backend commands from `backend/`. `Settings` loads `.env` from the current working directory.
 
-## Python Runtime
-- **Always use the backend venv Python**: `/home/default/Projects/podcast/backend/.venv/bin/python`
-- The root conda env (`/home/default/miniconda3/`, Python 3.13) and system pip (Python 3.8) both lack `pydantic_ai` and other deps. Using the wrong Python causes `ModuleNotFoundError: pydantic_ai` or `dashscope`.
-- Activate venv: `cd backend && source .venv/bin/activate`
-- Key binaries in `.venv/bin/`: `python`, `pytest`, `uvicorn`, `dashscope`
-- Venv packages installed during development: `dashscope` (upgraded to 1.25.17), `mutagen`, `imageio_ffmpeg`
-- `requirements.txt` lags behind: `dashscope` listed as `1.24.2` but installed as `1.25.17`; `mutagen` and `imageio_ffmpeg` not listed at all
+## Backend Entry Points
+- API app entrypoint: `backend/app/main.py`. Start with `cd backend && source .venv/bin/activate && uvicorn app.main:app --reload`.
+- CLI entrypoint: `cd backend && python -m app.cli --help`.
+- Useful focused CLI commands:
+  - `python -m app.cli fetch-rss`
+  - `python -m app.cli generate-text --topic daily-news`
+  - `python -m app.cli synthesize-tts --json-path output/podcast_script.json --output-dir output`
+  - `python -m app.cli run-pipeline --topic daily-news`
 
-## TTS Provider Abstraction
-- `SpeechProvider` protocol in `backend/app/services/speech_provider.py` defines `async synthesize(text, output_path, voice, style)`.
-- `create_speech_provider()` reads `TTS_PROVIDER` env var (`dashscope` or `edge`).
-- `DashScopeTTSProvider` uses Alibaba DashScope `cosyvoice-v2`; `EdgeTTSProvider` is the fallback.
-- Voice resolution: `voice="male"` → `loongdavid_v2`; `voice="female"` or unset → `longanwen`.
-- DashScope config lives in `.env`, `.env.example`, and `backend/app/core/config.py`; all must be kept in sync.
+## Config And Paths
+- Default DB URL is `sqlite:///./podcast.db`, so the live SQLite file depends on cwd. Running from `backend/` uses `backend/podcast.db`.
+- App startup always runs schema init plus migrations via `bootstrap_database()`. Expect DB side effects on app import/start.
+- Repo-root paths matter:
+  - RSS config: `config/feed.json`
+  - Topics: `config/topics.json`
+  - LLM prompt: `prompt.txt`
+  - Generated output: `output/`
+- Static audio mounts from repo-root output, not backend-local paths:
+  - `/audio` -> `output/audio`
+  - `/audio/podcasts` -> `output/podcasts`
 
-## Pipeline
-- The generation API shells out to `python -m app.cli run-pipeline` from `backend/` and streams stdout over SSE.
-- The CLI pipeline actually runs 4 steps (comment says `[1/3]` — out of date).
-- Pipeline inputs/outputs: `config/feed.json`, `prompt.txt`, `output/audio/`.
-- `config/feed.json` has one enabled source `espn-rpm`; frontend source picker reads it via `/api/v1/generation/sources`.
-- Script generation uses `pydantic-ai` with `openai:deepseek-chat` and reads `prompt.txt` from repo root.
-- TTS synthesis requires external `ffmpeg`; both the service class and root script call it via `subprocess.run(...)`.
-- `TTSService` (`backend/app/services/tts_service.py`) constructs `audio_dir` as `output_dir / "audio"`. Callers should pass the parent `output/` dir, not `output/audio/`.
+## Pipeline Gotchas
+- The generation flow is a real 4-step pipeline in `backend/app/pipelines/podcast_pipeline.py`, not 3 steps.
+- Generation API behavior depends on the CLI pipeline log format. `frontend/src/pages/GeneratePage.tsx` parses exact markers like `[1/4]`, `[组开始]`, `[Script Start]`, `[TTS Done]`, `[Group Done]`. If you change backend log text, update the frontend parser too.
+- `TTSService` expects an output parent dir and creates its own `audio/` subdir. Pass `output/`, not `output/audio/`.
+- `ffmpeg` is required for audio merge steps.
+
+## AI And TTS
+- Script generation uses `pydantic-ai` with model `openai:deepseek-chat` from `backend/app/core/config.py`.
+- TTS provider is selected by `TTS_PROVIDER` (`dashscope` or `edge`).
+- Voice mapping is non-obvious: `male -> loongdavid_v2`, `female` or unset -> `longanwen`.
 
 ## Frontend
-- Standalone npm project in `frontend/`; run all npm commands from that directory.
-- Main router at `frontend/src/router/index.tsx`; `App.tsx` wraps routes with `UserProvider` and `PlayerProvider` and renders the persistent `GlobalPlayer`.
-- API base URL: `http://localhost:8000/api/v1` in `frontend/src/services/api.ts`. Media URLs drop the `/api/v1` prefix.
-- Generate page consumes SSE from `/generation/{task_id}/stream`; changing status/log behavior requires verifying `GeneratePage.tsx` SSE format.
+- Run all npm commands from `frontend/`.
+- Main API client is `frontend/src/services/api.ts`.
+- Default API base URL is `VITE_API_BASE_URL ?? http://localhost:8000/api/v1`.
+- Media URLs intentionally strip `/api/v1` via `MEDIA_BASE_URL`; do not prepend the API prefix to audio asset URLs.
+- Main router lives in `frontend/src/router/index.tsx`.
 
 ## Verification
-- Backend tests: from `backend/`, run `pytest`.
-- Focused tests: `pytest tests/test_health.py`, `tests/test_generation_routes.py`, `tests/test_podcast_routes.py`, `tests/test_recommendation_routes.py`.
-- TTS provider tests: `pytest tests/test_tts_provider.py`.
-- Frontend: from `frontend/`, run `npm run lint` and `npm run build` (build first runs `tsc -b`).
-- No frontend test runner configured.
-
-## Security Note
-- API keys (DashScope, MiniMax, etc.) may have been exposed in chat or written to `.env`. Rotate before production use.
+- Backend test root is fixed by `backend/pytest.ini`; run tests from `backend/`.
+- Common backend checks:
+  - `pytest`
+  - `pytest tests/test_health.py -v`
+  - `pytest tests/test_generation_routes.py -v`
+  - `pytest tests/test_podcast_routes.py -v`
+  - `pytest tests/test_recommendation_routes.py -v`
+  - `pytest tests/test_tts_provider.py -v`
+- Backend tests use in-memory SQLite with `StaticPool` in `backend/tests/conftest.py`; they do not reuse `backend/podcast.db`.
+- Frontend checks:
+  - `npm run lint`
+  - `npm run build`
+  - `npm test`
+- `npm run build` runs `tsc -b` before Vite build.
 
 ## Working Notes
-- `frontend/README.md` is the default Vite template and is not project guidance.
-- `package-lock.json` exists at both the repo root and `frontend/`, but only `frontend/package.json` defines actual npm scripts and dependencies.
-- Generated artifacts under `output/` are git-ignored; do not treat them as source files unless the task is explicitly about pipeline output.
+- Root `package-lock.json` exists, but the active frontend project is `frontend/package.json`.
+- Generated files under `output/` are artifacts, not source of truth, unless the task is explicitly about pipeline results.

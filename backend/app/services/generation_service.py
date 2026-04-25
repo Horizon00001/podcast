@@ -1,11 +1,12 @@
 import asyncio
+import json
 from pathlib import Path
 
 from app.core.config import settings
 from app.db.session import SessionLocal
 from app.pipelines.podcast_pipeline import run_pipeline
 from app.repositories.generation_task_repository import GenerationTaskRepository
-from app.services.generation_result_service import GenerationResultService
+from app.schemas.user import UserPreferences
 
 
 class GenerationService:
@@ -13,7 +14,6 @@ class GenerationService:
         self.project_root = settings.project_root
         self.config_path = settings.feed_config_path
         self.output_dir = settings.output_dir
-        self.result_service = GenerationResultService(self.output_dir)
         self._session_factory = SessionLocal
 
     def _repository(self) -> GenerationTaskRepository:
@@ -26,16 +26,71 @@ class GenerationService:
         finally:
             db.close()
 
-    def create_task(self, rss_source: str, topic: str, task_id: str):
+    def create_task(
+        self,
+        rss_source: str,
+        topic: str,
+        task_id: str,
+        user_id: int | None = None,
+        use_subscriptions: bool = False,
+        custom_rss: list[dict] | None = None,
+    ):
+        metadata = {
+            "text": f"已接收生成请求: rss_source={rss_source}, topic={topic}",
+            "user_id": user_id,
+            "use_subscriptions": use_subscriptions,
+            "custom_rss": custom_rss or [],
+        }
         return self._with_repository(
             lambda repository: repository.create(
                 task_id=task_id,
                 rss_source=rss_source,
                 topic=topic,
                 status="queued",
-                message=f"已接收生成请求: rss_source={rss_source}, topic={topic}",
+                message=json.dumps(metadata, ensure_ascii=False),
             )
         )
+
+    def _task_metadata(self, task) -> dict:
+        try:
+            payload = json.loads(task.message or "{}")
+            return payload if isinstance(payload, dict) else {}
+        except (json.JSONDecodeError, TypeError):
+            return {}
+
+    def _load_user_preferences(self, user_id: int | None) -> UserPreferences:
+        if user_id is None:
+            return UserPreferences()
+
+        from app.models.user import User
+
+        def load(repository: GenerationTaskRepository):
+            user = repository.db.query(User).filter(User.id == user_id).first()
+            if not user or not user.preferences:
+                return UserPreferences()
+            try:
+                return UserPreferences.model_validate(json.loads(user.preferences))
+            except (json.JSONDecodeError, ValueError, TypeError):
+                return UserPreferences()
+
+        return self._with_repository(load)
+
+    def _resolve_sources(self, task) -> tuple[list[str] | None, list[dict]]:
+        metadata = self._task_metadata(task)
+        use_subscriptions = bool(metadata.get("use_subscriptions"))
+        extra_feeds = list(metadata.get("custom_rss") or [])
+
+        if use_subscriptions:
+            preferences = self._load_user_preferences(metadata.get("user_id"))
+            selected = list(preferences.subscription.rss_sources)
+            extra_feeds.extend(feed.model_dump() for feed in preferences.subscription.custom_rss)
+            selected.extend(feed.get("id") for feed in extra_feeds if feed.get("id"))
+            return selected, extra_feeds
+
+        if task.rss_source and task.rss_source not in ("default", "all", "subscribed"):
+            return [task.rss_source], extra_feeds
+
+        return None, extra_feeds
 
     async def _add_log(self, task_id: str, log_message: str):
         self._with_repository(lambda repository: repository.append_log(task_id, log_message))
@@ -63,15 +118,15 @@ class GenerationService:
         self._update_task(task_id, "running", f"正在按主题生成节目: {task.topic}")
 
         try:
+            selected_source_ids, extra_feeds = self._resolve_sources(task)
             await run_pipeline(
                 topic=task.topic,
+                selected_source_ids=selected_source_ids,
+                extra_feeds=extra_feeds,
                 log_callback=lambda message: asyncio.create_task(self._add_log(task_id, message)),
                 check_cancelled=check_cancelled,
             )
-            podcast_file = self.output_dir / "audio" / "podcast_full.mp3"
-            await self.result_service.save_generated_podcast(task_id, self._add_log)
-
-            self._update_task(task_id, "succeeded", f"播客生成完成，文件: {podcast_file}")
+            self._update_task(task_id, "succeeded", "播客生成完成")
 
         except asyncio.CancelledError:
             await self._add_log(task_id, "任务已被用户取消")

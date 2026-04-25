@@ -1,7 +1,8 @@
-// src/context/FavoritesContext.tsx
-import React, { createContext, useContext, useState, useEffect, } from 'react';
-import type { ReactNode } from 'react'; 
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import type { Podcast } from '../types/podcast';
+import { api } from '../services/api';
+import { useUser } from './UserContext';
 
 interface FavoritesContextType {
   favorites: Podcast[];
@@ -15,43 +16,89 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 
 const STORAGE_KEY = 'podcast_favorites';
 
-export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Podcast[]>(() => {
+function loadFromStorage(): Podcast[] {
+  try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        return JSON.parse(stored);
-      } catch (e) {
-        console.error('Failed to parse favorites', e);
-        return [];
-      }
-    }
+    return stored ? JSON.parse(stored) : [];
+  } catch {
     return [];
-  });
+  }
+}
+
+function saveToStorage(favorites: Podcast[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+}
+
+export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const { user } = useUser();
+  const [favorites, setFavorites] = useState<Podcast[]>(loadFromStorage);
+  const [synced, setSynced] = useState(false);
+
+  // Sync from backend when user becomes available
+  useEffect(() => {
+    if (!user || synced) return;
+    api.getFavorites(user.id)
+      .then(async (items) => {
+        if (items.length === 0) {
+          setFavorites([]);
+          saveToStorage([]);
+          setSynced(true);
+          return;
+        }
+        // Fetch full podcast details for each favorite
+        const podcastIds = items.map((item) => item.podcast_id);
+        const allPodcasts = await api.listPodcasts();
+        const favPodcasts = allPodcasts.filter((p) => podcastIds.includes(p.id));
+        setFavorites(favPodcasts);
+        saveToStorage(favPodcasts);
+        setSynced(true);
+      })
+      .catch(() => {
+        // Backend unavailable, keep localStorage data
+        setSynced(true);
+      });
+  }, [user, synced]);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    saveToStorage(favorites);
   }, [favorites]);
 
-  const isFavorite = (podcastId: number) => favorites.some(fav => fav.id === podcastId);
+  const isFavorite = useCallback(
+    (podcastId: number) => favorites.some((fav) => fav.id === podcastId),
+    [favorites],
+  );
 
-  const addFavorite = (podcast: Podcast) => {
-    if (!isFavorite(podcast.id)) {
-      setFavorites(prev => [...prev, podcast]);
-    }
-  };
+  const addFavorite = useCallback(
+    (podcast: Podcast) => {
+      if (favorites.some((fav) => fav.id === podcast.id)) return;
+      setFavorites((prev) => [...prev, podcast]);
+      if (user) {
+        api.addFavorite(user.id, podcast.id).catch(() => {});
+      }
+    },
+    [favorites, user],
+  );
 
-  const removeFavorite = (podcastId: number) => {
-    setFavorites(prev => prev.filter(p => p.id !== podcastId));
-  };
+  const removeFavorite = useCallback(
+    (podcastId: number) => {
+      setFavorites((prev) => prev.filter((p) => p.id !== podcastId));
+      if (user) {
+        api.removeFavorite(user.id, podcastId).catch(() => {});
+      }
+    },
+    [user],
+  );
 
-  const toggleFavorite = (podcast: Podcast) => {
-    if (isFavorite(podcast.id)) {
-      removeFavorite(podcast.id);
-    } else {
-      addFavorite(podcast);
-    }
-  };
+  const toggleFavorite = useCallback(
+    (podcast: Podcast) => {
+      if (isFavorite(podcast.id)) {
+        removeFavorite(podcast.id);
+      } else {
+        addFavorite(podcast);
+      }
+    },
+    [isFavorite, addFavorite, removeFavorite],
+  );
 
   return (
     <FavoritesContext.Provider value={{ favorites, isFavorite, addFavorite, removeFavorite, toggleFavorite }}>

@@ -16,6 +16,9 @@ class TTSService:
         "opening_theme_10s_fadeout.mp3",
         "background_music.mp3",
     ]
+    TRANSITION_MUSIC_FILES = [
+        "transition_music_5s.mp3",
+    ]
 
     def __init__(self, output_dir: str | Path, speech_provider: SpeechProvider | None = None):
         self.output_dir = Path(output_dir)
@@ -27,6 +30,11 @@ class TTSService:
             self.opening_music_candidates.append(self.assets_audio_dir / fname)
         for fname in self.MUSIC_FILES:
             self.opening_music_candidates.append(self.audio_dir / fname)
+        self.transition_music_candidates = []
+        for fname in self.TRANSITION_MUSIC_FILES:
+            self.transition_music_candidates.append(self.assets_audio_dir / fname)
+        for fname in self.TRANSITION_MUSIC_FILES:
+            self.transition_music_candidates.append(self.audio_dir / fname)
         self._cleanup_old_files()
         self.speech_provider = speech_provider or create_speech_provider()
 
@@ -62,13 +70,14 @@ class TTSService:
         opening_music = self._find_existing_asset(self.opening_music_candidates)
         if not opening_music:
             return plan
+        transition_music = self._find_existing_asset(self.transition_music_candidates)
 
         music_items = [item for item in plan.items if item.item_type == "music"]
         for item in music_items:
-            if item.asset_path is None:
-                item.asset_path = opening_music
-
             role = item.metadata.get("role") if item.metadata else None
+            if item.asset_path is None:
+                item.asset_path = transition_music if role == "transition_sting" and transition_music else opening_music
+
             if role == "opening_theme":
                 if item.volume is None:
                     item.volume = 0.24

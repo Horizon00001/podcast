@@ -1,9 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
 
-// We test the URL-construction logic by extracting the private request function
-// through a lightweight integration approach.
-const MOCK_BASE = 'http://localhost:8000/api/v1'
-
 describe('API client URL construction', () => {
   it('listPodcasts calls /podcasts', async () => {
     const spy = vi.fn().mockResolvedValue({ podcasts: [] })

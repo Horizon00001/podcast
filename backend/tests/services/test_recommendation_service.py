@@ -131,6 +131,19 @@ class TestRecommendationServicePureFunctions:
         mock_row.progress_pct = 5.0
         assert self.service._play_weight(mock_row) == 0.5
 
+    def test_play_weight_zero_duration_and_progress_is_neutral(self):
+        mock_row = MagicMock()
+        mock_row.listen_duration_ms = 0
+        mock_row.progress_pct = 0.0
+        assert self.service._play_weight(mock_row) == 0.0
+
+    def test_zero_duration_play_normalizes_to_pause(self):
+        mock_row = MagicMock()
+        mock_row.action = "play"
+        mock_row.listen_duration_ms = 0
+        mock_row.progress_pct = 0.0
+        assert self.service._normalize_action("play", mock_row) == "pause"
+
     def test_skip_weight_early(self):
         mock_row = MagicMock()
         mock_row.progress_pct = 5.0

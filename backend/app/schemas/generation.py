@@ -2,6 +2,8 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
+from app.schemas.user import CustomRSSSource
+
 
 class RSSSource(BaseModel):
     id: str
@@ -27,6 +29,9 @@ class TopicOptionListResponse(BaseModel):
 class GenerationTriggerRequest(BaseModel):
     rss_source: str = Field(default="default")
     topic: str = Field(default="daily-news")
+    user_id: int | None = None
+    use_subscriptions: bool = False
+    custom_rss: list[CustomRSSSource] = []
 
 
 class GenerationTriggerResponse(BaseModel):

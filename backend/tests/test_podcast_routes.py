@@ -141,6 +141,19 @@ def test_create_podcast_minimal():
     assert payload["category"] == "general"  # default value
 
 
+def test_create_podcast_truncates_long_title():
+    init_db()
+    _reset_test_data()
+
+    response = client.post(
+        "/api/v1/podcasts",
+        json={"title": "这是一个明显超过二十个字的播客标题用于测试截断"},
+    )
+    assert response.status_code == 201
+    payload = response.json()
+    assert payload["title"] == "这是一个明显超过二十个字的播客标题用于测"
+
+
 def test_create_podcast_invalid_category():
     init_db()
     _reset_test_data()

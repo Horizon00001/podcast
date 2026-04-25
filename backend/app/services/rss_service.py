@@ -19,8 +19,13 @@ class RSSService:
         with open(self.config_path, "r", encoding="utf-8") as f:
             return json.load(f).get("feeds", [])
 
-    def fetch_feeds(self) -> list[dict]:
+    def fetch_feeds(self, selected_source_ids: list[str] | None = None, extra_feeds: list[dict] | None = None) -> list[dict]:
         feeds = self.load_config()
+        if extra_feeds:
+            feeds = [*feeds, *extra_feeds]
+        if selected_source_ids is not None:
+            selected_source_ids = set(selected_source_ids)
+            feeds = [f for f in feeds if f.get("id") in selected_source_ids]
         enabled_feeds = [f for f in feeds if f.get("enabled", False)]
 
         all_fetched_data = []
@@ -60,8 +65,8 @@ class RSSService:
             json.dump(data, f, ensure_ascii=False, indent=4)
         return output_path
 
-    def fetch_and_save(self) -> Path:
-        data = self.fetch_feeds()
+    def fetch_and_save(self, selected_source_ids: list[str] | None = None, extra_feeds: list[dict] | None = None) -> Path:
+        data = self.fetch_feeds(selected_source_ids=selected_source_ids, extra_feeds=extra_feeds)
         return self.save_rss_data(data)
 
     def load_rss_news(self, rss_data_path: Path | None = None) -> str:

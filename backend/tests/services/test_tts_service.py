@@ -154,6 +154,38 @@ class TestTTSServiceInjectDefaultAssets:
                 assert item.volume == 0.24
                 assert item.fade_out_ms == 1800
 
+    def test_inject_default_assets_uses_transition_music_for_transition_sting(self, tmp_path):
+        mock_provider = MagicMock()
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=mock_provider)
+
+        opening_music = tmp_path / "opening.mp3"
+        transition_music = tmp_path / "transition_music_5s.mp3"
+        opening_music.write_text("opening", encoding="utf-8")
+        transition_music.write_text("transition", encoding="utf-8")
+
+        plan = RenderPlan(
+            title="Test",
+            items=[
+                RenderPlanItem(item_type="music", metadata={"role": "opening_theme"}),
+                RenderPlanItem(item_type="music", metadata={"role": "transition_sting"}),
+            ],
+        )
+
+        def find_existing_asset(candidates):
+            if candidates == service.opening_music_candidates:
+                return opening_music
+            if candidates == service.transition_music_candidates:
+                return transition_music
+            return None
+
+        with patch.object(TTSService, "_find_existing_asset", side_effect=find_existing_asset):
+            result = service._inject_default_assets(plan)
+
+        assert result.items[0].asset_path == opening_music
+        assert result.items[1].asset_path == transition_music
+        assert result.items[1].volume == 0.20
+        assert result.items[1].fade_out_ms == 350
+
 
 class TestTTSServiceBuildRenderPlan:
     """Test build_render_plan method."""

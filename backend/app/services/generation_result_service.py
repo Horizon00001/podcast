@@ -1,10 +1,12 @@
 import json
+import re
 import shutil
 from pathlib import Path
 
 from app.db.session import SessionLocal
 from app.schemas.podcast import PodcastCreate
 from app.services.podcast_service import PodcastService
+from app.services.podcast_service import normalize_podcast_title
 
 
 class GenerationResultService:
@@ -23,7 +25,7 @@ class GenerationResultService:
             with open(json_path, "r", encoding="utf-8") as file:
                 script_data = json.load(file)
 
-            title = script_data.get("title", "未命名播客")
+            title = self._normalize_display_title(script_data.get("title", "未命名播客"))
             summary = script_data.get("intro", "")
 
             final_audio_name = f"podcast_{task_id}.mp3"
@@ -50,3 +52,19 @@ class GenerationResultService:
 
         except Exception as exc:
             await add_log(task_id, f"❌ 入库过程中出现错误: {str(exc)}")
+
+    @staticmethod
+    def _normalize_display_title(title: str) -> str:
+        normalized = (title or "").strip()
+        if not normalized:
+            return "本期新闻深度解读"
+
+        looks_like_slug = bool(re.fullmatch(r"\d+-[a-z0-9-]+", normalized.lower()))
+        ascii_chars = sum(1 for char in normalized if ord(char) < 128)
+        has_cjk = bool(re.search(r"[\u4e00-\u9fff]", normalized))
+        mostly_ascii = ascii_chars / max(len(normalized), 1) > 0.7
+
+        if looks_like_slug or (mostly_ascii and not has_cjk):
+            return "本期新闻深度解读"
+
+        return normalize_podcast_title(normalized)

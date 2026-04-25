@@ -8,14 +8,18 @@ client = TestClient(app)
 
 
 def test_generation_trigger_and_status(monkeypatch):
+    captured = {}
+
     def fake_run_task(task_id: str):
+        task = generation_service.get_task(task_id)
+        captured["message"] = task.message
         generation_service._update_task(task_id, "succeeded", "mock completed")
 
     monkeypatch.setattr(generation_service, "run_task", fake_run_task)
 
     trigger_response = client.post(
         "/api/v1/generation/trigger",
-        json={"rss_source": "default", "topic": "daily-news"},
+        json={"rss_source": "hacker-news", "topic": "daily-news", "user_id": 1, "use_subscriptions": True},
     )
     assert trigger_response.status_code == 200
     trigger_payload = trigger_response.json()
@@ -27,6 +31,7 @@ def test_generation_trigger_and_status(monkeypatch):
     status_payload = status_response.json()
     assert status_payload["task_id"] == task_id
     assert status_payload["status"] == "succeeded"
+    assert "use_subscriptions" in captured["message"]
 
 
 def test_generation_topics():

@@ -124,6 +124,54 @@ class TestRSSServiceFetchAndSave:
 
         assert isinstance(result, Path)
 
+    def test_fetch_and_save_filters_selected_sources(self, tmp_path):
+        config_file = tmp_path / "feeds.json"
+        config_data = {
+            "feeds": [
+                {"id": "feed1", "name": "Feed 1", "url": "http://example.com/rss1", "enabled": True, "category": "tech"},
+                {"id": "feed2", "name": "Feed 2", "url": "http://example.com/rss2", "enabled": True, "category": "sports"},
+            ]
+        }
+        config_file.write_text(json.dumps(config_data), encoding="utf-8")
+
+        service = RSSService(config_path=config_file, output_dir=tmp_path / "output")
+
+        mock_entry = MagicMock()
+        mock_entry.get.side_effect = lambda key, default=None: {
+            "title": "Selected",
+            "link": "http://example.com/item",
+            "published": "2024-01-01",
+            "summary": "Summary",
+        }.get(key, default)
+        mock_feed = MagicMock()
+        mock_feed.get.return_value = 200
+        mock_feed.entries = [mock_entry]
+
+        with patch("feedparser.parse", return_value=mock_feed) as parse:
+            result = service.fetch_and_save(selected_source_ids=["feed2"])
+
+        loaded = json.loads(result.read_text(encoding="utf-8"))
+        assert parse.call_count == 1
+        assert loaded[0]["id"] == "feed2"
+
+    def test_fetch_and_save_empty_filter_fetches_no_sources(self, tmp_path):
+        config_file = tmp_path / "feeds.json"
+        config_data = {
+            "feeds": [
+                {"id": "feed1", "name": "Feed 1", "url": "http://example.com/rss1", "enabled": True, "category": "tech"},
+            ]
+        }
+        config_file.write_text(json.dumps(config_data), encoding="utf-8")
+
+        service = RSSService(config_path=config_file, output_dir=tmp_path / "output")
+
+        with patch("feedparser.parse") as parse:
+            result = service.fetch_and_save(selected_source_ids=[])
+
+        loaded = json.loads(result.read_text(encoding="utf-8"))
+        assert parse.call_count == 0
+        assert loaded == []
+
 
 class TestRSSServiceInitialization:
     """Test RSSService initialization."""

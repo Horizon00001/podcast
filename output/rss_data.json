@@ -1,967 +1,129 @@
 [
     {
-        "id": "espn-rpm",
-        "name": "ESPN RPM",
-        "category": "sports",
-        "last_updated": "2026-04-25T00:12:51.817562",
-        "entries": [
-            {
-                "title": "'We're just getting going': Is Spire Motorsports NASCAR's next great team?",
-                "link": "https://www.espn.com/racing/nascar/story/_/id/48572580/were-just-getting-going-spire-motorsports-nascar-next-great-team",
-                "published": "Thu, 23 Apr 2026 15:42:08 EST",
-                "summary": "Spire Motorsports was once seen as an underfunded pretender, but with new backers and young talents, it has become NASCAR's biggest up-and-coming team."
-            },
-            {
-                "title": "Gen Z is shaking up IndyCar's Millennial, Gen X established order",
-                "link": "https://www.espn.com/racing/indycar/story/_/id/48504120/gen-z-stars-kyle-kirkwood-alex-palou-christian-lundgaard-david-malukas-shaking-indycar-millennial-gen-x-established-order",
-                "published": "Fri, 17 Apr 2026 10:17:37 EST",
-                "summary": "Experience is invaluable in IndyCar, but with Gen Z drivers first through fourth in the standings, the series is witnessing a changing of the guard."
-            },
-            {
-                "title": "Turkish GP returns to new-look F1 calendar for '27",
-                "link": "https://www.espn.com/f1/story/_/id/48569698/turkish-grand-prix-returns-f1-2027-new-look-calendar-takes-shape",
-                "published": "Fri, 24 Apr 2026 08:59:10 EST",
-                "summary": "The popular Turkish Grand Prix at Istanbul Park will return to the Formula 1 schedule in 2027."
-            },
-            {
-                "title": "McLaren boss: F1 must be open to more changes",
-                "link": "https://www.espn.com/f1/story/_/id/48569105/f1-open-more-changes-positive-rule-tweaks-mclaren-boss-andrea-stella",
-                "published": "Thu, 23 Apr 2026 07:33:19 EST",
-                "summary": "McLaren team principal Andrea Stella has welcomed tweaks to Formula 1's new technical regulations ahead of next month's Miami Grand Prix, but says the sport must remain open to a more extensive rethink of its controversial power units in future seasons."
-            },
-            {
-                "title": "Brown would welcome Horner back to F1",
-                "link": "https://www.espn.com/f1/story/_/id/48568268/zak-brown-welcome-christian-horner-back-f1-rocky-relationship",
-                "published": "Thu, 23 Apr 2026 06:48:18 EST",
-                "summary": "McLaren CEO Zak Brown said he would welcome old foe Christian Horner back into Formula 1 with open arms."
-            },
-            {
-                "title": "Norris: Verstappen exit would be 'a miss' for F1",
-                "link": "https://www.espn.com/f1/story/_/id/48562135/lando-norris-max-verstappen-leaving-f1-mess-sport",
-                "published": "Wed, 22 Apr 2026 15:33:12 EST",
-                "summary": "Lando Norris has said it would be \"a miss\" for Formula 1 if Max Verstappen leaves the sport due to this year's rule changes."
-            },
-            {
-                "title": "Vettel on F1's rules: I sympathise with the drivers",
-                "link": "https://www.espn.com/f1/story/_/id/48558245/sebastian-vettel-f1-2026-rules-sympathise-drivers",
-                "published": "Wed, 22 Apr 2026 03:24:37 EST",
-                "summary": "Four-time world champion Sebastian Vettel has said he sympathises with the current Formula 1 drivers over the controversial new cars."
-            },
-            {
-                "title": "F1 to tweak controversial rule changes",
-                "link": "https://www.espn.com/f1/story/_/id/48542235/formula-1-confirm-rule-tweaks-miami-grand-prix",
-                "published": "Mon, 20 Apr 2026 14:10:59 EST",
-                "summary": "Formula 1 has agreed to a set of rule tweaks to address concerns about its controversial new cars ahead of the Miami Grand Prix on May 3."
-            },
-            {
-                "title": "'Scalpel, not a baseball bat': Wolff on F1 changes",
-                "link": "https://www.espn.com/f1/story/_/id/48540198/toto-wolff-f1-changes-act-scalpel-not-baseball-bat",
-                "published": "Mon, 20 Apr 2026 08:28:36 EST",
-                "summary": "Mercedes team boss Toto Wolff has warned against taking a \"baseball bat\" to Formula 1's controversial 2026 technical regulations, saying he expects Monday's crunch meeting on the rules to end with targeted changes to improve the spectacle."
-            },
-            {
-                "title": "Miami Grand Prix 2026: Race start time, how to watch, full schedule, predictions",
-                "link": "https://www.espn.com/f1/story/_/id/48473473/miami-grand-prix-2026-race-f1-sprint-start-s-how-watch-schedule-usa-tv-channel-live-stream-predictions-results",
-                "published": "Fri, 24 Apr 2026 03:45:19 EST",
-                "summary": "After a five-week break Formula 1 returns to action in Miami for the first American race of the season and the second Sprint weekend."
-            },
-            {
-                "title": "When's the next F1 race, and why is there such a long break?",
-                "link": "https://www.espn.com/f1/story/_/id/48321626/when-next-f1-race-why-such-long-break-bahrain-saudi-arabia-miami-japanese-grand-prix-2026",
-                "published": "Fri, 24 Apr 2026 02:38:15 EST",
-                "summary": "Three races into a new season and an all-new era of regulations, the Formula 1 2026 season has hit an unexpected pause."
-            },
-            {
-                "title": "F1's 2026 rule tweaks: What's changed after driver criticism, and will it make a difference?",
-                "link": "https://www.espn.com/f1/story/_/id/48548710/explained-f1-2026-rule-tweaks-changed-impact-difference-driver-criticism-max-verstappen",
-                "published": "Tue, 21 Apr 2026 06:33:43 EST",
-                "summary": "Formula 1 has delivered a set of rules tweaks to its controversial 2026 regulations -- but what do they mean and will they appease drivers ahead of the Miami GP? ESPN's Laurence Edmondson explains."
-            },
-            {
-                "title": "Domenicali: F1 critics have 'short memories'",
-                "link": "https://www.espn.com/f1/story/_/id/48510456/critics-new-rules-regulations-short-memories-says-f1-boss",
-                "published": "Mon, 20 Apr 2026 05:01:55 EST",
-                "summary": "Critics of Formula 1's new style of racing and its controversial new cars have \"short memories\", according to championship CEO Stefano Domenicali."
-            },
-            {
-                "title": "Driver dies in German race featuring Verstappen",
-                "link": "https://www.espn.com/racing/story/_/id/48524261/driver-dies-nurburgring-juha-miettinen-max-verstappen-adac-24h",
-                "published": "Sat, 18 Apr 2026 17:14:14 EST",
-                "summary": "A driver died following a crash in an endurance sports car race Saturday at the Nürburgring Nordschleife circuit in Germany, where four-time Formula 1 champion Max Verstappen was also preparing to race."
-            },
-            {
-                "title": "Russell: Opportunity to improve regs for Miami",
-                "link": "https://www.espn.com/f1/story/_/id/48512458/george-russell-enough-lowhanging-fruit-improve-f1-regulations-miami-gp",
-                "published": "Sat, 18 Apr 2026 02:05:34 EST",
-                "summary": "Mercedes driver George Russell says Formula 1's drivers are aligned on the changes that should be made to the sport's regulations."
-            },
-            {
-                "title": "Russell: I would understand if Verstappen quit",
-                "link": "https://www.espn.com/f1/story/_/id/48511405/george-russell-says-understand-max-verstappen-quit-f1",
-                "published": "Fri, 17 Apr 2026 08:38:11 EST",
-                "summary": "George Russell said he believes Max Verstappen's recent quit threat is linked to Red Bull's struggles so far this season, but he said he would understand if the four-time champion walked away from Formula 1."
-            },
-            {
-                "title": "Red Bull reshuffle team after tough start to 2026",
-                "link": "https://www.espn.com/f1/story/_/id/48510888/red-bull-reshuffles-technical-department-amid-f1-woes-key-departures",
-                "published": "Fri, 17 Apr 2026 07:08:14 EST",
-                "summary": "Red Bull has announced the appointment of a senior engineer from its junior team Racing Bulls as part of an internal reshuffle of its technical department."
-            },
-            {
-                "title": "Verstappen: 'Stupid' for GP not to join McLaren",
-                "link": "https://www.espn.com/f1/story/_/id/48510561/max-verstappen-gianpiero-lambiases-exit-stupid-not-do-that",
-                "published": "Fri, 17 Apr 2026 06:04:10 EST",
-                "summary": "Max Verstappen said race engineer Gianpiero Lambiase wanted his blessing to move to McLaren before making the decision."
-            },
-            {
-                "title": "'I'm not afraid': Verstappen on Nurburgring",
-                "link": "https://www.espn.com/racing/story/_/id/48501609/im-not-afraid-max-verstappen-not-put-racing-nurburgring",
-                "published": "Thu, 16 Apr 2026 07:02:27 EST",
-                "summary": "Max Verstappen says he is not put off by the dangers of racing at the Nurburgring as he continues his preparations for next month's 24-hour race at the legendary circuit this weekend."
-            }
-        ]
-    },
-    {
-        "id": "techcrunch",
-        "name": "TechCrunch",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.162320",
-        "entries": [
-            {
-                "title": "Nuclear startup X-energy raises $1B in data center-driven IPO",
-                "link": "https://techcrunch.com/2026/04/24/nuclear-startup-x-energy-raises-1b-in-data-center-driven-ipo/",
-                "published": "Fri, 24 Apr 2026 15:06:00 +0000",
-                "summary": "Amazon-backed X-energy was able to raise around 20% more money in its IPO as demand for nuclear power surges."
-            },
-            {
-                "title": "Another spyware maker caught distributing fake Android snooping apps",
-                "link": "https://techcrunch.com/2026/04/24/another-spyware-maker-caught-distributing-fake-android-snooping-apps/",
-                "published": "Fri, 24 Apr 2026 14:17:55 +0000",
-                "summary": "Researchers have found a new case where government authorities used a fake Android app to plant spyware on a target’s phone. The company that allegedly developed the spyware was not previously known to sell this type of software."
-            },
-            {
-                "title": "Uber CTO Praveen Neppalli Naga joins stacked StrictlyVC SF lineup for April 30 event",
-                "link": "https://techcrunch.com/2026/04/24/uber-cto-praveen-neppalli-naga-joins-stacked-strictlyvc-sf-lineup-for-april-30-event/",
-                "published": "Fri, 24 Apr 2026 14:00:00 +0000",
-                "summary": "Surprise! StrictlyVC San Francisco, which will kick off this year’s events lineup for TechCrunch on April 30 at the Sentro Filipino Cultural Center, is getting a new addition to its increasingly stacked lineup of speakers. Uber CTO Praveen Neppalli Naga will join the rest of the lineup to discuss operating at scale in the age of AI."
-            },
-            {
-                "title": "Nothing introduces an AI-powered dictation tool",
-                "link": "https://techcrunch.com/2026/04/24/nothing-introduces-an-ai-powered-dictation-tool/",
-                "published": "Fri, 24 Apr 2026 13:41:42 +0000",
-                "summary": "Nothing's new on-device dictation tool supports over 100 languages."
-            },
-            {
-                "title": "DeepSeek previews new AI model that ‘closes the gap’ with frontier models",
-                "link": "https://techcrunch.com/2026/04/24/deepseek-previews-new-ai-model-that-closes-the-gap-with-frontier-models/",
-                "published": "Fri, 24 Apr 2026 13:30:59 +0000",
-                "summary": "DeepSeek says both models are more efficient and performant than DeepSeek V3.2 due to architectural improvements, and have almost \"closed the gap\" with current leading models, both open and closed, on reasoning benchmarks."
-            },
-            {
-                "title": "In another wild turn for AI chips, Meta signs deal for millions of Amazon AI CPUs",
-                "link": "https://techcrunch.com/2026/04/24/in-another-wild-turn-for-ai-chips-meta-signs-deal-for-millions-of-amazon-ai-cpus/",
-                "published": "Fri, 24 Apr 2026 12:00:00 +0000",
-                "summary": "Meta has commandeered a big chunk of Amazon's homegrown CPUs (not GPUs) for AI agentic workloads, signaling that a new kind of chip race has begun."
-            },
-            {
-                "title": "Porsche is adding an all-electric Cayenne coupe to its lineup",
-                "link": "https://techcrunch.com/2026/04/23/porsche-is-adding-an-all-electric-cayenne-coupe-to-its-lineup/",
-                "published": "Fri, 24 Apr 2026 04:01:00 +0000",
-                "summary": "Porsche will start selling the Cayenne Coupe Electric in late summer."
-            },
-            {
-                "title": "Bob Iger rejoins Thrive Capital as advisor after Disney exit",
-                "link": "https://techcrunch.com/2026/04/23/bob-iger-rejoins-thrive-capital-as-advisor-after-disney-exit/",
-                "published": "Fri, 24 Apr 2026 00:11:25 +0000",
-                "summary": "The former Disney CEO hold a stake in Thrive and has previously held the role of the venture partner at the firm."
-            },
-            {
-                "title": "Authorities arrest special forces soldier who allegedly made $400K on Polymarket bet involving Maduro operation",
-                "link": "https://techcrunch.com/2026/04/23/authorities-arrest-special-forces-soldier-who-allegedly-made-400k-on-polymarket-bet-involving-maduro-operation/",
-                "published": "Thu, 23 Apr 2026 23:32:33 +0000",
-                "summary": "The soldier is accused of using classified government information to inform a wager on the prediction market Polymarket."
-            },
-            {
-                "title": "Redwood Materials loses COO amid layoffs, restructuring",
-                "link": "https://techcrunch.com/2026/04/23/redwood-materials-loses-coo-amid-layoffs-restructuring/",
-                "published": "Thu, 23 Apr 2026 22:44:12 +0000",
-                "summary": "Former Tesla executive Chris Lister is retiring, and at least three other VPs have left Redwood around the recent restructuring, TechCrunch has learned."
-            },
-            {
-                "title": "These are the countries moving to ban social media for children",
-                "link": "https://techcrunch.com/2026/04/23/social-media-ban-children-countries-list/",
-                "published": "Thu, 23 Apr 2026 21:33:51 +0000",
-                "summary": "Australia was the first country to issue a ban in late 2025, aiming to reduce the pressures and risks that young users may face on social media, including cyberbullying, social media addiction, and exposure to predators."
-            },
-            {
-                "title": "Bret Taylor’s Sierra buys YC-backed AI startup Fragment",
-                "link": "https://techcrunch.com/2026/04/23/bret-taylors-sierra-buys-yc-backed-ai-startup-fragment/",
-                "published": "Thu, 23 Apr 2026 21:00:00 +0000",
-                "summary": "Sierra, the AI customer service agent startup founded by technologist Bret Taylor, announced today that it has acquired the YC-backed French startup Fragment."
-            },
-            {
-                "title": "Instagram tests a new ‘Instants’ app for sharing disappearing photos",
-                "link": "https://techcrunch.com/2026/04/23/instagram-tests-a-new-instants-app-for-sharing-disappearing-photos/",
-                "published": "Thu, 23 Apr 2026 20:03:53 +0000",
-                "summary": "The app lets users share disappearing photos with their friends that can be viewed only once and remain available for 24 hours."
-            },
-            {
-                "title": "Meet Noscroll, an AI bot that does your doomscrolling for you",
-                "link": "https://techcrunch.com/2026/04/23/meet-noscroll-an-ai-bot-that-does-your-doomscrolling-for-you/",
-                "published": "Thu, 23 Apr 2026 19:38:25 +0000",
-                "summary": "Noscroll wants to cure doomscrolling with an AI bot that reads the internet for you."
-            },
-            {
-                "title": "Trump’s pick to run US cyber agency CISA asks to drop out",
-                "link": "https://techcrunch.com/2026/04/23/trumps-pick-to-run-us-cyber-agency-cisa-asks-to-drop-out/",
-                "published": "Thu, 23 Apr 2026 19:33:48 +0000",
-                "summary": "Sean Plankey has requested to withdraw his name to run the U.S. cybersecurity agency after a tumultuous year of chaotic temporary leadership."
-            },
-            {
-                "title": "Don’t stop hiring humans — stop hiring the wrong humans, Artisan’s founder says",
-                "link": "https://techcrunch.com/2026/04/23/dont-stop-hiring-humans-stop-hiring-the-wrong-humans-artisans-founder-says/",
-                "published": "Thu, 23 Apr 2026 18:49:38 +0000",
-                "summary": "Artisan may be known for their bold “Stop Hiring Humans” campaign but the reality is every founder needs to assemble the right team if they want to scale."
-            },
-            {
-                "title": "OpenAI releases GPT-5.5, bringing company one step closer to an AI ‘super app’",
-                "link": "https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/",
-                "published": "Thu, 23 Apr 2026 18:29:29 +0000",
-                "summary": "OpenAI says its latest model offers increased capabilities across a broad variety of categories."
-            },
-            {
-                "title": "Meta to cut 10% of jobs, or 8,000 employees, report says",
-                "link": "https://techcrunch.com/2026/04/23/meta-job-cuts-10-percent-8000-employees/",
-                "published": "Thu, 23 Apr 2026 18:08:16 +0000",
-                "summary": "According to an internal memo, Meta plans to begin its sweeping layoffs on May 20."
-            },
-            {
-                "title": "Bluesky now supports better-quality photos",
-                "link": "https://techcrunch.com/2026/04/23/bluesky-now-supports-better-quality-photos/",
-                "published": "Thu, 23 Apr 2026 16:41:14 +0000",
-                "summary": "The max size is now 2MB and max resolution is 4000 x 4000."
-            },
-            {
-                "title": "Microsoft offers buyout for up to 7% of US employees",
-                "link": "https://techcrunch.com/2026/04/23/microsoft-offers-buyout-for-up-to-7-of-u-s-employees/",
-                "published": "Thu, 23 Apr 2026 16:38:49 +0000",
-                "summary": "If a worker's years of service at Microsoft plus their age equals 70 or more, they will be eligible for a voluntary retirement buyout."
-            }
-        ]
-    },
-    {
-        "id": "the-verge",
-        "name": "The Verge",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.771348",
-        "entries": [
-            {
-                "title": "360-degree cameras have a new superpower",
-                "link": "https://www.theverge.com/tech/914730/splatica-gaussian-splats-insta360-antigravity",
-                "published": "2026-04-24T11:30:00-04:00",
-                "summary": "Imagine Google Street View, except you can walk around like it's a video game. Now imagine you don't need to wait for Google to come film because it's completely DIY. Insta360, the leading maker of 360-degree cameras, is now partnered with a 12-person UK startup called Splatica to help creators do just that. Last January, [&#8230;]"
-            },
-            {
-                "title": "Tesla’s Cybercab goes into production — so why is Musk tapping the brakes?",
-                "link": "https://www.theverge.com/transportation/918106/tesla-cybercab-production-robotaxi-elon-musk-earnings",
-                "published": "2026-04-24T11:17:27-04:00",
-                "summary": "Tesla's Cybercab is now in production at the company's Gigafactory in Austin, Texas, but Elon Musk is sounding unusually cautious about the rollout. The robotaxi's start of production was announced Thursday on X, with Tesla posting a video shot from inside a steering wheel-less Cybercab as it drove out of the factory with the caption, [&#8230;]"
-            },
-            {
-                "title": "AirPods, Touch Bars, and the rest of Tim Cook&#8217;s legacy",
-                "link": "https://www.theverge.com/podcast/917965/apple-ceo-cook-ternus-transition",
-                "published": "2026-04-24T10:43:07-04:00",
-                "summary": "We knew at some point Tim Cook would step down from his position as Apple's CEO. Over the last year, it has become increasingly obvious that John Ternus was his likely successor. The news this week was still a surprise, though - and this year's succession could lead to some important changes at the most [&#8230;]"
-            },
-            {
-                "title": "The Trump phone still isn’t real",
-                "link": "https://www.theverge.com/tech/918011/trump-mobile-t1-phone-real-redesign-release-date",
-                "published": "2026-04-24T10:00:00-04:00",
-                "summary": "Where's the Trump phone? We're going to keep talking about it every week. We've reached out, as usual, to ask about the Trump phone's whereabouts. We're back to being ignored, and the phone seems no closer to an actual launch. Last week Trump Mobile overhauled its website, in the process officially revealing the updated design [&#8230;]"
-            },
-            {
-                "title": "I don&#8217;t think Gwyneth Paltrow knows what a peptide is",
-                "link": "https://www.theverge.com/column/918084/optimizer-gwyneth-paltrow-peptides",
-                "published": "2026-04-24T10:00:00-04:00",
-                "summary": "This is Optimizer, a weekly newsletter sent every Friday from Verge senior reviewer Victoria Song that dissects and discusses the latest gizmos and potions that swear they're going to change your life. Opt in for Optimizer here. These days, it seems I cannot escape peptides. Online, I've been assaulted by videos of shirtless Chads injecting [&#8230;]"
-            },
-            {
-                "title": "A new Republican privacy bill could be ‘worse than no standard at all’",
-                "link": "https://www.theverge.com/policy/917828/data-privacy-bill-secure-act-house-state-laws",
-                "published": "2026-04-24T09:00:00-04:00",
-                "summary": "Congress is once again attempting to pass a national data privacy law. But while it would introduce new protections in some states, it would weaken privacy rights in others - and it's missing several elements that privacy advocates deem necessary. The SECURE Data Act is the product of a Republican data privacy working group led [&#8230;]"
-            },
-            {
-                "title": "Musk vs. Altman is here, and it&#8217;s going to get messy",
-                "link": "https://www.theverge.com/ai-artificial-intelligence/917755/musk-altman-openai-xai-gossip",
-                "published": "2026-04-24T08:00:00-04:00",
-                "summary": "Elon Musk cofounded OpenAI, and then flounced off in a huff when he wasn't anointed CEO, leaving Sam Altman as the last power-hungry man standing. Now, Musk is back with a lawsuit, and a trial is scheduled to start in Oakland, California, on April 27th. Theoretically, it's a legal case about whether OpenAI defrauded Musk. [&#8230;]"
-            },
-            {
-                "title": "Instagram has launched another Snapchat clone",
-                "link": "https://www.theverge.com/tech/918061/instagram-instants-app-launch-snapchat-bereal",
-                "published": "2026-04-24T07:37:10-04:00",
-                "summary": "Instagram is testing a new dedicated app that's focused around Snapchat-like photo sharing features. The app, called \"Instants,\" was launched in Italy and Spain yesterday, Business Insider reports, and allows users to send each other disappearing photos that are available for 24 hours and can be viewed only once during that window. The app is [&#8230;]"
-            },
-            {
-                "title": "China’s DeepSeek previews new AI model a year after jolting US rivals",
-                "link": "https://www.theverge.com/ai-artificial-intelligence/918035/deepseek-preview-v4-ai-model",
-                "published": "2026-04-24T05:45:30-04:00",
-                "summary": "Chinese AI company DeepSeek released a preview of its hotly anticipated next-generation AI model V4 on Friday, saying that the open-source model can compete with leading closed-source systems from US rivals including Anthropic, Google, and OpenAI. DeepSeek says V4 marks a major improvement over prior models, especially in coding, a capability that has become central [&#8230;]"
-            },
-            {
-                "title": "Prestigious photo contest answers ‘what is a photo?’",
-                "link": "https://www.theverge.com/gadgets/918016/prestigious-photo-contest-answers-what-is-a-photo",
-                "published": "2026-04-24T05:40:07-04:00",
-                "summary": "We love to muse over how \"real\" photography is defined here at The Verge now that generative AI is so prolific, and the World Press Photo competition might have the answer. The prestigious award celebrates the best of photojournalism, where capturing reality is paramount. The winning entry for 2026 - \"Separated by ICE,\" captured by [&#8230;]"
-            }
-        ]
-    },
-    {
-        "id": "ars-technica",
-        "name": "Ars Technica",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.185297",
-        "entries": [
-            {
-                "title": "Well, this is embarrassing: The Lunar Gateway's primary modules are corroded",
-                "link": "https://arstechnica.com/space/2026/04/well-this-is-embarrassing-the-lunar-gateways-primary-modules-are-corroded/",
-                "published": "Fri, 24 Apr 2026 14:47:19 +0000",
-                "summary": "\"Preliminary findings indicate that the issue likely results from a combination of factors.\""
-            },
-            {
-                "title": "As electric aspirations fade, Porsche sells its stake in Bugatti",
-                "link": "https://arstechnica.com/cars/2026/04/as-electric-aspirations-fade-porsche-sells-its-stake-in-bugatti/",
-                "published": "Fri, 24 Apr 2026 13:54:17 +0000",
-                "summary": "Porsche's stake in Bugatti and Rimac Group have been sold to private equity."
-            },
-            {
-                "title": "Six things I'll remember when I think about Tim Cook's version of Apple",
-                "link": "https://arstechnica.com/gadgets/2026/04/six-things-ill-remember-when-i-think-about-tim-cooks-version-of-apple/",
-                "published": "Fri, 24 Apr 2026 13:40:50 +0000",
-                "summary": "Under Cook, Apple became hugely successful, if not always surprising."
-            },
-            {
-                "title": "Trump administration attempt to gut Endangered Species Act hits roadblock",
-                "link": "https://arstechnica.com/tech-policy/2026/04/trump-administration-attempt-to-gut-endangered-species-act-hits-roadblock/",
-                "published": "Fri, 24 Apr 2026 13:17:00 +0000",
-                "summary": "House vote to defang the Endangered Species Act was unexpectedly cancelled"
-            },
-            {
-                "title": "Rocket Report: Artemis III rocket getting ready; SpaceX is now an AI company",
-                "link": "https://arstechnica.com/space/2026/04/rocket-report-some-canadians-dont-want-a-spaceport-falcon-hits-600-landings/",
-                "published": "Fri, 24 Apr 2026 11:00:36 +0000",
-                "summary": "\"If it doesn’t rely on a solid, there’s no reason why we can’t launch.\""
-            },
-            {
-                "title": "Visitors to this private space station won't be wearing shorts and T-shirts",
-                "link": "https://arstechnica.com/space/2026/04/vast-reveals-flight-suit-tests-timepiece-for-commercial-space-station/",
-                "published": "Thu, 23 Apr 2026 22:14:16 +0000",
-                "summary": "Can you wear white after Labor Day if your destination is Earth orbit?"
-            },
-            {
-                "title": "US accuses China of “industrial-scale” AI theft. China says it’s “slander.”",
-                "link": "https://arstechnica.com/tech-policy/2026/04/us-accuses-china-of-industrial-scale-ai-theft-china-says-its-slander/",
-                "published": "Thu, 23 Apr 2026 21:45:10 +0000",
-                "summary": "Trump-Xi summit may be rocked by US mulling huge sanctions."
-            },
-            {
-                "title": "Carbon nanotube wiring gets closer to competing with copper",
-                "link": "https://arstechnica.com/science/2026/04/researchers-get-carbon-nanotube-wiring-to-conduct-more-like-copper/",
-                "published": "Thu, 23 Apr 2026 21:22:09 +0000",
-                "summary": "While this material degrades over time, it could point to better ones."
-            },
-            {
-                "title": "We still don't have a more precise value for \"Big G\"",
-                "link": "https://arstechnica.com/science/2026/04/we-still-dont-have-a-more-precise-value-for-big-g/",
-                "published": "Thu, 23 Apr 2026 20:57:35 +0000",
-                "summary": "Such experiments bring \"order to the universe, whether or not the number agrees with the expected value.”"
-            },
-            {
-                "title": "In a first, a ransomware family is confirmed to be quantum-safe",
-                "link": "https://arstechnica.com/security/2026/04/now-even-ransomware-is-using-post-quantum-cryptography/",
-                "published": "Thu, 23 Apr 2026 20:41:23 +0000",
-                "summary": "Technically speaking, there's no practical benefit to use PQC. So why is it being used?"
-            },
-            {
-                "title": "RFK Jr.’s rejection of germ theory debunked in Senate hearing",
-                "link": "https://arstechnica.com/health/2026/04/rfk-jr-s-rejection-of-germ-theory-debunked-in-senate-hearing/",
-                "published": "Thu, 23 Apr 2026 18:05:53 +0000",
-                "summary": "Kennedy falsely argues that vaccines did little to lower childhood deaths."
-            },
-            {
-                "title": "Why are the Mac mini and Mac Studio gradually becoming impossible to buy?",
-                "link": "https://arstechnica.com/gadgets/2026/04/apples-m4-mac-mini-including-the-599-one-is-gradually-becoming-impossible-to-buy/",
-                "published": "Thu, 23 Apr 2026 17:06:08 +0000",
-                "summary": "Pending refresh? RAM shortage? AI agents? There are many possible explanations."
-            },
-            {
-                "title": "US Space Command: Russia is now operationalizing co-orbital ASAT weapons",
-                "link": "https://arstechnica.com/space/2026/04/us-space-command-russia-is-now-operationalizing-co-orbital-asat-weapons/",
-                "published": "Thu, 23 Apr 2026 16:52:09 +0000",
-                "summary": "\"They’re putting operational systems up within orbit reach of our high-value satellites.\""
-            },
-            {
-                "title": "Apple stops weirdly storing data that let cops spy on Signal chats",
-                "link": "https://arstechnica.com/tech-policy/2026/04/apple-stops-weirdly-storing-data-that-let-cops-spy-on-signal-chats/",
-                "published": "Thu, 23 Apr 2026 16:37:23 +0000",
-                "summary": "Signal “very happy” Apple fixed bug storing private chats after app was deleted."
-            },
-            {
-                "title": "Eight months early and under budget, the Roman Telescope is ready to launch",
-                "link": "https://arstechnica.com/science/2026/04/eight-months-early-and-under-budget-the-roman-telescope-is-ready-to-launch/",
-                "published": "Thu, 23 Apr 2026 16:27:07 +0000",
-                "summary": "Spy satellite hardware has been repurposed to scan the Universe in the infrared."
-            },
-            {
-                "title": "BMW bumps the 7 Series for 2027, adds all-new battery",
-                "link": "https://arstechnica.com/cars/2026/04/bmw-bumps-the-7-series-for-2027-adds-all-new-battery/",
-                "published": "Thu, 23 Apr 2026 15:01:11 +0000",
-                "summary": "The 2027 7 Series is available as an EV, with an inline-six, or an inline-six PHEV."
-            },
-            {
-                "title": "Greenhouse gases from data center boom could outpace entire nations",
-                "link": "https://arstechnica.com/ai/2026/04/greenhouse-gases-from-data-center-boom-could-outpace-entire-nations/",
-                "published": "Thu, 23 Apr 2026 14:51:16 +0000",
-                "summary": "Plants from OpenAI, Meta, xAI, and Microsoft could emit more than 129M tons annually."
-            },
-            {
-                "title": "Crypto scam lures ships into Strait of Hormuz, falsely promising safe passage",
-                "link": "https://arstechnica.com/security/2026/04/crypto-scam-lures-ships-into-strait-of-hormuz-falsely-promising-safe-passage/",
-                "published": "Wed, 22 Apr 2026 22:07:54 +0000",
-                "summary": "Ship attacked by Iran after possibly falling for safe passage crypto scam."
-            },
-            {
-                "title": "Tesla reports Q1 2026 earnings: Still profitable",
-                "link": "https://arstechnica.com/cars/2026/04/tesla-reports-q1-2026-earnings-still-profitable/",
-                "published": "Wed, 22 Apr 2026 21:16:05 +0000",
-                "summary": "Car sales are up, battery sales and emissions credits are down."
-            },
-            {
-                "title": "Our newsroom AI policy",
-                "link": "https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/",
-                "published": "Wed, 22 Apr 2026 20:40:59 +0000",
-                "summary": "How Ars Technica uses, and doesn't use, generative AI."
-            }
-        ]
-    },
-    {
-        "id": "npr-technology",
-        "name": "NPR Technology",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:52.238496",
-        "entries": [
-            {
-                "title": "'Self-aware' robots can learn complex tasks by watching humans. Is that a good thing?",
-                "link": "https://www.npr.org/2026/04/24/nx-s1-5797863/self-aware-robots-future-laundry-work-home",
-                "published": "Fri, 24 Apr 2026 06:00:00 -0400",
-                "summary": "Scientists say they've made a key breakthrough that would allow robots to figure out complex tasks on their own, but experts say it raises questions about how much risk comes with letting robots be in charge of their own learning. <br />"
-            },
-            {
-                "title": "Trump administration vows crackdown on Chinese firms 'exploiting' U.S. AI models",
-                "link": "https://www.npr.org/2026/04/24/g-s1-118582/administration-crackdown-on-chinese-firms-exploiting-u-s-ai-models",
-                "published": "Fri, 24 Apr 2026 01:21:12 -0400",
-                "summary": "The Trump administration is vowing to crack down on foreign tech companies' exploitation of U.S. artificial intelligence models, singling out China at a time that country is narrowing the gap with the U.S. in the AI race."
-            },
-            {
-                "title": "U.S. soldier charged with using classified information to bet on Maduro's removal",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5797957/maduro-raid-charges-polymarket-insider",
-                "published": "Thu, 23 Apr 2026 19:29:17 -0400",
-                "summary": "It's the first time suspected insider trading on Polymarket has led to criminal charges in the U.S."
-            },
-            {
-                "title": "French police probe suspected weather device tampering after odd Polymarket bet",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5797876/polymarket-paris-weather-bet",
-                "published": "Thu, 23 Apr 2026 18:22:38 -0400",
-                "summary": "The incident is the latest eyebrow-raising bet on Polymarket, as allegations of rigging and manipulation continue to haunt the popular prediction market site."
-            },
-            {
-                "title": "OpenAI is under scrutiny after two mass shooters used ChatGPT to plan attacks",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5794016/openai-is-under-scrutiny-after-two-mass-shooters-used-chatgpt-to-plan-attacks",
-                "published": "Thu, 23 Apr 2026 16:57:43 -0400",
-                "summary": "AI companies are under growing scrutiny over the potential harms chatbots can pose amid investigations into how mass shooters allegedly sought advice from the tools."
-            },
-            {
-                "title": "Maine might soon impose the country's first statewide pause on data centers",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5795655/maine-might-soon-impose-the-countrys-first-statewide-pause-on-data-centers",
-                "published": "Thu, 23 Apr 2026 16:38:21 -0400",
-                "summary": "Maine might become the first place to impose a statewide pause on big data center construction — if the governor signs the bill."
-            },
-            {
-                "title": "Meta will lay off 10% of its staff",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5797855/meta-layoffs-10-percent-staff",
-                "published": "Thu, 23 Apr 2026 16:10:20 -0400",
-                "summary": "The cuts follow losses in two pivotal court cases and the company's push to invest in artificial intelligence."
-            },
-            {
-                "title": "AI's a suck up. Research shows how it flatters and suggests we're not to blame",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5792867/ai-chatbot-flattery-mental-health-risks",
-                "published": "Thu, 23 Apr 2026 06:00:00 -0400",
-                "summary": "The AI models and chatbots that we interact with tend to affirm our feelings and viewpoints — more so than people do, with potentially worrisome consequences."
-            },
-            {
-                "title": "How TikTok is driving American expats to Southeast Asia",
-                "link": "https://www.npr.org/2026/04/23/nx-s1-5763809/tiktok-moving-vietnam-thailand-american-expats",
-                "published": "Thu, 23 Apr 2026 05:00:00 -0400",
-                "summary": "Americans who moved to Vietnam and Thailand say their lives are now lower-stress and lower-cost. But glamorous videos on TikTok don't tell the whole story."
-            },
-            {
-                "title": "Tesla's making money. But it's planning to spend an awful lot more",
-                "link": "https://www.npr.org/2026/04/22/nx-s1-5791653/tesla-earnings-first-quarter-2026",
-                "published": "Wed, 22 Apr 2026 19:23:43 -0400",
-                "summary": "Tesla's profits were up from this time last year. But the company warned investors to prepare for expensive investments in next-generation technology like humanoid robots and AI."
-            }
-        ]
-    },
-    {
-        "id": "sspai",
-        "name": "少数派",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.223383",
-        "entries": [
-            {
-                "title": "本周看什么 | 最近值得一看的 11 部作品",
-                "link": "https://sspai.com/post/109050",
-                "published": "Fri, 24 Apr 2026 18:17:33 +0800",
-                "summary": "📅本周新预告《泥面人》首支预告4月23日，DC新片《泥面人》发布了首支预告，将于10月23日在北美上映。詹姆斯·瓦特金斯执导，汤姆·里斯·哈里斯、娜奥米·阿基、麦克思·明格拉等主演，一位B级片演员给自 ...<a href=\"https://sspai.com/post/109050\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "换了新显示器怎么验？我做了一个开箱即用的全平台屏幕检测工具",
-                "link": "https://sspai.com/post/108455",
-                "published": "Fri, 24 Apr 2026 15:06:50 +0800",
-                "summary": "一站式、在线测试屏幕的各项功能。<a href=\"https://sspai.com/post/108455\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "汇聚热爱，「2050 大会」少数派线下活动邀请你来参与",
-                "link": "https://sspai.com/post/108202",
-                "published": "Fri, 24 Apr 2026 11:25:15 +0800",
-                "summary": "4月24日-4月26日，新一届2050大会将在云栖小镇如期举行。期间，少数派将会组织《少数派的共创时代》社区交流活动，围绕AI降低创造门槛后，从想法到产品落地的真实路径展开讨论。以下是活动的详细信息： ...<a href=\"https://sspai.com/post/108202\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "手机和平板间的新品类：华为 Pura X Max 漫谈",
-                "link": "https://sspai.com/post/109024",
-                "published": "Fri, 24 Apr 2026 09:54:28 +0800",
-                "summary": "折叠屏手机这两年并不太好过。按照IDC的年度报告，2025年中国折叠屏手机市场出货约1001万台，同比增速9.2%，而2024年这个数字还是30.8%——一年之间，增速接近腰斩。而折叠屏手机在全球智能 ...<a href=\"https://sspai.com/post/109024\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "派早报：OpenAI 发布 GPT-5.5 系列模型等",
-                "link": "https://sspai.com/post/109032",
-                "published": "Fri, 24 Apr 2026 08:52:21 +0800",
-                "summary": "汉王发布 Clear7C 彩色墨水屏电纸书、文石发布 Leaf5+ 黑白墨水屏电纸书等。<a href=\"https://sspai.com/post/109032\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "一口春鲜，半是江河半是海",
-                "link": "https://sspai.com/prime/story/recipes-for-spring",
-                "published": "Thu, 23 Apr 2026 18:38:26 +0800",
-                "summary": "都说「人间四月鲜，尝鲜好时节」，说的不仅是各种时令蔬菜上市了，还有经过了一个冬季蛰伏后，开始出现在了菜市场海鲜档口的海鲜与河鲜。虽说现如今，随着时代的发展和科技的进步，我们的人工养殖水平已经日益见长， ...<a href=\"https://sspai.com/prime/story/recipes-for-spring\" target=\"_blank\">查看全文</a><p>本文为会员文章，出自<a href=\"https://sspai.com/prime/precog/single\" target=\"_blank\">《单篇文章》</a>，订阅后可阅读全文。</p>"
-            },
-            {
-                "title": "新玩意 239｜少数派的编辑们最近买了啥？",
-                "link": "https://sspai.com/post/109007",
-                "published": "Thu, 23 Apr 2026 17:42:33 +0800",
-                "summary": "编注：很多读者都会好奇少数派的编辑们到底平时都「买了啥」。我们希望通过「编辑部的新玩意」介绍编辑部成员们最近在用的新奇产品，让他们自己来谈谈这些新玩意的使用体验究竟如何。内容声明：《新玩意》栏目如含有 ...<a href=\"https://sspai.com/post/109007\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "Notion 和 Obsidian 应该怎么选？聊聊我的思考和建议",
-                "link": "https://sspai.com/post/108971",
-                "published": "Thu, 23 Apr 2026 15:12:16 +0800",
-                "summary": "Notion的优缺点Notion的门槛在于，当一个页面被创建，在Notion的整套叙事里，你需要尽快为这个页面找到它在系统中的位置和关系，它是什么、属于哪里、是否和某个具体的任务或项目有关系？尽管你可 ...<a href=\"https://sspai.com/post/108971\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "App+1｜秒看视频参数，我做了个免费的 Mac 小工具",
-                "link": "https://sspai.com/post/108385",
-                "published": "Thu, 23 Apr 2026 11:00:00 +0800",
-                "summary": "视频党狂喜！<a href=\"https://sspai.com/post/108385\" target=\"_blank\">查看全文</a>"
-            },
-            {
-                "title": "派早报：鸿蒙智行发布多款车型、Framework 推出多款新品等",
-                "link": "https://sspai.com/post/108991",
-                "published": "Thu, 23 Apr 2026 08:34:31 +0800",
-                "summary": "海信发布小墨 E5S 系列电视新品、雷蛇推出帝王蝶 Atlas Pro 玻璃鼠标垫等。<a href=\"https://sspai.com/post/108991\" target=\"_blank\">查看全文</a>"
-            }
-        ]
-    },
-    {
         "id": "ithome",
         "name": "IT之家",
         "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.152573",
+        "last_updated": "2026-04-25T16:55:59.628067",
         "entries": [
             {
-                "title": "“大 F”键盘终结：FILCO（斐尔可）母公司 Diatech 宣布停业",
-                "link": "https://www.ithome.com/0/943/372.htm",
-                "published": "Fri, 24 Apr 2026 15:40:48 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，俗称“大 F”的 FILCO（斐尔可）以其 Majestouch“圣手”系列机械键盘闻名，是键盘行业早期的代表性品牌之一，已有 34 年历史。</p><p>不过就在本周三，FILCO 母公司 Diatech 宣布停业，这也意味着<strong>“大 F”键盘已正式退出历史舞台</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/8cc640af-e46c-43ba-b6db-9a6cdfcef44f.jpg?x-bce-process=image/format,f_auto\" /></p><p>Diatech 的停业是<strong>键盘市场整体结构性变化的缩影</strong>：中国制造商近年来推出了一系列价廉物美的轴体开关和完整键盘解决方案，尤其是在磁轴、电感轴领域中国厂商更是位于创新的第一线，这对 FILCO、CHERRY 等品牌带来了严重冲击。</p>"
+                "title": "索尼 SIE 前总裁吉田修平回应主机玩家质疑，称 PC 移植未损害 PS5 销量",
+                "link": "https://www.ithome.com/0/943/471.htm",
+                "published": "Sat, 25 Apr 2026 08:35:53 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，据科技媒体 Wccftech 昨天报道，索尼 SIE 前高管吉田修平最近在 ALT. Games 活动中表示，<strong>尽管少数玩家持续反对</strong>，<strong>但 PC 移植从未损害 PlayStation 品牌</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/f664fe38-f844-4e7a-8071-177df0502324.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家从报道中获悉，PS5 时代来临之前，索尼只在自家主机上发售第一方游戏以推动硬件销量。然而随着 3A 游戏开发成本不断增加，这种策略被迫改变。</p><p>吉田修平对此解释道：“当我负责开发 PlayStation 第一方游戏时，从策略角度讲，我们绝不能将自家的 3A 游戏搬到 PC 等平台。”</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/844be3fb-9f0f-4344-9408-db9a93ef5f62.png?x-bce-process=image/format,f_auto\" /></p><p>但随着 3A 游戏制作成本不断上升，“主机独占”这种发行模式变得不可持续，仅靠主机销量无法承担风险。他指出：“<strong>我们将发售一两年的游戏移植到 PC</strong>，<strong>本质上是为了收回开发投资成本</strong>，同时帮助游戏公司、制作团队将这些资金再投入到新作中”。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/137beb78-d37b-40b1-accc-38c4a670d6ae.jpg?x-bce-process=image/format,f_auto\" /></p><p>尽管一些 PlayStation 粉丝、PS5 主机玩家始终担心 PC 移植会削弱品牌存在感，但吉田认为这都是少数人的抱怨。他表示：“我并不认为这会影响 PlayStation 硬件（如 PS5）”。</p>"
             },
             {
-                "title": "英特尔股价盘中一度飙升 27%，有望打破 2000 年互联网泡沫时代最高纪录",
-                "link": "https://www.ithome.com/0/943/371.htm",
-                "published": "Fri, 24 Apr 2026 15:29:15 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，因英特尔公布第二季度营收指引高于市场预期，英特尔公司股价在美股盘前交易中大幅飙升。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e70cc1ea-8951-4e7b-ada2-f28396008ec0.jpg?x-bce-process=image/format,f_auto\" /></p><p>今晚开盘，英特尔股价跳至 82.20 美元每股，涨幅约 23%，后续最高涨至约 27%，截至IT之家发稿仍维持约 24% 的涨幅，有望突破该公司自上世纪互联网泡沫时代创下的历史最高收盘纪录（74.87 美元）。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/9b15c32d-72a2-4357-a046-6da4a60f1b8c.png?x-bce-process=image/format,f_auto\" /></p><p>截至 4 月 23 日美股收盘，英特尔股价年内已累计上涨 81%，报 66.78 美元。而在财报发布后，盘后交易中股价再度拉升近 30%，触及每股 87.09 美元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ab4b6db8-d5ef-47af-93c8-20cd77c1d3f3.jpg?x-bce-process=image/format,f_auto\" /></p><p>在 AI 芯片股助推下，纳斯达克综合指数涨超 1%，报 24691.23 点，再创历史新高。其中，英伟达股价上涨 4.55%，台积电股价上涨 5.21%，美光科技股价上涨 4.45%，AMD 股价涨超 14%。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/db46071c-8817-4260-b6e4-04b81c071d17.png?x-bce-process=image/format,f_auto\" /></p><p>英特尔 CEO 陈立武表示，英特尔的业绩“稳健”，超出预期。他预计用于人工智能系统的处理器需求将持续增长，并称公司正“高度专注”于提升工厂产能，目前仍无法完全满足所有订单。“需求非常强劲。我们正与团队密切努力，确保能够交付、满足需求，但由于客户需求持续增长，我们仍然供不应求。”</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/942/834.htm\" target=\"_blank\">英特尔 2026Q1 营收 136 亿美元，同比增 7%；调整后 EPS 0.29 美元，同比增 123%</a>》</p></li></ul>"
+                "title": "五菱星光 730 尊享型 4 月 27 日上市：同级唯一右侧电动滑移门、智能电动尾门",
+                "link": "https://www.ithome.com/0/943/470.htm",
+                "published": "Sat, 25 Apr 2026 08:30:04 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，五菱汽车今日宣布，星光 730 累计销量已突破 <strong>40000 台</strong>，蝉联五个月 15 万内 MPV 销量冠军<span class=\"js_title_inner\">，尊享型 4 月 27 日即将上市。</span></p><p><span class=\"js_title_inner\">新车标配<strong>同级唯一右侧电动滑移门与智能电动尾门</strong>，领先的灵语 AI 中枢智能体与灵眸智能辅助驾驶系统，还有智慧恒温自动空调、自动大灯及感应雨刮等自动化配置。</span></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/15c582c0-1414-4314-a31f-f0e13f511764.jpg?x-bce-process=image/format,f_auto\" /></p><p><span class=\"js_title_inner\">IT之家注意到，<a href=\"https://www.ithome.com/0/897/003.htm\" target=\"_blank\">五菱星光 730 大 7 座 MPV 于去年 11 月上市</a>，</span>共推出四款车型配置：插混 125km 豪华型、纯电 500km 豪华型、燃油 1.5T CVT 精英型、燃油 1.5T 6MT 舒适型，<strong>售价为 7.30 万-10.98 万元</strong>、置换补贴价 7.10-10.58 万元。</p><p style=\"text-align: center;\"><img alt=\"图片\" class=\"lazy\" src=\"https://img.ithome.com/newsuploadfiles/2025/11/d846debe-eaf5-4639-9ec6-8e2154e6c890.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"五菱星光 730 大 7 座 MPV 上市：7.3 万-10.98 万元，油、混、电全都有\" /></p><p>五菱星光 730 配有 540° 全景透视影像、50W 风冷手机无线充电、12.8 英寸中控大屏等。该车提供烟霞灰、银霜白、耀石黑、暮山紫车色，车身采用巴斯夫 2K 清漆 + 8 层工艺打造。星光 730 整车长宽高分别为 4910*1850*1770mm，拥有 2910mm 轴距。</p><p class=\"j_iframe_show ithome-content-placeholder\" style=\"text-align: center;\"></p>"
             },
             {
-                "title": "曝 PS5 版《识质存在》可通过 PS5 Pro 云存档解锁 1440p 分辨率，但帧率有所下降",
-                "link": "https://www.ithome.com/0/943/370.htm",
-                "published": "Fri, 24 Apr 2026 15:25:21 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，游戏评测媒体数毛社（IT之家注：Digital Foundry）昨天发布博文，报道称 PS5 版《实质存在》可通过 PS5 Pro 云存档解锁 1440p 分辨率。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/54b22f86-7bde-4b6f-b5ad-14d6aa069136.png?x-bce-process=image/format,f_auto\" /></p><p>若要实现 1440p 分辨率，你首先需要订阅 PlayStation Plus 服务并打开系统的云存档功能，建议关掉自动同步。然后拿 PS5 Pro 启动一遍《识质存在》，完成初始设置后返回主界面。<strong>接着将存档上传到云端</strong>，之后回到 PS5 标准版下载云存档并启动游戏，你就能看到分辨率会改为 1440p 原生渲染。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b77a2d24-ff70-4a39-b2d6-491a5fee6513.png?x-bce-process=image/format,f_auto\" /></p><p>这种方法目前在 1.21 版本下有效，<strong>但可以预见的是</strong>，<strong>卡普空很快会推出补丁修复漏洞</strong>。如果要“恢复”1080p 的话，最简单的办法便是删掉 PS5 Pro 注入的存档，然后重新开始游戏。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/eed95bb6-2801-4f1e-9962-f89b2739fba2.png?x-bce-process=image/format,f_auto\" /></p><p>在实际游玩中可以感觉到，虽然 PS5 标准版能输出 1440p 画面，但帧率有所下降，前几关能基本维持 60fps，到了过场动画则会下降到 42fps。而在负载较高的关卡中，帧率也会掉到 50fps 左右。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/70daebf8-32b5-4d1d-ac5d-ad4b8a175629.png?x-bce-process=image/format,f_auto\" /></p><p>总体来说，卡普空不给 PS5 标准版 1440p 分辨率是合理的，毕竟帧率对玩家体验来说还是比较重要的。</p>"
+                "title": "英特尔下一代至强 Diamond Rapids 推迟至明年，2028 年 Coral Rapids 处理器将重新引入超线程技术",
+                "link": "https://www.ithome.com/0/943/469.htm",
+                "published": "Sat, 25 Apr 2026 08:16:25 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，爆料者 @jaykihn0 今日透露了更多有关未来英特尔至强处理器的消息。</p><p>首先，英特尔新一代全 E 核至强 6+“Clearwater Forest”处理器预计今年上半年推出。英特尔下一代全 P 核至强 Diamond Rapids 已推迟至 2027 年中期进行大规模发布，主打 16 通道内存平台。</p><p>在核心配置方面，Diamond Rapids 首批将提供最高 256 核心型号，预计晚几个月还将推出最高 512 核心的旗舰型号。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/3529ecd6-cfe7-46d8-9ec2-efc133e78dcf.png?x-bce-process=image/format,f_auto\" /></p><p>Diamond Rapids 将成为英特尔至强产品线中最后一代采用非 SMT 架构的产品。核心架构方面，Diamond Rapids 将采用 Panther Cove-X 作为 P 核架构。</p><p>值得注意的是，Diamond Rapids 将采用芯片分离设计 —— 计算单元采用独立的 CBB 单元，内存控制器与计算单元分属不同区块，这与 Granite Rapids 将 IMC 集成在同一区块的做法有所不同。</p><p>平台方面，Diamond Rapids 将采用 LGA 9324 插槽，支持多路配置，旗舰型号 TDP 预计可达 650W。另外，英特尔此前已确认取消了 8 通道版 Diamond Rapids，专注于 16 通道设计以应对 AI 工作负载对内存带宽的更高需求。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/732e838f-33c3-450b-88a5-2882af55cb0a.jpg?x-bce-process=image/format,f_auto\" /></p><p>继 Diamond Rapids 后，英特尔计划于 2028 年推出下下代 Coral Rapids 至强处理器。该产品将重新引入 SMT 超线程支持 —— 这也是英特尔在 P 核架构上时隔多代后恢复超线程技术。</p><p>Coral Rapids 预计将搭载 8 通道内存平台，面向主流服务器市场。正如英特尔 CEO 陈立武在第一季度财报电话会上所提及，Coral Rapids 可能会根据 AI 市场需求而加速推出。IT之家后续将保持关注。</p><p>此外，英特尔还正与英伟达合作开发一款集成 NVLink 互连技术的定制 x86 至强处理器，该产品将提供 x86 架构与 NVIDIA GPU 之间的高速互联能力。</p><p>在 GPU 产品线上，Crescent Island 及其工作站版本预计于 2026 年下半年面世，将采用 X<sup>e</sup>3p 架构。X<sup>e</sup>4 架构的继任产品计划于 2028 年中后期推出，Crescent Island 的继任产品同样定于 2028 年中后期登场。</p><p>在 AI 加速器方面，Jaguar Shores 的继任产品计划于 2028 年底推出，并将引入机架级分段的新产品分类。这一变化反映出英特尔正试图在系统级别而非单一芯片层面参与 AI 基础设施竞争。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/937/518.htm\" target=\"_blank\">英特尔 \"Grand Ridge\" 处理器已推出：Intel 4 制程，至高 24 核</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/925/144.htm\" target=\"_blank\">英特尔：至强 6+ \"Clearwater Forest\" 处理器的更多详情将在数月内公布</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/878/071.htm\" target=\"_blank\">英特尔介绍新一代至强能效核处理器 Clearwater Forest：IPC 提升 17%</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/916/048.htm\" target=\"_blank\">英特尔联手英伟达：陈立武宣布正开发 AI 定制 Xeon 至强处理器，深度集成 NVLink 技术</a>》</p></li></ul>"
             },
             {
-                "title": "佰维发布车规级 UFS 3.1 嵌入式存储 TAU208，获 AEC-Q100 Grade 2 认证",
-                "link": "https://www.ithome.com/0/943/369.htm",
-                "published": "Fri, 24 Apr 2026 15:22:50 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，佰维存储 (BIWIN) 今日在 2026 北京车展上发布了新一代车规级 &nbsp;UFS 3.1 嵌入式存储解决方案 TAU208。其取得 AEC-Q100 Grade 2 认证，<strong>可广泛应用于智能座舱、自动驾驶、车载信息娱乐系统、数字仪表盘 / 中控等场景</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/550729b5-4230-4bb7-9952-fbf6d95f4dda.jpg?x-bce-process=image/format,f_auto\" /></p><p>TAU208 采用 MPHY 4.1 物理层、UniPro 1.8 协议、双通道架构设计、BGA 153 ball 封装规格，支持 -40℃ ~ +105℃ 宽温工作范围，经历 1000+ hr 可靠性验证，MTBF 时长＞30M hr，具备 5% 超低功耗深度休眠模式。</p><p>佰维 TAU208 基于 3D TLC NAND 闪存，提供 128GB / 256GB / 512GB 三种容量，读写性能较传统 eMMC 提升 6 倍以上。具体来看，其最大顺序读写分别可达 2150MB/s 和 1650MB/s，最大随机读写可达 300K IOPS。</p>"
+                "title": "大量 AI 音乐涌入 Apple Music 平台，但播放量几乎为零",
+                "link": "https://www.ithome.com/0/943/467.htm",
+                "published": "Sat, 25 Apr 2026 08:12:40 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，据科技媒体 Appleinsider 前天报道，苹果 Apple Music 副总裁 Oliver Schusser 最近表示，尽管 AI 生成的音乐占据提交曲目的很大比例，<strong>但实际播放量却几乎为零</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0833d30e-f2b2-4291-a6cf-c1306bc2b98f.jpg?x-bce-process=image/format,f_auto\" /></p><figcaption>▲ Oliver Schusser，图源：苹果</figcaption><p>Oliver Schusser 指出，Apple Music 目前新提交的曲目由三分之一以上是“完全 AI 生成”，<strong>但实际播放量不到 0.5%</strong>。</p><p>IT之家在此援引 Appleinsider，苹果正在采取主动措施，防止 AI 音乐破坏 Apple Music 的完整性。公司已研发一项内部技术，可识别哪些音乐使用了 AI 模型，甚至还能区分出 AI 模型用量等。</p><p><strong>苹果要求唱片公司</strong>、<strong>发行商在歌曲中披露 AI 使用情况</strong>，<strong>同时依靠内部系统分析提交内容</strong>，验证披露信息是否真实。</p><p>这名副总裁还指出，靠免费广告扶持平台服务会贬损音乐，因此 Apple Music 一直是付费平台，优先考虑艺术家酬劳和价格一致性。</p>"
             },
             {
-                "title": "时隔 6 个月，英伟达市值再次突破 5 万亿美元",
-                "link": "https://www.ithome.com/0/943/368.htm",
-                "published": "Fri, 24 Apr 2026 15:12:42 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，英伟达股价上涨 3.08%，股价 209.500 美元（IT之家注：现汇率约合 1434 元人民币），<strong>总市值再次突破 5 万亿美元（现汇率约合 34.22 万亿元人民币）</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/dae8d6c0-987e-40e4-8487-12e78eb0533a.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/aa19facd-4ad5-4c87-8fc0-6d46fa72eae7.jpg?x-bce-process=image/format,f_auto\" /></p><p>作为参考，英伟达市值上一次突破 5 万亿美元是在去年 10 月 19 日，与本次突破时隔半年，当时一度超过 5.13 万亿美元（现汇率约合 35.11 万亿元人民币）。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2025/10/052d15c5-6250-421e-a7d4-9694a1684f34.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>值得注意的是，英伟达股价已连续四周上涨，本月累计涨 18%。</p>"
+                "title": "一加 Buds Ace 3 耳机官宣 4 月 28 日发布，FPS 游戏专属音效",
+                "link": "https://www.ithome.com/0/943/466.htm",
+                "published": "Sat, 25 Apr 2026 08:00:50 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，一加今日官宣一加 Buds Ace 3 耳机将于 4 月 28 日 19:00 发布，提供星际黑、钛空银两款配色。</p><p>预热海报显示，这款新品配备<strong> FPS 游戏专属音效</strong>，脚步声清晰可辨；47ms 超低游戏延迟，音画同步。外观方面，新品采用入耳式设计，搭配圆润耳机充电盒。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/025ca600-31a4-4ae4-a83a-14cde256b647.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/48f8529e-b98d-45e9-867c-92d502224fdb.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/07f2ae58-543a-4e08-91a4-b040a6bf80c7.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，<strong>前代一加 Buds Ace 2 无线耳机发布于 2024 年 12 月</strong>，定价 179 元、<strong>首发 169 元</strong>；提供潜航黑、瞬影青 2 款配色。一加 Buds Ace 2 无线耳机续航 43 小时，内置 100% TPU 弹性外膜 + 12.4mm 动圈，支持 BassWave 2.0 动态低音。</p><p style=\"text-align: center;\"><img class=\"lazy\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/07c5dcb8-0db1-4b7d-a962-d36360374aea.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" title=\"一加 Buds Ace 3 耳机现身官网：FPS 游戏专属音效、55dB 降噪、54h 续航\" /></p><figcaption>▲ 一加 Buds Ace 2</figcaption><p class=\"j_iframe_show ithome-content-placeholder\" style=\"text-align: center;\"></p>"
             },
             {
-                "title": "陈立武：英特尔 14A 节点成熟度与良率优于 18A 同期，特斯拉 Terafab 项目确定采用 14A 工艺",
-                "link": "https://www.ithome.com/0/943/367.htm",
-                "published": "Fri, 24 Apr 2026 15:12:27 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，英特尔在 2026 年第一季度财报电话会议上披露，其 18AP 与 14A 制程节点正在获得大量外部客户接洽，其中 14A 工艺已成功获得特斯拉 Terafab 项目的青睐。</p><p>马斯克在特斯拉同期的财报电话会议上也提到：“我们计划使用英特尔 14A 工艺，这是最先进的工艺，事实上尚未完全完成。但等到 Terafab 扩大产能时，14A 应该已经相当成熟或准备就绪，14A 看起来是正确的选择。我们与英特尔关系良好，非常尊重他们的 CEO、CTO 以及新团队。”</p><p>陈立武则表示自己“想不出比马斯克更好的合作伙伴”。他还透露，对于英特尔而言，未来外部客户的合作他希望由客户公司自行宣布，而不是由英特尔代为公布。正如特斯拉在英特尔之前宣布 14A 协议一样，未来的合作也应遵循同样方式。他预计 2026 年至 2027 年间将有更多的设计承诺落地。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ace52f17-4386-4b90-9fdd-ea03a2681772.jpg?x-bce-process=image/format,f_auto\" /></p><p>在技术进展方面，陈立武称 14A 在成熟度、良率和性能方面均优于同期的 18A。目前 14A 的 0.5 版 PDK（工艺设计套件）已可用，公司目标是尽快推出 0.9 版 PDK，届时客户将开始决定具体产品、所需产能和产量。英特尔正在与多个客户积极评估这项技术，客户的反馈正在帮助公司进一步优化工艺。此外，英特尔 18AP 节点也在推进中，并已与外部客户进行接洽。</p><p>本月上旬，英特尔与特斯拉、SpaceX 共同宣布加入 Terafab 项目，该项目位于美国得克萨斯州奥斯汀，定位为先进 AI 芯片工厂。英特尔方面表示，其设计、制造和封装超高性能芯片的能力将帮助 Terafab 实现年产 1 太瓦算力的目标。</p><p>短期来看，特斯拉将在得州工厂园区建设一座约 30 亿美元（IT之家注：现汇率约合 205.32 亿元人民币）规模的半导体研发晶圆厂，月产能为数千片晶圆；规模化量产环节则将由 SpaceX 负责。</p><p>陈立武去年曾表示，若 14A 工艺无法吸引外部客户，公司可能放缓或取消其及后续领先制程节点开发。郭明錤还提到，特斯拉选择英特尔 14A 工艺的原因之一是台积电和三星未来数年的产能已基本被高毛利订单填满，两者业务可见度均已延伸至 2028 至 2030 年，没有理由为 Terafab 重新配置资源。</p>"
+                "title": "英特尔告知中国云服务商：未来两季度 CPU 供应极度紧张，年底有望趋稳",
+                "link": "https://www.ithome.com/0/943/465.htm",
+                "published": "Sat, 25 Apr 2026 07:57:17 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，英特尔昨天交出了一份远超预期的 Q1 季度财报，确认了 CPU 重新成为 AI 的关键产品之一，推动公司股价大涨 20% 以上，市值重回 4000 亿美元（IT之家注：现汇率约合 2.74 万亿元人民币）以上。</p><p>然而，PC 市场今年的情况并不乐观。英特尔在财报会议上也给出了偏保守的看法，他们审慎地认为下半年 PC 需求有所走弱，<strong>全年 PC 出货量将下滑低双位数百分比，这个看法与同行及专业机构的判断一致。</strong></p><p>据 Global Semi Research 今日报道，在产能高度受限的环境下，客户选择代工厂的标准正从“最佳良率”转向“最快交付”。</p><p>据称，英特尔已告知中国云服务商（CSP）—— 未来两个季度 CPU 供应将面临极为严重的短缺，但有望在年底前稳定下来。不过，中国厂商认为英特尔过于乐观，目前正在为一场可能持续较长时间的 CPU 短缺做准备。</p><p>TrendForce 也指出，机构投资者预计 2026 年至 2027 年 CPU 市场仍将保持高度紧张状态，产能将成为主要瓶颈。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/7f68d9dd-0571-407b-9197-58b086e83d72.png?x-bce-process=image/format,f_auto\" /></p><p>GSR 表示，行业内部调研信息显示，英特尔自身的良率曾经是其致命弱点，但当竞争对手在台积电连排产都难时，良率的相对重要性随之下降，客户相对于“好不好”更看重“有没有”。在交付能力成为首要考量因素的背景下，能够提供稳定供货的代工厂将获得更大竞争优势。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/943/410.htm\" target=\"_blank\">英特尔“库存”CPU 因 AI 推理需求意外售罄，带动股价创历史新高</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/942/121.htm\" target=\"_blank\">缺口持续，2026 下半年全球 CPU 恐迎新一轮涨价</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/943/030.htm\" target=\"_blank\">陈立武：AI 推理趋势利好英特尔，CPU 与 GPU 配比从 1:8 迈向 1:1</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/942/834.htm\" target=\"_blank\">英特尔 2026Q1 营收 136 亿美元，同比增 7%；调整后 EPS 0.29 美元，同比增 123%</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/943/145.htm\" target=\"_blank\">英特尔副总裁：E 核游戏性能不弱，表现不如 AMD 只是因为软件未针对其 CPU 优化</a>》</p></li></ul>"
             },
             {
-                "title": "天马发布三款“天轩”车载显示新品，包含 OLED、Micro LED 技术路线",
-                "link": "https://www.ithome.com/0/943/366.htm",
-                "published": "Fri, 24 Apr 2026 15:10:22 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，天马微电子 (TianMa) 今日在 2026（第十九届）北京国际汽车展览会上举办了“天轩”车载显示沟通会，并在会上全球首发了 3 款新品。</p><h2>17\" SPD AM-OLED 显示屏</h2><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/0fbf9821-60d5-4cdb-8e45-7633a9f567f5.jpg?x-bce-process=image/format,f_auto\" /></p><p>这款 OLED 产品搭载天马自研可切换隐私显示 (<strong>S</strong>witchable <strong>P</strong>rivacy <strong>D</strong>isplay) 技术，支持“共享模式”与“隐私模式”自由切换，可对主驾席屏蔽副驾席显示内容，同时在夜间还可消除副驾屏幕产生的车窗倒影。</p><h2>17\" LCI AM-OLED 显示屏</h2><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/a4892150-7cb6-454c-b4cd-9700f9a444de.jpg?x-bce-process=image/format,f_auto\" /></p><p>该产品则<strong>支持 LCI 智能光控算法</strong>，结合精细化膜层架构设计，可精准消除屏幕在挡风玻璃上的光影反射，有效解决夜间驾驶倒影眩光问题。</p><h2>12\" Micro-LED IRIS HUD</h2><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/5d041f13-dd1f-4d81-8f80-4b3497e57d82.jpg?x-bce-process=image/format,f_auto\" /></p><p>这是全球最亮的同类全彩显示方案，<strong>最大亮度＞120K nits</strong>，强光下行车信息依然清晰可见，厚度仅有 2mm，无底部黑油遮挡，散热直接贴合 TFT 玻璃。</p>"
+                "title": "实拍 + 特效结合，苹果揭秘 MacBook Neo 宣传视频制作过程",
+                "link": "https://www.ithome.com/0/943/464.htm",
+                "published": "Sat, 25 Apr 2026 07:51:34 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，苹果官方今天在 YouTube 平台发布了 MacBook Neo 宣传视频的幕后制作过程。</p><p style=\"text-align: center;\"> </p><p>从视频中可以看到，苹果采用了实拍 + 特效组合来拍摄宣传片，触控板膨胀、火箭在屏幕移动、手指搓出 Dock 栏等画面均是先实景拍摄，然后再用后期合成现实不存在的效果。</p><p>IT之家原版宣传视频如下：</p><p style=\"text-align: center;\"> </p><p>作为参考，MacBook Neo 发布于今年 3 月，是苹果史上最便宜的笔记本电脑，搭载 A18 Pro 处理器、8GB 内存，采用铝合金机身，机身重量 1.23kg，<strong>售价 4599 元起</strong>。</p>"
             },
             {
-                "title": "曝微软计划年内将更多《使命召唤》旧作加入 XGP",
-                "link": "https://www.ithome.com/0/943/362.htm",
-                "published": "Fri, 24 Apr 2026 15:00:03 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，据游戏媒体 PC Gamer 前天报道，微软 Xbox 新任 CEO 阿莎 · 夏尔马（Asha Sharma）最近对品牌进行重大调整，一方面降低 XGPU 订阅价格，另一方面宣布全新《使命召唤》将不再首发入库 XGP。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/c6865904-ef1f-4bbb-ad94-64456a62a74e.jpg?x-bce-process=image/format,f_auto\" /></p><p>动视（IT之家注：母公司微软）消息人士透露，<strong>公司今年计划将更多《使命召唤》旧作添加到 XGP 游戏库</strong>。</p><p>作为参考，XGP 游戏库目前有六款《使命召唤》系列作品：《使命召唤：现代战争》《使命召唤：现代战争 2》《使命召唤：现代战争 3》《使命召唤：二战》《使命召唤：黑色行动 6》《使命召唤：黑色行动 7》。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1ddb5b13-dfea-4efa-8615-29c06e4c27b7.jpg?x-bce-process=image/format,f_auto\" /></p><p>这其中最老的作品是《使命召唤：二战》，最初发布于 2017 年。</p><p>当然，动视不可能一下子将所有《使命召唤》旧作加入到 XGP。如果目的是提供怀旧体验，那么最先加入的可能是系列 1-3 代正作，体现“复古风味”。</p><p>不过显然，《使命召唤》旧作对新玩家吸引力有限，他们可能宁愿购买最新游戏，也不会玩二十多年前的作品。</p>"
+                "title": "腾讯全新时间循环开放世界二游《归环》4 月 28 日开启「一周目测试」，提供多分支结局",
+                "link": "https://www.ithome.com/0/943/463.htm",
+                "published": "Sat, 25 Apr 2026 07:37:39 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，《归环》是由腾讯萨罗斯工作室开发的二次元开放世界新游，主打时间循环玩法，将于 4 月 28 日开启首次大规模测试「一周目测试」。官方今日公布了《归环》概念片。</p><p style=\"text-align: center;\"> </p><p>根据官方说明，此次测试仅限 Windows PC 平台，最低英特尔第九代酷睿 i5、AMD 锐龙 7 2700XT 级处理器以及 RTX 2060、RX 5600 XT、锐炫 A750 级显卡，推荐使用第九代酷睿 i7、锐龙 7 3800XT 级处理器以及 RTX 3060、RX 5700XT、锐炫 A770 或更高的配置，推荐 16GB 内存。</p><p>在游戏中，玩家需扮演“归还者”（在游戏中操控“颂灵者”），在星球仅剩 42 天的末日背景下，通过死亡回归积累信息差，逆转各国命运。</p><p>其核心机制主要包括命运骰子设计：剧情分支、战斗交互通过掷骰判定结果，成功 / 失败触发不同走向，部分道具支持重掷。</p><p>游戏的剧情采用了多分支展开的设计，对话环境会提供不同方向的选项。如实机演示中，面对突然飞扑过来的少女，你可选择接住、闪避躲开、抓住她一起跳舞，又或是旁观看戏，支持节点回溯（旨在帮助玩家体验全分支）。</p><p>当玩家确定好最终选项，系统会进行 CRPG 式的掷骰机制判定。若点数达标，会按照选项所描述的内容进行演绎；若点数不够，则可能演变为一些出人意料的抽象结果 —— 明明选择的是伸手接住少女，结果却演变为过肩摔。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ccb24fe8-21a5-4dd7-9852-c661ee32f756.jpg?x-bce-process=image/format,f_auto\" /></p><p>另外，这款游戏采用了特色使灵战斗系统。三名颂灵者将与各自的使灵组成队伍，互相配合协同作战。</p><p>归还者的队伍由三名颂灵者组成，每一位颂灵者都拥有自己的使灵；玩家需要合理运用队内“灵力点”资源，释放“使灵技能”帮助队伍取胜。在战斗中，玩家可无缝切换角色与使灵技能，BOSS 战需精准配合打断提示与 QTE 演出。</p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/tv/show/1034:5286213146574894?mid=5286214697753230\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d91dc945-33d5-48d9-aa06-c6e1f5bca070.jpg?x-bce-process=image/format,f_auto\" /></a></p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/tv/show/1034:5271324894101567?mid=5271356551730886\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/50bfc127-415b-41c1-9504-70971213aaec.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>在角色的养成界面，玩家可为角色装配技能术、机制类的卡牌。按官方说法，他们希望角色不会被局限在某一个固定的流派（输出 / 辅助）里，玩家可以通过组合不同的技能卡牌，实现类似“自定义加点”的效果。</p><p>此外，玩家还能使用载具“滑空匣”实现海陆空移动（飞行、滑翔、冲浪），无体力限制，且 NPC 行为逻辑动态响应玩家操作。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8e099e51-8a16-4012-b97c-343d3a97fdee.jpg?x-bce-process=image/format,f_auto\" /></p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/861/304.htm\" target=\"_blank\">“时间循环”题材开放世界二次元游戏〈归环〉全新彩蛋释放</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/861/062.htm\" target=\"_blank\">腾讯萨罗斯工作室〈归环〉公布：“时间循环”题材开放世界二次元游戏</a>》</p></li></ul>"
             },
             {
-                "title": "宏碁掠夺者战斧 9 / 10 Neo 游戏本上架：搭载满功耗 RTX 5060",
-                "link": "https://www.ithome.com/0/943/361.htm",
-                "published": "Fri, 24 Apr 2026 14:52:05 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，宏碁 (Acer) 现已在电商平台上架掠夺者 · 战斧 (Predator Helios) 9 Neo 与 10 Neo 游戏笔记本电脑。这两款机型均搭载 115W 满功耗的 NVIDIA（英伟达）GeForce RTX 5060 笔记本电脑 GPU，<strong>支持 175W 双烤性能释放</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/bb73d1fe-11e7-4cd8-b8d8-d28363d99683.jpg?x-bce-process=image/format,f_auto\" /></p><p>其中掠夺者 · 战斧 9 Neo 搭载 Intel（英特尔）酷睿 i7-14650HX 处理器，配备 2.5K 180Hz 的 100% sRGB 屏幕，电池容量 90Wh；10 Neo 则升级到酷睿 Ultra 7 255HX、2.5K 240Hz + 100% DCI-P3 屏幕，散热模组中导入液态金属 TIM，电池容量 90Wh。</p><p>两款产品均配备 16GB + 1TB 的存储器组合，掠夺者 · 战斧 9 Neo 标价 12999 元、掠夺者 · 战斧 10 Neo 标价 14499 元，均将于 4 月 27 日 10:00 开售。</p><dir><a contenteditable=\"false\" href=\"https://u.jd.com/fgi4X6D\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/422323/22/12630/216813/69e8d350Fa62fbf4c/008332032031fd84.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">宏碁 掠夺者 · 战斧 9 Neo</span></span><span class=\"card-abstract\">4 月 27 日 10:00 开售</span><span class=\"card-controls\"><span class=\"price\"> 12999 元</span><span class=\"card-btn-deep\">前往预约</span></span></span></span></a></dir><dir><a contenteditable=\"false\" href=\"https://u.jd.com/fai9KWE\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/421013/3/17660/195199/69e9832fFe7fee977/00833203203afd4c.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">宏碁 掠夺者 · 战斧 10 Neo</span></span><span class=\"card-abstract\">4 月 27 日 10:00 开售</span><span class=\"card-controls\"><span class=\"price\"> 14499 元</span><span class=\"card-btn-deep\">前往预约</span></span></span></span></a></dir>"
+                "title": "英伟达已适配 DeepSeek-V4 AI 模型，GB200 NVL72 开箱性能超 150 tokens / sec / user",
+                "link": "https://www.ithome.com/0/943/462.htm",
+                "published": "Sat, 25 Apr 2026 07:36:02 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，英伟达今天（4 月 25 日）发布博文，<strong>宣布其 NVIDIA Blackwell 平台已适配 DeepSeek-V4-Pro 与 DeepSeek-V4-Flash 两款模型</strong>，开发者可通过 NVIDIA NIM 微服务下载部署，或利用 SGLang 与 vLLM 框架进行定制化推理。</p><p>英伟达在博文指出，DeepSeek-V4-Pro 拥有 1.6T 总参数量与 49B 激活参数，定位高级推理任务；DeepSeek-V4-Flash 版本则为 284B 总参数量与 13B 激活参数，主打高速高效场景。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d8228a25-306e-453a-b30e-b50b6d085727.png?x-bce-process=image/format,f_auto\" /></p><p>两款模型均支持 100 万 Token 上下文窗口与最高 38.4 万 Token 输出长度，覆盖长文本编码、文档分析等核心应用，并采用 MIT 开源协议。</p><p>实测数据显示，<strong>DeepSeek-V4-Pro 在 NVIDIA GB200 NVL72 上开箱即用性能超 150 tokens / sec / user</strong>，借助 vLLM 的 Day 0 配方，开发者可在 Blackwell B300 上快速部署。随着 Dynamo、NVFP4 及 CUDA 内核的深度优化，预期性能将进一步提升。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/6b075e32-c39d-48a3-935c-84f9a892f30f.png?x-bce-process=image/format,f_auto\" /></p><p>部署生态方面，开发者可通过 NVIDIA NIM 微服务下载部署，或利用 SGLang 与 vLLM 框架进行定制化推理。SGLang 提供低延迟、均衡及最大吞吐量三种配方；vLLM 则支持多节点扩展至 100 个以上 GPU，具备工具调用与推测解码能力。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/4e833e1e-3eea-4e12-9c54-5720a31f15a9.png?x-bce-process=image/format,f_auto\" /></p><p><span class=\"referenceTitle\">IT之家附上参考</span></p><ul class=\"custom_reference list-paddingleft-1\"><li class=\"list-undefined list-reference-paddingleft\"><p><a href=\"https://developer.nvidia.com/blog/build-with-deepseek-v4-using-nvidia-blackwell-and-gpu-accelerated-endpoints/\" target=\"_blank\">Build with DeepSeek V4 Using NVIDIA Blackwell and GPU-Accelerated Endpoints</a></p></li></ul>"
             },
             {
-                "title": "Meta 与亚马逊 AWS 达成合作，部署数千万 Graviton 核心构建 AI 基础设施",
-                "link": "https://www.ithome.com/0/943/360.htm",
-                "published": "Fri, 24 Apr 2026 14:40:06 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，Meta 今天与亚马逊 AWS 达成合作协议，大规模部署 AWS Graviton 处理器，为下一代 AI 打下基础。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/618245e6-ca45-40b2-84cb-dd984de83010.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，Meta 将首先部署数千万个 Graviton 核心，随后根据 AI 能力增长进度灵活扩展。虽然两家公司暂未披露具体合作条款，但亚马逊副总裁 Nafea Bshara 表示，<strong>本次协议合作期间为三到五年</strong>，<strong>将使 Meta 跻身 AWS 前五家 Graviton 大客户之列</strong>。</p><p>随着 Agentic AI（代理式人工智能）兴起，实时推理、代码生成、搜索以及多步骤任务等任务越来越需要 CPU 参与，而 Graviton 处理器正好契合这种密集型需求，能够更有效地驱动 AI 发展。</p><p>IT之家从官方新闻稿了解到，Graviton5 芯片将采用 3 纳米制程工艺打造，具备 192 个核心，缓存容量相比上一代提升 5 倍，核心通信延迟降低 35%，带宽更大。并且亚马逊还提供 AWS Nitro 解决方案，让 Meta 在不受影响的情况下运行自己的虚拟机。</p>"
+                "title": "Yeelight 智能雷达人在护眼吸顶灯 RadarSense 现身，众筹价 269 元起",
+                "link": "https://www.ithome.com/0/943/461.htm",
+                "published": "Sat, 25 Apr 2026 07:26:04 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，Yeelight 智能雷达人在护眼吸顶灯 RadarSense 最近在小米平台开启众筹（<a href=\"https://c.duomai.com/track.php?aid=4705&amp;dm_fid=16052&amp;euid=&amp;site_id=261624&amp;t=https%3a%2f%2fwww.xiaomiyoupin.com%2fdetail%3fgid%3d183440%26amp\" target=\"_blank\">点此购买</a>），主打 Ra99 高显色指数、无感唤醒、毫米波雷达人在感应，<strong>众筹价 269 元起</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e0ca5aeb-47c7-4ae0-a99a-2eb13879f6bf.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/cc459ad6-bcbf-4301-ad86-7342dfb5ff23.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，这款吸顶灯内置高精度雷达传感器，可通过 AI 算法识别人体静动态，识别直径 10 米，无需手动触碰开关即可自动开关灯。支持独立设置感应开关状态和调节灵敏度，有效减少风扇、绿植等物体误触发情况。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/9c166135-5331-4183-920f-bb27347889b2.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/db7d5018-c060-4913-ae5d-0fd16f07b1ec.jpg?x-bce-process=image/format,f_auto\" /></p><p>规格方面，这款吸顶灯采用双蓝光豁免级技术，可在不产生色偏的同时从光源处降低有害蓝光成分，显色指数可达 Ra99，为眼睛创造舒适用光环境。采用高效率无频闪光电处理器，号称无可视频闪。搭载 160W 恒流驱动电源，可自由调节亮度。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/5124a26f-c8f5-48ea-aef1-fc6ddea38b07.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d7bec521-1bed-47ca-8a57-82bbb42d32c7.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/55880732-81cd-4009-8ba5-1592a9248770.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/1db61fc9-993e-4db3-88d5-46b050e59dae.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/3862bf61-7ef6-48da-b059-fa08de6ba890.jpg?x-bce-process=image/format,f_auto\" /></p><p>此外，这款吸顶灯已接入米家 App，支持超级小爱、遥控器、墙壁开关控制。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/9ac12d7d-cc8f-4aaa-9219-b5482f7b1add.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/c27d5107-6a64-451f-9b79-8359b7b85266.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/4cd4629d-9d0f-41c7-91d5-c3a5e79af3e0.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家附该吸顶灯详细参数如下：</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/7052f21a-5b77-44ae-9f55-0cddf743757b.jpg?x-bce-process=image/format,f_auto\" /><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e1563b0d-bf83-4a4c-9e7e-5557da2afa4b.jpg?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "鑫谷推出无界巡天系列机箱：底部倾斜不挡光设计，275mm 宽度",
-                "link": "https://www.ithome.com/0/943/359.htm",
-                "published": "Fri, 24 Apr 2026 14:39:11 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，鑫谷 (Segotep) 现已推出无界 · 巡天系列机箱，包括 M-ATX 的 500 和 ATX 的 700 / 700T 三款产品。其属于 270° 无柱全景透视左右分舱“海景房”类型，<strong>底部右侧抬升形成斜面</strong>，保障下方风扇光效不被阻挡。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/3c8fe326-2e80-4279-b4a6-aa2f10879c53.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，三款无界 · 巡天机箱宽度均为 275mm、深度均为 425mm，支持 410mm 显卡、180mm 电源、160mm 处理器散热器，提供 90mm 背线空间，包括 2 个 3.5\" 盘位和 1 个 2.5\" 盘位，顶部支持 360 冷排。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ab6e6035-87f5-4c6f-926f-4ebbadf6797d.jpg?x-bce-process=image/format,f_auto\" /></p><p>其中无界 · 巡天 500 拥有 5 条扩展槽，具备 9 个风扇位；无界 · 巡天 700 / 700T 则拥有 7 条扩展槽，具备 10 个风扇位。700T 型号在 700 的基础上换用钛光金配色，搭载 20Gbps USB-C 接口。</p>"
+                "title": "上汽大众 ID. ERA 9X 正式上市：全系四驱大六座 SUV，29.98 万-34.98 万元",
+                "link": "https://www.ithome.com/0/943/460.htm",
+                "published": "Sat, 25 Apr 2026 07:23:48 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，今天下午，上汽大众 <span class=\"link-text-start-with-http\">ID.ERA</span> 9X 正式上市，新车提供 3 款不同配置，售价区间为 30.98 万-35.98 万元，限时权益价为 29.98 万-34.98 万元。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/6daa8aaa-e995-4281-9b60-a18c55ff7e01.jpg?x-bce-process=image/format,f_auto\" /></p><ul class=\" list-paddingleft-2\"><li><p>PRO 四驱版：29.98 万元</p></li><li><p>MAX 四驱版：32.98 万元</p></li><li><p>ULTRA 四驱版：34.98 万元</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/747eb06d-c2c9-4cae-a86c-30de61679321.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>据IT之家了解，这款新车的长宽高分别为 5207mm、1997mm 和 1810mm，轴距达 3070mm。车头部分，该车呈现出宽大的视觉效果，配备贯穿式 LED 灯带以及可发光的大众 LOGO，下方还设有两块矩形 LED 日间行车灯区域。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/d8d49a7c-f214-4ee3-aa2c-7af0e2c8e10e.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/2/eb52be77-d698-4db8-82d7-299159d956a2.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/2/652fa8f0-3e36-40d2-a1be-d2343f178421.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/2/a85f56cf-7f1f-49f4-8ede-b2fe2e7b8c8b.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>座舱方面，新车搭载 15.6 英寸超高清中控主副驾双联屏、21.4 英寸后排可折叠吸顶大屏，并配有可以拓展视野的视角补偿膜。新车采用了六座布局，并配备女王座椅和第二排行政级座椅。新车将首发搭载动态零重力座椅，拥有 12L 大容量坐垫气囊。</p><p style=\"text-align: center;\"><img alt=\"图片\" src=\"https://img.ithome.com/newsuploadfiles/2026/2/094877c9-1b6e-491a-90ed-2cae050abb70.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img alt=\"图片\" src=\"https://img.ithome.com/newsuploadfiles/2026/2/fc9a41ce-d42e-4a41-af4c-38bd72d4fe4d.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/281ca010-e24f-4f3e-af4b-549bdc3bcd82.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/6443417f-f5d0-4aec-9d06-8b17b900dfc0.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>新车将搭载上汽大众和 Momenta 联合打造的行云智能辅助驾驶系统，号称可以深度理解物理世界、精准预判路况与交互可能。全车配有 26 个感知传感器，支持狭窄空间辅助、高速 / 城区领航辅助、智能泊车及循迹倒车等功能。底盘方面，ID. ERA 9X 将采用行云智能底盘系统，双腔空气悬架拥有 150mm 超大调整行程。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/680bf183-6a5c-4b99-9770-2f8740554ff7.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: left;\">动力配置方面，<span class=\"link-text-start-with-http\">ID.ERA</span> 9X 搭载了上汽大众 EA211 1.5T“黄金增程器”，前后双电机最大功率分别为 370kW/380kW，最大扭矩 660N·m，零百加速 5.6 秒，配备 65.2kWh 电池组，CLTC 纯电续航 347km 或 406km，综合续航 1611 或 1651km。得益于 800V 高压平台的加持，新车 10%-80% 充电时间为 19 分钟或 16.5 分钟。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/629fead8-678a-449e-9604-8f4bb0c12f29.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/337c20e8-f21e-4865-99b2-0f72ab06090b.png?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p>"
             },
             {
-                "title": "Steam Machine 等硬件上线 Komodo Station 商店，无线控制器有望先行发售",
-                "link": "https://www.ithome.com/0/943/358.htm",
-                "published": "Fri, 24 Apr 2026 14:38:23 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，Valve 于 2025 年 11 月公布了三款硬件 ——Steam Machine、Steam Controller 及 Steam Frame，发售时间迟迟未确定。</p><p>今天有用户发现，Komodo Station 作为 Valve 在日本、韩国、中国台湾及中国香港等市场的官方代理商，其官网已正式上线 Steam Machine 等三款产品的页面。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/2cdc5617-bab9-4bf0-bd4f-7f291ff29b4e.png?x-bce-process=image/format,f_auto\" /></p><p>Valve 三款新品原计划在 2026 年初同步发售，但受到 DRAM 及 NAND 存储芯片短缺和价格上涨影响，Steam Machine 的发售时间表已多次推迟，但仍“希望于 2026 年内发货”。</p><p style=\"text-align: left;\">据 VR 及 Valve 产品爆料人士 Brad Lynch 分享，Komodo Station 上的 Steam Controller 页面今天获得了新的网页素材更新，而 Steam Machine 及 Steam Frame 的页面则仍沿用旧素材，表明无线控制器可能比主机更早发售。由于控制器并不依赖于存储与内存，其生产计划所受影响较小。</p>"
+                "title": "美国政府持有的英特尔股权价值增长约 300%，达到约 360 亿美元",
+                "link": "https://www.ithome.com/0/943/458.htm",
+                "published": "Sat, 25 Apr 2026 07:19:28 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，彭博社昨日（4 月 24 日）发布博文，报道称英特尔财务展望利好推动股价大涨，美国政府持有的英特尔股权价值增长约 300%，达到约 360 亿美元（IT之家注：现汇率约合 2464.95 亿元人民币）。</p><p>按照当前股价计算，这相当于自 2025 年 8 月投资协议公布以来，<strong>美国政府获得了约 270 亿美元的账面回报。</strong></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/36cea2ab-635b-4818-a421-204a8abe4d5b.jpg?x-bce-process=image/format,f_auto\" /></p><p>根据白宫此前公布的协议条款，美国政府将在特定条件满足后最终持有 4.333 亿股英特尔股票。该协议约定的入股价格为每股 20.47 美元，初始估值约为 89 亿美元。</p><p>纳税人已直接持有超过 2.7 亿股，其余股份存于托管账户。英特尔首席执行官陈立武此前通过积极沟通修复了与白宫的关系，并促成了这项非常规投资。</p><p>英特尔股价在周五交易中表现惊人，大涨 24% 至 82.54 美元。这一单日涨幅创下自 1987 年以来的最高纪录，推动公司股价攀升至历史新高。股价的强劲表现直接推动了政府持股价值的指数级增长。</p>"
             },
             {
-                "title": "索尼 Xperia 1 VIII 手机谍照再度曝光，保留快门按钮、3.5mm 耳机孔",
-                "link": "https://www.ithome.com/0/943/357.htm",
-                "published": "Fri, 24 Apr 2026 14:23:25 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，消息人士 Rowan Trescott 今天在 MyMobiles 平台发文，再度曝光索尼 Xperia 1 VIII 手机的谍照。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/f091f463-3c56-4ea5-825c-1c46a09d318f.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，这组谍照基于工厂 CAD 数据构建，与索尼供应商使用的几何数据一致，并非第三方猜测。IT之家附相关图片如下：</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/9b9c08a3-293f-4c51-8f3c-1a8fe1925f95.png?x-bce-process=image/format,f_auto\" /></p><p>规格方面，Xperia 1 VIII 的高度、宽度分别为 161.9*74.4mm，机身厚度 8.58mm，相比上代机型 Xperia 1 VII 的 8.2mm 略有增加，<strong>但肉眼几乎无法察觉</strong>，主要是为更大的主摄 CMOS、电池、散热腾出空间。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a29c5882-cbe7-41a3-aaa7-61e4955bfa44.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8f4b40ad-ab29-4166-92b8-b96ff771f4c7.png?x-bce-process=image/format,f_auto\" /></p><p>同时，该机的后摄模组也将重新设计，由 Xperia 1 家族标志性的垂直模组改为方形岛式模组，容纳三颗镜头、闪光灯，凸起厚度 2.79mm。文件显示该机仍将保留上下对称边框，屏幕采用无挖孔设计，前摄仍然在顶部边框上。</p><p>此外，该机预计将在今年 5 月发布，不过相关谍照使用的是中性颜色，不代表最终上市机型。</p>"
+                "title": "吉利汽车浩瀚-S 超级电混架构将更深度地集成安森美碳化硅技术",
+                "link": "https://www.ithome.com/0/943/457.htm",
+                "published": "Sat, 25 Apr 2026 07:15:23 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，onsemi（安森美）与吉利汽车集团今日宣布，双方已达成更广泛的全球战略合作。此次合作将<strong>进一步深化安森美先进碳化硅技术 EliteSiC 在吉利浩瀚-S 超级电混架构中的集成</strong>。</p><p>在本次合作框架下，吉利展示了 SEP 浩瀚超级电混系统。该系统电驱核心采用了安森美 EliteSiC 功率技术，<strong>支持 900V 高压架构</strong>，可实现更快的加速性能、更长的续航里程，以及显著缩短的充电时间。</p><p>安森美的功率器件凭借更高的功率密度支持在更小、更轻量化的系统中集成更强性能，从而改善整车动态性能并优化车内空间。同时，增强的热性能有助于车辆在高负载工况下保持稳定输出，提升长期可靠性。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/f5413d84-55b1-4f12-85bc-635e6c0c102a.jpg?x-bce-process=image/format,f_auto\" /></p><p>安森美总裁兼首席执行官 Hassane El‑Khoury 表示：</p><blockquote><p>电动车市场正进入一个由更高电压架构和日益复杂的系统所驱动的新阶段。我们与吉利扩大的合作，体现了整车厂与半导体合作伙伴正在更紧密、更早期地开展协作，以共同塑造关键的整车设计决策。通过携手合作，我们正在赋能电动车实现更高的能效和性能。</p></blockquote><p>吉利汽车集团首席执行官 CEO 淦家阅表示：</p><blockquote><p>随着电气化战略的推进，我们与技术合作伙伴之间更紧密的协同变得愈发关键。将安森美技术广泛集成至我们的浩瀚超级电混系统，正是双方深化合作的具体体现。安森美作为关键的系统级合作伙伴，使我们在平台设计与工程执行层面实现了更紧密的协同，从而支持我们向全球客户交付高性能、高能效的电动汽车。</p></blockquote>"
             },
             {
-                "title": "腾讯 Key 社时隔 7 年恋爱 ADV 新作《anemoi》正式发售，后续将推出 Steam 版",
-                "link": "https://www.ithome.com/0/943/356.htm",
-                "published": "Fri, 24 Apr 2026 14:13:18 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，腾讯旗下 Key 社时隔七年半推出的首款全价游戏《anemoi》（非 R18）今日正式发售，登陆 PC 平台，确认未来将推出支持简体中文、英文、日文的 Steam 版本。</p><p>《anemoi》数字下载版税后价 7700 日元（IT之家注：现汇率约合 330 元人民币），PC 实体版（初回限定版）10,780 日元（现汇率约合 462 元人民币），特典内容包含原创画册、乐曲改编 CD、亚克力吊饰、迷你色卡、原创贴纸等。</p><p style=\"text-align: center;\"> </p><p>《anemoi》为 Key 社自 2020 年 6 月 26 日发售的《Summer Pockets REFLECTION BLUE》之后推出的全新恋爱冒险游戏。在游戏中，玩家将与多位女主角、朋友们互动、加深情感，体验温馨且愉快的独一无二慢生活。</p><p>声优阵容：</p><ul class=\"small-size list-paddingleft-2\"><li><p>辻仓朱比华：平塚纱依</p></li><li><p>总羽爱乃：长绳麻理亚</p></li><li><p>淡雪阳彩：千春</p></li><li><p>白渡小咏：会泽纱弥</p></li><li><p>速川六花：凉泉樱花</p></li><li><p>華押つづら：上田丽奈</p></li><li><p>尾道文弥：菱川花菜</p></li><li><p>敦泽垒：根本京里</p></li><li><p>矿玖琉未：福岛美里衣</p></li><li><p>河濑千春：河西健吾</p></li><li><p>小森健：松田健一郎</p></li><li><p>花山广美：折笠爱</p></li><li><p>总羽湊：比嘉良介</p></li><li><p>敦泽诚：三宅健太</p></li><li><p>“一只意志坚定的海鸦”鱼丸：松井恵理子</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d52ddde0-47ab-4d9e-97b7-1e687cf3f598.jpg?x-bce-process=image/format,f_auto\" /></p><p>Key 社上个月宣布，本作因开发过程中“内容增强”导致数据量大幅增加，数字版所需硬盘空间将至少达到 18GB，而实体版也将从单碟升级为双 DVD-ROM 套装，但两个版本的价格均保持不变。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/00a02dd4-e124-4d72-87c7-a36f95c4612b.png?x-bce-process=image/format,f_auto\" /></p><p>故事围绕主人公高中生速川麦展开，他带着妹妹六花前往北方的真澄町，等待打开十年前埋下的时光胶囊。在约定时间到来之前，麦决定在小镇过着慢节奏的生活，与人们互动交流。游戏中的五位女主角分别是辻仓朱比华、总羽爱乃、淡雪阳彩、白渡小咏和速川六花。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b7e32ca3-797f-4119-9716-45a6a08e546a.jpg?x-bce-process=image/format,f_auto\" /></p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/835/822.htm\" target=\"_blank\">腾讯 Key 社经典游戏〈AIR〉上线 Steam：国区首发九折 97.2 元</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/708/607.htm\" target=\"_blank\">日本游戏开发商 Key 社母公司 Visual Art's 宣布被腾讯收购</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/710/518.htm\" target=\"_blank\">Key 社：腾讯不会干涉 VISUAL ARTS 的创作</a>》</p></li></ul>"
+                "title": "OpenAI 奥尔特曼就未通报枪击案嫌疑人道歉，承认安全流程存在漏洞",
+                "link": "https://www.ithome.com/0/943/456.htm",
+                "published": "Sat, 25 Apr 2026 07:07:11 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，华尔街日报昨日（4 月 24 日）发布博文，报道称 OpenAI 首席执行官山姆 · 奥尔特曼（Sam Altman）致信加拿大坦布勒里奇镇（Tumbler Ridge），<strong>就未及时向警方通报大规模枪击案嫌疑人的活动记录正式道歉。</strong></p><p>IT之家援引博文介绍，这起悲剧发生于今年 2 月，共造成 8 人死亡，嫌疑人为 18 岁的杰西 · 范鲁特塞拉尔（Jesse Van Rootselaar）。在 4 月 23 日的信函中，奥尔特曼表达了最深切的哀悼，并对公司未能更早采取行动表示歉意。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d30196ca-68d5-41a1-a3eb-961c45cfe8b6.jpg?x-bce-process=image/format,f_auto\" /></p><p>报道指出 OpenAI 的自动审核系统于 2025 年 6 月曾标记范鲁特塞拉尔的 ChatGPT 账户，因其信息涉及暴力场景描述，公司随即封禁了该账户。</p><p>部分员工将其内容视为现实暴力的潜在预警，并敦促领导层联系加拿大执法部门。然而，公司高层最终决定不向当局通报，这一决策在悲剧发生后引发了巨大争议。</p><p>警方在 2 月确认范鲁特塞拉尔为嫌疑人后，OpenAI 发现她还持有第二个 ChatGPT 账户。奥尔特曼在信中重申了此前对坦布勒里奇镇长及不列颠哥伦比亚省省长的承诺，即致力于寻找防止此类悲剧重演的方法。他表示，公司将继续与各级政府合作，确保类似事件不再发生。</p><p>OpenAI 表示，自枪击事件发生后，公司已加强安全协议。根据强化后的执法转介规则，如果再次发现类似范鲁特塞拉尔的账号行为，<strong>公司将把相关信息移交给执法部门。</strong></p><p>不列颠哥伦比亚省省长戴维 · 伊比表示，公共安全部已获悉警方调查进入最后阶段。坦布勒里奇镇长达里尔 · 克拉科夫卡称，镇民仍在悲伤中，疗愈过程漫长而艰难。</p>"
             },
             {
-                "title": "vivo X300 FE 手机现身海外：骁龙 8 Gen 5 芯片、6.31 英寸 OLED 屏幕，6500mAh 电池",
-                "link": "https://www.ithome.com/0/943/355.htm",
-                "published": "Fri, 24 Apr 2026 14:03:29 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，vivo 官方今天在奥地利市场公布了 X300 FE 手机的预热信息，新机将搭载骁龙 8 Gen 5 芯片、<strong>6.31 英寸 AMOLED 屏幕</strong>，4 月 29 日正式发售。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e1eb75e5-4ce7-44b1-9a4b-04a8a6f43b3a.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，这款手机定位“小屏旗舰”，机身厚度 8.2mm，重量 192g，配备 6.31 英寸的 AMOLED 屏幕，分辨率 2640*1216 像素，支持 120Hz 高刷，<strong>HDR 峰值亮度可达 5000 尼特</strong>，通过 IP69 防水防尘认证。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e24eac65-1672-44c0-9ea8-8144fbedff2b.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/0a412bb7-d350-49e7-9083-89cfd149582d.png?x-bce-process=image/format,f_auto\" /></p><p>规格方面，这款手机搭载高通骁龙 8 Gen 5 处理器，<strong>拥有 5000 万像素 1/1.56 英寸后置主摄</strong>、800 万像素超广角、5000 万像素 1/1.95 英寸潜望长焦。支持选配增距镜可将焦距提升至 200mm。前摄则是 5000 万像素。</p><p>此外，这款手机配备 6500mAh 电池，支持 90</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2c13e97d-15db-4ff4-afb9-13bafd0cb95c.jpg?x-bce-process=image/format,f_auto\" /></p><p>W 有线快充 +50W 无线充电，起售价 999 欧元（IT之家注：现汇率约合 7991 元人民币）。</p>"
+                "title": "美国最大家庭安防企业 ADT 被黑客入侵，客户姓名、电话号码、住址遭泄露",
+                "link": "https://www.ithome.com/0/943/455.htm",
+                "published": "Sat, 25 Apr 2026 07:05:18 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，据科技媒体 BleepingComputer 昨天报道，美国最大家庭安防企业 ADT 最近被黑客组织 ShinyHunters 勒索，黑客要求支付赎金，否则将公开数据。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/f6ff8b26-06e2-480b-b677-e65ed3c1e500.png?x-bce-process=image/format,f_auto\" /></p><p>ADT 昨日在声明中确认，他们确实在 4 月 20 日发现客户数据遭未授权访问。公司已立即终止入侵并展开调查。</p><p>ADT 表示：“目前我们确认，<strong>泄露的客户信息仅限姓名</strong>、<strong>电话号码和住址</strong>。少数情况下还包括出生日期、社安号（SSN）或税号的最后四位数字。银行账户、信用卡等支付信息并未泄露，客户的安防系统也没有受到影响或以任何方式被破坏”。</p><p>同时 ADT 透露，本次入侵范围有限，已通知所有受影响客户。</p><p>IT之家从报道中了解到，ShinyHunters 声称窃取了 1000 万条个人信息 / 企业内部数据，他们要求 ADT 在 4 月 27 日前支付赎金，否则将公开窃取数据。</p>"
             },
             {
-                "title": "realme 真我商城明起停止运营，业务全面整合至 OPPO 体系",
-                "link": "https://www.ithome.com/0/943/354.htm",
-                "published": "Fri, 24 Apr 2026 13:50:19 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，据 realme 真我商城官网公告，真我商城将于 4 月 25 日（明天）停止提供购物、商品内容浏览、用户反馈、活动参与、商品评价、帖子评论、观看视频与直播、积分服务，保留历史订单信息查询服务等。“真我商城”小程序也将同步下架。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d132056d-14a5-46c8-9002-a7f1b290c138.jpg?x-bce-process=image/format,f_auto\" /></p><p>对于有查看历史订单需求的消费者，可以在 OPPO 商城授权登录后，进入“我的订单”，查看“真我历史订单”。同时消费者在真我商城下的会员权益可在 OPPO 商城中继续使用。</p><p>IT之家此前报道，真我官方在 3 月 20 日发布公告，宣布其在中国大陆地区的售后服务将逐步整合至 OPPO 服务体系。自 2026 年 4 月 1 日起，realme 在中国大陆（不含港澳台）的手机、平板、电脑及 IoT 等产品将全面由 OPPO 服务网络提供售后服务。</p>"
+                "title": "上汽奥迪 E7X 亮相 2026 北京车展：Momenta R7 辅助驾驶、宁德时代 109 度大电池",
+                "link": "https://www.ithome.com/0/943/453.htm",
+                "published": "Sat, 25 Apr 2026 07:03:04 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，2026 北京车展昨日开幕，上汽奥迪 E7X 车型<span class=\"js_title_inner\">正式全球亮相。</span></p><p><span class=\"js_title_inner\">IT之家从官方介绍获悉，该车长宽高为 5049mm/1997mm/1710mm，<strong>轴距为 3060mm</strong>。奥迪首创星钻光刃，支持百万级像素 DLP 投影、8 种光毯动效，提供</span>流光银、月曜黑、星云紫、曙光米、烟波蓝、钛空灰 6 款高定车色。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2007c9e2-138b-4c49-a45d-5dd42c7dd3d1.png?x-bce-process=image/format,f_auto\" /></p><p>底盘方面，该车 quattro 全时智能四驱全面升级，<strong>零百加速 3.90s</strong>，提供 Brembo 高性能运动卡钳、双向 14° 后轮转向系统、渐进式转向、<strong>轻量化全铝底盘</strong>、CDC 减震系统 + 云台空气悬挂、285mm 倍耐力同级最宽后胎等。</p><p>辅助驾驶方面，该车搭载 Momenta R7 强化学习世界模型，支持 ETC 通道智能通行、三点式调头、极窄道路通行、小动物盲区闯入紧急避让、人车混行场景避让、高速匝道汇入辅助等。</p><p>新车全球首发奥迪智慧客厅，提供 BOSE Performance 悦听零重力副驾、智享云感航空座椅、BOSE Performance 悦臻音响、9.1.4.4 立体声学布局等。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/4e95fa36-3cb2-41c9-85be-e11d8a31cf86.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ba051a44-d53b-45f3-90af-8f2c021a7295.png?x-bce-process=image/format,f_auto\" /></p><p>此外，该车还配备 <strong>59 英寸中控屏</strong>、21.4 英寸 QD Mini LED 后排星空屏、智能四季冷暖箱、渐层律动氛围灯、二排中控大屏、96 颗 RGB LED 星空矩阵。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d5fec4ef-81a8-421c-b551-d55a81451237.png?x-bce-process=image/format,f_auto\" /></p><p>电池方面，该车搭载全新宁德时代 109 度大电池，提供 CLTC 751km 超长续航；全系标配 900V 高压平台，充电 10 分钟至高补能 429km。</p>"
             },
             {
-                "title": "保时捷出售布加迪股份，聚焦核心品牌业务",
-                "link": "https://www.ithome.com/0/943/353.htm",
-                "published": "Fri, 24 Apr 2026 13:48:37 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，据路透社报道，保时捷今天宣布将布加迪、Rimac 股份出售给美国 HOF Capital 主导的投资联盟，此次交易是保时捷新任 CEO 专注振兴核心品牌的一部分。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0fe83937-bf8a-4af3-bb3c-8145fb7ee655.jpg?x-bce-process=image/format,f_auto\" /></p><p>根据协议，<strong>保时捷将剥离布加迪</strong>、<strong>Rimac 合资企业的 45% 股份</strong>，该企业成立于 2021 年，拥有法国布加迪公司及克罗地亚 Rimac 公司 20.6% 的股份。</p><p>目前，协议相关财务条款并未披露。知情人士透露，<strong>布加迪 Rimac 估值超 10 亿美元（IT之家注：现汇率约合 68.44 亿元人民币）</strong>，保时捷和布加迪 Rimac 拒绝置评。</p><p>值得注意的是，保时捷此举正值其回顾战略之际。去年该公司营业利润暴跌 93%，加剧了大众集团控股的危机。</p><p>保时捷与 Rimac 成立合资企业时，前者 CEO 奥利弗 · 布鲁默曾表示，未来将把双方在超跑、电动出行领域的优势强强联合。</p><p>自那以后，保时捷便成为大众集团的负担，利润率从 2024 年的 14.1% 下跌至去年的 1.1%。而新任 CEO Michael Leiters 自今年初上任以来，一直面临削减成本、释放资本压力。</p><p>本次交易完成后，Rimac 集团将全面接管布加迪 Rimac，并与 BlueFive Capital 和 HOF Capital 集团建立战略合作关系。</p>"
+                "title": "小米米家冰箱 Pro 至尊版 508L 预售：十字门 4699 元，法式门 5099 元",
+                "link": "https://www.ithome.com/0/943/452.htm",
+                "published": "Sat, 25 Apr 2026 07:01:47 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，小米官方今日宣布“米家冰箱 Pro 至尊版十字 508L 全域离子净化 4.0”正式开启预售。</p><p>其中，十字门型号（<a href=\"https://c.duomai.com/track.php?aid=4705&amp;dm_fid=16052&amp;euid=&amp;site_id=261624&amp;t=https%3a%2f%2fwww.xiaomiyoupin.com%2fdetail%3fgid%3d183318\" target=\"_blank\">点此购买</a>）首发 4699 元，国补价 3994.15 元；法式门型号（<a href=\"https://c.duomai.com/track.php?aid=4705&amp;dm_fid=16052&amp;euid=&amp;site_id=261624&amp;t=https%3a%2f%2fwww.xiaomiyoupin.com%2fdetail%3fgid%3d183317\" target=\"_blank\">点此购买</a>）首发 5099 元，国补价 4334.15 元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d78a2d75-4cb0-46a2-b991-15e350e44d99.jpg?x-bce-process=image/format,f_auto\" /></p><p>参考官方介绍，该系列冰箱采用冰晶玻璃艺术外观，提供冰晶白、星锻银、杏色玻璃三种配色，把手带有人感氛围灯。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/30defc8b-814f-403d-ab57-fa19e1f3ec76.png?x-bce-process=image/format,f_auto\" /></p><p>其整体尺寸 597 x 792 x 1925mm，安装深度 600mm、安装宽度 800mm。具体空间方面其提供 297L 冷藏室空间、35L 变温室空间、176L 冷冻室空间。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/94b569c0-2c3e-4642-8746-7f68f8102315.png?x-bce-process=image/format,f_auto\" /></p><p>该冰箱内置全域离子净化 4.0 技术，支持 3 分钟净味、2 分钟除菌，同时可选配制冰配件，实现 55 分钟自动制冰。IT之家附产品参数：</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/db9ee8b1-70bc-4cb5-8bbe-5489d39f6d5f.png?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "亨通光电 2026 年一季度净利润 11.05 亿元同比增长 98.53%，营收 177.91 亿元同比增长 34.09%",
-                "link": "https://www.ithome.com/0/943/352.htm",
-                "published": "Fri, 24 Apr 2026 13:43:59 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，亨通光电今日发布 2026 年一季度报告：</p><ul class=\" list-paddingleft-2\"><li><p><strong>营业总收入</strong>： 177.91 亿元，同比增长 34.09%</p></li><li><p><strong>归母净利润</strong>： 11.05 亿元，同比增长 98.53%</p></li><li><p><strong>扣非净利润</strong>： 11.33 亿元，同比增长 107.68%</p></li><li><p><strong>经营现金流</strong>： -1.94 亿元，同比下降 352.66%</p></li><li><p><strong>基本每股收益</strong>： 0.46 元 / 股，同比增长 98.56%</p></li><li><p><strong>稀释每股收益</strong>： 0.46 元 / 股，同比增长 98.56%</p></li><li><p><strong>加权平均净资产收益率</strong>： 3.44%，同比增加 1.52 个百分点</p></li><li><p><strong>研发费用</strong> 636,813,588.73 元，同比增长 38.81%</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0850d181-61b1-45ff-95fd-2c6d54eb8c47.jpg?x-bce-process=image/format,f_auto\" /></p><blockquote class=\"ai-point\"><h3>🤖 AI 解读</h3><p>报告期内，公司实现<strong>营业收入 177.91 亿元</strong>，同比增长 34.09%；实现<strong>归属于上市公司股东的净利润 11.05 亿元</strong>，同比增长 98.53%；实现<strong>归属于上市公司股东的扣除非经常性损益的净利润 11.33 亿元</strong>，同比增长 107.68%。</p><p>业绩增长主要系报告期内<strong>光通信市场需求增长、价格上涨，海洋通信及能源产品交付增加和海外市场需求增长</strong>，带动营收和利润增长；经营活动现金流量净额同比下降，主要系报告期内进行套期保值的商品期货价格波动，增加交易保证金所致。</p><p>截至报告期末，公司能源互联领域在手订单金额约 220 亿元，海洋通信业务相关在手订单金额约 70 亿元，PEACE 跨洋海缆通信系统运营项目在手订单超 3 亿美元，在手订单充足。公司完成 2024 年限制性股票激励计划部分限制性股票回购注销，同时发布 2026 年度“提质增效重回报”行动方案，聚焦主营业务发展，强化股东回报。</p></blockquote><p class=\"ad-tips\">风险提示：本文内容由 AI 自动分析生成，仅供参考，不代表IT之家观点。如有出入请以证监会指定上市公司信息披露平台为准。本文内容不构成投资建议，如有投资者据此操作，风险自担，IT之家对此不承担任何责任。</p>"
+                "title": "奇瑞、博世签署 48V 整车架构合作开发及量产框架协议，星途旗舰车型首发",
+                "link": "https://www.ithome.com/0/943/450.htm",
+                "published": "Sat, 25 Apr 2026 06:53:10 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，奇瑞汽车股份有限公司与博世（中国）投资有限公司昨日在北京签署了 48V 整车架构合作开发及量产框架协议。两家企业将深化战略合作，<strong>推动新一代 48V 整车架构在中国率先实现量产</strong>。</p><p>奇瑞与博世在 2024 年 10 月启动了整车 48V 低压电气系统的预研，双方当前已完成了整车系统与功能样车开发、关键部件样件开发、产业化路径预研，该技术<strong>计划率先应用于奇瑞旗下高端品牌星途的旗舰车型</strong>。</p><p>相较传统的 12V 低压电气架构，<strong>48V 架构支持更高的功率输出</strong>，能满足现代化车载计算、智能座舱、线控底盘的电力需求。其整车供电功率提升至 15kW，系统减重超过 10kg，线控底盘转向电机响应速度提升 20% 以上。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/280f57b3-06dc-4852-bb30-ae1983eb3cc8.jpg?x-bce-process=image/format,f_auto\" /></p><p>奇瑞汽车董事长尹同跃表示：</p><blockquote><p>奇瑞与博世多年来始终保持着高度互信的战略伙伴关系。此次 48V 整车项目的携手，共同定义并推动下一代 48V 整车系统方案的快速落地，这是奇瑞和博世携手面向全球市场构建技术生态、引领电气架构升级的重要一步。</p><p>奇瑞将持续以技术创新为核心驱动，赋能产品全面革新，并由此带动商业模式重构、企业治理优化与产业生态重塑，加速实现向全球化高科技生态集团的战略跃迁。</p></blockquote><p>博世集团董事会主席史蒂凡・哈通 (Stefan Hartung) 表示：</p><blockquote><p>本次战略合作的深化，标志着博世与奇瑞二十五载长久互信、深度绑定的伙伴关系迈向新的高度。</p><p>紧扣全球汽车电动化和智能化加速演进趋势，博世将充分运用全栈式低压系统零部件开发和产业化经验，深度配合奇瑞整车研发、电网系统定义、与本土及海外市场化领先能力，携手推动下一代 48V 整车量产及规模化，助力汽车产业高质量向前发展。</p></blockquote>"
             },
             {
-                "title": "Apple TV《同乐者》《向光而行》摘获皮博迪奖，苹果原创作品累计已获 797 项大奖",
-                "link": "https://www.ithome.com/0/943/351.htm",
-                "published": "Fri, 24 Apr 2026 13:42:01 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，当地时间 4 月 23 日，第 86 届皮博迪奖揭晓，苹果 Apple TV 平台两部原创作品获奖。其中，科幻剧情类剧集《同乐者》获得娱乐类奖项，纪录片《向光而行》获得纪录片类奖项。</p><p>皮博迪奖旨在表彰反映当下社会议题及新兴声音的优秀叙事作品，被业界视为广播、电视及在线媒体领域的普利策奖。本届颁奖典礼将于 5 月 31 日在比弗利山庄的比弗利威尔希尔酒店举行。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/4cdd210b-6c84-47dc-b632-7961412d2b3f.jpg?x-bce-process=image/format,f_auto\" /></p><p>《同乐者》是 Apple TV 目前观看量最高的剧情类剧集。该剧讲述了一位极度不快乐的浪漫奇幻小说作家卡罗尔的故事，在一次星际事件使大多数人类进入“蜂巢思维”般的和谐状态后，她感到自己有责任将世界从“幸福”中拯救出来。</p><p>在此之前，女主角瑞亚 · 西霍恩已凭借该角色已获得金球奖、评论家选择奖及卫星奖的剧情类最佳女主角奖。该剧还获得了美国电影学会年度电视节目奖，并入围了英国电影与电视艺术学院电视奖、制片人工会奖、编剧工会奖及 GLAAD 媒体奖等多个奖项提名。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/9034f2d2-626d-4273-8120-07dc2398d9c0.png?x-bce-process=image/format,f_auto\" /></p><p>纪录片《向光而行》记录了诗人安德里亚 · 吉布森与梅根 · 法利面对不治之症诊断的故事。她们以喜悦、智慧和坚定的伴侣关系面对命运，将痛苦转化为意义，将死亡转化为对生命韧性的赞颂。</p><p>该片入选了美国国家评论会 2025 年度五佳纪录片，并获得电影之眼荣誉奖的非虚构类长片奖。此外，该纪录片还获得了圣丹斯电影节最受欢迎奖，并入围了奥斯卡奖、GLAAD 媒体奖、美国独立精神奖及美国电影摄影师协会奖等。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0d479017-ab18-4acb-b757-57202f5219c8.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，苹果 Apple TV 在皮博迪奖上已连续多年有所斩获，例如于 2025 年凭借纪录片《面包与玫瑰》获奖，2023 年甚至有三部作品获奖 —— 黑色喜剧《坏姐妹》以及剧情类剧集《人生切割术》和《弹子球游戏》，2021 年则有《足球教练》和《静水》两部作品获奖。</p><p>苹果官方表示，截至目前，Apple 原创电影、纪录片及剧集已累计获得 797 项奖项及 3431 项奖项提名，其中包括多座艾美奖、奥斯卡最佳影片《健听女孩》以及创下体育题材电影票房纪录的奥斯卡获奖影片《F1 狂飙飞车》。</p>"
+                "title": "华硕 a 豆 14 Air 2026 新增 13DE MARZO 联名款，国补价 6884.15 元",
+                "link": "https://www.ithome.com/0/943/449.htm",
+                "published": "Sat, 25 Apr 2026 06:50:34 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，华硕周四推出了新的华硕 a 豆 14 Air 2026x13DE MARZO 联名款，首发价 8599 元，学生优惠 500 元，再叠加国补后 6884.15 元，4 月 30 日开售。</p><p>相比于普通机型，联名礼盒内含：</p><ul class=\" list-paddingleft-2\"><li><p>豆叮 x 13DE MARZO 联名系列小熊化妆包</p></li><li><p>豆叮 x13DE MARZO 联名系列磁吸小熊</p></li><li><p>豆叮 x 13DE MARZO 联名系列小熊工牌</p></li><li><p>此外，该机 A 面 logo 也采用了豆叮与 MARZO BEAR 的联名图案</p></li></ul><dir><a contenteditable=\"false\" href=\"https://u.jd.com/fOsTOyT\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/423752/29/9057/108656/69e9e919F8042bbad/0083320320bfe5a8.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">华硕 a 豆 14 Air 2026x13DE MARZO 联名款</span></span><span class=\"card-abstract\"> 超轻薄笔记本电脑 AI9 H 465 32G 1T 2.8K 高刷【国家补贴】蓝</span><span class=\"card-controls\"><span class=\"price\"> 8599 元</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir><p>2026 年数码家电政府补贴持续进行中，IT 之家为大家汇总国补领券地址，买数码家电之前记得领取：<a href=\"https://u.jd.com/A69r8nr\" target=\"_blank\">点此查看</a>。</p><p><strong>数码补贴：<a href=\"https://u.jd.com/AO9cF1s\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>手机 / 平板 / 3C 数码支持 8.5 折政府补贴，不超过 6000 元的产品至高立减 500 元。</p></li></ul><p><strong>家电补贴：<a href=\"https://u.jd.com/A696EUt\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>6 类家电支持 8.5 折政府补贴，单品至高补贴 1500 元。</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1f2f3e86-a338-42b0-b333-8e059644fcf9.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机沿用了 AMD 锐龙 AI 9 H 465 处理器 + 32GB 内存 + 1TB SSD 的规格，采用双风扇双热管散热，性能释放 45W；采用镁铝金属机身，厚 14.9mm，重约 990g。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0d3acae8-3b2e-4129-884f-ccbc509fd295.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机采用了一块 2.8K 分辨率 120Hz OLED 屏幕（IT之家注：覆盖 100% DCI-P3 色域、峰值亮度 1100 尼特），提供 IR 人脸识别摄像头，配备背光键盘，支持 180° 开合。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8669365e-9986-42ab-81ec-90316a5f7db0.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机搭载了 10 核心 20 线程 AMD 锐龙 AI 9 H 465 处理器，采用 32GB LPDDR5x 内存 + 1TB PCIe 4.0 固态硬盘，预留 M.2 盘位。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ab1259e3-2f17-4fd0-8083-f00f13cd8614.jpg?x-bce-process=image/format,f_auto\" /></p><p>其他方面，该机配备 70Wh 电池，提供全功能 USB4、全功能 USB-C、双 USB-A 以及 HDMI 2.1 等接口。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a6a1d2d1-7e4b-435a-8121-b6b8ccee87ef.jpg?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "索尼 INZONE 英纵 Buds 耳机“冰透紫”新配色发售，首发价 1079 元",
-                "link": "https://www.ithome.com/0/943/350.htm",
-                "published": "Fri, 24 Apr 2026 13:41:06 GMT",
-                "summary": "<p>IT之家 4 月 24 日消息，索尼旗下 INZONE 英纵 Buds“游戏豆”耳机新增的“冰透紫”配色版本将于明天（4 月 25 日）0 点开启首销，<strong>定价为 1199 元，首发价 1079 元</strong>。</p><dir><a contenteditable=\"false\" href=\"https://u.jd.com/f6iNGb5\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/420936/11/2448/95879/69deee47Fbe1ffab9/00833203201200d4.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">索尼 INZONE 英纵 Buds 游戏豆</span></span><span class=\"card-abstract\"></span><span class=\"card-controls\"><span class=\"price\"> 1079 元</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2034603f-583d-4040-80fa-6ae5d0ceb301.jpg?x-bce-process=image/format,f_auto\" /></p><p>这款耳机采用冰透紫配色，机械结构呈现出若隐若现的视觉效果。其配有 8.4mm 驱动单元，结合不同材质可为玩家带来更小的失真和更清晰的音质；支持虚拟 7.1 等多声道、ANC 主动降噪、360 度游戏空间音效、20 级可调节环境声。</p><p>该耳机支持 2.4GHz USB-C 连接，延迟低于 30ms，并具备 360 游戏空间音效。耳机在 L1 低功耗处理器加持下，可实现 12 小时续航，配合充电盒可实现 24 小时续航。</p><p>IT之家附产品参数：</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/6bf1609e-d653-4927-bac6-77fd5e61f92c.jpg?x-bce-process=image/format,f_auto\" /></p>"
-            }
-        ]
-    },
-    {
-        "id": "solidot",
-        "name": "Solidot",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.284452",
-        "entries": [
-            {
-                "title": "Firefox 悄悄集成 Brave 的 Adblock 引擎",
-                "link": "https://www.solidot.org/story?sid=84144",
-                "published": "Fri, 24 Apr 2026 23:13:06 +0800",
-                "summary": "Mozilla 上个月释出的 Firefox 149 悄悄集成了 Brave 的开源 Adblock 引擎 adblock-rust。adblock-rust 在默认情况下没有启用，也没有 UI 或内容过滤列表。dblock-rust 是 Brave 内置广告屏蔽器使用的引擎，使用 Rust 开发，采用 MPL-2.0 许可授权，能处理网络请求拦截、过滤特定元素样式(cosmetic filtering)，兼容 uBlock Origin 的过滤列表语法。Firefox 分支 Waterfox 也采用了 adblock-rust。\n<p></p>"
-            },
-            {
-                "title": "减少接触塑料会在短期内大幅减少体内的塑料物质含量",
-                "link": "https://www.solidot.org/story?sid=84143",
-                "published": "Fri, 24 Apr 2026 22:50:31 +0800",
-                "summary": "根据一项研究，减少接触塑料会在短期内减少体内的塑料物质含量最多五成。研究主要针对两种来自塑料制品的化学物质——邻苯二甲酸酯（phthalates）和双酚（bisphenols）。211 名试验参与者的尿检结果显示他们体内都有较高含量的塑料化学物质。其中 60 名参与者参与了一项随机对照试验。研究人员与农民和生产商合作，提供在生产和包装过程中完全不用塑料的食品。一周后相比对照组，减少接触塑料的参与者体内邻苯二甲酸酯减少了 44%，双酚减少了逾 50%。\n<p></p>"
-            },
-            {
-                "title": "英国生物银行 50 万参与者健康数据泄漏",
-                "link": "https://www.solidot.org/story?sid=84142",
-                "published": "Fri, 24 Apr 2026 22:12:37 +0800",
-                "summary": "英国生物银行（UK Biobank）有 50 万参与者的健康数据泄漏，泄漏数据集在阿里巴巴上出售。英国科技大臣 Ian Murray 称英国生物银行运营机构已向政府通报了这起事件，泄露的信息不包含姓名、地址、联系方式或电话号码，但可能包括性别、年龄、出生年月、社会经济地位、生活习惯以及生物样本的测量数据。英国生物银行收集志愿者提供的健康数据，被用于帮助改进痴呆症、癌症和帕金森病的检测和治疗。有逾 1.8 万篇论文使用了英国生物银行的数据。阿里巴巴已经删除了数据，但相关数据又被上传到了 GitHub 上，英国生物银行向 GitHub 递交了大量 DMCA 删除通知。\n<p></p>"
-            },
-            {
-                "title": "天文学家发现银河系的边缘",
-                "link": "https://www.solidot.org/story?sid=84141",
-                "published": "Fri, 24 Apr 2026 17:53:08 +0800",
-                "summary": "银河系是圆盘状恒星，也就是恒星的形成是由里向外，这意味着越远的恒星越年轻。天文学家分析了银河系逾 10 万颗巨型恒星，发现恒星年龄分布由内向外模式在距离银河系中心 3.5-4 万光年间发生逆转，超过该距离恒星年龄变大了。这种突变形成了 U 型年龄分布，曲线最低点对应的恒星形成率急剧下降，代表着银河系恒星形成盘的边界。天文学家认为他们识别了银河系圆盘的边缘。\n<p></p>"
-            },
-            {
-                "title": "NASA Roman 太空望远镜最早九月发射",
-                "link": "https://www.solidot.org/story?sid=84140",
-                "published": "Fri, 24 Apr 2026 16:38:14 +0800",
-                "summary": "NASA 宣布 Nancy Grace Roman 太空望远镜最早今年九月发射最晚 2027 年 5 月发射。望远镜以 NASA 首任天文学部门女主任的名字命名，它属于红外望远镜，核心任务包括探测暗能量、发现系外行星及验证广义相对论宇宙时空曲率。望远镜使用美国国家侦察局捐赠的 2.4 米口径主镜（当年 NRO 捐赠了两台主镜），配备了两台科学仪器：3 亿像素多波段红外相机大视场仪表（WFI），能直接观测邻近恒星周围的类木行星的日冕仪（CGI）。\n<p></p>"
-            },
-            {
-                "title": "深度求索发布 DeepSeek-V4 预览版",
-                "link": "https://www.solidot.org/story?sid=84139",
-                "published": "Fri, 24 Apr 2026 15:59:56 +0800",
-                "summary": "深度求索发布了 DeepSeek-V4 预览版。DeepSeek-V4 有两个版本，其中 Pro 版本有 1.6 万亿参数其中 490 亿活跃参数；Flash 版本有 2840 亿参数其中活跃参数 130 亿。两个版本都支持百万上下文。DeepSeek V4 除了支持英伟达 GPU 还支持华为昇腾 NPU。深度求索称，在 Agentic Coding 评测中，V4-Pro 已达到当前开源模型最佳水平，并在其他 Agent 相关评测中同样表现优异；Pro 在世界知识测评中，大幅领先其他开源模型，仅稍逊于顶尖闭源模型 Gemini-Pro-3.1；在数学、STEM、竞赛型代码的测评中，V4-Pro 超越当前所有已公开评测的开源模型。\n<p></p>"
-            },
-            {
-                "title": "Tim Cook 称 2012 年发布 Apple Maps 是其任内第一个重大失误",
-                "link": "https://www.solidot.org/story?sid=84138",
-                "published": "Fri, 24 Apr 2026 15:16:03 +0800",
-                "summary": "在最近举行的员工大会上，即将卸任的苹果 CEO 库克（Tim Cook）称 2012 年上线 Apple Maps 是其任内第一个真正的重大失误。当时的 Apple Maps 还比较原始，尚未准备好。它的失败迫使库克向用户道歉，并建议用户使用竞争对手的地图应用。库克表示这次重大失败还是富有价值的，“这体现了我们始终将用户放置在决策中心。现在我们拥有全世界最好的地图应用。我们学会了坚持，犯了错误但做了正确的事。”\n<p></p>"
-            },
-            {
-                "title": "心脏跳动能抑制心脏癌生长",
-                "link": "https://www.solidot.org/story?sid=84137",
-                "published": "Fri, 24 Apr 2026 14:10:39 +0800",
-                "summary": "根据发表在《科学》期刊上的一项研究，心脏持续不断的跳动可能会主动抑制心脏组织中的肿瘤生长。这些组织中的细胞通路会改变癌细胞的基因调控方式，从而阻止其增殖。这些发现揭示了机械力在保护心脏免受癌症侵害方面的作用，并可能为基于机械刺激的新型癌症疗法做好铺垫。在哺乳动物中，心脏癌极为罕见。更重要的是，成年人的心脏自我更新能力有限，心肌细胞的再生率每年约为 1%。人们对这些特征所提出的一种解释是：心脏组织承受着巨大的机械负荷，它必须克服很大的阻力而持续泵血。这种持续的压力似乎会抑制心脏细胞的增殖能力。通过利用基因工程小鼠模型，研究人员发现，即使引入了强力致癌突变，心脏对其也具有显著的抗性。研究发现，组织内的机械力会重塑癌细胞基因组的调节格局，从而影响癌细胞是否能够增殖。Nesprin-2 是这一过程的核心，这是一种将细胞表面的机械信号传递至细胞核的蛋白。作为 LINC 复合物的一个组成部分，Nesprin-2 可感知心脏的机械微环境，并可在功能上改变染色质结构和组蛋白甲基化，从而降低与肿瘤细胞增殖相关的基因活性。当癌细胞中的 Nesprin-2 被沉默后，这些细胞在机械活动的心脏中会重新获得生长能力并形成肿瘤。\n<p></p>"
-            },
-            {
-                "title": "Ubuntu 26.04 LTS 释出",
-                "link": "https://www.solidot.org/story?sid=84136",
-                "published": "Fri, 24 Apr 2026 13:56:42 +0800",
-                "summary": "Canonical 释出了代号为 Resolute Raccoon 的 Ubuntu 26.04 LTS。同时释出的还有衍生版本 Edubuntu、Kubuntu、Lubuntu、Ubuntu Budgie、Ubuntu Cinnamon、Ubuntu Kylin、Ubuntu Studio、Ubuntu Unity 和 Xubuntu。Ubuntu Desktop、Ubuntu Server、Ubuntu Cloud、Ubuntu WSL 和 Ubuntu Core 将获得五年的支持，其余版本获得三年的支持，付费扩展支持 ESM (Expanded Security Maintenance)为十年 。Ubuntu 26.04 采用最新的 Linux 7.0 kernel，GNOME 50 桌面环境，引入了基于 TPM 的全盘加密，GStreamer 1.28，沙盒图形加载，Chrony 4.8，等等。\n<p></p>"
-            },
-            {
-                "title": "AI 漏洞报告大增促使内核移除缺乏维护的代码",
-                "link": "https://www.solidot.org/story?sid=84135",
-                "published": "Fri, 24 Apr 2026 13:24:40 +0800",
-                "summary": "内核开发者宣布，为了保持自己的理智不被大量涌入的 AI 生成漏洞报告搞疯，他们正在 Linux 内核移除缺乏维护的代码。计划移除的代码包括 ISA 和 PCMCIA Ethernet 驱动、一对 PCI 驱动、ax25 和业余无线电子系统、ATM 协议和驱动，以及 ISDN 子系统。\n<p></p>"
-            },
-            {
-                "title": "猕猴吃土帮助消化游客的高热量垃圾食品",
-                "link": "https://www.solidot.org/story?sid=84134",
-                "published": "Thu, 23 Apr 2026 23:31:51 +0800",
-                "summary": "剑桥大学的一项研究发现，欧洲唯一野猴群、生活在直布罗陀的猕猴群会定期吃土。对猴群的监测显示，与游客接触频繁的猕猴摄入的泥土量更多，而在旅游旺季食土率也更高。科学家认为游客提供或从游客偷取的高热量食物如巧克力、薯片和冰淇淋正在扰乱它们的肠道微生物组成，导致了其习惯的改变。吃土可能有助于猕猴恢复肠胃平衡，土壤可以提供垃圾食品缺乏的细菌和矿物质，可能有助于保护肠道内壁，缓解或预防因摄入过多糖分和脂肪引起的刺激。猕猴群平均每周有 12 次吃土行为。30% 的吃土行为发生在群体中，89% 发生在其它猕猴在场的情况下，其它猕猴通常会在旁观察，表明这种行为是“社会习得的”。大多数猕猴偏爱食用红土（terra rossa），占到了所有事件的 83%。\n<p></p>"
-            },
-            {
-                "title": "特朗普模因币导致投资者损失数十亿美元",
-                "link": "https://www.solidot.org/story?sid=84133",
-                "published": "Thu, 23 Apr 2026 22:58:52 +0800",
-                "summary": "2025 年 1 月总统就职典礼前特朗普推出了官方模因币，成为首位发行个人加密货币的总统。分析认为特朗普家族从中获利逾 2.8 亿美元，但投资该模因币的散户则损失了逾 43 亿美元。大部分特朗普模因币掌握在内部人士手中，通过关键时刻抛售和收集手续费，他们没有损失，反而获利逾 6 亿美元。特朗普代币最初定价 28.73 美元，如今的价格不到 3 美元，币值跌了 93%。第一夫人 Melania Trump 的官方模因币则更惨，币值相比峰值跌了 99%。特朗普家族的加密货币公司 World Liberty Financial 则为其带来了约 50 亿美元的财富。\n<p></p>"
-            },
-            {
-                "title": "53 国齐聚哥伦比亚商讨淘汰化石燃料",
-                "link": "https://www.solidot.org/story?sid=84132",
-                "published": "Thu, 23 Apr 2026 22:21:21 +0800",
-                "summary": "53 国（不包括主要排放国中国、美国、印度和俄罗斯）将于下周齐聚哥伦比亚商讨如何逐步淘汰化石燃料。霍尔木兹海峡的关闭让亚太国家面临能源危机，迫使这些国家采取紧急措施如推行远程办公和关闭学校。与会国并非传统盟友，而是在短时间内组建的松散联盟，这也反映了形势的紧迫性。最新的能源危机可能成为可再生清洁能源的一个转折点。化石燃料行业多年来一直宣称石油、天然气和煤炭是可靠的能源，但危机显示它们并不可靠，可再生能源则廉价、可靠且安全。相比 1970 年代的中东石油危机，今天可作为化石燃料提到的清洁能源已经成熟。自 1970 年代以来，太阳能电池板的价格下降了 99.9%，自 1984 年以来风能成本下降了 91%，自 1991 年以来电池价格下降了 99%。此前韩国七成原油经过霍尔木兹海峡，现在韩国计划四年内将可再生能源装机容量翻一番。过去 30 年的全球气候谈判几乎从未提及化石燃料，部分原因是化石燃料主要出口国和游说团体的阻挠。现在一个松散的国家联盟正绕过全球气候谈判，讨论如何真正逐步淘汰化石燃料。\n<p></p>"
-            },
-            {
-                "title": "加密货币骗子瞄准滞留在霍尔木兹海峡附近的船只",
-                "link": "https://www.solidot.org/story?sid=84131",
-                "published": "Thu, 23 Apr 2026 20:49:03 +0800",
-                "summary": "由于伊朗关闭了霍尔木兹海峡，目前有约 2000 艘船只和 2 万名海员滞留在附近。伊朗几周前表示通过海峡的油轮需要以加密货币形式支付过境费，但美国随后也宣布关闭海峡搜查过往船只。形势相当混乱，而在混乱之中骗子开始浑水摸鱼。据报道，加密货币骗子正冒充伊朗当局，向航运公司发送信息，要求以比特币或泰达币支付过境费。未经证实的消息称，有船只认为已经支付了过境费而试图通过海峡，在遭到伊朗炮击后不得不返回。目前已发生了两次类似事件，一次是 4 月 18 日，一次是 4 月 22 日。\n<p></p>"
-            },
-            {
-                "title": "古代人类曾三次迁徙到南美洲",
-                "link": "https://www.solidot.org/story?sid=84130",
-                "published": "Thu, 23 Apr 2026 20:11:07 +0800",
-                "summary": "南美洲是人类最后定居的一块大陆。科学家以前认为迁徙到南美很简单：大约 1.5 万前来自大约同一群体的古代人类祖先进入这块大陆，逐渐适应从丛林到高原等不同环境。但发表在《自然》期刊上的古代和现代基因组分析研究显示：古代人类至少分三次迁徙到南美洲。第一波迁徙大约发生在 1.27 万年前，第二波是 9000 年前，第三波则是约 1300 年前。第三波迁徙者与中美洲人有关联。\n<p></p>"
-            },
-            {
-                "title": "盖茨基金会准备裁员，正在审查与爱泼斯坦的关联",
-                "link": "https://www.solidot.org/story?sid=84129",
-                "published": "Thu, 23 Apr 2026 19:32:14 +0800",
-                "summary": "由于基金会主席比尔盖茨与已故性侵犯爱泼斯坦（Jeffrey ​Epstein）之间的关系，盖茨基金会最近深陷争议。它在周二宣布已委托外部机构对该基金会与爱泼斯坦之间关联进行审查，预计夏天会收到相关评估报告。美国司法部今年一月公布的文件显示爱泼斯坦曾与基金会的员工有过通信，文件还包括盖茨与爱泼斯坦以及被涂黑女性之间合影。盖茨之后声明与爱泼斯坦的关系仅限于慈善事业，称与他见面是一个错误，否认与爱泼斯坦性侵犯案受害者有过接触。盖茨基金会据报道还计划在 2030 年前裁掉约五分之一或 200 名员工。\n<p></p>"
-            },
-            {
-                "title": "高收入人群的 AI 普及率远高于低收入人群",
-                "link": "https://www.solidot.org/story?sid=84128",
-                "published": "Thu, 23 Apr 2026 17:11:14 +0800",
-                "summary": "FT 的调查显示，高收入人群的 AI 普及率与低收入人群存在显著的差异。对美英两国 4000 名员工的调查显示，AI 采用明显向高收入员工倾斜：超过 60% 的高薪员工每天使用 AI，而低收入员工中这一比例仅为 16%。调查还显示出性别差距：在从科技到教育与零售等各行业中，男性使用 AI 工具的可能性显著高于女性。诺贝尔经济学奖得主 Daron Acemoglu 说，AI 工具被认为会走向大众化，但现实是你需要一定的教育水平、抽象思维和定量分析能力，以及对计算机和编程的熟悉程度才能使用这些模型。几乎肯定 AI 将会加剧劳动力和资本之间的不平等。薪酬、教育水平和 AI 使用之间存在紧密联系，表明这项技术可能会通过提高高收入人群而非低收入人群的生产力加剧收入不平等。另一位诺奖得主 Chris Pissarides 说，发明的技术越智能，你的智力越重要。PC 革命早期也有类似的鸿沟，但随着 PC 的普及鸿沟逐渐缩小。现在的问题是多长时间？如果需要十到二十年那么情况可能会令人担忧。\n<p></p>"
-            },
-            {
-                "title": "孙宇晨起诉特朗普家族的加密货币公司 World Liberty",
-                "link": "https://www.solidot.org/story?sid=84127",
-                "published": "Thu, 23 Apr 2026 15:44:12 +0800",
-                "summary": "特朗普家族加密货币公司 World Liberty（WLFI）的早期支持者、波场（TRON）创始人孙宇晨提起诉讼，指控 World Liberty 非法扣押他持有的 WLFI 代币，冻结其参与公司治理的投票权。孙宇晨还指控包括联合创始人 Chase Herro 在内的其他 World Liberty 运营者将该公司作为利用特朗普品牌通过欺诈牟利的绝佳机会。在周二提交到旧金山联邦法院的诉状中，孙宇晨称，World Liberty 最初承诺未来将允许代币持有者交易该货币，这一承诺是虚假的且具有误导性。虽然大部分代币可以交易，但 World Liberty 阻止他出售任何一个代币，还威胁要销毁他持有的所有代币。WLFI 在 X 上回应称，孙宇晨最喜欢在扮演受害者的同时捏造毫无根据的指控掩盖其不当行为，“WLFI 不是第一个，我们有合同。我们有证据。我们有真相”，它表示法庭上见。\n<p></p>"
-            },
-            {
-                "title": "沥青会释放有毒的挥发性有机物",
-                "link": "https://www.solidot.org/story?sid=84126",
-                "published": "Thu, 23 Apr 2026 14:48:56 +0800",
-                "summary": "沥青是石油副产品，被用作沥青混凝土的粘结剂。根据发表在《Journal of Hazardous Materials》和《Science of the Total Environment》期刊上的两项研究，沥青会释放出挥发性有机物（Volatile organic compounds，VOC），高温晴朗的天气会更显著。这些有毒且通常无味的挥发性有机物小到足以进入动脉和器官，它们会对人类造成严重的神经损伤，对女性和老年人影响更大。研究人员称，高温会加剧沥青释放有毒有机物。研究人员报告可以通过在沥青中添加藻类的方式大幅降低其释放出的毒性最强的有机物，测试显示毒性可以减少到原来的百分之一，而且能减缓路面老化。\n<p></p>"
-            },
-            {
-                "title": "乒乓球机器人击败了人类顶尖选手",
-                "link": "https://www.solidot.org/story?sid=84125",
-                "published": "Thu, 23 Apr 2026 13:33:45 +0800",
-                "summary": "索尼 AI 部门研发的乒乓球机器人 Ace 击败了人类顶尖选手创造了历史，成为首个在竞技体育项目达到专家级水平的自主机器人。项目负责人表示，竞技体育需要快速决策和精准执行，Ace 的成就受益于其高速感知、基于 AI 的控制以及先进的机器人系统。Sony AI Zurich 主任兼 Ace 项目负责人 Peter Dürr 表示，AI 系统在计算机游戏中已经超越人类专家，但乒乓球之类的物理实时体育运动仍然是一个巨大的开放性挑战，因为它们需要在接近障碍物和人类反应极限的情况下进行快速、精准且对抗性的互动。该项目的目标不仅是在乒乓球比赛中展开竞争，更重要的是深入了解机器人如何在动态环境中以类似人类的速度和精度感知、规划和行动。索尼研究人员在《自然》期刊上发表论文介绍了 Ace。Ace 在 2025 年 4 月与精英选手之间的五场比赛赢了三场，但与职业选手的两场比赛都输了，Ace 之后分别在 2025 年 12 月和上个月进行的比赛中击败了职业选手。输给机器人的职业选手 Mayuka Taira 称，机器人没有情绪因此难以预测。曾赢过机器人的精英选手 Rui Takenaka 说机器人会用旋转复杂的球应对她发出的复杂球，用简单球回应简单球，她因此能乘机获胜。\n<p></p>"
-            }
-        ]
-    },
-    {
-        "id": "oschina-news",
-        "name": "OSCHINA 社区新闻",
-        "category": "tech",
-        "last_updated": "2026-04-25T00:12:51.505719",
-        "entries": [
-            {
-                "title": "支持 Hermes Agent 与 MongoDB 管理，1Panel v2.1.9 版本发布",
-                "link": "https://my.oschina.net/u/4736111/blog/19595590",
-                "published": "Fri, 24 Apr 2026 17:11:53 +0800",
-                "summary": "1Panel v2.1.9 版本围绕智能体、数据库与文件管理等场景带来了多项更新。智能体方面，新增 Hermes Agent 支持，并且优化 OpenClaw 频道机器人添加流程；数据库方面，新增 MongoDB 数据库管理功能；文件方面，新增文件历史管理功能，并对文件压缩、编辑、分享和回收站相关能力进行了增强。..."
-            },
-            {
-                "title": "【Ease UI】2026-04-24 项目更新：增加多种风格登录页，增加菜单风格切换",
-                "link": "https://www.oschina.net/news/437478",
-                "published": "Fri, 24 Apr 2026 16:37:50 +0800",
-                "summary": "🚀 即插即用的 Vue 3 业务组件库，让中后台开发回归简单 Ease UI 是一套为「快速复制」而生的 Vue 3 业务组件库。每个组件都是独立的 .vue 单文件，不依赖任何外部样式或工具函数，直接复制到你的项目即可使用。它仅依赖 Element Plus，却解决了中后台开发中表格选择混乱、搜索表单代码臃肿、日期范围绑定繁琐等真实痛..."
-            },
-            {
-                "title": "OpenAI 正式推出 GPT-5.5",
-                "link": "https://www.oschina.net/news/437477",
-                "published": "Fri, 24 Apr 2026 16:32:14 +0800",
-                "summary": "OpenAI 正式推出其迄今最强大的 AI 模型 —— GPT-5.5，不仅在智能水平上实现质的飞跃，更以惊人的能效比重塑大模型经济性边界。 该模型专为“智能体”（Agent）时代设计，能在模糊指令下自主规划、调用工具、执行多步骤复杂任务，在代码生成、科研探索与企业自动化等领域表现卓越。 GPT-5.5的最大进化在于强自主性。用户..."
-            },
-            {
-                "title": "你写的 Skill，及格了吗？",
-                "link": "https://my.oschina.net/u/4939618/blog/19595216",
-                "published": "Fri, 24 Apr 2026 16:09:07 +0800",
-                "summary": "本文提出了一套8维度的Skill量化评估框架，通过元数据质量、执行引导清晰度、领域知识密度等指标对Skill进行打分评级，解决了Skill质量难以客观衡量的问题。为提升评估可靠性，设计了多模型交叉验证流程，并适配不同AI工具环境提供四种执行策略。该框架既能帮助开发者识别改进短板，也能辅助用户横向对比选择优质Skill，..."
-            },
-            {
-                "title": "从 20 毫秒到微秒级：NoSQLite v1.5.0 之后的性能进化",
-                "link": "https://www.oschina.net/news/437475",
-                "published": "Fri, 24 Apr 2026 15:44:57 +0800",
-                "summary": "项目仓库：https://github.com/uya-lang/nosqliteNoSQLite 是一个 Uya-native 的嵌入式文档数据库。它想做的，不是再包一层 JSON API，也不是做一个“看起来像数据库”的玩具项目，而是认真把一个小数据库该有的骨架搭起来：WAL、checkpoint、双 meta 页、checksum、主键 B+Tree、SQL parser/binder/planner/executor、快..."
-            },
-            {
-                "title": "MiMo-V2.5-TTS-Series + ASR 正式发布",
-                "link": "https://www.oschina.net/news/437474",
-                "published": "Fri, 24 Apr 2026 15:37:19 +0800",
-                "summary": "小米大模型宣布正式发布 MiMo-V2.5-TTS Series 与 MiMo-V2.5-ASR —— 一套面向 Agent 时代的全链路语音模型系列，覆盖识别与合成两大核心能力，让语音的输入与输出都可以被语言自由调度。 MiMo-V2.5-TTS Series 包含三款模型，现已登陆小米 MiMo 开放平台，并且限时免费。三者共享统一的风格指令遵循、音频标签控制与文..."
-            },
-            {
-                "title": "Zotero 9.0.1 发布，参考文献管理工具",
-                "link": "https://www.oschina.net/news/437473/zotero-9-0-1-released",
-                "published": "Fri, 24 Apr 2026 14:54:46 +0800",
-                "summary": "Zotero 是一个参考文献管理软件，也是一个免费 Firefox 和 Google 浏览器扩展。Zotero 可以协助用户收集、管理及引用研究资源，包括期刊、书籍等各类文献和网页、图片等。 Zotero 9.0.1 现已发布，具体更新内容如下： Read Aloud 改进 按下键盘上的 R 或 L 键即可切换 Read Aloud 模式 修复了开始读取时可能出现的潜在故..."
-            },
-            {
-                "title": "Rspack 2.0 正式发布",
-                "link": "https://www.oschina.net/news/437468/rspack-2-0-released",
-                "published": "Fri, 24 Apr 2026 14:19:35 +0800",
-                "summary": "Rspack 2.0 现已正式发布。公告称，从 2.0 开始，在保持对 webpack 生态兼容的前提下，Rspack 将逐步引入更符合现代 JavaScript 开发的默认行为、API 设计和构建产物。这将是一个渐进的过程，项目团队会尽量避免在单个主版本中引入过多不兼容变更，同时也会提供迁移指南与 Agent Skills，将迁移成本控制在可接受范围内。..."
-            },
-            {
-                "title": "昆仑万维 2025 年营收同比增长 44.78% 至 81.98 亿",
-                "link": "https://www.oschina.net/news/437467",
-                "published": "Fri, 24 Apr 2026 14:06:40 +0800",
-                "summary": "昆仑万维发布2025年度财报，公司实现营业总收入81.98亿元，同比增长44.78%。海外收入持续大幅增长，整体海外业务收入规模提升至77.23亿元，同比增长49.91%。 本报告期，公司继续坚定践行“All in AGI与AIGC”战略，加大研发支出，得益于持续的战略投入，公司AGI与AIGC相关业务实现关键技术突破并达到全球领先水平；同时，..."
-            },
-            {
-                "title": "DeepSeek V4 来了！超越 Sonnet 4.5，赶紧对接 Claude Code 体验一把",
-                "link": "https://www.oschina.net/news/437465",
-                "published": "Fri, 24 Apr 2026 12:51:14 +0800",
-                "summary": "本文记录我将 Claude Code 对接 DeepSeek 最新模型（V4-Pro）后的真实体验，测试了 Skills 自动化查询和积木报表 AI 建表两个场景 ------ 有惊喜，也踩到了一个藏在 &quot;1M 超长上下文&quot; 光环下的巨坑。 背景：为什么要替换掉原生 Claude？ Claude Code 是目前公认最强的 AI 编程工具之一，但原版的 Anthropic API 费用不低 ..."
-            },
-            {
-                "title": ":fire: VTJ.PRO 发布 v2.3.8：接入DeepSeek V4、AI 自主拆分区块组件",
-                "link": "https://www.oschina.net/news/437464",
-                "published": "Fri, 24 Apr 2026 12:32:37 +0800",
-                "summary": "摘要： 低代码开发平台 VTJ.PRO 正式发布 v2.3.8 版本。本次更新带来多项重要能力：支持 DeepSeek V4 大模型、AI 可自主拆分区块组件、API 管理支持代理解决跨域问题，并优化了设计器页面管理列表在大数据量下的卡顿问题。 VTJ.PRO 今日正式发布 v2.3.8 版本。该版本聚焦 AI 能力升级、开发者体验优化及性能提升，重点包..."
-            },
-            {
-                "title": "DeepSeek-V4 预览版开源发布",
-                "link": "https://www.oschina.net/news/437462",
-                "published": "Fri, 24 Apr 2026 11:34:33 +0800",
-                "summary": "DeepSeek-V4 的预览版本现已正式上线并同步开源。DeepSeek-V4 拥有百万字超长上下文，模型按大小分为两个版本： 即日起登录官网 chat.deepseek.com 或官方App，即可与最新的 DeepSeek-V4 对话，探索 1M 超长上下文记忆的全新体验。API 服务已同步更新，通过修改 model_name 为 deepseek-v4-pro 或 deepseek-v4-flash 即可..."
-            },
-            {
-                "title": "3 月户均流量 23.4GB 创新高",
-                "link": "https://www.oschina.net/news/437461",
-                "published": "Fri, 24 Apr 2026 11:15:27 +0800",
-                "summary": "2026年一季度通信业经济运行情况现已公布。一季度，通信业运行总体平稳。电信业务总量保持增长，新型基础设施建设稳步推进，5G、千兆、物联网等用户规模持续扩大，移动互联网接入流量保持较快增长。 一、总体运行情况 电信业务总量平稳增长。一季度，电信业务收入累计完成4394亿元，同比下降1.8%。按照上年不变价计算的电..."
-            },
-            {
-                "title": "AI 驱动：从运营行为到自动化用例的智能化实践",
-                "link": "https://my.oschina.net/u/5783135/blog/19595102",
-                "published": "Fri, 24 Apr 2026 10:59:43 +0800",
-                "summary": "基于以上分析，我们致力于构建一套自动化 + 智能化的 E2E 测试方案，该方案旨在支撑快速迭代开发模式，有效应对用例覆盖与重构验证等场景，从而在现有资源条件下，持续为业务快速迭代和技术架构升级提供可靠的质量保障。"
-            },
-            {
-                "title": "Electron 41.3.0 发布",
-                "link": "https://www.oschina.net/news/437459/electron-41-3-0-released",
-                "published": "Fri, 24 Apr 2026 10:40:10 +0800",
-                "summary": "Electron 是一个使用 JavaScript、HTML 和 CSS 构建跨平台的桌面应用程序。它基于 Node.js 和 Chromium，被 Atom 编辑器和许多其他应用程序使用。Electron 兼容 Mac、Windows 和 Linux，可以构建出三个平台的应用程序。 Electron v41.3.0 现已发布，一些更新内容如下： 修复 修复了先前因调用pageRanges值无效而被拒绝后..."
-            },
-            {
-                "title": "​腾讯开源全新 AI 大模型混元 Hy3 preview",
-                "link": "https://www.oschina.net/news/437457",
-                "published": "Fri, 24 Apr 2026 10:03:02 +0800",
-                "summary": "腾讯混元 Hy3 preview 语言模型已发布并开源。这是一个快慢思考融合的混合专家模型，总参数 295B，激活参数 21B，最大支持 256K 上下文长度。这是混元迄今最智能的模型，在复杂推理、指令遵循、上下文学习、代码、智能体等能力及推理性能上实现了大幅的提升。 代码和智能体是 Hy3 preview 提升最为显著的方向。 此外，比..."
-            },
-            {
-                "title": "qData 数据中台专业版 v2.0.0 发布：ChatBI 上线，数据建模与安全治理能力全面升级",
-                "link": "https://www.oschina.net/news/437456/qdata-2-0-0-released",
-                "published": "Fri, 24 Apr 2026 10:00:23 +0800",
-                "summary": "🧭 版本概述 本次版本围绕 基础管理升级、智能分析能力升级、数据建模能力完善、数据安全治理强化 四大方向展开，完成数据源管理改版，新增 ChatBI 对话式智能分析能力，并补齐来源系统、业务分类、数仓分层、数据域、主题域等核心能力，同时完善敏感清单、数据分类、脱敏规则、数据分级等治理功能，标志着 qData 数据..."
-            },
-            {
-                "title": "集结！上海·徐汇 量子黑客松大赛 2026 正式官宣，50 万奖金等你来战",
-                "link": "https://www.oschina.net/news/437455",
-                "published": "Fri, 24 Apr 2026 09:22:08 +0800",
-                "summary": "量子计算，正在从实验室走向真实的产业战场。 2026 年 5 月 16 日至 17 日，「上海·徐汇 量子黑客松大赛 2026」 将在上海徐汇源点大厦 2 号楼展示中心正式开幕。这是一场面向量子计算领域开发者、研究者与创业团队的极限编码挑战 —— 5 大赛道、30 支队伍、50 万元奖金总额，在同一个屋顶下，写代码、跑算法、路演、拿..."
-            },
-            {
-                "title": "MT-AUTH (Let's Auth) v1.31.0 发布，多租户权限系统",
-                "link": "https://www.oschina.net/news/437454/mt-auth-1-31-0-released",
-                "published": "Fri, 24 Apr 2026 09:17:13 +0800",
-                "summary": "更新日志 feature 简化JWT设计 UI语言与用户设置同步 MFA安全性增强 新增E2E测试 框架升级，Java (21)，Spring Boot (3), Redis (8), Maven (3.9), Angular (21) 注册中心逻辑优化 Http socket配置优化 重新设计权限系统，简化使用体验 UI页面优化 CICD优化 Let&apos;s Auth 开源、多租户、身份、权限、API 管理系统 官方网站..."
-            },
-            {
-                "title": "快用 OpenAgents Workspace，让 ai 分身替你打工！",
-                "link": "https://www.oschina.net/news/437453",
-                "published": "Fri, 24 Apr 2026 01:21:01 +0800",
-                "summary": "近期，很多小伙伴用OpenAgents Workspace做出了非常有意思的小尝试：用ai分身代替自己24/7 打工、让agent团队做投研......直接效率翻倍！快来看看，他们是如何使用的~ :star2:给OpenAgents点点github star: https://github.com/openagents-org/openagents 01 让ai分身替你24/7做事，随时待命 每个员工训练一个AI分身，老..."
+                "title": "告别近 10 年界面停滞，Ubuntu 开发平台 Launchpad 迎来现代化重构",
+                "link": "https://www.ithome.com/0/943/448.htm",
+                "published": "Sat, 25 Apr 2026 06:49:36 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，科技媒体 omgubuntu 昨日（4 月 24 日）发布博文，报道称 Canonical 已启动改造 Launchpad 网站工程，首批更新已上线。此次改版重点优化了系列页面，<strong>提升了信息密度与展示效果，关键信息如错误、里程碑及软件包上传状态一目了然。</strong></p><p style=\"text-align: center;\"><img alt=\"Ubuntu Launchpad Before and After redesign comparison\" class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a8948996-6b1b-45e4-9cfa-7867751057d4.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家注：Launchpad 是由 Canonical 公司维护的综合软件开发平台，主要用于 Ubuntu 等 Linux 发行版的开发管理。它集成了代码托管、错误追踪、翻译管理及软件包构建等功能。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0e2e1186-a199-4842-9799-015361f82978.png?x-bce-process=image/format,f_auto\" /></p><p>作为 Ubuntu 开发的核心基础设施，它承载着全球贡献者的协作工作，该平台上次更新可追溯到 2024 年，<strong>但是开发者在日常工作中频繁引用的内部页面，在过去近 10 年里几乎从未改动。</strong></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/39aceebf-a681-4c58-a9dd-755ee2c0a3c4.png?x-bce-process=image/format,f_auto\" /></p><p>Canonical 用户体验设计师 Enzo Deng 表示，针对 Ubuntu 26.04 LTS，公司已开始全面重塑该平台页面，主要侧重于强调提升效率，改善信息密度和展示方式。</p><p>新版页面布局优化展示错误、里程碑和软件包上传等关键信息，让开发者和软件包维护者能够更直观地管理复杂任务。</p>"
             }
         ]
     }

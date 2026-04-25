@@ -125,3 +125,54 @@ def test_get_user_by_username_not_found():
 
     response = client.get("/api/v1/users/by-username/nonexistent")
     assert response.status_code == 404
+
+
+def test_user_preferences_round_trip():
+    init_db()
+    _reset_test_data()
+
+    create_response = client.post(
+        "/api/v1/users",
+        json={"username": "prefs", "email": "prefs@example.com"},
+    )
+    user_id = create_response.json()["id"]
+
+    default_response = client.get(f"/api/v1/users/{user_id}/preferences")
+    assert default_response.status_code == 200
+    assert default_response.json()["generation"]["topic"] == "daily-news"
+
+    payload = {
+        "subscription": {
+            "categories": ["tech"],
+            "rss_sources": ["hacker-news"],
+            "custom_rss": [
+                {
+                    "id": "custom-example",
+                    "name": "Example",
+                    "url": "https://example.com/feed.xml",
+                    "category": "tech",
+                    "enabled": True,
+                }
+            ],
+            "frequency": "daily",
+        },
+        "generation": {
+            "topic": "daily-ai-brief",
+            "max_items": 4,
+            "use_subscriptions": True,
+        },
+        "settings": {
+            "voice": "female",
+            "language": "zh",
+            "auto_cover": False,
+            "console_mode": "verbose",
+        },
+    }
+
+    update_response = client.put(f"/api/v1/users/{user_id}/preferences", json=payload)
+    assert update_response.status_code == 200
+    assert update_response.json()["subscription"]["rss_sources"] == ["hacker-news"]
+
+    saved_response = client.get(f"/api/v1/users/{user_id}/preferences")
+    assert saved_response.status_code == 200
+    assert saved_response.json()["settings"]["console_mode"] == "verbose"

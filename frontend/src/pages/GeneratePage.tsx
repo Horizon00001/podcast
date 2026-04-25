@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef, type FormEvent } from 'react'
 
+import { motion } from 'framer-motion'
 import { api } from '../services/api'
+import { useUser } from '../context/UserContext'
+import type { UserPreferences } from '../types/podcast'
 
 interface RSSSource {
   id: string
@@ -9,10 +12,24 @@ interface RSSSource {
   category: string
 }
 
-interface TopicOption {
-  id: string
-  name: string
-  description: string
+const defaultPreferences: UserPreferences = {
+  subscription: {
+    categories: [],
+    rss_sources: [],
+    custom_rss: [],
+    frequency: 'manual',
+  },
+  generation: {
+    topic: 'daily-news',
+    max_items: 4,
+    use_subscriptions: true,
+  },
+  settings: {
+    voice: 'female',
+    language: 'zh',
+    auto_cover: false,
+    console_mode: 'compact',
+  },
 }
 
 interface SectionProgress {
@@ -56,10 +73,11 @@ function countByStatus<T extends { status: string }>(items: T[], status: T['stat
 }
 
 export function GeneratePage() {
+  const { user } = useUser()
   const [rssSources, setRssSources] = useState<RSSSource[]>([])
-  const [topics, setTopics] = useState<TopicOption[]>([])
   const [rssSource, setRssSource] = useState('')
-  const [topic, setTopic] = useState('daily-news')
+  const [preferences, setPreferences] = useState<UserPreferences>(defaultPreferences)
+  const [useSubscriptions, setUseSubscriptions] = useState(true)
   const [terminalOutput, setTerminalOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [currentTaskId, setCurrentTaskId] = useState<string | null>(null)
@@ -261,17 +279,10 @@ export function GeneratePage() {
   useEffect(() => {
     async function loadOptions() {
       try {
-        const [sourceResponse, topicResponse] = await Promise.all([
-          api.getRSSSources(),
-          api.getTopics(),
-        ])
+        const sourceResponse = await api.getRSSSources()
         setRssSources(sourceResponse.sources)
         if (sourceResponse.sources.length > 0) {
           setRssSource(sourceResponse.sources[0].id)
-        }
-        setTopics(topicResponse.topics)
-        if (topicResponse.topics.length > 0) {
-          setTopic(topicResponse.topics[0].id)
         }
       } catch (error) {
         console.error('加载生成选项失败:', error)
@@ -279,6 +290,20 @@ export function GeneratePage() {
     }
     loadOptions()
   }, [])
+
+  useEffect(() => {
+    async function loadPreferences() {
+      if (!user) return
+      try {
+        const saved = await api.getUserPreferences(user.id)
+        setPreferences(saved)
+        setUseSubscriptions(saved.generation.use_subscriptions)
+      } catch (error) {
+        console.error('加载用户生成偏好失败:', error)
+      }
+    }
+    void loadPreferences()
+  }, [user])
 
   function startListeningToLogs(taskId: string) {
     cleanupEventSource()
@@ -305,20 +330,20 @@ export function GeneratePage() {
           const statusMessage = data[2]
           
           if (status === 'succeeded') {
-            appendOutput(`\n\n✅ 任务全部完成！\n`)
+            appendOutput(`\n\n任务全部完成。\n`)
             setIsGenerating(false)
             cleanupEventSource()
           } else if (status === 'failed') {
-            appendOutput(`\n\n❌ 任务失败: ${statusMessage}\n`)
+            appendOutput(`\n\n任务失败: ${statusMessage}\n`)
             setIsGenerating(false)
             cleanupEventSource()
           } else if (status === 'cancelled') {
-            appendOutput(`\n\n🛑 任务已取消\n`)
+            appendOutput(`\n\n任务已取消\n`)
             setIsGenerating(false)
             cleanupEventSource()
           }
         } else if (data[0] === 'error') {
-          appendOutput(`\n❌ 系统错误: ${data[1]}\n`)
+          appendOutput(`\n系统错误: ${data[1]}\n`)
           setIsGenerating(false)
           cleanupEventSource()
         }
@@ -329,7 +354,7 @@ export function GeneratePage() {
     
     newEventSource.onerror = (error) => {
       console.error('SSE连接错误:', error)
-      appendOutput('\n⚠️ 连接中断，正在尝试重连...\n')
+      appendOutput('\n连接中断，正在尝试重连...\n')
       
       newEventSource.close()
       setTimeout(() => {
@@ -345,17 +370,22 @@ export function GeneratePage() {
     setTerminalOutput('')
     setIsGenerating(true)
     resetProgressState()
-    appendOutput('🚀 准备启动生成流程...\n')
+    appendOutput('准备启动生成流程...\n')
 
     try {
-      const result = await api.triggerGeneration({ rss_source: rssSource, topic })
+      const result = await api.triggerGeneration({
+        rss_source: useSubscriptions ? 'subscribed' : rssSource,
+        user_id: user?.id,
+        use_subscriptions: useSubscriptions,
+        custom_rss: useSubscriptions ? preferences.subscription.custom_rss : [],
+      })
       setCurrentTaskId(result.task_id)
-      appendOutput(`📋 任务已分配: ${result.task_id}\n`)
-      appendOutput('⏳ 正在建立实时日志连接...\n\n')
+      appendOutput(`任务已分配: ${result.task_id}\n`)
+      appendOutput('正在建立实时日志连接...\n\n')
 
       setTimeout(() => startListeningToLogs(result.task_id), 500)
     } catch (error) {
-      appendOutput(`❌ 任务提交失败: ${(error as Error).message}\n`)
+      appendOutput(`任务提交失败: ${(error as Error).message}\n`)
       setIsGenerating(false)
     }
   }
@@ -364,24 +394,42 @@ export function GeneratePage() {
     if (!currentTaskId) return
     try {
       const result = await api.cancelGeneration(currentTaskId)
-      appendOutput(`\n\n🛑 ${result.message} (状态: ${result.status})\n`)
+      appendOutput(`\n\n${result.message} (状态: ${result.status})\n`)
       setIsGenerating(false)
       cleanupEventSource()
     } catch (error) {
-      appendOutput(`\n⚠️ 取消失败: ${(error as Error).message}\n`)
+      appendOutput(`\n取消失败: ${(error as Error).message}\n`)
     }
   }
 
   return (
-    <main style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
-      <h1>生成播客</h1>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '20px', display: 'flex', gap: '15px', alignItems: 'flex-end' }}>
-        <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>RSS 源</label>
+    <main className="generation-page" style={{ padding: '20px', maxWidth: '980px', margin: '0 auto', textAlign: 'left' }}>
+      <section className="generation-hero" style={{ padding: '20px 22px', borderRadius: '22px', background: 'linear-gradient(135deg, #08060d, #23243a)', color: 'white', marginBottom: '16px' }}>
+        <div style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', fontWeight: 800 }}>Generation</div>
+        <h1 className="generation-title" style={{ color: 'white', margin: '8px 0 8px', fontSize: '38px', lineHeight: 1.05 }}>生成播客</h1>
+        <p style={{ color: 'rgba(255,255,255,0.74)', maxWidth: '620px', lineHeight: 1.6, fontSize: '15px' }}>
+          可以直接按订阅中心保存的 RSS 源生成，也可以临时手动选择单个 RSS 源。任务启动后会通过实时日志展示脚本生成和 TTS 合成进度。
+        </p>
+      </section>
+
+      <form onSubmit={handleSubmit} style={{ marginBottom: '16px', display: 'grid', gridTemplateColumns: 'minmax(240px, 1.1fr) minmax(210px, 1fr) auto', gap: '12px', alignItems: 'flex-end' }} className="generation-form">
+        <div style={{ border: '1px solid var(--border)', borderRadius: '18px', padding: '13px 14px', background: '#fff' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-h)', fontWeight: 800 }}>
+            <input type="checkbox" checked={useSubscriptions} onChange={(event) => setUseSubscriptions(event.target.checked)} />
+            按我的订阅生成
+          </label>
+          <p style={{ marginTop: '6px', color: 'var(--text)', fontSize: '12px', lineHeight: 1.45 }}>
+            已订阅 {preferences.subscription.rss_sources.length} 个内置源，{preferences.subscription.custom_rss.length} 个自定义源。
+            {!user ? ' 请先登录后使用订阅偏好。' : ''}
+          </p>
+        </div>
+        <div style={{ opacity: useSubscriptions ? 0.48 : 1 }}>
+          <label style={{ display: 'block', marginBottom: '5px', color: 'var(--text-h)', fontWeight: 700 }}>手动 RSS 源</label>
           <select 
             value={rssSource} 
             onChange={(e) => setRssSource(e.target.value)}
-            style={{ width: '100%', padding: '8px', borderRadius: '4px' }}
+            disabled={useSubscriptions}
+            style={{ width: '100%', padding: '10px 12px', borderRadius: '12px', border: '1px solid var(--border)', background: '#fff', color: 'var(--text-h)' }}
           >
             {rssSources.map((source) => (
               <option key={source.id} value={source.id}>
@@ -390,82 +438,111 @@ export function GeneratePage() {
             ))}
           </select>
         </div>
-        <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>主题</label>
-          <select
-            value={topic} 
-            onChange={(e) => setTopic(e.target.value)}
-            style={{ width: '100%', padding: '8px', borderRadius: '4px' }}
-          >
-            {topics.map((option) => (
-              <option key={option.id} value={option.id}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-          {topics.length > 0 && (
-            <p style={{ marginTop: '6px', marginBottom: 0, color: '#666', fontSize: '12px' }}>
-              {topics.find((option) => option.id === topic)?.description}
-            </p>
-          )}
-        </div>
         <button
           type="submit"
           disabled={isGenerating}
           style={{
-            padding: '8px 20px',
-            borderRadius: '4px',
-            backgroundColor: isGenerating ? '#ccc' : '#007bff',
+            padding: '8px 18px',
+            borderRadius: '999px',
+            backgroundColor: isGenerating ? '#ccc' : 'var(--accent)',
             color: 'white',
             border: 'none',
-            cursor: isGenerating ? 'not-allowed' : 'pointer'
+            cursor: isGenerating ? 'not-allowed' : 'pointer',
+            minHeight: '42px',
+            fontWeight: 800,
           }}
         >
-          {isGenerating ? '正在执行...' : '触发生成'}
+          {isGenerating ? '正在执行...' : useSubscriptions ? '按订阅生成' : '触发生成'}
         </button>
         {isGenerating && (
-          <button
-            type="button"
-            onClick={handleCancel}
-            style={{
-              padding: '8px 20px',
-              borderRadius: '4px',
-              backgroundColor: '#dc3545',
-              color: 'white',
-              border: 'none',
-              cursor: 'pointer'
-            }}
-          >
+          <button type="button" onClick={handleCancel} style={{ padding: '8px 18px', borderRadius: '999px', backgroundColor: '#dc3545', color: 'white', border: 'none', cursor: 'pointer', minHeight: '42px', fontWeight: 800 }}>
             取消任务
           </button>
         )}
       </form>
 
       {(isGenerating || terminalOutput) && (
-        <section style={{ marginTop: '20px', display: 'grid', gap: '16px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
-            <div style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}>
+        <section style={{ marginTop: '16px', display: 'grid', gap: '12px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05, duration: 0.25 }}
+              style={{ padding: '12px 14px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}
+            >
               <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>分组数</div>
-              <div style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}>{Object.keys(groupProgress).length}</div>
-            </div>
+              <motion.div
+                key={Object.keys(groupProgress).length}
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+                style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}
+              >
+                {Object.keys(groupProgress).length}
+              </motion.div>
+            </motion.div>
 
-            <div style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.25 }}
+              style={{ padding: '12px 14px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}
+            >
               <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>TTS 完成</div>
-              <div style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}>{countByStatus(Object.values(sectionProgress), 'done')}</div>
-            </div>
+              <motion.div
+                key={countByStatus(Object.values(sectionProgress), 'done')}
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+                style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}
+              >
+                {countByStatus(Object.values(sectionProgress), 'done')}
+              </motion.div>
+            </motion.div>
 
-            <div style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.25 }}
+              style={{ padding: '12px 14px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}
+            >
               <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>TTS 进行中</div>
-              <div style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}>{countByStatus(Object.values(sectionProgress), 'running')}</div>
-            </div>
+              <motion.div
+                key={countByStatus(Object.values(sectionProgress), 'running')}
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+                style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}
+              >
+                {countByStatus(Object.values(sectionProgress), 'running')}
+              </motion.div>
+            </motion.div>
 
-            <div style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.25 }}
+              style={{ padding: '12px 14px', borderRadius: '10px', backgroundColor: '#0f172a', border: '1px solid #1e293b', color: '#e2e8f0' }}
+            >
               <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>等待中</div>
-              <div style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}>{countByStatus(Object.values(sectionProgress), 'ready')}</div>
-            </div>
-          </div>
+              <motion.div
+                key={countByStatus(Object.values(sectionProgress), 'ready')}
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+                style={{ marginTop: '6px', fontSize: '24px', fontWeight: 800 }}
+              >
+                {countByStatus(Object.values(sectionProgress), 'ready')}
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '10px' }}>
             <div style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#f4f7fb', border: '1px solid #d7e3f1' }}>
               <div style={{ fontSize: '12px', color: '#5c6b7a', textTransform: 'uppercase', letterSpacing: '0.08em' }}>RSS 抓取</div>
               <div style={{ marginTop: '6px', fontSize: '18px', fontWeight: 700, color: '#17324d' }}>
@@ -535,8 +612,11 @@ export function GeneratePage() {
                     {sections.length > 0 && (
                       <div style={{ marginTop: '12px', display: 'grid', gap: '8px' }}>
                         {sections.map((section) => (
-                          <div
+                          <motion.div
                             key={section.key}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.25 }}
                             style={{
                               display: 'flex',
                               justifyContent: 'space-between',
@@ -557,6 +637,7 @@ export function GeneratePage() {
                                     : '1px solid #e6eaf0',
                               alignItems: 'center',
                               flexWrap: 'wrap',
+                              transition: 'background-color 0.3s, border-color 0.3s',
                             }}
                           >
                             <div>
@@ -577,7 +658,7 @@ export function GeneratePage() {
                                 </div>
                               )}
                             </div>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     )}
@@ -591,7 +672,7 @@ export function GeneratePage() {
       
       {terminalOutput && (
         <div style={{ 
-          marginTop: '20px', 
+          marginTop: '16px', 
           backgroundColor: '#0c0c0c', 
           borderRadius: '8px', 
           boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
@@ -616,7 +697,7 @@ export function GeneratePage() {
           {/* 终端内容区 */}
           <div style={{ 
             padding: '15px', 
-            height: '600px', 
+            height: '420px', 
             overflowY: 'auto', 
             fontFamily: '"Fira Code", "Source Code Pro", Consolas, Monaco, monospace', 
             fontSize: '14px', 
@@ -631,6 +712,38 @@ export function GeneratePage() {
           </div>
         </div>
       )}
+      <style>{`
+        @media (max-width: 1100px) {
+          .generation-form {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+          }
+        }
+
+        @media (max-width: 920px) {
+          .generation-page {
+            padding: 16px !important;
+          }
+
+          .generation-form {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .generation-page {
+            padding: 12px !important;
+          }
+
+          .generation-hero {
+            padding: 16px !important;
+            border-radius: 18px !important;
+          }
+
+          .generation-title {
+            font-size: 30px !important;
+          }
+        }
+      `}</style>
     </main>
   )
 }

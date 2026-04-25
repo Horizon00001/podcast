@@ -2,15 +2,11 @@ import json
 from pathlib import Path
 from typing import Awaitable, Callable
 
-import dotenv
 from pydantic_ai import Agent
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from app.core.config import settings
 from app.schemas.script import PodcastScript
-
-
-dotenv.load_dotenv()
 
 
 class ScriptService:
@@ -20,6 +16,7 @@ class ScriptService:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.prompt_path = self.project_root / "prompt.txt"
         self._agent = None
+        self._json_fallback_agent = None
 
     @property
     def agent(self):
@@ -32,6 +29,42 @@ class ScriptService:
                 system_prompt=system_prompt,
             )
         return self._agent
+
+    @property
+    def json_fallback_agent(self):
+        if self._json_fallback_agent is None:
+            with open(self.prompt_path, "r", encoding="utf-8") as f:
+                base_prompt = f.read()
+            schema = json.dumps(PodcastScript.model_json_schema(), ensure_ascii=False, indent=2)
+            fallback_prompt = (
+                f"{base_prompt}\n\n"
+                "你必须直接输出一个合法 JSON 对象，且只能输出 JSON，本次不要使用工具调用或函数调用。"
+                "输出必须严格符合下面的 JSON Schema。"
+                "不要输出 Markdown 代码块，不要输出解释文字。\n\n"
+                f"JSON Schema:\n{schema}"
+            )
+            self._json_fallback_agent = Agent(
+                model=settings.script_llm_model,
+                system_prompt=fallback_prompt,
+            )
+        return self._json_fallback_agent
+
+    @staticmethod
+    def _extract_json_payload(content: str) -> str:
+        stripped = content.strip()
+        if stripped.startswith("```"):
+            lines = stripped.splitlines()
+            if lines and lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].strip() == "```":
+                lines = lines[:-1]
+            stripped = "\n".join(lines).strip()
+        return stripped
+
+    async def _generate_script_via_json_fallback(self, news_content: str) -> PodcastScript:
+        result = await self.json_fallback_agent.run(news_content)
+        payload = self._extract_json_payload(str(result.output))
+        return PodcastScript.model_validate_json(payload)
 
     async def _stream_script(self, news_content: str):
         """Prefer streaming output, then fall back to a blocking run if needed."""
@@ -48,6 +81,11 @@ class ScriptService:
         except UnexpectedModelBehavior:
             final_result = await self.agent.run(news_content)
             yield final_result.output
+        except Exception as exc:
+            if "tool_choice" not in str(exc):
+                raise
+
+            yield await self._generate_script_via_json_fallback(news_content)
 
     async def generate_script(self, news_content: str, max_retries: int = 3):
         for attempt in range(max_retries):

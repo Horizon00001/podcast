@@ -18,8 +18,11 @@ from app.pipelines.episode_planner import (
 )
 from app.pipelines.generate_text_pipeline import build_generation_input
 from app.pipelines.rss_pipeline import fetch_rss_feeds
+from app.schemas.podcast import PodcastCreate
+from app.services.podcast_service import PodcastService
 from app.services.script_service import ScriptService
 from app.services.tts_service import TTSService
+from app.db.session import SessionLocal
 
 
 def _save_combined_timing(audio_dir: Path, group_dir: Path, filename: str) -> None:
@@ -47,7 +50,13 @@ def _save_combined_timing(audio_dir: Path, group_dir: Path, filename: str) -> No
         json.dump(combined, f, ensure_ascii=False, indent=2)
 
 
-async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], Any] = print, check_cancelled: Callable[[], bool] | None = None):
+async def run_pipeline(
+    topic: str = "daily-news",
+    selected_source_ids: list[str] | None = None,
+    extra_feeds: list[dict] | None = None,
+    log_callback: Callable[[str], Any] = print,
+    check_cancelled: Callable[[], bool] | None = None,
+):
     base_dir = Path(__file__).resolve().parents[3]
     config_path = base_dir / "config" / "feed.json"
     output_dir = base_dir / "output"
@@ -63,7 +72,7 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
         log_callback(message)
 
     log("\n[1/4] 抓取 RSS 数据")
-    fetch_rss_feeds(config_path, output_dir)
+    fetch_rss_feeds(config_path, output_dir, selected_source_ids=selected_source_ids, extra_feeds=extra_feeds)
     if not rss_data_path.exists():
         raise FileNotFoundError(f"未生成 RSS 数据文件: {rss_data_path}")
 
@@ -86,6 +95,7 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
     log_callback(f"已分类到类别数: {len(grouped_items)}")
 
     generated_links = set()
+    generated_groups: list[tuple[str, Path]] = []
 
     async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
         group_title = group_items[0].get("title", category) if group_items else category
@@ -144,6 +154,7 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
         _save_combined_timing(tts_service.audio_dir, group_dir, "podcast_timing.json")
         log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
         generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
+        generated_groups.append((group_label, group_dir))
 
     tasks = []
     log("\n[3/4] 生成脚本并合成音频")
@@ -176,6 +187,32 @@ async def run_pipeline(topic: str = "daily-news", log_callback: Callable[[str], 
 
     log("\n[4/4] 保存待处理分组和使用记录")
     save_pending_groups(remaining_pending, sorted(used_link_set), pending_groups_path)
+
+    log("\n[5/5] 保存到数据库")
+    db = SessionLocal()
+    try:
+        podcast_service = PodcastService(db)
+        for group_name, group_dir in generated_groups:
+            script_file = group_dir / "podcast_script.json"
+            audio_file = group_dir / "audio" / "podcast_full.mp3"
+            if not script_file.exists() or not audio_file.exists():
+                continue
+            with open(script_file, "r", encoding="utf-8") as f:
+                script_data = json.load(f)
+            title = script_data.get("title", "未命名播客")
+            summary = script_data.get("intro", "")
+            audio_url = f"/audio/podcasts/{group_name}/audio/podcast_full.mp3"
+            script_path = f"output/podcasts/{group_name}/podcast_script.json"
+            payload = PodcastCreate(
+                title=title,
+                summary=summary,
+                audio_url=audio_url,
+                script_path=script_path,
+            )
+            podcast = podcast_service.create_podcast(payload)
+            log(f"✅ 已入库: {podcast.id} - {title}")
+    finally:
+        db.close()
 
     log_callback("\n" + "=" * 50)
     log_callback("全流程执行完成")

@@ -1,5 +1,11 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
+
+from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+BACKEND_ENV_FILE = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(BACKEND_ENV_FILE, override=False)
 
 
 class Settings(BaseSettings):
@@ -18,7 +24,7 @@ class Settings(BaseSettings):
     script_llm_model: str = "openai:deepseek-chat"
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=BACKEND_ENV_FILE,
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",

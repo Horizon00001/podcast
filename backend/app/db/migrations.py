@@ -8,6 +8,7 @@ def run_migrations() -> None:
     _ensure_users_preferences_column()
     _ensure_generation_tasks_table()
     _ensure_interactions_columns()
+    _ensure_favorites_table()
 
 
 def _ensure_podcasts_category_column() -> None:
@@ -90,3 +91,23 @@ def _ensure_interactions_columns() -> None:
             if column_name in columns:
                 continue
             connection.execute(text(statement))
+
+
+def _ensure_favorites_table() -> None:
+    inspector = inspect(engine)
+    table_names = set(inspector.get_table_names())
+    if "favorites" in table_names:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "CREATE TABLE favorites ("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "user_id INTEGER NOT NULL REFERENCES users(id), "
+                "podcast_id INTEGER NOT NULL REFERENCES podcasts(id), "
+                "created_at DATETIME NOT NULL, "
+                "UNIQUE(user_id, podcast_id)"
+                ")"
+            )
+        )

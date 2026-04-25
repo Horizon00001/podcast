@@ -2,7 +2,7 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
-  --border: #e5e4e7;
+  --border: #eeedf2;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
@@ -17,7 +17,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -30,32 +30,11 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -118,7 +97,10 @@ code {
   }
   
   h1 {
-    font-size: 28px !important;
+    font-size: clamp(22px, 7vw, 26px) !important;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
   }
   
   .podcast-grid {
@@ -137,4 +119,82 @@ code {
 .timeline-highlighter::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 3px;
+}
+
+.global-player-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(90deg, rgba(17, 17, 17, 0.88) 0%, rgba(17, 17, 17, 0.88) var(--progress, 0%), rgba(8, 6, 13, 0.08) var(--progress, 0%), rgba(8, 6, 13, 0.08) 100%);
+  border-radius: 999px;
+  outline: none;
+}
+
+.global-player-progress::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.global-player-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: -4px;
+  background: #ffffff;
+  border: 1px solid rgba(8, 6, 13, 0.08);
+  box-shadow: 0 4px 12px rgba(8, 6, 13, 0.18);
+}
+
+.global-player-progress::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(8, 6, 13, 0.08);
+}
+
+.global-player-progress::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.88);
+}
+
+.global-player-progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(8, 6, 13, 0.08);
+  box-shadow: 0 4px 12px rgba(8, 6, 13, 0.18);
+}
+
+/* ========== 通用动画 keyframes ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

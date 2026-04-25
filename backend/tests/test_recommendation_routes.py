@@ -3,18 +3,44 @@ from datetime import datetime, timedelta, timezone
 from fastapi.testclient import TestClient
 
 from app.db.init_db import init_db
-from app.db.session import SessionLocal
+from app.db import session as db_session_module
+from app.db.session import get_db
 from app.main import app
 from app.models.interaction import Interaction
 from app.models.podcast import Podcast
 from app.models.user import User
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
+from app.db.base import Base
 
 
 client = TestClient(app)
 
+engine = create_engine(
+    "sqlite:///:memory:",
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
+)
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def override_get_db():
+    db = TestingSessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+app.dependency_overrides[get_db] = override_get_db
+db_session_module.SessionLocal = TestingSessionLocal
+
 
 def _reset_test_data() -> None:
-    db = SessionLocal()
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    db = TestingSessionLocal()
     try:
         db.query(Interaction).delete()
         db.query(Podcast).delete()
@@ -28,7 +54,7 @@ def test_recommendations_cold_start_returns_hot_and_fresh_items():
     init_db()
     _reset_test_data()
 
-    db = SessionLocal()
+    db = TestingSessionLocal()
     user_id = 0
     try:
         user = User(username="cold-user", email="cold@example.com")
@@ -55,8 +81,8 @@ def test_recommendations_cold_start_returns_hot_and_fresh_items():
 
         db.add_all(
             [
-                Interaction(user_id=user.id, podcast_id=old_podcast.id, action="play"),
-                Interaction(user_id=user.id, podcast_id=new_podcast.id, action="play"),
+                Interaction(user_id=user.id, podcast_id=old_podcast.id, action="play", listen_duration_ms=30000, progress_pct=10.0),
+                Interaction(user_id=user.id, podcast_id=new_podcast.id, action="play", listen_duration_ms=30000, progress_pct=10.0),
             ]
         )
         db.commit()
@@ -74,7 +100,7 @@ def test_recommendations_personalized_and_skip_filtered():
     init_db()
     _reset_test_data()
 
-    db = SessionLocal()
+    db = TestingSessionLocal()
     user_a_id = 0
     p3_id = 0
     p4_id = 0

@@ -34,13 +34,35 @@ export interface ScriptLine {
 // 订阅设置
 export interface SubscriptionSettings {
   categories: string[]
-  frequency: 'daily' | 'weekly'
-  customRSS: string[]
+  rss_sources: string[]
+  custom_rss: CustomRSSSource[]
+  frequency: 'manual' | 'daily' | 'weekly'
+}
+
+export interface CustomRSSSource {
+  id: string
+  name: string
+  url: string
+  category: string
+  enabled: boolean
+}
+
+export interface GenerationPreferences {
+  topic: string
+  max_items: number
+  use_subscriptions: boolean
 }
 
 // 用户设置
 export interface UserSettings {
-  voice: 'male' | 'female' | 'style1' | 'style2'
+  voice: 'male' | 'female'
   language: 'zh' | 'en'
-  autoCover: boolean
+  auto_cover: boolean
+  console_mode: 'compact' | 'verbose'
+}
+
+export interface UserPreferences {
+  subscription: SubscriptionSettings
+  generation: GenerationPreferences
+  settings: UserSettings
 }

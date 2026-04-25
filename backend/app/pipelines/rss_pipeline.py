@@ -46,7 +46,7 @@ def _fetch_single_feed(feed_info):
         return {"feed_id": feed_id, "feed_name": feed_name, "success": False, "message": f"失败 ({e})", "feed_data": None}
 
 
-def fetch_rss_feeds(config_path, output_dir):
+def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_feeds=None):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -58,6 +58,13 @@ def fetch_rss_feeds(config_path, output_dir):
         return
 
     feeds_to_fetch = config.get("feeds", [])
+    if extra_feeds:
+        feeds_to_fetch = [*feeds_to_fetch, *extra_feeds]
+
+    if selected_source_ids is not None:
+        selected_source_ids = set(selected_source_ids)
+        feeds_to_fetch = [f for f in feeds_to_fetch if f.get("id") in selected_source_ids]
+
     enabled_feeds = [f for f in feeds_to_fetch if f.get("enabled", False)]
 
     all_fetched_data = []

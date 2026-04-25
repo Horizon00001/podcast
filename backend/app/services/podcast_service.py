@@ -9,6 +9,7 @@ from app.schemas.podcast import PodcastCreate, ScriptLineResponse
 from app.schemas.script import PodcastScript
 
 ESTIMATED_CHARS_PER_SECOND = 4.0
+MAX_PODCAST_TITLE_LENGTH = 20
 
 
 def _resolve_script_path(script_path: str) -> Path:
@@ -16,6 +17,13 @@ def _resolve_script_path(script_path: str) -> Path:
     if p.is_absolute():
         return p
     return settings.project_root / p
+
+
+def normalize_podcast_title(title: str) -> str:
+    normalized = (title or "").strip()
+    if not normalized:
+        return "未命名播客"
+    return normalized[:MAX_PODCAST_TITLE_LENGTH]
 
 
 def _flatten_to_script_lines(script: PodcastScript) -> list[ScriptLineResponse]:
@@ -79,7 +87,8 @@ class PodcastService:
         return self.repository.get_podcast(podcast_id)
 
     def create_podcast(self, payload: PodcastCreate):
-        return self.repository.create_podcast(payload)
+        normalized_payload = payload.model_copy(update={"title": normalize_podcast_title(payload.title)})
+        return self.repository.create_podcast(normalized_payload)
 
     def get_podcast_script(self, podcast_id: int) -> list[ScriptLineResponse]:
         podcast = self.repository.get_podcast(podcast_id)

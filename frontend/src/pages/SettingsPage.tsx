@@ -60,7 +60,7 @@ export function SettingsPage() {
 
   return (
     <main className="settings-page" style={{ padding: '20px', maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
-      <section className="settings-hero" style={{ padding: '20px 22px', borderRadius: '22px', background: '#f4f0ff', border: '1px solid rgba(170, 59, 255, 0.18)' }}>
+      <section className="settings-hero" style={{ padding: '20px 22px', borderRadius: '22px', background: '#f5f5f5', border: '1px solid rgba(0, 0, 0, 0.18)' }}>
         <div style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 800 }}>Settings</div>
         <h1 className="settings-title" style={{ margin: '8px 0 8px', fontSize: '38px', lineHeight: 1.05 }}>生成设置</h1>
         <p style={{ color: 'var(--text)', lineHeight: 1.6, maxWidth: '620px', fontSize: '15px' }}>
@@ -68,7 +68,7 @@ export function SettingsPage() {
         </p>
       </section>
 
-      {status && <div style={{ marginTop: '14px', padding: '10px 12px', borderRadius: '12px', background: 'var(--accent-bg)', color: 'var(--text-h)', border: '1px solid var(--accent-border)', fontSize: '14px' }}>{status}</div>}
+      {status && <div style={{ marginTop: '14px', padding: '10px 12px', borderRadius: '12px', background: 'var(--accent-bg)', color: '#ffffff', border: '1px solid var(--accent-border)', fontSize: '14px' }}>{status}</div>}
 
       <section style={{ marginTop: '16px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
         <div style={{ border: '1px solid var(--border)', borderRadius: '20px', padding: '18px', background: '#fff' }}>
@@ -85,7 +85,7 @@ export function SettingsPage() {
           <h2>播报偏好</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '12px' }}>
             {(['male', 'female'] as const).map((voice) => (
-              <button key={voice} type="button" onClick={() => setPreferences((prev) => ({ ...prev, settings: { ...prev.settings, voice } }))} style={{ border: `1px solid ${preferences.settings.voice === voice ? 'var(--accent)' : 'var(--border)'}`, background: preferences.settings.voice === voice ? 'var(--accent-bg)' : '#fff', color: preferences.settings.voice === voice ? 'var(--accent)' : 'var(--text-h)', borderRadius: '14px', padding: '10px', cursor: 'pointer', fontWeight: 800 }}>
+              <button key={voice} type="button" onClick={() => setPreferences((prev) => ({ ...prev, settings: { ...prev.settings, voice } }))} style={{ border: `1px solid ${preferences.settings.voice === voice ? 'var(--accent)' : 'var(--border)'}`, background: preferences.settings.voice === voice ? 'var(--accent-bg)' : '#fff', color: preferences.settings.voice === voice ? '#ffffff' : 'var(--text-h)', borderRadius: '14px', padding: '10px', cursor: 'pointer', fontWeight: 800 }}>
                 {voice === 'male' ? '男声' : '女声'}
               </button>
             ))}

@@ -239,6 +239,95 @@ class TestScriptServiceWriteScriptFiles:
         assert json_content["sections"][0]["dialogues"][0]["speaker"] == "A"
 
 
+class TestScriptServiceNormalization:
+    def test_normalize_script_inserts_transition_after_first_main_content(self):
+        script = PodcastScript(
+            title="Test Podcast",
+            intro="Welcome",
+            sections=[
+                PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Hello"),
+                        DialogueTurn(speaker="B", content="Hi there"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="First topic"),
+                        DialogueTurn(speaker="B", content="First analysis"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Second topic"),
+                        DialogueTurn(speaker="B", content="Second analysis"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
+                ),
+            ],
+            total_duration="8分钟",
+        )
+
+        normalized = ScriptService._normalize_script(script)
+
+        assert [section.section_type for section in normalized.sections] == [
+            "opening",
+            "main_content",
+            "transition",
+            "main_content",
+            "closing",
+        ]
+        assert normalized.sections[2].audio_effect is not None
+        assert normalized.sections[2].audio_effect.effect_type == "music"
+
+    def test_normalize_script_keeps_existing_transition(self):
+        script = PodcastScript(
+            title="Test Podcast",
+            intro="Welcome",
+            sections=[
+                PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Hello"),
+                        DialogueTurn(speaker="B", content="Hi there"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="transition",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Switch"),
+                        DialogueTurn(speaker="B", content="Continue"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Topic"),
+                        DialogueTurn(speaker="B", content="Analysis"),
+                    ],
+                ),
+            ],
+            total_duration="6分钟",
+        )
+
+        normalized = ScriptService._normalize_script(script)
+
+        assert [section.section_type for section in normalized.sections] == [
+            "opening",
+            "transition",
+            "main_content",
+        ]
+
+
 class TestScriptServiceInitialization:
     """Test ScriptService initialization."""
 
@@ -417,12 +506,13 @@ class TestScriptServiceStreamingSections:
             )
 
         # Section 0 flushed when s2 arrives (len=2, flush 0), is_streaming=True
-        # Section 1 flushed when s3 arrives (len=3, flush 1), is_streaming=True
-        # Section 2 flushed after stream ends, is_streaming=False
-        assert len(calls) == 3
+        # Normalization inserts a transition after the first main_content section.
+        # So the final flush order becomes main_content -> transition -> main_content -> main_content.
+        assert len(calls) == 4
         assert calls[0] == (0, "main_content", True)
-        assert calls[1] == (1, "main_content", True)
-        assert calls[2] == (2, "main_content", False)
+        assert calls[1] == (1, "transition", True)
+        assert calls[2] == (2, "main_content", True)
+        assert calls[3] == (3, "main_content", False)
 
     def test_final_sections_flushed_after_stream(self, monkeypatch, tmp_path):
         prompt_file = tmp_path / "prompt.txt"
@@ -444,8 +534,8 @@ class TestScriptServiceStreamingSections:
                 service.generate_and_save_streaming_sections("news", on_section_ready=cb)
             )
 
-        assert len(calls) == 3
-        assert calls == [(0, True), (1, True), (2, False)]
+        assert len(calls) == 4
+        assert calls == [(0, True), (1, True), (2, True), (3, False)]
 
     def test_empty_script_raises(self, monkeypatch, tmp_path):
         prompt_file = tmp_path / "prompt.txt"
@@ -498,7 +588,7 @@ class TestScriptServiceStreamingSections:
 
         assert mock_agent.run_stream.called
         assert mock_agent.run.called
-        assert len(calls) == 2
-        assert calls == [(0, "main_content", True), (1, "main_content", False)]
+        assert len(calls) == 3
+        assert calls == [(0, "main_content", True), (1, "transition", True), (2, "main_content", False)]
         assert txt_path.exists()
         assert json_path.exists()

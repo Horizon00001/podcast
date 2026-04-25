@@ -76,7 +76,7 @@ function AccountPanel({ compact = false }: { compact?: boolean }) {
       <div style={{ fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', fontWeight: 700 }}>
         账户
       </div>
-      <div style={{ fontSize: '13px', color: '#3d3845', lineHeight: 1.5 }}>
+      <div style={{ fontSize: '13px', color: 'var(--text)', lineHeight: 1.5 }}>
         {user ? `当前使用 ${user.username} 浏览和保存内容。` : '登录后可同步收藏与个性化推荐。'}
       </div>
       <input
@@ -95,14 +95,14 @@ function AccountPanel({ compact = false }: { compact?: boolean }) {
        <button
          type="submit"
          disabled={loading}
-         style={{
-           border: '1px solid rgba(8, 6, 13, 0.12)',
-           color: 'var(--text-h)',
-           borderRadius: '999px',
-           background: '#ffffff',
-           padding: '8px 12px',
-           cursor: 'pointer',
-           fontWeight: 600,
+          style={{
+            border: '1px solid #000000',
+            color: '#ffffff',
+            borderRadius: '999px',
+            background: '#000000',
+            padding: '8px 12px',
+            cursor: 'pointer',
+            fontWeight: 600,
            fontSize: '13px',
          }}
        >
@@ -126,7 +126,7 @@ function AccountEntry() {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         style={{
-          border: `1px solid ${open ? 'rgba(170, 59, 255, 0.28)' : 'rgba(8, 6, 13, 0.08)'}`,
+          border: `1px solid ${open ? '#000000' : 'rgba(8, 6, 13, 0.08)'}`,
           background: open ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.72)',
           borderRadius: '999px',
           padding: user ? '7px 12px 7px 7px' : '8px 13px',
@@ -135,7 +135,7 @@ function AccountEntry() {
           gap: user ? '9px' : '7px',
           cursor: 'pointer',
           color: 'var(--text-h)',
-          boxShadow: open ? '0 14px 30px rgba(8, 6, 13, 0.12)' : '0 8px 22px rgba(8, 6, 13, 0.06)',
+          boxShadow: open ? '0 14px 30px rgba(0, 0, 0, 0.18)' : '0 8px 22px rgba(8, 6, 13, 0.06)',
           backdropFilter: 'blur(16px)',
           transition: 'border-color 0.18s, background 0.18s, box-shadow 0.18s, transform 0.18s',
         }}
@@ -149,12 +149,12 @@ function AccountEntry() {
             alignItems: 'center',
             justifyContent: 'center',
             background: user
-              ? '#111111'
-              : 'rgba(8, 6, 13, 0.06)',
-            color: user ? '#ffffff' : '#3d3845',
+                ? '#000000'
+                : 'rgba(8, 6, 13, 0.06)',
+            color: user ? '#ffffff' : 'var(--text)',
             fontSize: '12px',
             fontWeight: 700,
-            boxShadow: user ? '0 6px 14px rgba(8, 6, 13, 0.16)' : 'none',
+            boxShadow: user ? '0 6px 14px rgba(0, 0, 0, 0.2)' : 'none',
           }}
         >
           {user ? initial : (
@@ -165,7 +165,7 @@ function AccountEntry() {
             </svg>
           )}
         </span>
-        <span style={{ color: '#111111', fontSize: '13px', fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1 }}>
+        <span style={{ color: 'var(--text-h)', fontSize: '13px', fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1 }}>
           {loading ? '同步中...' : user?.username ?? '登录'}
         </span>
       </button>
@@ -234,14 +234,14 @@ function NavigationRail() {
                     end={item.to === '/'}
                     style={({ isActive }) => ({
                       textDecoration: 'none',
-                      color: isActive ? '#111111' : '#3d3845',
-                      background: isActive ? 'rgba(170, 59, 255, 0.14)' : 'transparent',
+                      color: isActive ? '#ffffff' : '#3d3845',
+                      background: isActive ? '#000000' : 'transparent',
                       borderRadius: '10px',
                       padding: '8px 10px',
                       fontWeight: isActive ? 600 : 500,
                       fontSize: '14px',
                       transition: 'background 0.2s, color 0.2s, transform 0.2s',
-                      boxShadow: isActive ? 'inset 0 0 0 1px rgba(170, 59, 255, 0.18)' : 'none',
+                      boxShadow: isActive ? 'inset 0 0 0 1px #000000' : 'none',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -279,9 +279,9 @@ function NavigationRail() {
               end={item.to === '/'}
               style={({ isActive }) => ({
                 textDecoration: 'none',
-                color: isActive ? 'var(--text-h)' : 'var(--text)',
-                background: isActive ? 'var(--accent-bg)' : 'transparent',
-                border: `1px solid ${isActive ? 'var(--accent-border)' : 'var(--border)'}`,
+                color: isActive ? '#ffffff' : 'var(--text)',
+                background: isActive ? '#000000' : 'transparent',
+                border: `1px solid ${isActive ? '#000000' : 'var(--border)'}`,
                 borderRadius: '999px',
                 padding: '8px 14px',
                 whiteSpace: 'nowrap',

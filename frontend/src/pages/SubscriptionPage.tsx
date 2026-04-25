@@ -167,11 +167,11 @@ export function SubscriptionPage() {
         </aside>
       </section>
 
-      {status && <div style={{ marginTop: '18px', padding: '12px 14px', borderRadius: '14px', background: 'var(--accent-bg)', color: 'var(--text-h)', border: '1px solid var(--accent-border)' }}>{status}</div>}
+      {status && <div style={{ marginTop: '18px', padding: '12px 14px', borderRadius: '14px', background: 'var(--accent-bg)', color: '#ffffff', border: '1px solid var(--accent-border)' }}>{status}</div>}
 
       <section style={{ marginTop: '18px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
         {categories.map((category) => (
-          <button key={category} onClick={() => setSelectedCategory(category)} style={{ border: `1px solid ${selectedCategory === category ? 'var(--accent)' : 'var(--border)'}`, color: selectedCategory === category ? 'var(--accent)' : 'var(--text-h)', background: selectedCategory === category ? 'var(--accent-bg)' : '#fff', borderRadius: '999px', padding: '7px 12px', cursor: 'pointer', fontWeight: 700, fontSize: '13px' }}>
+          <button key={category} onClick={() => setSelectedCategory(category)} style={{ border: `1px solid ${selectedCategory === category ? 'var(--accent)' : 'var(--border)'}`, color: selectedCategory === category ? '#ffffff' : 'var(--text-h)', background: selectedCategory === category ? 'var(--accent-bg)' : '#fff', borderRadius: '999px', padding: '7px 12px', cursor: 'pointer', fontWeight: 700, fontSize: '13px' }}>
             {category === 'all' ? '全部' : categoryLabel(category)}
           </button>
         ))}
@@ -181,13 +181,13 @@ export function SubscriptionPage() {
         {filteredSources.map((source) => {
           const checked = preferences.subscription.rss_sources.includes(source.id)
           return (
-            <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? 'rgba(170, 59, 255, 0.5)' : 'var(--border)'}`, borderRadius: '18px', padding: '14px', background: checked ? 'rgba(170, 59, 255, 0.08)' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 12px 26px rgba(170, 59, 255, 0.1)' : '0 8px 22px rgba(8, 6, 13, 0.035)' }}>
+            <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? '#000000' : 'var(--border)'}`, borderRadius: '18px', padding: '14px', background: checked ? '#000000' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 12px 26px rgba(0, 0, 0, 0.14)' : '0 8px 22px rgba(8, 6, 13, 0.035)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
-                <strong style={{ color: 'var(--text-h)' }}>{source.name}</strong>
-                <span style={{ color: checked ? 'var(--accent)' : 'var(--text)', fontWeight: 800 }}>{checked ? '已订阅' : '订阅'}</span>
+                <strong style={{ color: checked ? '#ffffff' : 'var(--text-h)' }}>{source.name}</strong>
+                <span style={{ color: checked ? '#ffffff' : 'var(--text)', fontWeight: 800 }}>{checked ? '已订阅' : '订阅'}</span>
               </div>
-              <div style={{ marginTop: '8px', color: 'var(--text)', fontSize: '13px' }}>{categoryLabel(source.category)}</div>
-              <div style={{ marginTop: '10px', color: '#777', fontSize: '12px', wordBreak: 'break-all' }}>{source.url}</div>
+              <div style={{ marginTop: '8px', color: checked ? 'rgba(255,255,255,0.78)' : 'var(--text)', fontSize: '13px' }}>{categoryLabel(source.category)}</div>
+              <div style={{ marginTop: '10px', color: checked ? 'rgba(255,255,255,0.62)' : '#777', fontSize: '12px', wordBreak: 'break-all' }}>{source.url}</div>
             </button>
           )
         })}

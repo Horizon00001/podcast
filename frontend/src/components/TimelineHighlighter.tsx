@@ -76,8 +76,8 @@ export function TimelineHighlighter({
             boxShadow: idx === activeIndex
               ? isDetail
                 ? '0 12px 28px rgba(8, 6, 13, 0.08)'
-                : '0 0 12px rgba(170, 59, 255, 0.25)'
-              : '0 0 0px rgba(170, 59, 255, 0)'
+                : '0 0 12px rgba(0, 0, 0, 0.25)'
+              : '0 0 0px rgba(0, 0, 0, 0)'
           }}
           transition={{ duration: 0.25 }}
           style={{

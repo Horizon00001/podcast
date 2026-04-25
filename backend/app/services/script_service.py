@@ -6,10 +6,12 @@ from pydantic_ai import Agent
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from app.core.config import settings
-from app.schemas.script import PodcastScript
+from app.schemas.script import AudioEffect, DialogueTurn, PodcastScript, PodcastSection
 
 
 class ScriptService:
+    TRANSITION_SUMMARY = "承接上一段重点，并自然引出下一个分析问题。"
+
     def __init__(self, project_root: str | Path, output_dir: str | Path):
         self.project_root = Path(project_root)
         self.output_dir = Path(output_dir)
@@ -64,7 +66,51 @@ class ScriptService:
     async def _generate_script_via_json_fallback(self, news_content: str) -> PodcastScript:
         result = await self.json_fallback_agent.run(news_content)
         payload = self._extract_json_payload(str(result.output))
-        return PodcastScript.model_validate_json(payload)
+        return self._normalize_script( PodcastScript.model_validate_json(payload))
+
+    @classmethod
+    def _build_transition_section(cls) -> PodcastSection:
+        return PodcastSection(
+            section_type="transition",
+            audio_effect=AudioEffect(
+                effect_type="music",
+                description="短促转场音乐提示",
+                duration="2s",
+            ),
+            dialogues=[
+                DialogueTurn(
+                    speaker="A",
+                    content="刚才这条线索先放在这里，我们把镜头转到另一个同样关键的变化上。",
+                    emotion="自然承接",
+                ),
+                DialogueTurn(
+                    speaker="B",
+                    content="因为只有把这两个信号放在一起看，前面那个判断到底站不站得住，才会更清楚。",
+                    emotion="简洁分析",
+                ),
+            ],
+            summary=cls.TRANSITION_SUMMARY,
+        )
+
+    @classmethod
+    def _normalize_script(cls, script: PodcastScript) -> PodcastScript:
+        if any(section.section_type == "transition" for section in script.sections):
+            return script
+
+        normalized_sections: list[PodcastSection] = []
+        main_content_seen = 0
+        insert_after_first_main = sum(section.section_type == "main_content" for section in script.sections) > 1
+
+        for section in script.sections:
+            normalized_sections.append(section)
+            if section.section_type != "main_content":
+                continue
+
+            main_content_seen += 1
+            if insert_after_first_main and main_content_seen == 1:
+                normalized_sections.append(cls._build_transition_section())
+
+        return script.model_copy(update={"sections": normalized_sections})
 
     async def _stream_script(self, news_content: str):
         """Prefer streaming output, then fall back to a blocking run if needed."""
@@ -80,7 +126,7 @@ class ScriptService:
                 return
         except UnexpectedModelBehavior:
             final_result = await self.agent.run(news_content)
-            yield final_result.output
+            yield self._normalize_script(final_result.output)
         except Exception as exc:
             if "tool_choice" not in str(exc):
                 raise
@@ -92,7 +138,7 @@ class ScriptService:
 
             try:
                 async for script in self._stream_script(news_content):
-                    yield script
+                    yield self._normalize_script(script)
                 return
             except Exception as e:
                 if attempt < max_retries - 1:

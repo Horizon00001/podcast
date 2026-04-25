@@ -1,10 +1,610 @@
 [
     {
+        "id": "espn-rpm",
+        "name": "ESPN RPM",
+        "category": "sports",
+        "last_updated": "2026-04-25T17:18:12.212155",
+        "entries": [
+            {
+                "title": "'We're just getting going': Is Spire Motorsports NASCAR's next great team?",
+                "link": "https://www.espn.com/racing/nascar/story/_/id/48572580/were-just-getting-going-spire-motorsports-nascar-next-great-team",
+                "published": "Thu, 23 Apr 2026 15:42:08 EST",
+                "summary": "Spire Motorsports was once seen as an underfunded pretender, but with new backers and young talents, it has become NASCAR's biggest up-and-coming team."
+            },
+            {
+                "title": "Gen Z is shaking up IndyCar's Millennial, Gen X established order",
+                "link": "https://www.espn.com/racing/indycar/story/_/id/48504120/gen-z-stars-kyle-kirkwood-alex-palou-christian-lundgaard-david-malukas-shaking-indycar-millennial-gen-x-established-order",
+                "published": "Fri, 17 Apr 2026 10:17:37 EST",
+                "summary": "Experience is invaluable in IndyCar, but with Gen Z drivers first through fourth in the standings, the series is witnessing a changing of the guard."
+            },
+            {
+                "title": "Reports: Jim France to resign as CEO of NASCAR",
+                "link": "https://www.espn.com/racing/nascar/story/_/id/48582828/jim-france-step-nascar-ceo-according-reports",
+                "published": "Fri, 24 Apr 2026 17:35:37 EST",
+                "summary": "NASCAR majority owner Jim France is stepping down as chief executive and will be replaced by president Steve O'Donnell, according to multiple reports."
+            },
+            {
+                "title": "Turkish GP returns to new-look F1 calendar for '27",
+                "link": "https://www.espn.com/f1/story/_/id/48569698/turkish-grand-prix-returns-f1-2027-new-look-calendar-takes-shape",
+                "published": "Fri, 24 Apr 2026 08:59:10 EST",
+                "summary": "The popular Turkish Grand Prix at Istanbul Park will return to the Formula 1 schedule in 2027."
+            },
+            {
+                "title": "McLaren boss: F1 must be open to more changes",
+                "link": "https://www.espn.com/f1/story/_/id/48569105/f1-open-more-changes-positive-rule-tweaks-mclaren-boss-andrea-stella",
+                "published": "Thu, 23 Apr 2026 07:33:19 EST",
+                "summary": "McLaren team principal Andrea Stella has welcomed tweaks to Formula 1's new technical regulations ahead of next month's Miami Grand Prix, but says the sport must remain open to a more extensive rethink of its controversial power units in future seasons."
+            },
+            {
+                "title": "Brown would welcome Horner back to F1",
+                "link": "https://www.espn.com/f1/story/_/id/48568268/zak-brown-welcome-christian-horner-back-f1-rocky-relationship",
+                "published": "Thu, 23 Apr 2026 06:48:18 EST",
+                "summary": "McLaren CEO Zak Brown said he would welcome old foe Christian Horner back into Formula 1 with open arms."
+            },
+            {
+                "title": "Norris: Verstappen exit would be 'a miss' for F1",
+                "link": "https://www.espn.com/f1/story/_/id/48562135/lando-norris-max-verstappen-leaving-f1-mess-sport",
+                "published": "Wed, 22 Apr 2026 15:33:12 EST",
+                "summary": "Lando Norris has said it would be \"a miss\" for Formula 1 if Max Verstappen leaves the sport due to this year's rule changes."
+            },
+            {
+                "title": "Vettel on F1's rules: I sympathise with the drivers",
+                "link": "https://www.espn.com/f1/story/_/id/48558245/sebastian-vettel-f1-2026-rules-sympathise-drivers",
+                "published": "Wed, 22 Apr 2026 03:24:37 EST",
+                "summary": "Four-time world champion Sebastian Vettel has said he sympathises with the current Formula 1 drivers over the controversial new cars."
+            },
+            {
+                "title": "F1 to tweak controversial rule changes",
+                "link": "https://www.espn.com/f1/story/_/id/48542235/formula-1-confirm-rule-tweaks-miami-grand-prix",
+                "published": "Mon, 20 Apr 2026 14:10:59 EST",
+                "summary": "Formula 1 has agreed to a set of rule tweaks to address concerns about its controversial new cars ahead of the Miami Grand Prix on May 3."
+            },
+            {
+                "title": "Miami Grand Prix 2026: Race start time, how to watch, full schedule, predictions",
+                "link": "https://www.espn.com/f1/story/_/id/48473473/miami-grand-prix-2026-race-f1-sprint-start-s-how-watch-schedule-usa-tv-channel-live-stream-predictions-results",
+                "published": "Fri, 24 Apr 2026 03:45:19 EST",
+                "summary": "After a five-week break Formula 1 returns to action in Miami for the first American race of the season and the second Sprint weekend."
+            },
+            {
+                "title": "When's the next F1 race, and why is there such a long break?",
+                "link": "https://www.espn.com/f1/story/_/id/48321626/when-next-f1-race-why-such-long-break-bahrain-saudi-arabia-miami-japanese-grand-prix-2026",
+                "published": "Fri, 24 Apr 2026 02:38:15 EST",
+                "summary": "Three races into a new season and an all-new era of regulations, the Formula 1 2026 season has hit an unexpected pause."
+            },
+            {
+                "title": "F1's 2026 rule tweaks: What's changed after driver criticism, and will it make a difference?",
+                "link": "https://www.espn.com/f1/story/_/id/48548710/explained-f1-2026-rule-tweaks-changed-impact-difference-driver-criticism-max-verstappen",
+                "published": "Tue, 21 Apr 2026 06:33:43 EST",
+                "summary": "Formula 1 has delivered a set of rules tweaks to its controversial 2026 regulations -- but what do they mean and will they appease drivers ahead of the Miami GP? ESPN's Laurence Edmondson explains."
+            },
+            {
+                "title": "'Scalpel, not a baseball bat': Wolff on F1 changes",
+                "link": "https://www.espn.com/f1/story/_/id/48540198/toto-wolff-f1-changes-act-scalpel-not-baseball-bat",
+                "published": "Mon, 20 Apr 2026 08:28:36 EST",
+                "summary": "Mercedes team boss Toto Wolff has warned against taking a \"baseball bat\" to Formula 1's controversial 2026 technical regulations, saying he expects Monday's crunch meeting on the rules to end with targeted changes to improve the spectacle."
+            },
+            {
+                "title": "Domenicali: F1 critics have 'short memories'",
+                "link": "https://www.espn.com/f1/story/_/id/48510456/critics-new-rules-regulations-short-memories-says-f1-boss",
+                "published": "Mon, 20 Apr 2026 05:01:55 EST",
+                "summary": "Critics of Formula 1's new style of racing and its controversial new cars have \"short memories\", according to championship CEO Stefano Domenicali."
+            },
+            {
+                "title": "Driver dies in German race featuring Verstappen",
+                "link": "https://www.espn.com/racing/story/_/id/48524261/driver-dies-nurburgring-juha-miettinen-max-verstappen-adac-24h",
+                "published": "Sat, 18 Apr 2026 17:14:14 EST",
+                "summary": "A driver died following a crash in an endurance sports car race Saturday at the Nürburgring Nordschleife circuit in Germany, where four-time Formula 1 champion Max Verstappen was also preparing to race."
+            },
+            {
+                "title": "Russell: Opportunity to improve regs for Miami",
+                "link": "https://www.espn.com/f1/story/_/id/48512458/george-russell-enough-lowhanging-fruit-improve-f1-regulations-miami-gp",
+                "published": "Sat, 18 Apr 2026 02:05:34 EST",
+                "summary": "Mercedes driver George Russell says Formula 1's drivers are aligned on the changes that should be made to the sport's regulations."
+            },
+            {
+                "title": "Russell: I would understand if Verstappen quit",
+                "link": "https://www.espn.com/f1/story/_/id/48511405/george-russell-says-understand-max-verstappen-quit-f1",
+                "published": "Fri, 17 Apr 2026 08:38:11 EST",
+                "summary": "George Russell said he believes Max Verstappen's recent quit threat is linked to Red Bull's struggles so far this season, but he said he would understand if the four-time champion walked away from Formula 1."
+            },
+            {
+                "title": "Red Bull reshuffle team after tough start to 2026",
+                "link": "https://www.espn.com/f1/story/_/id/48510888/red-bull-reshuffles-technical-department-amid-f1-woes-key-departures",
+                "published": "Fri, 17 Apr 2026 07:08:14 EST",
+                "summary": "Red Bull has announced the appointment of a senior engineer from its junior team Racing Bulls as part of an internal reshuffle of its technical department."
+            },
+            {
+                "title": "Verstappen: 'Stupid' for GP not to join McLaren",
+                "link": "https://www.espn.com/f1/story/_/id/48510561/max-verstappen-gianpiero-lambiases-exit-stupid-not-do-that",
+                "published": "Fri, 17 Apr 2026 06:04:10 EST",
+                "summary": "Max Verstappen said race engineer Gianpiero Lambiase wanted his blessing to move to McLaren before making the decision."
+            }
+        ]
+    },
+    {
+        "id": "techcrunch",
+        "name": "TechCrunch",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:46.750202",
+        "entries": [
+            {
+                "title": "Lachy Groom to back India startup Pronto at a $200M valuation, sources say",
+                "link": "https://techcrunch.com/2026/04/24/lachy-groom-to-back-pronto-as-indias-house-help-startup-scales-fast-sources-say/",
+                "published": "Sat, 25 Apr 2026 03:30:00 +0000",
+                "summary": "This round, should it occur, would double the house-help startup's valuation in a matter of weeks."
+            },
+            {
+                "title": "Steve Ballmer blasts founder he backed who pleaded guilty to fraud: ‘I was duped and feel silly’",
+                "link": "https://techcrunch.com/2026/04/24/steve-ballmer-blasts-founder-he-backed-who-pleaded-guilty-to-fraud-i-was-duped-and-feel-silly/",
+                "published": "Fri, 24 Apr 2026 23:32:11 +0000",
+                "summary": "Steve Ballmer wrote a fiery letter in the sentencing of disgraced founder Joseph Sanberg documenting all the harm that's befalling him as an investor."
+            },
+            {
+                "title": "Palantir is reportedly helping the IRS investigate financial crimes",
+                "link": "https://techcrunch.com/2026/04/24/palantir-is-reportedly-helping-the-irs-investigate-financial-crimes/",
+                "published": "Fri, 24 Apr 2026 21:53:44 +0000",
+                "summary": "The IRS has used Palantir's software since at least 2018, The Intercept reports."
+            },
+            {
+                "title": "Cohere acquires, merges with Germany-based startup to create a ‘transatlantic AI powerhouse’",
+                "link": "https://techcrunch.com/2026/04/24/cohere-acquires-merges-with-german-based-startup-to-create-a-transatlantic-ai-powerhouse/",
+                "published": "Fri, 24 Apr 2026 21:35:30 +0000",
+                "summary": "Cohere, the Canada-based AI company that makes AI tools for businesses in regulated industries, announced Friday it would merge with Aleph Alpha, a German company that also builds AI systems for businesses and governments."
+            },
+            {
+                "title": "Two college kids raise a $5.1 million pre-seed to build an AI social network in iMessage",
+                "link": "https://techcrunch.com/2026/04/24/two-college-kids-raise-a-5-1-million-pre-seed-to-build-an-ai-social-network-in-imessage/",
+                "published": "Fri, 24 Apr 2026 21:05:59 +0000",
+                "summary": "Series, a social networking app that's grown popular on college campuses, announced a $5.1 million pre-seed round from some big names in tech."
+            },
+            {
+                "title": "Meta’s loss is Thinking Machines’ gain",
+                "link": "https://techcrunch.com/2026/04/24/metas-loss-is-thinking-machines-gain/",
+                "published": "Fri, 24 Apr 2026 20:52:07 +0000",
+                "summary": "Meta has been poaching talent from Thinking Machines Lab. But it's a two-way street."
+            },
+            {
+                "title": "X-energy stock pops 27% on first day of trading following upsized IPO",
+                "link": "https://techcrunch.com/2026/04/24/x-energy-stock-pops-27-on-first-day-of-trading-following-upsized-ipo/",
+                "published": "Fri, 24 Apr 2026 20:10:54 +0000",
+                "summary": "Investors flocked to nuclear power startup X-energy in its first day of public trading on the Nasdaq."
+            },
+            {
+                "title": "ComfyUI hits $500M valuation as creators seek more control over AI-generated media",
+                "link": "https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/",
+                "published": "Fri, 24 Apr 2026 19:49:35 +0000",
+                "summary": "ComfyUI, whose tools give creators more control over AI image, video, and audio generation, just raised $30 million."
+            },
+            {
+                "title": "X launches stand-alone XChat app on iOS",
+                "link": "https://techcrunch.com/2026/04/24/x-launches-xchat-app-ios-messaging-iphone/",
+                "published": "Fri, 24 Apr 2026 19:46:58 +0000",
+                "summary": "X's new app promises private chats, disappearing messages, audio and video calls, and more."
+            },
+            {
+                "title": "Google to invest up to $40B in Anthropic in cash and compute",
+                "link": "https://techcrunch.com/2026/04/24/google-to-invest-up-to-40b-in-anthropic-in-cash-and-compute/",
+                "published": "Fri, 24 Apr 2026 18:00:03 +0000",
+                "summary": "Google plans up to $40B investment in Anthropic as AI rivals race to secure massive compute capacity, following the limited release of its powerful, cybersecurity-focused Mythos model."
+            },
+            {
+                "title": "Marked-up Mac minis flood eBay amid shortages driven by AI",
+                "link": "https://techcrunch.com/2026/04/24/mac-mini-price-expensive-ebay-shortage-ai-memory/",
+                "published": "Fri, 24 Apr 2026 16:42:19 +0000",
+                "summary": "Apple’s sold-out Mac mini is spawning marked-up eBay listings as demand surges for the compact desktop, now favored for running local AI models and tools."
+            },
+            {
+                "title": "Nuclear startup X-energy raises $1B in data center-driven IPO",
+                "link": "https://techcrunch.com/2026/04/24/nuclear-startup-x-energy-raises-1b-in-data-center-driven-ipo/",
+                "published": "Fri, 24 Apr 2026 15:06:00 +0000",
+                "summary": "Amazon-backed X-energy was able to raise around 20% more money in its IPO as demand for nuclear power surges."
+            },
+            {
+                "title": "Another spyware maker caught distributing fake Android snooping apps",
+                "link": "https://techcrunch.com/2026/04/24/another-spyware-maker-caught-distributing-fake-android-snooping-apps/",
+                "published": "Fri, 24 Apr 2026 14:17:55 +0000",
+                "summary": "Researchers have found a new case where government authorities used a fake Android app to plant spyware on a target’s phone. The company that allegedly developed the spyware was not previously known to sell this type of software."
+            },
+            {
+                "title": "Uber CTO Praveen Neppalli Naga joins stacked StrictlyVC SF lineup for April 30 event",
+                "link": "https://techcrunch.com/2026/04/24/uber-cto-praveen-neppalli-naga-joins-stacked-strictlyvc-sf-lineup-for-april-30-event/",
+                "published": "Fri, 24 Apr 2026 14:00:00 +0000",
+                "summary": "Surprise! StrictlyVC San Francisco, which will kick off this year’s events lineup for TechCrunch on April 30 at the Sentro Filipino Cultural Center, is getting a new addition to its increasingly stacked lineup of speakers. Uber CTO Praveen Neppalli Naga will join the rest of the lineup to discuss operating at scale in the age of AI."
+            },
+            {
+                "title": "Tim Cook is stepping down. What happens to Apple now?",
+                "link": "https://techcrunch.com/video/tim-cook-is-stepping-down-what-happens-to-apple-now/",
+                "published": "Fri, 24 Apr 2026 14:00:00 +0000",
+                "summary": "Tim Cook plans to step down from his CEO role in September, handing the reins to hardware chief John Ternus.   Ternus may be inheriting one of the most durable businesses in tech, but&#160;he’s&#160;also stepping into&#160;a very different&#160;ecosystemthan the one Cook spent decades shaping. The App Store’s 30% cut is under pressure, the behind-the-scenes power Apple once [&#8230;]"
+            },
+            {
+                "title": "Nothing introduces an AI-powered dictation tool",
+                "link": "https://techcrunch.com/2026/04/24/nothing-introduces-an-ai-powered-dictation-tool/",
+                "published": "Fri, 24 Apr 2026 13:41:42 +0000",
+                "summary": "Nothing's new on-device dictation tool supports over 100 languages."
+            },
+            {
+                "title": "DeepSeek previews new AI model that ‘closes the gap’ with frontier models",
+                "link": "https://techcrunch.com/2026/04/24/deepseek-previews-new-ai-model-that-closes-the-gap-with-frontier-models/",
+                "published": "Fri, 24 Apr 2026 13:30:59 +0000",
+                "summary": "DeepSeek says both models are more efficient and performant than DeepSeek V3.2 due to architectural improvements, and have almost \"closed the gap\" with current leading models, both open and closed, on reasoning benchmarks."
+            },
+            {
+                "title": "In another wild turn for AI chips, Meta signs deal for millions of Amazon AI CPUs",
+                "link": "https://techcrunch.com/2026/04/24/in-another-wild-turn-for-ai-chips-meta-signs-deal-for-millions-of-amazon-ai-cpus/",
+                "published": "Fri, 24 Apr 2026 12:00:00 +0000",
+                "summary": "Meta has commandeered a big chunk of Amazon's homegrown CPUs (not GPUs) for AI agentic workloads, signaling that a new kind of chip race has begun."
+            },
+            {
+                "title": "Porsche is adding an all-electric Cayenne coupe to its lineup",
+                "link": "https://techcrunch.com/2026/04/23/porsche-is-adding-an-all-electric-cayenne-coupe-to-its-lineup/",
+                "published": "Fri, 24 Apr 2026 04:01:00 +0000",
+                "summary": "Porsche will start selling the Cayenne Coupe Electric in late summer."
+            },
+            {
+                "title": "Bob Iger rejoins Thrive Capital as advisor after Disney exit",
+                "link": "https://techcrunch.com/2026/04/23/bob-iger-rejoins-thrive-capital-as-advisor-after-disney-exit/",
+                "published": "Fri, 24 Apr 2026 00:11:25 +0000",
+                "summary": "The former Disney CEO hold a stake in Thrive and has previously held the role of the venture partner at the firm."
+            }
+        ]
+    },
+    {
+        "id": "the-verge",
+        "name": "The Verge",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:46.643375",
+        "entries": [
+            {
+                "title": "Microsoft will let you pause Windows Updates indefinitely, 35 days at a time",
+                "link": "https://www.theverge.com/tech/918572/microsoft-windows-updates-pause-35-days",
+                "published": "2026-04-24T16:45:58-04:00",
+                "summary": "Windows users will no longer be forced to run automatic updates in the middle of a game or a busy day. Microsoft is rolling out some long-awaited changes to Windows Update to users on its Dev and Experimental Windows Insider channels, including the ability to indefinitely delay updates up to 35 days at a time. [&#8230;]"
+            },
+            {
+                "title": "Alex Jones has uncovered another massive conspiracy",
+                "link": "https://www.theverge.com/news/918527/alex-jones-infowars-takeover-the-onion-tim-heidecker",
+                "published": "2026-04-24T16:10:00-04:00",
+                "summary": "Alex Jones may soon lose Infowars, the digital perch that he's used for decades to traffic in conspiracy theories, to The Onion, the satirical newspaper. But not before he's uncovered something truly dastardly: comedian Tim Heidecker's past (publicly available) work. \"The Onion newspaper has been rocked by the discovery that their new creative director, produced [&#8230;]"
+            },
+            {
+                "title": "The person who allegedly leaked Paramount’s new Avatar movie has been arrested",
+                "link": "https://www.theverge.com/entertainment/918250/avatar-aang-the-last-airbender-leaks-arrest-paramount-plus",
+                "published": "2026-04-24T15:45:01-04:00",
+                "summary": "Following Paramount Skydance's move to launch an investigation into how its upcoming Avatar Aang: The Last Airbender animated feature leaked onto the internet, a suspect has been taken into custody by police. The Straits Times reports Singaporean police have arrested a 26-year-old man who is alleged to have uploaded the new Avatar movie (previously titled [&#8230;]"
+            },
+            {
+                "title": "BMW is one step closer to selling you a color-changing car",
+                "link": "https://www.theverge.com/tech/918216/bmw-ix3-flow-edition-concept-car-2026-beijing-auto-show-e-ink-color-changing",
+                "published": "2026-04-24T13:31:44-04:00",
+                "summary": "At CES 2022, BMW debuted its BMW iX Flow concept car that could dynamically change its appearance using the same grayscale E Ink panels found in e-readers like the Kindle. It was followed by the BMW i Vision Dee concept and the BMW i5 Flow Nostokana that were both upgraded with color E Ink panels. [&#8230;]"
+            },
+            {
+                "title": "Google’s handsome Pixel Watch 4 is on sale for $40 off in both size configurations",
+                "link": "https://www.theverge.com/gadgets/917924/google-pixel-watch-4-apple-airpods-deal-sale",
+                "published": "2026-04-24T13:25:49-04:00",
+                "summary": "Spring has sprung, as they say, and to mark the occasion, Google is running a spring-centric promo until Sunday, April 26th. The limited-time discounts apply to a number of Google’s first-party devices, from the Pixel 10 Pro to the Pixel Buds Pro 2, as well as the wearables like the Pixel Watch 4. In fact, [&#8230;]"
+            },
+            {
+                "title": "The RAM shortage could get even worse if Samsung labor protests cut production",
+                "link": "https://www.theverge.com/tech/918301/samsung-south-korea-union-protests",
+                "published": "2026-04-24T13:11:33-04:00",
+                "summary": "The RAM shortage caused by demand from AI datacenters is already driving up prices on phones, PS5s, and Raspberry Pis, but it could be about to get even worse. Samsung is facing employee protests over demands for wages that are more competitive with rival chip manufacturer SK Hynix, including removing Samsung's cap on bonus pay, [&#8230;]"
+            },
+            {
+                "title": "How Project Maven taught the military to love AI",
+                "link": "https://www.theverge.com/ai-artificial-intelligence/917996/project-maven-military-ai-katrina-manson",
+                "published": "2026-04-24T13:00:00-04:00",
+                "summary": "In the first 24 hours of the assault on Iran, the US military struck more than 1,000 targets, nearly double the scale of the \"shock and awe\" attack on Iraq over two decades ago. This acceleration was made possible by AI systems that speed up the targeting process. Chief among them is the Maven Smart [&#8230;]"
+            },
+            {
+                "title": "Xreal’s best AR glasses are $599 for good now",
+                "link": "https://www.theverge.com/gadgets/918169/xreal-one-pro-ar-glasses-price-cut-deal-sale",
+                "published": "2026-04-24T12:33:30-04:00",
+                "summary": "The Xreal One Pro are the company’s best AR glasses, touting thin optics that keep out reflections so you can enjoy a crisp, contrast-rich image of whatever content you’re watching. Xreal has permanently cut their price from $649 to $599, making them $150 more than its entry-level (but still good) 1S glasses that debuted shortly [&#8230;]"
+            },
+            {
+                "title": "360-degree cameras have a new superpower",
+                "link": "https://www.theverge.com/tech/914730/splatica-gaussian-splats-insta360-antigravity",
+                "published": "2026-04-24T11:30:00-04:00",
+                "summary": "Imagine Google Street View, except you can walk around like it's a video game. Now imagine you don't need to wait for Google to come film because it's completely DIY. Insta360, the leading maker of 360-degree cameras, is now partnered with a 12-person UK startup called Splatica to help creators do just that. Last January, [&#8230;]"
+            },
+            {
+                "title": "Tesla’s Cybercab goes into production — so why is Musk tapping the brakes?",
+                "link": "https://www.theverge.com/transportation/918106/tesla-cybercab-production-robotaxi-elon-musk-earnings",
+                "published": "2026-04-24T11:17:27-04:00",
+                "summary": "Tesla's Cybercab is now in production at the company's Gigafactory in Austin, Texas, but Elon Musk is sounding unusually cautious about the rollout. The robotaxi's start of production was announced Thursday on X, with Tesla posting a video shot from inside a steering wheel-less Cybercab as it drove out of the factory with the caption, [&#8230;]"
+            }
+        ]
+    },
+    {
+        "id": "ars-technica",
+        "name": "Ars Technica",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:47.027032",
+        "entries": [
+            {
+                "title": "This is who's developing Golden Dome's orbital interceptors—if they're ever built",
+                "link": "https://arstechnica.com/space/2026/04/this-is-whos-developing-golden-domes-orbital-interceptors-if-theyre-ever-built/",
+                "published": "Sat, 25 Apr 2026 02:52:37 +0000",
+                "summary": "\"If boost-phase intercept from space is not affordable and scalable, we will not produce it.\""
+            },
+            {
+                "title": "Google will invest as much as $40 billion in Anthropic",
+                "link": "https://arstechnica.com/ai/2026/04/google-will-invest-as-much-as-40-billion-in-anthropic/",
+                "published": "Fri, 24 Apr 2026 22:05:45 +0000",
+                "summary": "This follows a similar, but smaller, investment by Amazon just days ago."
+            },
+            {
+                "title": "Europe—not US—first to authorize Moderna's combo mRNA flu-COVID vaccine",
+                "link": "https://arstechnica.com/health/2026/04/europe-not-us-first-to-authorize-modernas-combo-mrna-flu-covid-vaccine/",
+                "published": "Fri, 24 Apr 2026 21:11:43 +0000",
+                "summary": "Amid RFK Jr.'s anti-vaccine agenda, Moderna withdrew its FDA application last year."
+            },
+            {
+                "title": "FCC: Router ban includes portable hotspots, but not phones with hotspot features",
+                "link": "https://arstechnica.com/tech-policy/2026/04/fcc-says-ban-on-foreign-made-routers-includes-portable-wi-fi-hotspots/",
+                "published": "Fri, 24 Apr 2026 19:30:14 +0000",
+                "summary": "FCC defines consumer routers expansively, updates FAQ to include Wi-Fi hotspots."
+            },
+            {
+                "title": "Why are top university websites serving porn? It comes down to shoddy housekeeping.",
+                "link": "https://arstechnica.com/security/2026/04/why-are-top-university-websites-serving-porn-it-comes-down-to-shoddy-housekeeping/",
+                "published": "Fri, 24 Apr 2026 19:00:39 +0000",
+                "summary": "Hundreds of subdomains from dozens of universities have been hijacked by scammers."
+            },
+            {
+                "title": "In rare chickenpox case, itchy blisters mushroom into large, rubbery nodules",
+                "link": "https://arstechnica.com/health/2026/04/in-rare-chickenpox-case-itchy-blisters-mushroom-into-large-rubbery-nodules/",
+                "published": "Fri, 24 Apr 2026 18:44:53 +0000",
+                "summary": "Treatment options are tricky. The teen opted to live with the masses."
+            },
+            {
+                "title": "Soldier won $410K in Polymarket bets on timing of Maduro capture, US alleges",
+                "link": "https://arstechnica.com/tech-policy/2026/04/soldier-won-410k-in-polymarket-bets-on-timing-of-maduro-capture-us-alleges/",
+                "published": "Fri, 24 Apr 2026 17:41:43 +0000",
+                "summary": "It's like \"Pete Rose betting on his own team,\" Trump says of arrested soldier."
+            },
+            {
+                "title": "Meet the 19-meter Cretaceous kraken that swam with mosasaurs",
+                "link": "https://arstechnica.com/science/2026/04/meet-the-19-meter-cretaceous-kraken-that-swam-with-mosasaurs/",
+                "published": "Fri, 24 Apr 2026 17:23:49 +0000",
+                "summary": "Layer by layer, researchers revealed the jaws of an ancient predator."
+            },
+            {
+                "title": "Report: Samsung execs worried company could lose money on smartphones for the first time",
+                "link": "https://arstechnica.com/gadgets/2026/04/samsung-may-be-bracing-for-first-ever-annual-loss-in-smartphone-business/",
+                "published": "Fri, 24 Apr 2026 16:58:45 +0000",
+                "summary": "The AI-driven memory shortage is hitting Samsung's bottom line."
+            },
+            {
+                "title": "Man faces 5 years in prison for using AI to fake sighting of runaway wolf",
+                "link": "https://arstechnica.com/tech-policy/2026/04/after-wolf-escaped-zoo-man-arrested-for-creating-fake-ai-sighting-for-fun/",
+                "published": "Fri, 24 Apr 2026 15:05:23 +0000",
+                "summary": "Beloved wolf gripped the nation after burrowing out of the zoo."
+            },
+            {
+                "title": "Well, this is embarrassing: The Lunar Gateway's primary modules are corroded",
+                "link": "https://arstechnica.com/space/2026/04/well-this-is-embarrassing-the-lunar-gateways-primary-modules-are-corroded/",
+                "published": "Fri, 24 Apr 2026 14:47:19 +0000",
+                "summary": "\"Preliminary findings indicate that the issue likely results from a combination of factors.\""
+            },
+            {
+                "title": "As electric aspirations fade, Porsche sells its stake in Bugatti",
+                "link": "https://arstechnica.com/cars/2026/04/as-electric-aspirations-fade-porsche-sells-its-stake-in-bugatti/",
+                "published": "Fri, 24 Apr 2026 13:54:17 +0000",
+                "summary": "Porsche's stake in Bugatti and Rimac Group have been sold to private equity."
+            },
+            {
+                "title": "Six things I'll remember when I think about Tim Cook's version of Apple",
+                "link": "https://arstechnica.com/gadgets/2026/04/six-things-ill-remember-when-i-think-about-tim-cooks-version-of-apple/",
+                "published": "Fri, 24 Apr 2026 13:40:50 +0000",
+                "summary": "Under Cook, Apple became hugely successful, if not always surprising."
+            },
+            {
+                "title": "Trump administration attempt to gut Endangered Species Act hits roadblock",
+                "link": "https://arstechnica.com/tech-policy/2026/04/trump-administration-attempt-to-gut-endangered-species-act-hits-roadblock/",
+                "published": "Fri, 24 Apr 2026 13:17:00 +0000",
+                "summary": "House vote to defang the Endangered Species Act was unexpectedly cancelled"
+            },
+            {
+                "title": "Rocket Report: Artemis III rocket getting ready; SpaceX is now an AI company",
+                "link": "https://arstechnica.com/space/2026/04/rocket-report-some-canadians-dont-want-a-spaceport-falcon-hits-600-landings/",
+                "published": "Fri, 24 Apr 2026 11:00:36 +0000",
+                "summary": "\"If it doesn’t rely on a solid, there’s no reason why we can’t launch.\""
+            },
+            {
+                "title": "Visitors to this private space station won't be wearing shorts and T-shirts",
+                "link": "https://arstechnica.com/space/2026/04/vast-reveals-flight-suit-tests-timepiece-for-commercial-space-station/",
+                "published": "Thu, 23 Apr 2026 22:14:16 +0000",
+                "summary": "Can you wear white after Labor Day if your destination is Earth orbit?"
+            },
+            {
+                "title": "US accuses China of “industrial-scale” AI theft. China says it’s “slander.”",
+                "link": "https://arstechnica.com/tech-policy/2026/04/us-accuses-china-of-industrial-scale-ai-theft-china-says-its-slander/",
+                "published": "Thu, 23 Apr 2026 21:45:10 +0000",
+                "summary": "Trump-Xi summit may be rocked by US mulling huge sanctions."
+            },
+            {
+                "title": "Carbon nanotube wiring gets closer to competing with copper",
+                "link": "https://arstechnica.com/science/2026/04/researchers-get-carbon-nanotube-wiring-to-conduct-more-like-copper/",
+                "published": "Thu, 23 Apr 2026 21:22:09 +0000",
+                "summary": "While this material degrades over time, it could point to better ones."
+            },
+            {
+                "title": "We still don't have a more precise value for \"Big G\"",
+                "link": "https://arstechnica.com/science/2026/04/we-still-dont-have-a-more-precise-value-for-big-g/",
+                "published": "Thu, 23 Apr 2026 20:57:35 +0000",
+                "summary": "Such experiments bring \"order to the universe, whether or not the number agrees with the expected value.”"
+            },
+            {
+                "title": "In a first, a ransomware family is confirmed to be quantum-safe",
+                "link": "https://arstechnica.com/security/2026/04/now-even-ransomware-is-using-post-quantum-cryptography/",
+                "published": "Thu, 23 Apr 2026 20:41:23 +0000",
+                "summary": "Technically speaking, there's no practical benefit to use PQC. So why is it being used?"
+            }
+        ]
+    },
+    {
+        "id": "npr-technology",
+        "name": "NPR Technology",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:50.691991",
+        "entries": [
+            {
+                "title": "'Self-aware' robots can learn complex tasks by watching humans. Is that a good thing?",
+                "link": "https://www.npr.org/2026/04/24/nx-s1-5797863/self-aware-robots-future-laundry-work-home",
+                "published": "Fri, 24 Apr 2026 06:00:00 -0400",
+                "summary": "Scientists say they've made a key breakthrough that would allow robots to figure out complex tasks on their own, but experts say it raises questions about how much risk comes with letting robots be in charge of their own learning. <br />"
+            },
+            {
+                "title": "Trump administration vows crackdown on Chinese firms 'exploiting' U.S. AI models",
+                "link": "https://www.npr.org/2026/04/24/g-s1-118582/administration-crackdown-on-chinese-firms-exploiting-u-s-ai-models",
+                "published": "Fri, 24 Apr 2026 01:21:12 -0400",
+                "summary": "The Trump administration is vowing to crack down on foreign tech companies' exploitation of U.S. artificial intelligence models, singling out China at a time that country is narrowing the gap with the U.S. in the AI race."
+            },
+            {
+                "title": "U.S. soldier charged with using classified information to bet on Maduro's removal",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5797957/maduro-raid-charges-polymarket-insider",
+                "published": "Thu, 23 Apr 2026 19:29:17 -0400",
+                "summary": "It's the first time suspected insider trading on Polymarket has led to criminal charges in the U.S."
+            },
+            {
+                "title": "French police probe suspected weather device tampering after odd Polymarket bet",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5797876/polymarket-paris-weather-bet",
+                "published": "Thu, 23 Apr 2026 18:22:38 -0400",
+                "summary": "The incident is the latest eyebrow-raising bet on Polymarket, as allegations of rigging and manipulation continue to haunt the popular prediction market site."
+            },
+            {
+                "title": "OpenAI is under scrutiny after two mass shooters used ChatGPT to plan attacks",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5794016/openai-is-under-scrutiny-after-two-mass-shooters-used-chatgpt-to-plan-attacks",
+                "published": "Thu, 23 Apr 2026 16:57:43 -0400",
+                "summary": "AI companies are under growing scrutiny over the potential harms chatbots can pose amid investigations into how mass shooters allegedly sought advice from the tools."
+            },
+            {
+                "title": "Maine might soon impose the country's first statewide pause on data centers",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5795655/maine-might-soon-impose-the-countrys-first-statewide-pause-on-data-centers",
+                "published": "Thu, 23 Apr 2026 16:38:21 -0400",
+                "summary": "Maine might become the first place to impose a statewide pause on big data center construction — if the governor signs the bill."
+            },
+            {
+                "title": "Meta will lay off 10% of its staff",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5797855/meta-layoffs-10-percent-staff",
+                "published": "Thu, 23 Apr 2026 16:10:20 -0400",
+                "summary": "The cuts follow losses in two pivotal court cases and the company's push to invest in artificial intelligence."
+            },
+            {
+                "title": "AI's a suck up. Research shows how it flatters and suggests we're not to blame",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5792867/ai-chatbot-flattery-mental-health-risks",
+                "published": "Thu, 23 Apr 2026 06:00:00 -0400",
+                "summary": "The AI models and chatbots that we interact with tend to affirm our feelings and viewpoints — more so than people do, with potentially worrisome consequences."
+            },
+            {
+                "title": "How TikTok is driving American expats to Southeast Asia",
+                "link": "https://www.npr.org/2026/04/23/nx-s1-5763809/tiktok-moving-vietnam-thailand-american-expats",
+                "published": "Thu, 23 Apr 2026 05:00:00 -0400",
+                "summary": "Americans who moved to Vietnam and Thailand say their lives are now lower-stress and lower-cost. But glamorous videos on TikTok don't tell the whole story."
+            },
+            {
+                "title": "Tesla's making money. But it's planning to spend an awful lot more",
+                "link": "https://www.npr.org/2026/04/22/nx-s1-5791653/tesla-earnings-first-quarter-2026",
+                "published": "Wed, 22 Apr 2026 19:23:43 -0400",
+                "summary": "Tesla's profits were up from this time last year. But the company warned investors to prepare for expensive investments in next-generation technology like humanoid robots and AI."
+            }
+        ]
+    },
+    {
+        "id": "sspai",
+        "name": "少数派",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:45.733391",
+        "entries": [
+            {
+                "title": "本周看什么 | 最近值得一看的 11 部作品",
+                "link": "https://sspai.com/post/109050",
+                "published": "Fri, 24 Apr 2026 18:17:33 +0800",
+                "summary": "📅本周新预告《泥面人》首支预告4月23日，DC新片《泥面人》发布了首支预告，将于10月23日在北美上映。詹姆斯·瓦特金斯执导，汤姆·里斯·哈里斯、娜奥米·阿基、麦克思·明格拉等主演，一位B级片演员给自 ...<a href=\"https://sspai.com/post/109050\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "换了新显示器怎么验？我做了一个开箱即用的全平台屏幕检测工具",
+                "link": "https://sspai.com/post/108455",
+                "published": "Fri, 24 Apr 2026 15:06:50 +0800",
+                "summary": "一站式、在线测试屏幕的各项功能。<a href=\"https://sspai.com/post/108455\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "汇聚热爱，「2050 大会」少数派线下活动邀请你来参与",
+                "link": "https://sspai.com/post/108202",
+                "published": "Fri, 24 Apr 2026 11:25:15 +0800",
+                "summary": "4月24日-4月26日，新一届2050大会将在云栖小镇如期举行。期间，少数派将会组织《少数派的共创时代》社区交流活动，围绕AI降低创造门槛后，从想法到产品落地的真实路径展开讨论。以下是活动的详细信息： ...<a href=\"https://sspai.com/post/108202\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "手机和平板间的新品类：华为 Pura X Max 漫谈",
+                "link": "https://sspai.com/post/109024",
+                "published": "Fri, 24 Apr 2026 09:54:28 +0800",
+                "summary": "折叠屏手机这两年并不太好过。按照IDC的年度报告，2025年中国折叠屏手机市场出货约1001万台，同比增速9.2%，而2024年这个数字还是30.8%——一年之间，增速接近腰斩。而折叠屏手机在全球智能 ...<a href=\"https://sspai.com/post/109024\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "派早报：OpenAI 发布 GPT-5.5 系列模型等",
+                "link": "https://sspai.com/post/109032",
+                "published": "Fri, 24 Apr 2026 08:52:21 +0800",
+                "summary": "汉王发布 Clear7C 彩色墨水屏电纸书、文石发布 Leaf5+ 黑白墨水屏电纸书等。<a href=\"https://sspai.com/post/109032\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "一口春鲜，半是江河半是海",
+                "link": "https://sspai.com/prime/story/recipes-for-spring",
+                "published": "Thu, 23 Apr 2026 18:38:26 +0800",
+                "summary": "都说「人间四月鲜，尝鲜好时节」，说的不仅是各种时令蔬菜上市了，还有经过了一个冬季蛰伏后，开始出现在了菜市场海鲜档口的海鲜与河鲜。虽说现如今，随着时代的发展和科技的进步，我们的人工养殖水平已经日益见长， ...<a href=\"https://sspai.com/prime/story/recipes-for-spring\" target=\"_blank\">查看全文</a><p>本文为会员文章，出自<a href=\"https://sspai.com/prime/precog/single\" target=\"_blank\">《单篇文章》</a>，订阅后可阅读全文。</p>"
+            },
+            {
+                "title": "新玩意 239｜少数派的编辑们最近买了啥？",
+                "link": "https://sspai.com/post/109007",
+                "published": "Thu, 23 Apr 2026 17:42:33 +0800",
+                "summary": "编注：很多读者都会好奇少数派的编辑们到底平时都「买了啥」。我们希望通过「编辑部的新玩意」介绍编辑部成员们最近在用的新奇产品，让他们自己来谈谈这些新玩意的使用体验究竟如何。内容声明：《新玩意》栏目如含有 ...<a href=\"https://sspai.com/post/109007\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "Notion 和 Obsidian 应该怎么选？聊聊我的思考和建议",
+                "link": "https://sspai.com/post/108971",
+                "published": "Thu, 23 Apr 2026 15:12:16 +0800",
+                "summary": "Notion的优缺点Notion的门槛在于，当一个页面被创建，在Notion的整套叙事里，你需要尽快为这个页面找到它在系统中的位置和关系，它是什么、属于哪里、是否和某个具体的任务或项目有关系？尽管你可 ...<a href=\"https://sspai.com/post/108971\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "App+1｜秒看视频参数，我做了个免费的 Mac 小工具",
+                "link": "https://sspai.com/post/108385",
+                "published": "Thu, 23 Apr 2026 11:00:00 +0800",
+                "summary": "视频党狂喜！<a href=\"https://sspai.com/post/108385\" target=\"_blank\">查看全文</a>"
+            },
+            {
+                "title": "派早报：鸿蒙智行发布多款车型、Framework 推出多款新品等",
+                "link": "https://sspai.com/post/108991",
+                "published": "Thu, 23 Apr 2026 08:34:31 +0800",
+                "summary": "海信发布小墨 E5S 系列电视新品、雷蛇推出帝王蝶 Atlas Pro 玻璃鼠标垫等。<a href=\"https://sspai.com/post/108991\" target=\"_blank\">查看全文</a>"
+            }
+        ]
+    },
+    {
         "id": "ithome",
         "name": "IT之家",
         "category": "tech",
-        "last_updated": "2026-04-25T16:55:59.628067",
+        "last_updated": "2026-04-25T17:17:46.602961",
         "entries": [
+            {
+                "title": "阿联酋未来两年 50% 政府事务将由 Agentic AI 驱动",
+                "link": "https://www.ithome.com/0/943/475.htm",
+                "published": "Sat, 25 Apr 2026 09:02:33 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，阿联酋总统穆罕默德 · 本 · 扎耶德前天（本周四）宣布，该国未来两年内将把 50% 政府部门、服务和运营转变为 Agentic AI 驱动。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/f2d556cb-7817-445b-ba28-a1c7407a18ce.jpg?x-bce-process=image/format,f_auto\" /></p><p>据穆罕默德 · 本 · 扎耶德介绍，阿联酋将成为全球首个使用 Agentic AI 大规模处理政府事务的国家，这种 AI 模型可以独立执行任务、管理流程和支持决策。</p><p>未来两年，阿联酋政府将对各部长、干事以及联邦机构进行评估，考察他们实施新标准和使用 AI 的速度。所有政府雇员都将接受 AI 知识培训，目的是让政府转型。</p><p>IT之家注：Agentic AI 是代理式人工智能的简称，指具备自主感知、推理、规划与执行能力，能够独立完成多步骤任务的人工智能系统。</p>"
+            },
+            {
+                "title": "一汽奥迪 SQ8 轿跑 SUV 上市：4.1 秒零百加速，官方指导价 113.98 万元",
+                "link": "https://www.ithome.com/0/943/474.htm",
+                "published": "Sat, 25 Apr 2026 08:57:50 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，4 月 24 日，一汽奥迪旗下奥迪 SQ8 在 2026 北京车展上市，官方指导价 113.98 万元。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/fa92b752-2611-463a-b7ca-a71776dc9989.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家从官方介绍获悉，奥迪 SQ8 搭载 4.0L 双涡轮增压 V8 发动机，以最大功率 373kW、峰值扭矩 770N·m 的强悍输出，实现 4.1 秒零百加速，<strong>几乎“零延迟”的动力响应</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/4c4ea1da-ba09-483c-ad8d-044496addadc.png?x-bce-process=image/format,f_auto\" /></p><p>奥迪 SQ8 配备 quattro 四驱带运动型差速器，可实现后轴左右轮最大 1800N·m 扭矩的精准动态分配，过弯时主动将更多动力转移至弯道外侧车轮。辅以运动型自适应空气悬架，<strong>奥迪 SQ8 可实现 90 毫米车身高度调节范围</strong>，动态模式下车身降低 40 毫米。同级少有的四轮转向系统，低速时后轮可向与前轮相反的方向转动 5 度，高速时后轮与前轮转向方向相同。<span class=\"wx_search_keyword_wrap\">电子防倾杆<em class=\"wx_search_keyword\"></em></span>以 48V 机电系统主动分配防侧倾扭矩，抑制弯道侧倾。</p><p>新车采用经典 Coupe 溜背造型设计，<strong>整车周身遍布 S 系列专属运动套件</strong>，蜂窝网格栅 Audi Sport 专属设计搭配 S 系列专属徽标与 S 专用铝制外后视镜壳，还有无框车门、标志性红色高性能刹车卡钳、尾部大型 S 扩散器搭配双边双出排气系统等设计。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0ececf80-17a7-451b-8fd3-fb42f0f0d61c.png?x-bce-process=image/format,f_auto\" /></p><p>奥迪 SQ8 标配高清矩阵式 LED 大灯带奥迪激光大灯，激光大灯在高速行驶时对 LED 远光灯进行补充，<strong>其照明范围几乎是 LED 远光灯的两倍</strong>，智能防眩晕功能可精准规避对向及前方车辆眩目；同级独有数字 OLED 尾灯拥有 4 种签名可选，并配备后方 2 米接近警告功能。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/35b661c7-c8ee-4a8d-b957-bc3a7c305ee6.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/181a7085-51df-4f43-ae4b-1d01976b3526.png?x-bce-process=image/format,f_auto\" /></p><p>奥迪 SQ8 搭载 L2 级驾驶辅助系统，集成带激光雷达的自适应巡航、主动车道保持、换道辅助、路口通行辅助及前后预安全系统。</p>"
+            },
+            {
+                "title": "EA《战地》真人电影筹备中：好莱坞多家片商竞标，碟中谍导演与迈克尔・B・乔丹联手",
+                "link": "https://www.ithome.com/0/943/473.htm",
+                "published": "Sat, 25 Apr 2026 08:56:38 GMT",
+                "summary": "<p>IT之家 4 月 25 日消息，据《好莱坞报道》今日消息，好莱坞多家片商正准备竞标知名 IP《战地》系列改编的真人电影。EA 将作为制片方参与。</p><p>THR 报道称，克里斯托弗 · 麦奎里与迈克尔 ·B· 乔丹将联手改编 EA 经典游戏《战地》电影版。据称，该项目已经向索尼等多家片商发出邀约，并引发了好莱坞浓厚兴趣。</p><p>麦奎里已确定担任这部改编电影的编剧、导演及制片人，乔丹确认担任制片人，并有可能主演，具体取决于多项因素。</p><p>过去 12 年间，麦奎里一直作为《碟中谍》系列制片人、导演及编剧，并为汤姆 · 克鲁斯的角色提供指导；乔丹则在上月凭借《罪人》获得奥斯卡最佳<span class=\"Yjhzub\">男主角</span>，此前还曾出演过《超能失控》《黑豹》《黑豹 2》《奎迪》《火线》《假如..？》《爱死机》《豪斯医生》等。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/fa31c379-d458-4c4d-8315-fcea88c67b3f.jpg?x-bce-process=image/format,f_auto\" /></p><p>消息人士透露，麦奎里与其他几位相关人员于周四向苹果公司及流媒体平台等进行提案，周五还有多场会议。参与方优先考虑院线发行，因此 Netflix 是否会出现在会议名单中尚不明确。</p><p>关于该项目的竞标何时开始尚不确定，但片商需提前做好准备。THR 强调，这不会是一笔便宜的买卖 —— 除了人力成本，仅游戏改编权的价格就相当高昂。</p><p>《战地》系列首作于 2002 年推出，此后二十年间一直迭代，游戏背景越来越宏大且精细，时间线也从不同历史时期延展至未来。该系列最新作为去年发售的《战地 6》（系列第 18 部作品），该作据称是史上开发成本最高的游戏之一，不仅成为《战地》系列历史上最畅销的作品，还成为 2025 年全球最畅销的游戏（IT之家注：首次超越《使命召唤》）。</p><p style=\"text-align: center;\"><img class=\"not-source\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/25ac24f4-3738-482d-86b4-d99e3c54c2a8.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>《战地》常被拿来与《使命召唤》比较，而两者如今可能还要在电影领域展开对决。派拉蒙影业已将《使命召唤》电影列为优先开发项目，泰勒 · 谢里丹联合编剧，彼得 · 博格执导，定档 2028 年 6 月 30 日在北美院线上映。</p><p><a href=\"https://api.zuihuimai.com/m/activity/cinema?fixtitle=%E7%94%B5%E5%BD%B1%E7%A5%A8&amp;showclose=1\" target=\"_blank\"><img class=\"lazy\" src=\"https://img.ithome.com/newsuploadfiles/2025/5/bd9a6ff4-1fca-48b2-af81-1eb93b115012.jpg?x-bce-process=image/format,f_auto\" title=\"《哪吒之魔童闹海》超过《复联 4》，成为中国影史工作日单日票房冠军\" /></a></p><p>IT 之家小伙伴记得用<a href=\"https://api.zuihuimai.com/m/activity/cinema?fixtitle=%E7%94%B5%E5%BD%B1%E7%A5%A8&amp;showclose=1\" target=\"_blank\" title=\"最会买\">最会买购买电影票</a>，享受折扣价的同时还可以获得返利，预计每张票可以节省 5~15 元！</p>"
+            },
             {
                 "title": "索尼 SIE 前总裁吉田修平回应主机玩家质疑，称 PC 移植未损害 PS5 销量",
                 "link": "https://www.ithome.com/0/943/471.htm",
@@ -106,24 +706,262 @@
                 "link": "https://www.ithome.com/0/943/452.htm",
                 "published": "Sat, 25 Apr 2026 07:01:47 GMT",
                 "summary": "<p>IT之家 4 月 25 日消息，小米官方今日宣布“米家冰箱 Pro 至尊版十字 508L 全域离子净化 4.0”正式开启预售。</p><p>其中，十字门型号（<a href=\"https://c.duomai.com/track.php?aid=4705&amp;dm_fid=16052&amp;euid=&amp;site_id=261624&amp;t=https%3a%2f%2fwww.xiaomiyoupin.com%2fdetail%3fgid%3d183318\" target=\"_blank\">点此购买</a>）首发 4699 元，国补价 3994.15 元；法式门型号（<a href=\"https://c.duomai.com/track.php?aid=4705&amp;dm_fid=16052&amp;euid=&amp;site_id=261624&amp;t=https%3a%2f%2fwww.xiaomiyoupin.com%2fdetail%3fgid%3d183317\" target=\"_blank\">点此购买</a>）首发 5099 元，国补价 4334.15 元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d78a2d75-4cb0-46a2-b991-15e350e44d99.jpg?x-bce-process=image/format,f_auto\" /></p><p>参考官方介绍，该系列冰箱采用冰晶玻璃艺术外观，提供冰晶白、星锻银、杏色玻璃三种配色，把手带有人感氛围灯。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/30defc8b-814f-403d-ab57-fa19e1f3ec76.png?x-bce-process=image/format,f_auto\" /></p><p>其整体尺寸 597 x 792 x 1925mm，安装深度 600mm、安装宽度 800mm。具体空间方面其提供 297L 冷藏室空间、35L 变温室空间、176L 冷冻室空间。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/94b569c0-2c3e-4642-8746-7f68f8102315.png?x-bce-process=image/format,f_auto\" /></p><p>该冰箱内置全域离子净化 4.0 技术，支持 3 分钟净味、2 分钟除菌，同时可选配制冰配件，实现 55 分钟自动制冰。IT之家附产品参数：</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/db9ee8b1-70bc-4cb5-8bbe-5489d39f6d5f.png?x-bce-process=image/format,f_auto\" /></p>"
+            }
+        ]
+    },
+    {
+        "id": "solidot",
+        "name": "Solidot",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:45.832792",
+        "entries": [
+            {
+                "title": "Firefox 悄悄集成 Brave 的 Adblock 引擎",
+                "link": "https://www.solidot.org/story?sid=84144",
+                "published": "Fri, 24 Apr 2026 23:13:06 +0800",
+                "summary": "Mozilla 上个月释出的 Firefox 149 悄悄集成了 Brave 的开源 Adblock 引擎 adblock-rust。adblock-rust 在默认情况下没有启用，也没有 UI 或内容过滤列表。dblock-rust 是 Brave 内置广告屏蔽器使用的引擎，使用 Rust 开发，采用 MPL-2.0 许可授权，能处理网络请求拦截、过滤特定元素样式(cosmetic filtering)，兼容 uBlock Origin 的过滤列表语法。Firefox 分支 Waterfox 也采用了 adblock-rust。\n<p></p>"
             },
             {
-                "title": "奇瑞、博世签署 48V 整车架构合作开发及量产框架协议，星途旗舰车型首发",
-                "link": "https://www.ithome.com/0/943/450.htm",
-                "published": "Sat, 25 Apr 2026 06:53:10 GMT",
-                "summary": "<p>IT之家 4 月 25 日消息，奇瑞汽车股份有限公司与博世（中国）投资有限公司昨日在北京签署了 48V 整车架构合作开发及量产框架协议。两家企业将深化战略合作，<strong>推动新一代 48V 整车架构在中国率先实现量产</strong>。</p><p>奇瑞与博世在 2024 年 10 月启动了整车 48V 低压电气系统的预研，双方当前已完成了整车系统与功能样车开发、关键部件样件开发、产业化路径预研，该技术<strong>计划率先应用于奇瑞旗下高端品牌星途的旗舰车型</strong>。</p><p>相较传统的 12V 低压电气架构，<strong>48V 架构支持更高的功率输出</strong>，能满足现代化车载计算、智能座舱、线控底盘的电力需求。其整车供电功率提升至 15kW，系统减重超过 10kg，线控底盘转向电机响应速度提升 20% 以上。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/280f57b3-06dc-4852-bb30-ae1983eb3cc8.jpg?x-bce-process=image/format,f_auto\" /></p><p>奇瑞汽车董事长尹同跃表示：</p><blockquote><p>奇瑞与博世多年来始终保持着高度互信的战略伙伴关系。此次 48V 整车项目的携手，共同定义并推动下一代 48V 整车系统方案的快速落地，这是奇瑞和博世携手面向全球市场构建技术生态、引领电气架构升级的重要一步。</p><p>奇瑞将持续以技术创新为核心驱动，赋能产品全面革新，并由此带动商业模式重构、企业治理优化与产业生态重塑，加速实现向全球化高科技生态集团的战略跃迁。</p></blockquote><p>博世集团董事会主席史蒂凡・哈通 (Stefan Hartung) 表示：</p><blockquote><p>本次战略合作的深化，标志着博世与奇瑞二十五载长久互信、深度绑定的伙伴关系迈向新的高度。</p><p>紧扣全球汽车电动化和智能化加速演进趋势，博世将充分运用全栈式低压系统零部件开发和产业化经验，深度配合奇瑞整车研发、电网系统定义、与本土及海外市场化领先能力，携手推动下一代 48V 整车量产及规模化，助力汽车产业高质量向前发展。</p></blockquote>"
+                "title": "减少接触塑料会在短期内大幅减少体内的塑料物质含量",
+                "link": "https://www.solidot.org/story?sid=84143",
+                "published": "Fri, 24 Apr 2026 22:50:31 +0800",
+                "summary": "根据一项研究，减少接触塑料会在短期内减少体内的塑料物质含量最多五成。研究主要针对两种来自塑料制品的化学物质——邻苯二甲酸酯（phthalates）和双酚（bisphenols）。211 名试验参与者的尿检结果显示他们体内都有较高含量的塑料化学物质。其中 60 名参与者参与了一项随机对照试验。研究人员与农民和生产商合作，提供在生产和包装过程中完全不用塑料的食品。一周后相比对照组，减少接触塑料的参与者体内邻苯二甲酸酯减少了 44%，双酚减少了逾 50%。\n<p></p>"
             },
             {
-                "title": "华硕 a 豆 14 Air 2026 新增 13DE MARZO 联名款，国补价 6884.15 元",
-                "link": "https://www.ithome.com/0/943/449.htm",
-                "published": "Sat, 25 Apr 2026 06:50:34 GMT",
-                "summary": "<p>IT之家 4 月 25 日消息，华硕周四推出了新的华硕 a 豆 14 Air 2026x13DE MARZO 联名款，首发价 8599 元，学生优惠 500 元，再叠加国补后 6884.15 元，4 月 30 日开售。</p><p>相比于普通机型，联名礼盒内含：</p><ul class=\" list-paddingleft-2\"><li><p>豆叮 x 13DE MARZO 联名系列小熊化妆包</p></li><li><p>豆叮 x13DE MARZO 联名系列磁吸小熊</p></li><li><p>豆叮 x 13DE MARZO 联名系列小熊工牌</p></li><li><p>此外，该机 A 面 logo 也采用了豆叮与 MARZO BEAR 的联名图案</p></li></ul><dir><a contenteditable=\"false\" href=\"https://u.jd.com/fOsTOyT\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/423752/29/9057/108656/69e9e919F8042bbad/0083320320bfe5a8.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">华硕 a 豆 14 Air 2026x13DE MARZO 联名款</span></span><span class=\"card-abstract\"> 超轻薄笔记本电脑 AI9 H 465 32G 1T 2.8K 高刷【国家补贴】蓝</span><span class=\"card-controls\"><span class=\"price\"> 8599 元</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir><p>2026 年数码家电政府补贴持续进行中，IT 之家为大家汇总国补领券地址，买数码家电之前记得领取：<a href=\"https://u.jd.com/A69r8nr\" target=\"_blank\">点此查看</a>。</p><p><strong>数码补贴：<a href=\"https://u.jd.com/AO9cF1s\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>手机 / 平板 / 3C 数码支持 8.5 折政府补贴，不超过 6000 元的产品至高立减 500 元。</p></li></ul><p><strong>家电补贴：<a href=\"https://u.jd.com/A696EUt\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>6 类家电支持 8.5 折政府补贴，单品至高补贴 1500 元。</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1f2f3e86-a338-42b0-b333-8e059644fcf9.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机沿用了 AMD 锐龙 AI 9 H 465 处理器 + 32GB 内存 + 1TB SSD 的规格，采用双风扇双热管散热，性能释放 45W；采用镁铝金属机身，厚 14.9mm，重约 990g。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0d3acae8-3b2e-4129-884f-ccbc509fd295.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机采用了一块 2.8K 分辨率 120Hz OLED 屏幕（IT之家注：覆盖 100% DCI-P3 色域、峰值亮度 1100 尼特），提供 IR 人脸识别摄像头，配备背光键盘，支持 180° 开合。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/8669365e-9986-42ab-81ec-90316a5f7db0.jpg?x-bce-process=image/format,f_auto\" /></p><p>该机搭载了 10 核心 20 线程 AMD 锐龙 AI 9 H 465 处理器，采用 32GB LPDDR5x 内存 + 1TB PCIe 4.0 固态硬盘，预留 M.2 盘位。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/ab1259e3-2f17-4fd0-8083-f00f13cd8614.jpg?x-bce-process=image/format,f_auto\" /></p><p>其他方面，该机配备 70Wh 电池，提供全功能 USB4、全功能 USB-C、双 USB-A 以及 HDMI 2.1 等接口。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a6a1d2d1-7e4b-435a-8121-b6b8ccee87ef.jpg?x-bce-process=image/format,f_auto\" /></p>"
+                "title": "英国生物银行 50 万参与者健康数据泄漏",
+                "link": "https://www.solidot.org/story?sid=84142",
+                "published": "Fri, 24 Apr 2026 22:12:37 +0800",
+                "summary": "英国生物银行（UK Biobank）有 50 万参与者的健康数据泄漏，泄漏数据集在阿里巴巴上出售。英国科技大臣 Ian Murray 称英国生物银行运营机构已向政府通报了这起事件，泄露的信息不包含姓名、地址、联系方式或电话号码，但可能包括性别、年龄、出生年月、社会经济地位、生活习惯以及生物样本的测量数据。英国生物银行收集志愿者提供的健康数据，被用于帮助改进痴呆症、癌症和帕金森病的检测和治疗。有逾 1.8 万篇论文使用了英国生物银行的数据。阿里巴巴已经删除了数据，但相关数据又被上传到了 GitHub 上，英国生物银行向 GitHub 递交了大量 DMCA 删除通知。\n<p></p>"
             },
             {
-                "title": "告别近 10 年界面停滞，Ubuntu 开发平台 Launchpad 迎来现代化重构",
-                "link": "https://www.ithome.com/0/943/448.htm",
-                "published": "Sat, 25 Apr 2026 06:49:36 GMT",
-                "summary": "<p>IT之家 4 月 25 日消息，科技媒体 omgubuntu 昨日（4 月 24 日）发布博文，报道称 Canonical 已启动改造 Launchpad 网站工程，首批更新已上线。此次改版重点优化了系列页面，<strong>提升了信息密度与展示效果，关键信息如错误、里程碑及软件包上传状态一目了然。</strong></p><p style=\"text-align: center;\"><img alt=\"Ubuntu Launchpad Before and After redesign comparison\" class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a8948996-6b1b-45e4-9cfa-7867751057d4.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家注：Launchpad 是由 Canonical 公司维护的综合软件开发平台，主要用于 Ubuntu 等 Linux 发行版的开发管理。它集成了代码托管、错误追踪、翻译管理及软件包构建等功能。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0e2e1186-a199-4842-9799-015361f82978.png?x-bce-process=image/format,f_auto\" /></p><p>作为 Ubuntu 开发的核心基础设施，它承载着全球贡献者的协作工作，该平台上次更新可追溯到 2024 年，<strong>但是开发者在日常工作中频繁引用的内部页面，在过去近 10 年里几乎从未改动。</strong></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/39aceebf-a681-4c58-a9dd-755ee2c0a3c4.png?x-bce-process=image/format,f_auto\" /></p><p>Canonical 用户体验设计师 Enzo Deng 表示，针对 Ubuntu 26.04 LTS，公司已开始全面重塑该平台页面，主要侧重于强调提升效率，改善信息密度和展示方式。</p><p>新版页面布局优化展示错误、里程碑和软件包上传等关键信息，让开发者和软件包维护者能够更直观地管理复杂任务。</p>"
+                "title": "天文学家发现银河系的边缘",
+                "link": "https://www.solidot.org/story?sid=84141",
+                "published": "Fri, 24 Apr 2026 17:53:08 +0800",
+                "summary": "银河系是圆盘状恒星，也就是恒星的形成是由里向外，这意味着越远的恒星越年轻。天文学家分析了银河系逾 10 万颗巨型恒星，发现恒星年龄分布由内向外模式在距离银河系中心 3.5-4 万光年间发生逆转，超过该距离恒星年龄变大了。这种突变形成了 U 型年龄分布，曲线最低点对应的恒星形成率急剧下降，代表着银河系恒星形成盘的边界。天文学家认为他们识别了银河系圆盘的边缘。\n<p></p>"
+            },
+            {
+                "title": "NASA Roman 太空望远镜最早九月发射",
+                "link": "https://www.solidot.org/story?sid=84140",
+                "published": "Fri, 24 Apr 2026 16:38:14 +0800",
+                "summary": "NASA 宣布 Nancy Grace Roman 太空望远镜最早今年九月发射最晚 2027 年 5 月发射。望远镜以 NASA 首任天文学部门女主任的名字命名，它属于红外望远镜，核心任务包括探测暗能量、发现系外行星及验证广义相对论宇宙时空曲率。望远镜使用美国国家侦察局捐赠的 2.4 米口径主镜（当年 NRO 捐赠了两台主镜），配备了两台科学仪器：3 亿像素多波段红外相机大视场仪表（WFI），能直接观测邻近恒星周围的类木行星的日冕仪（CGI）。\n<p></p>"
+            },
+            {
+                "title": "深度求索发布 DeepSeek-V4 预览版",
+                "link": "https://www.solidot.org/story?sid=84139",
+                "published": "Fri, 24 Apr 2026 15:59:56 +0800",
+                "summary": "深度求索发布了 DeepSeek-V4 预览版。DeepSeek-V4 有两个版本，其中 Pro 版本有 1.6 万亿参数其中 490 亿活跃参数；Flash 版本有 2840 亿参数其中活跃参数 130 亿。两个版本都支持百万上下文。DeepSeek V4 除了支持英伟达 GPU 还支持华为昇腾 NPU。深度求索称，在 Agentic Coding 评测中，V4-Pro 已达到当前开源模型最佳水平，并在其他 Agent 相关评测中同样表现优异；Pro 在世界知识测评中，大幅领先其他开源模型，仅稍逊于顶尖闭源模型 Gemini-Pro-3.1；在数学、STEM、竞赛型代码的测评中，V4-Pro 超越当前所有已公开评测的开源模型。\n<p></p>"
+            },
+            {
+                "title": "Tim Cook 称 2012 年发布 Apple Maps 是其任内第一个重大失误",
+                "link": "https://www.solidot.org/story?sid=84138",
+                "published": "Fri, 24 Apr 2026 15:16:03 +0800",
+                "summary": "在最近举行的员工大会上，即将卸任的苹果 CEO 库克（Tim Cook）称 2012 年上线 Apple Maps 是其任内第一个真正的重大失误。当时的 Apple Maps 还比较原始，尚未准备好。它的失败迫使库克向用户道歉，并建议用户使用竞争对手的地图应用。库克表示这次重大失败还是富有价值的，“这体现了我们始终将用户放置在决策中心。现在我们拥有全世界最好的地图应用。我们学会了坚持，犯了错误但做了正确的事。”\n<p></p>"
+            },
+            {
+                "title": "心脏跳动能抑制心脏癌生长",
+                "link": "https://www.solidot.org/story?sid=84137",
+                "published": "Fri, 24 Apr 2026 14:10:39 +0800",
+                "summary": "根据发表在《科学》期刊上的一项研究，心脏持续不断的跳动可能会主动抑制心脏组织中的肿瘤生长。这些组织中的细胞通路会改变癌细胞的基因调控方式，从而阻止其增殖。这些发现揭示了机械力在保护心脏免受癌症侵害方面的作用，并可能为基于机械刺激的新型癌症疗法做好铺垫。在哺乳动物中，心脏癌极为罕见。更重要的是，成年人的心脏自我更新能力有限，心肌细胞的再生率每年约为 1%。人们对这些特征所提出的一种解释是：心脏组织承受着巨大的机械负荷，它必须克服很大的阻力而持续泵血。这种持续的压力似乎会抑制心脏细胞的增殖能力。通过利用基因工程小鼠模型，研究人员发现，即使引入了强力致癌突变，心脏对其也具有显著的抗性。研究发现，组织内的机械力会重塑癌细胞基因组的调节格局，从而影响癌细胞是否能够增殖。Nesprin-2 是这一过程的核心，这是一种将细胞表面的机械信号传递至细胞核的蛋白。作为 LINC 复合物的一个组成部分，Nesprin-2 可感知心脏的机械微环境，并可在功能上改变染色质结构和组蛋白甲基化，从而降低与肿瘤细胞增殖相关的基因活性。当癌细胞中的 Nesprin-2 被沉默后，这些细胞在机械活动的心脏中会重新获得生长能力并形成肿瘤。\n<p></p>"
+            },
+            {
+                "title": "Ubuntu 26.04 LTS 释出",
+                "link": "https://www.solidot.org/story?sid=84136",
+                "published": "Fri, 24 Apr 2026 13:56:42 +0800",
+                "summary": "Canonical 释出了代号为 Resolute Raccoon 的 Ubuntu 26.04 LTS。同时释出的还有衍生版本 Edubuntu、Kubuntu、Lubuntu、Ubuntu Budgie、Ubuntu Cinnamon、Ubuntu Kylin、Ubuntu Studio、Ubuntu Unity 和 Xubuntu。Ubuntu Desktop、Ubuntu Server、Ubuntu Cloud、Ubuntu WSL 和 Ubuntu Core 将获得五年的支持，其余版本获得三年的支持，付费扩展支持 ESM (Expanded Security Maintenance)为十年 。Ubuntu 26.04 采用最新的 Linux 7.0 kernel，GNOME 50 桌面环境，引入了基于 TPM 的全盘加密，GStreamer 1.28，沙盒图形加载，Chrony 4.8，等等。\n<p></p>"
+            },
+            {
+                "title": "AI 漏洞报告大增促使内核移除缺乏维护的代码",
+                "link": "https://www.solidot.org/story?sid=84135",
+                "published": "Fri, 24 Apr 2026 13:24:40 +0800",
+                "summary": "内核开发者宣布，为了保持自己的理智不被大量涌入的 AI 生成漏洞报告搞疯，他们正在 Linux 内核移除缺乏维护的代码。计划移除的代码包括 ISA 和 PCMCIA Ethernet 驱动、一对 PCI 驱动、ax25 和业余无线电子系统、ATM 协议和驱动，以及 ISDN 子系统。\n<p></p>"
+            },
+            {
+                "title": "猕猴吃土帮助消化游客的高热量垃圾食品",
+                "link": "https://www.solidot.org/story?sid=84134",
+                "published": "Thu, 23 Apr 2026 23:31:51 +0800",
+                "summary": "剑桥大学的一项研究发现，欧洲唯一野猴群、生活在直布罗陀的猕猴群会定期吃土。对猴群的监测显示，与游客接触频繁的猕猴摄入的泥土量更多，而在旅游旺季食土率也更高。科学家认为游客提供或从游客偷取的高热量食物如巧克力、薯片和冰淇淋正在扰乱它们的肠道微生物组成，导致了其习惯的改变。吃土可能有助于猕猴恢复肠胃平衡，土壤可以提供垃圾食品缺乏的细菌和矿物质，可能有助于保护肠道内壁，缓解或预防因摄入过多糖分和脂肪引起的刺激。猕猴群平均每周有 12 次吃土行为。30% 的吃土行为发生在群体中，89% 发生在其它猕猴在场的情况下，其它猕猴通常会在旁观察，表明这种行为是“社会习得的”。大多数猕猴偏爱食用红土（terra rossa），占到了所有事件的 83%。\n<p></p>"
+            },
+            {
+                "title": "特朗普模因币导致投资者损失数十亿美元",
+                "link": "https://www.solidot.org/story?sid=84133",
+                "published": "Thu, 23 Apr 2026 22:58:52 +0800",
+                "summary": "2025 年 1 月总统就职典礼前特朗普推出了官方模因币，成为首位发行个人加密货币的总统。分析认为特朗普家族从中获利逾 2.8 亿美元，但投资该模因币的散户则损失了逾 43 亿美元。大部分特朗普模因币掌握在内部人士手中，通过关键时刻抛售和收集手续费，他们没有损失，反而获利逾 6 亿美元。特朗普代币最初定价 28.73 美元，如今的价格不到 3 美元，币值跌了 93%。第一夫人 Melania Trump 的官方模因币则更惨，币值相比峰值跌了 99%。特朗普家族的加密货币公司 World Liberty Financial 则为其带来了约 50 亿美元的财富。\n<p></p>"
+            },
+            {
+                "title": "53 国齐聚哥伦比亚商讨淘汰化石燃料",
+                "link": "https://www.solidot.org/story?sid=84132",
+                "published": "Thu, 23 Apr 2026 22:21:21 +0800",
+                "summary": "53 国（不包括主要排放国中国、美国、印度和俄罗斯）将于下周齐聚哥伦比亚商讨如何逐步淘汰化石燃料。霍尔木兹海峡的关闭让亚太国家面临能源危机，迫使这些国家采取紧急措施如推行远程办公和关闭学校。与会国并非传统盟友，而是在短时间内组建的松散联盟，这也反映了形势的紧迫性。最新的能源危机可能成为可再生清洁能源的一个转折点。化石燃料行业多年来一直宣称石油、天然气和煤炭是可靠的能源，但危机显示它们并不可靠，可再生能源则廉价、可靠且安全。相比 1970 年代的中东石油危机，今天可作为化石燃料提到的清洁能源已经成熟。自 1970 年代以来，太阳能电池板的价格下降了 99.9%，自 1984 年以来风能成本下降了 91%，自 1991 年以来电池价格下降了 99%。此前韩国七成原油经过霍尔木兹海峡，现在韩国计划四年内将可再生能源装机容量翻一番。过去 30 年的全球气候谈判几乎从未提及化石燃料，部分原因是化石燃料主要出口国和游说团体的阻挠。现在一个松散的国家联盟正绕过全球气候谈判，讨论如何真正逐步淘汰化石燃料。\n<p></p>"
+            },
+            {
+                "title": "加密货币骗子瞄准滞留在霍尔木兹海峡附近的船只",
+                "link": "https://www.solidot.org/story?sid=84131",
+                "published": "Thu, 23 Apr 2026 20:49:03 +0800",
+                "summary": "由于伊朗关闭了霍尔木兹海峡，目前有约 2000 艘船只和 2 万名海员滞留在附近。伊朗几周前表示通过海峡的油轮需要以加密货币形式支付过境费，但美国随后也宣布关闭海峡搜查过往船只。形势相当混乱，而在混乱之中骗子开始浑水摸鱼。据报道，加密货币骗子正冒充伊朗当局，向航运公司发送信息，要求以比特币或泰达币支付过境费。未经证实的消息称，有船只认为已经支付了过境费而试图通过海峡，在遭到伊朗炮击后不得不返回。目前已发生了两次类似事件，一次是 4 月 18 日，一次是 4 月 22 日。\n<p></p>"
+            },
+            {
+                "title": "古代人类曾三次迁徙到南美洲",
+                "link": "https://www.solidot.org/story?sid=84130",
+                "published": "Thu, 23 Apr 2026 20:11:07 +0800",
+                "summary": "南美洲是人类最后定居的一块大陆。科学家以前认为迁徙到南美很简单：大约 1.5 万前来自大约同一群体的古代人类祖先进入这块大陆，逐渐适应从丛林到高原等不同环境。但发表在《自然》期刊上的古代和现代基因组分析研究显示：古代人类至少分三次迁徙到南美洲。第一波迁徙大约发生在 1.27 万年前，第二波是 9000 年前，第三波则是约 1300 年前。第三波迁徙者与中美洲人有关联。\n<p></p>"
+            },
+            {
+                "title": "盖茨基金会准备裁员，正在审查与爱泼斯坦的关联",
+                "link": "https://www.solidot.org/story?sid=84129",
+                "published": "Thu, 23 Apr 2026 19:32:14 +0800",
+                "summary": "由于基金会主席比尔盖茨与已故性侵犯爱泼斯坦（Jeffrey ​Epstein）之间的关系，盖茨基金会最近深陷争议。它在周二宣布已委托外部机构对该基金会与爱泼斯坦之间关联进行审查，预计夏天会收到相关评估报告。美国司法部今年一月公布的文件显示爱泼斯坦曾与基金会的员工有过通信，文件还包括盖茨与爱泼斯坦以及被涂黑女性之间合影。盖茨之后声明与爱泼斯坦的关系仅限于慈善事业，称与他见面是一个错误，否认与爱泼斯坦性侵犯案受害者有过接触。盖茨基金会据报道还计划在 2030 年前裁掉约五分之一或 200 名员工。\n<p></p>"
+            },
+            {
+                "title": "高收入人群的 AI 普及率远高于低收入人群",
+                "link": "https://www.solidot.org/story?sid=84128",
+                "published": "Thu, 23 Apr 2026 17:11:14 +0800",
+                "summary": "FT 的调查显示，高收入人群的 AI 普及率与低收入人群存在显著的差异。对美英两国 4000 名员工的调查显示，AI 采用明显向高收入员工倾斜：超过 60% 的高薪员工每天使用 AI，而低收入员工中这一比例仅为 16%。调查还显示出性别差距：在从科技到教育与零售等各行业中，男性使用 AI 工具的可能性显著高于女性。诺贝尔经济学奖得主 Daron Acemoglu 说，AI 工具被认为会走向大众化，但现实是你需要一定的教育水平、抽象思维和定量分析能力，以及对计算机和编程的熟悉程度才能使用这些模型。几乎肯定 AI 将会加剧劳动力和资本之间的不平等。薪酬、教育水平和 AI 使用之间存在紧密联系，表明这项技术可能会通过提高高收入人群而非低收入人群的生产力加剧收入不平等。另一位诺奖得主 Chris Pissarides 说，发明的技术越智能，你的智力越重要。PC 革命早期也有类似的鸿沟，但随着 PC 的普及鸿沟逐渐缩小。现在的问题是多长时间？如果需要十到二十年那么情况可能会令人担忧。\n<p></p>"
+            },
+            {
+                "title": "孙宇晨起诉特朗普家族的加密货币公司 World Liberty",
+                "link": "https://www.solidot.org/story?sid=84127",
+                "published": "Thu, 23 Apr 2026 15:44:12 +0800",
+                "summary": "特朗普家族加密货币公司 World Liberty（WLFI）的早期支持者、波场（TRON）创始人孙宇晨提起诉讼，指控 World Liberty 非法扣押他持有的 WLFI 代币，冻结其参与公司治理的投票权。孙宇晨还指控包括联合创始人 Chase Herro 在内的其他 World Liberty 运营者将该公司作为利用特朗普品牌通过欺诈牟利的绝佳机会。在周二提交到旧金山联邦法院的诉状中，孙宇晨称，World Liberty 最初承诺未来将允许代币持有者交易该货币，这一承诺是虚假的且具有误导性。虽然大部分代币可以交易，但 World Liberty 阻止他出售任何一个代币，还威胁要销毁他持有的所有代币。WLFI 在 X 上回应称，孙宇晨最喜欢在扮演受害者的同时捏造毫无根据的指控掩盖其不当行为，“WLFI 不是第一个，我们有合同。我们有证据。我们有真相”，它表示法庭上见。\n<p></p>"
+            },
+            {
+                "title": "沥青会释放有毒的挥发性有机物",
+                "link": "https://www.solidot.org/story?sid=84126",
+                "published": "Thu, 23 Apr 2026 14:48:56 +0800",
+                "summary": "沥青是石油副产品，被用作沥青混凝土的粘结剂。根据发表在《Journal of Hazardous Materials》和《Science of the Total Environment》期刊上的两项研究，沥青会释放出挥发性有机物（Volatile organic compounds，VOC），高温晴朗的天气会更显著。这些有毒且通常无味的挥发性有机物小到足以进入动脉和器官，它们会对人类造成严重的神经损伤，对女性和老年人影响更大。研究人员称，高温会加剧沥青释放有毒有机物。研究人员报告可以通过在沥青中添加藻类的方式大幅降低其释放出的毒性最强的有机物，测试显示毒性可以减少到原来的百分之一，而且能减缓路面老化。\n<p></p>"
+            },
+            {
+                "title": "乒乓球机器人击败了人类顶尖选手",
+                "link": "https://www.solidot.org/story?sid=84125",
+                "published": "Thu, 23 Apr 2026 13:33:45 +0800",
+                "summary": "索尼 AI 部门研发的乒乓球机器人 Ace 击败了人类顶尖选手创造了历史，成为首个在竞技体育项目达到专家级水平的自主机器人。项目负责人表示，竞技体育需要快速决策和精准执行，Ace 的成就受益于其高速感知、基于 AI 的控制以及先进的机器人系统。Sony AI Zurich 主任兼 Ace 项目负责人 Peter Dürr 表示，AI 系统在计算机游戏中已经超越人类专家，但乒乓球之类的物理实时体育运动仍然是一个巨大的开放性挑战，因为它们需要在接近障碍物和人类反应极限的情况下进行快速、精准且对抗性的互动。该项目的目标不仅是在乒乓球比赛中展开竞争，更重要的是深入了解机器人如何在动态环境中以类似人类的速度和精度感知、规划和行动。索尼研究人员在《自然》期刊上发表论文介绍了 Ace。Ace 在 2025 年 4 月与精英选手之间的五场比赛赢了三场，但与职业选手的两场比赛都输了，Ace 之后分别在 2025 年 12 月和上个月进行的比赛中击败了职业选手。输给机器人的职业选手 Mayuka Taira 称，机器人没有情绪因此难以预测。曾赢过机器人的精英选手 Rui Takenaka 说机器人会用旋转复杂的球应对她发出的复杂球，用简单球回应简单球，她因此能乘机获胜。\n<p></p>"
+            }
+        ]
+    },
+    {
+        "id": "oschina-news",
+        "name": "OSCHINA 社区新闻",
+        "category": "tech",
+        "last_updated": "2026-04-25T17:17:46.185966",
+        "entries": [
+            {
+                "title": "Claude Code + DeepSeek V4-Pro 真实评测：除了贵，没别的毛病",
+                "link": "https://www.oschina.net/news/437483",
+                "published": "Fri, 24 Apr 2026 21:38:47 +0800",
+                "summary": "JeecgBoot AI 专题研究 | 把 Claude Code 接入 DeepSeek V4-Pro，跑完 Skills —— OA 审批、大屏、报表、部署 5 大实战场景后的真实体验 一句话结论 花了一整天，拿 JeecgBoot 的 Skills 生态做了一轮完整实战 ——OA 审批流程自动搭建、积木 BI 大屏生成、钻取报表、自动化部署、文档修改 —— 全部跑通。唯一的毛病：..."
+            },
+            {
+                "title": "HeteroFlow 异构算力调度平台再获突破 成功适配八大国产 GPU 品牌",
+                "link": "https://www.oschina.net/news/437482",
+                "published": "Fri, 24 Apr 2026 19:30:36 +0800",
+                "summary": "北京，2026年4月24日 - 国内领先的异构算力调度平台HeteroFlow今日宣布，已成功完成对主流国产GPU品牌的全面适配与测试，标志着我国自主可控算力生态建设迈出重要一步。 此次适配通过测试的国产GPU品牌包括：沐曦-曦云、燧原S60、天数智芯-天垓-智铠、壁砺106M、海光、摩尔线程、华为昇腾以及英伟达。HeteroFlow平台通过..."
+            },
+            {
+                "title": "支持 Hermes Agent 与 MongoDB 管理，1Panel v2.1.9 版本发布",
+                "link": "https://my.oschina.net/u/4736111/blog/19595590",
+                "published": "Fri, 24 Apr 2026 17:11:53 +0800",
+                "summary": "1Panel v2.1.9 版本围绕智能体、数据库与文件管理等场景带来了多项更新。智能体方面，新增 Hermes Agent 支持，并且优化 OpenClaw 频道机器人添加流程；数据库方面，新增 MongoDB 数据库管理功能；文件方面，新增文件历史管理功能，并对文件压缩、编辑、分享和回收站相关能力进行了增强。..."
+            },
+            {
+                "title": "【Ease UI】2026-04-24 项目更新：增加多种风格登录页，增加菜单风格切换",
+                "link": "https://www.oschina.net/news/437478",
+                "published": "Fri, 24 Apr 2026 16:37:50 +0800",
+                "summary": "🚀 即插即用的 Vue 3 业务组件库，让中后台开发回归简单 Ease UI 是一套为「快速复制」而生的 Vue 3 业务组件库。每个组件都是独立的 .vue 单文件，不依赖任何外部样式或工具函数，直接复制到你的项目即可使用。它仅依赖 Element Plus，却解决了中后台开发中表格选择混乱、搜索表单代码臃肿、日期范围绑定繁琐等真实痛..."
+            },
+            {
+                "title": "OpenAI 正式推出 GPT-5.5",
+                "link": "https://www.oschina.net/news/437477",
+                "published": "Fri, 24 Apr 2026 16:32:14 +0800",
+                "summary": "OpenAI 正式推出其迄今最强大的 AI 模型 —— GPT-5.5，不仅在智能水平上实现质的飞跃，更以惊人的能效比重塑大模型经济性边界。 该模型专为“智能体”（Agent）时代设计，能在模糊指令下自主规划、调用工具、执行多步骤复杂任务，在代码生成、科研探索与企业自动化等领域表现卓越。 GPT-5.5的最大进化在于强自主性。用户..."
+            },
+            {
+                "title": "你写的 Skill，及格了吗？",
+                "link": "https://my.oschina.net/u/4939618/blog/19595216",
+                "published": "Fri, 24 Apr 2026 16:09:07 +0800",
+                "summary": "本文提出了一套8维度的Skill量化评估框架，通过元数据质量、执行引导清晰度、领域知识密度等指标对Skill进行打分评级，解决了Skill质量难以客观衡量的问题。为提升评估可靠性，设计了多模型交叉验证流程，并适配不同AI工具环境提供四种执行策略。该框架既能帮助开发者识别改进短板，也能辅助用户横向对比选择优质Skill，..."
+            },
+            {
+                "title": "从 20 毫秒到微秒级：NoSQLite v1.5.0 之后的性能进化",
+                "link": "https://www.oschina.net/news/437475",
+                "published": "Fri, 24 Apr 2026 15:44:57 +0800",
+                "summary": "项目仓库：https://github.com/uya-lang/nosqliteNoSQLite 是一个 Uya-native 的嵌入式文档数据库。它想做的，不是再包一层 JSON API，也不是做一个“看起来像数据库”的玩具项目，而是认真把一个小数据库该有的骨架搭起来：WAL、checkpoint、双 meta 页、checksum、主键 B+Tree、SQL parser/binder/planner/executor、快..."
+            },
+            {
+                "title": "MiMo-V2.5-TTS-Series + ASR 正式发布",
+                "link": "https://www.oschina.net/news/437474",
+                "published": "Fri, 24 Apr 2026 15:37:19 +0800",
+                "summary": "小米大模型宣布正式发布 MiMo-V2.5-TTS Series 与 MiMo-V2.5-ASR —— 一套面向 Agent 时代的全链路语音模型系列，覆盖识别与合成两大核心能力，让语音的输入与输出都可以被语言自由调度。 MiMo-V2.5-TTS Series 包含三款模型，现已登陆小米 MiMo 开放平台，并且限时免费。三者共享统一的风格指令遵循、音频标签控制与文..."
+            },
+            {
+                "title": "Zotero 9.0.1 发布，参考文献管理工具",
+                "link": "https://www.oschina.net/news/437473/zotero-9-0-1-released",
+                "published": "Fri, 24 Apr 2026 14:54:46 +0800",
+                "summary": "Zotero 是一个参考文献管理软件，也是一个免费 Firefox 和 Google 浏览器扩展。Zotero 可以协助用户收集、管理及引用研究资源，包括期刊、书籍等各类文献和网页、图片等。 Zotero 9.0.1 现已发布，具体更新内容如下： Read Aloud 改进 按下键盘上的 R 或 L 键即可切换 Read Aloud 模式 修复了开始读取时可能出现的潜在故..."
+            },
+            {
+                "title": "Rspack 2.0 正式发布",
+                "link": "https://www.oschina.net/news/437468/rspack-2-0-released",
+                "published": "Fri, 24 Apr 2026 14:19:35 +0800",
+                "summary": "Rspack 2.0 现已正式发布。公告称，从 2.0 开始，在保持对 webpack 生态兼容的前提下，Rspack 将逐步引入更符合现代 JavaScript 开发的默认行为、API 设计和构建产物。这将是一个渐进的过程，项目团队会尽量避免在单个主版本中引入过多不兼容变更，同时也会提供迁移指南与 Agent Skills，将迁移成本控制在可接受范围内。..."
+            },
+            {
+                "title": "昆仑万维 2025 年营收同比增长 44.78% 至 81.98 亿",
+                "link": "https://www.oschina.net/news/437467",
+                "published": "Fri, 24 Apr 2026 14:06:40 +0800",
+                "summary": "昆仑万维发布2025年度财报，公司实现营业总收入81.98亿元，同比增长44.78%。海外收入持续大幅增长，整体海外业务收入规模提升至77.23亿元，同比增长49.91%。 本报告期，公司继续坚定践行“All in AGI与AIGC”战略，加大研发支出，得益于持续的战略投入，公司AGI与AIGC相关业务实现关键技术突破并达到全球领先水平；同时，..."
+            },
+            {
+                "title": "DeepSeek V4 来了！超越 Sonnet 4.5，赶紧对接 Claude Code 体验一把",
+                "link": "https://www.oschina.net/news/437465",
+                "published": "Fri, 24 Apr 2026 12:51:14 +0800",
+                "summary": "本文记录我将 Claude Code 对接 DeepSeek 最新模型（V4-Pro）后的真实体验，测试了 Skills 自动化查询和积木报表 AI 建表两个场景 ------ 有惊喜，也踩到了一个藏在 &quot;1M 超长上下文&quot; 光环下的巨坑。 背景：为什么要替换掉原生 Claude？ Claude Code 是目前公认最强的 AI 编程工具之一，但原版的 Anthropic API 费用不低 ..."
+            },
+            {
+                "title": ":fire: VTJ.PRO 发布 v2.3.8：接入DeepSeek V4、AI 自主拆分区块组件",
+                "link": "https://www.oschina.net/news/437464",
+                "published": "Fri, 24 Apr 2026 12:32:37 +0800",
+                "summary": "摘要： 低代码开发平台 VTJ.PRO 正式发布 v2.3.8 版本。本次更新带来多项重要能力：支持 DeepSeek V4 大模型、AI 可自主拆分区块组件、API 管理支持代理解决跨域问题，并优化了设计器页面管理列表在大数据量下的卡顿问题。 VTJ.PRO 今日正式发布 v2.3.8 版本。该版本聚焦 AI 能力升级、开发者体验优化及性能提升，重点包..."
+            },
+            {
+                "title": "DeepSeek-V4 预览版开源发布",
+                "link": "https://www.oschina.net/news/437462",
+                "published": "Fri, 24 Apr 2026 11:34:33 +0800",
+                "summary": "DeepSeek-V4 的预览版本现已正式上线并同步开源。DeepSeek-V4 拥有百万字超长上下文，模型按大小分为两个版本： 即日起登录官网 chat.deepseek.com 或官方App，即可与最新的 DeepSeek-V4 对话，探索 1M 超长上下文记忆的全新体验。API 服务已同步更新，通过修改 model_name 为 deepseek-v4-pro 或 deepseek-v4-flash 即可..."
+            },
+            {
+                "title": "3 月户均流量 23.4GB 创新高",
+                "link": "https://www.oschina.net/news/437461",
+                "published": "Fri, 24 Apr 2026 11:15:27 +0800",
+                "summary": "2026年一季度通信业经济运行情况现已公布。一季度，通信业运行总体平稳。电信业务总量保持增长，新型基础设施建设稳步推进，5G、千兆、物联网等用户规模持续扩大，移动互联网接入流量保持较快增长。 一、总体运行情况 电信业务总量平稳增长。一季度，电信业务收入累计完成4394亿元，同比下降1.8%。按照上年不变价计算的电..."
+            },
+            {
+                "title": "AI 驱动：从运营行为到自动化用例的智能化实践",
+                "link": "https://my.oschina.net/u/5783135/blog/19595102",
+                "published": "Fri, 24 Apr 2026 10:59:43 +0800",
+                "summary": "基于以上分析，我们致力于构建一套自动化 + 智能化的 E2E 测试方案，该方案旨在支撑快速迭代开发模式，有效应对用例覆盖与重构验证等场景，从而在现有资源条件下，持续为业务快速迭代和技术架构升级提供可靠的质量保障。"
+            },
+            {
+                "title": "Electron 41.3.0 发布",
+                "link": "https://www.oschina.net/news/437459/electron-41-3-0-released",
+                "published": "Fri, 24 Apr 2026 10:40:10 +0800",
+                "summary": "Electron 是一个使用 JavaScript、HTML 和 CSS 构建跨平台的桌面应用程序。它基于 Node.js 和 Chromium，被 Atom 编辑器和许多其他应用程序使用。Electron 兼容 Mac、Windows 和 Linux，可以构建出三个平台的应用程序。 Electron v41.3.0 现已发布，一些更新内容如下： 修复 修复了先前因调用pageRanges值无效而被拒绝后..."
+            },
+            {
+                "title": "​腾讯开源全新 AI 大模型混元 Hy3 preview",
+                "link": "https://www.oschina.net/news/437457",
+                "published": "Fri, 24 Apr 2026 10:03:02 +0800",
+                "summary": "腾讯混元 Hy3 preview 语言模型已发布并开源。这是一个快慢思考融合的混合专家模型，总参数 295B，激活参数 21B，最大支持 256K 上下文长度。这是混元迄今最智能的模型，在复杂推理、指令遵循、上下文学习、代码、智能体等能力及推理性能上实现了大幅的提升。 代码和智能体是 Hy3 preview 提升最为显著的方向。 此外，比..."
+            },
+            {
+                "title": "qData 数据中台专业版 v2.0.0 发布：ChatBI 上线，数据建模与安全治理能力全面升级",
+                "link": "https://www.oschina.net/news/437456/qdata-2-0-0-released",
+                "published": "Fri, 24 Apr 2026 10:00:23 +0800",
+                "summary": "🧭 版本概述 本次版本围绕 基础管理升级、智能分析能力升级、数据建模能力完善、数据安全治理强化 四大方向展开，完成数据源管理改版，新增 ChatBI 对话式智能分析能力，并补齐来源系统、业务分类、数仓分层、数据域、主题域等核心能力，同时完善敏感清单、数据分类、脱敏规则、数据分级等治理功能，标志着 qData 数据..."
+            },
+            {
+                "title": "集结！上海·徐汇 量子黑客松大赛 2026 正式官宣，50 万奖金等你来战",
+                "link": "https://www.oschina.net/news/437455",
+                "published": "Fri, 24 Apr 2026 09:22:08 +0800",
+                "summary": "量子计算，正在从实验室走向真实的产业战场。 2026 年 5 月 16 日至 17 日，「上海·徐汇 量子黑客松大赛 2026」 将在上海徐汇源点大厦 2 号楼展示中心正式开幕。这是一场面向量子计算领域开发者、研究者与创业团队的极限编码挑战 —— 5 大赛道、30 支队伍、50 万元奖金总额，在同一个屋顶下，写代码、跑算法、路演、拿..."
             }
         ]
     }

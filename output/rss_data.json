@@ -3,7 +3,7 @@
         "id": "espn-rpm",
         "name": "ESPN RPM",
         "category": "sports",
-        "last_updated": "2026-04-26T17:27:54.889708",
+        "last_updated": "2026-04-27T01:11:04.265684",
         "entries": [
             {
                 "title": "'We're just getting going': Is Spire Motorsports NASCAR's next great team?",
@@ -122,11 +122,213 @@
         ]
     },
     {
+        "id": "techcrunch",
+        "name": "TechCrunch",
+        "category": "tech",
+        "last_updated": "2026-04-27T01:11:04.085273",
+        "entries": [
+            {
+                "title": "TechCrunch Mobility: Elon’s admission",
+                "link": "https://techcrunch.com/2026/04/26/techcrunch-mobility-elons-admission/",
+                "published": "Sun, 26 Apr 2026 16:03:00 +0000",
+                "summary": "Welcome back to TechCrunch Mobility — your central hub for news and insights on the future of transportation."
+            },
+            {
+                "title": "To buy this Bay Area home, you’ll need Anthropic equity",
+                "link": "https://techcrunch.com/2026/04/26/to-buy-this-bay-area-home-youll-need-anthropic-equity/",
+                "published": "Sun, 26 Apr 2026 15:30:00 +0000",
+                "summary": "Someone’s offering an unusual deal for a 13-acre property in Mill Valley, just north of South Francisco."
+            },
+            {
+                "title": "SpeakOn’s dictation device is a good idea marred by platform limitations",
+                "link": "https://techcrunch.com/2026/04/26/speakons-dictation-device-is-a-good-idea-marred-by-platform-limitations/",
+                "published": "Sun, 26 Apr 2026 15:00:00 +0000",
+                "summary": "This $129 device uses MagSafe to stick on the back of an iPhone to power transcription across apps"
+            },
+            {
+                "title": "Anthropic created a test marketplace for agent-on-agent commerce",
+                "link": "https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/",
+                "published": "Sat, 25 Apr 2026 21:43:37 +0000",
+                "summary": "In a recent experiment, Anthropic created a classified marketplace where AI agents represented both buyers and sellers, striking real deals for real goods and real money."
+            },
+            {
+                "title": "Maine’s governor vetoes data center moratorium",
+                "link": "https://techcrunch.com/2026/04/25/maines-governor-vetoes-data-center-moratorium/",
+                "published": "Sat, 25 Apr 2026 20:57:08 +0000",
+                "summary": "L.D. 307 would have imposed the country’s first statewide moratorium on new data centers — lasting, in this case, until November 1, 2027."
+            },
+            {
+                "title": "OpenAI CEO apologizes to Tumbler Ridge community",
+                "link": "https://techcrunch.com/2026/04/25/openai-ceo-apologizes-to-tumbler-ridge-community/",
+                "published": "Sat, 25 Apr 2026 17:17:56 +0000",
+                "summary": "In a letter to the residents of Tumbler Ridge, Canada, OpenAI CEO Sam Altman said he is “deeply sorry” that his company failed to alert law enforcement about the suspect in a recent mass shooting."
+            },
+            {
+                "title": "The climate tech IPO window could finally be cracking open",
+                "link": "https://techcrunch.com/2026/04/25/the-climate-tech-ipo-window-could-finally-be-cracking-open/",
+                "published": "Sat, 25 Apr 2026 16:33:00 +0000",
+                "summary": "Nuclear startup X-energy went public, geothermal startup Fervo is about to. Could this be the moment that climate tech investors have been waiting for?"
+            },
+            {
+                "title": "Why Cohere is merging with Aleph Alpha",
+                "link": "https://techcrunch.com/2026/04/25/why-cohere-is-merging-with-aleph-alpha/",
+                "published": "Sat, 25 Apr 2026 16:00:00 +0000",
+                "summary": "Canadian AI startup Cohere is taking over Germany-based Aleph Alpha with support from Lidl’s owner, Schwarz Group. With the blessing of their governments, the companies intend to offer a sovereign alternative to enterprises in an AI landscape dominated by American players."
+            },
+            {
+                "title": "Why Tokyo is the most important tech destination of 2026",
+                "link": "https://techcrunch.com/2026/04/25/why-tokyo-is-the-most-important-tech-destination-of-2026/",
+                "published": "Sat, 25 Apr 2026 15:03:00 +0000",
+                "summary": "SusHi Tech Tokyo 2026 has four tightly defined technology domains, each backed by live demonstrations, dedicated exhibit floors, and sessions featuring the people actually building and funding these technologies globally."
+            },
+            {
+                "title": "Apps to distract you from the endless cycle of doomscrolling",
+                "link": "https://techcrunch.com/2026/04/25/apps-to-distract-you-from-the-endless-cycle-of-doomscrolling/",
+                "published": "Sat, 25 Apr 2026 15:00:07 +0000",
+                "summary": "It's hard to break the cycle of doomscrolling, but there are plenty of apps that can help you spend more time on content that’s engaging and productive."
+            },
+            {
+                "title": "Apple under Ternus: what comes next for the tech giant’s hardware strategy",
+                "link": "https://techcrunch.com/2026/04/25/apple-under-ternus-what-comes-next-for-the-tech-giants-hardware-strategy/",
+                "published": "Sat, 25 Apr 2026 15:00:00 +0000",
+                "summary": "John Ternus, Apple's incoming CEO, is a hardware guy, signaling Apple may be putting devices back at the center of its strategy."
+            },
+            {
+                "title": "India’s Snabbit seeks fresh funding at a $400M valuation, sources say",
+                "link": "https://techcrunch.com/2026/04/25/indias-snabbit-seeks-fresh-funding-at-a-400m-valuation-sources-say/",
+                "published": "Sat, 25 Apr 2026 14:57:26 +0000",
+                "summary": "Snabbit has scaled rapidly, crossing one million jobs in March, amid growing investor interest."
+            },
+            {
+                "title": "Lachy Groom to back India startup Pronto at a $200M valuation, sources say",
+                "link": "https://techcrunch.com/2026/04/24/lachy-groom-to-back-pronto-as-indias-house-help-startup-scales-fast-sources-say/",
+                "published": "Sat, 25 Apr 2026 03:30:00 +0000",
+                "summary": "This round, should it occur, would double the house-help startup's valuation in a matter of weeks."
+            },
+            {
+                "title": "Steve Ballmer blasts founder he backed who pleaded guilty to fraud: ‘I was duped and feel silly’",
+                "link": "https://techcrunch.com/2026/04/24/steve-ballmer-blasts-founder-he-backed-who-pleaded-guilty-to-fraud-i-was-duped-and-feel-silly/",
+                "published": "Fri, 24 Apr 2026 23:32:11 +0000",
+                "summary": "Steve Ballmer wrote a fiery letter in the sentencing of disgraced founder Joseph Sanberg documenting all the harm that's befalling him as an investor."
+            },
+            {
+                "title": "Palantir is reportedly helping the IRS investigate financial crimes",
+                "link": "https://techcrunch.com/2026/04/24/palantir-is-reportedly-helping-the-irs-investigate-financial-crimes/",
+                "published": "Fri, 24 Apr 2026 21:53:44 +0000",
+                "summary": "The IRS has used Palantir's software since at least 2018, The Intercept reports."
+            },
+            {
+                "title": "Cohere acquires, merges with Germany-based startup to create a ‘transatlantic AI powerhouse’",
+                "link": "https://techcrunch.com/2026/04/24/cohere-acquires-merges-with-german-based-startup-to-create-a-transatlantic-ai-powerhouse/",
+                "published": "Fri, 24 Apr 2026 21:35:30 +0000",
+                "summary": "Cohere, the Canada-based AI company that makes AI tools for businesses in regulated industries, announced Friday it would merge with Aleph Alpha, a German company that also builds AI systems for businesses and governments."
+            },
+            {
+                "title": "Two college kids raise a $5.1 million pre-seed to build an AI social network in iMessage",
+                "link": "https://techcrunch.com/2026/04/24/two-college-kids-raise-a-5-1-million-pre-seed-to-build-an-ai-social-network-in-imessage/",
+                "published": "Fri, 24 Apr 2026 21:05:59 +0000",
+                "summary": "Series, a social networking app that's grown popular on college campuses, announced a $5.1 million pre-seed round from some big names in tech."
+            },
+            {
+                "title": "Meta’s loss is Thinking Machines’ gain",
+                "link": "https://techcrunch.com/2026/04/24/metas-loss-is-thinking-machines-gain/",
+                "published": "Fri, 24 Apr 2026 20:52:07 +0000",
+                "summary": "Meta has been poaching talent from Thinking Machines Lab. But it's a two-way street."
+            },
+            {
+                "title": "X-energy stock pops 27% on first day of trading following upsized IPO",
+                "link": "https://techcrunch.com/2026/04/24/x-energy-stock-pops-27-on-first-day-of-trading-following-upsized-ipo/",
+                "published": "Fri, 24 Apr 2026 20:10:54 +0000",
+                "summary": "Investors flocked to nuclear power startup X-energy in its first day of public trading on the Nasdaq."
+            },
+            {
+                "title": "ComfyUI hits $500M valuation as creators seek more control over AI-generated media",
+                "link": "https://techcrunch.com/2026/04/24/comfyui-hits-500m-valuation-as-creators-seek-more-control-over-ai-generated-media/",
+                "published": "Fri, 24 Apr 2026 19:49:35 +0000",
+                "summary": "ComfyUI, whose tools give creators more control over AI image, video, and audio generation, just raised $30 million."
+            }
+        ]
+    },
+    {
+        "id": "the-verge",
+        "name": "The Verge",
+        "category": "tech",
+        "last_updated": "2026-04-27T01:11:04.635007",
+        "entries": [
+            {
+                "title": "Trump turns the WHCD shooting into a pitch for the White House ballroom",
+                "link": "https://www.theverge.com/policy/918843/trump-whcd-attack-white-house-ballroom",
+                "published": "2026-04-26T12:18:02-04:00",
+                "summary": "Within hours of an armed gunman's attempt to enter the White House Correspondents Dinner, attended by top administration officials and hundreds of journalists, President Donald Trump did what he does best: use the assassination attempt to defend his ballroom project. During a White House press conference just hours after he and several cabinet members were [&#8230;]"
+            },
+            {
+                "title": "Tomora’s Come Closer is an ecstatic love letter to 90s dance music",
+                "link": "https://www.theverge.com/entertainment/918826/tomora-come-closer-review-90s-dance-music",
+                "published": "2026-04-26T12:00:00-04:00",
+                "summary": "Before Coachella, Tomora wasn't on my radar at all. It's actually only by chance that I stumbled upon them - I opened the wrong stream because my TV was lagging like a MFer. I paused for a few moments, entranced by the two ethereal Nordic women banging on giant drums to a techno beat. I [&#8230;]"
+            },
+            {
+                "title": "Skylight’s 15-inch smart calendar is down to its lowest price to date",
+                "link": "https://www.theverge.com/gadgets/918544/skylight-15-inch-smart-calendar-2-mothers-day-deal-2026-sale",
+                "published": "2026-04-26T10:05:03-04:00",
+                "summary": "When you’re juggling more than just your own calendar, staying organized can be overwhelming. Fortunately, the Skylight Calendar 2 can help simplify things by syncing multiple calendars in a single spot, and now through May 7th, it’s available directly from Skylight for $259.99 ($40 off), its best price to date. Skylight’s 15-inch smart calendar improves [&#8230;]"
+            },
+            {
+                "title": "After three months on Linux, I don’t miss Windows at all",
+                "link": "https://www.theverge.com/tech/918797/switched-to-linux-dont-miss-windows",
+                "published": "2026-04-26T09:00:00-04:00",
+                "summary": "In January I finally made good on my threat/promise to install Linux on my desktop. I wanted to see how far I could get using a Linux PC as my main computer without doing a bunch of research beforehand or troubleshooting afterwards. Since then I have booted into Windows exactly twice: once to scan a [&#8230;]"
+            },
+            {
+                "title": "The plan to quietly kill Coyote v. Acme blew up in David Zaslav&#8217;s face",
+                "link": "https://www.theverge.com/column/918079/david-zaslav-warner-bros-discovery-coyote-v-acme-batgirl-tax-writeoffs",
+                "published": "2026-04-26T08:00:00-04:00",
+                "summary": "This is The Stepback, a weekly newsletter breaking down one essential story from the tech world. For more on Hollywood trends and streaming culture, follow Charles Pulliam-Moore. The Stepback arrives in our subscribers' inboxes on Sundays at 8AM ET. Opt in for The Stepback here. How it started Under David Zaslav's leadership, WBD got very [&#8230;]"
+            },
+            {
+                "title": "Trump fires the entire National Science Board",
+                "link": "https://www.theverge.com/science/918769/trump-fires-the-entire-national-science-board",
+                "published": "2026-04-25T15:20:15-04:00",
+                "summary": "Multiple sources are reporting that the Trump administration has dismissed the entire National Science Board (NSB). The NSB advises the president and Congress on the National Science Foundation (NSF), which has already been funding research at historically low levels and has seen significant delays in doling out that funding. The NSF has been fundamental in [&#8230;]"
+            },
+            {
+                "title": "An influx of used EVs could drive down prices",
+                "link": "https://www.theverge.com/tech/918765/an-influx-of-used-evs-could-drive-down-prices",
+                "published": "2026-04-25T14:25:23-04:00",
+                "summary": "Part of what has held back electric cars has been the cost. But an influx of used vehicles over the next three years could bring prices down dramatically. In 2025, just 123,000 leases on EVs expired. That is expected to more than double to 300,000 in 2026, and double again to 600,000 in 2027 and [&#8230;]"
+            },
+            {
+                "title": "Researchers say we’re talking less than ever",
+                "link": "https://www.theverge.com/science/918753/researchers-talking-less",
+                "published": "2026-04-25T11:03:53-04:00",
+                "summary": "Researchers at the University of Missouri-Kansas City and the University of Arizona say that between 2005 and 2019, the number of words we speak out loud to another human being fell by nearly 28 percent. And that has likely only gotten worse following the pandemic. The researchers actually counted the number of words we were [&#8230;]"
+            },
+            {
+                "title": "Sharge’s fast Qi2.2 MagSafe battery is down to $70 with a free USB-C cable",
+                "link": "https://www.theverge.com/gadgets/918410/sharge-icemag-3-qi2-usb-c-wireless-power-bank-battery-deal-sale",
+                "published": "2026-04-25T11:00:00-04:00",
+                "summary": "I’ve been testing compact, magnetic Qi2 power banks that can snap onto your phone for an upcoming buying guide. They make recharging much easier than bringing along a huge battery that weighs down your bag. One of my favorites so far is the Sharge Icemag 3, a 10,000mAh model that can wirelessly output 25W to [&#8230;]"
+            },
+            {
+                "title": "The Govee smart lamp brightened up my room, and then my life",
+                "link": "https://www.theverge.com/gadgets/913854/govee-uplighter-floor-lamps-caregiving-parkinsons-disease",
+                "published": "2026-04-25T09:30:00-04:00",
+                "summary": "I knew things were not quite right when I had to throw a towel over a broken Ikea lamp to block out its light. How did I get here? I cover fancy and capable tech for a living, and yet, it took me two years to get rid of a pair of old, broken Ikea [&#8230;]"
+            }
+        ]
+    },
+    {
         "id": "ars-technica",
         "name": "Ars Technica",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:54.526061",
+        "last_updated": "2026-04-27T01:11:04.114381",
         "entries": [
+            {
+                "title": "New robotic control software avoids jamming their joints",
+                "link": "https://arstechnica.com/science/2026/04/kinematic-intelligence-helps-robots-learn-their-limits/",
+                "published": "Sun, 26 Apr 2026 11:09:29 +0000",
+                "summary": "Software lets robots learn from each other even if they have different hardware."
+            },
             {
                 "title": "Artemis II broke Fred Haise's distance record, but he is happy to pass it on",
                 "link": "https://arstechnica.com/science/2026/04/artemis-ii-broke-fred-haises-distance-record-but-he-is-happy-to-pass-it-on/",
@@ -240,12 +442,6 @@
                 "link": "https://arstechnica.com/tech-policy/2026/04/us-accuses-china-of-industrial-scale-ai-theft-china-says-its-slander/",
                 "published": "Thu, 23 Apr 2026 21:45:10 +0000",
                 "summary": "Trump-Xi summit may be rocked by US mulling huge sanctions."
-            },
-            {
-                "title": "Carbon nanotube wiring gets closer to competing with copper",
-                "link": "https://arstechnica.com/science/2026/04/researchers-get-carbon-nanotube-wiring-to-conduct-more-like-copper/",
-                "published": "Thu, 23 Apr 2026 21:22:09 +0000",
-                "summary": "While this material degrades over time, it could point to better ones."
             }
         ]
     },
@@ -253,7 +449,7 @@
         "id": "npr-technology",
         "name": "NPR Technology",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:54.533885",
+        "last_updated": "2026-04-27T01:11:04.157472",
         "entries": [
             {
                 "title": "'Self-aware' robots can learn complex tasks by watching humans. Is that a good thing?",
@@ -321,7 +517,7 @@
         "id": "sspai",
         "name": "少数派",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:52.966828",
+        "last_updated": "2026-04-27T01:11:04.128147",
         "entries": [
             {
                 "title": "App+1 | 谈谈网页浏览器中的一个异类：qutebrowser",
@@ -389,127 +585,127 @@
         "id": "ithome",
         "name": "IT之家",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:57.758757",
+        "last_updated": "2026-04-27T01:11:04.027558",
         "entries": [
             {
-                "title": "一加 120W 小方瓶双口超级闪充氮化镓充电器参数公布：双口最高输出功率 125W，4 月 28 日发布",
-                "link": "https://www.ithome.com/0/943/644.htm",
-                "published": "Sun, 26 Apr 2026 08:59:26 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，一加官方今天公布了 120W 小方瓶双口超级闪充氮化镓充电器的详细参数。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d820ab6f-6f6e-4450-b6e5-a861b8cee286.jpg?x-bce-process=image/format,f_auto\" /></p><p>据官方微博消息，这款充电器的单口最高输出功率为 120W，<strong>双口最高 125W</strong>，<strong>可在半小时内为 Ace 6 至尊版充入≈68% 电量</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/bd217f90-0768-4894-8c0e-3322ecdda0cf.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/689dbf1c-f801-4d0f-b912-b4e12b469910.jpg?x-bce-process=image/format,f_auto\" /></p><p>同时，这款充电器的表面喷涂升级准分子工艺，自带软硅胶数据线，手感更加亲肤。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/c49cce04-0ed1-4db7-a093-11982a733003.jpg?x-bce-process=image/format,f_auto\" /></p><p>此外，一加 100W 小方瓶 Pro 超级闪充氮化镓充电器也在今天公布，基本可以看作是 120W 双口的缩小版，<strong>连接第三方手机时输出功率可达 100W</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/0a8d2a31-24b1-46ca-88a0-9863e4ce1208.jpg?x-bce-process=image/format,f_auto\" /></p><p>这两款充电器都将在 4 月 28 日 19:00 与 Ace 6 至尊版同台发布，感兴趣的小伙伴们可以关注IT之家后续报道。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/943/636.htm\" target=\"_blank\">一加 120W 超能舱超级闪充移动电源参数公布：15000mAh 容量，120W 高功率快充</a>》</p></li></ul><p class=\"j_iframe_show ithome-content-placeholder\" style=\"text-align: center;\"></p>"
+                "title": "微软 Xbox 新掌舵人阿莎 · 夏尔马暗示：未来或将继续收购游戏工作室",
+                "link": "https://www.ithome.com/0/943/750.htm",
+                "published": "Sun, 26 Apr 2026 15:18:24 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据游戏媒体 Tech4Gamers 今天报道，微软 Xbox 新掌舵人阿莎 · 夏尔马（Asha Sharma）最近发布备忘录，阐述未来硬件、服务等业务的目标和愿景。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/afa04238-82ff-4838-bd51-04422ef207d8.jpg?x-bce-process=image/format,f_auto\" /></p><p>阿莎 · 夏尔马在文中指出，除了持续强化订阅制商业模式以外，<strong>收购仍是 Xbox 未来的可行战略之一</strong>。她认为，当公司内部某些领域增长过慢时，可通过并购实现更高效扩展。例如公司近年来已经收购动视暴雪、ZeniMax Media（IT之家注：子公司有 B 社、id Software）等游戏行业巨头。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/c9df9c81-b9bb-4156-a1a3-06e1afe921d8.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><figcaption>图源：微软 Xbox 官方博文</figcaption><p>然而，微软未来不太可能再收购大型游戏公司。但这则声明暗示，<strong>公司仍对收购小型工作室持开放态度</strong>。</p><p>同时，微软将系统性评估独占游戏策略，但拒绝仓促行事，将采取数据驱动和战略驱动的方法，审视现有原则后再做决定。</p><p>微软近年来积极推行多平台策略，将第一方游戏发布至 PS5 等竞品平台。这一策略确实带来了商业成功，《极限竞速：地平线 5》与《盗贼之海》在 PlayStation 平台表现优异。</p><p>然而，<strong>并非所有移植游戏都能复制此佳绩</strong>，且缺乏主机独占游戏让部分玩家感到 Xbox 品牌价值被稀释，降低了购买 Xbox Series X|S 主机的必要性。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/bc03f271-721f-4103-9153-c511884975f7.jpg?x-bce-process=image/format,f_auto\" /></p><p>针对外界对独占游戏策略的关切，夏尔马明确表态，微软将对独占游戏“做出一些决定”，但不会为了追求速度而牺牲决策质量。她强调，这一议题涉及宏观战略与个体游戏的复杂权衡，避免草率定论。</p>"
             },
             {
-                "title": "我国自主设计建造的最大 LNG 运输船在江苏南通交付",
-                "link": "https://www.ithome.com/0/943/643.htm",
-                "published": "Sun, 26 Apr 2026 08:48:59 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据新华社报道，由招商局重工（江苏）有限公司自主设计建造的全国首艘 18 万立方米液化天然气（LNG）运输船“乔治敦”（Celsius Georgetown）号，今日在江苏南通招商重工码头完成交付，随后离泊驶往新加坡。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/402bf8cf-38e8-4654-b153-8ad25d9684e0.jpg?x-bce-process=image/format,f_auto\" /></p><p>“乔治敦”号总长 298.8 米，型宽 48 米，采用双燃料低速推进系统，具备低蒸发率、高环保性能等优势，是目前我国建造完工最大的 LNG 运输船，标志着我国船企在大型清洁能源船舶建造领域取得重要突破。</p><p>该船由丹麦 Celsius 集团订造，从设计到建造均由招商局集团独立自主完成，符合国际海事组织（IMO）最新环保规范及船级社入级标准。</p><p>IT之家注：LNG 运输船是运输零下 163℃ 低温液化天然气的专用船舶，因设计建造难度极高，与航空母舰、豪华邮轮并称为“造船业皇冠上的明珠”，全球仅有少数几家船厂掌握核心建造能力。</p><p>这是继沪东中华、江南造船、大连造船等之后，中国第五家获得大型 LNG 运输船实船建造订单并实现交付的船厂。招商局重工（江苏）有限公司大型 LNG 运输船项目经理卢金龙透露，像这一类型的船舶订单共有 6 艘，其余 5 艘已全部投入建造，下一艘预计将在 3 个月后完成交付。</p><p>从全球市场看，中国船企在 LNG 船领域的竞争力正持续增强。克拉克森数据显示，2026 年 1 月全球替代燃料新船订单中，中国船厂承接了总计 36 艘、220.7 万修正总吨的订单，按 CGT 计算占 70.19%，接单量排名全球第一，其中 LNG 双燃料船达 26 艘，2 月份中国船厂在替代燃料新船订单中的占比更升至 83.07%。</p>"
+                "title": "华硕 X870 主板测试 AMD EXPO 1.2 支持：新增超低延迟模式，B850 后续更新",
+                "link": "https://www.ithome.com/0/943/749.htm",
+                "published": "Sun, 26 Apr 2026 15:10:47 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，曝光已久的 AMD 新一代内存超频标准 EXPO 1.2 终于上线。华硕已官宣为 X870E / X870 主板提供 BIOS 更新，B850 后续提供支持。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/1b46bf6b-f31b-43b9-9c3a-09dd05cdf952.jpg?x-bce-process=image/format,f_auto\" /></p><p>华硕将通过新的 Beta 测试版 BIOS（版本 2301 为主，部分型号为 0911 或 1670）为 X870E/X870 主板添加 EXPO 1.2 支持，同时新增 Crosshair Tweak 选项。华硕还并警告称，旧 CMO 文件不兼容当前 AGESA 1301 BIOS。</p><p>该 BIOS 固件适用于 ROG Crosshair X870E 系列（HERO、DARK HERO、APEX、EXTREME 等）、ROG Strix、TUF Gaming、ProArt X870 系列。</p><p>根据目前部分已公开信息，AMD EXPO 1.2 主要新增 / 增强内容包括：</p><ul class=\" list-paddingleft-2\"><li><p>对 CUDIMM（Clocked Unbuffered DIMM，带时钟驱动器的 DDR5 内存）的有限 / 早期支持（完整支持预计要到下一代平台 / Zen 6）。</p></li><li><p>超低延迟（ULL）模式：EXPO 6000 UUL 与标准 EXPO 6000 相比，延迟降低 5-7ns。</p></li><li><p>新增模块“几何”支持，便于不同容量内存混搭。</p></li><li><p>新增 CKD 绕过配置文件（CKD Bypass Profiles）。</p></li><li><p>新增兼容三家中国厂商的内存。</p></li><li><p>tREFI、tRRDS、tWR 和 VDDP (V) 等新特性。</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/84186b34-94d1-47e4-b332-ec3dda0a65ed.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家附官网下载地址（测试版 BIOS 可能存在某些 Bug）：<br /><a href=\"https://rog-forum.asus.com/t5/amd-600-series/x670-x870-resource-thread/m-p/1146838/highlight/true#M11877\" target=\"_blank\"><span class=\"link-text-start-with-http\">https://rog-forum.asus.com/t5/amd-600-series/x670-x870-resource-thread/m-p/1146838/highlight/true</span>#M11877</a></p>"
             },
             {
-                "title": "盗取 40 余万部短文，浙江首起网络短文侵权案宣判",
-                "link": "https://www.ithome.com/0/943/642.htm",
-                "published": "Sun, 26 Apr 2026 08:34:52 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据央视新闻报道，今天（4 月 26 日）是第 26 个世界知识产权日，随着网络短文、微短剧等新兴文化快速发展，涉及这些领域的网络盗版侵权案件也呈现高发趋势。<strong>浙江嘉兴市公安局近日通报了浙江省首起针对网络短文的侵犯著作权案件</strong>。</p><p style=\"text-align: center;\"><video controls=\"\" preload=\"metadata\" src=\"http://vd3.bdstatic.com/mda-sdrax3egd82wh0wm/360p/h264/1777189344773356039/mda-sdrax3egd82wh0wm.mp4\"></video></p><p>2025 年 11 月，嘉兴一文化公司在日常版权监测中发现，某网站在未经授权的情况下，大批量复制传播公司原创网络短文，<strong>并以低价打包售卖的方式非法牟利</strong>，严重侵害公司知识产权。</p><p>IT之家从报道中了解到，网络短文是一种在线发布的短篇文章形式，是网络文学新型业态，也是微短剧 IP 重要来源。</p><p>警方接到线索后立即成立专案组，全面展开侦查工作。</p><p>公安机关在调查中发现<strong>，该盗版网站需要有卡密才能正常浏览</strong>、<strong>观看</strong>，<strong>而卡密通过一家网络店铺进行销售</strong>。于是警方顺藤摸瓜，对网店进行侦查，经过研判发现，盗版网站非法传播的作品数量非常多，网络店铺涉案的金额也非常巨大，涉嫌侵犯著作权。</p><p>经过两个月侦查，警方查清了以毛某、李某为首的两个网络侵权犯罪团伙的组织架构及犯罪事实。今年 1 月至 2 月，专案组奔赴多省开展集中收网行动，成功捣毁多个盗版网站运营窝点，查扣服务器、电脑、手机等大量作案设备，抓获犯罪嫌疑人 7 名，涉案金额 200 余万元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/9224dfcf-7f7f-4857-8e9b-8884e57060c9.png?x-bce-process=image/format,f_auto\" /></p><p>据民警介绍，该案中经营网络店铺和运营盗版网站的主犯毛某，通过自学编程搭建盗版网站，非法窃取了 40 余万部原创短文，持续非法获利。</p><p>2024 年 7 月，毛某瞄准网文市场需求，先开设网店引流，通过手动代找短文方式牟利。后来他发现这么做效率太低，于是转而自行学习爬虫编程技术，批量抓取各大平台的原创短文，私自搭建盗版网站。随后，毛某将非法窃取的正版短文资源进行整合，通过售卖日卡、月卡、年卡等权限卡密进行全网分销，以此持续非法获利。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/3243abd3-c224-45fc-a3f6-8aae02f87bc0.png?x-bce-process=image/format,f_auto\" /></p><p>今年 3 月，毛某被移送检察机关审查起诉。案发后其退出违法所得，并向四家被侵权企业及平台赔付共计 73 万元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/56ff2b6b-7798-4d46-ac72-6fae5d377fdd.png?x-bce-process=image/format,f_auto\" /></p><p>4 月 21 日，嘉兴市中级人民法院开庭审理此案，毛某当庭认罪悔罪。法院以侵犯著作权罪判处其有期徒刑 3 年，缓刑 4 年 6 个月，<strong>并处罚金 48 万元</strong>。目前，其余 6 名涉案嫌疑人已被依法采取刑事强制措施，案件正在进一步办理中。</p>"
+                "title": "QEMU 11.0 发布：补全龙芯 LoongArch TCG 指令与 RISC-V 扩展，x86 新增英特尔 Diamond Rapids CPU 模型",
+                "link": "https://www.ithome.com/0/943/751.htm",
+                "published": "Sun, 26 Apr 2026 14:58:55 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，开源虚拟化仿真器 QEMU 11.0 本周三正式发布，此次更新涵盖广泛变化，涉及所有主要架构及代码库中的大量优化。QEMU 11.0 的主要亮点包括：</p><ul class=\" list-paddingleft-2\"><li><p>弃用过时的 i440FX 与 Q35。</p></li><li><p>小型代码生成器（Tiny Code Generator，TCG）在 LoongArch 架构上支持更多指令，例如 <span class=\"link-text-start-with-http\">SC.Q</span>、LLACQ / SCREL 以及近似倒数指令。</p></li><li><p>RISC-V 架构新增对 ZALASR 扩展、Zilsd 与 Zclsd 扩展以及 Smpmpmt 扩展的支持。</p></li><li><p>新增对 MIPS P8700 CPU 的支持。</p></li><li><p>x86 端新增 Intel Xeon Diamond Rapids CPU 模型。</p></li><li><p>新增“nitro”加速器，可与新的 nitro 机型配合使用，在 QEMU 下原生支持 AWS Nitro Enclaves。</p></li><li><p>KVM 后端支持控制流强制技术（CET）虚拟化。</p></li><li><p>使用 KVM 的 AMD SEV-SNP 与 Intel TDX 虚拟机现在支持重置操作。</p></li><li><p>VirtIO-GPU 支持处理原生上下文驱动。</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/02b9e5cd-f8f8-4df3-accf-0d394f3ad577.png?x-bce-process=image/format,f_auto\" /></p><p>QEMU 11.0 还移除了多个老旧 Arm 开发板（如 ast2700a0-evb）以及 pc-i440fx-2.6/2.7 与 pc-q35-2.6/2.7 等 x86 机型。</p><p>在迁移命令方面，11.0 移除了无效的“zero-blocks”选项和已忽略的“detach”参数，并删除了信息有限的“query-migrationthreads”命令。同时，弃用了对旧 OABI ABI（包括 NWFPE 仿真）运行二进制文件的能力。</p><p>在架构特性方面，Arm 模拟新增 FEAT_ASID2 与 FEAT_E2H0，支持 SMMU v3 IOMMU 硬件加速，Windows WHPX 加速器现已在 Arm“virt”板上可用。LoongArch 的 KVM 支持 PMU 迁移。</p><p>QEMU 11.0 在 x86 领域引入了新的“nitro”加速器与 nitro 机器，可原生运行 Nitro Enclaves。KVM 支持 CET 虚拟化，SEV-ES 终止请求现在会报告为客户机 panic 事件，SEV-SNP 与 TDX 机器支持重置。此外，virtio-gpu 现已支持原生上下文驱动，每个输出可独立指定分辨率。</p><p>在宿主机支持方面，QEMU 项目宣布放弃对所有 32 位宿主机系统的支持，因为维持 32 位宿主机支持的负担过大。内存预分配线程数从 16 提升至 32 以改善启动性能。</p><p>迁移方面，11.0 新增“failing”状态，表示迁移过程中发生错误且正在清理；COLO 现已支持 multifd。</p><p>块设备方面，NFS 块驱动增加了对 libnfs v6 的支持，curl 块驱动新增“force-range”选项，FUSE 块导出不再同步处理请求并支持多 iothread。qemu-img create 为 qcow2 新增“keep_data_file”选项。</p><p>用户模式仿真方面，11.0 新增 termios2 支持，更新了 statx () 系统调用，修复了 futex () 及 mmap () 相关问题。TCG 测试新增 TCG_TEST_FILTER 过滤机制。</p>"
             },
             {
-                "title": "海韵发布 Focus GX-1000 ATX 3.1 樱花版电源：升级 PCIe 5.1，配原生 12V-2×6 接口",
-                "link": "https://www.ithome.com/0/943/641.htm",
-                "published": "Sun, 26 Apr 2026 08:31:58 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，海韵（Seasonic）推出了 2026 款 Focus GX-1000 ATX 3.1 Sakura Edition（樱花版）限量版电源，附赠 12V-2×6 粉白双拼色编织线。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d8ca4449-1c6b-4965-ac3f-172e32fa3aee.jpg?x-bce-process=image/format,f_auto\" /></p><p>它属于是 2024 年发布的 Vertex Sakura GX-1000 限量版电源的继任者，新增了对 ATX 3.1 和 PCIe 5.1 的支持，将于 5 月中旬发售　税后价 36,980 日元（IT之家注：现汇率约合 1587 元人民币）。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/037f4bf4-46af-41fd-ab9a-4665775d0d76.jpg?x-bce-process=image/format,f_auto\" /></p><p>这款电源保留了标志性的樱花美学设计，外壳上印有樱花树图案，长 160 mm 宽 150 mm 深 86 mm。</p><p>该电源基于最新的 FOCUS GX 平台，支持 ATX 3.1 和 PCIe 5.1 标准，配备原生 12V-2×6 接口以确保与新一代显卡兼容。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/0779409e-b2dd-4dba-8dac-cfc7e643af2a.jpg?x-bce-process=image/format,f_auto\" /></p><p>规格方面，其额定功率 1000W，通过 80 PLUS 金牌认证，典型负载下转换效率可达约 90%；采用全模组设计，还配备 135mm 散热风扇并采用升级版散热方案，内部使用高品质元器件，根据不同地区提供最长 10 至 12 年保修。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/73d024ec-fbfa-4498-a491-7fd540a646da.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b6de3bc9-fd55-45fe-aa13-bf3c706e46db.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/548dbd6e-568c-43c0-a3ad-bbcab7cca56e.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d819c0c1-c538-44ad-8a61-e09bd3abfd15.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/43af2f1a-49cf-4981-ad67-60749216377a.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ce16d72a-025b-436e-95b3-0069935f558a.png?x-bce-process=image/format,f_auto\" /></p>"
+                "title": "降至原有价格 1/10，DeepSeek API 输入缓存降价",
+                "link": "https://www.ithome.com/0/943/748.htm",
+                "published": "Sun, 26 Apr 2026 14:56:33 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，DeepSeek 官方今天宣布，即日起 DeepSeek 全系 API 服务，<strong>输入缓存命中价格降至原有价格的 1/10</strong>，Pro 模型还可在 5 月 5 日前叠加 2.5 折限时优惠。</p><p>IT之家附各模型具体价格如下：</p><table align=\"center\"><tbody><tr class=\"firstRow\"><td valign=\"top\">API 访问模型名</td><td valign=\"top\">输入（缓存命中）</td><td valign=\"top\">输入（缓存未命中）</td><td valign=\"top\">输出</td></tr><tr><td valign=\"top\">DeepSeek-V4-Pro</td><td valign=\"top\">0.025 元 <span class=\"font-color-greytip\"><del>0.1 元 1 元</del></span></td><td valign=\"top\">3 元 <span class=\"font-color-greytip\"><del>12 元</del></span></td><td valign=\"top\">6 元 <span class=\"font-color-greytip\"><del>24 元</del></span></td></tr><tr><td valign=\"top\">DeepSeek-V4-Flash</td><td valign=\"top\">0.02 元<span class=\"font-color-greytip\"><del>0.2 元</del></span></td><td valign=\"top\">1 元</td><td valign=\"top\">2 元</td></tr></tbody></table><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/5ae17c5b-6916-40c4-9d45-96e37cbe833f.jpg?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "MOREFINE 魔方推出 G2 外置显卡：雷电 5/OCuLink 4.0x4 接口、内置 RTX 5060 Ti 16GB 桌面端",
-                "link": "https://www.ithome.com/0/943/639.htm",
-                "published": "Sun, 26 Apr 2026 08:10:52 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，MOREFINE 魔方现已在其海外官网上架 G2 外置显卡，内置 RTX 5060 Ti 桌面端显卡，配备 16GB GDDR7 显存，定价 1099 美元（IT之家注：现汇率约合 7530 元人民币），5 月 20 日起出货。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/68968689-5ade-4c21-acac-8568a4a98623.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，这款外置显卡配备雷电 5/OCuLink 4.0x4 接口，适配大多数中高端笔记本电脑，兼容 USB4 v2 标准。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/19817e38-5dff-4dcf-8286-e0a278e74da3.jpg?x-bce-process=image/format,f_auto\" /></p><p>规格方面，这款外置显卡配备一个雷电 5 下行接口，可实现 4K 144Hz 视频输出，还带有 3 个 USB 3.2 Gen 1 Type-A、1 个 HDMI 2.0、1 个 DisplayPort 1.4 接口。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/05913bb0-17f6-4846-80d7-eae8928c7e69.jpg?x-bce-process=image/format,f_auto\" /></p><p>同时，这款外置显卡最高支持 100W PD 电源输出，可为笔记本进行高速充电。内置风扇提供三种模式，兼顾静音和性能。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2ca3480c-ebc8-4506-bee4-1a63177ff1c8.png?x-bce-process=image/format,f_auto\" /></p><p>此外，这款显卡坞尺寸为 140*100*54mm，采用外置电源设计，重量约 700g。</p>"
+                "title": "Sigmaintell 预测：苹果今年有望成为全球第三大笔记本制造商",
+                "link": "https://www.ithome.com/0/943/747.htm",
+                "published": "Sun, 26 Apr 2026 14:49:24 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据科技媒体 TechPower Up 今天报道，市场调研机构 Sigmaintell 预测，<strong>苹果今年年底有望成为全球第三大笔记本电脑制造商</strong>。</p><p>据报道，Sigmaintell 预计 2026 年笔记本出货量最大的厂商是联想（IT之家注：4300 万台），其次是惠普（3900 万台），<strong>而苹果预计在今年售出 2800 万台 MacBook</strong>，相比 2025 年的 2300 万台增长可观。</p><p>同时，<strong>主打平价市场的 MacBook Neo 将在今年售出 1000 万台</strong>，其余 1800 万台则来自 MacBook Air 和 MacBook Pro。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/5baa0220-9f61-4f4f-b0aa-612dfab238c3.jpg?x-bce-process=image/format,f_auto\" /></p><p>苹果目前已经建立起全品类笔记本阵容，从主打入门的 MacBook Neo，到轻薄中端走量本 MacBook Air，再到主打专业人士的高端 MacBook Pro。这种阵容满足了各类用户需求，不仅提高市场可见度，<strong>也为各类人群提供了符合预算的选择。</strong></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/bca9b192-107f-4986-8a6a-53cf0d4c3d0f.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/37f07718-c984-4ae9-b303-8a47f97f3a92.jpg?x-bce-process=image/format,f_auto\" /></p><p>此外，苹果电脑端的自研芯片凭借统一内存架构，在供应链、采购策略上拥有更大灵活性。苹果无需依赖 AMD、英特尔、英伟达等公司，在决策上保持相对独立，还能根据自家硬件打造最适合的软件。</p>"
             },
             {
-                "title": "不满 35 元收 3 元运费，美团小象超市确认 4 月 20 日起大部分站点已暂停自提",
-                "link": "https://www.ithome.com/0/943/638.htm",
-                "published": "Sun, 26 Apr 2026 07:58:40 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据九派新闻等多个媒体报道，美团小象超市近期对配送服务进行了一项调整。4 月 20 日起，全国大部分城市站点已暂停到站自提服务，消费者下单后仅能选择配送上门。</p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/tv/show/1034:5291967886852154?mid=5291968588156377\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/325f60e5-aacf-4088-aba2-fb2d69d85f9f.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>多位消费者反映，此前购买少量商品时，可以就近前往站点自提，从而省去配送费用。自提暂停后，订单金额若未达到免配送费门槛，便需额外支付配送费。小象超市的免配送费标准多数地区为 35 元或 39 元，未达标的订单需支付 3 元配送费。此外，北京、广东等地的部分尚未关停自提功能的站点，也新增了 20 元的最低消费门槛，未达标同样无法自取。</p><p>对此，小象超市官方客服回应称，为优化配送服务体验、提升物流效率，自 4 月 20 日起，平台正全面升级配送体系，将集中资源为用户提供更快捷、稳定的配送服务。客服补充透露，目前仍有自提服务的站点，未来也可能进一步暂停。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/f61912b5-94ff-4e4d-b345-16fe78dead27.jpg?x-bce-process=image/format,f_auto\" /></p><p>美团小象超市（IT之家注：原美团买菜）是美团于 2019 年初推出的自营即时零售业务，定位“30 分钟快送超市”，主营蔬果海鲜、休闲零食、日用清洁、个护美妆、酒水饮料等，目前已入驻上海、北京、深圳、广州、廊坊、佛山、武汉、苏州和杭州等，深入社区覆盖周边 3 公里范围，自建配送。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/905/127.htm\" target=\"_blank\">美团小象超市全国首家线下店 12 月 19 日在北京开业</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/862/953.htm\" target=\"_blank\">美团宣布全面拓展即时零售业务，小象超市将覆盖所有一二线城市</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/845/876.htm\" target=\"_blank\">消息称美团小象超市重启线下业务，对标“盒马鲜生”大店模式</a>》</p></li></ul>"
+                "title": "龙芯 LoongArch 多项改进合入 Linux 7.1 内核，完善 CPU 漏洞处理并扩展原子指令支持",
+                "link": "https://www.ithome.com/0/943/746.htm",
+                "published": "Sun, 26 Apr 2026 14:47:00 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，在即将结束的 Linux 7.1 内核合并窗口期中，LoongArch 架构支持迎来一系列更新，获得多项底层能力增强。</p><p>根据提交内容，Linux 7.1 已能够更准确地展示并处理龙芯 CPU 漏洞信息，同时为 BPF JIT 引入更多原子指令支持，并扩展了 BPF 跳板（trampoline）的功能特性。此外，还包括缓存维护、系统调用路径及日志等方面的多项优化与修复。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/55631272-7816-4453-a02f-107b7af65604.jpg?x-bce-process=image/format,f_auto\" /></p><p>较为意外的是，此拉取请求中还包含了针对 LoongArch 的 32 位支持工作。本次更新新增了 HIGHMEM（IT之家注：包括 PKMAP 与 FIX_KMAP）支持，主要面向 32 位环境，以提升对更大内存空间的访问能力。与此同时，Linux 构建体系也针对 32 位与 64 位配置进行了调整，并补充了围绕 CONFIG_32BIT 的相关处理逻辑。</p><p>其他改动还包括对 jump_label 的指令缓存维护进行批处理优化、新增全局与本地 icache 刷新接口、为系统调用分发表引入 Spectre 边界保护，以及改进 KASLR 关闭时的日志记录机制。此外，更新还对 FPU 寄存器状态对齐进行了优化，并调整了中断相关逻辑与栈保护初始化方式。</p><p>在 BPF 子系统方面，LoongArch 架构新增对 load-acquire 与 store-release 指令的支持，同时扩展了读-改-写原子操作能力，并提升 trampoline 对函数参数（最多支持 12 个参数及小型结构体参数）的处理能力。</p>"
             },
             {
-                "title": "首张鸿蒙智行车主卡：中信银行推出 Huawei Card 鸿蒙智行版，充电加油享满减返现",
-                "link": "https://www.ithome.com/0/943/637.htm",
-                "published": "Sun, 26 Apr 2026 07:58:28 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，中信银行昨日宣布与华为联合推出 <a href=\"https://h5hosting-drcn.dbankcdn.cn/cch5/h5builder/HuaweiPay-0dba2b4891cb40c1958def37ceb9ee2d/campaign/index.html\" target=\"_blank\">Huawei Card 鸿蒙智行版</a>，定位为首张鸿蒙智行车主卡（信用卡），为车主提供覆盖充电、加油、洗车、代驾、停车等多场景的用车权益。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/cc5741fd-f43d-4123-b526-dcb7dfd513e7.png?x-bce-process=image/format,f_auto\" /></p><p>根据官方披露的信息，Huawei Card 鸿蒙智行版首年免年费，其核心权益包括充电消费返现、车主月礼以及华为应用 VIP 等。其中，持卡人在鸿蒙智行或 AITO App 内进行消费，满足条件可享 10% 返现（IT之家提醒：该活动每月限量 5000 份，每月最高返 50 元）。</p><p>新客户在核卡首月消费达标可获得 1 个权益点，激活次月至第 12 个月期间每月达标最高可获 5 个权益点；每 1 个权益点可兑换充电、加油、洗车、代驾或停车满减权益一份，具体包括充电满 10 元立减 5 元（最多 4 张）、加油满 100 元立减 20 元（最多 4 张）、代驾立减 20 元代驾券 1 张、洗车立减 20 元洗车券 1 张、停车满 10 元减 5 元（最多 4 张）。新客户全年最高可获价值 1120 元的车主权益。</p><p>此外，持卡人还可从华为云空间、华为音乐、华为视频三项 VIP 服务中任选其一，权益领取有效期为 90 天。通过华为钱包 App 申卡的用户自激活之日起算，非钱包 App 内申卡的用户则从关联钱包 App 之日起算。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d58b246a-c26a-43d6-9138-6b95d4eb063c.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/fe408ef1-5743-47ea-9992-4a0655b0b2c3.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d4812d31-4b45-4c08-b073-5424c901c4ab.jpg?x-bce-process=image/format,f_auto\" /></p><p>HarmonyOS 全系统版本用户可在鸿蒙智行或 AITO App 的“发现”页，通过推荐 Banner 选择“Huawei Card 鸿蒙智行版”。非华为手机用户可通过“动卡空间 App”申请。</p><p>HarmonyOS 5 及以上系统版本的用户还可通过负一屏进入 Huawei Card 元服务，选择中信银行后再选“鸿蒙智行版”；HarmonyOS 5 以下系统版本的用户则直接打开华为钱包 App，进入 Huawei Card 的中信银行页面，选择“鸿蒙智行版”即可。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/2e46bc3e-e08c-4229-80e4-5d7bdfa6b019.png?x-bce-process=image/format,f_auto\" /></p>"
+                "title": "消息称“马自达 2”小型轿车今夏在日本国内停产，售罄后停售",
+                "link": "https://www.ithome.com/0/943/745.htm",
+                "published": "Sun, 26 Apr 2026 14:29:07 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据共同社今天报道，马自达最早将于今年夏天在日本国内停产“马自达 2”小型轿车，<strong>库存售罄后即停止销售</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/5d26d227-28d5-4c85-ab9f-087cf3d0a581.jpg?x-bce-process=image/format,f_auto\" /></p><p>据报道，“马自达 2”的前身是“Demio”，<strong>定位紧凑型轿车、价格亲民</strong>，曾在各年龄层中广受喜爱。</p><p>IT之家注：Demio 最初上市于 1996 年，正值马自达因泡沫经济破裂而陷入经营危机之际，曾助力公司重新振作。<strong>2019 年马自达为实现海内外品牌统一</strong>，<strong>将该系列车型命名为“马自达 2”</strong>。</p><p>近年来，SUV 等车型更受欢迎，紧凑型轿车的存在感一定程度上减弱。预计马自达将调整销售战略，但海外的生产与销售仍将继续。</p><p>马自达 2 在山口县的防府工厂生产，<strong>去年在日本销量约为 2.36 万辆</strong>，仅次于主力 SUV“CX-5”。</p>"
             },
             {
-                "title": "一加 120W 超能舱超级闪充移动电源参数公布：15000mAh 容量，120W 高功率快充",
-                "link": "https://www.ithome.com/0/943/636.htm",
-                "published": "Sun, 26 Apr 2026 07:50:08 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，一加官方昨天公布了 120W 超能舱超级闪充移动电源的详细参数，主打 120W 超高功率快充 + 15000mAh 超大容量，可在 30 分钟内为 Ace 6 至尊版充电 68%。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/307434e5-73be-495d-9f32-033f1da1807d.jpg?x-bce-process=image/format,f_auto\" /></p><p>据介绍，这款移动电源首发搭载 OPPO 冰盾安全电芯，号称“对标新国标”。具备 15000mAh 容量，满电状态下可为 Ace 6 至尊版充电 1.5 次。机身主体延续一加美学设计，拥有准分子亲肤表面。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/610be1c7-8dcf-47d8-bb21-c940109532f8.jpg?x-bce-process=image/format,f_auto\" /><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/09d8ab80-6226-4230-9a68-c6ff536a8fb8.jpg?x-bce-process=image/format,f_auto\" /></p><p>同时，<strong>这款移动电源将在 4 月 28 日与 Ace 6 至尊版同台发布</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/3466d461-f766-4e47-bf61-f5113090f203.jpg?x-bce-process=image/format,f_auto\" /></p><p><a href=\"https://www.ithome.com/0/943/431.htm\" target=\"_blank\">据IT之家此前援引博主 @数码闲聊站 消息</a>，<span class=\"hot-topic\">一加 Ace 6</span> 至尊版将搭载 6.78 英寸 1.5K+165Hz LTPS BOE 直屏，拥有天玑 9500 芯片、8600mAh 双电芯电池，支持 120W 闪充。具备 3D 超声波指纹、金属中框、玻纤 / 玻璃机身、双 1115W 对称双扬等外围配置。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/66498326-176a-4b8f-add7-74d8691725e7.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p>"
+                "title": "古尔曼：库克为苹果留下十大新产品线研发计划，新任 CEO 特努斯首秀定档 9 月折叠屏 iPhone 发布会",
+                "link": "https://www.ithome.com/0/943/744.htm",
+                "published": "Sun, 26 Apr 2026 14:12:29 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，苹果公司新任 CEO 约翰 · 特努斯（John Ternus）将于 9 月 1 日正式上任。在他就职后不到两周，便将发布苹果十年来最重要的新品 —— 首款折叠屏 iPhone。</p><p>根据彭博社马克 · 古尔曼（Mark Gurman）最新 Power On 透露，这一时间安排并非巧合。在苹果规划从 Tim Cook 向 Ternus 过渡的过程中，苹果公司希望由新领导者亲自发布该产品，从而使其成为这一新产品类别的代表人物。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b88be7d1-ee2a-4a63-8d87-f4d76310f797.jpg?x-bce-process=image/format,f_auto\" /></p><p>毫无疑问，折叠屏 iPhone 对苹果来说绝对是一款复杂、创新且昂贵的产品，有望激发苹果核心用户的热情。Ternus 曾负责该设备的工程与产品开发，这也使他成为 iPhone 新时代的完美代言人。</p><p>在设计上，折叠屏 iPhone 将聚焦于四大卖点：耐用性、性能、不太明显的屏幕折痕以及展开后类似 iPad 的横向屏幕。</p><p>古尔曼提到，该机初期可能因供应链复杂而出现供货紧张，导致在门店较难买到，然而这种稀缺性反而会进一步推高市场热度。古尔曼预期其售价为 2000 美元（IT之家注：现汇率约合 13703 元人民币）或更高，这有望提升苹果平均价并推动营收增长，同时吸引已使用折叠设备多年的安卓用户群体。</p><p>随着两任 CEO 于 9 月 1 日完成交接，特努斯上任后的首个完整财季将覆盖今年年底的圣诞节假日销售周期。分析师预计该季度收入有望接近 1500 亿美元（现汇率约合 1.03 万亿元人民币），或超过历史同期纪录。</p><p>回顾 2011 年，库克当时刚从乔布斯手中接任时，也得益于强劲的产品线，当时 Siri 在其上任两个月后推出，随后一年内苹果发布了包括 iPhone 5、iPad mini、配备 Retina 显示屏的 iPad 与 MacBook Pro 等多款产品，而今年特努斯接任后的产品阵容更多也更强大。</p><p>未来几年内，苹果预计开启约 10 个全新产品类别的研发项目。相较之下，库克任期内推出的主要新类别几乎只有 Apple Watch（2015 年）、AirPods（2016 年）以及 Vision Pro（2024 年）。</p><p>在最近一次全体会议上，特努斯告诉员工苹果即将“改变世界”，并将公司产品产品线描述为其职业生涯中最具吸引力的一次。即使即将推出的产品中没有任何一款能像 2007 年原版 iPhone 那样具有开创性，但仍然引人注目。</p><p>IT之家根据报道整理，这些新品类具体包括：</p><ul class=\" list-paddingleft-2\"><li><p>AI 智能家居：智能家居中枢（带屏幕的 HomePod，可置于半球形扬声器底座或磁吸上墙，运行基于 Siri 的新系统，支持 FaceTime 和面部识别）；桌面机器人（屏幕约 9 英寸，连接可移动屏幕的机械臂）；家庭安防设备（主打隐私保护，含摄像头的传感器，与 Ring 和 Google Nest 竞争）。</p></li><li><p>AI 可穿戴产品：AI 智能眼镜（配备摄像头用于拍摄和 AI 数据收集，可播放音乐、唤醒 Siri 和接听电话）；AI 型 AirPods（高端型号也可能集成低分辨率摄像头，为 AI 提供环境信息以实现视觉提醒与导航优化）；颈挂类设备（小型圆形设备，可作为项链或别在衣物上，可通过计算机视觉摄像头采集数据并与 iPhone 联动）。</p></li><li><p>其他产品：触控屏 Mac（计划 2026 年底或 2027 年初推出首款触控屏 MacBook，若成功有望扩展至更多 Mac）；AR 眼镜（瞄准 2028 至 2030 年间发布，长期目标是以更轻量形态替代 iPhone）；可折叠 iPad（约 20 英寸，类似华为 MateBook Fold，该项目一直是特努斯优先事项，但据多名参与人员称该项目可能会被砍）。</p></li></ul><p>在业务层面，特努斯已证明自己能领导产品开发并打造强大的硬件团队。他真正的考验在于能否协同苹果其他部门来完成一款产品，包括弥补 Siri 团队的失误。他还曾放出豪言，承诺将推出颠覆性设备，问题在于他能否兑现。</p><p>另外，特努斯还表示将继续扩大服务业务规模。该业务目前由 Eddy Cue 负责，年收入已达约 1000 亿美元（现汇率约合 6851.7 亿元人民币）。特努斯在内部沟通中提到，服务业务不会放缓，反而会进一步扩展，他还称 Apple Pay 是他最看好的服务。</p><p>在 AI 方面，特努斯在员工大会上阐述了整体方向，表示公司将在 AI 领域实现进展。库克同时确认，软件团队正在推进 Siri 升级，新版本预计将在 6 月的全球开发者大会随 iOS 27 一同发布。敬请期待。</p>"
             },
             {
-                "title": "广汽集团：目标 2030 年销量 100 万辆，进入全球 120 个国家和地区",
-                "link": "https://www.ithome.com/0/943/635.htm",
-                "published": "Sun, 26 Apr 2026 07:44:34 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，4 月 24 日，在 2026 北京车展上，广汽集团举办专场全球发布会，明确锚定 2030 将进入全球 120 个国家和地区，建成超 2000 家海外网点，<strong>实现年销量 100 万辆</strong>。</p><p>广汽国际董事长陈家才分享了出海形势与广汽出海战略。他表示，越来越多中国品牌跻身全球前十，广汽正乘势而上，<strong>2026 年海外销量目标锁定 25 万至 30 万辆</strong>。</p><p>发布会现场，广汽重点展示了三款即将推向全球市场的重磅车型 ——<strong>GAC 越 7、<span class=\"wx_search_keyword_wrap\">AION i60<em class=\"wx_search_keyword\"></em></span> 与 AION N60</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/7fa425bb-3d12-4e06-8318-c537f3fc44fa.png?x-bce-process=image/format,f_auto\" /></p><p><span class=\"wx_search_keyword_wrap\">IT之家从官方介绍获悉，GAC 越 7<em class=\"wx_search_keyword\"></em></span> 是面向家庭用户的智享硬核 SUV，定位全场景出行。新车采用同级领先的内嵌式一体车架与数字化底盘，兼顾强悍越野性能与日常驾乘舒适，并在零下 40 摄氏度的极寒环境下验证性能。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/02481929-95a1-4467-bf2b-7758641a31ea.png?x-bce-process=image/format,f_auto\" /></p><p>AION i60 定位“专为家庭打造的续航无忧座驾”，搭载广汽新一代 ADiMOTION 增程系统，CLTC 综合续航里程最高可达 1240 公里，将于今年年底全球正式上市。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/b5f50164-873f-4726-8941-cc9c81ced83c.png?x-bce-process=image/format,f_auto\" /></p><p><span class=\"wx_search_keyword_wrap\">AION N60<em class=\"wx_search_keyword\"></em></span> 搭载广汽领先的<span class=\"wx_search_keyword_wrap\">夸克电驱 2.0<em class=\"wx_search_keyword\"></em></span>，电机峰值效率高达 99%，配合 L2 级组合辅助驾驶系统，百公里电耗低至 11.7kWh。</p><p>目前，广汽国际化业务已覆盖全球五大洲 102 个国家和地区，在全球范围内建立了超 680 家销售服务网点、5 座海外生产基地以及 9 个海外零部件仓库。</p>"
+                "title": "因部分粉丝排斥线上游戏，SE 曾考虑开发单人版《最终幻想 14》",
+                "link": "https://www.ithome.com/0/943/743.htm",
+                "published": "Sun, 26 Apr 2026 14:03:39 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据游戏媒体 GamesRadar 今天报道，Square Enix《最终幻想 14》游戏总监吉田直树最近表示，<strong>曾考虑开发单人版衍生作品</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1c678be6-daba-427b-b4eb-51b5776e6fca.jpg?x-bce-process=image/format,f_auto\" /></p><p>据报道，有观众在《最终幻想 14》线下活动问答环节中询问吉田直树，是否能在 FF14 世界观里制作一款单人游戏。</p><p>吉田对此回应道：“我考虑过这件事，<strong>并且因为我们已经为这款游戏付出很久</strong>，<strong>所以希望所有人都能体验到 FF14</strong>”。</p><p>他接着表示，尽管《最终幻想 11》和《最终幻想 14》都是广受好评的 MMO（IT之家注：大型多人在线游戏），<strong>但许多传统粉丝依然很排斥线上版《最终幻想》</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/67bb699d-4675-4961-b43e-d7b2779d6e24.jpg?x-bce-process=image/format,f_auto\" /></p><p>他对此补充道，团队确实很想做一个独立的《最终幻想 14》，但很不幸，大家目前还是忙于更新正作。如果有一天退休，也许会考虑。</p>"
             },
             {
-                "title": "欧菲光 2026 年一季度营收 37.29 亿元同比下降 23.60%，亏损 2.45 亿元",
-                "link": "https://www.ithome.com/0/943/631.htm",
-                "published": "Sun, 26 Apr 2026 07:35:18 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，欧菲光今日发布 2026 年一季度报告：</p><ul class=\" list-paddingleft-2\"><li><p><strong>营业总收入</strong>： 37.29 亿元，同比下降 23.60%</p></li><li><p><strong>归母净利润</strong>： -2.45 亿元，同比下降 319.75%</p></li><li><p><strong>扣非净利润</strong>： -2.53 亿元，同比下降 194.44%</p></li><li><p><strong>经营现金流</strong>： 4.68 亿元，同比增长 1147.31%</p></li><li><p><strong>基本每股收益</strong>： -0.0742 元 / 股，同比下降 312.22%</p></li><li><p><strong>稀释每股收益</strong>： -0.0742 元 / 股，同比下降 312.22%</p></li><li><p><strong>加权平均净资产收益率</strong>：-6.37%，同比下降 4.75 个百分点</p></li></ul><blockquote class=\"ai-point\"><h3>🤖 AI 解读</h3><p>欧菲光 2026 年第一季度实现<strong>营业收入 37.29 亿元</strong>，同比下降 23.60%；归属于上市公司股东的<strong>净利润亏损 2.45 亿元</strong>，同比下降 319.75%；归属于上市公司股东的扣除非经常性损益的<strong>净利润亏损 2.53 亿元</strong>，同比下降 194.44%。</p><p>经营活动产生的<strong>现金流量净额 4.68 亿元</strong>，同比大幅增长 1147.31%，主要系经营活动现金流入金额的增幅大于经营活动现金流出增幅。基本每股收益为 -0.0742 元 / 股，稀释每股收益同样为 -0.0742 元 / 股，同比均下降 312.22%；加权平均净资产收益率为 -6.37%，同比下降 4.75 个百分点。</p><p>报告期末，公司总资产为 191.30 亿元，较上年度末下降 11.43%；归属于上市公司股东的所有者权益为 37.68 亿元，较上年度末下降 5.94%。多项财务指标变动主要系应收款项收回、资产处置、费用减少等因素影响。</p></blockquote><p class=\"ad-tips\">风险提示：本文内容由 AI 自动分析生成，仅供参考，不代表IT之家观点。如有出入请以证监会指定上市公司信息披露平台为准。本文内容不构成投资建议，如有投资者据此操作，风险自担，IT之家对此不承担任何责任。</p>"
+                "title": "超导与磁场从“水火不容”到“互相成就”：中国科学家在镍氧化物中发现全新量子态，45 特斯拉下仍稳如磐石",
+                "link": "https://www.ithome.com/0/943/742.htm",
+                "published": "Sun, 26 Apr 2026 14:02:55 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，颠覆人类对磁性与超导关系的传统认知，中国科学家近期在镍基超导体系中取得了一项里程碑式的重要突破。</p><p>由香港城市大学李丹枫副教授、南方科技大学薛其坤院士团队陈卓昱副教授领衔，联合清华大学、中国科学院合肥物质科学研究院强磁场科学中心、华中科技大学国家脉冲强磁场科学中心等单位，通过对铕（Eu）掺杂无限层镍氧化物薄膜的精细调控，首次在与铜基高温超导结构相近的镍基材料体系中发现了由强磁场诱导的“重入超导”现象。相关成果已于 4 月 23 日以“加速文章预览”形式发表在《自然》上，引起了全球凝聚态物理学界的高度关注。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/46b8181f-08db-432c-9c24-e4c1cc00efc6.jpg?x-bce-process=image/format,f_auto\" /></p><p>在人们的日常经验中，强磁场往往会破坏超导体的零电阻特性 —— 磁性与超导两者长期以来被物理学家视为“水火不容”的对立量子态。</p><p>外加磁场通常通过轨道效应与泡利顺磁效应破坏超导电子对，从而抑制乃至消除超导电性。然而，在 Chevrel 相化合物、有机超导体、重费米子超导体等极少数特殊材料中，科学家们此前已观察到了一种极为反常的现象：超导态在低磁场下被抑制消失后，随着磁场继续增强，超导电性竟然能够“死而复生”，重新出现。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/089faff3-67fb-46d4-9b05-fbf299712ca9.jpg?x-bce-process=image/format,f_auto\" /></p><p>这种被称为“重入超导”（Re‑entrant Superconductivity）的奇异量子态，一直以来仅存在于转变温度极低（接近绝对零度）的体系中，始终未能在高温超导材料中被实现。而此次中国科学家团队，将这一现象首次拓展至具有较高转变温度（约 32K）的无限层镍氧化物中，实现了关键的体系跨越。</p><p>研究团队利用脉冲激光沉积与原位拓扑还原技术，制备出了高质量的 Sm₀.₉₅₋ₓCa₀.₀₅EuₓNiO₂薄膜，系统构建了完整的铕掺杂相图。当铕的掺杂浓度进入特定区间（x=0.32—0.40）时，实验观测到了一种令人难以置信的转变过程：低磁场下材料的超导态首先被抑制，样品进入正常态；但当外加磁场强度升至约 15 特斯拉以上时，消失的超导态竟然重新浮现，并能够在高达 45 特斯拉的极限稳态强场中保持稳定。</p><p>研究人员通过“零电阻”与“抗磁性”双重实验手段，对这一高场超导态进行了严格确证，排除了测量伪迹的可能。这一发现表明，在特定条件下，磁性相互作用并非超导的天然“破坏者”，反而可能扮演促进电子配对的“推手”。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/76520eed-370e-435a-abfd-be43c0c1ab4d.png?x-bce-process=image/format,f_auto\" /></p><p>更为引人注目的是，镍基体系中的重入超导现象展现出传统重入超导所不具备的“全角度鲁棒性”。在以往报道的 Chevrel 相化合物、有机超导体和重费米子超导体中，重入超导通常对磁场角度极为敏感，仅能在极窄的磁场方向范围内（约 2°—10°）出现。而本次研究发现，在镍基体系中，从 0° 到 90° 的完整角度范围内，高场超导态均能稳定存在。特别是在高掺杂浓度下，高磁场下的超导态甚至比低场超导态更为稳健。这一宽角度特征明确提示，经典物理学中用于解释重入超导的“磁场抵消机制”（Jaccarino‑Peter 效应）—— 即稀土 Eu²⁺离子的大磁矩所产生的内部交换场与外磁场相互抵消，使作用于库珀对的有效磁场降至超导上临界场以下 —— 已不足以完整解释这些现象的物理本质。研究团队在论文中指出，实验结果暗示着体系内可能存在由磁关联诱导的非常规超导配对机制，这为破解高温超导核心机理开辟了全新的实验路径。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/71af2737-faf0-4dd7-af66-5824f718a345.png?x-bce-process=image/format,f_auto\" /></p><p>在过掺杂样品的输运测量中，团队还观测到了多组重要的辅助证据：霍尔电阻呈现明显的非线性特征，并在强磁场下趋于饱和；磁电阻曲线则表现出显著的磁滞回线，其温度依赖关系暗示系统可能存在时间反演对称性破缺。这些实验现象表明，Eu²⁺的局域磁矩可能通过强自旋‑轨道耦合诱导出复杂的磁性关联，并与镍的 3d 巡游电子发生非平凡的相互作用，进而深刻影响超导配对的稳定性与相图演化。</p><p>本次成果的取得，高度依赖于极端实验条件的支撑。要清晰观测到重入超导特征，需要的磁场强度达到 60 特斯拉以上，并且需要实现在全角度范围内对电输运性质的高精度测量。华中科技大学国家脉冲强磁场科学中心在这一环节发挥了不可替代的关键作用。作为我国唯一、亚洲最大的脉冲强磁场设施，该中心可实现 50—94.88 特斯拉的脉冲强磁场，核心技术指标达到国际领先水平。中心李亮教授、王俊峰研究员团队不仅提供了稳定的 60 特斯拉超强磁场条件，还凭借自主研发的全角度转角电输运测量技术，精准捕获了这一新奇量子现象，覆盖了 0°—90° 的完整角度范围与完整铕掺杂区间。</p><p>IT之家附论文地址：<br /><span class=\"link-text-start-with-http\">https://doi.org/10.1038/s41586-026-10547-y</span></p>"
             },
             {
-                "title": "摩尔线程 2026 年一季度净利润 2935.92 万元，同比扭亏为盈",
-                "link": "https://www.ithome.com/0/943/632.htm",
-                "published": "Sun, 26 Apr 2026 07:35:49 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，摩尔线程今日发布 2026 年一季度报告：</p><ul class=\" list-paddingleft-2\"><li><p><strong>营业总收入</strong>： 7.38 亿元，同比增长 155.35%</p></li><li><p><strong>归母净利润</strong>： 2935.92 万元</p></li><li><p><strong>扣非净利润</strong>： -5428.22 万元</p></li><li><p><strong>经营现金流</strong>： -14.86 亿元</p></li><li><p><strong>基本每股收益</strong>： 0.06 元 / 股</p></li><li><p><strong>稀释每股收益</strong>： 0.06 元 / 股</p></li><li><p><strong>加权平均净资产收益率</strong>： 0.26%，同比增加 2.79 个百分点</p></li></ul><blockquote class=\"ai-point\"><h3>🤖 AI 解读</h3><p>报告期内，公司<strong>营业收入</strong>达到 &nbsp;7.38 亿元，较上年同期<strong>增长 155.35%</strong>，主要系公司专注于全功能 GPU 的研发与创新，新产品实现规模化落地，推动收入快速增长。</p><p><strong>归属于上市公司股东的净利润</strong>为 &nbsp;2935.92 万元，同比扭亏为盈；<strong>扣除非经常性损益的净利润</strong>为 -5428.22 万元，仍处于亏损状态，主要系公司持续保持较高研发投入。本期研发投入合计 &nbsp;3.69 亿元，同比增长 49.95%，研发投入占营业收入的比例为 &nbsp;50.03%，较上年同期减少 35.17 个百分点，主要因营业收入大幅增长。</p><p>报告期末，公司总资产为 &nbsp;154.90 亿元，较上年度末增长 0.99%；归属于上市公司股东的所有者权益为 &nbsp;115.19 亿元，较上年度末增长 0.53%。经营活动产生的现金流量净额为 -14.86 亿元，主要系公司为扩大生产规模，经营性采购支出增加所致。</p></blockquote><p class=\"ad-tips\">风险提示：本文内容由 AI 自动分析生成，仅供参考，不代表IT之家观点。如有出入请以证监会指定上市公司信息披露平台为准。本文内容不构成投资建议，如有投资者据此操作，风险自担，IT之家对此不承担任何责任。</p>"
+                "title": "可靠运行 18000 小时，我国 300 吨级矿用卡车动力总成实现自主可控",
+                "link": "https://www.ithome.com/0/943/741.htm",
+                "published": "Sun, 26 Apr 2026 13:40:35 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据《科技日报》今天报道，两台 300 吨级矿用卡车动力总成前天（4 月 24 日）创造新纪录，成功通过可靠运行 18000 小时大考，<strong>搭载我国自主可控的潍柴 12M55 动力总成</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/97be0b4f-2d8f-4665-b4d8-77bed98dc0b2.jpg?x-bce-process=image/format,f_auto\" /></p><p>“长期以来，我国 300 吨级矿卡所搭载的发动机多为外资产品。”中国工程机械工业协会副秘书长吕莹表示，本次突破具有里程碑意义，就如同该突破的里程碑意义，就如同张雪机车在葡萄牙站的双冠打破了欧美日品牌长期主导高端摩托车市场的格局。</p><p>据介绍，所谓“300 吨级矿卡”指的是额定载重为 300 吨的矿用自卸卡车，主要用于大型露天煤矿、金属矿等重载运输场景。<strong>其长度为 15.9 米、宽 10.3 米、高 8 米</strong>，<strong>仅一个轮胎的直径就达 4 米，可谓是“庞然大物”</strong>。</p><p>同时，大型矿山动力领域科技含量和产业壁垒极高。搭载外资动力品牌的矿卡其运行数据不与国内共享，证明本次记录刷新具备实际价值。</p><p>此外，12M55 发动机在核心系统方面实现了自主可控，其 ECU（IT之家注：电子控制单元）软件可按需优化定制，超高压共轨闭环控制系统实现燃油精准控制，并协同产业链构建起自主可控的供应链体系。</p>"
             },
             {
-                "title": "“里昂”配音演员：曾对《生化危机》真人电影感到失望，但这次选择相信导演扎克 · 克雷格",
-                "link": "https://www.ithome.com/0/943/630.htm",
-                "published": "Sun, 26 Apr 2026 07:31:57 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，《生化危机：安魂曲》游戏角色里昂 ·S· 肯尼迪配音演员尼克 · 阿波斯托莱德斯（Nick Apostolides）最近表示，他曾对《生化危机》真人电影感到失望，<strong>但这次选择相信重启作导演扎克 · 克雷格</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/a099f0a3-dc15-4000-a758-982c4e754e26.png?x-bce-process=image/format,f_auto\" /></p><p>尼克上周（IT之家注：4 月 18 日）接受 Radio Times Gaming 采访时表示，以前的《生化危机》真人版电影并未让他产生共鸣。然而，他选择对扎克 · 克雷格执导的全新改编作品重燃希望。</p><p>他对此解释道：“我非常谨慎地保持乐观，过去我曾失望过。我非常喜欢克雷格的作品，<strong>相信他能把这部电影拍好</strong>，然后融入《生化危机》元素”。</p><p>目前，扎克 · 克雷格已经在 CinemaCon 2026 展会放出《生化危机》真人改编电影的首个片段。主要讲述一名浣熊市幸存的医疗快递员，与一群被 T 病毒感染的僵尸斗争。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/d00854be-fd6d-42f4-a3ff-c9f99fad9ffd.jpg?x-bce-process=image/format,f_auto\" /></p><p>此外，这部电影将保持《生化危机》的核心风格，剧情并非复述游戏而是原创。片名也简洁明了，就叫做《生化危机》（Resident Evil）。</p>"
+                "title": "逆转糖尿病：科学家培育出高效胰岛素细胞，成功使小鼠血糖恢复正常",
+                "link": "https://www.ithome.com/0/943/740.htm",
+                "published": "Sun, 26 Apr 2026 13:32:46 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，瑞典卡罗林斯卡学院和皇家理工学院的研究人员在干细胞培育胰岛素细胞领域取得重要突破。相关成果已发表在《干细胞报告》上。</p><p>他们开发出了一种更可靠的方法，能够从人类干细胞中稳定地生成高质量、功能更强的胰岛素分泌细胞。这些细胞在实验中可有效调节血糖，并成功逆转了糖尿病小鼠的病情。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e369d585-3414-488e-b1a7-525b1a266465.jpg?x-bce-process=image/format,f_auto\" /></p><p>1 型糖尿病通常由于免疫系统错误攻击并摧毁胰腺中分泌胰岛素的 β 细胞，导致血糖调控能力丧失。长期以来，细胞替代疗法被视为一种有前景的治疗策略，但此前利用干细胞生成胰岛素细胞的方法存在结果不稳定、细胞成熟度不足等问题，难以满足临床需求。</p><p>此次研究团队优化了细胞培养流程，使生成的胰岛素细胞在成熟度和功能性方面显著提升。这些细胞在实验室测试中能够有效响应葡萄糖刺激并释放胰岛素。在移植到糖尿病小鼠模型后，小鼠的血糖调控能力逐渐恢复正常。移植操作是在小鼠眼球前房进行的，这种方式便于研究人员以微创方式长期监测细胞发育与功能变化。</p><p>“我们观察到移植后的细胞在体内逐步成熟，并在数月内保持良好的血糖调节能力，这展示了其在临床治疗中的巨大潜力。”研究通讯作者之一、卡罗林斯卡学院教授 Per-Olof Berggren 表示。</p><p>此外，研究团队还通过让细胞自发形成三维细胞团，有效减少了非目标细胞类型的混杂，提高了细胞对葡萄糖的响应效率，解决了此前干细胞疗法中存在的一些关键问题。</p><p>“这项进展有望推动干细胞疗法在 1 型糖尿病治疗中的临床转化，我们下一步的目标是推进临床试验，真正用于治疗 1 型糖尿病患者。”论文最后作者、卡罗林斯卡学院 Fredrik Lanner 教授指出。</p><p>IT之家附论文地址：<br /><span class=\"link-text-start-with-http\">https://doi.org/10.1016/j.stemcr.2026.102892</span></p>"
             },
             {
-                "title": "美联储：ChatGPT 发布后美国程序员岗位增速腰斩，外包领域最为明显",
-                "link": "https://www.ithome.com/0/943/629.htm",
-                "published": "Sun, 26 Apr 2026 07:20:50 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，美联储理事会 / 委员会发布的一项研究报告显示，美国程序员岗位增速自 ChatGPT 发布（2022 年 11 月）后几乎减半，AI 带来的影响正从日常工作场景扩展至宏观就业数据层面。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/90064c90-adb7-4304-95d4-ea12bc8b8f2f.jpg?x-bce-process=image/format,f_auto\" /></p><p>该研究将月度就业数据与劳工部按技能要求分类的职业数据库进行交叉比对，精准识别出编程工作量占比较高的职业群体，这类群体约占全美劳动者总数的 3.7%。</p><p>ChatGPT 发布前，美国编程密集型岗位年增长率接近 5%，显著高于整体劳动力市场。此后增速大幅放缓，在 IT 服务和软件开发等程序员占比尤其高的行业中，增长基本停滞。这一变化的时间节点与生成式 AI 工具进入主流应用高度吻合，表明技术对就业结构的影响已开始在宏观数据中显现。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/97ba55a3-2c28-4d3e-820d-5d9c5bcfa0ae.png?x-bce-process=image/format,f_auto\" /></p><p>根据美联储的分析，最近三年编程密集型岗位的增长率相比 2022 年前的趋势每年下降约 3 个百分点。虽然程序员总体就业尚未进入绝对下降状态，但新增岗位数量已大幅萎缩。研究人员指出，如果维持 AI 出现前的增长轨迹，美国经济有望比目前多出数十万个编程岗位。</p><p>同时，这一变化对不同职业阶段的程序员影响并不均衡 —— 研究显示，22 至 25 岁最年轻程序员群体受冲击尤为严重。自 2022 年底以来，该年龄段的在职程序员人数已骤降近 20%。这一群体处于职业阶梯的入门级，工作内容通常包括编写模板代码、调试简单脚本和日常维护，而这些任务正是大语言模型能够高效低成本完成的。AI 通过自动化这些基础工作，实质上提高了成为软件工程师的门槛，在职业阶梯上形成一个“断裂的横档”。</p><p>与初级从业者的困境相反，资深开发者的劳动力市场价值正在上升。美联储研究揭示了一个看似矛盾的趋势：尽管整体职业增速放缓，计算机系统设计等专业领域经验丰富的程序员薪资涨幅高达 16.7%，远超同期全美约 7.5% 的平均工资增长水平。这种现象可以用编码知识与默会知识的差异来解释 —— 生成式 AI 擅长复现教科书和公开代码库中的编码知识，但在处理复杂制度系统和架构权衡中积累的默会知识方面仍存在困难。因此，企业愿意为能够利用 AI 工具产出更大成果的资深人才支付溢价，同时减少对初级支持人员的整体招聘。</p><p>研究揭示的另一项发现涉及行业结构：美国约 40% 的程序员并非就职于大型科技公司或初创企业，而是在以合同制方式开发软件的 IT 服务提供商中工作。这一外包领域是程序员的最大雇主，也是就业放缓最为显著的地方。实际就业与预期之间的差距直到 2024 年中期才显现，距 ChatGPT 发布约一年半，表明企业可能需要先观察 AI 模型的能力提升，之后才调整招聘计划。对于这些公司而言，一名开发者借助 AI 助手能完成两到三人工作量，意味着可以用更少员工履行合同，直接影响劳动力总需求。</p><p>美联储研究员指出，中短期内替代效应 —— 智能取代人力 —— 目前压倒了低价带来的扩张效应。对于政策制定者和教育机构而言，传统进入科技行业的路径正在被改写。随着 AI 从简单的自动补全工具发展为复杂的自主智能体，“程序员”的定义正在重写 —— 更青睐能够担当架构师、审核者和系统思考者角色的人，而非单纯的语法书写者。近乎减半的增速不一定意味着行业衰落，而是行业正将其劳动力需求快速整合到更高阶的技能集周围，留下那些从事机器可在数秒内完成任务的岗位。</p><p>IT之家附论文地址：</p><p><span class=\"link-text-start-with-http\">https://doi.org/10.17016/FEDS.2026.018</span></p>"
+                "title": "卡普空举办庆功宴：庆祝《生化危机：安魂曲》销量突破 700 万，TGA 创办人杰夫 · 基思利也来了",
+                "link": "https://www.ithome.com/0/943/739.htm",
+                "published": "Sun, 26 Apr 2026 13:21:30 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据游戏媒体 VGC 今天报道，卡普空昨天举办庆功宴，<strong>庆祝《生化危机：安魂曲》游戏销量突破 700 万</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/f9ab601c-7583-42c7-9da0-5bc26e02c9c2.jpg?x-bce-process=image/format,f_auto\" /></p><p>据《生化危机：安魂曲》导演中西晃史发文，本次派对上展出了以里昂、格蕾丝为主题的蛋糕。并且 TGA 创办人、主持人杰夫 · 基思利（Geoff Keighley）也出席活动，主持“派对宾果”活动。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/24822352-6fb6-424a-90ef-a667c236c2d3.png?x-bce-process=image/format,f_auto\" /></p><p>卡普空统计数据显示，《生化危机：安魂曲》发售后不到一周销量就达到 500 万，几周后达到 600 万，成为系列史上销售最快的游戏。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/1af6fc6a-2543-403c-a85e-f3972808edcb.png?x-bce-process=image/format,f_auto\" /></p><p>游戏行业研究者 Alex Aniel 指出，《生化危机》系列此前最快突破 700 万份销量的是《生化危机 4 重制版》，耗时 12 个月 1 周。</p><p>作为参考，<strong>卡普空迄今为止销量最高的《生化危机》系列游戏是《生化危机 2 重制版》（IT之家注：1680 万）</strong>，其次是《生化危机 7》（1640 万）《生化危机：村庄》（1350 万）以及《生化危机 4 重制版》（1220 万）。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/7dde0ad3-4938-4af9-a76c-5ed5c7db3a1d.jpg?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "威马汽车 1.275 亿元债权 100 元起拍：不保证债权真实性，无法提供原件材料",
-                "link": "https://www.ithome.com/0/943/628.htm",
-                "published": "Sun, 26 Apr 2026 07:09:50 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据极目新闻报道，威马汽车破产清算进程迎来关键节点。淘宝阿里拍卖平台信息显示，威马新能源汽车采购（上海）有限公司管理人将于 4 月 27 日对该公司 24 户对外应收款项进行公开拍卖，账面金额合计约 1.28 亿元，起拍价仅设定为 100 元。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/2112f597-442c-4e72-af26-75e841d2ba2e.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/62aaa70a-5e92-49dc-9af5-2b9bfbe86689.jpg?x-bce-process=image/format,f_auto\" /></p><p>根据拍卖标的调查情况表，此次拍卖涉及账面金额 127,591,590.42 元的对外债权。管理人可提供的材料仅限于破产受理民事裁定书、指定管理人决定书及债权转让协议等法律文件，但明确表示无法提供与债权相关的任何材料或者原件材料。</p><p style=\"text-align: center;\">IT之家注意到，拍卖公告中，管理人作出多项风险提示：不提供对外债权真实性或可收回性的保证或承诺，拍卖标的可能存在的瑕疵或尚未发现的缺陷，包括对外债权可能全部或部分无效、不存在、无法追回、产生损失等，真实性存在瑕疵等。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/efad1f02-e7fc-475e-ae2c-a2b926ba4e45.jpg?x-bce-process=image/format,f_auto\" /></p><p>债务清单显示，应收款对象包括博世汽车、海拉电子等汽车零部件行业头部企业。非诉讼催收记录显示，部分债务人已签收催款通知，部分回函否认欠款，另有部分退回。值得注意的是，管理人未接管到任何与债务人签署的书面合同，双方交易均通过威马内部系统完成，而该系统已于 2022 年底停止运行且无法恢复，目前仅有电子版财务账目可供参考。</p><p>截至 4 月 26 日 10 时，该标的已有 18 人报名参与竞拍。此次拍卖系该批债权的第五次拍卖。</p><p>同日披露的另一则拍卖信息显示，威马系关联公司 —— 威马新能源汽车销售（上海）有限公司持有的 123 笔对外应收款项（合计约 1.40 亿元）将于 5 月 5 日进行第五次拍卖，同样面临无原始合同、无系统数据支撑、仅有电子账目的困境。</p><p>公开资料显示，威马新能源汽车采购（上海）有限公司成立于 2018 年 7 月，注册资本 1 亿元，注册地位于上海市青浦区，由威马汽车科技集团有限公司全资控股。后者于 2023 年 10 月向法院申请破产重整。威马汽车曾与蔚来、小鹏、理想并称为“造车新势力四小龙”。</p><p>据上海市第三中级人民法院决定书，2025 年 6 月，该院已裁定受理两家公司的破产清算申请，并指定北京大成（上海）律师事务所及立信会计师事务所担任管理人。</p><p>威马汽车的溃败并非孤例。随着新能源汽车市场竞争进入白热化阶段，行业已从野蛮生长转入深度洗牌期。近年来，包括拜腾汽车、爱驰汽车、前途汽车、力帆新能源、高合汽车、哪吒汽车等在内的超过 20 家具有一定知名度的新能源车企已相继破产或退出市场，标志着行业“淘汰赛”阶段的全面到来。</p>"
+                "title": "BioWare：正全力开发《质量效应 5》，暂无余力做游戏宣发",
+                "link": "https://www.ithome.com/0/943/738.htm",
+                "published": "Sun, 26 Apr 2026 13:02:12 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，BioWare 项目总监 Michael Gamble 在 X 上回复网友时提到，其团队正在全力开发《质量效应 5》，根本抽不出时间来做宣发。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ad5b6459-445b-4e71-8f5b-7d99cd7cc69f.jpg?x-bce-process=image/format,f_auto\" /></p><p>自 2020 年官宣以来，关于这款游戏的实质性内容非常有限，几乎只在去年 11 月 7 日发布了一组概念图，描绘了克洛根人之间的内战场景。另外，BioWare 过去几个月还陆续出现了若干招聘信息，表明项目组正在积极扩充开发团队。</p><p>TheGamer 将《质量效应 5》视为受过早公布所累的项目之一，类似情况也出现在《上古卷轴 6》身上。工作室早在“新建文件夹”阶段就放出消息，导致粉丝心中一直会抱有某种期待。而实际上，当工作室同时忙于其他项目（IT之家注：例如 BioWare 优先开发《龙腾世纪：影障守护者》，Bethesda 优先开发《星空》）时，这些项目在“最初几年”的实际进展微乎其微，通常仅由极少数核心成员进行概念构思与提案。</p><p>因此，尽管《质量效应 5》在 2020 年就已公布，但游戏的实质性开发工作很可能是在 2024 年《龙腾世纪：影障守护者》发售后才真正启动。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/726/886.htm\" target=\"_blank\">〈质量效应〉新作采用虚幻引擎 5 打造，利用 MetaHuman 工具创建逼真角色</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/936/205.htm\" target=\"_blank\">为照顾没玩过游戏的观众，消息称亚马逊〈质量效应〉电视剧正重写剧本</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/895/886.htm\" target=\"_blank\">BioWare：正“全力专注于”下一部〈质量效应〉游戏开发，一定会让大家兴奋</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/860/718.htm\" target=\"_blank\">亚马逊正积极推进〈质量效应〉真人剧，道格・郑加盟并担任执行制片人</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/827/970.htm\" target=\"_blank\">BioWare 确认正在裁员，称〈质量效应〉不需要整个工作室提供支持</a>》</p></li></ul>"
             },
             {
-                "title": "国内首家、全球第四家，砺算科技 7G100 显卡通过微软 WHQL 认证",
-                "link": "https://www.ithome.com/0/943/627.htm",
-                "published": "Sun, 26 Apr 2026 07:01:16 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据微软官网数据，<strong>砺算科技 7G100 现已通过微软 WHQL 认证</strong>。成为国内首家、全球第四家通过此认证的 GPU 公司。</p><p style=\"text-align: center;\"><img class=\"not-source\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/25fc124d-a03b-4858-abb6-3d03904f1465.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"not-source\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/4fc3aa4c-f0ca-4bb3-82be-09971a27f387.png?x-bce-process=image/format,f_auto\" /></p><p>IT之家注：WHQL（Windows 硬件质量实验室测试）是微软设立的硬件兼容认证体系。它通过严格的测试流程，验证硬件设备及驱动程序与 Windows 操作系统的稳定性和兼容性。旨在确保硬件 / 驱动能在 Windows 系统中稳定运行。</p><p>作为参考，砺算科技 7G100 系列 GPU 采用 TrueGPU 架构，<strong>基于 6nm 制程工艺打造</strong>。从计算核心、指令集到整体架构均由砺算独立完成自主研发，不依赖任何外部技术授权，显著增强应对外部技术限制风险的能力</p><p style=\"text-align: center;\"><img class=\"not-source\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/2bb7608c-5e77-4144-a3ee-5bde03b06b5a.jpg?x-bce-process=image/format,f_auto\" /></p>"
+                "title": "美国公司 Lepton Computing 起诉三星折叠屏手机侵权，要求永久禁售",
+                "link": "https://www.ithome.com/0/943/737.htm",
+                "published": "Sun, 26 Apr 2026 12:52:06 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据科技媒体 Sammobile 今天报道，美国公司 Lepton Computing LLC 最近对三星提起诉讼，指其侵犯专利，并要求三星折叠屏手机永久禁售。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/7fc595f0-8556-4aea-9b59-24fb90fcb4de.jpg?x-bce-process=image/format,f_auto\" /></p><p>据报道，Lepton Computing 声称自己拥有多种折叠屏智能手机专利，<strong>指控三星 Galaxy Z Fold、Z Flip、Z TriFold 系列折叠屏手机侵犯其核心技术</strong>。</p><p>Lepton Computing 在诉讼中要求三星赔偿损失、支付专利使用费。<strong>并要求法院对三星所有折叠屏手机颁布永久禁售令</strong>。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/7794b743-c461-4d6e-835d-1685ac48593d.png?x-bce-process=image/format,f_auto\" /></p><p>该公司还在文件中声称，<strong>他们在 2013 年与三星讨论过可折叠手机的合作事宜</strong>，<strong>同时向三星分享过工程机技术细节</strong>。三星“知法犯法”，在知晓相关专利的情况下仍推出侵权产品。</p><p>然而这起诉讼案可能牵扯很多细节。据韩国媒体 TheBiz 报道，<strong>Lepton 在诉讼中提到的专利注册于 2021 年 6 月 29 日</strong>，<strong>而三星首款折叠屏手机 Galaxy Fold 早在 2019 年就发布</strong>，比专利注册早两年。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/26db9c38-49c2-4e8c-af95-50af8d1a28a4.jpg?x-bce-process=image/format,f_auto\" /></p><p>总体来说，三星无疑会全力应对诉讼，整个庭审流程可能长达数年。与此同时，消费者仍可正常购买 Galaxy 折叠屏手机。</p>"
             },
             {
-                "title": "科学家发现宇宙膨胀速度比预期更快，现有理论面临挑战",
-                "link": "https://www.ithome.com/0/943/626.htm",
-                "published": "Sun, 26 Apr 2026 06:46:42 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，一个国际天文学家团队公布了迄今对近邻宇宙膨胀速率最精确的直接测量结果，该结果非但未能平息长期存在的宇宙学争议，反而进一步加剧了所谓的“哈勃常数 / 张力”。</p><p>新研究以超过 1% 的精度测得哈勃常数为 73.50 ± 0.81 千米 / 秒 / 百万秒差距，这一数值与此前对早期宇宙的推算结果存在显著差异，意味着人类当前对宇宙的理解可能缺失了某些关键部分。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/0f973de5-a790-482b-9c22-3482e27278bf.jpg?x-bce-process=image/format,f_auto\" /></p><p>长期以来，研究人员使用两种截然不同的方法来测定宇宙的膨胀速率。一种方法聚焦于邻近天体，通过测量恒星和星系的距离来计算；另一种方法则回溯至早期宇宙，利用宇宙微波背景辐射，在标准宇宙学模型框架下推算今天的膨胀速率。</p><p>理论上，这两种途径得出的结果应当一致，但实际观测中并不一致 —— 第一种方法测量值始终指向约 73 千米 / 秒 / 百万秒差距的较快膨胀速度，而基于早期宇宙的估算值则偏低，约为 67 或 68。</p><p>尽管差异看似微小，但科学家无法用偶然误差解释。这一持续存在的偏差被称为“哈勃常数 / 张力”，目前已得到多项独立研究证实。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/43c2c978-9ab9-4574-a412-69127d497909.jpg?x-bce-process=image/format,f_auto\" /></p><p>为获得更精确的测量结果，由 H0 距离网络合作组织领导的天文学家团队将数十年的观测数据整合进一个统一的、协调的框架中。相关论文于 4 月 10 日发表在《天文与天体物理学》期刊上。</p><p>该研究源于 2025 年 3 月在瑞士伯尔尼国际空间科学研究所举行的一次突破性研讨会。合作团队表示：“这不仅仅是一个新的哈勃常数值，更是一个由社区共同构建的框架，它以透明、可获取的方式将数十年的独立距离测量结果汇集在一起。”</p><p>在这项工作中，美国国家科学基金会 NOIRLab 提供了关键的专业知识与观测数据。分析涵盖了来自智利托洛洛山美洲际天文台和亚利桑那州基特峰国家天文台的观测资料，两者均为 NSF NOIRLab 旗下的项目。这些数据集与来自其他地面及空间天文台的观测相结合，增强了最终结果的可靠性。</p><p>研究团队没有依赖单一技术，而是创建了一个“距离网络”，连接了造父变星、已知亮度的红巨星、Ia 型超新星以及特定类型的星系等多种独立的宇宙距离测量方法。即便逐一排除个别方法，结果依然保持稳定，这表明所测得的膨胀速率是稳健的。</p><p>论文作者总结称：“这项工作实际上排除了那些将哈勃常数归咎于局部距离测量中某个被忽视的单一误差的解释。如果这种张力是真实的，正如越来越多证据所显示的那样，那么它可能指向标准宇宙学模型之外的新物理学。”这一差异的影响超出了测量技术本身。源自早期宇宙的较慢膨胀速率依赖于描述宇宙自大爆炸以来演化过程的标准模型，如果该模型不完整，例如未能完全捕捉暗能量、未知粒子或引力的可能变化，那么它对今天膨胀速率的预测就可能不准确。这增加了哈勃常数并非简单的测量问题，而是当前宇宙模型缺失关键一环的证据的可能性。</p><p>IT之家附论文地址：<br /><a href=\"https://doi.org/10.1051/0004-6361/202557993\" target=\"_blank\"><span class=\"link-text-start-with-http\">https://doi.org/10.1051/0004-6361/202557993</span></a></p>"
+                "title": "史上最长寿月球车：玉兔二号已超期服役 7 年多，目前仍在月球背面“打工”",
+                "link": "https://www.ithome.com/0/943/736.htm",
+                "published": "Sun, 26 Apr 2026 12:47:39 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，在距离地球约 38 万公里的月球背面，一辆名为玉兔二号的月球车仍在悄然续写着人类深空探测史上的传奇。</p><p>据央视周五报道，玉兔二号如今已是人类历史上在月表工作时间最长的探测器，央视还戏称其为“史上最长寿的月球打工兔”，并特意为其录制了一档《玉兔打工日记》。</p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/7211561239/QCkzAq5Bv?refer_flag=1001030103_\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/fc2e017e-eb29-4d12-86a6-fb36117b6da6.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>早在 2019 年 1 月 3 日，嫦娥四号探测器便实现人类探测器首次月球背面软着陆，随后玉兔二号顺利完成与着陆器的分离，驶抵月背，在人类历史上首次留下了月球背面的车辙印记。</p><p>转眼间 7 年多过去，它的设计寿命原本只有 3 个月，却足足超期服役了 7 个年头，成为了名副其实的在月球上坚持最久的探测器。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/1c1ee0a5-8e52-4890-b8d7-204e07226a11.jpg?x-bce-process=image/format,f_auto\" /></p><p>月球表面几乎处于真空状态，由于缺乏大气层的保护，其白昼温度可飙升至 150℃ 以上，而当长达 14 个地球日的漫长月夜降临时，气温又会骤降至零下 180℃ 的极寒。面对这种如同冰火两重天的恶劣环境，玉兔二号抛弃了复杂笨重的机械臂，通过优化设计成为当时世界上最轻的月球车之一。它能持续运行至今，最关键的设计之一便是其热控系统。它采用了多层隔热组件与自主休眠技术，并且在月夜期间依靠放射性同位素热源为自身的核心部件提供最低限度的热量，从而确保车上的各种仪器和车体在滴水成冰的黑暗中不被冻坏，进而等待下一个月昼被阳光唤醒继续工作。配合轮毂上精密的筛网设计，玉兔二号得以在松软的月壤上不打滑、不陷落，灵活地爬坡前行。正是这套融合了极简轻量化和周全热防护的独特设计思路，才让它从一头设计寿命仅 3 个月的实验性小兔，变成了一头迄今已工作了 2600 多天的“金刚兔”。</p><p>在月背长达 2100 多个日夜的漫漫旅途中，玉兔二号的足迹虽看似“龟速”，累计行驶里程已突破 1600 米，但它每碾过一寸陌生的土地，背后都凝结着丰硕的科学成果。它在月背发现过神秘的胶状物质，探测过引发全网热议的远处亮光闪烁“神秘小屋”（一块天然岩石，而恰好这块石头从特定的角度看过去像是一只蹲伏在月球表面的“兔子”，前面还散落着几块胡萝卜，因此被大家称为“玉兔石”）。</p><p>更为核心的发现藏在更广阔的地表之下。玉兔二号在行进过程中，曾发现了多颗国际范围内首次在月球背面被发现的厘米级直径半透明玻璃珠。科学家们认为，这些玻璃珠并不是火山喷发的产物，而是贫铁的月壳斜长岩在遭受外来陨石高速撞击引发的高温熔融后，通过熔融物快速冷却形成的，它们像一颗颗时间胶囊一样，记录下了月球早期乃至太阳系历史上频繁的撞击事件，显得弥足珍贵。</p><p>另一大亮眼发现则隐藏在玉兔二号的脚下。它通过搭载的先进测月雷达，向地下发射电磁波，成功揭示了月球背面着陆区地下 40 米深度内清晰的地质分层结构，并绘制了人类第一幅长达近 500 米、深及 50 米的月球背面地质剖面图。这些数据不仅帮助科学家验证了月球背面近期存在火山活动的新推断，也为人类从地史角度重新审视这颗星球提供了无可替代的关键数据集。</p><p>目前，玉兔二号与嫦娥四号着陆器依旧在月背开展着常态化的科学探测。与此同时，中国探月的接力棒已经传到了新一代手中。作为后续布局，我国的嫦娥七号探测器计划于 2026 年择机发射，目标将直接锁定在具备重大战略意义的月球南极地区，它的主要任务之一便是去探寻可能藏在永久阴影坑内的水冰资源。</p><p><strong>相关阅读：</strong></p><ul class=\"small-size list-paddingleft-2\"><li><p>《<a href=\"https://www.ithome.com/0/937/876.htm\" target=\"_blank\">嫦娥七号探测器运抵文昌发射场，我国将对现有载人登月和无人探月领域资源力量进行深度统合</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/927/317.htm\" target=\"_blank\">嫦娥七号今年发射，中国有望成为全球首个在月球找到水的国家</a>》</p></li><li><p>《<a href=\"https://www.ithome.com/0/924/727.htm\" target=\"_blank\">我国月球南极水冰稳定性研究取得新进展，为未来嫦娥七号探测任务提供重要支撑</a>》</p></li></ul>"
             },
             {
-                "title": "拿鸭肉冒充牛肉，上海公布一批网络餐饮食品安全典型案例",
-                "link": "https://www.ithome.com/0/943/624.htm",
-                "published": "Sun, 26 Apr 2026 06:45:34 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，据央视网今天报道，上海市市场监督管理局最近公布首批网络餐饮食品安全典型案例，其中存在“拿鸭肉冒充牛肉”“使用过期原料加工食品”“幽灵外卖”等现象。旨在以案示警，希望广大入网餐饮经营者引以为戒，切实履行食品安全主体责任。</p><p>IT之家附八大典型案例如下：</p><blockquote><h3>　　一、上海市市场监督管理局执法总队查处松江区上海某餐饮公司涉嫌伪造食品经营许可证案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 2 月，上海市市场监督管理局执法总队在查处当事人涉嫌发布虚假广告的违法行为中发现当事人未取得食品经营许可。经查，当事人为满足电子商务平台规定的店铺上线的食品经营许可证要求，通过手机图片的编辑功能对其他公司的食品经营许可证的经营者名称、统一社会信用代码、法定代表人（负责人）、住所及经营场所、有效期起止日期等内容进行修改，伪造成当事人的食品经营许可证后上传至电子商务平台使用并对外公示。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述行为涉嫌违反《食品经营许可和备案管理办法》第二十八条第一款“食品经营者应当妥善保管食品经营许可证，不得伪造、涂改、倒卖、出租、出借、转让”的规定，构成《中华人民共和国治安管理处罚法》第六十三条第一项的规定的伪造国家机关证明文件的行为，上海市市场监督管理局执法总队依据《中华人民共和国行政处罚法》第二十七条第一款、《行政执法机关移送涉嫌犯罪案件的规定》第三条的规定，4 月 14 日将该案移送上海市公安局松江分局。当事人发布虚假广告的违法行为另案调查处理。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人伪造食品经营许可证违法行为进行查办，严厉打击通过伪造资质蒙混过关、利用虚假信息误导消费者的违法行为。警示广大入网餐饮经营者，食品经营许可证是合法经营的“身份证”。切勿心存侥幸，以身试法，通过伪造、变造、冒用许可证来博取流量和利益。牢固树立合法合规经营的底线，确保资质真实、信息透明，共同营造安全、放心的网络餐饮消费环境。</p></li></ul><h3>　　二、浦东新区市场监督管理局查处浦东新区某餐饮店涉嫌经营掺假掺杂食品案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 4 月 16 日，浦东新区市场监督管理局与浦东公安对当事人开展联合检查，现场查见当事人后厨储存待用的“黑椒柳条”原料，其标签标示配料：鸭肉、水、淀粉等，用于店内制作炽牛土豆烤盘饭、烘牛茄子烤盘饭、烘牛豆皮烤盘饭。经查，自 2023 年开业起，当事人在店内制售炽牛土豆烤盘饭，并在外卖平台上销售，外卖平台上显示商品原料主料：土豆、牛肉。当事人通过线下及两个外卖平台上销售标称原料为牛肉实际为鸭肉的菜品，存在经营掺假掺杂的食品的行为，执法人员现场对涉案原料实施扣押。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述违法行为涉嫌违反《中华人民共和国食品安全法》第三十四条第六项的规定。因违法时间跨度较长，金额较大，浦东新区市场监督管理局依据《中华人民共和国行政处罚法》第二十七条第一款、《行政执法机关移送涉嫌犯罪案件的规定》第三条的规定，依法移送公安机关。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人经营掺假掺杂的食品，将鸭肉当成牛肉来制售的违法行为予以查处。警示广大入网餐饮经营者，规范标签标识、进货查验等全流程操作，提升市场主体的守法意识，维护规范有序的肉制品市场环境。</p></li></ul><h3>　　三、长宁区市场监督管理局查处长宁区上海某品牌管理有限公司未落实食品安全主体责任系列案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 3 月 15 日，长宁区市场监督管理局根据舆情线索，对辖区某无堂食外卖聚集区开展检查。经查，该聚集区提供入网餐饮服务，区内 23 家入网餐饮商户均存在不同程度的食品安全违法行为，主要表现为：使用过期食品原料加工食品、厨房环境脏乱、清洗消毒设施不规范、食品存储条件不达标，以及未建立“日管控、周排查、月调度”记录制度等。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述行为违反了《中华人民共和国食品安全法》第三十三条第一款第十一项、《中华人民共和国食品安全法》第三十四条第三项、《上海市食品安全条例》第二十四条第一款第一项、《食品生产经营企业落实食品安全主体责任监督管理规定》第十一条第一款的规定。长宁区市场监督管理局依法责令上述 23 家企业改正违法行为，并分别作出警告、没收违法所得、罚款等行政处罚。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人未落实食品安全主体责任的违法行为予以查处，并分别对 23 家涉案入网餐饮商户进行处罚。警示广大入网餐饮经营者切实增强食品安全主体责任意识、日常卫生管理意识、风险防范意识、从业人员规范操作意识。</p></li></ul><h3>　　四、杨浦区市场监督管理局查处杨浦区上海某餐饮店涉嫌经营掺杂掺假食品案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 4 月 16 日，杨浦区市场监督管理局对上海某餐饮店开展监督检查。经查，当事人为无堂食外卖经营者，其通过“快驴”“美菜”等微信小程序进货原材料为“鸭肉、牛脂肪”的“复合雪花肉卷”，用于作为麻辣香锅中“雪花肥牛”的原材料对外进行销售，使消费者将鸭肉误以为雪花牛肉进行购买。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人涉嫌经营掺杂掺假食品金额达到入刑标准，构成犯罪，依据《中华人民共和国行政处罚法》第二十七条第一款、《行政执法机关移送涉嫌犯罪案件的规定》第三条的规定，杨浦区市场监督管理局已依法将该违法线索移送上海市公安局杨浦分局。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人涉嫌经营掺杂掺假食品的情况予以移送公安，强化与区公安局信息共享、线索移送工作机制。警示广大入网餐饮经营者严格落实主体责任，严把原料采购、进货查验、加工制作全流程关口，杜绝销售以假充真、以次充好、掺杂掺假食品。</p></li></ul><h3>　　五、闵行区市场监督管理局查处上海市闵行区某餐饮服务有限公司生产经营混有异物的食品案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 3 月 17 日，闵行区市场监督管理局对网民在社交平台反映存在食品卫生问题的上海市闵行区某餐饮服务有限公司予以处罚。经查，当事人员工在取物时不慎将操作台上一块抹布碰入待用的空烫煮菜篓中并与后续接到的一份外卖订单菜品一起烫煮后打包出餐，致使混有整块抹布的食品配送至消费者手中，存在食品安全风险隐患。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述行为违反了《中华人民共和国食品安全法》第三十四条第六项的规定。闵行区市场监督管理局依据《中华人民共和国食品安全法》第一百二十四条第一款第四项的规定，依法对当事人处罚款人民币 50000 元。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人生产经营混有异物的食品的违法行为予以查处。警示广大入网餐饮经营者严格落实分区分色管理，定期排查管理漏洞，不断完善操作规范，确保餐饮制售全流程、全环节的食品安全。</p></li></ul><h3>　　六、嘉定区市场监督管理局查处张某未按要求更新经营许可信息案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 4 月 7 日，嘉定区市场监督管理局在网络餐饮日常专项治理检查中发现张某存在未及时更新经营许可信息的行为。经查，当事人为小型餐饮服务提供者，在某网络平台开设外卖店铺，店铺内公示的经营许可信息已失效，但未按要求及时更新。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述行为违反了《网络餐饮服务食品安全监督管理办法》第九条的规定。嘉定区市场监督管理局依据《中华人民共和国行政处罚法》第二十八条第一款、第五十一条、《网络餐饮服务食品安全监督管理办法》第三十二条的规定，依法对当事人作出了警告的行政处罚。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人未按要求在外卖平台更新经营许可信息的行为予以查处。警示广大入网餐饮经营者落实主体责任、规范线上信息公示，也提示平台方应加强资质信息的动态核验。</p></li></ul><h3>　　七、松江区市场监督管理局查处上海市松江区某餐饮店提供虚假网络食品安全信息案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 3 月 25 日，上海市松江区市场监督管理局依托“食安小蜜蜂”小程序收到了来自骑手反馈的“幽灵外卖”违法线索。执法人员当即赶赴现场进行核查，经查当事人自身持有合法证照，又利用他人证照，在网络平台额外开设外卖店铺，存在入网食品经营者提供虚假网络食品安全信息的违法行为。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的行为违反了《网络食品安全违法行为查处办法》第四条第二款的规定，上海市松江区市场监督管理局依据《网络食品安全违法行为查处办法》第四十三条规定，依法责令当事人改正违法行为，并处罚款人民币 18000 元。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人借用他人证照违规注册店铺，引发注册地址与实际取餐地址不一致，导致“幽灵外卖”的行为予以查处。警示广大入网餐饮经营者莫要为了流量，忽视合规守法底线。同时，积极鼓励骑手参与食品安全社会监督共治。</p></li></ul><h3>　　八、奉贤区市场监督管理局查处上海市奉贤区某小吃店安排未取得健康证明的人员从事接触直接入口食品工作案</h3><ul class=\" list-paddingleft-2\"><li><p style=\"text-align: start;\">　　案情介绍：2026 年 3 月 20 日，奉贤区市场监督管理局执法人员对上海市奉贤区某小吃店开展执法检查。经查，当事人为餐饮服务经营主体（含网络），现场检查发现，当事人在从事食品制售经营过程中，安排一名未取得有效健康证明的员工从事接触直接入口食品的相关工作，存在食品安全风险隐患。</p></li><li><p style=\"text-align: start;\">　　法律依据及处罚：当事人的上述行为违反了《中华人民共和国食品安全法》第四十五条第二款的规定。奉贤区市场监督管理局依据《中华人民共和国食品安全法》第一百二十六条第一款第六项的规定，依法对当事人作出了警告的行政处罚。</p></li><li><p style=\"text-align: start;\">　　案例警示：该案对当事人不履行从业人员定期健康检查义务的违法行为查处，防范餐饮加工食品安全风险。警示广大入网餐饮经营者牢固树立食品安全隐患自查和处置意识，充分认识并严格履行日常食品从业人员健康检查的法定义务。</p></li></ul></blockquote><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/63fee23a-9e82-41bc-9304-1c35f14a6c43.png?x-bce-process=image/watermark,text_QUnnlJ_miJA,type_RlpMYW5UaW5nSGVpU0JHQg==,size_28,color_ffffffdd,skw_1,skc_00000051,g_7,blr_50,bls_50,x_11,y_11/format,f_auto\" /></p>"
+                "title": "消息称三星 Galaxy WideFold 阔折叠手机首批备货 100 万台，三个月后发布",
+                "link": "https://www.ithome.com/0/943/735.htm",
+                "published": "Sun, 26 Apr 2026 12:28:19 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，博主 @i冰宇宙 今天在微博透露：</p><blockquote><p>最轻最薄的阔折叠当属三个月后发布的 Galaxy Wide Fold，首批备货 100 万台。</p></blockquote><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/bf22a9fb-53ca-4d0a-b9b2-f72205e9d2e5.png?x-bce-process=image/format,f_auto\" /></p><p>据博主后续评论区补充，<strong>这款手机的重量不会超过 220 克</strong>，采用双摄设计。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/88b3caa1-b8da-45e5-8d98-a2b55bd906a8.png?x-bce-process=image/format,f_auto\" /></p><p>据IT之家此前援引 Android Authority 消息，三星 Galaxy Wide Fold（另有消息称命名为 Galaxy Z Fold8 Wide）阔折叠手机的内屏比例为 1.3:1，<strong>基本可以认为是 4:3 比例</strong>。作为对比，现款 Galaxy Z Fold8 的比例约为 1.11:1，形态更接近正方形。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/89b07675-3e3f-4058-b3fe-0ae940a5f898.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>形态方面，该机的设计思路致敬谷歌 Pixel Fold，采用比标准版更宽的机身比例，<strong>为用户提供更接近传统手机的握持感与更宽的阅读体验</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/3/87933841-8b42-4918-b69d-b3ae871ba676.jpg?x-bce-process=image/format,f_auto/auto-orient,o_1\" /></p><p>硬件方面，Galaxy Z Fold8 Wide 预估采用和 Galaxy Z Fold8 同款配置，采用高通第五代骁龙 8 至尊版 for Galaxy 定制芯片，最高提供 16GB 内存与 1TB 存储空间，并内置 5000mAh 大容量电池，支持 45W 有线快充与 25W 无线充电。</p>"
             },
             {
-                "title": "华为 Pura X Max 横阔折手机备件价格曝光，屏幕组件留件价 4399 元",
-                "link": "https://www.ithome.com/0/943/621.htm",
-                "published": "Sun, 26 Apr 2026 06:31:53 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，<a href=\"https://www.ithome.com/0/902/592.htm\" target=\"_blank\">行业首款横向阔折叠手机 —— 华为 Pura X Max 已于 4 月 25 日 10:08 正式开售</a>，搭载麒麟 9030 Pro 处理器，售价 10999 元起。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/029ce47d-02c7-4cd9-b21b-8677d9e77601.jpg?x-bce-process=image/format,f_auto\" /></p><p>华为 Pura X Max 的备件价格已在官网公布。IT之家注意到，新机搭载一款 7.7 英寸可折叠柔性内屏，支持 10.7 亿色、P3 广色域，<strong>屏幕组件（留件价）价格为 4399 元</strong>。具体如下：</p><blockquote><h3>屏幕单体</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>柔性屏主体：1799 元</p></li></ul><h3>屏幕组件（含屏幕单体、中框、电池）</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>特惠屏幕组件：2299 元</p></li><li><p>屏幕组件（留件价）：4399 元</p></li><li><p>外屏正常价：899 元</p></li></ul><h3>电池</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>电池：299 元</p></li></ul><h3>主板</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>主板（留件价）：3499 元</p></li></ul><h3>后壳</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>后壳：399 元</p></li></ul><h3>摄像头</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>后置摄像头 B（广角）：269 元</p></li><li><p>后置摄像头 D（红枫原色摄像头）：299 元</p></li><li><p>前置摄像头（外屏）：379 元</p></li><li><p>前置摄像头（内屏）：379 元</p></li><li><p>后置摄像头 A（主）：759 元</p></li><li><p>后置摄像头 C（长焦）：809 元</p></li></ul><h3>配件</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>卡托：11 元</p></li><li><p>数据线：69 元</p></li><li><p>适配器：110 元</p></li><li><p>屏幕表面层：159 元</p></li></ul><h3>其他</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>指纹组件：90 元</p></li><li><p>喇叭：118 元</p></li><li><p>受话器：118 元</p></li><li><p>摄像头镜片：135 元</p></li><li><p>充电接口：239 元</p></li></ul></blockquote><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/283e6b78-0cd2-4f27-9164-6f6606def42b.jpg?x-bce-process=image/format,f_auto\" /></p><p>华为 Pura X Max 横阔折手机价格如下：</p><h3>标准版</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>12GB+256GB：定价 10999 元</p></li><li><p>12GB+512GB：定价 11999 元</p></li></ul><h3>典藏版</h3><ul class=\"medium-size list-paddingleft-2\"><li><p>16GB+512GB：定价 12999 元</p></li><li><p>16GB+1TB：定价 13999 元</p></li></ul><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/6e43a1ea-5143-40f1-b943-7c2193e74145.jpg?x-bce-process=image/format,f_auto\" /></p><dir><a contenteditable=\"false\" href=\"https://u.jd.com/fazdJH2\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/419303/13/19547/64689/69e5ddf2F3a42cff7/00835a05a051b54a.jpg\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\"> HUAWEI Pura X Max </span></span><span class=\"card-abstract\"></span><span class=\"card-controls\"><span class=\"price\">10999 元起</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir><p>2026 年数码家电政府补贴持续进行中，IT 之家为大家汇总国补领券地址，买数码家电之前记得领取：<a href=\"https://u.jd.com/A69r8nr\" target=\"_blank\">点此查看</a>。</p><p><strong>数码补贴：<a href=\"https://u.jd.com/AO9cF1s\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>手机 / 平板 / 3C 数码支持 8.5 折政府补贴，不超过 6000 元的产品至高立减 500 元。</p></li></ul><p><strong>家电补贴：<a href=\"https://u.jd.com/A696EUt\" target=\"_blank\">点此领券</a></strong></p><ul class=\" list-paddingleft-2\"><li><p>6 类家电支持 8.5 折政府补贴，单品至高补贴 1500 元。</p></li></ul>"
+                "title": "1 小时 59 分 30 秒历史性突破！人类全马正式“破 2”",
+                "link": "https://www.ithome.com/0/943/733.htm",
+                "published": "Sun, 26 Apr 2026 12:08:18 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，北京时间 4 月 26 日，2026 伦敦马拉松鸣枪起跑。据世界田联官方消息，肯尼亚选手塞巴斯蒂安 · 萨维以 1 小时 59 分 30 秒的成绩打破男子马拉松世界纪录，<strong>成为全程马拉松首位跑进 2 小时大关的人类运动员</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/77cad067-61d7-459d-949f-8734b457f7c2.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，获得亚军的科杰尔查同样打开两小时，1 小时 59 分 41 秒创造人类首马历史最好成绩；雅各布 · 基普里莫获得季军，<strong>2 小时 00 分 28 秒同样超越了基普图姆保持的原世界纪录</strong>！</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/58f2d742-2b2b-43b2-9665-a396bb6f7110.jpg?x-bce-process=image/format,f_auto\" /></p>"
             },
             {
-                "title": "免费上门安装：德施曼龙霆 3D 人脸识别智能门锁 298 元新低，支持天地钩",
-                "link": "https://www.ithome.com/0/943/620.htm",
-                "published": "Sun, 26 Apr 2026 06:20:19 GMT",
-                "summary": "<p>德施曼旗下：龙霆 3D 人脸识别智能门锁 A3FD 日常 748 元，今日国补后 PLUS 会员以旧换新实付 435 元。</p><p><strong>下单前</strong>咨询客服“现在还有 8 折吗”，如果回复“有”，登记后返实付款 20%（折合 348 元）。</p><p>晒单再返 50 元，折合仅需 298 元：</p><dir><a contenteditable=\"false\" href=\"https://u.jd.com/f1qfdYp\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/295285/19/3638/29569/688320abFc3c0c563/91292180950dac0b.png\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">龙霆 人脸识别智能门锁</span></span><span class=\"card-abstract\"> A3FD 一价全包</span><span class=\"card-controls\"><span class=\"price\">以旧换新 435 元</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir><p>如果手中没有旧锁，可不选择“以旧换新”。</p><p><strong>直接下单实付 463 元，8 折返现后约 370 元，晒单后约 320 元</strong>，也是好价。</p><p>龙霆是浙江德施曼科技智能股份有限公司旗下智能锁品牌，注册号 76969438，创立于 2024 年，主营指纹门锁等产品。</p><ul class=\" list-paddingleft-2\"><li><p>质保三年，今日下单送一年，一共质保四年。</p></li><li><p>另外再送电池换新卡一个，8 年内可在 App 中用旧电池换新电池一次（寄出旧电池自己出运费，发新电池免邮费）。</p></li></ul><p>另外如果动手能力强（小白换锁要对着视频半小时 ~ 两小时），此款标配 217 锁体，理论上可更换施德曼高阶 218 锁体（6068 尺寸闲鱼 30~40 元），可实现关门自动秒落锁、关门回头人脸也不会再次被开门、门未关报警声等功能。</p><p>手动更换可能失去质保（安装时如果让师傅直接按，师傅也可能会拒绝），具体更换可在小红书搜索“A3FD 218”。</p><p style=\"text-align: center;\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/298031/28/10617/86464/68a7d2b5Fb3804bbb/18d8bdda645e7dbc.png\" /></p><ul class=\" list-paddingleft-2\"><li><p>首次免费安装，扩孔、配件不收费。</p></li><li><p>3 年质保，60 天无理由退换货（安装后需 15% 折旧费 + 200 元上门费），支持 2 小时内紧急上门（收费）。</p></li></ul><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e0f0850c-53bb-4221-bc3e-fb901298e0f6.png?x-bce-process=image/format,f_auto\" /></p><p>支持德施曼自研 App：</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/e491ef2f-f831-4f94-9a37-01f14d176bc7.png?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/ddc2958e-be5f-4ef9-baed-02ae2078fd9c.png?x-bce-process=image/format,f_auto\" /></p><dir><a contenteditable=\"false\" href=\"https://u.jd.com/f1qfdYp\" target=\"_blank\"><span class=\"card main-site\"><span class=\"card-logo\"><img src=\"https://img14.360buyimg.com/pop/jfs/t1/295285/19/3638/29569/688320abFc3c0c563/91292180950dac0b.png\" /></span><span class=\"card-info\"><span class=\"card-title\"><span class=\"mall-data\">京东</span><span class=\"card-name\">龙霆 人脸识别智能门锁</span></span><span class=\"card-abstract\"> A3FD 一价全包</span><span class=\"card-controls\"><span class=\"price\">以旧换新 435 元</span><span class=\"card-btn-deep\">直达链接</span></span></span></span></a></dir>"
+                "title": "多伦多警方破获加拿大首起伪基站诈骗案：被攻击设备无法拨打紧急电话，造成 1300 万次网络中断",
+                "link": "https://www.ithome.com/0/943/732.htm",
+                "published": "Sun, 26 Apr 2026 12:08:07 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，据科技媒体 Tom's Hardware 今天报道，多伦多警方逮捕三名犯罪嫌疑人。三名人士在市中心驾驶安装伪基站的车辆，并向不知情的公众发送欺诈短信。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/cf65d39a-7e25-4a06-899b-1be3f48ebf5c.png?x-bce-process=image/format,f_auto\" /></p><p>多伦多警方在案情发布会中表示，本起案件是加拿大首次发现“伪基站”诈骗手法。调查显示，犯罪分子通过伪基站攻击入侵数万台移动设备，共计造成 1300 万次网络中断。<strong>受影响设备无法正常访问移动数据网络</strong>，<strong>甚至无法拨打紧急电话（911）</strong>。</p><p>IT之家注：“伪基站”是指未获取电信设备进网许可和无线电发射设备型号核准的非法无线电通信设备，它能够搜集获取公众移动通信网络覆盖范围内的手机，并强行发送垃圾短信、冒充官方机构的诈骗短信。具备隐蔽性强、流动性大等特点，已成为电信网络诈骗违法犯罪活动的一种重要形式。</p><p>据悉，犯罪分子通过伪基站向成千上万台手机发送了钓鱼短信，<strong>冒充政府、电信服务商发出带有诈骗链接的内容</strong>。由于短信来源显示为机构，受害者很容易轻信其中的链接，导致钱财被骗走。</p><p style=\"text-align: center;\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/845faa4a-890a-41d3-9773-463012cb13f6.jpg?x-bce-process=image/watermark,text_QUnnlJ_miJA,type_RlpMYW5UaW5nSGVpU0JHQg==,size_28,color_ffffffdd,skw_1,skc_00000051,g_7,blr_50,bls_50,x_11,y_11/format,f_auto\" /></p><p>不过，多伦多警方暂时未公布相关照片。侦探中士 Lindsay Riddell 表示：“我们在多伦多扣押的设备非常独特，出于安全原因不便公布”。</p>"
             },
             {
-                "title": "111.8 万元起，保时捷纯电 Cayenne Turbo 国内售价公布",
-                "link": "https://www.ithome.com/0/943/619.htm",
-                "published": "Sun, 26 Apr 2026 06:17:04 GMT",
-                "summary": "<p>IT之家 4 月 26 日消息，在日前开幕的 2026 北京国际车展上，保时捷旗下首款纯电动 Cayenne Turbo 车型亮相，并同步公布国内售价。新车共推出两个版本 Cayenne Turbo 和 Cayenne Turbo Coupé，官方指导价为 111.8 万至 115.8 万元。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a27db81c-fb32-4c7d-9245-99eae97db1b7.jpg?x-bce-process=image/format,f_auto\" /></p><p>IT之家注意到，新车前脸沿用了保时捷纯电家族的设计语言，车头线条锐利，标志性的四灯带日间行车灯辨识度突出。前保险杠下方设有纵向百叶窗式主动进气格栅，强化了整车的运动气质。车身侧面配备黑色轮眉、22 英寸密条辐轮圈及碳陶制动系统，同时保留了传统车门把手设计，搭配宽厚的侧裙与车门筋线，整体姿态饱满有力。车尾线条相较现款车型更为硬朗，采用全新贯穿式尾灯，后包围融入扩散器造型，进一步凸显性能属性。</p><p>内饰方面，新车采用全新立体化中控台设计，配备 12.25 英寸弧形 OLED 中控屏、14.6 英寸全液晶仪表以及 14.9 英寸副驾驶娱乐屏，科技氛围大幅提升。值得注意的是，保时捷在数字化浪潮中仍保留了大量实体按键，兼顾驾驶时的操作便利性。此外，用户还可选装 87 英寸 AR-HUD 抬头显示系统。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/e01f0164-c59a-427e-9cf8-c7b7cad17bf9.jpg?x-bce-process=image/format,f_auto\" /></p><p>动力上，纯电动 Cayenne Turbo 系列新车搭载了双电机四驱系统，能够在 2.5 秒内完成 0-100 公里 / 小时的加速，0-200 公里 / 小时的加速时间需 7.4 秒，最高车速可达 260 公里 / 小时。据介绍，为实现这一性能，保时捷专门开发了全新的电驱系统。</p><p>续航方面，全系搭载 114 千瓦时电池组，支持 800V 高压快充，电量从 10% 充至 80% 仅需 16 分钟，并配备 11 千瓦无线充电功能。</p><p>新车搭载与电动方程式赛车同源的 600 千瓦动能回收系统，官方表示在日常驾驶场景中，约 97% 的制动操作可由电机制动独立完成，无需机械制动器介入。电机采用直接油冷技术，通过特制冷却液直接对电动驱动系统的载流部件进行散热，从而提升效率并保障持续稳定的动力输出。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/a06dedf7-cd08-422a-8e6b-022edfdbe8ca.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/e9d57fc0-21f0-4aaf-9163-6251e5f1ff7d.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/29dc483d-3205-4e8a-b5a3-072502a837ff.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/28353917-e4fe-4538-b5a9-d99aa7b13fa7.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/d834606c-6c1d-4e27-be67-3d67563892ff.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/e3c8aa7e-5f96-4450-8f48-71e500b74167.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/15f69295-e303-4624-9e45-80ae54380c74.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/12760922-8726-4a7d-9baf-4022a30d27d0.jpg?x-bce-process=image/format,f_auto\" /></p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/19bb30c9-b5cb-4f94-889f-59afef316974.jpg?x-bce-process=image/format,f_auto\" /></p>"
+                "title": "华为余承东称今天的中国汽车市场进入了更加体系化竞争的阶段，靠单一技术或某项东西很难取胜",
+                "link": "https://www.ithome.com/0/943/730.htm",
+                "published": "Sun, 26 Apr 2026 12:00:19 GMT",
+                "summary": "<p>IT之家 4 月 26 日消息，在今天的“鸿蒙智行会客厅”直播活动中，华为常务董事、产品投资评审委员会主任、终端 BG 董事长余承东谈到了中国汽车市场的竞争。</p><p style=\"text-align: center;\"><a class=\"ithome_super_player\" contenteditable=\"false\" href=\"https://weibo.com/3032210184/QCAuZAvt0\" target=\"_blank\"><img src=\"https://img.ithome.com/newsuploadfiles/2026/4/a53d80b7-785c-4690-9fb4-3e10d788bb91.jpg?x-bce-process=image/format,f_auto\" /></a></p><p>余承东表示，今天的中国市场已经进入到一个更加体系化竞争的这种阶段，<strong>靠单一的某一个技术或者某一项东西，很难赢得这个竞争</strong>，要靠综合的体系化的竞争才能赢得市场的胜利。</p><p>余承东提到，除华为车 BU 引望公司的全套解决方案，包括智能化的智能驾驶 / 智能座舱 / 智能车控解决方案、智能电动解决方案、智能网联解决方案外，鸿蒙智行还会把华为十几年来积累的 ToC 的能力在真正赋能车厂。</p><p>余承东强调，把品牌定义、产品设计、核心技术、质量流程、全生命周期升级与维护、服务体系、渠道零售、品牌营销等结合起来<strong>最完整的就是鸿蒙智行</strong>。</p><p style=\"text-align: center;\"><img class=\"no-alt-img\" src=\"https://img.ithome.com/newsuploadfiles/2026/4/b13b3ba7-8f85-4986-8edc-3693db7e4da1.png?x-bce-process=image/format,f_auto\" /></p>"
             }
         ]
     },
@@ -517,7 +713,7 @@
         "id": "solidot",
         "name": "Solidot",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:53.046611",
+        "last_updated": "2026-04-27T01:11:04.133725",
         "entries": [
             {
                 "title": "座头鲸数量恢复，形成大规模超群",
@@ -614,30 +810,6 @@
                 "link": "https://www.solidot.org/story?sid=84135",
                 "published": "Fri, 24 Apr 2026 13:24:40 +0800",
                 "summary": "内核开发者宣布，为了保持自己的理智不被大量涌入的 AI 生成漏洞报告搞疯，他们正在 Linux 内核移除缺乏维护的代码。计划移除的代码包括 ISA 和 PCMCIA Ethernet 驱动、一对 PCI 驱动、ax25 和业余无线电子系统、ATM 协议和驱动，以及 ISDN 子系统。\n<p></p>"
-            },
-            {
-                "title": "猕猴吃土帮助消化游客的高热量垃圾食品",
-                "link": "https://www.solidot.org/story?sid=84134",
-                "published": "Thu, 23 Apr 2026 23:31:51 +0800",
-                "summary": "剑桥大学的一项研究发现，欧洲唯一野猴群、生活在直布罗陀的猕猴群会定期吃土。对猴群的监测显示，与游客接触频繁的猕猴摄入的泥土量更多，而在旅游旺季食土率也更高。科学家认为游客提供或从游客偷取的高热量食物如巧克力、薯片和冰淇淋正在扰乱它们的肠道微生物组成，导致了其习惯的改变。吃土可能有助于猕猴恢复肠胃平衡，土壤可以提供垃圾食品缺乏的细菌和矿物质，可能有助于保护肠道内壁，缓解或预防因摄入过多糖分和脂肪引起的刺激。猕猴群平均每周有 12 次吃土行为。30% 的吃土行为发生在群体中，89% 发生在其它猕猴在场的情况下，其它猕猴通常会在旁观察，表明这种行为是“社会习得的”。大多数猕猴偏爱食用红土（terra rossa），占到了所有事件的 83%。\n<p></p>"
-            },
-            {
-                "title": "特朗普模因币导致投资者损失数十亿美元",
-                "link": "https://www.solidot.org/story?sid=84133",
-                "published": "Thu, 23 Apr 2026 22:58:52 +0800",
-                "summary": "2025 年 1 月总统就职典礼前特朗普推出了官方模因币，成为首位发行个人加密货币的总统。分析认为特朗普家族从中获利逾 2.8 亿美元，但投资该模因币的散户则损失了逾 43 亿美元。大部分特朗普模因币掌握在内部人士手中，通过关键时刻抛售和收集手续费，他们没有损失，反而获利逾 6 亿美元。特朗普代币最初定价 28.73 美元，如今的价格不到 3 美元，币值跌了 93%。第一夫人 Melania Trump 的官方模因币则更惨，币值相比峰值跌了 99%。特朗普家族的加密货币公司 World Liberty Financial 则为其带来了约 50 亿美元的财富。\n<p></p>"
-            },
-            {
-                "title": "53 国齐聚哥伦比亚商讨淘汰化石燃料",
-                "link": "https://www.solidot.org/story?sid=84132",
-                "published": "Thu, 23 Apr 2026 22:21:21 +0800",
-                "summary": "53 国（不包括主要排放国中国、美国、印度和俄罗斯）将于下周齐聚哥伦比亚商讨如何逐步淘汰化石燃料。霍尔木兹海峡的关闭让亚太国家面临能源危机，迫使这些国家采取紧急措施如推行远程办公和关闭学校。与会国并非传统盟友，而是在短时间内组建的松散联盟，这也反映了形势的紧迫性。最新的能源危机可能成为可再生清洁能源的一个转折点。化石燃料行业多年来一直宣称石油、天然气和煤炭是可靠的能源，但危机显示它们并不可靠，可再生能源则廉价、可靠且安全。相比 1970 年代的中东石油危机，今天可作为化石燃料提到的清洁能源已经成熟。自 1970 年代以来，太阳能电池板的价格下降了 99.9%，自 1984 年以来风能成本下降了 91%，自 1991 年以来电池价格下降了 99%。此前韩国七成原油经过霍尔木兹海峡，现在韩国计划四年内将可再生能源装机容量翻一番。过去 30 年的全球气候谈判几乎从未提及化石燃料，部分原因是化石燃料主要出口国和游说团体的阻挠。现在一个松散的国家联盟正绕过全球气候谈判，讨论如何真正逐步淘汰化石燃料。\n<p></p>"
-            },
-            {
-                "title": "加密货币骗子瞄准滞留在霍尔木兹海峡附近的船只",
-                "link": "https://www.solidot.org/story?sid=84131",
-                "published": "Thu, 23 Apr 2026 20:49:03 +0800",
-                "summary": "由于伊朗关闭了霍尔木兹海峡，目前有约 2000 艘船只和 2 万名海员滞留在附近。伊朗几周前表示通过海峡的油轮需要以加密货币形式支付过境费，但美国随后也宣布关闭海峡搜查过往船只。形势相当混乱，而在混乱之中骗子开始浑水摸鱼。据报道，加密货币骗子正冒充伊朗当局，向航运公司发送信息，要求以比特币或泰达币支付过境费。未经证实的消息称，有船只认为已经支付了过境费而试图通过海峡，在遭到伊朗炮击后不得不返回。目前已发生了两次类似事件，一次是 4 月 18 日，一次是 4 月 22 日。\n<p></p>"
             }
         ]
     },
@@ -645,7 +817,7 @@
         "id": "oschina-news",
         "name": "OSCHINA 社区新闻",
         "category": "tech",
-        "last_updated": "2026-04-26T17:27:53.356747",
+        "last_updated": "2026-04-27T01:11:04.386214",
         "entries": [
             {
                 "title": "免费可商用 PHP 管理后台 CatchAdmin V5.3.0 发布 支持 AI Agent 开发",
@@ -766,6 +938,262 @@
                 "link": "https://www.oschina.net/news/437456/qdata-2-0-0-released",
                 "published": "Fri, 24 Apr 2026 10:00:23 +0800",
                 "summary": "🧭 版本概述 本次版本围绕 基础管理升级、智能分析能力升级、数据建模能力完善、数据安全治理强化 四大方向展开，完成数据源管理改版，新增 ChatBI 对话式智能分析能力，并补齐来源系统、业务分类、数仓分层、数据域、主题域等核心能力，同时完善敏感清单、数据分类、脱敏规则、数据分级等治理功能，标志着 qData 数据..."
+            }
+        ]
+    },
+    {
+        "id": "wired",
+        "name": "Wired",
+        "category": "tech",
+        "last_updated": "2026-04-27T01:11:04.292499",
+        "entries": [
+            {
+                "title": "‘STAGED’: Conspiracy Theories Are Everywhere Following White House Correspondents' Dinner Shooting",
+                "link": "https://www.wired.com/story/staged-conspiracy-theories-are-everywhere-following-white-house-correspondents-dinner-shooting/",
+                "published": "Sun, 26 Apr 2026 14:43:47 +0000",
+                "summary": "The word “staged” exploded on social media following the attack, as both right and left-wing influencers and anonymous accounts spread unfounded conspiracy theories."
+            },
+            {
+                "title": "The Best Kindle Accessories (2026): Cases, Page Turners, Stickers",
+                "link": "https://www.wired.com/story/best-kindle-accessories/",
+                "published": "Sun, 26 Apr 2026 11:34:00 +0000",
+                "summary": "Looking to better protect your Kindle or add a little personality to your favorite e-reader? From cases and covers to page-turners and even charms, this is the guide for you."
+            },
+            {
+                "title": "The Smart Bird Feeders Everyone’s Talking About (and Actually Buying) (2026)",
+                "link": "https://www.wired.com/story/best-smart-bird-feeders/",
+                "published": "Sun, 26 Apr 2026 11:04:00 +0000",
+                "summary": "These bird feeders come with cameras and connected apps to let you see and learn about the birds in your neighborhood."
+            },
+            {
+                "title": "The Best Permanent Outdoor Lights (2026): Govee, Eufy, Cync",
+                "link": "https://www.wired.com/story/should-you-get-permanent-outdoor-lights/",
+                "published": "Sun, 26 Apr 2026 10:31:00 +0000",
+                "summary": "Permanent eave lights that attach to the exterior of your home are becoming more popular. But are they worth the effort and cost?"
+            },
+            {
+                "title": "Ikea's New Blow-Up Chair Was Tested by Cats",
+                "link": "https://www.wired.com/story/ikea-new-blow-up-chair-was-tested-by-cats/",
+                "published": "Sun, 26 Apr 2026 10:00:00 +0000",
+                "summary": "Part of the new PS 2026 collection, it's taken the Swedish company 26 years to finally nail inflatable furniture."
+            },
+            {
+                "title": "Della Optima TP Series Mini-Split AC Review: Cheap, Smart, and (Mostly) Reliable",
+                "link": "https://www.wired.com/review/della-optima-tp-series-mini-split-air-conditioner/",
+                "published": "Sun, 26 Apr 2026 09:38:00 +0000",
+                "summary": "Ductless AC systems get smart tech features—and the growing pains that come with them."
+            },
+            {
+                "title": "What Type of Mattress Is Right for You? (2026)",
+                "link": "https://www.wired.com/story/mattress-types-explained/",
+                "published": "Sun, 26 Apr 2026 09:14:00 +0000",
+                "summary": "Here’s how to pick the best mattress for your sleep needs, straight from a professional mattress tester."
+            },
+            {
+                "title": "California Engineer Identified in Suspected Shooting at White House Correspondents' Dinner",
+                "link": "https://www.wired.com/story/california-engineer-identified-in-suspected-shooting-at-white-house-correspondents-dinner/",
+                "published": "Sun, 26 Apr 2026 03:26:42 +0000",
+                "summary": "The 31-year-old engineer and self-described indie game developer is suspected of firing shots at the annual event attended by President Donald Trump, high-profile media figures, and US government officials."
+            },
+            {
+                "title": "Best Apps for Focus (2026): Focus Friend, Forest, Focus Traveller",
+                "link": "https://www.wired.com/story/3-focus-timer-apps-focus-friend-forest-focus-traveller/",
+                "published": "Sat, 25 Apr 2026 11:30:00 +0000",
+                "summary": "Distractions? What distractions? Here are our recommendations for apps that help you stay focused on the task at hand."
+            },
+            {
+                "title": "Discord Sleuths Gained Unauthorized Access to Anthropic’s Mythos",
+                "link": "https://www.wired.com/story/security-news-this-week-discord-sleuths-gained-unauthorized-access-to-anthropics-mythos/",
+                "published": "Sat, 25 Apr 2026 10:30:00 +0000",
+                "summary": "Plus: Spy firms tap into a global telecom weakness to track targets, 500,000 UK health records go up for sale on Alibaba, Apple patches a revealing notification bug, and more."
+            },
+            {
+                "title": "‘Saros’ Shows Off the PS5’s DualSense Tricks",
+                "link": "https://www.wired.com/story/saros-shows-off-the-ps5-dualsense-tricks/",
+                "published": "Sat, 25 Apr 2026 10:30:00 +0000",
+                "summary": "The new game from the creators of Returnal goes all-in on the PlayStation’s haptics and 3D audio. Maybe it will catch on with other game developers."
+            },
+            {
+                "title": "The Online Civil War About ‘Michael’ Is a Battle Over Truth",
+                "link": "https://www.wired.com/story/the-online-civil-war-about-michael-is-a-battle-over-truth/",
+                "published": "Sat, 25 Apr 2026 10:00:00 +0000",
+                "summary": "Fans want to reclaim the music and myth of Michael Jackson in the new biopic while critics call for accountability. Who’s right?"
+            },
+            {
+                "title": "Ace the Ping-Pong Robot Can Whup Your Ass",
+                "link": "https://www.wired.com/story/ace-the-robot-wants-to-become-the-world-table-tennis-champion/",
+                "published": "Sat, 25 Apr 2026 09:30:00 +0000",
+                "summary": "Ace can read the trajectory of a ball, adjust the racket angle, and respond with strokes that keep the exchange alive with real players."
+            },
+            {
+                "title": "Altra Promo Codes: Get 20% Off Plus Free Shipping",
+                "link": "https://www.wired.com/story/altra-promo-code/",
+                "published": "Sat, 25 Apr 2026 05:00:00 +0000",
+                "summary": "Score big savings on Altra Running shoes with up to 50% off sale styles, 20% off select models, 10% off your first order when you sign up, plus free standard delivery on every purchase."
+            },
+            {
+                "title": "Give Mom Warm Coffee All Year Long With This Ember Smart Mug Deal",
+                "link": "https://www.wired.com/story/ember-mug-2-deal-april-2026/",
+                "published": "Fri, 24 Apr 2026 18:39:29 +0000",
+                "summary": "If an Ember mug is at the top of Mom’s wish list, this sale is worth checking out."
+            },
+            {
+                "title": "Beatbot Pool-Cleaning Robots Are on Sale for a Limited Time",
+                "link": "https://www.wired.com/story/beatbot-pool-cleaning-robot-deals-april-2026/",
+                "published": "Fri, 24 Apr 2026 17:43:33 +0000",
+                "summary": "Get ready for summer with discounts on the best robot pool cleaners we’ve tested."
+            },
+            {
+                "title": "AI-Designed Drugs by a DeepMind Spinoff Are Headed to Human Trials",
+                "link": "https://www.wired.com/story/wired-health-2026-how-ai-is-powering-drug-discovery-max-jaderberg/",
+                "published": "Fri, 24 Apr 2026 17:17:36 +0000",
+                "summary": "Isomorphic Labs president Max Jaderberg said at WIRED Health in London that the startup has built a “broad and exciting pipeline of new medicines.”"
+            },
+            {
+                "title": "Designer Baby Companies Are in Turmoil",
+                "link": "https://www.wired.com/story/designer-baby-companies-are-in-turmoil/",
+                "published": "Fri, 24 Apr 2026 17:04:34 +0000",
+                "summary": "Bootstrap Bio and Manhattan Genomics, which were pursuing human embryo editing to prevent serious disease, have shut down."
+            },
+            {
+                "title": "The Latest Push to Extend Key US Spy Powers Is Still a Mess",
+                "link": "https://www.wired.com/story/the-latest-push-to-extend-key-us-spy-powers-is-still-a-mess/",
+                "published": "Fri, 24 Apr 2026 15:10:03 +0000",
+                "summary": "A US surveillance program that lets the FBI view Americans’ communications without a warrant is up for renewal. A new bill aims to address mounting lawmaker concerns—with smoke and mirrors."
+            },
+            {
+                "title": "Apple's Next CEO Needs to Launch a Killer AI Product",
+                "link": "https://www.wired.com/story/apples-next-ceo-needs-to-launch-a-killer-ai-product/",
+                "published": "Fri, 24 Apr 2026 15:00:00 +0000",
+                "summary": "Tim Cook was a great CEO, but he didn’t crack AI.  It’s job number 1 for John Ternus."
+            }
+        ]
+    },
+    {
+        "id": "product-hunt",
+        "name": "Product Hunt",
+        "category": "tech",
+        "last_updated": "2026-04-27T01:11:04.329592",
+        "entries": [
+            {
+                "title": "Claude Connectors",
+                "link": "https://www.producthunt.com/products/claude-connectors",
+                "published": "2026-04-24T21:15:20-07:00",
+                "summary": "<p>\n            New connectors in Claude for everyday life\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/claude-connectors?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131914?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "GPT-5.5 by OpenAI",
+                "link": "https://www.producthunt.com/products/openai",
+                "published": "2026-04-24T20:54:05-07:00",
+                "summary": "<p>\n            OpenAI's smartest and most intuitive to use model yet\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/openai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131906?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Free chart generator by Embedful",
+                "link": "https://www.producthunt.com/products/embedful",
+                "published": "2026-04-13T19:54:29-07:00",
+                "summary": "<p>\n            Turn CSV & Excel files into charts in seconds\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/embedful?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1123147?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Edgee Team",
+                "link": "https://www.producthunt.com/products/edgee",
+                "published": "2026-04-24T05:51:45-07:00",
+                "summary": "<p>\n            Strava for your coding assistants\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/edgee?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131530?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Happenstance",
+                "link": "https://www.producthunt.com/products/happenstance-2",
+                "published": "2026-04-15T23:52:37-07:00",
+                "summary": "<p>\n            Search your network with AI\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/happenstance-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1125037?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Pica",
+                "link": "https://www.producthunt.com/products/pica",
+                "published": "2026-04-24T17:23:51-07:00",
+                "summary": "<p>\n            Fully native app for managing your fonts on MacOS\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/pica?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131870?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "QuickCompare by Trismik",
+                "link": "https://www.producthunt.com/products/quickcompare-by-trismik",
+                "published": "2026-04-24T07:07:21-07:00",
+                "summary": "<p>\n            Compare LLMs on your data, measure, and pick the best.\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/quickcompare-by-trismik?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131574?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Architecto",
+                "link": "https://www.producthunt.com/products/architecto",
+                "published": "2026-04-09T23:55:36-07:00",
+                "summary": "<p>\n            Design, review, and document cloud architecture with AI\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/architecto?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1120331?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Grok Voice Think Fast 1.0",
+                "link": "https://www.producthunt.com/products/grok-voice-think-fast-1-0",
+                "published": "2026-04-23T23:06:02-07:00",
+                "summary": "<p>\n            Our most capable voice agent is now available via API\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/grok-voice-think-fast-1-0?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1131239?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Inrō AI",
+                "link": "https://www.producthunt.com/products/inro",
+                "published": "2026-04-21T11:52:34-07:00",
+                "summary": "<p>\n            Your AI Agent for Instagram Marketing\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/inro?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1129227?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "XChat",
+                "link": "https://www.producthunt.com/products/chat-by-x",
+                "published": "2026-04-12T08:42:24-07:00",
+                "summary": "<p>\n            The standalone, encrypted messaging app from X\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/chat-by-x?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1121968?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "MiMo-V2.5 Voice",
+                "link": "https://www.producthunt.com/products/mimo-v2-5-voice",
+                "published": "2026-04-23T11:36:14-07:00",
+                "summary": "<p>\n            Bilingual ASR for dialects, code-switching, and songs\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/mimo-v2-5-voice?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1130884?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "PromptPaste",
+                "link": "https://www.producthunt.com/products/promptpaste",
+                "published": "2026-04-18T04:14:13-07:00",
+                "summary": "<p>\n            Your private AI prompt library on Mac, iPhone, and iPad\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/promptpaste?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1126694?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Euphony",
+                "link": "https://www.producthunt.com/products/euphony-2",
+                "published": "2026-04-21T09:08:15-07:00",
+                "summary": "<p>\n            Render AI chat data and Codex logs into browsable views\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/euphony-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1129097?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Genspark for Excel",
+                "link": "https://www.producthunt.com/products/genspark-for-excel",
+                "published": "2026-04-08T08:47:59-07:00",
+                "summary": "<p>\n            AI assistant for Excel formulas, charts, insights.\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/genspark-for-excel?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1118972?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Gemini Personal Intelligence",
+                "link": "https://www.producthunt.com/products/gemini-personal-intelligence",
+                "published": "2026-04-16T09:33:11-07:00",
+                "summary": "<p>\n            Gemini answers with context from your Google apps\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/gemini-personal-intelligence?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1125494?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "ZeroHuman.",
+                "link": "https://www.producthunt.com/products/zerohuman",
+                "published": "2026-03-10T08:25:06-07:00",
+                "summary": "<p>\n            Your AI Co-Founder: OpenClaw x Paperclip x Spud\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/zerohuman?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1094523?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Clawdi",
+                "link": "https://www.producthunt.com/products/clawdi",
+                "published": "2026-04-21T06:18:41-07:00",
+                "summary": "<p>\n            Best home for all AI agents\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/clawdi?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1128941?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Bansi AI by Writesonic",
+                "link": "https://www.producthunt.com/products/bansi",
+                "published": "2026-04-16T09:33:08-07:00",
+                "summary": "<p>\n            AI video editor for long-form talking head videos\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/bansi?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1125493?app_id=339\">Link</a>\n          </p>"
+            },
+            {
+                "title": "Yutori Delegate",
+                "link": "https://www.producthunt.com/products/scouts-by-yutori",
+                "published": "2026-04-21T10:45:22-07:00",
+                "summary": "<p>\n            Why cowork when you can delegate?\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/scouts-by-yutori?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1129182?app_id=339\">Link</a>\n          </p>"
             }
         ]
     }

@@ -132,6 +132,76 @@
             "url": "https://www.theguardian.com/world/rss",
             "enabled": true,
             "category": "news"
+        },
+        {
+            "id": "bloomberg",
+            "name": "Bloomberg",
+            "url": "https://feeds.bloomberg.com/markets/news.rss",
+            "enabled": true,
+            "category": "finance"
+        },
+        {
+            "id": "ft-world",
+            "name": "Financial Times",
+            "url": "https://www.ft.com/?format=rss",
+            "enabled": true,
+            "category": "finance"
+        },
+        {
+            "id": "reuters-tech",
+            "name": "Reuters Technology",
+            "url": "https://www.reutersagency.com/feed/?post_type=best-sectors&best-sectors=tech&feed_id=3965",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "ap-news",
+            "name": "AP News",
+            "url": "https://rsshub.app/apnews/topics/apf-topnews",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "nature",
+            "name": "Nature",
+            "url": "https://www.nature.com/nature.rss",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "national-geographic",
+            "name": "National Geographic",
+            "url": "https://www.nationalgeographic.com/rss",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "36kr",
+            "name": "36氪",
+            "url": "https://36kr.com/feed",
+            "enabled": true,
+            "category": "finance"
+        },
+        {
+            "id": "the-athletic",
+            "name": "The Athletic",
+            "url": "https://theathletic.com/feed/",
+            "enabled": true,
+            "category": "sports"
+        },
+        {
+            "id": "fortune",
+            "name": "Fortune",
+            "url": "https://fortune.com/feed",
+            "enabled": true,
+            "category": "finance"
+        },
+        {
+            "id": "economist",
+            "name": "The Economist",
+            "url": "https://www.economist.com/feeds/print-sections/77/business.xml",
+            "enabled": true,
+            "category": "finance"
         }
     ]
 }

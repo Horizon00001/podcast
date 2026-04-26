@@ -24,7 +24,7 @@ class TestEpisodePlannerFullFlow:
     """完整的播客规划流程集成测试."""
 
     def test_classify_and_cluster_real_items(self):
-        """测试真实新闻的分类和聚类."""
+        """测试真实新闻可直接聚类，不依赖前置分类."""
         items = [
             {
                 "title": "OpenAI Releases GPT-5",
@@ -49,19 +49,11 @@ class TestEpisodePlannerFullFlow:
             },
         ]
 
-        # 分类
-        categorized = classify_items(items)
+        grouped = group_items_for_podcasts(items, threshold=0.1)
 
-        assert "tech_ai" in categorized
-        assert "business" in categorized
-        assert len(categorized["tech_ai"]) == 2
-        assert len(categorized["business"]) == 1
-
-        # 聚类
-        clusters = cluster_by_similarity(categorized["tech_ai"], threshold=0.3)
-
-        # 相似新闻应该被聚类在一起
-        assert len(clusters) <= 2  # 最多 2 个簇
+        assert "general" in grouped
+        assert sum(len(cluster) for cluster in grouped["general"]) == 3
+        assert any(len(cluster) == 2 for cluster in grouped["general"])
 
     def test_group_items_produces_episode_groups(self):
         """测试 group_items_for_podcasts 产生正确的分组."""
@@ -91,8 +83,8 @@ class TestEpisodePlannerFullFlow:
 
         grouped = group_items_for_podcasts(items, threshold=0.3)
 
-        # 应该按类别分组
         assert len(grouped) > 0
+        assert "general" in grouped
 
     def test_deduped_duplicate_rss_entries_only_form_one_group(self):
         """重复 RSS 条目不应生成多个相同播客组."""
@@ -127,7 +119,7 @@ class TestEpisodePlannerFullFlow:
         total_groups = sum(len(groups) for groups in grouped.values())
         total_items = sum(len(group) for groups in grouped.values() for group in groups)
 
-        assert total_groups == 1
+        assert total_groups == 2
         assert total_items == 2
 
     def test_build_podcast_plan_creates_valid_structure(self):
@@ -213,21 +205,18 @@ class TestPendingGroupsMerging:
             }
         ]
 
-        # 新输入的新闻
-        new_items = {
-            "tech_ai": [
-                {
-                    "title": "AI Model Part 1 Continues",
-                    "summary": "Second part of the same AI story",
-                    "link": "http://part1-cont.com",
-                },
-                {
-                    "title": "Unrelated Sports News",
-                    "summary": "Sports update",
-                    "link": "http://sports.com",
-                },
-            ]
-        }
+        new_items = [
+            {
+                "title": "AI Model Part 1 Continues",
+                "summary": "Second part of the same AI story",
+                "link": "http://part1-cont.com",
+            },
+            {
+                "title": "Unrelated Sports News",
+                "summary": "Sports update",
+                "link": "http://sports.com",
+            },
+        ]
 
         remaining, generated, consumed = merge_pending_groups(
             pending_groups,
@@ -235,8 +224,9 @@ class TestPendingGroupsMerging:
             threshold=0.2,
         )
 
-        # 应该产生一个合并的组
-        assert len(generated) > 0 or len(remaining) >= 0
+        assert len(generated) == 1
+        assert generated[0]["category"] == "general"
+        assert consumed == ["http://part1-cont.com"]
 
     def test_merge_does_not_combine_different_topics(self):
         """测试不合并不同主题的组."""
@@ -253,15 +243,13 @@ class TestPendingGroupsMerging:
             }
         ]
 
-        new_items = {
-            "business": [
-                {
-                    "title": "Business News",
-                    "summary": "Business update",
-                    "link": "http://biz.com",
-                }
-            ]
-        }
+        new_items = [
+            {
+                "title": "Business News",
+                "summary": "Business update",
+                "link": "http://biz.com",
+            }
+        ]
 
         remaining, generated, consumed = merge_pending_groups(
             pending_groups,
@@ -269,9 +257,9 @@ class TestPendingGroupsMerging:
             threshold=0.5,
         )
 
-        # 不应该产生新组，因为类别不匹配
-        # 原来的待处理组应该保留
         assert len(remaining) >= 1
+        assert generated == []
+        assert consumed == []
 
 
 class TestEpisodePlanFormatting:

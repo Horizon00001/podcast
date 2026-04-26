@@ -1,4 +1,5 @@
 import json
+import hashlib
 import math
 import re
 from collections import defaultdict
@@ -74,26 +75,21 @@ DEFAULT_CATEGORY_KEYWORDS = {
     "sports": ["sports", "racing", "nascar", "f1", "indycar", "formula", "football", "basketball", "soccer", "olympics", "athlete", "game", "score", "match", "team", "league", "nba", "mlb"],
 }
 
-TOPIC_ANCHORS = {
-    "tech_ai": [
-        (r"apple.*ceo|ceo.*apple|tim cook|john ternus", "apple-ceo"),
-        (r"anthropic|claude|openclaw|mythos", "anthropic-ai"),
-        (r"yelp.*ai|ai.*yelp", "yelp-ai"),
-        (r"vercel|context\.ai|third[- ]party ai", "vercel-security"),
-        (r"robot|humanoid|android|machine learning|ai-informed", "robotics"),
-        (r"deezer|music|song|audio.*ai|ai.*music", "ai-music"),
-        (r"data center|datacenter|cloud|aws|openai|gpu|model|agent", "ai-infra"),
-        (r"spacex|blue origin|new glenn|space", "space-tech"),
-    ],
-    "sports": [
-        (r"f1|formula 1|miami gp|grand prix|verstappen|wolff|domenicali|red bull", "f1-regs"),
-        (r"indycar|penske|nascar", "american-racing"),
-        (r"half[- ]marathon|marathon|race", "robot-half-marathon"),
-        (r"sports car race|nurburgring|nürburgring", "endurance-race"),
-    ],
-    "business": [(r"ipo|funding|acquisition|revenue|market|financial|investment|stock|merger|partnership", "business-roundup")],
-    "general": [(r"", "general-roundup")],
-}
+GLOBAL_TOPIC_ANCHORS = [
+    (r"apple.*ceo|ceo.*apple|tim cook|john ternus", "apple-ceo"),
+    (r"anthropic|claude|openclaw|mythos", "anthropic-ai"),
+    (r"yelp.*ai|ai.*yelp", "yelp-ai"),
+    (r"vercel|context\.ai|third[- ]party ai", "vercel-security"),
+    (r"robot|humanoid|android|machine learning|ai-informed", "robotics"),
+    (r"deezer|music|song|audio.*ai|ai.*music", "ai-music"),
+    (r"data center|datacenter|cloud|aws|openai|gpu|model|agent", "ai-infra"),
+    (r"spacex|blue origin|new glenn|space", "space-tech"),
+    (r"f1|formula 1|miami gp|grand prix|verstappen|wolff|domenicali|red bull", "f1-regs"),
+    (r"indycar|penske|nascar", "american-racing"),
+    (r"half[- ]marathon|marathon|race", "robot-half-marathon"),
+    (r"sports car race|nurburgring|nürburgring", "endurance-race"),
+    (r"ipo|funding|acquisition|revenue|market|financial|investment|stock|merger|partnership", "business-roundup"),
+]
 
 
 def _tokenize_search_text(value: str) -> str:
@@ -197,17 +193,17 @@ def dedupe_items(items: List[dict]) -> List[dict]:
     return deduped
 
 
-def _anchor_for_item(item: dict, category: str) -> str:
+def _anchor_for_item(item: dict) -> str:
     title = _normalize_title(item.get("title", ""))
     summary = _normalize_title(item.get("summary", ""))
     text = f"{title} {summary}"
-    for pattern, anchor in TOPIC_ANCHORS.get(category, []):
+    for pattern, anchor in GLOBAL_TOPIC_ANCHORS:
         if re.search(pattern, text):
             return anchor
     title_tokens = [token for token in title.split() if len(token) > 2]
     if title_tokens:
         return "-".join(title_tokens[:4])
-    return category
+    return "general-roundup"
 
 
 def cluster_by_similarity(items: List[dict], threshold: float = 0.5) -> List[List[dict]]:
@@ -262,33 +258,70 @@ def _group_title(group_items: List[dict], category: str) -> str:
 
 
 def group_items_for_podcasts(items: List[dict], threshold: float = 0.5) -> dict[str, list[list[dict]]]:
-    classified = classify_items(dedupe_items(items))
-    grouped: dict[str, list[list[dict]]] = {}
-    for category, category_items in classified.items():
-        if not category_items:
+    anchor_buckets: dict[str, list[dict]] = defaultdict(list)
+    for item in dedupe_items(items):
+        anchor_buckets[_anchor_for_item(item)].append(item)
+
+    clusters: list[list[dict]] = []
+    for bucket_items in anchor_buckets.values():
+        if len(bucket_items) == 1:
+            clusters.append(bucket_items)
             continue
-        anchor_buckets: dict[str, list[dict]] = defaultdict(list)
-        for item in category_items:
-            anchor_buckets[_anchor_for_item(item, category)].append(item)
-        clusters: list[list[dict]] = []
-        for bucket_items in anchor_buckets.values():
-            if len(bucket_items) == 1:
-                clusters.append(bucket_items)
-                continue
-            bucket_clusters = cluster_by_similarity(bucket_items, threshold=threshold)
-            clusters.extend(bucket_clusters or [bucket_items])
-        if clusters:
-            grouped[category] = clusters
-    return grouped
+        bucket_clusters = cluster_by_similarity(bucket_items, threshold=threshold)
+        clusters.extend(bucket_clusters or [bucket_items])
+
+    return {"general": clusters} if clusters else {}
 
 
 def _cluster_signature(cluster: list[dict], category: str) -> str:
     items = " ".join(f"{item.get('title', '')} {item.get('summary', '')}" for item in cluster)
     items = _normalize_title(items)
-    for pattern, anchor in TOPIC_ANCHORS.get(category, []):
+    for pattern, anchor in GLOBAL_TOPIC_ANCHORS:
         if re.search(pattern, items):
             return anchor
-    return _anchor_for_item(cluster[0], category) if cluster else category
+    return _anchor_for_item(cluster[0]) if cluster else "general-roundup"
+
+
+def build_cluster_key(category: str, cluster: list[dict]) -> str:
+    if not cluster:
+        return "general:empty"
+
+    normalized_titles = sorted(
+        title
+        for title in (_normalize_title(item.get("title", "")) for item in cluster)
+        if title
+    )
+    normalized_summaries = sorted(
+        summary
+        for summary in (_normalize_title(item.get("summary", "")) for item in cluster)
+        if summary
+    )
+    normalized_links = sorted(
+        link.strip().lower()
+        for link in (item.get("link", "") for item in cluster)
+        if link and link.strip()
+    )
+    published_values = sorted(
+        (item.get("published") or "").strip().lower()
+        for item in cluster
+        if (item.get("published") or "").strip()
+    )
+
+    signature_text = " ".join(normalized_titles[:3] + normalized_summaries[:3])
+    signature = None
+    for pattern, anchor in GLOBAL_TOPIC_ANCHORS:
+        if re.search(pattern, signature_text):
+            signature = anchor
+            break
+    if signature is None:
+        signature = "-".join((normalized_titles[0] if normalized_titles else "general").split()[:4]) or "general"
+
+    title_basis = "|".join(normalized_titles[:3])
+    link_basis = "|".join(normalized_links[:3])
+    published_basis = published_values[0] if published_values else ""
+    digest_source = "\n".join(["general", signature, title_basis, link_basis, published_basis])
+    digest = hashlib.sha1(digest_source.encode("utf-8")).hexdigest()[:16]
+    return f"general:{signature}:{digest}"
 
 
 def merge_clusters_by_signature(grouped: dict[str, list[list[dict]]]) -> dict[str, list[list[dict]]]:
@@ -350,14 +383,14 @@ def load_pending_groups(path: Path) -> tuple[list[dict], list[str]]:
     return data.get("pending_groups", []), data.get("used_item_links", [])
 
 
-def merge_pending_groups(pending_groups: list[dict], new_items_by_category: dict[str, list[dict]], threshold: float = 0.5) -> tuple[list[dict], list[dict], list[str]]:
+def merge_pending_groups(pending_groups: list[dict], new_items: list[dict], threshold: float = 0.5) -> tuple[list[dict], list[dict], list[str]]:
     generated_groups: list[dict] = []
     remaining_pending: list[dict] = []
     consumed_links: list[str] = []
     for pending_group in pending_groups:
-        category = pending_group.get("category", "general")
         pending_items = list(pending_group.get("items", []))
-        candidates = new_items_by_category.get(category, [])
+        candidates = new_items
+        pending_anchor = _anchor_for_item(pending_items[0]) if pending_items else "general-roundup"
         pending_vectors = _tfidf_vectors(pending_items) if pending_items else {}
         pending_centroid: dict[str, float] = defaultdict(float)
         for vec in pending_vectors.values():
@@ -367,6 +400,8 @@ def merge_pending_groups(pending_groups: list[dict], new_items_by_category: dict
         for item in candidates:
             if item.get("link") in {existing.get("link") for existing in pending_items}:
                 continue
+            if _anchor_for_item(item) != pending_anchor:
+                continue
             item_vec = _tfidf_vectors([item]).get(_similarity_key(item), {})
             if _cosine(pending_centroid, item_vec) >= threshold:
                 matched.append(item)
@@ -375,7 +410,7 @@ def merge_pending_groups(pending_groups: list[dict], new_items_by_category: dict
             consumed_links.extend(item.get("link", "") for item in matched if item.get("link"))
             pending_group["items"] = pending_items
             if len(pending_items) >= 2:
-                generated_groups.append({"category": category, "items": pending_items})
+                generated_groups.append({"category": "general", "items": pending_items})
             else:
                 remaining_pending.append(pending_group)
         else:

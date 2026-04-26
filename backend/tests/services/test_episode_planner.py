@@ -4,6 +4,7 @@ import pytest
 from app.pipelines.episode_planner import (
     _clean_text,
     _tokenize,
+    build_cluster_key,
     classify_items,
     dedupe_items,
     _tfidf_vectors,
@@ -201,31 +202,51 @@ class TestEpisodePlannerClusterBySimilarity:
         assert len(result) == 1
         assert len(result[0]) == 2
 
+    def test_build_cluster_key_is_stable_for_same_cluster(self):
+        cluster = [
+            {
+                "title": "生化危机配音演员谈真人电影",
+                "summary": "里昂配音演员表示对新导演谨慎乐观。",
+                "link": "https://example.com/re1",
+                "published": "2026-04-26",
+            },
+            {
+                "title": "生化危机新作销量破 700 万",
+                "summary": "安魂曲销量创下系列新纪录。",
+                "link": "https://example.com/re2",
+                "published": "2026-04-26",
+            },
+        ]
+
+        first_key = build_cluster_key("tech_ai", cluster)
+        second_key = build_cluster_key("tech_ai", list(reversed(cluster)))
+
+        assert first_key == second_key
+        assert first_key.startswith("general:")
+
 
 class TestEpisodePlannerAnchorForItem:
     """Test _anchor_for_item function."""
 
     def test_anchor_apple_ceo(self):
         item = {"title": "Apple CEO Tim Cook announces new product", "summary": ""}
-        result = _anchor_for_item(item, "tech_ai")
+        result = _anchor_for_item(item)
         assert result == "apple-ceo"
 
     def test_anchor_anthropic(self):
         item = {"title": "Anthropic releases Claude 4", "summary": ""}
-        result = _anchor_for_item(item, "tech_ai")
+        result = _anchor_for_item(item)
         assert result == "anthropic-ai"
 
     def test_anchor_f1(self):
         item = {"title": "Verstappen wins F1 race", "summary": ""}
-        result = _anchor_for_item(item, "sports")
+        result = _anchor_for_item(item)
         assert result == "f1-regs"
 
     def test_anchor_fallback_returns_slug(self):
-        # Item with category "general" matches the empty pattern → "general-roundup"
         item = {"title": "Random news", "summary": ""}
-        result = _anchor_for_item(item, "general")
-        # For general category with no strong anchor, it returns general-roundup
-        assert "general" in result
+        result = _anchor_for_item(item)
+        assert result == "random-news"
 
 
 class TestEpisodePlannerGroupItems:
@@ -233,12 +254,14 @@ class TestEpisodePlannerGroupItems:
 
     def test_group_items_basic(self):
         items = [
-            {"title": "OpenAI releases GPT-5", "summary": "AI model news", "feed_name": "AI News", "category": "tech", "link": "http://1"},
-            {"title": "Google announces AI tool", "summary": "AI product", "feed_name": "Tech", "category": "tech", "link": "http://2"},
+            {"title": "Anthropic releases Claude update", "summary": "New Claude model news", "feed_name": "AI News", "category": "tech", "link": "http://1"},
+            {"title": "Claude gets enterprise upgrade from Anthropic", "summary": "Anthropic AI product update", "feed_name": "Tech", "category": "news", "link": "http://2"},
         ]
-        result = group_items_for_podcasts(items)
+        result = group_items_for_podcasts(items, threshold=0.1)
 
-        assert "tech_ai" in result
+        assert "general" in result
+        assert len(result["general"]) == 1
+        assert len(result["general"][0]) == 2
 
     def test_group_items_empty(self):
         result = group_items_for_podcasts([])
@@ -274,7 +297,7 @@ class TestEpisodePlannerGroupItems:
         total_groups = sum(len(groups) for groups in result.values())
         total_items = sum(len(group) for groups in result.values() for group in groups)
 
-        assert total_groups == 1
+        assert total_groups == 2
         assert total_items == 2
 
 
@@ -342,7 +365,7 @@ class TestEpisodePlannerMergePendingGroups:
 
     def test_merge_pending_groups_no_match(self):
         pending = [{"category": "tech_ai", "items": [{"title": "Old AI news", "link": "http://old.com"}]}]
-        new_items = {"tech_ai": [{"title": "New sports", "summary": "", "link": "http://new.com"}]}
+        new_items = [{"title": "New sports", "summary": "", "link": "http://new.com"}]
 
         remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.5)
 
@@ -351,12 +374,13 @@ class TestEpisodePlannerMergePendingGroups:
 
     def test_merge_pending_groups_with_match(self):
         pending = [{"category": "tech_ai", "items": [{"title": "AI Model Part 1", "summary": "First part of AI story", "link": "http://part1.com"}]}]
-        new_items = {"tech_ai": [{"title": "AI Model Part 2", "summary": "Second part continues the AI story", "link": "http://part2.com"}]}
+        new_items = [{"title": "AI Model Part 2", "summary": "Second part continues the AI story", "link": "http://part2.com"}]
 
         remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.1)
 
-        # Should generate a group since items are similar
-        assert len(generated) > 0 or len(remaining) > 0
+        assert len(generated) == 1
+        assert generated[0]["category"] == "general"
+        assert consumed == ["http://part2.com"]
 
 
 class TestEpisodePlannerScoreItem:

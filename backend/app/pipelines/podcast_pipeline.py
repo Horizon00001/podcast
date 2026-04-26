@@ -5,9 +5,9 @@ from typing import Any, Callable
 
 from app.pipelines.episode_planner import (
     PENDING_GROUPS_FILENAME,
+    build_cluster_key,
     build_group_name,
     build_group_plan,
-    classify_items,
     group_items_for_podcasts,
     load_pending_groups,
     load_rss_items,
@@ -86,8 +86,7 @@ async def run_pipeline(
     used_link_set = set(used_item_links)
     fresh_items = [item for item in all_items if item.get("link") not in used_link_set]
 
-    categorized = classify_items(fresh_items)
-    remaining_pending, revived_groups, consumed_links = merge_pending_groups(pending_groups, categorized)
+    remaining_pending, revived_groups, consumed_links = merge_pending_groups(pending_groups, fresh_items)
     consumed_link_set = set(consumed_links)
     fresh_items = [item for item in fresh_items if item.get("link") not in consumed_link_set]
 
@@ -98,7 +97,9 @@ async def run_pipeline(
     generated_groups: list[tuple[str, Path]] = []
 
     async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
+        category = "general"
         group_title = group_items[0].get("title", category) if group_items else category
+        event_key = build_cluster_key(category, group_items)
         group_slug = build_group_name(group_items, group_title)
         group_dir = podcasts_dir / category / f"{group_index:02d}-{group_slug}"
         group_dir.mkdir(parents=True, exist_ok=True)
@@ -154,7 +155,7 @@ async def run_pipeline(
         _save_combined_timing(tts_service.audio_dir, group_dir, "podcast_timing.json")
         log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
         generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
-        generated_groups.append((group_label, group_dir))
+        generated_groups.append((group_label, group_dir, event_key))
 
     tasks = []
     log("\n[3/4] 生成脚本并合成音频")
@@ -192,7 +193,7 @@ async def run_pipeline(
     db = SessionLocal()
     try:
         podcast_service = PodcastService(db)
-        for group_name, group_dir in generated_groups:
+        for group_name, group_dir, event_key in generated_groups:
             script_file = group_dir / "podcast_script.json"
             audio_file = group_dir / "audio" / "podcast_full.mp3"
             if not script_file.exists() or not audio_file.exists():
@@ -206,11 +207,15 @@ async def run_pipeline(
             payload = PodcastCreate(
                 title=title,
                 summary=summary,
+                event_key=event_key,
                 audio_url=audio_url,
                 script_path=script_path,
             )
-            podcast = podcast_service.create_podcast(payload)
-            log(f"✅ 已入库: {podcast.id} - {title}")
+            status, podcast = podcast_service.upsert_podcast(payload)
+            if podcast is None:
+                log(f"⏭️ 已跳过重复事件: {title} ({event_key})")
+                continue
+            log(f"✅ 已{status}: {podcast.id} - {title}")
     finally:
         db.close()
 

@@ -7,7 +7,7 @@ import type { Podcast } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
 import { useFavorites } from '../context/FavoritesContext'
-import { getCategoryLabel, getCoverStyle } from '../utils/coverStyles'
+import { getCategoryLabel, getCoverStyle, getFeaturedHeroCoverStyle } from '../utils/coverStyles'
 import { truncateText } from '../utils/truncate'
 
 const CATEGORIES = [
@@ -71,6 +71,7 @@ export function PodcastListPage() {
   const [isEditingPrefs, setIsEditingPrefs] = useState(false)
   const [pickedTags, setPickedTags] = useState<string[]>([])
   const [saving, setSaving] = useState(false)
+  const [featuredHeroSeed] = useState(() => Math.floor(Math.random() * 1_000_000))
   const { currentPodcast, play, toggle, reportAction, setRecommendationRequestId: setPlayerRecommendationRequestId } = usePlayer()
   const { user } = useUser()
 
@@ -162,6 +163,7 @@ export function PodcastListPage() {
 
   const featuredPodcast = recommendedPodcasts[0] ?? podcasts[0] ?? null
   const featuredSecondary = recommendedPodcasts[1] ?? podcasts[1] ?? null
+  const featuredHeroStyle = featuredPodcast ? getFeaturedHeroCoverStyle(featuredHeroSeed) : null
 
   return (
     <main style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
@@ -201,20 +203,20 @@ export function PodcastListPage() {
             }}
           />
           <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1.1fr) minmax(320px, 380px)',
-              gap: '28px',
-              padding: '32px',
-              alignItems: 'stretch',
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 1.05fr) minmax(340px, 410px)',
+                gap: '28px',
+                padding: '32px',
+                alignItems: 'stretch',
               position: 'relative',
               zIndex: 1,
             }}
           >
             <div style={{ display: 'grid', gap: '20px', alignContent: 'space-between', textAlign: 'left' }}>
               <div>
-                <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111' }}>
-                  {truncateText(featuredPodcast.title, 60)}
+                <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                  {featuredPodcast.title}
                 </h2>
                 <p style={{ maxWidth: '520px', color: '#36313a', fontSize: '16px', lineHeight: 1.7, marginBottom: '18px' }}>
                   {truncateText(featuredPodcast.summary, 100)}
@@ -237,15 +239,15 @@ export function PodcastListPage() {
                  onKeyDown={(event) => handleCardKeyDown(event, featuredPodcast)}
                  role="button"
                  tabIndex={0}
-                  style={{
-                    minHeight: '310px',
-                    borderRadius: '24px',
-                    padding: '22px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
+                   style={{
+                    minHeight: '344px',
+                     borderRadius: '24px',
+                    padding: '24px',
+                     display: 'flex',
+                     flexDirection: 'column',
+                     justifyContent: 'space-between',
                     cursor: 'pointer',
-                    ...getCoverStyle(featuredPodcast.category),
+                    ...(featuredHeroStyle ?? getCoverStyle(featuredPodcast.category)),
                    }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
@@ -272,8 +274,8 @@ export function PodcastListPage() {
                   </div>
                   <div style={{ textAlign: 'left' }}>
                    <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', marginBottom: '10px', fontWeight: 700 }}>{getCategoryLabel(featuredPodcast.category)}</div>
-                   <div style={{ fontSize: '35px', fontWeight: 700, lineHeight: 0.98, letterSpacing: '-0.06em', color: '#ffffff', marginBottom: '14px' }}>
-                     {truncateText(featuredPodcast.title, 36)}
+                   <div style={{ fontSize: '35px', fontWeight: 700, lineHeight: 0.98, letterSpacing: '-0.06em', color: '#ffffff', marginBottom: '14px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                     {featuredPodcast.title}
                     </div>
                    <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
                      点击卡片即可播放
@@ -321,7 +323,9 @@ export function PodcastListPage() {
                           onClick={(event) => event.stopPropagation()}
                           style={{ textDecoration: 'none', color: '#111111', fontWeight: 700, lineHeight: 1.25 }}
                         >
-                          {truncateText(featuredSecondary.title, 42)}
+                          <span style={{ overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                            {featuredSecondary.title}
+                          </span>
                         </Link>
                      </div>
                 </motion.div>
@@ -506,8 +510,8 @@ export function PodcastListPage() {
                       <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', fontWeight: 700, marginBottom: '10px' }}>
                         {getCategoryLabel(podcast.category)}
                       </div>
-                      <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff' }}>
-                        {truncateText(podcast.title, 36)}
+                      <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                        {podcast.title}
                       </div>
                     </div>
                     <div
@@ -652,8 +656,8 @@ export function PodcastListPage() {
                   New Release
                 </span>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff' }}>
-                    {truncateText(podcast.title, 36)}
+                  <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                    {podcast.title}
                   </div>
                   <div style={{ marginTop: '10px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(podcast.category)}</div>
                 </div>

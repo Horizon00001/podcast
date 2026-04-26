@@ -28,6 +28,7 @@ class TestPodcastSchemas:
 
     def test_podcast_create_defaults(self):
         p = PodcastCreate(title="T")
+        assert p.event_key == ""
         assert p.audio_url == ""
         assert p.script_path == ""
 
@@ -35,11 +36,13 @@ class TestPodcastSchemas:
         """Verify PodcastResponse can work with orm_mode style data."""
         p = PodcastResponse(
             id=1, title="Test", summary="S", category="tech",
+            event_key="tech:event:1",
             audio_url="/a.mp3", script_path="/s.json",
             published_at="2024-01-01T00:00:00",
         )
         assert p.id == 1
         assert p.title == "Test"
+        assert p.event_key == "tech:event:1"
 
 
 class TestUserSchemas:

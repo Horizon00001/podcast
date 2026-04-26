@@ -17,10 +17,11 @@ class TestPodcastRepository:
     def test_create_and_list(self, db_session):
         repo = PodcastRepository(db_session)
         p = repo.create_podcast(PodcastCreate(
-            title="Episode 1", summary="Summary", category="tech",
+            title="Episode 1", summary="Summary", category="tech", event_key="tech:event-1",
         ))
         assert p.id is not None
         assert p.title == "Episode 1"
+        assert p.event_key == "tech:event-1"
         podcasts = repo.list_podcasts()
         assert len(podcasts) == 1
         assert podcasts[0].id == p.id
@@ -47,11 +48,39 @@ class TestPodcastRepository:
         repo = PodcastRepository(db_session)
         p = repo.create_podcast(PodcastCreate(
             title="Audio Episode",
+            event_key="tech:audio-episode",
             audio_url="/audio/test.mp3",
             script_path="/output/script.json",
         ))
+        assert p.event_key == "tech:audio-episode"
         assert p.audio_url == "/audio/test.mp3"
         assert p.script_path == "/output/script.json"
+
+    def test_get_by_event_key(self, db_session):
+        repo = PodcastRepository(db_session)
+        created = repo.create_podcast(PodcastCreate(title="Clustered", event_key="tech:clustered"))
+        found = repo.get_by_event_key("tech:clustered")
+        assert found is not None
+        assert found.id == created.id
+
+    def test_update_podcast(self, db_session):
+        repo = PodcastRepository(db_session)
+        created = repo.create_podcast(PodcastCreate(title="Old", event_key="tech:clustered"))
+        updated = repo.update_podcast(
+            created,
+            PodcastCreate(
+                title="New",
+                summary="Updated summary",
+                category="tech_ai",
+                event_key="tech:clustered",
+                audio_url="/audio/new.mp3",
+                script_path="/output/new.json",
+            ),
+        )
+        assert updated.title == "New"
+        assert updated.summary == "Updated summary"
+        assert updated.category == "tech_ai"
+        assert updated.audio_url == "/audio/new.mp3"
 
 
 class TestInteractionRepository:

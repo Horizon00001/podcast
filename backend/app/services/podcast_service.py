@@ -86,9 +86,26 @@ class PodcastService:
     def get_podcast(self, podcast_id: int):
         return self.repository.get_podcast(podcast_id)
 
+    def get_podcast_by_event_key(self, event_key: str):
+        return self.repository.get_by_event_key((event_key or "").strip())
+
     def create_podcast(self, payload: PodcastCreate):
         normalized_payload = payload.model_copy(update={"title": normalize_podcast_title(payload.title)})
         return self.repository.create_podcast(normalized_payload)
+
+    def upsert_podcast(self, payload: PodcastCreate, force: bool = False) -> tuple[str, object | None]:
+        normalized_payload = payload.model_copy(
+            update={
+                "title": normalize_podcast_title(payload.title),
+                "event_key": (payload.event_key or "").strip(),
+            }
+        )
+        existing = self.repository.get_by_event_key(normalized_payload.event_key)
+        if existing is None:
+            return "created", self.repository.create_podcast(normalized_payload)
+        if not force:
+            return "skipped", None
+        return "updated", self.repository.update_podcast(existing, normalized_payload)
 
     def get_podcast_script(self, podcast_id: int) -> list[ScriptLineResponse]:
         podcast = self.repository.get_podcast(podcast_id)

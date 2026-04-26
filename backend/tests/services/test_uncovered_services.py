@@ -59,7 +59,7 @@ class TestTopicService:
 class TestPodcastService:
     def test_create_and_list(self, db_session):
         svc = PodcastService(db_session)
-        p = svc.create_podcast(PodcastCreate(title="Svc Podcast"))
+        p = svc.create_podcast(PodcastCreate(title="Svc Podcast", event_key="svc:podcast"))
         assert p.id is not None
 
         podcasts = svc.list_podcasts()
@@ -67,13 +67,46 @@ class TestPodcastService:
 
     def test_get_podcast(self, db_session):
         svc = PodcastService(db_session)
-        created = svc.create_podcast(PodcastCreate(title="Target"))
+        created = svc.create_podcast(PodcastCreate(title="Target", event_key="svc:target"))
         found = svc.get_podcast(created.id)
         assert found.title == "Target"
 
     def test_get_podcast_not_found(self, db_session):
         svc = PodcastService(db_session)
         assert svc.get_podcast(999) is None
+
+    def test_upsert_creates_when_event_key_missing(self, db_session):
+        svc = PodcastService(db_session)
+        status, podcast = svc.upsert_podcast(PodcastCreate(title="Unique", event_key="svc:unique"))
+        assert status == "created"
+        assert podcast is not None
+        assert podcast.event_key == "svc:unique"
+
+    def test_upsert_skips_duplicate_event_key_by_default(self, db_session):
+        svc = PodcastService(db_session)
+        first_status, first = svc.upsert_podcast(PodcastCreate(title="First", event_key="svc:duplicate"))
+        second_status, second = svc.upsert_podcast(PodcastCreate(title="Second", event_key="svc:duplicate"))
+
+        assert first_status == "created"
+        assert first is not None
+        assert second_status == "skipped"
+        assert second is None
+        podcasts = svc.list_podcasts()
+        assert len(podcasts) == 1
+        assert podcasts[0].title == "First"
+
+    def test_upsert_updates_duplicate_event_key_when_forced(self, db_session):
+        svc = PodcastService(db_session)
+        svc.upsert_podcast(PodcastCreate(title="First", event_key="svc:forced", summary="old"))
+        status, updated = svc.upsert_podcast(
+            PodcastCreate(title="Second", event_key="svc:forced", summary="new"),
+            force=True,
+        )
+
+        assert status == "updated"
+        assert updated is not None
+        assert updated.title == "Second"
+        assert updated.summary == "new"
 
 
 class TestGenerationResultService:
@@ -87,7 +120,7 @@ class TestGenerationResultService:
         asyncio.run(svc.save_generated_podcast("task-1", fake_add_log))
         assert any("未能找到生成的文件" in m for m in messages)
 
-    def test_save_success(self, tmp_path):
+    def test_save_success(self, tmp_path, db_session):
         script = {"title": "My Podcast", "intro": "Welcome to the show"}
         (tmp_path / "podcast_script.json").write_text(
             json.dumps(script, ensure_ascii=False))
@@ -99,8 +132,9 @@ class TestGenerationResultService:
         async def fake_add_log(task_id, msg):
             messages.append(msg)
 
-        svc = GenerationResultService(tmp_path)
-        asyncio.run(svc.save_generated_podcast("task-1", fake_add_log))
+        with patch("app.services.generation_result_service.SessionLocal", return_value=db_session):
+            svc = GenerationResultService(tmp_path)
+            asyncio.run(svc.save_generated_podcast("task-1", fake_add_log))
         assert any("已成功添加到列表" in m for m in messages)
         assert (tmp_path / "audio" / "podcast_task-1.mp3").exists()
         assert (tmp_path / "audio" / "podcast_task-1.json").exists()

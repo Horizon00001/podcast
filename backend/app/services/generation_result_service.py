@@ -42,6 +42,7 @@ class GenerationResultService:
                 payload = PodcastCreate(
                     title=title,
                     summary=summary,
+                    event_key=f"generated:{task_id}",
                     audio_url=f"/audio/{final_audio_name}",
                     script_path=str(final_script_path),
                 )

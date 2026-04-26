@@ -59,10 +59,12 @@ class TestPodcastModel:
             title="Deep Dive",
             summary="An in-depth look at AI",
             category="tech_ai",
+            event_key="tech_ai:deep-dive:1234",
             audio_url="/audio/test.mp3",
             script_path="/output/script.json",
         )
         assert podcast.summary == "An in-depth look at AI"
+        assert podcast.event_key == "tech_ai:deep-dive:1234"
         assert podcast.audio_url == "/audio/test.mp3"
         assert podcast.script_path == "/output/script.json"
 
@@ -73,6 +75,7 @@ class TestPodcastModel:
         db_session.refresh(podcast)
         assert podcast.summary == ""
         assert podcast.category == "general"
+        assert podcast.event_key == ""
         assert podcast.audio_url == ""
         assert podcast.script_path == ""
         assert isinstance(podcast.published_at, datetime)

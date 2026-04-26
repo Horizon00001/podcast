@@ -11,12 +11,14 @@ class PodcastBase(BaseModel):
 
 
 class PodcastCreate(PodcastBase):
+    event_key: str = ""
     audio_url: str = ""
     script_path: str = ""
 
 
 class PodcastResponse(PodcastBase):
     id: int
+    event_key: str = ""
     audio_url: str = ""
     script_path: str = ""
     published_at: datetime

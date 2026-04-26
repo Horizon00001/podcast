@@ -240,7 +240,7 @@ def _anchor_for_item(item: dict) -> str:
     return "general-roundup"
 
 
-def cluster_by_similarity(items: List[dict], threshold: float = 0.5) -> List[List[dict]]:
+def cluster_by_similarity(items: List[dict], threshold: float = 0.85) -> List[List[dict]]:
     if len(items) <= 1:
         return [items] if items else []
     embedding_vectors = _embedding_vectors(items)
@@ -300,7 +300,7 @@ def _group_title(group_items: List[dict], category: str) -> str:
     return title or category
 
 
-def group_items_for_podcasts(items: List[dict], threshold: float = 0.5) -> dict[str, list[list[dict]]]:
+def group_items_for_podcasts(items: List[dict], threshold: float = 0.85) -> dict[str, list[list[dict]]]:
     if settings.episode_embedding_enabled:
         clusters = cluster_by_similarity(dedupe_items(items), threshold=threshold)
         return {"general": clusters} if clusters else {}
@@ -430,7 +430,7 @@ def load_pending_groups(path: Path) -> tuple[list[dict], list[str]]:
     return data.get("pending_groups", []), data.get("used_item_links", [])
 
 
-def merge_pending_groups(pending_groups: list[dict], new_items: list[dict], threshold: float = 0.5) -> tuple[list[dict], list[dict], list[str]]:
+def merge_pending_groups(pending_groups: list[dict], new_items: list[dict], threshold: float = 0.85) -> tuple[list[dict], list[dict], list[str]]:
     generated_groups: list[dict] = []
     remaining_pending: list[dict] = []
     consumed_links: list[str] = []

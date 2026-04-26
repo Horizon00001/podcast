@@ -13,6 +13,7 @@ class Podcast(Base):
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     summary: Mapped[str] = mapped_column(Text, default="")
     category: Mapped[str] = mapped_column(String(64), default="general", nullable=False)
+    event_key: Mapped[str] = mapped_column(String(255), default="", nullable=False, index=True)
     audio_url: Mapped[str] = mapped_column(String(500), default="")
     script_path: Mapped[str] = mapped_column(String(500), default="")
     published_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)

@@ -26,6 +26,37 @@ class TestEnsurePodcastsCategoryColumn:
         from app.db.migrations import _ensure_podcasts_category_column
         _ensure_podcasts_category_column()
 
+
+class TestEnsurePodcastsEventKeyColumn:
+    def test_noop_when_table_missing(self, clean_engine, monkeypatch):
+        monkeypatch.setattr("app.db.migrations.engine", clean_engine)
+        from app.db.migrations import _ensure_podcasts_event_key_column
+        _ensure_podcasts_event_key_column()
+
+    def test_adds_event_key_to_existing_table(self, clean_engine, monkeypatch):
+        monkeypatch.setattr("app.db.migrations.engine", clean_engine)
+        from app.db.migrations import _ensure_podcasts_event_key_column
+        with clean_engine.begin() as conn:
+            conn.execute(text(
+                "CREATE TABLE podcasts (id INTEGER PRIMARY KEY, title VARCHAR(200))"
+            ))
+        _ensure_podcasts_event_key_column()
+        inspector = inspect(clean_engine)
+        columns = {c["name"] for c in inspector.get_columns("podcasts")}
+        assert "event_key" in columns
+
+    def test_noop_when_event_key_exists(self, clean_engine, monkeypatch):
+        monkeypatch.setattr("app.db.migrations.engine", clean_engine)
+        from app.db.migrations import _ensure_podcasts_event_key_column
+        with clean_engine.begin() as conn:
+            conn.execute(text(
+                "CREATE TABLE podcasts ("
+                "id INTEGER PRIMARY KEY, title VARCHAR(200), "
+                "event_key VARCHAR(255) NOT NULL DEFAULT ''"
+                ")"
+            ))
+        _ensure_podcasts_event_key_column()
+
     def test_adds_category_to_existing_table(self, clean_engine, monkeypatch):
         monkeypatch.setattr("app.db.migrations.engine", clean_engine)
         from app.db.migrations import _ensure_podcasts_category_column

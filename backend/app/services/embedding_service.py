@@ -94,8 +94,17 @@ class DashScopeEmbeddingProvider(EmbeddingProvider):
     model: str
     api_key: str
     base_url: str = "https://dashscope.aliyuncs.com/api/v1/services/embeddings/text-embedding/text-embedding"
+    batch_size: int = 10
 
     def encode_texts(self, texts: list[str]) -> list[list[float]]:
+        all_vectors = []
+        for i in range(0, len(texts), self.batch_size):
+            batch = texts[i : i + self.batch_size]
+            vectors = self._encode_batch(batch)
+            all_vectors.extend(vectors)
+        return all_vectors
+
+    def _encode_batch(self, texts: list[str]) -> list[list[float]]:
         payload = json.dumps({"model": self.model, "input": {"texts": texts}}).encode("utf-8")
         request = urllib_request.Request(
             self.base_url,

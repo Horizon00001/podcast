@@ -110,8 +110,8 @@ export function FavoritesPage() {
                   Library
                 </span>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '27px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff' }}>
-                    {truncateText(podcast.title, 36)}
+                  <div style={{ fontSize: '27px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                    {podcast.title}
                   </div>
                   <div style={{ marginTop: '10px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(podcast.category)}</div>
                 </div>

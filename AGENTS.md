@@ -67,6 +67,18 @@
   - `npm test`
 - `npm run build` runs `tsc -b` before Vite build.
 
+## Audio Assets
+- 音乐素材按用途分目录存放于 `assets/audio/`：
+  - `opening/` — 开场/主题音乐（`role=opening_theme`）
+  - `transition/` — 过渡音乐（`role=transition_sting`），当前使用 `transition_music_5s.mp3`
+  - `closing/` — 结尾音乐（`role=closing_tail`）
+- 优先级：优先从对应目录随机选一个音频文件；目录为空则 fallback 到 `assets/audio/` 根目录的候选文件。
+- 合成时各角色音量/淡出参数：
+  - `opening_theme`: volume=0.24, fade_out=1800ms
+  - `transition_sting`: volume=0.20, fade_out=350ms
+  - `closing_tail`: volume=0.20, fade_out=2600ms
+  - 其他: volume=0.22, fade_out=1300ms
+
 ## Working Notes
 - Root `package-lock.json` exists, but the active frontend project is `frontend/package.json`.
 - Generated files under `output/` are artifacts, not source of truth, unless the task is explicitly about pipeline results.

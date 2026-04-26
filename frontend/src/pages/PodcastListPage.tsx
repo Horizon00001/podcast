@@ -147,18 +147,11 @@ export function PodcastListPage() {
   const handleFavoriteToggle = (podcastId: number) => {
     const podcast = podcasts.find((item) => item.id === podcastId)
     if (!podcast || !user) return
-    const wasFavorite = isFavorite(podcastId)
     toggleFavorite(podcast)
-    if (!wasFavorite) {
+    if (isFavorite(podcastId)) {
       void reportAction('favorite', podcast, {
         recommendation_request_id: recommendationRequestId,
-      })?.then(() => api.getRecommendations(user.id))
-        .then((response) => {
-          setRecommendedIds(response.items.map((item) => item.podcast_id))
-          setRecommendationRequestId(response.request_id)
-          setPlayerRecommendationRequestId(response.request_id)
-        })
-        .catch((e) => setError((e as Error).message))
+      })
     }
   }
 
@@ -565,6 +558,17 @@ export function PodcastListPage() {
                   <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5 }}>{podcast.summary}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
                     <span style={{ fontSize: '12px', color: '#5f5967' }}>{new Date(podcast.published_at).toLocaleDateString()}</span>
+                    <motion.button
+                      whileHover={{ scale: 1.12 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        handleFavoriteToggle(podcast.id)
+                      }}
+                      style={{ border: `1px solid ${isFavorite(podcast.id) ? '#000000' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? '#000000' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                    >
+                      {isFavorite(podcast.id) ? '已收藏' : '收藏'}
+                    </motion.button>
                   </div>
                 </motion.div>
             )})}

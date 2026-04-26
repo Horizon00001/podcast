@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Podcast } from '../types/podcast';
 import { getCategoryLabel, getCoverStyle } from '../utils/coverStyles';
+import { truncateText } from '../utils/truncate';
 
 export function FavoritesPage() {
   const { favorites, toggleFavorite } = useFavorites();
@@ -108,9 +109,9 @@ export function FavoritesPage() {
                 <span style={{ fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.82)', fontWeight: 700 }}>
                   Library
                 </span>
-                <div>
+                <div style={{ textAlign: 'left' }}>
                   <div style={{ fontSize: '27px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff' }}>
-                    {podcast.title}
+                    {truncateText(podcast.title, 36)}
                   </div>
                   <div style={{ marginTop: '10px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(podcast.category)}</div>
                 </div>
@@ -128,10 +129,10 @@ export function FavoritesPage() {
                   marginBottom: '8px'
                 }}
               >
-                {podcast.title}
+                {truncateText(podcast.title, 50)}
               </Link>
               <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5 }}>
-                {podcast.summary}
+                {truncateText(podcast.summary, 100)}
               </p>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
                 <span style={{ fontSize: '12px', color: 'var(--text)' }}>

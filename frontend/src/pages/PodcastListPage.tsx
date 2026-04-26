@@ -8,6 +8,7 @@ import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
 import { useFavorites } from '../context/FavoritesContext'
 import { getCategoryLabel, getCoverStyle } from '../utils/coverStyles'
+import { truncateText } from '../utils/truncate'
 
 const CATEGORIES = [
   { id: 'all', name: '全部' },
@@ -210,13 +211,13 @@ export function PodcastListPage() {
               zIndex: 1,
             }}
           >
-            <div style={{ display: 'grid', gap: '20px', alignContent: 'space-between' }}>
+            <div style={{ display: 'grid', gap: '20px', alignContent: 'space-between', textAlign: 'left' }}>
               <div>
                 <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111' }}>
-                  {featuredPodcast.title}
+                  {truncateText(featuredPodcast.title, 60)}
                 </h2>
                 <p style={{ maxWidth: '520px', color: '#36313a', fontSize: '16px', lineHeight: 1.7, marginBottom: '18px' }}>
-                  {featuredPodcast.summary}
+                  {truncateText(featuredPodcast.summary, 100)}
                 </p>
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -269,11 +270,11 @@ export function PodcastListPage() {
                       P
                     </span>
                   </div>
-                  <div>
+                  <div style={{ textAlign: 'left' }}>
                    <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', marginBottom: '10px', fontWeight: 700 }}>{getCategoryLabel(featuredPodcast.category)}</div>
                    <div style={{ fontSize: '35px', fontWeight: 700, lineHeight: 0.98, letterSpacing: '-0.06em', color: '#ffffff', marginBottom: '14px' }}>
-                     {featuredPodcast.title}
-                   </div>
+                     {truncateText(featuredPodcast.title, 36)}
+                    </div>
                    <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
                      点击卡片即可播放
                    </div>
@@ -313,14 +314,14 @@ export function PodcastListPage() {
                       <span style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.8)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>Next Up</span>
                       <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(featuredSecondary.category)}</span>
                     </div>
-                      <div>
+                      <div style={{ textAlign: 'left' }}>
                         <div style={{ fontSize: '12px', color: '#6b6375', marginBottom: '4px', fontWeight: 600 }}>继续推荐</div>
                         <Link
                           to={`/podcasts/${featuredSecondary.id}`}
                           onClick={(event) => event.stopPropagation()}
                           style={{ textDecoration: 'none', color: '#111111', fontWeight: 700, lineHeight: 1.25 }}
                         >
-                          {featuredSecondary.title}
+                          {truncateText(featuredSecondary.title, 42)}
                         </Link>
                      </div>
                 </motion.div>
@@ -501,12 +502,12 @@ export function PodcastListPage() {
                         {String(index + 1).padStart(2, '0')}
                       </div>
                     </div>
-                    <div style={{ alignSelf: 'center', position: 'relative', zIndex: 1 }}>
+                    <div style={{ alignSelf: 'stretch', position: 'relative', zIndex: 1, textAlign: 'left' }}>
                       <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', fontWeight: 700, marginBottom: '10px' }}>
                         {getCategoryLabel(podcast.category)}
                       </div>
                       <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff' }}>
-                        {podcast.title}
+                        {truncateText(podcast.title, 36)}
                       </div>
                     </div>
                     <div
@@ -553,9 +554,9 @@ export function PodcastListPage() {
                      onClick={(event) => event.stopPropagation()}
                      style={{ fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none', fontSize: '16px', lineHeight: 1.25 }}
                    >
-                    {podcast.title}
-                  </Link>
-                  <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5 }}>{podcast.summary}</p>
+                     {truncateText(podcast.title, 50)}
+                   </Link>
+                   <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5 }}>{truncateText(podcast.summary, 100)}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
                     <span style={{ fontSize: '12px', color: '#5f5967' }}>{new Date(podcast.published_at).toLocaleDateString()}</span>
                     <motion.button
@@ -650,9 +651,9 @@ export function PodcastListPage() {
                 <span style={{ fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 700 }}>
                   New Release
                 </span>
-                <div>
+                <div style={{ textAlign: 'left' }}>
                   <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff' }}>
-                    {podcast.title}
+                    {truncateText(podcast.title, 36)}
                   </div>
                   <div style={{ marginTop: '10px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(podcast.category)}</div>
                 </div>
@@ -670,10 +671,10 @@ export function PodcastListPage() {
                   marginBottom: '8px'
                 }}
               >
-                {podcast.title}
+                {truncateText(podcast.title, 50)}
               </Link>
               <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5 }}>
-                {podcast.summary}
+                {truncateText(podcast.summary, 100)}
               </p>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
                 <div style={{ fontSize: '12px', color: 'var(--text)' }}>

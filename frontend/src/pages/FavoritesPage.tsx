@@ -126,15 +126,16 @@ export function FavoritesPage() {
                   flex: 1,
                   fontSize: '17px',
                   lineHeight: 1.25,
-                  marginBottom: '8px'
+                  marginBottom: '8px',
+                  textAlign: 'left'
                 }}
               >
                 {truncateText(podcast.title, 50)}
               </Link>
-              <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5, textAlign: 'left' }}>
                 {truncateText(podcast.summary, 100)}
               </p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', textAlign: 'left' }}>
                 <span style={{ fontSize: '12px', color: 'var(--text)' }}>
                   {new Date(podcast.published_at).toLocaleDateString()}
                 </span>

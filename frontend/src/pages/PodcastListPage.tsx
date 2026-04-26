@@ -552,11 +552,11 @@ export function PodcastListPage() {
                    <Link
                      to={`/podcasts/${podcast.id}`}
                      onClick={(event) => event.stopPropagation()}
-                     style={{ fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none', fontSize: '16px', lineHeight: 1.25 }}
-                   >
+                     style={{ display: 'block', fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none', fontSize: '16px', lineHeight: 1.25, textAlign: 'left' }}
+                    >
                      {truncateText(podcast.title, 50)}
                    </Link>
-                   <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5 }}>{truncateText(podcast.summary, 100)}</p>
+                   <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5, textAlign: 'left' }}>{truncateText(podcast.summary, 100)}</p>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
                     <span style={{ fontSize: '12px', color: '#5f5967' }}>{new Date(podcast.published_at).toLocaleDateString()}</span>
                     <motion.button
@@ -668,15 +668,16 @@ export function PodcastListPage() {
                   textDecoration: 'none',
                   fontSize: '18px',
                   lineHeight: 1.25,
-                  marginBottom: '8px'
+                  marginBottom: '8px',
+                  textAlign: 'left'
                 }}
               >
                 {truncateText(podcast.title, 50)}
               </Link>
-              <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5, textAlign: 'left' }}>
                 {truncateText(podcast.summary, 100)}
               </p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
                 <div style={{ fontSize: '12px', color: 'var(--text)' }}>
                   {new Date(podcast.published_at).toLocaleDateString()}
                 </div>

@@ -69,6 +69,69 @@
             "url": "https://www.oschina.net/news/rss",
             "enabled": true,
             "category": "tech"
+        },
+        {
+            "id": "bbc-world",
+            "name": "BBC World News",
+            "url": "https://feeds.bbci.co.uk/news/rss.xml",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "nytimes-home",
+            "name": "NY Times Home",
+            "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "wired",
+            "name": "Wired",
+            "url": "https://www.wired.com/feed/rss",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "product-hunt",
+            "name": "Product Hunt",
+            "url": "https://www.producthunt.com/feed",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "smzdm",
+            "name": "什么值得买",
+            "url": "https://www.smzdm.com/feed",
+            "enabled": true,
+            "category": "shopping"
+        },
+        {
+            "id": "zhihu-daily",
+            "name": "知乎日报",
+            "url": "https://daily.zhihu.com/rss",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "dw-zh",
+            "name": "DW 中文",
+            "url": "https://rss.dw.com/rss/zh/rss-zh-all.xml",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "reuters",
+            "name": "Reuters",
+            "url": "https://feeds.reuters.com/reuters/topNews",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "guardian-world",
+            "name": "The Guardian World",
+            "url": "https://www.theguardian.com/world/rss",
+            "enabled": true,
+            "category": "news"
         }
     ]
 }

@@ -29,8 +29,8 @@ const COVER_THEMES: Record<string, { background: string; shadow: string }> = {
     shadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(69,125,82,0.16)',
   },
   all: {
-    background: 'radial-gradient(circle at top left, rgba(255,255,255,0.34), transparent 40%), radial-gradient(circle at bottom right, rgba(181, 194, 255, 0.18), transparent 42%), linear-gradient(145deg, #9ea9c9 0%, #bcc7dd 48%, #dce3ef 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.24), inset 0 -20px 32px rgba(99,112,148,0.14)',
+    background: 'radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.58), transparent 22%), radial-gradient(circle at 82% 14%, rgba(99, 255, 227, 0.3), transparent 28%), radial-gradient(circle at 84% 86%, rgba(138, 122, 255, 0.34), transparent 34%), linear-gradient(148deg, #0e5a70 0%, #14819a 30%, #1fa2b2 56%, #2b8fd1 78%, #635eff 100%)',
+    shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -28px 42px rgba(20,36,96,0.3)',
   },
 }
 

@@ -188,6 +188,16 @@ class TestEpisodePlannerCosine:
         assert _cosine({}, {"a": 1.0}) == 0.0
         assert _cosine({"a": 1.0}, {}) == 0.0
 
+    def test_dense_cosine_identical_vectors(self):
+        from app.pipelines.episode_planner import _dense_cosine
+
+        assert _dense_cosine([0.1, 0.2], [0.1, 0.2]) == pytest.approx(0.05)
+
+    def test_dense_cosine_mismatched_dimensions(self):
+        from app.pipelines.episode_planner import _dense_cosine
+
+        assert _dense_cosine([0.1], [0.1, 0.2]) == 0.0
+
 
 class TestEpisodePlannerClusterBySimilarity:
     """Test cluster_by_similarity function."""
@@ -236,6 +246,62 @@ class TestEpisodePlannerClusterBySimilarity:
         assert first_key == second_key
         assert first_key.startswith("general:")
 
+    def test_cluster_with_embedding_similarity(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        items = [
+            {"title": "维斯塔潘赢得F1迈阿密大奖赛", "summary": "红牛车手拿下冠军", "link": "http://example.com/cn"},
+            {"title": "Verstappen dominates F1 Miami race", "summary": "Red Bull driver wins again", "link": "http://example.com/en"},
+            {"title": "Apple releases new iPhone", "summary": "New smartphone lineup announced", "link": "http://example.com/apple"},
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.95, 0.05],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_weight", 0.9)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        result = cluster_by_similarity(items, threshold=0.8)
+
+        cluster_sizes = sorted(len(cluster) for cluster in result)
+        assert cluster_sizes == [1, 2]
+
+    def test_cluster_with_embedding_ignores_tfidf(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        items = [
+            {"title": "Apple launched new iPhone", "summary": "new phone", "link": "http://example.com/en"},
+            {"title": "苹果发布了新手机", "summary": "新手机发布", "link": "http://example.com/cn"},
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+        monkeypatch.setattr(episode_planner, "_tfidf_vectors", lambda items: (_ for _ in ()).throw(AssertionError("tfidf should not be used")))
+
+        result = cluster_by_similarity(items, threshold=0.8)
+
+        assert len(result) == 1
+        assert len(result[0]) == 2
+
 
 class TestEpisodePlannerAnchorForItem:
     """Test _anchor_for_item function."""
@@ -265,6 +331,8 @@ class TestEpisodePlannerGroupItems:
     """Test group_items_for_podcasts function."""
 
     def test_group_items_basic(self):
+        from app.pipelines import episode_planner
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {"title": "Anthropic releases Claude update", "summary": "New Claude model news", "feed_name": "AI News", "category": "tech", "link": "http://1"},
             {"title": "Claude gets enterprise upgrade from Anthropic", "summary": "Anthropic AI product update", "feed_name": "Tech", "category": "news", "link": "http://2"},
@@ -276,10 +344,14 @@ class TestEpisodePlannerGroupItems:
         assert len(result["general"][0]) == 2
 
     def test_group_items_empty(self):
+        from app.pipelines import episode_planner
+        episode_planner.settings.episode_embedding_enabled = False
         result = group_items_for_podcasts([])
         assert result == {}
 
     def test_group_items_dedupes_repeated_source_entries(self):
+        from app.pipelines import episode_planner
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
@@ -311,6 +383,34 @@ class TestEpisodePlannerGroupItems:
 
         assert total_groups == 2
         assert total_items == 2
+
+    def test_group_items_uses_embedding_without_anchor_buckets(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        items = [
+            {"title": "Apple launched new iPhone", "summary": "new phone", "link": "http://example.com/en"},
+            {"title": "苹果发布了新手机", "summary": "新手机发布", "link": "http://example.com/cn"},
+            {"title": "如何做蛋糕", "summary": "厨房技巧", "link": "http://example.com/cake"},
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        grouped = group_items_for_podcasts(items, threshold=0.8)
+
+        cluster_sizes = sorted(len(cluster) for cluster in grouped["general"])
+        assert cluster_sizes == [1, 2]
 
 
 class TestEpisodePlannerGroupTitle:

@@ -7,6 +7,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
+from app.core.config import settings
+from app.services.embedding_service import get_embedding_service
 from app.services.text_tokenizer import spaced_tokens, tokenize_text
 
 
@@ -159,8 +161,39 @@ def _cosine(left: dict[str, float], right: dict[str, float]) -> float:
     return dot / (left_norm * right_norm)
 
 
+def _dense_cosine(left: list[float], right: list[float]) -> float:
+    if not left or not right or len(left) != len(right):
+        return 0.0
+    return sum(a * b for a, b in zip(left, right))
+
+
 def _similarity_key(item: dict) -> str:
     return item.get("link") or item.get("item_id") or item.get("title") or str(id(item))
+
+
+def _embedding_text(item: dict) -> str:
+    return " ".join(
+        part for part in [
+            item.get("title", ""),
+            item.get("summary", ""),
+            item.get("feed_name", ""),
+            item.get("category", ""),
+        ]
+        if part
+    )
+
+
+def _embedding_vectors(items: List[dict]) -> dict[str, list[float]]:
+    service = get_embedding_service()
+    if not settings.episode_embedding_enabled or not service.is_enabled() or not items:
+        return {}
+
+    texts = [_embedding_text(item) for item in items]
+    vectors = service.encode_texts(texts)
+    return {
+        _similarity_key(item): vector
+        for item, vector in zip(items, vectors)
+    }
 
 
 def _normalize_title(title: str) -> str:
@@ -210,7 +243,9 @@ def _anchor_for_item(item: dict) -> str:
 def cluster_by_similarity(items: List[dict], threshold: float = 0.5) -> List[List[dict]]:
     if len(items) <= 1:
         return [items] if items else []
-    vectors = _tfidf_vectors(items)
+    embedding_vectors = _embedding_vectors(items)
+    use_embeddings = bool(embedding_vectors)
+    vectors = {} if use_embeddings else _tfidf_vectors(items)
     item_by_key = {_similarity_key(item): item for item in items}
     keys = list(item_by_key.keys())
     parent = {key: key for key in keys}
@@ -229,7 +264,14 @@ def cluster_by_similarity(items: List[dict], threshold: float = 0.5) -> List[Lis
 
     for index, left_key in enumerate(keys):
         for right_key in keys[index + 1 :]:
-            if _cosine(vectors.get(left_key, {}), vectors.get(right_key, {})) >= threshold:
+            if use_embeddings:
+                similarity = _dense_cosine(
+                    embedding_vectors.get(left_key, []),
+                    embedding_vectors.get(right_key, []),
+                )
+            else:
+                similarity = _cosine(vectors.get(left_key, {}), vectors.get(right_key, {}))
+            if similarity >= threshold:
                 union(left_key, right_key)
 
     grouped: dict[str, list[dict]] = defaultdict(list)
@@ -259,6 +301,10 @@ def _group_title(group_items: List[dict], category: str) -> str:
 
 
 def group_items_for_podcasts(items: List[dict], threshold: float = 0.5) -> dict[str, list[list[dict]]]:
+    if settings.episode_embedding_enabled:
+        clusters = cluster_by_similarity(dedupe_items(items), threshold=threshold)
+        return {"general": clusters} if clusters else {}
+
     anchor_buckets: dict[str, list[dict]] = defaultdict(list)
     for item in dedupe_items(items):
         anchor_buckets[_anchor_for_item(item)].append(item)

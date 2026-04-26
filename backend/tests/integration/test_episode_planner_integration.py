@@ -3,6 +3,8 @@
 测试完整的新闻聚类和规划流程
 """
 import pytest
+
+from app.pipelines import episode_planner
 from pathlib import Path
 
 from app.pipelines.episode_planner import (
@@ -25,6 +27,7 @@ class TestEpisodePlannerFullFlow:
 
     def test_classify_and_cluster_real_items(self):
         """测试真实新闻可直接聚类，不依赖前置分类."""
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "OpenAI Releases GPT-5",
@@ -57,6 +60,7 @@ class TestEpisodePlannerFullFlow:
 
     def test_group_items_produces_episode_groups(self):
         """测试 group_items_for_podcasts 产生正确的分组."""
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "Apple CEO Announces New Product",
@@ -88,6 +92,7 @@ class TestEpisodePlannerFullFlow:
 
     def test_deduped_duplicate_rss_entries_only_form_one_group(self):
         """重复 RSS 条目不应生成多个相同播客组."""
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
@@ -315,6 +320,7 @@ class TestTFIDFAndCosineIntegration:
 
     def test_clustering_with_real_text(self):
         """测试真实文本的聚类."""
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "OpenAI GPT-5 Model Announcement",
@@ -346,6 +352,7 @@ class TestTFIDFAndCosineIntegration:
         assert len(football_items) == 1  # 一篇足球新闻
 
     def test_clustering_with_chinese_word_segmentation(self):
+        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "人工智能芯片发布",
@@ -365,6 +372,45 @@ class TestTFIDFAndCosineIntegration:
         ]
 
         clusters = cluster_by_similarity(items, threshold=0.15)
+
+        cluster_sizes = sorted(len(cluster) for cluster in clusters)
+        assert cluster_sizes == [1, 2]
+
+    def test_clustering_with_cross_language_embeddings(self, monkeypatch):
+        items = [
+            {
+                "title": "维斯塔潘赢得F1迈阿密大奖赛",
+                "summary": "红牛车手再次夺冠",
+                "link": "http://cross-1.com",
+            },
+            {
+                "title": "Verstappen wins F1 Miami race",
+                "summary": "Red Bull driver secures another victory",
+                "link": "http://cross-2.com",
+            },
+            {
+                "title": "How to bake a cake",
+                "summary": "Kitchen tips for beginners",
+                "link": "http://cross-3.com",
+            },
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.98, 0.02],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_weight", 0.9)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        clusters = cluster_by_similarity(items, threshold=0.8)
 
         cluster_sizes = sorted(len(cluster) for cluster in clusters)
         assert cluster_sizes == [1, 2]

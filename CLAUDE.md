@@ -26,20 +26,20 @@ HTTP Request → FastAPI Route → Service → Repository → SQLAlchemy Session
 
 ```bash
 # Backend - 必须使用 backend venv 中的 Python
-cd /home/default/Projects/podcast/backend && source .venv/bin/activate
+cd /root/Projects/podcast/backend && source .venv/bin/activate
 uvicorn app.main:app --reload          # 开发服务器 (端口 8000)
 pytest                                  # 运行所有测试
 pytest tests/test_health.py -v         # 单个测试文件（详细输出）
 
 # Frontend
-cd /home/default/Projects/podcast/frontend
+cd /root/Projects/podcast/frontend
 npm install                              # 安装依赖
 npm run dev                              # 开发服务器 (localhost:5173)
 npm run lint && npm run build           # 检查 + TypeScript 编译 + 构建
 npm test                                 # vitest 前端测试
 
 # Standalone 管道（无需 Web UI）
-cd /home/default/Projects/podcast/backend && python -m app.cli run-pipeline
+cd /root/Projects/podcast/backend && python -m app.cli run-pipeline
 # 分步执行：
 python -m app.cli fetch-rss
 python -m app.cli generate-text

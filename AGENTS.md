@@ -8,12 +8,13 @@
 - `frontend/README.md` is the default Vite template and can be ignored.
 
 ## Required Runtime
-- Always use `backend/.venv/bin/python` for backend commands. The global Python environments are missing backend deps such as `pydantic_ai` and `dashscope`.
+- Backend venv is NOT bundled in the repo. Create it: `cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`
+- After setup, always use `backend/.venv/bin/python` (or `backend/.venv/bin/pytest` etc.). The global Python environments are missing backend deps such as `pydantic_ai` and `dashscope`.
 - Run backend commands from `backend/`. `Settings` loads `.env` from the current working directory.
 
 ## Backend Entry Points
 - API app entrypoint: `backend/app/main.py`. Start with `cd backend && source .venv/bin/activate && uvicorn app.main:app --reload`.
-- Restart backend with `cd /home/default/Projects/podcast/backend && pkill -f "[u]vicorn app.main:app --host 0.0.0.0 --port 8000" || true && setsid .venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/podcast_backend.log 2>&1 < /dev/null &`.
+- Restart backend with `cd /root/Projects/podcast/backend && pkill -f "[u]vicorn app.main:app --host 0.0.0.0 --port 8000" || true && setsid .venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/podcast_backend.log 2>&1 < /dev/null &`.
 - CLI entrypoint: `cd backend && python -m app.cli --help`.
 - Useful focused CLI commands:
   - `python -m app.cli fetch-rss`

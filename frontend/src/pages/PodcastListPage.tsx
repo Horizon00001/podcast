@@ -219,7 +219,7 @@ export function PodcastListPage() {
                 <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
                   {featuredPodcast.title}
                 </h2>
-                <p style={{ maxWidth: '520px', color: '#1f1a24', fontSize: '16px', lineHeight: 1.7, margin: '20px 0 18px' }}>
+                <p style={{ maxWidth: '520px', color: '#1f1a24', fontSize: '18px', lineHeight: 1.7, margin: '20px 0 18px' }}>
                   {featuredPodcast.summary}
                 </p>
               </div>

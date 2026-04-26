@@ -344,3 +344,27 @@ class TestTFIDFAndCosineIntegration:
 
         assert len(ai_items) == 2  # 两篇 AI 新闻
         assert len(football_items) == 1  # 一篇足球新闻
+
+    def test_clustering_with_chinese_word_segmentation(self):
+        items = [
+            {
+                "title": "人工智能芯片发布",
+                "summary": "新一代人工智能芯片提升训练效率",
+                "link": "http://cn-1.com",
+            },
+            {
+                "title": "国产人工智能芯片亮相",
+                "summary": "这款芯片面向大模型推理与训练",
+                "link": "http://cn-2.com",
+            },
+            {
+                "title": "足球联赛收官",
+                "summary": "本地球队赢得冠军",
+                "link": "http://cn-3.com",
+            },
+        ]
+
+        clusters = cluster_by_similarity(items, threshold=0.15)
+
+        cluster_sizes = sorted(len(cluster) for cluster in clusters)
+        assert cluster_sizes == [1, 2]

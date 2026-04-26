@@ -7,13 +7,15 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
+from app.services.text_tokenizer import spaced_tokens, tokenize_text
+
 
 def _clean_text(value: str) -> str:
     return re.sub(r"<[^<]+?>", "", value or "").strip()
 
 
 def _tokenize(value: str) -> str:
-    return f" {(value or '').lower()} "
+    return spaced_tokens(value)
 
 
 @dataclass
@@ -93,7 +95,7 @@ GLOBAL_TOPIC_ANCHORS = [
 
 
 def _tokenize_search_text(value: str) -> str:
-    return f" {(value or '').lower()} "
+    return spaced_tokens(value)
 
 
 def _build_item_search_text(item: dict) -> str:
@@ -127,8 +129,7 @@ def _tfidf_vectors(items: List[dict]) -> dict[str, dict[str, float]]:
     df: dict[str, int] = defaultdict(int)
     for item in items:
         item_id = item.get("link") or item.get("item_id") or item.get("title") or str(id(item))
-        tokens = re.findall(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]+", f"{item.get('title', '')} {item.get('summary', '')}")
-        tokens = [token.lower() for token in tokens]
+        tokens = tokenize_text(f"{item.get('title', '')} {item.get('summary', '')}")
         documents[item_id] = tokens
         for token in set(tokens):
             df[token] += 1

@@ -1,11 +1,11 @@
 import math
-import re
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
 
 from app.models.interaction import Interaction
 from app.models.podcast import Podcast
+from app.services.text_tokenizer import tokenize_text
 
 
 ACTION_WEIGHT = {
@@ -36,7 +36,7 @@ class ScoreContext:
 
 
 def tokenize(text: str) -> list[str]:
-    return [token.lower() for token in re.findall(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]+", text)]
+    return tokenize_text(text)
 
 
 def cosine_similarity(left: dict[str, float], right: dict[str, float]) -> float:

@@ -51,6 +51,9 @@ class TestEpisodePlannerTokenize:
     def test_tokenize_lowercase(self):
         assert _tokenize("HELLO") == " hello "
 
+    def test_tokenize_segments_chinese_words(self):
+        assert _tokenize("人工智能芯片") == " 人工智能 芯片 "
+
 
 class TestEpisodePlannerNormalizeTitle:
     """Test _normalize_title function."""
@@ -153,6 +156,15 @@ class TestEpisodePlannerTfIdfVectors:
         vectors = _tfidf_vectors(items)
 
         assert "http://example.com/1" in vectors
+
+    def test_tfidf_uses_chinese_word_tokens(self):
+        items = [
+            {"title": "人工智能芯片", "summary": "人工智能芯片加速训练", "link": "http://example.com/1"},
+        ]
+        vectors = _tfidf_vectors(items)
+
+        assert "人工智能" in vectors["http://example.com/1"]
+        assert "芯片" in vectors["http://example.com/1"]
 
 
 class TestEpisodePlannerCosine:

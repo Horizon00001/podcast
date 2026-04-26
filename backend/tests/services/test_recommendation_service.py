@@ -27,6 +27,10 @@ class TestRecommendationServicePureFunctions:
         result = self.service._tokenize("人工智能 机器学习 深度学习")
         assert set(result) == {"人工智能", "机器学习", "深度学习"}
 
+    def test_tokenize_chinese_compound_words(self):
+        result = self.service._tokenize("人工智能芯片")
+        assert result == ["人工智能", "芯片"]
+
     def test_tokenize_mixed(self):
         result = self.service._tokenize("AI 人工智能 ChatGPT")
         assert set(result) == {"ai", "人工智能", "chatgpt"}

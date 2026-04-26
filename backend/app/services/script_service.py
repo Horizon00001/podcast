@@ -1,4 +1,6 @@
+import asyncio
 import json
+import logging
 from pathlib import Path
 from typing import Awaitable, Callable
 
@@ -7,6 +9,13 @@ from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from app.core.config import settings
 from app.schemas.script import AudioEffect, DialogueTurn, PodcastScript, PodcastSection
+
+logger = logging.getLogger(__name__)
+
+
+def _is_rate_limit_error(e: Exception) -> bool:
+    err_str = str(e).lower()
+    return "429" in err_str or "rate_limit" in err_str or "rate limit" in err_str
 
 
 class ScriptService:
@@ -94,23 +103,24 @@ class ScriptService:
 
     @classmethod
     def _normalize_script(cls, script: PodcastScript) -> PodcastScript:
-        if any(section.section_type == "transition" for section in script.sections):
-            return script
+        normalized_script = script
+        if not any(section.section_type == "transition" for section in script.sections):
+            normalized_sections: list[PodcastSection] = []
+            main_content_seen = 0
+            insert_after_first_main = sum(section.section_type == "main_content" for section in script.sections) > 1
 
-        normalized_sections: list[PodcastSection] = []
-        main_content_seen = 0
-        insert_after_first_main = sum(section.section_type == "main_content" for section in script.sections) > 1
+            for section in script.sections:
+                normalized_sections.append(section)
+                if section.section_type != "main_content":
+                    continue
 
-        for section in script.sections:
-            normalized_sections.append(section)
-            if section.section_type != "main_content":
-                continue
+                main_content_seen += 1
+                if insert_after_first_main and main_content_seen == 1:
+                    normalized_sections.append(cls._build_transition_section())
 
-            main_content_seen += 1
-            if insert_after_first_main and main_content_seen == 1:
-                normalized_sections.append(cls._build_transition_section())
+            normalized_script = script.model_copy(update={"sections": normalized_sections})
 
-        return script.model_copy(update={"sections": normalized_sections})
+        return normalized_script.model_copy(update={"total_duration": normalized_script.estimate_duration()})
 
     async def _stream_script(self, news_content: str):
         """Prefer streaming output, then fall back to a blocking run if needed."""
@@ -133,18 +143,24 @@ class ScriptService:
 
             yield await self._generate_script_via_json_fallback(news_content)
 
-    async def generate_script(self, news_content: str, max_retries: int = 3):
+    async def generate_script(self, news_content: str, max_retries: int = 5):
         for attempt in range(max_retries):
-
             try:
                 async for script in self._stream_script(news_content):
                     yield self._normalize_script(script)
                 return
             except Exception as e:
-                if attempt < max_retries - 1:
-                    import asyncio
-                    await asyncio.sleep((attempt + 1) * 2)
+                is_rate_limit = _is_rate_limit_error(e)
+                if is_rate_limit:
+                    wait_time = min(2 ** attempt, 30)
+                    logger.warning(f"429 Rate limit detected, waiting {wait_time}s before retry ({attempt + 1}/{max_retries})")
+                    await asyncio.sleep(wait_time)
+                elif attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 2
+                    logger.warning(f"Script generation failed: {e}, retrying in {wait_time}s ({attempt + 1}/{max_retries})")
+                    await asyncio.sleep(wait_time)
                 else:
+                    logger.error(f"Script generation failed after {max_retries} attempts: {e}")
                     raise e
 
     async def generate_and_save(self, news_content: str) -> tuple[Path, Path]:
@@ -200,6 +216,7 @@ class ScriptService:
 
     @staticmethod
     def _write_script_files(script: PodcastScript, txt_path: Path, json_path: Path) -> None:
+        script = ScriptService._normalize_script(script)
         formatted_output = script.format_for_output()
         with open(txt_path, "w", encoding="utf-8") as f:
             f.write(formatted_output)

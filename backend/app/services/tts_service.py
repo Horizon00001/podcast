@@ -148,7 +148,9 @@ class TTSService:
         return await self._render_plan(plan, output_path, temp_prefix)
 
     async def merge_section_audio_files(self, section_files: list[Path | str]) -> Path:
-        ordered_files = [str(Path(path)) for path in section_files if Path(path).exists()]
+        ordered_files = [str(Path(path)) for path in section_files if path and Path(path).exists()]
+        if not ordered_files:
+            raise RuntimeError(f"No valid section files to merge: {section_files}")
         return await self.merge_audio_files(ordered_files, output_path=self.audio_dir / "podcast_full.mp3")
 
     async def _render_plan(self, plan: RenderPlan, output_path: Path, temp_prefix: str) -> Path:
@@ -169,7 +171,9 @@ class TTSService:
         with open(timing_path, "w", encoding="utf-8") as f:
             json.dump(timing_data, f, ensure_ascii=False, indent=2)
 
-        temp_files = [str(path) for path in rendered_paths if path]
+        temp_files = [str(path) for path in rendered_paths if path and path.exists()]
+        if not temp_files:
+            raise RuntimeError(f"No audio files generated for plan: {output_path}")
         return await self.merge_audio_files(temp_files, output_path=output_path)
 
     def _render_plan_item_sync(self, item: RenderPlanItem, temp_filename: str) -> Path | None:
@@ -246,6 +250,17 @@ class TTSService:
 
         trim_start_sec = (item.trim_start_ms or 0) / 1000
         trim_end_sec = (item.trim_end_ms or 0) / 1000
+        asset_duration = self._probe_audio_duration_seconds(asset_path)
+
+        # Some cue defaults assume a longer source clip than the bundled asset.
+        # Clamp the trim window so ffmpeg does not emit a zero-duration mp3.
+        if asset_duration > 0 and trim_start_sec >= asset_duration:
+            trim_start_sec = 0
+            if trim_end_sec <= 0:
+                target_duration_ms = item.duration_ms or 0
+                if target_duration_ms > 0:
+                    trim_end_sec = min(target_duration_ms / 1000, asset_duration)
+
         if trim_start_sec > 0 or trim_end_sec > 0:
             trim_args = []
             if trim_start_sec > 0:
@@ -257,7 +272,7 @@ class TTSService:
         if item.volume is not None:
             filters.append(f"volume={item.volume}")
         if item.fade_out_ms:
-            duration = self._probe_audio_duration_seconds(asset_path)
+            duration = asset_duration
             if duration > 0:
                 fade_start = max(duration - (item.fade_out_ms / 1000), 0)
                 filters.append(f"afade=t=out:st={fade_start}:d={item.fade_out_ms / 1000}")

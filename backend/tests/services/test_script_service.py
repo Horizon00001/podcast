@@ -82,12 +82,26 @@ class TestPodcastScriptValidator:
             intro="Welcome",
             sections=[
                 PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Hello"),
+                        DialogueTurn(speaker="B", content="Hi there"),
+                    ],
+                ),
+                PodcastSection(
                     section_type="main_content",
                     dialogues=[
                         DialogueTurn(speaker="A", content="Hello"),
                         DialogueTurn(speaker="B", content="Hi there"),
                     ],
-                )
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
+                ),
             ],
             total_duration="10分钟",
         )
@@ -145,6 +159,20 @@ class TestPodcastScriptFormatForOutput:
                         DialogueTurn(speaker="A", content="Hello everyone"),
                         DialogueTurn(speaker="B", content="Welcome to the show"),
                     ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="What happened today?"),
+                        DialogueTurn(speaker="B", content="Here is the main story."),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="That is all for today."),
+                        DialogueTurn(speaker="B", content="See you next time."),
+                    ],
                 )
             ],
             total_duration="8分钟",
@@ -164,10 +192,24 @@ class TestPodcastScriptFormatForOutput:
             intro="Intro",
             sections=[
                 PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Intro"),
+                        DialogueTurn(speaker="B", content="Start"),
+                    ],
+                ),
+                PodcastSection(
                     section_type="main_content",
                     dialogues=[
                         DialogueTurn(speaker="A", content="Great news!", emotion="excited"),
                         DialogueTurn(speaker="B", content="That's interesting"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
                     ],
                 )
             ],
@@ -190,6 +232,20 @@ class TestPodcastScriptFormatForOutput:
                         DialogueTurn(speaker="A", content="Hello"),
                         DialogueTurn(speaker="B", content="Hi"),
                     ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Main topic"),
+                        DialogueTurn(speaker="B", content="Main analysis"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
                 )
             ],
             total_duration="5分钟",
@@ -210,10 +266,24 @@ class TestScriptServiceWriteScriptFiles:
             intro="Welcome",
             sections=[
                 PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Intro"),
+                        DialogueTurn(speaker="B", content="Start"),
+                    ],
+                ),
+                PodcastSection(
                     section_type="main_content",
                     dialogues=[
                         DialogueTurn(speaker="A", content="Hello"),
                         DialogueTurn(speaker="B", content="Hi there"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
                     ],
                 )
             ],
@@ -315,6 +385,13 @@ class TestScriptServiceNormalization:
                         DialogueTurn(speaker="B", content="Analysis"),
                     ],
                 ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
+                ),
             ],
             total_duration="6分钟",
         )
@@ -325,6 +402,7 @@ class TestScriptServiceNormalization:
             "opening",
             "transition",
             "main_content",
+            "closing",
         ]
 
 
@@ -358,12 +436,26 @@ class TestScriptServiceFallback:
             intro="Intro",
             sections=[
                 PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Intro"),
+                        DialogueTurn(speaker="B", content="Start"),
+                    ],
+                ),
+                PodcastSection(
                     section_type="main_content",
                     dialogues=[
                         DialogueTurn(speaker="A", content="Hello"),
                         DialogueTurn(speaker="B", content="Hi there"),
                     ],
-                )
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
+                ),
             ],
             total_duration="5分钟",
         )
@@ -405,12 +497,26 @@ class TestScriptServiceModelDump:
             intro="Intro",
             sections=[
                 PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Intro"),
+                        DialogueTurn(speaker="B", content="Start"),
+                    ],
+                ),
+                PodcastSection(
                     section_type="main_content",
                     dialogues=[
                         DialogueTurn(speaker="A", content="Hello"),
                         DialogueTurn(speaker="B", content="Hi"),
                     ],
-                )
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
+                    ],
+                ),
             ],
             total_duration="5分钟",
         )
@@ -421,12 +527,20 @@ class TestScriptServiceModelDump:
         assert "intro" in data
         assert "sections" in data
         assert "total_duration" in data
-        assert data["sections"][0]["section_type"] == "main_content"
+        assert data["sections"][0]["section_type"] == "opening"
 
 
 def _make_script(title: str, num_sections: int) -> PodcastScript:
     """Build a PodcastScript with *num_sections* main_content sections."""
-    sections = []
+    sections = [
+        PodcastSection(
+            section_type="opening",
+            dialogues=[
+                DialogueTurn(speaker="A", content="Opening A"),
+                DialogueTurn(speaker="B", content="Opening B"),
+            ],
+        )
+    ]
     for i in range(num_sections):
         sections.append(
             PodcastSection(
@@ -437,12 +551,61 @@ def _make_script(title: str, num_sections: int) -> PodcastScript:
                 ],
             )
         )
+    sections.append(
+        PodcastSection(
+            section_type="closing",
+            dialogues=[
+                DialogueTurn(speaker="A", content="Closing A"),
+                DialogueTurn(speaker="B", content="Closing B"),
+            ],
+        )
+    )
     return PodcastScript(
         title=title,
         intro="Intro text",
         sections=sections,
         total_duration=f"{num_sections * 3}分钟",
     )
+
+
+class TestScriptServiceDuration:
+    def test_write_script_files_recomputes_duration(self, tmp_path):
+        script = PodcastScript(
+            title="Duration Test",
+            intro="Intro",
+            sections=[
+                PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="你好吗" * 20),
+                        DialogueTurn(speaker="B", content="我很好" * 20),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="继续聊" * 40),
+                        DialogueTurn(speaker="B", content="继续分析" * 40),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="最后总结" * 10),
+                        DialogueTurn(speaker="B", content="感谢收听" * 10),
+                    ],
+                ),
+            ],
+            total_duration="99分钟",
+        )
+
+        txt_path = tmp_path / "script.txt"
+        json_path = tmp_path / "script.json"
+
+        ScriptService._write_script_files(script, txt_path, json_path)
+
+        payload = json.loads(json_path.read_text(encoding="utf-8"))
+        assert payload["total_duration"] == "3分钟"
 
 
 def _make_stream_ctx(scripts: list[PodcastScript]):
@@ -505,14 +668,13 @@ class TestScriptServiceStreamingSections:
                 service.generate_and_save_streaming_sections("news", on_section_ready=cb)
             )
 
-        # Section 0 flushed when s2 arrives (len=2, flush 0), is_streaming=True
-        # Normalization inserts a transition after the first main_content section.
-        # So the final flush order becomes main_content -> transition -> main_content -> main_content.
-        assert len(calls) == 4
-        assert calls[0] == (0, "main_content", True)
-        assert calls[1] == (1, "transition", True)
-        assert calls[2] == (2, "main_content", True)
-        assert calls[3] == (3, "main_content", False)
+        assert len(calls) == 6
+        assert calls[0] == (0, "opening", True)
+        assert calls[1] == (1, "main_content", True)
+        assert calls[2] == (2, "transition", True)
+        assert calls[3] == (3, "main_content", True)
+        assert calls[4] == (4, "main_content", True)
+        assert calls[5] == (5, "closing", False)
 
     def test_final_sections_flushed_after_stream(self, monkeypatch, tmp_path):
         prompt_file = tmp_path / "prompt.txt"
@@ -534,8 +696,8 @@ class TestScriptServiceStreamingSections:
                 service.generate_and_save_streaming_sections("news", on_section_ready=cb)
             )
 
-        assert len(calls) == 4
-        assert calls == [(0, True), (1, True), (2, True), (3, False)]
+        assert len(calls) == 6
+        assert calls == [(0, True), (1, True), (2, True), (3, True), (4, True), (5, False)]
 
     def test_empty_script_raises(self, monkeypatch, tmp_path):
         prompt_file = tmp_path / "prompt.txt"
@@ -588,7 +750,13 @@ class TestScriptServiceStreamingSections:
 
         assert mock_agent.run_stream.called
         assert mock_agent.run.called
-        assert len(calls) == 3
-        assert calls == [(0, "main_content", True), (1, "transition", True), (2, "main_content", False)]
+        assert len(calls) == 5
+        assert calls == [
+            (0, "opening", True),
+            (1, "main_content", True),
+            (2, "transition", True),
+            (3, "main_content", True),
+            (4, "closing", False),
+        ]
         assert txt_path.exists()
         assert json_path.exists()

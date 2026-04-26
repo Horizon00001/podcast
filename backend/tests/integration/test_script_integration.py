@@ -18,12 +18,26 @@ def create_test_script(title="Test Podcast", sections=None):
     if sections is None:
         sections = [
             PodcastSection(
+                section_type="opening",
+                dialogues=[
+                    DialogueTurn(speaker="A", content="Welcome"),
+                    DialogueTurn(speaker="B", content="Hello everyone"),
+                ],
+            ),
+            PodcastSection(
                 section_type="main_content",
                 dialogues=[
                     DialogueTurn(speaker="A", content="Hello"),
                     DialogueTurn(speaker="B", content="Hi there"),
                 ],
-            )
+            ),
+            PodcastSection(
+                section_type="closing",
+                dialogues=[
+                    DialogueTurn(speaker="A", content="Goodbye"),
+                    DialogueTurn(speaker="B", content="See you next time"),
+                ],
+            ),
         ]
     return PodcastScript(
         title=title,

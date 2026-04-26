@@ -271,6 +271,15 @@ class TestRenderPlannerHelperMethods:
         assert cues[1].metadata["role"] == "transition_sting"
         assert cues[2].item_type == "silence"
 
+    def test_build_transition_cues_with_music_effect_keeps_only_transition_sting(self):
+        effect = {"effect_type": "music", "duration": "2s", "description": "transition music"}
+        cues = RenderPlanner._build_transition_cues(effect)
+
+        assert len(cues) == 2
+        assert cues[0].item_type == "music"
+        assert cues[0].metadata["role"] == "transition_sting"
+        assert cues[1].item_type == "silence"
+
     def test_build_closing_suffix_cues_with_music(self):
         effect = {"effect_type": "music", "duration": "9s", "description": "outro music"}
         cues = RenderPlanner._build_closing_suffix_cues(effect)

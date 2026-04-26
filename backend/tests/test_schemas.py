@@ -259,8 +259,9 @@ class TestPodcastScriptSchema:
             title="今日新闻",
             intro="欢迎收听",
             sections=[
+                self.make_section(section_type="opening"),
                 self.make_section(),
-                self.make_section(),
+                self.make_section(section_type="closing"),
             ],
             total_duration="5分钟",
         )
@@ -286,6 +287,49 @@ class TestPodcastScriptSchema:
                 total_duration="1min",
             )
 
+    def test_script_requires_opening_and_closing(self):
+        with pytest.raises(ValueError, match="opening"):
+            PodcastScript(
+                title="T",
+                intro="I",
+                sections=[
+                    self.make_section(),
+                    self.make_section(section_type="closing"),
+                ],
+                total_duration="1min",
+            )
+
+    def test_script_estimate_duration(self):
+        script = PodcastScript(
+            title="T",
+            intro="I",
+            sections=[
+                PodcastSection(
+                    section_type="opening",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="你好吗" * 30),
+                        DialogueTurn(speaker="B", content="我很好" * 30),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="继续聊" * 40),
+                        DialogueTurn(speaker="B", content="继续分析" * 40),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="最后总结" * 10),
+                        DialogueTurn(speaker="B", content="感谢收听" * 10),
+                    ],
+                ),
+            ],
+            total_duration="1min",
+        )
+        assert script.estimate_duration() == "3分钟"
+
     def test_format_for_output(self):
         script = PodcastScript(
             title="AI播客",
@@ -297,6 +341,13 @@ class TestPodcastScriptSchema:
                     dialogues=[
                         DialogueTurn(speaker="A", content="大家好", emotion=""),
                         DialogueTurn(speaker="B", content="你好", emotion=""),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="今天聊什么"),
+                        DialogueTurn(speaker="B", content="聊 AI 进展"),
                     ],
                 ),
                 PodcastSection(
@@ -324,6 +375,20 @@ class TestPodcastScriptSchema:
                     dialogues=[
                         DialogueTurn(speaker="A", content="Wow!", emotion="excited"),
                         DialogueTurn(speaker="B", content="Great!", emotion="happy"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="main_content",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Tell me more"),
+                        DialogueTurn(speaker="B", content="Sure"),
+                    ],
+                ),
+                PodcastSection(
+                    section_type="closing",
+                    dialogues=[
+                        DialogueTurn(speaker="A", content="Bye"),
+                        DialogueTurn(speaker="B", content="See you"),
                     ],
                 ),
             ],

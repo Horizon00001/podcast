@@ -1,3 +1,5 @@
+import math
+import re
 from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field, model_validator
@@ -47,6 +49,31 @@ class PodcastScript(BaseModel):
         if speakers != {"A", "B"}:
             raise ValueError("整篇脚本必须同时包含 A 与 B 两位说话者。")
         return self
+
+    @model_validator(mode="after")
+    def validate_program_structure(self):
+        section_types = [section.section_type for section in self.sections]
+        if section_types.count("opening") != 1:
+            raise ValueError("整篇脚本必须且只能包含 1 个 opening 段落。")
+        if section_types.count("closing") != 1:
+            raise ValueError("整篇脚本必须且只能包含 1 个 closing 段落。")
+        if section_types.count("main_content") < 1:
+            raise ValueError("整篇脚本至少需要 1 个 main_content 段落。")
+        if section_types[0] != "opening":
+            raise ValueError("opening 必须出现在脚本开头。")
+        if section_types[-1] != "closing":
+            raise ValueError("closing 必须出现在脚本结尾。")
+        return self
+
+    def estimate_duration(self) -> str:
+        text = " ".join(
+            dialogue.content
+            for section in self.sections
+            for dialogue in section.dialogues
+        )
+        normalized = re.sub(r"\s+", "", text)
+        minutes = max(1, math.ceil(len(normalized) / 180))
+        return f"{minutes}分钟"
 
     def format_for_output(self) -> str:
         output = []

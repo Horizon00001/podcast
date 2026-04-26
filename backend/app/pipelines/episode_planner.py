@@ -173,6 +173,30 @@ def _normalize_title(title: str) -> str:
     return re.sub(r"\s+", " ", title).strip()
 
 
+def dedupe_items(items: List[dict]) -> List[dict]:
+    deduped: list[dict] = []
+    seen_links: set[str] = set()
+    seen_titles: set[str] = set()
+
+    for item in items:
+        link = (item.get("link") or "").strip()
+        if link:
+            if link in seen_links:
+                continue
+            seen_links.add(link)
+            deduped.append(item)
+            continue
+
+        normalized_title = _normalize_title(item.get("title", ""))
+        if normalized_title and normalized_title in seen_titles:
+            continue
+        if normalized_title:
+            seen_titles.add(normalized_title)
+        deduped.append(item)
+
+    return deduped
+
+
 def _anchor_for_item(item: dict, category: str) -> str:
     title = _normalize_title(item.get("title", ""))
     summary = _normalize_title(item.get("summary", ""))
@@ -238,7 +262,7 @@ def _group_title(group_items: List[dict], category: str) -> str:
 
 
 def group_items_for_podcasts(items: List[dict], threshold: float = 0.5) -> dict[str, list[list[dict]]]:
-    classified = classify_items(items)
+    classified = classify_items(dedupe_items(items))
     grouped: dict[str, list[list[dict]]] = {}
     for category, category_items in classified.items():
         if not category_items:
@@ -385,7 +409,7 @@ def load_rss_items(rss_data_path) -> List[dict]:
     for feed in feeds:
         for index, entry in enumerate(feed.get("entries", []), start=1):
             items.append({"item_id": f"{feed.get('id', 'feed')}-{index}", "feed_id": feed.get("id", "unknown"), "feed_name": feed.get("name", "Unknown Feed"), "category": feed.get("category", "general"), "title": (entry.get("title") or "").strip(), "summary": _clean_text(entry.get("summary", "")), "published": entry.get("published", "Unknown Date"), "link": entry.get("link", "")})
-    return items
+    return dedupe_items(items)
 
 
 def _score_item(item: dict, profile: TopicProfile) -> Tuple[float, str]:
@@ -440,7 +464,7 @@ def select_items_for_topic(items: List[dict], profile: TopicProfile) -> List[Pla
 
 
 def _segment_purpose(segment_type: str, profile: TopicProfile) -> str:
-    mapping = {"opening": f"用节目主题 {profile.name} 建立本期主线和听众期待。", "top_story": "展开最能承载本期主线的核心新闻。", "related_signals": "用其他新闻证明这不是孤立事件，而是更大趋势的一部分。", "impact": "解释这些变化对听众和行业意味着什么。", "developer_impact": "把行业变化翻译成对程序员工具、协作和职业判断的具体影响。", "closing": "回收主线，总结本期节目真正想表达的判断。"}
+    mapping = {"opening": f"用节目主题 {profile.name} 建立本期讨论范围和听众期待。", "top_story": "展开信息最充分、最值得优先讲清的核心新闻。", "related_signals": "比较其他新闻与核心新闻的关联度，关联弱时分别讲清，不强行并线。", "impact": "解释这些变化对听众和行业意味着什么。", "developer_impact": "把行业变化翻译成对程序员工具、协作和职业判断的具体影响。", "closing": "自然收束讨论，回到今天最站得住的几个重点。"}
     return mapping.get(segment_type, "围绕主题组织段落内容。")
 
 
@@ -450,24 +474,24 @@ def build_episode_plan(topic: str, rss_data_path, topics_config_path) -> Episode
     selected_items = select_items_for_topic(items, profile)
     top_story = selected_items[0] if selected_items else None
     top_story_title = top_story.title if top_story else profile.name
-    theme_statement = f"本期围绕“{profile.name}”组织内容，主线是：{top_story_title} 并不是孤立消息，而是 {profile.editorial_angle}。"
-    closing_takeaway = f"听完这一集，听众应该记住：{profile.name} 关注的不是零散新闻，而是它们共同揭示出的主题脉络。"
+    theme_statement = f"本期围绕“{profile.name}”组织内容，优先讲清 {top_story_title}，再判断其他新闻是否足以支持 {profile.editorial_angle}；如果关联不足，就分别说明。"
+    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断，关联强再归纳，关联弱就保留边界。"
     segments: List[EpisodeSegment] = []
     related_item_ids = [item.item_id for item in selected_items[1:]]
     all_item_ids = [item.item_id for item in selected_items]
     for segment_type in profile.structure_template:
         if segment_type == "opening":
             item_refs = all_item_ids[:1]
-            thesis = f"先用最具代表性的新闻引出 {profile.name} 的节目主线。"
+            thesis = f"先用最具代表性的新闻把今天最值得关心的问题讲清。"
         elif segment_type == "top_story":
             item_refs = all_item_ids[:1]
             thesis = f"把 {top_story_title} 讲透，作为本期的核心故事。"
         elif segment_type == "related_signals":
             item_refs = related_item_ids
-            thesis = "补充 1 到 3 条相关信号，说明这是一组趋势而不是单点新闻。"
+            thesis = "补充 1 到 3 条相关素材，先讲清各自事实，再判断它们是否真的构成同一趋势。"
         elif segment_type in {"impact", "developer_impact"}:
             item_refs = all_item_ids
-            thesis = f"把这些新闻统一翻译成 {profile.audience} 真正需要关心的影响。"
+            thesis = f"只翻译那些有足够事实支撑、且 {profile.audience} 真正需要关心的影响。"
         else:
             item_refs = []
             thesis = closing_takeaway
@@ -484,13 +508,13 @@ def save_episode_plan(plan: EpisodePlan, output_path) -> Path:
 
 
 def format_plan_for_prompt(plan: EpisodePlan) -> str:
-    lines = ["以下是已经完成选材和编排的播客节目计划，请严格围绕这个计划写成一集节目，而不是把新闻简单堆砌。", f"节目主题: {plan.topic_name} ({plan.topic_id})", f"目标听众: {plan.audience}", f"节目角度: {plan.editorial_angle}", f"标题建议: {plan.title_hint}", f"本期主线: {plan.theme_statement}", "", "已选素材:"]
+    lines = ["以下是已经完成选材和编排的播客节目计划，请围绕这个计划写成一集节目。先把事实讲清，再决定能否归纳共同主题；如果素材关联有限，不要强行并线。", f"节目主题: {plan.topic_name} ({plan.topic_id})", f"目标听众: {plan.audience}", f"节目角度: {plan.editorial_angle}", f"标题建议: {plan.title_hint}", f"本期优先线索: {plan.theme_statement}", "", "已选素材:"]
     for item in plan.selected_items:
         lines.extend([f"- {item.item_id} | {item.title}", f"  来源: {item.feed_name} / {item.category}", f"  摘要: {item.summary or '无'}", f"  入选原因: {item.selection_reason}"])
     lines.append("")
     lines.append("节目结构:")
     for segment in plan.segments:
         refs = ", ".join(segment.item_refs) if segment.item_refs else "无新增素材"
-        lines.extend([f"- 段落类型: {segment.segment_type}", f"  目的: {segment.purpose}", f"  使用素材: {refs}", f"  这一段要表达的判断: {segment.segment_thesis}"])
-    lines.extend(["", f"结尾需要回收的结论: {plan.closing_takeaway}"])
+        lines.extend([f"- 段落类型: {segment.segment_type}", f"  目的: {segment.purpose}", f"  使用素材: {refs}", f"  这一段优先讲清的问题: {segment.segment_thesis}"])
+    lines.extend(["", f"结尾可回收的重点: {plan.closing_takeaway}"])
     return "\n".join(lines)

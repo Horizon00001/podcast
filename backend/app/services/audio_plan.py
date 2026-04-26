@@ -136,7 +136,7 @@ class RenderPlanner:
     @classmethod
     def _build_transition_cues(cls, section_effect: dict | None) -> list[RenderPlanItem]:
         items: list[RenderPlanItem] = []
-        if section_effect:
+        if section_effect and section_effect.get("effect_type") != "music":
             items.append(cls._build_generic_effect_item("transition", section_effect))
 
         items.append(

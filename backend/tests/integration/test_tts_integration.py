@@ -88,6 +88,31 @@ class TestTTSServiceRenderMusicAsset:
         # 裁剪后的文件应该小于原文件
         assert output.stat().st_size > 0
 
+    @pytest.mark.skipif(not shutil.which("ffmpeg"), reason="ffmpeg not installed")
+    def test_render_music_asset_clamps_trim_start_beyond_duration(self, tmp_path):
+        """集成测试：trim_start 超过素材时长时应回退到有效范围."""
+        mock_provider = MagicMock()
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=mock_provider)
+
+        source = tmp_path / "short_transition.mp3"
+        service._render_silence(source, 5000)
+
+        output = tmp_path / "trimmed_fallback.mp3"
+        item = RenderPlanItem(
+            item_type="music",
+            asset_path=source,
+            trim_start_ms=8000,
+            duration_ms=2400,
+            volume=0.5,
+        )
+
+        result = service._render_music_asset(source, output, item)
+
+        assert result == output
+        assert output.exists()
+        assert output.stat().st_size > 1000
+        assert service._probe_audio_duration_seconds(output) > 0
+
 
 class TestTTSServiceSpeechSynthesis:
     """测试语音合成 - 使用 mock provider."""

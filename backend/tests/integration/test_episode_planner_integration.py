@@ -8,7 +8,9 @@ from pathlib import Path
 from app.pipelines.episode_planner import (
     classify_items,
     cluster_by_similarity,
+    dedupe_items,
     group_items_for_podcasts,
+    merge_clusters_by_signature,
     build_podcast_plan,
     build_group_plan,
     merge_pending_groups,
@@ -91,6 +93,42 @@ class TestEpisodePlannerFullFlow:
 
         # 应该按类别分组
         assert len(grouped) > 0
+
+    def test_deduped_duplicate_rss_entries_only_form_one_group(self):
+        """重复 RSS 条目不应生成多个相同播客组."""
+        items = [
+            {
+                "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
+                "summary": "一加 Ace 6 至尊版将搭载天玑 9500 芯片、8600mAh 双电芯电池，支持 120W 闪充。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/431.htm",
+            },
+            {
+                "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
+                "summary": "一加 Ace 6 至尊版将搭载天玑 9500 芯片、8600mAh 双电芯电池，支持 120W 闪充。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/431.htm",
+            },
+            {
+                "title": "一加 120W 超能舱超级闪充移动电源参数公布：15000mAh 容量，120W 高功率快充",
+                "summary": "这款移动电源将在 4 月 28 日与 Ace 6 至尊版同台发布，可在 30 分钟内为 Ace 6 至尊版充电 68%。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/636.htm",
+            },
+        ]
+
+        unique_items = dedupe_items(items)
+        grouped = merge_clusters_by_signature(group_items_for_podcasts(unique_items, threshold=0.3))
+
+        assert len(unique_items) == 2
+        total_groups = sum(len(groups) for groups in grouped.values())
+        total_items = sum(len(group) for groups in grouped.values() for group in groups)
+
+        assert total_groups == 1
+        assert total_items == 2
 
     def test_build_podcast_plan_creates_valid_structure(self):
         """测试 build_podcast_plan 创建有效的计划结构."""

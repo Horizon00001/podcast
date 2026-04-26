@@ -5,6 +5,7 @@ from app.pipelines.episode_planner import (
     _clean_text,
     _tokenize,
     classify_items,
+    dedupe_items,
     _tfidf_vectors,
     cluster_by_similarity,
     _normalize_title,
@@ -98,6 +99,38 @@ class TestEpisodePlannerClassifyItems:
         result = classify_items([])
         # Returns dict with keys for each category
         assert isinstance(result, dict)
+
+
+class TestEpisodePlannerDedupeItems:
+    """Test dedupe_items function."""
+
+    def test_dedupe_items_by_link(self):
+        items = [
+            {"title": "OnePlus Ace 6 specs", "link": "https://example.com/ace6", "summary": "first"},
+            {"title": "OnePlus Ace 6 specs", "link": "https://example.com/ace6", "summary": "duplicate"},
+            {"title": "OnePlus power bank", "link": "https://example.com/powerbank", "summary": "other"},
+        ]
+
+        result = dedupe_items(items)
+
+        assert len(result) == 2
+        assert [item["link"] for item in result] == [
+            "https://example.com/ace6",
+            "https://example.com/powerbank",
+        ]
+
+    def test_dedupe_items_by_normalized_title_when_link_missing(self):
+        items = [
+            {"title": "OpenAI Privacy Filter", "link": "", "summary": "first"},
+            {"title": "OpenAI Privacy Filter!!!", "link": "", "summary": "duplicate"},
+            {"title": "Different story", "link": "", "summary": "other"},
+        ]
+
+        result = dedupe_items(items)
+
+        assert len(result) == 2
+        assert result[0]["title"] == "OpenAI Privacy Filter"
+        assert result[1]["title"] == "Different story"
 
 
 class TestEpisodePlannerTfIdfVectors:
@@ -210,6 +243,39 @@ class TestEpisodePlannerGroupItems:
     def test_group_items_empty(self):
         result = group_items_for_podcasts([])
         assert result == {}
+
+    def test_group_items_dedupes_repeated_source_entries(self):
+        items = [
+            {
+                "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
+                "summary": "一加 Ace 6 至尊版将搭载天玑 9500 芯片、8600mAh 双电芯电池，支持 120W 闪充。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/431.htm",
+            },
+            {
+                "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
+                "summary": "一加 Ace 6 至尊版将搭载天玑 9500 芯片、8600mAh 双电芯电池，支持 120W 闪充。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/431.htm",
+            },
+            {
+                "title": "一加 120W 超能舱超级闪充移动电源参数公布：15000mAh 容量，120W 高功率快充",
+                "summary": "这款移动电源将在 4 月 28 日与 Ace 6 至尊版同台发布，可在 30 分钟内为 Ace 6 至尊版充电 68%。",
+                "feed_name": "IT之家",
+                "category": "tech_ai",
+                "link": "https://www.ithome.com/0/943/636.htm",
+            },
+        ]
+
+        result = merge_clusters_by_signature(group_items_for_podcasts(items, threshold=0.3))
+
+        total_groups = sum(len(groups) for groups in result.values())
+        total_items = sum(len(group) for groups in result.values() for group in groups)
+
+        assert total_groups == 1
+        assert total_items == 2
 
 
 class TestEpisodePlannerGroupTitle:

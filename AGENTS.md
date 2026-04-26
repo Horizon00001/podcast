@@ -13,6 +13,7 @@
 
 ## Backend Entry Points
 - API app entrypoint: `backend/app/main.py`. Start with `cd backend && source .venv/bin/activate && uvicorn app.main:app --reload`.
+- Restart backend with `cd /home/default/Projects/podcast/backend && pkill -f "[u]vicorn app.main:app --host 0.0.0.0 --port 8000" || true && setsid .venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/podcast_backend.log 2>&1 < /dev/null &`.
 - CLI entrypoint: `cd backend && python -m app.cli --help`.
 - Useful focused CLI commands:
   - `python -m app.cli fetch-rss`

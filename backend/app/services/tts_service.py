@@ -1,5 +1,6 @@
 import asyncio
 import json
+import random
 import re
 import subprocess
 import shutil
@@ -12,6 +13,10 @@ from .speech_provider import SpeechProvider, create_speech_provider
 
 
 class TTSService:
+    AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".ogg", ".flac"}
+    OPENING_LIBRARY_DIR = "opening"
+    TRANSITION_LIBRARY_DIR = "transition"
+    CLOSING_LIBRARY_DIR = "closing"
     MUSIC_FILES = [
         "opening_theme_10s_fadeout.mp3",
         "background_music.mp3",
@@ -25,18 +30,22 @@ class TTSService:
         self.audio_dir = self.output_dir / "audio"
         self.audio_dir.mkdir(parents=True, exist_ok=True)
         self.assets_audio_dir = settings.project_root / "assets" / "audio"
-        self.opening_music_candidates = []
-        for fname in self.MUSIC_FILES:
-            self.opening_music_candidates.append(self.assets_audio_dir / fname)
-        for fname in self.MUSIC_FILES:
-            self.opening_music_candidates.append(self.audio_dir / fname)
-        self.transition_music_candidates = []
-        for fname in self.TRANSITION_MUSIC_FILES:
-            self.transition_music_candidates.append(self.assets_audio_dir / fname)
-        for fname in self.TRANSITION_MUSIC_FILES:
-            self.transition_music_candidates.append(self.audio_dir / fname)
+        self.opening_library_dir = self.assets_audio_dir / self.OPENING_LIBRARY_DIR
+        self.transition_library_dir = self.assets_audio_dir / self.TRANSITION_LIBRARY_DIR
+        self.closing_library_dir = self.assets_audio_dir / self.CLOSING_LIBRARY_DIR
+        self.opening_music_candidates = self._build_legacy_candidates(self.MUSIC_FILES)
+        self.transition_music_candidates = self._build_legacy_candidates(self.TRANSITION_MUSIC_FILES)
+        self.closing_music_candidates = self._build_legacy_candidates(self.MUSIC_FILES)
         self._cleanup_old_files()
         self.speech_provider = speech_provider or create_speech_provider()
+
+    def _build_legacy_candidates(self, filenames: list[str]) -> list[Path]:
+        candidates: list[Path] = []
+        for fname in filenames:
+            candidates.append(self.assets_audio_dir / fname)
+        for fname in filenames:
+            candidates.append(self.audio_dir / fname)
+        return candidates
 
     def _cleanup_old_files(self):
         for f in self.audio_dir.glob("segment_*.mp3"):
@@ -53,9 +62,14 @@ class TTSService:
         with open(json_path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def build_render_plan(self, data: dict, include_trailing_gap: bool = False) -> RenderPlan:
+    def build_render_plan(
+        self,
+        data: dict,
+        include_trailing_gap: bool = False,
+        inject_fallback_opening: bool = True,
+    ) -> RenderPlan:
         plan = RenderPlanner.build_from_script(data, force_trailing_gap=include_trailing_gap)
-        return self._inject_default_assets(plan)
+        return self._inject_default_assets(plan, inject_fallback_opening=inject_fallback_opening)
 
     def build_section_render_plan(self, title: str, section: dict, include_trailing_gap: bool = False) -> RenderPlan:
         return self.build_render_plan(
@@ -64,19 +78,26 @@ class TTSService:
                 "sections": [section],
             },
             include_trailing_gap=include_trailing_gap,
+            inject_fallback_opening=False,
         )
 
-    def _inject_default_assets(self, plan: RenderPlan) -> RenderPlan:
-        opening_music = self._find_existing_asset(self.opening_music_candidates)
+    def _inject_default_assets(self, plan: RenderPlan, inject_fallback_opening: bool = True) -> RenderPlan:
+        opening_music = self._pick_music_asset(self.opening_library_dir, self.opening_music_candidates)
         if not opening_music:
             return plan
-        transition_music = self._find_existing_asset(self.transition_music_candidates)
+        transition_music = self._pick_music_asset(self.transition_library_dir, self.transition_music_candidates)
+        closing_music = self._pick_music_asset(self.closing_library_dir, self.closing_music_candidates)
 
         music_items = [item for item in plan.items if item.item_type == "music"]
         for item in music_items:
             role = item.metadata.get("role") if item.metadata else None
             if item.asset_path is None:
-                item.asset_path = transition_music if role == "transition_sting" and transition_music else opening_music
+                if role == "transition_sting" and transition_music:
+                    item.asset_path = transition_music
+                elif role == "closing_tail" and closing_music:
+                    item.asset_path = closing_music
+                else:
+                    item.asset_path = opening_music
 
             if role == "opening_theme":
                 if item.volume is None:
@@ -99,7 +120,7 @@ class TTSService:
                 if item.fade_out_ms is None:
                     item.fade_out_ms = 1300
 
-        if not music_items:
+        if inject_fallback_opening and not music_items:
             plan.items.insert(
                 0,
                 RenderPlanItem(
@@ -128,6 +149,22 @@ class TTSService:
             if candidate.exists():
                 return candidate
         return None
+
+    def _pick_music_asset(self, library_dir: Path, legacy_candidates: list[Path]) -> Path | None:
+        library_assets = self._list_library_assets(library_dir)
+        if library_assets:
+            return random.choice(library_assets)
+        return self._find_existing_asset(legacy_candidates)
+
+    def _list_library_assets(self, library_dir: Path) -> list[Path]:
+        if not library_dir.exists() or not library_dir.is_dir():
+            return []
+        return sorted(
+            [
+                path for path in library_dir.iterdir()
+                if path.is_file() and path.suffix.lower() in self.AUDIO_EXTENSIONS
+            ]
+        )
 
     async def synthesize_podcast(self, json_path: Path | str) -> Path:
         data = self.load_script(json_path)

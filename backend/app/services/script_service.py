@@ -81,11 +81,6 @@ class ScriptService:
     def _build_transition_section(cls) -> PodcastSection:
         return PodcastSection(
             section_type="transition",
-            audio_effect=AudioEffect(
-                effect_type="music",
-                description="短促转场音乐提示",
-                duration="2s",
-            ),
             dialogues=[
                 DialogueTurn(
                     speaker="A",

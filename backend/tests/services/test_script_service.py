@@ -356,8 +356,7 @@ class TestScriptServiceNormalization:
             "main_content",
             "closing",
         ]
-        assert normalized.sections[2].audio_effect is not None
-        assert normalized.sections[2].audio_effect.effect_type == "music"
+        assert normalized.sections[2].audio_effect is None
 
     def test_normalize_script_keeps_existing_transition(self):
         script = PodcastScript(

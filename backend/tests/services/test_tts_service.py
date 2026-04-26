@@ -95,6 +95,44 @@ class TestTTSServiceFindExistingAsset:
 
         assert result is None
 
+    def test_list_library_assets_filters_audio_files(self, tmp_path):
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=MagicMock())
+        library_dir = tmp_path / "library"
+        library_dir.mkdir()
+        audio_file = library_dir / "clip.mp3"
+        text_file = library_dir / "notes.txt"
+        audio_file.write_text("dummy", encoding="utf-8")
+        text_file.write_text("ignore", encoding="utf-8")
+
+        assets = service._list_library_assets(library_dir)
+
+        assert assets == [audio_file]
+
+    def test_pick_music_asset_prefers_library_asset(self, tmp_path):
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=MagicMock())
+        library_dir = tmp_path / "library"
+        library_dir.mkdir()
+        library_asset = library_dir / "clip.mp3"
+        library_asset.write_text("library", encoding="utf-8")
+        legacy_asset = tmp_path / "legacy.mp3"
+        legacy_asset.write_text("legacy", encoding="utf-8")
+
+        with patch("app.services.tts_service.random.choice", return_value=library_asset) as choice_mock:
+            selected = service._pick_music_asset(library_dir, [legacy_asset])
+
+        assert selected == library_asset
+        choice_mock.assert_called_once_with([library_asset])
+
+    def test_pick_music_asset_falls_back_to_legacy_candidates(self, tmp_path):
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=MagicMock())
+        library_dir = tmp_path / "missing-library"
+        legacy_asset = tmp_path / "legacy.mp3"
+        legacy_asset.write_text("legacy", encoding="utf-8")
+
+        selected = service._pick_music_asset(library_dir, [legacy_asset])
+
+        assert selected == legacy_asset
+
 
 class TestTTSServiceInjectDefaultAssets:
     """Test _inject_default_assets method."""
@@ -123,6 +161,24 @@ class TestTTSServiceInjectDefaultAssets:
         assert result.items[0].item_type == "music"
         assert result.items[0].metadata["role"] == "opening_theme"
         assert result.items[1].item_type == "silence"
+
+    def test_inject_default_assets_can_skip_fallback_opening(self, tmp_path):
+        mock_provider = MagicMock()
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=mock_provider)
+
+        plan = RenderPlan(
+            title="Test",
+            items=[RenderPlanItem(item_type="speech", text="Hello", voice="male")],
+        )
+
+        fake_music = tmp_path / "fake_music.mp3"
+        fake_music.write_text("dummy", encoding="utf-8")
+
+        with patch.object(TTSService, "_find_existing_asset", return_value=fake_music):
+            result = service._inject_default_assets(plan, inject_fallback_opening=False)
+
+        assert len(result.items) == 1
+        assert result.items[0].item_type == "speech"
 
     def test_inject_default_assets_with_existing_music(self, tmp_path):
         mock_provider = MagicMock()
@@ -186,6 +242,40 @@ class TestTTSServiceInjectDefaultAssets:
         assert result.items[1].volume == 0.20
         assert result.items[1].fade_out_ms == 350
 
+    def test_inject_default_assets_uses_closing_library_for_closing_tail(self, tmp_path):
+        mock_provider = MagicMock()
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=mock_provider)
+
+        opening_music = tmp_path / "opening.mp3"
+        closing_music = tmp_path / "closing.mp3"
+        opening_music.write_text("opening", encoding="utf-8")
+        closing_music.write_text("closing", encoding="utf-8")
+
+        plan = RenderPlan(
+            title="Test",
+            items=[
+                RenderPlanItem(item_type="music", metadata={"role": "opening_theme"}),
+                RenderPlanItem(item_type="music", metadata={"role": "closing_tail"}),
+            ],
+        )
+
+        def pick_music_asset(library_dir, legacy_candidates):
+            if library_dir == service.opening_library_dir:
+                return opening_music
+            if library_dir == service.transition_library_dir:
+                return None
+            if library_dir == service.closing_library_dir:
+                return closing_music
+            return None
+
+        with patch.object(TTSService, "_pick_music_asset", side_effect=pick_music_asset):
+            result = service._inject_default_assets(plan)
+
+        assert result.items[0].asset_path == opening_music
+        assert result.items[1].asset_path == closing_music
+        assert result.items[1].volume == 0.20
+        assert result.items[1].fade_out_ms == 2600
+
 
 class TestTTSServiceBuildRenderPlan:
     """Test build_render_plan method."""
@@ -214,6 +304,27 @@ class TestTTSServiceBuildRenderPlan:
 
         assert plan.title == "Test Podcast"
         assert len(plan.items) > 0
+
+    def test_build_section_render_plan_does_not_inject_opening_theme(self, tmp_path):
+        mock_provider = MagicMock()
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=mock_provider)
+
+        section = {
+            "section_type": "main_content",
+            "dialogues": [
+                {"speaker": "A", "content": "Hello"},
+                {"speaker": "B", "content": "World"},
+            ],
+        }
+
+        fake_music = tmp_path / "fake_music.mp3"
+        fake_music.write_text("dummy", encoding="utf-8")
+
+        with patch.object(TTSService, "_find_existing_asset", return_value=fake_music):
+            plan = service.build_section_render_plan("Test Podcast", section)
+
+        assert all(item.metadata.get("role") != "opening_theme" for item in plan.items)
+        assert all(item.metadata.get("role") != "opening_voice_delay" for item in plan.items)
 
     def test_build_render_plan_include_trailing_gap(self, tmp_path):
         mock_provider = MagicMock()

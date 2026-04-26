@@ -139,25 +139,26 @@ class RenderPlanner:
         if section_effect and section_effect.get("effect_type") != "music":
             items.append(cls._build_generic_effect_item("transition", section_effect))
 
-        items.append(
-            RenderPlanItem(
-                item_type="music",
-                duration_ms=2400,
-                trim_start_ms=8000,
-                metadata={
-                    "section_type": "transition",
-                    "role": "transition_sting",
-                    "description": "短促转场音乐提示",
-                },
+        if section_effect and section_effect.get("effect_type") == "music":
+            items.append(
+                RenderPlanItem(
+                    item_type="music",
+                    duration_ms=2400,
+                    trim_start_ms=8000,
+                    metadata={
+                        "section_type": "transition",
+                        "role": "transition_sting",
+                        "description": section_effect.get("description", "短促转场音乐提示"),
+                    },
+                )
             )
-        )
-        items.append(
-            RenderPlanItem(
-                item_type="silence",
-                duration_ms=180,
-                metadata={"section_type": "transition", "position": "sting_to_voice"},
+            items.append(
+                RenderPlanItem(
+                    item_type="silence",
+                    duration_ms=180,
+                    metadata={"section_type": "transition", "position": "sting_to_voice"},
+                )
             )
-        )
         return items
 
     @classmethod

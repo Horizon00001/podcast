@@ -97,8 +97,9 @@ class TestRenderPlannerBuildFromScript:
         plan = RenderPlanner.build_from_script(script_data)
 
         item_types = [item.item_type for item in plan.items]
-        assert "music" in item_types  # Transition sting
-        assert "silence" in item_types  # Gap after transition
+        assert "effect" in item_types
+        assert "music" not in item_types
+        assert "silence" not in item_types
 
     def test_build_main_content_section(self):
         script_data = {
@@ -264,12 +265,8 @@ class TestRenderPlannerHelperMethods:
         effect = {"effect_type": "effect", "duration": "2s", "description": "transition sound"}
         cues = RenderPlanner._build_transition_cues(effect)
 
-        assert len(cues) == 3
-        # effect, music, silence
+        assert len(cues) == 1
         assert cues[0].item_type == "effect"
-        assert cues[1].item_type == "music"
-        assert cues[1].metadata["role"] == "transition_sting"
-        assert cues[2].item_type == "silence"
 
     def test_build_transition_cues_with_music_effect_keeps_only_transition_sting(self):
         effect = {"effect_type": "music", "duration": "2s", "description": "transition music"}

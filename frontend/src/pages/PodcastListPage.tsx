@@ -189,9 +189,9 @@ export function PodcastListPage() {
             marginBottom: '40px',
             borderRadius: '32px',
             overflow: 'hidden',
-            background: 'linear-gradient(135deg, #faf6ef 0%, #f4eef8 48%, #eef4fb 100%)',
-            boxShadow: '0 28px 72px rgba(8, 6, 13, 0.08)',
-            border: '1px solid rgba(8, 6, 13, 0.06)',
+            background: 'linear-gradient(135deg, #f6ecdf 0%, #efe3f6 46%, #e7f0fb 100%)',
+            boxShadow: '0 32px 80px rgba(8, 6, 13, 0.14)',
+            border: '1px solid rgba(96, 78, 122, 0.12)',
             position: 'relative',
           }}
         >
@@ -199,7 +199,7 @@ export function PodcastListPage() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at top right, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 36%)',
+              background: 'radial-gradient(circle at top right, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0) 34%), radial-gradient(circle at bottom left, rgba(255, 214, 170, 0.18) 0%, rgba(255, 214, 170, 0) 30%)',
               pointerEvents: 'none',
             }}
           />
@@ -219,8 +219,8 @@ export function PodcastListPage() {
                 <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
                   {featuredPodcast.title}
                 </h2>
-                <p style={{ maxWidth: '520px', color: '#36313a', fontSize: '16px', lineHeight: 1.7, marginBottom: '18px' }}>
-                  {truncateText(featuredPodcast.summary, 100)}
+                <p style={{ maxWidth: '520px', color: '#1f1a24', fontSize: '16px', lineHeight: 1.7, margin: '20px 0 18px' }}>
+                  {featuredPodcast.summary}
                 </p>
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>

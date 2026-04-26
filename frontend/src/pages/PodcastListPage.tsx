@@ -7,7 +7,7 @@ import type { Podcast } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
 import { useFavorites } from '../context/FavoritesContext'
-import { getCategoryLabel, getCoverStyle, getFeaturedHeroCoverStyle } from '../utils/coverStyles'
+import { getCategoryLabel, getCoverStyle, getFeaturedHeroCoverStyle, getFeaturedHeroSecondaryCoverStyle } from '../utils/coverStyles'
 import { truncateText } from '../utils/truncate'
 
 const CATEGORIES = [
@@ -164,6 +164,7 @@ export function PodcastListPage() {
   const featuredPodcast = recommendedPodcasts[0] ?? podcasts[0] ?? null
   const featuredSecondary = recommendedPodcasts[1] ?? podcasts[1] ?? null
   const featuredHeroStyle = featuredPodcast ? getFeaturedHeroCoverStyle(featuredHeroSeed) : null
+  const featuredHeroSecondaryStyle = featuredSecondary ? getFeaturedHeroSecondaryCoverStyle(featuredHeroSeed) : null
 
   return (
     <main style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
@@ -302,17 +303,17 @@ export function PodcastListPage() {
                      cursor: 'pointer',
                     }}
                    >
-                   <div
-                     style={{
-                       aspectRatio: '1 / 1',
-                      borderRadius: '16px',
-                      padding: '12px',
-                       display: 'flex',
-                       flexDirection: 'column',
-                       justifyContent: 'space-between',
-                      ...getCoverStyle(featuredSecondary.category),
-                    }}
-                  >
+                    <div
+                      style={{
+                        aspectRatio: '1 / 1',
+                       borderRadius: '16px',
+                       padding: '12px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                       ...(featuredHeroSecondaryStyle ?? getCoverStyle(featuredSecondary.category)),
+                     }}
+                   >
                       <span style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.8)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>Next Up</span>
                       <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(featuredSecondary.category)}</span>
                     </div>

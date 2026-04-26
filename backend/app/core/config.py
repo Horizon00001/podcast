@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     dashscope_default_male_voice: str = "loongdavid_v2"
     dashscope_default_female_voice: str = "longanwen"
     script_llm_model: str = "openai:deepseek-chat"
-    episode_embedding_enabled: bool = False
+    episode_embedding_enabled: bool = True
     episode_embedding_provider: str = "dashscope"
     episode_embedding_model: str = "text-embedding-v3"
     episode_embedding_python: str = ".embedding-venv/bin/python"

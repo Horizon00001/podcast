@@ -24,39 +24,51 @@ const PREFERENCE_CATEGORIES = CATEGORIES.filter(c => c.id !== 'all')
 const RECOMMENDATION_COVER_THEMES = [
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 224, 247, 0.4), transparent 34%), linear-gradient(145deg, #cb5ca6 0%, #e287be 52%, #f7b7d5 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(128,39,91,0.18)',
-    accent: 'rgba(255, 244, 250, 0.82)',
+      'radial-gradient(circle at top right, rgba(255, 230, 240, 0.5), transparent 45%), linear-gradient(145deg, #d45d9b 0%, #eb84b9 52%, #ffb6d8 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(140,50,100,0.25)',
+    accent: 'rgba(255, 245, 250, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(206, 239, 255, 0.38), transparent 34%), linear-gradient(145deg, #3b86db 0%, #63a9ee 52%, #9ed4ff 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(28,84,143,0.18)',
-    accent: 'rgba(241, 250, 255, 0.84)',
+      'radial-gradient(circle at top right, rgba(220, 245, 255, 0.5), transparent 45%), linear-gradient(145deg, #428be5 0%, #6ba9f4 52%, #a8d5ff 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(35,90,150,0.25)',
+    accent: 'rgba(245, 250, 255, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(221, 248, 201, 0.38), transparent 34%), linear-gradient(145deg, #4eab63 0%, #76c17c 50%, #b1e2a3 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(41,102,55,0.16)',
-    accent: 'rgba(245, 255, 241, 0.84)',
+      'radial-gradient(circle at top right, rgba(230, 255, 210, 0.5), transparent 45%), linear-gradient(145deg, #55b86c 0%, #7dcb83 50%, #b8e6a9 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(45,110,60,0.25)',
+    accent: 'rgba(250, 255, 245, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 227, 191, 0.4), transparent 34%), linear-gradient(145deg, #dd7f36 0%, #efa257 52%, #f7c189 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(140,78,28,0.16)',
-    accent: 'rgba(255, 247, 238, 0.84)',
+      'radial-gradient(circle at top right, rgba(255, 235, 200, 0.5), transparent 45%), linear-gradient(145deg, #e68840 0%, #f4aa65 52%, #fbc595 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(150,85,35,0.25)',
+    accent: 'rgba(255, 250, 240, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 219, 207, 0.38), transparent 34%), linear-gradient(145deg, #d85f58 0%, #eb8474 50%, #f5b09c 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(129,53,46,0.16)',
-    accent: 'rgba(255, 244, 240, 0.84)',
+      'radial-gradient(circle at top right, rgba(255, 225, 215, 0.5), transparent 45%), linear-gradient(145deg, #e26760 0%, #f48e7e 50%, #fcb6a5 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(140,60,50,0.25)',
+    accent: 'rgba(255, 245, 245, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(246, 242, 182, 0.38), transparent 34%), linear-gradient(145deg, #9ca83f 0%, #bbc85c 52%, #dfe48f 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -20px 32px rgba(93,101,31,0.16)',
-    accent: 'rgba(252, 255, 241, 0.84)',
+      'radial-gradient(circle at top right, rgba(255, 250, 190, 0.5), transparent 45%), linear-gradient(145deg, #a6b445 0%, #c4d265 52%, #e5e998 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(100,110,40,0.25)',
+    accent: 'rgba(255, 255, 245, 0.95)',
+  },
+  {
+    background:
+      'radial-gradient(circle at top right, rgba(210, 210, 255, 0.5), transparent 45%), linear-gradient(145deg, #6c5ce7 0%, #8b7de9 52%, #b4abef 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(70,60,150,0.25)',
+    accent: 'rgba(245, 245, 255, 0.95)',
+  },
+  {
+    background:
+      'radial-gradient(circle at top right, rgba(200, 255, 240, 0.5), transparent 45%), linear-gradient(145deg, #00b894 0%, #2bd0b0 52%, #6bedd4 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(10,120,90,0.25)',
+    accent: 'rgba(240, 255, 250, 0.95)',
   },
 ]
 

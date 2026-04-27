@@ -44,6 +44,9 @@ class GenerationPreferences(BaseModel):
     topic: str = "daily-news"
     max_items: int = 4
     use_subscriptions: bool = True
+    script_provider: str = "pydantic_ai"
+    script_llm_model: str = "openai:deepseek-v4-flash"
+    script_llm_base_url: str = ""
 
 
 class PlaybackSettings(BaseModel):
@@ -51,9 +54,31 @@ class PlaybackSettings(BaseModel):
     language: Literal["zh", "en"] = "zh"
     auto_cover: bool = False
     console_mode: Literal["compact", "verbose"] = "compact"
+    tts_provider: Literal["dashscope", "edge"] = "dashscope"
+    tts_model: str = "cosyvoice-v2"
+    tts_male_provider: Literal["dashscope", "edge"] = "dashscope"
+    tts_male_model: str = "cosyvoice-v2"
+    tts_male_voice: str = "loongdavid_v2"
+    tts_female_provider: Literal["dashscope", "edge"] = "dashscope"
+    tts_female_model: str = "cosyvoice-v2"
+    tts_female_voice: str = "longanwen"
+
+
+class ModelConfig(BaseModel):
+    provider: str = ""
+    model: str = ""
+    base_url: str = ""
+    api_key: str = ""
+
+
+class ModelsPreferences(BaseModel):
+    script: ModelConfig = ModelConfig()
+    speech: ModelConfig = ModelConfig()
+    embedding: ModelConfig = ModelConfig()
 
 
 class UserPreferences(BaseModel):
     subscription: SubscriptionPreferences = SubscriptionPreferences()
     generation: GenerationPreferences = GenerationPreferences()
     settings: PlaybackSettings = PlaybackSettings()
+    models: ModelsPreferences = ModelsPreferences()

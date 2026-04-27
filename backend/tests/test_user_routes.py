@@ -166,6 +166,34 @@ def test_user_preferences_round_trip():
             "language": "zh",
             "auto_cover": False,
             "console_mode": "verbose",
+            "tts_provider": "dashscope",
+            "tts_model": "cosyvoice-v2",
+            "tts_male_provider": "dashscope",
+            "tts_male_model": "cosyvoice-v2",
+            "tts_male_voice": "loongdavid_v2",
+            "tts_female_provider": "dashscope",
+            "tts_female_model": "cosyvoice-v2",
+            "tts_female_voice": "longanwen",
+        },
+        "models": {
+            "script": {
+                "provider": "openai_compatible",
+                "model": "deepseek-chat",
+                "base_url": "https://api.example.com/v1",
+                "api_key": "script-secret",
+            },
+            "speech": {
+                "provider": "dashscope",
+                "model": "cosyvoice-v2",
+                "base_url": "https://dashscope.aliyuncs.com/api/v1",
+                "api_key": "speech-secret",
+            },
+            "embedding": {
+                "provider": "openai_compatible",
+                "model": "text-embedding-3-small",
+                "base_url": "https://emb.example.com/v1",
+                "api_key": "embedding-secret",
+            },
         },
     }
 
@@ -176,3 +204,5 @@ def test_user_preferences_round_trip():
     saved_response = client.get(f"/api/v1/users/{user_id}/preferences")
     assert saved_response.status_code == 200
     assert saved_response.json()["settings"]["console_mode"] == "verbose"
+    assert saved_response.json()["models"]["script"]["model"] == "deepseek-chat"
+    assert saved_response.json()["models"]["embedding"]["api_key"] == "embedding-secret"

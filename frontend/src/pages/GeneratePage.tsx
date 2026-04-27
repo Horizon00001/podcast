@@ -3,32 +3,13 @@ import { useState, useEffect, useRef, type FormEvent } from 'react'
 import { api } from '../services/api'
 import { useUser } from '../context/UserContext'
 import type { UserPreferences } from '../types/podcast'
+import { defaultPreferences } from './generate/defaultPreferences'
 
 interface RSSSource {
   id: string
   name: string
   url: string
   category: string
-}
-
-const defaultPreferences: UserPreferences = {
-  subscription: {
-    categories: [],
-    rss_sources: [],
-    custom_rss: [],
-    frequency: 'manual',
-  },
-  generation: {
-    topic: 'daily-news',
-    max_items: 4,
-    use_subscriptions: true,
-  },
-  settings: {
-    voice: 'female',
-    language: 'zh',
-    auto_cover: false,
-    console_mode: 'compact',
-  },
 }
 
 interface SectionProgress {

@@ -51,6 +51,9 @@ export interface GenerationPreferences {
   topic: string
   max_items: number
   use_subscriptions: boolean
+  script_provider: string
+  script_llm_model: string
+  script_llm_base_url: string
 }
 
 // 用户设置
@@ -59,10 +62,32 @@ export interface UserSettings {
   language: 'zh' | 'en'
   auto_cover: boolean
   console_mode: 'compact' | 'verbose'
+  tts_provider: 'dashscope' | 'edge'
+  tts_model: string
+  tts_male_provider: 'dashscope' | 'edge'
+  tts_male_model: string
+  tts_male_voice: string
+  tts_female_provider: 'dashscope' | 'edge'
+  tts_female_model: string
+  tts_female_voice: string
+}
+
+export interface ModelConfig {
+  provider: string
+  model: string
+  base_url: string
+  api_key: string
+}
+
+export interface ModelsPreferences {
+  script: ModelConfig
+  speech: ModelConfig
+  embedding: ModelConfig
 }
 
 export interface UserPreferences {
   subscription: SubscriptionSettings
   generation: GenerationPreferences
   settings: UserSettings
+  models: ModelsPreferences
 }

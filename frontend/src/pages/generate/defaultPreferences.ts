@@ -32,6 +32,26 @@ export const defaultPreferences: UserPreferences = {
     tts_female_model: 'cosyvoice-v2',
     tts_female_voice: 'longanwen',
   },
+  models: {
+    script: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
+    speech: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
+    embedding: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
+  },
 }
 
 export const defaultTtsCapabilities: Record<'dashscope' | 'edge', TTSProviderCapability> = {

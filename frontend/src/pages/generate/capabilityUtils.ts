@@ -60,6 +60,22 @@ export function normalizeGeneratePagePreferences(
       ...defaultPreferences.settings,
       ...savedPreferences.settings,
     },
+    models: {
+      ...defaultPreferences.models,
+      ...savedPreferences.models,
+      script: {
+        ...defaultPreferences.models.script,
+        ...savedPreferences.models?.script,
+      },
+      speech: {
+        ...defaultPreferences.models.speech,
+        ...savedPreferences.models?.speech,
+      },
+      embedding: {
+        ...defaultPreferences.models.embedding,
+        ...savedPreferences.models?.embedding,
+      },
+    },
   }
 
   const provider = merged.settings.tts_provider === 'edge' ? 'edge' : 'dashscope'
@@ -119,6 +135,22 @@ export function normalizeSettingsPagePreferences(
     settings: {
       ...defaultPreferences.settings,
       ...savedPreferences.settings,
+    },
+    models: {
+      ...defaultPreferences.models,
+      ...savedPreferences.models,
+      script: {
+        ...defaultPreferences.models.script,
+        ...savedPreferences.models?.script,
+      },
+      speech: {
+        ...defaultPreferences.models.speech,
+        ...savedPreferences.models?.speech,
+      },
+      embedding: {
+        ...defaultPreferences.models.embedding,
+        ...savedPreferences.models?.embedding,
+      },
     },
   }
 

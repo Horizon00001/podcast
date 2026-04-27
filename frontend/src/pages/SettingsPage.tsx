@@ -14,12 +14,43 @@ const defaultPreferences: UserPreferences = {
     topic: 'daily-news',
     max_items: 4,
     use_subscriptions: true,
+    script_provider: 'pydantic_ai',
+    script_llm_model: 'openai:deepseek-v4-flash',
+    script_llm_base_url: '',
   },
   settings: {
     voice: 'female',
     language: 'zh',
     auto_cover: false,
     console_mode: 'compact',
+    tts_provider: 'dashscope',
+    tts_model: 'cosyvoice-v2',
+    tts_male_provider: 'dashscope',
+    tts_male_model: 'cosyvoice-v2',
+    tts_male_voice: 'loongdavid_v2',
+    tts_female_provider: 'dashscope',
+    tts_female_model: 'cosyvoice-v2',
+    tts_female_voice: 'longanwen',
+  },
+  models: {
+    script: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
+    speech: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
+    embedding: {
+      provider: '',
+      model: '',
+      base_url: '',
+      api_key: '',
+    },
   },
 }
 

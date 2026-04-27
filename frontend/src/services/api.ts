@@ -30,6 +30,46 @@ export type GenerationStatusResponse = {
   logs: string[]
 }
 
+export type ScriptProviderCapability = {
+  provider: string
+  available: boolean
+  models: string[]
+  reason?: string | null
+}
+
+export type TTSProviderDetailCapability = {
+  provider: 'dashscope' | 'edge'
+  available: boolean
+  models: string[]
+  voices: {
+    male: string[]
+    female: string[]
+  }
+  reason?: string | null
+}
+
+export type TTSProviderCapability = {
+  provider: 'dashscope' | 'edge'
+  available: boolean
+  reason?: string | null
+}
+
+export type GenerationCapabilities = {
+  script: ScriptProviderCapability[]
+  tts: TTSProviderDetailCapability[]
+}
+
+export type ProviderHealthItem = {
+  provider: string
+  ok: boolean
+  message: string
+}
+
+export type ProviderHealthResponse = {
+  script: ProviderHealthItem[]
+  tts: ProviderHealthItem[]
+}
+
 class RequestError extends Error {
   status: number
 
@@ -119,6 +159,12 @@ export const api = {
     request<{ topics: Array<{ id: string; name: string; description: string }> }>(
       '/generation/topics'
     ),
+  getTTSProviderCapabilities: () =>
+    request<{ providers: TTSProviderCapability[] }>('/generation/tts/providers'),
+  getGenerationCapabilities: () =>
+    request<GenerationCapabilities>('/generation/capabilities'),
+  getProviderHealth: () =>
+    request<ProviderHealthResponse>('/generation/provider-health'),
   triggerGeneration: (payload: { rss_source: string; user_id?: number; use_subscriptions?: boolean; custom_rss?: CustomRSSSource[] }) =>
     request<{ task_id: string; status: string; message: string }>('/generation/trigger', {
       method: 'POST',

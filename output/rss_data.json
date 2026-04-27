@@ -1,69 +1,69 @@
 [
     {
-        "id": "sspai",
-        "name": "少数派",
-        "category": "tech",
-        "last_updated": "2026-04-28T00:17:31.084745",
+        "id": "fortune",
+        "name": "Fortune",
+        "category": "finance",
+        "last_updated": "2026-04-28T00:46:26.558482",
         "entries": [
             {
-                "title": "派评 | 近期值得关注的 App",
-                "link": "https://sspai.com/post/109135",
-                "published": "Mon, 27 Apr 2026 17:55:20 +0800",
-                "summary": ">下载少数派2.0客户端、关注少数派公众号，解锁全新阅读体验📰>实用、好用的正版软件，少数派为你呈现🚀<a href=\"https://sspai.com/post/109135\" target=\"_blank\">查看全文</a>"
+                "title": "Salesforce CEO Marc Benioff says AI won’t kill entry-level jobs. He’s hiring 1,000 new grads to prove it",
+                "link": "https://fortune.com/2026/04/27/salesforce-ceo-marc-benioff-hiring-1000-new-grads-ai-jobs/",
+                "published": "Mon, 27 Apr 2026 16:05:09 +0000",
+                "summary": "The billionaire said the SaaS giant would hire recent grads to help build its AI platforms."
             },
             {
-                "title": "一日一技｜让小企鹅输入法支持 14 键、18 键键位双拼",
-                "link": "https://sspai.com/post/108459",
-                "published": "Mon, 27 Apr 2026 15:46:53 +0800",
-                "summary": "小企鹅输入法只支持 26 键，但有人基于小企鹅魔改了一下使其支持修改布局和图形化操作，加上万象拼音的 14 键位、18 键位，两者一结合——完美。<a href=\"https://sspai.com/post/108459\" target=\"_blank\">查看全文</a>"
+                "title": "United Airlines CEO says a proposed merger would benefit travelers, but American still won’t return his calls",
+                "link": "https://fortune.com/2026/04/27/united-airlines-ceo-says-proposed-merger-benefit-travelers-american/",
+                "published": "Mon, 27 Apr 2026 16:03:20 +0000",
+                "summary": "The stocks of both airlines soared two weeks ago when reports surfaced that Kirby had floated the idea of combining two of the biggest U.S. airlines to the White House."
             },
             {
-                "title": "关于流感和疫苗，你需要知道哪些信息？",
-                "link": "https://sspai.com/post/76945",
-                "published": "Mon, 27 Apr 2026 11:30:55 +0800",
-                "summary": "冬天往往是传染病肆虐的季节。除了在全世界范围内流行已久的新冠病毒，引起季节性流感的流感病毒也不可小视。想要预防流感带来的后果，最简单的方法就是接种流感疫苗。本文就将介绍在打流感疫苗之前，关于流感和疫苗，你需要知道什么。<a href=\"https://sspai.com/post/76945\" target=\"_blank\">查看全文</a>"
+                "title": "Iran offers to reopen Strait of Hormuz amid oil price surge, but Trump seems unlikely to accept",
+                "link": "https://fortune.com/2026/04/27/iran-offers-to-reopen-strait-of-hormuz-oil-prices-trump-putin-nuclear/",
+                "published": "Mon, 27 Apr 2026 15:50:49 +0000",
+                "summary": "With a fragile ceasefire in place, the U.S. and Iran are locked in a standoff over the strait, through which a fifth of the world’s traded oil and gas passes in peacetime."
             },
             {
-                "title": "派早报：X 推出聊天软件 XChat",
-                "link": "https://sspai.com/post/109114",
-                "published": "Mon, 27 Apr 2026 07:40:49 +0800",
-                "summary": "<p>X 推出聊天软件 XChat</p><p>美国要求外交人员向他国警告中国 AI 蒸馏行为</p><p>国内 AI 公司被要求不接受未经批准的美国投资</p><p>香港在黄金周前加强电子烟禁令的内地宣传</p><p>FILCO 键盘母公司关停</p><p>官方回应豆包提前查到 2026 山东事业编成绩</p><p>看看就行的简讯</p><p>少数派的近期动态</p><p>你可能错过的好文章</p><a href=\"https://sspai.com/post/109114\" target=\"_blank\">查看全文</a>"
+                "title": "‘Capitalism works because the losers die’: Kevin O’Leary says it’s a ‘really bad idea’ for the federal government to bail out Spirit Airlines",
+                "link": "https://fortune.com/2026/04/27/kevin-oleary-spirit-airlines-federal-government-bailout-really-bad-idea/",
+                "published": "Mon, 27 Apr 2026 15:38:38 +0000",
+                "summary": "The Shark Tank star and multimillionaire investor says the Trump administration's reported $500 million rescue plan props up \"bad management\" and undermines the free market."
             },
             {
-                "title": "App+1 | 谈谈网页浏览器中的一个异类：qutebrowser",
-                "link": "https://sspai.com/post/98931",
-                "published": "Sun, 26 Apr 2026 15:00:00 +0800",
-                "summary": "对以键盘操作为优先的用户来说，一旦学会了如何退出Vim，可能不消多久，便想在肉眼可见之处使用Vim的这套模态编辑。多年来，不少软件都内置了Vim风格的按键绑定，来迎合这类用户的肌肉记忆。其中，更有一些 ...<a href=\"https://sspai.com/post/98931\" target=\"_blank\">查看全文</a>"
+                "title": "Daughter of former Uzbek president accused of masterminding $100 million crime ring known as ‘The Office’",
+                "link": "https://fortune.com/2026/04/27/daughter-former-uzbek-president-accused-of-masterminding-crime-ring-the-office/",
+                "published": "Mon, 27 Apr 2026 15:36:31 +0000",
+                "summary": "Swiss prosecutors say Karimova developed and ran a crime ring known as “The Office” that involved several dozen people and multiple companies."
             },
             {
-                "title": "掌控专注力，你需要做的和没必要做的",
-                "link": "https://sspai.com/post/108977",
-                "published": "Sat, 25 Apr 2026 18:18:17 +0800",
-                "summary": "Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点，少数派仅对标题和排 ...<a href=\"https://sspai.com/post/108977\" target=\"_blank\">查看全文</a>"
+                "title": "Incoming Apple CEO John Ternus tells Gen Z an early mistake taught him an important lesson: ‘The care you put into your work really matters’",
+                "link": "https://fortune.com/2026/04/27/incoming-apple-ceo-john-ternus-advises-gen-z-early-mistake-was-important-lesson-care-put-into-work-matters/",
+                "published": "Mon, 27 Apr 2026 15:25:13 +0000",
+                "summary": "John Ternus, the incoming CEO of Apple, advises Gen Z college graduates to pour themselves into work, build skills, and always assume they’re not the smartest in the room."
             },
             {
-                "title": "本周看什么 | 最近值得一看的 11 部作品",
-                "link": "https://sspai.com/post/109050",
-                "published": "Fri, 24 Apr 2026 18:17:33 +0800",
-                "summary": "📅本周新预告《泥面人》首支预告4月23日，DC新片《泥面人》发布了首支预告，将于10月23日在北美上映。詹姆斯·瓦特金斯执导，汤姆·里斯·哈里斯、娜奥米·阿基、麦克思·明格拉等主演，一位B级片演员给自 ...<a href=\"https://sspai.com/post/109050\" target=\"_blank\">查看全文</a>"
+                "title": "Apple cofounder Ronald Wayne—whose stake would be worth up to $400 billion had he not sold it in 1976—says that at 91, he has no regrets",
+                "link": "https://fortune.com/2026/04/27/apple-cofounder-ronald-wayne-missed-billionaire-opportunity-no-regrets-gen-z-advice-steve-jobs-steve-wozniak/",
+                "published": "Mon, 27 Apr 2026 15:21:48 +0000",
+                "summary": "Ronald Wayne helped Steve Jobs and Steve Wozniak create Apple—but sold out just 12 days in. He never became a billionaire, but tells Fortune he has no regrets."
             },
             {
-                "title": "换了新显示器怎么验？我做了一个开箱即用的全平台屏幕检测工具",
-                "link": "https://sspai.com/post/108455",
-                "published": "Fri, 24 Apr 2026 15:06:50 +0800",
-                "summary": "一站式、在线测试屏幕的各项功能。<a href=\"https://sspai.com/post/108455\" target=\"_blank\">查看全文</a>"
+                "title": "Shell reverses course in Canada and buys ARC Resources for $14 billion, doubling down on oil and gas",
+                "link": "https://fortune.com/2026/04/27/shell-reverses-course-canada-buys-arc-resources-14-billion-oil-gas/",
+                "published": "Mon, 27 Apr 2026 14:49:49 +0000",
+                "summary": "The Montney is emerging as a hot oil and gas play as the U.S. shale basins mature."
             },
             {
-                "title": "少数派的共创时代，「2050 大会」活动精彩回顾",
-                "link": "https://sspai.com/post/108202",
-                "published": "Fri, 24 Apr 2026 11:25:15 +0800",
-                "summary": "4月25日，杭州云栖小镇2050大会现场，【少数派的共创时代】社区交流活动圆满落幕。活动邀请了少数派创始人@老麦、白描开发者@Tolecen、汽车博主@小狮子佑酱进行主题演讲与分享——老麦：少数派的产 ...<a href=\"https://sspai.com/post/108202\" target=\"_blank\">查看全文</a>"
+                "title": "A bank robber made off with $195,000 and got caught after his cell pinged a geofence. Now SCOTUS decides whether that violated the Fourth Amendment",
+                "link": "https://fortune.com/2026/04/27/bank-robber-phone-ping-geofence-fourth-amendment-scotus/",
+                "published": "Mon, 27 Apr 2026 14:15:58 +0000",
+                "summary": "Police went to Okello Chatrie's house after his cell phone was among the devices within the vicinity of the bank at the time of the robbery."
             },
             {
-                "title": "手机和平板间的新品类：华为 Pura X Max 漫谈",
-                "link": "https://sspai.com/post/109024",
-                "published": "Fri, 24 Apr 2026 09:54:28 +0800",
-                "summary": "折叠屏手机这两年并不太好过。按照IDC的年度报告，2025年中国折叠屏手机市场出货约1001万台，同比增速9.2%，而2024年这个数字还是30.8%——一年之间，增速接近腰斩。而折叠屏手机在全球智能 ...<a href=\"https://sspai.com/post/109024\" target=\"_blank\">查看全文</a>"
+                "title": "Intel’s share price just blew the doors off. One man thinks he knows the reason why",
+                "link": "https://fortune.com/2026/04/27/intel-share-price/",
+                "published": "Mon, 27 Apr 2026 13:54:27 +0000",
+                "summary": "Written off as a legacy chipmaker, Intel is staging a comeback—riding the AI boom, forging alliances, and betting big on a future it once failed to see"
             }
         ]
     }

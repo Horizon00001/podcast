@@ -14,8 +14,8 @@ from .speech_provider import SpeechProvider, create_speech_provider
 
 
 class TTSService:
-    # DashScope TTS 并发限制：最多同时开 2 个 WebSocket 连接
-    _dashscope_tts_limiter = threading.Semaphore(2)
+    # 云端 TTS 默认串行，避免一次性压太多请求到供应商侧。
+    _dashscope_tts_limiter = threading.Semaphore(max(int(settings.dashscope_tts_max_concurrency), 1))
 
     AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".ogg", ".flac"}
     OPENING_LIBRARY_DIR = "opening"
@@ -423,7 +423,8 @@ class TTSService:
                 f.write(f"file '{abs_path}'\n")
 
         try:
-            subprocess.run(
+            await asyncio.to_thread(
+                subprocess.run,
                 [self._get_ffmpeg_binary(), "-y", "-f", "concat", "-safe", "0", "-i", str(list_file), "-c:a", "libmp3lame", "-b:a", "256k", str(output_full)],
                 check=True,
                 capture_output=True,

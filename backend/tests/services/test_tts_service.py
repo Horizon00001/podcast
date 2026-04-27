@@ -153,7 +153,7 @@ class TestTTSServiceInjectDefaultAssets:
         fake_music = tmp_path / "fake_music.mp3"
         fake_music.write_text("dummy", encoding="utf-8")
 
-        with patch.object(TTSService, "_find_existing_asset", return_value=fake_music):
+        with patch.object(TTSService, "_pick_music_asset", return_value=fake_music):
             result = service._inject_default_assets(plan)
 
         # Should have added opening music and silence at the start
@@ -199,7 +199,7 @@ class TestTTSServiceInjectDefaultAssets:
             ],
         )
 
-        with patch.object(TTSService, "_find_existing_asset", return_value=fake_music):
+        with patch.object(TTSService, "_pick_music_asset", return_value=fake_music):
             result = service._inject_default_assets(plan)
 
         # Music items should have asset_path set
@@ -227,14 +227,14 @@ class TestTTSServiceInjectDefaultAssets:
             ],
         )
 
-        def find_existing_asset(candidates):
-            if candidates == service.opening_music_candidates:
+        def pick_music_asset(library_dir, legacy_candidates):
+            if library_dir == service.opening_library_dir:
                 return opening_music
-            if candidates == service.transition_music_candidates:
+            if library_dir == service.transition_library_dir:
                 return transition_music
             return None
 
-        with patch.object(TTSService, "_find_existing_asset", side_effect=find_existing_asset):
+        with patch.object(TTSService, "_pick_music_asset", side_effect=pick_music_asset):
             result = service._inject_default_assets(plan)
 
         assert result.items[0].asset_path == opening_music
@@ -369,3 +369,52 @@ class TestTTSServiceSecondsToMs:
     def test_seconds_to_ms_negative(self):
         # Negative values should become 0
         assert TTSService._seconds_to_ms(-1.0) == 0
+
+
+class TestTTSServiceMergeAudioFiles:
+    @pytest.mark.anyio
+    async def test_merge_audio_files_runs_ffmpeg_off_event_loop(self, tmp_path, monkeypatch):
+        service = TTSService(output_dir=tmp_path / "audio", speech_provider=MagicMock())
+        section_a = tmp_path / "a.mp3"
+        section_b = tmp_path / "b.mp3"
+        section_a.write_bytes(b"a")
+        section_b.write_bytes(b"b")
+
+        calls = {"to_thread": 0, "run": 0}
+
+        async def fake_to_thread(func, *args, **kwargs):
+            calls["to_thread"] += 1
+            return func(*args, **kwargs)
+
+        def fake_run(cmd, check, capture_output):
+            calls["run"] += 1
+            output_path = Path(cmd[-1])
+            output_path.write_bytes(b"merged")
+            return MagicMock()
+
+        monkeypatch.setattr("app.services.tts_service.asyncio.to_thread", fake_to_thread)
+        monkeypatch.setattr("app.services.tts_service.subprocess.run", fake_run)
+        monkeypatch.setattr(service, "_get_ffmpeg_binary", lambda: "ffmpeg")
+
+        output_path = await service.merge_audio_files([str(section_a), str(section_b)])
+
+        assert calls["to_thread"] == 1
+        assert calls["run"] == 1
+        assert output_path.exists()
+
+
+def test_dashscope_tts_limiter_uses_configured_concurrency(monkeypatch):
+    from app.services import tts_service
+
+    original_limiter = tts_service.TTSService._dashscope_tts_limiter
+    try:
+        monkeypatch.setattr(tts_service.settings, "dashscope_tts_max_concurrency", 3)
+        tts_service.TTSService._dashscope_tts_limiter = tts_service.threading.Semaphore(
+            max(int(tts_service.settings.dashscope_tts_max_concurrency), 1)
+        )
+
+        acquired = [tts_service.TTSService._dashscope_tts_limiter.acquire(blocking=False) for _ in range(4)]
+
+        assert acquired == [True, True, True, False]
+    finally:
+        tts_service.TTSService._dashscope_tts_limiter = original_limiter

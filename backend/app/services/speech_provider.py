@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import asyncio
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Protocol, runtime_checkable
+
+
+logger = logging.getLogger(__name__)
 
 
 @runtime_checkable
@@ -82,12 +87,16 @@ class DashScopeTTSProvider:
         male_voice: str | None = None,
         female_voice: str | None = None,
         base_websocket_api_url: str = "wss://dashscope.aliyuncs.com/api-ws/v1/inference",
+        request_timeout_seconds: float = 180.0,
+        timeout_retries: int = 2,
     ):
         self.api_key = api_key
         self.model = model
         self.male_voice = male_voice or "loongdavid_v2"
         self.female_voice = female_voice or "longanwen"
         self.base_websocket_api_url = base_websocket_api_url
+        self.request_timeout_seconds = request_timeout_seconds
+        self.timeout_retries = max(int(timeout_retries), 0)
 
     def _resolve_voice_id(self, voice: str | None) -> str:
         if voice == "male":
@@ -116,8 +125,32 @@ class DashScopeTTSProvider:
 
         dashscope.api_key = self.api_key
         dashscope.base_websocket_api_url = self.base_websocket_api_url
-        synthesizer = SpeechSynthesizer(model=self.model, voice=voice_id)
-        audio = synthesizer.call(text)
+        last_timeout: TimeoutError | None = None
+        for attempt in range(self.timeout_retries + 1):
+            synthesizer = SpeechSynthesizer(model=self.model, voice=voice_id)
+            try:
+                audio = await asyncio.wait_for(
+                    asyncio.to_thread(synthesizer.call, text),
+                    timeout=self.request_timeout_seconds,
+                )
+                break
+            except TimeoutError as exc:
+                last_timeout = exc
+                logger.warning(
+                    "DashScope TTS timeout for voice=%s attempt=%s/%s timeout=%ss",
+                    voice_id,
+                    attempt + 1,
+                    self.timeout_retries + 1,
+                    self.request_timeout_seconds,
+                )
+                if attempt >= self.timeout_retries:
+                    raise RuntimeError(
+                        "DashScope TTS request timed out "
+                        f"after {self.request_timeout_seconds}s for voice={voice_id} "
+                        f"(attempts={self.timeout_retries + 1})"
+                    ) from exc
+        else:
+            raise RuntimeError(f"DashScope TTS request failed unexpectedly for voice={voice_id}") from last_timeout
 
         audio_bytes = self._coerce_audio_bytes(audio)
         if not audio_bytes:
@@ -197,6 +230,8 @@ def create_speech_provider() -> SpeechProvider:
                 "DASHSCOPE_BASE_WEBSOCKET_API_URL",
                 "wss://dashscope.aliyuncs.com/api-ws/v1/inference",
             ),
+            request_timeout_seconds=float(os.getenv("DASHSCOPE_TTS_TIMEOUT_SECONDS", "180")),
+            timeout_retries=int(os.getenv("DASHSCOPE_TTS_TIMEOUT_RETRIES", "2")),
         )
 
     return EdgeTTSProvider(default_voice="zh-CN-XiaoxiaoNeural")

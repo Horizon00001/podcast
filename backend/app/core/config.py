@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     dashscope_base_websocket_api_url: str = "wss://dashscope.aliyuncs.com/api-ws/v1/inference"
     dashscope_default_male_voice: str = "loongdavid_v2"
     dashscope_default_female_voice: str = "longanwen"
+    dashscope_tts_max_concurrency: int = 1
     script_llm_model: str = "openai:deepseek-chat"
     episode_embedding_enabled: bool = True
     episode_embedding_provider: str = "dashscope"

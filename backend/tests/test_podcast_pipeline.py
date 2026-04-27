@@ -1,4 +1,5 @@
 from app.pipelines import podcast_pipeline
+import json
 
 
 def test_summarize_grouped_items_counts_clusters():
@@ -19,6 +20,7 @@ def test_summarize_grouped_items_counts_clusters():
         "total_clusters": 3,
         "single_item_clusters": 1,
         "multi_item_clusters": 2,
+        "processable_clusters": 3,
     }
 
 
@@ -30,6 +32,7 @@ def test_summarize_grouped_items_handles_empty_input():
         "total_clusters": 0,
         "single_item_clusters": 0,
         "multi_item_clusters": 0,
+        "processable_clusters": 0,
     }
 
 
@@ -46,6 +49,7 @@ def test_summarize_grouped_items_distinguishes_single_and_multi_clusters():
 
     assert summary["single_item_clusters"] == 2
     assert summary["multi_item_clusters"] == 1
+    assert summary["processable_clusters"] == 3
 
 
 def test_average_vectors_returns_mean_vector():
@@ -70,3 +74,44 @@ def test_group_center_vector_uses_embedding_service(monkeypatch):
     ])
 
     assert result == [0.5, 0.5]
+
+
+def test_save_generated_podcast_builds_payload_and_returns_success(tmp_path, monkeypatch):
+    group_dir = tmp_path / "group"
+    audio_dir = group_dir / "audio"
+    audio_dir.mkdir(parents=True)
+    (audio_dir / "podcast_full.mp3").write_bytes(b"audio")
+    (group_dir / "podcast_script.json").write_text(
+        json.dumps({"title": "测试播客", "intro": "摘要"}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    captured = {}
+
+    class FakePodcastService:
+        def __init__(self, db):
+            self.db = db
+
+        def upsert_podcast(self, payload):
+            captured["payload"] = payload
+            return "created", type("Podcast", (), {"id": 42})()
+
+    class FakeSession:
+        def close(self):
+            captured["closed"] = True
+
+    monkeypatch.setattr(podcast_pipeline, "PodcastService", FakePodcastService)
+    monkeypatch.setattr(podcast_pipeline, "SessionLocal", lambda: FakeSession())
+
+    status, message = podcast_pipeline._save_generated_podcast(
+        group_name="general/test",
+        group_dir=group_dir,
+        event_key="general:test:1",
+        content_vector="[0.1, 0.2]",
+    )
+
+    assert status == "created"
+    assert "42 - 测试播客" in message
+    assert captured["payload"].audio_url == "/audio/podcasts/general/test/audio/podcast_full.mp3"
+    assert captured["payload"].script_path == "output/podcasts/general/test/podcast_script.json"
+    assert captured["closed"] is True

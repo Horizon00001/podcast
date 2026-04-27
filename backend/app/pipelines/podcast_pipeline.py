@@ -43,6 +43,7 @@ def _summarize_grouped_items(grouped_items: dict[str, list[list[dict]]]) -> dict
         "total_clusters": total_clusters,
         "single_item_clusters": single_item_clusters,
         "multi_item_clusters": multi_item_clusters,
+        "processable_clusters": total_clusters,
     }
 
 
@@ -106,6 +107,45 @@ def _group_center_vector(group_items: list[dict]) -> list[float]:
     return _average_vectors(vectors)
 
 
+def _save_generated_podcast(
+    group_name: str,
+    group_dir: Path,
+    event_key: str,
+    content_vector: str,
+) -> tuple[str | None, str]:
+    script_file = group_dir / "podcast_script.json"
+    audio_file = group_dir / "audio" / "podcast_full.mp3"
+    if not script_file.exists() or not audio_file.exists():
+        return None, f"[DB Skip] 缺少脚本或音频文件: {group_name}"
+
+    with open(script_file, "r", encoding="utf-8") as f:
+        script_data = json.load(f)
+
+    title = script_data.get("title", "未命名播客")
+    summary = script_data.get("intro", "")
+    audio_url = f"/audio/podcasts/{group_name}/audio/podcast_full.mp3"
+    script_path = f"output/podcasts/{group_name}/podcast_script.json"
+    payload = PodcastCreate(
+        title=title,
+        summary=summary,
+        event_key=event_key,
+        content_vector=content_vector,
+        audio_url=audio_url,
+        script_path=script_path,
+    )
+
+    db = SessionLocal()
+    try:
+        podcast_service = PodcastService(db)
+        status, podcast = podcast_service.upsert_podcast(payload)
+    finally:
+        db.close()
+
+    if podcast is None:
+        return "duplicate", f"⏭️ 已跳过重复事件: {title} ({event_key})"
+    return status, f"✅ 已{status}: {podcast.id} - {title}"
+
+
 async def run_pipeline(
     topic: str = "daily-news",
     selected_source_ids: list[str] | None = None,
@@ -162,14 +202,16 @@ async def run_pipeline(
             f"[Plan Cluster] 输入新闻={len(fresh_items)}，输出分组={grouped_summary['total_clusters']}，单条组={grouped_summary['single_item_clusters']}，多条组={grouped_summary['multi_item_clusters']}"
         )
         log(
-            f"[Plan Result] 可直接生成组={grouped_summary['multi_item_clusters']}，已跳过单条组={grouped_summary['single_item_clusters']}"
+            f"[Plan Result] 可生成组={grouped_summary['processable_clusters']}，其中单条组={grouped_summary['single_item_clusters']}，多条组={grouped_summary['multi_item_clusters']}"
         )
         log_callback(f"已分类到类别数: {grouped_summary['category_count']}")
 
         generated_links = set()
-        generated_groups: list[tuple[str, Path, str, str]] = []
+        saved_podcast_count = 0
+        skipped_duplicate_count = 0
 
         async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
+            nonlocal saved_podcast_count, skipped_duplicate_count
             if check_cancelled and check_cancelled():
                 log(f"\n[取消] 跳过组 {group_index}，任务已取消")
                 raise asyncio.CancelledError("任务已取消")
@@ -240,17 +282,22 @@ async def run_pipeline(
             log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
             generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
             center_vector = _group_center_vector(group_items)
-            generated_groups.append((group_label, group_dir, event_key, json.dumps(center_vector)))
+            save_status, save_message = _save_generated_podcast(
+                group_name=group_label,
+                group_dir=group_dir,
+                event_key=event_key,
+                content_vector=json.dumps(center_vector),
+            )
+            log(save_message)
+            if save_status == "duplicate":
+                skipped_duplicate_count += 1
+            elif save_status is not None:
+                saved_podcast_count += 1
 
         tasks = []
         log("\n[3/4] 生成脚本并合成音频")
         for category, clusters in grouped_items.items():
             for index, cluster in enumerate(clusters, start=1):
-                if len(cluster) < 2:
-                    log(
-                        f"[Plan Skip] 跳过单条组 {category}/{index:02d}-{build_group_name(cluster, cluster[0].get('title', category) if cluster else category)}"
-                    )
-                    continue
                 tasks.append(run_group_pipeline(category, cluster, index))
 
         if tasks:
@@ -271,52 +318,16 @@ async def run_pipeline(
                 for clusters in grouped_items.values()
                 for cluster in clusters
                 for item in cluster
-                if len(cluster) >= 2
             )
         log("\n[4/4] 保存使用记录")
         save_used_item_links(sorted(used_item_key_set), used_item_links_path)
-
-        log("\n[5/5] 保存到数据库")
-        db = SessionLocal()
-        saved_podcast_count = 0
-        skipped_duplicate_count = 0
-        try:
-            podcast_service = PodcastService(db)
-            for group_name, group_dir, event_key, content_vector in generated_groups:
-                script_file = group_dir / "podcast_script.json"
-                audio_file = group_dir / "audio" / "podcast_full.mp3"
-                if not script_file.exists() or not audio_file.exists():
-                    continue
-                with open(script_file, "r", encoding="utf-8") as f:
-                    script_data = json.load(f)
-                title = script_data.get("title", "未命名播客")
-                summary = script_data.get("intro", "")
-                audio_url = f"/audio/podcasts/{group_name}/audio/podcast_full.mp3"
-                script_path = f"output/podcasts/{group_name}/podcast_script.json"
-                payload = PodcastCreate(
-                    title=title,
-                    summary=summary,
-                    event_key=event_key,
-                    content_vector=content_vector,
-                    audio_url=audio_url,
-                    script_path=script_path,
-                )
-                status, podcast = podcast_service.upsert_podcast(payload)
-                if podcast is None:
-                    skipped_duplicate_count += 1
-                    log(f"⏭️ 已跳过重复事件: {title} ({event_key})")
-                    continue
-                saved_podcast_count += 1
-                log(f"✅ 已{status}: {podcast.id} - {title}")
-        finally:
-            db.close()
 
         log(
             "[Pipeline Summary] "
             f"新新闻={len(fresh_items)} "
             f"总分组={grouped_summary['total_clusters']} "
-            f"可生成组={grouped_summary['multi_item_clusters']} "
-            f"完成组={len(generated_groups)} "
+            f"可生成组={grouped_summary['processable_clusters']} "
+            f"完成组={saved_podcast_count + skipped_duplicate_count} "
             f"入库成功={saved_podcast_count} "
             f"重复跳过={skipped_duplicate_count}"
         )

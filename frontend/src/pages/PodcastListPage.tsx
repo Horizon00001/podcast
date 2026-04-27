@@ -526,25 +526,28 @@ export function PodcastListPage() {
                     />
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', position: 'relative', zIndex: 1 }}>
                       <div
-                        style={{
-                          padding: '6px 10px',
-                          borderRadius: '999px',
-                          background: 'rgba(255, 255, 255, 0.2)',
-                          border: '1px solid rgba(255, 255, 255, 0.18)',
-                          fontSize: '11px',
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          fontWeight: 700,
-                        }}
+                      style={{
+                        padding: '6px 12px',
+                        borderRadius: '999px',
+                        background: 'rgba(255, 255, 255, 0.25)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        backdropFilter: 'blur(8px)',
+                        fontSize: '12px',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        fontWeight: 800,
+                        color: '#ffffff',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                      }}
                       >
                         为你推荐
                       </div>
-                      <div style={{ fontSize: '30px', lineHeight: 1, color: 'rgba(255, 255, 255, 0.34)', fontWeight: 700 }}>
+                      <div style={{ fontSize: '32px', lineHeight: 1, color: 'rgba(255, 255, 255, 0.5)', fontWeight: 800, textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
                         {String(index + 1).padStart(2, '0')}
                       </div>
                     </div>
                     <div style={{ alignSelf: 'stretch', position: 'relative', zIndex: 1, textAlign: 'left' }}>
-                      <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', fontWeight: 700, marginBottom: '10px' }}>
+                      <div style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 800, marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         {getCategoryLabel(podcast.category)}
                       </div>
                       <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.05em', color: '#ffffff', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
@@ -559,8 +562,8 @@ export function PodcastListPage() {
                         gap: '10px',
                         position: 'relative',
                         zIndex: 1,
-                        paddingTop: '10px',
-                        borderTop: '1px solid rgba(255, 255, 255, 0.18)',
+                        paddingTop: '12px',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.25)',
                       }}
                     >
                       <div>

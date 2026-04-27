@@ -363,7 +363,7 @@ export function PodcastListPage() {
                      }}
                    >
                       <span style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.8)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>Next Up</span>
-                      <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(featuredSecondary.category)}</span>
+                      <span style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 800 }}>{getCategoryLabel(featuredSecondary.category)}</span>
                     </div>
                       <div style={{ textAlign: 'left' }}>
                         <div style={{ fontSize: '12px', color: '#6b6375', marginBottom: '4px', fontWeight: 600 }}>继续推荐</div>

@@ -113,6 +113,11 @@ class GenerationService:
         if not task:
             return
 
+        if self._check_cancelled(task_id):
+            await self._add_log(task_id, "任务已被用户取消")
+            self._update_task(task_id, "cancelled", "任务已取消")
+            return
+
         check_cancelled = lambda: self._check_cancelled(task_id)
 
         self._update_task(task_id, "running", f"正在按主题生成节目: {task.topic}")
@@ -126,6 +131,12 @@ class GenerationService:
                 log_callback=lambda message: asyncio.create_task(self._add_log(task_id, message)),
                 check_cancelled=check_cancelled,
             )
+
+            if self._check_cancelled(task_id):
+                await self._add_log(task_id, "任务已被用户取消")
+                self._update_task(task_id, "cancelled", "任务已取消")
+                return
+
             self._update_task(task_id, "succeeded", "播客生成完成")
 
         except asyncio.CancelledError:

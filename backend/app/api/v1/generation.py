@@ -127,9 +127,20 @@ def get_generation_task(task_id: str):
 
 @router.delete("/{task_id}", response_model=GenerationTriggerResponse)
 def cancel_generation_task(task_id: str):
+    task = generation_service.get_task(task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if task.status == "cancelled":
+        return GenerationTriggerResponse(
+            task_id=task.task_id,
+            status=task.status,
+            message=task.message,
+        )
+
     success = generation_service.cancel_task(task_id)
     if not success:
-        raise HTTPException(status_code=409, detail="任务无法取消（可能已完成或不存在）")
+        raise HTTPException(status_code=409, detail="任务无法取消（可能已完成）")
+
     task = generation_service.get_task(task_id)
     return GenerationTriggerResponse(
         task_id=task.task_id,

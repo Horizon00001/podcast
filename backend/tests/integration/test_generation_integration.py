@@ -242,8 +242,16 @@ class TestGenerationServiceRunPipeline:
 
         captured = {}
 
-        async def fake_run_pipeline(topic=None, log_callback=None, check_cancelled=None):
+        async def fake_run_pipeline(
+            topic=None,
+            selected_source_ids=None,
+            extra_feeds=None,
+            log_callback=None,
+            check_cancelled=None,
+        ):
             captured["topic"] = topic
+            captured["selected_source_ids"] = selected_source_ids
+            captured["extra_feeds"] = extra_feeds
             captured["log_callback"] = log_callback
             log_callback("pipeline step 1")
             log_callback("pipeline step 2")
@@ -272,7 +280,13 @@ class TestGenerationServiceRunPipeline:
 
         monkeypatch.setattr(gs_module, "SessionLocal", _make_test_session_factory(tmp_path))
 
-        async def fake_failing_pipeline(topic=None, log_callback=None, check_cancelled=None):
+        async def fake_failing_pipeline(
+            topic=None,
+            selected_source_ids=None,
+            extra_feeds=None,
+            log_callback=None,
+            check_cancelled=None,
+        ):
             log_callback("starting pipeline...")
             raise ValueError("RSS feed not available")
 
@@ -290,3 +304,40 @@ class TestGenerationServiceRunPipeline:
         updated_task = service.get_task(task_id)
         assert updated_task.status == "failed"
         assert "RSS feed not available" in updated_task.message
+
+    def test_generation_service_keeps_cancelled_status_when_pipeline_returns(self, monkeypatch, tmp_path):
+        """测试任务取消后不会在 pipeline 返回时被覆盖为 succeeded."""
+        from app.services import generation_service as gs_module
+        from app.services.generation_service import GenerationService
+
+        monkeypatch.setattr(gs_module, "SessionLocal", _make_test_session_factory(tmp_path))
+
+        async def fake_run_pipeline(
+            topic=None,
+            selected_source_ids=None,
+            extra_feeds=None,
+            log_callback=None,
+            check_cancelled=None,
+        ):
+            log_callback("starting pipeline...")
+            assert check_cancelled is not None
+            service.cancel_task("test-task-cancelled")
+            assert check_cancelled() is True
+
+        monkeypatch.setattr(gs_module, "run_pipeline", fake_run_pipeline)
+
+        service = GenerationService()
+        task_id = "test-task-cancelled"
+        service.create_task("default", "tech", task_id)
+
+        async def _run():
+            await service.run_pipeline(task_id)
+
+        asyncio.run(_run())
+
+        updated_task = service.get_task(task_id)
+        assert updated_task.status == "cancelled"
+        assert updated_task.message == "任务已取消"
+
+        logs = service.get_task_logs(task_id)
+        assert "任务已被用户取消" in logs

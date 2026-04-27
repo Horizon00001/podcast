@@ -165,6 +165,17 @@ export function GeneratePage() {
   const restorationAttemptedRef = useRef(false)
   const hydratedFromStorageRef = useRef(false)
 
+  function finishGeneration(statusText: string) {
+    appendOutput(statusText)
+    setIsGenerating(false)
+    setCurrentTaskId(null)
+    currentTaskIdRef.current = null
+    processedLogCountRef.current = 0
+    clearActiveTaskSnapshot()
+    clearPersistedGenerationViewState()
+    cleanupEventSource()
+  }
+
   function appendOutput(text: string) {
     setTerminalOutput((prev) => prev + text)
   }
@@ -550,42 +561,14 @@ export function GeneratePage() {
           const statusMessage = data[2]
           
           if (status === 'succeeded') {
-            appendOutput(`\n\n任务全部完成。\n`)
-            setIsGenerating(false)
-            setCurrentTaskId(null)
-            currentTaskIdRef.current = null
-            processedLogCountRef.current = 0
-            clearActiveTaskSnapshot()
-            clearPersistedGenerationViewState()
-            cleanupEventSource()
+            finishGeneration(`\n\n任务全部完成。\n`)
           } else if (status === 'failed') {
-            appendOutput(`\n\n任务失败: ${statusMessage}\n`)
-            setIsGenerating(false)
-            setCurrentTaskId(null)
-            currentTaskIdRef.current = null
-            processedLogCountRef.current = 0
-            clearActiveTaskSnapshot()
-            clearPersistedGenerationViewState()
-            cleanupEventSource()
+            finishGeneration(`\n\n任务失败: ${statusMessage}\n`)
           } else if (status === 'cancelled') {
-            appendOutput(`\n\n任务已取消\n`)
-            setIsGenerating(false)
-            setCurrentTaskId(null)
-            currentTaskIdRef.current = null
-            processedLogCountRef.current = 0
-            clearActiveTaskSnapshot()
-            clearPersistedGenerationViewState()
-            cleanupEventSource()
+            finishGeneration(`\n\n任务已取消\n`)
           }
         } else if (data[0] === 'error') {
-          appendOutput(`\n系统错误: ${data[1]}\n`)
-          setIsGenerating(false)
-          setCurrentTaskId(null)
-          currentTaskIdRef.current = null
-          processedLogCountRef.current = 0
-          clearActiveTaskSnapshot()
-          clearPersistedGenerationViewState()
-          cleanupEventSource()
+          finishGeneration(`\n系统错误: ${data[1]}\n`)
         }
       } catch (error) {
         console.error('解析SSE消息失败:', error)
@@ -641,15 +624,26 @@ export function GeneratePage() {
     if (!currentTaskId) return
     try {
       const result = await api.cancelGeneration(currentTaskId)
-      appendOutput(`\n\n${result.message} (状态: ${result.status})\n`)
-      setIsGenerating(false)
-      setCurrentTaskId(null)
-      currentTaskIdRef.current = null
-      processedLogCountRef.current = 0
-      clearActiveTaskSnapshot()
-      clearPersistedGenerationViewState()
-      cleanupEventSource()
+      finishGeneration(`\n\n${result.message} (状态: ${result.status})\n`)
     } catch (error) {
+      try {
+        const status = await api.getGenerationStatus(currentTaskId)
+        if (status.status === 'cancelled') {
+          finishGeneration(`\n\n任务已取消\n`)
+          return
+        }
+        if (status.status === 'succeeded') {
+          finishGeneration(`\n\n任务全部完成。\n`)
+          return
+        }
+        if (status.status === 'failed') {
+          finishGeneration(`\n\n任务失败: ${status.message}\n`)
+          return
+        }
+      } catch (statusError) {
+        console.error('取消后同步任务状态失败:', statusError)
+      }
+
       appendOutput(`\n取消失败: ${(error as Error).message}\n`)
     }
   }

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { api } from '../services/api'
-import type { Podcast } from '../types/podcast'
+import type { Podcast, ScriptLine } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
 import { useFavorites } from '../context/FavoritesContext'
@@ -63,6 +63,7 @@ const RECOMMENDATION_COVER_THEMES = [
 export function PodcastListPage() {
   const {isFavorite, toggleFavorite } = useFavorites();
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
+  const [featuredScriptLines, setFeaturedScriptLines] = useState<ScriptLine[]>([])
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
   const [recommendationRequestId, setRecommendationRequestId] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -165,18 +166,45 @@ export function PodcastListPage() {
   const featuredSecondary = recommendedPodcasts[1] ?? podcasts[1] ?? null
   const featuredHeroStyle = featuredPodcast ? getFeaturedHeroCoverStyle(featuredHeroSeed) : null
   const featuredHeroSecondaryStyle = featuredSecondary ? getFeaturedHeroSecondaryCoverStyle(featuredHeroSeed) : null
+  const featuredScriptPreview = featuredScriptLines
+    .slice(0, 4)
+    .map((line) => line.text.trim())
+    .filter(Boolean)
+    .join(' ')
+
+  useEffect(() => {
+    if (!featuredPodcast) {
+      setFeaturedScriptLines([])
+      return
+    }
+
+    let cancelled = false
+    api.getPodcastScript(featuredPodcast.id)
+      .then((lines) => {
+        if (cancelled) return
+        setFeaturedScriptLines(lines)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setFeaturedScriptLines([])
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [featuredPodcast])
 
   return (
     <main style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
       <h1
         style={{
-          fontSize: '38px',
-          lineHeight: 1.02,
-          letterSpacing: '-0.06em',
+          fontSize: '40px',
+          lineHeight: 1.08,
+          letterSpacing: '-0.03em',
           margin: '0 0 20px',
-          fontWeight: 700,
+          fontWeight: 780,
           color: '#1d1d1f',
-          fontFamily: 'SF Pro Display, SF Pro Text, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+          fontFamily: '"Noto Sans SC", "PingFang SC", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
           textAlign: 'left',
         }}
       >
@@ -186,7 +214,7 @@ export function PodcastListPage() {
       {featuredPodcast && (
         <section
           style={{
-            marginBottom: '40px',
+            marginBottom: '48px',
             borderRadius: '32px',
             overflow: 'hidden',
             background: 'linear-gradient(135deg, #f6ecdf 0%, #efe3f6 46%, #e7f0fb 100%)',
@@ -207,26 +235,39 @@ export function PodcastListPage() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(0, 1.05fr) minmax(340px, 410px)',
-                gap: '28px',
-                padding: '32px',
+                gap: '32px',
+                padding: '36px',
                 alignItems: 'stretch',
               position: 'relative',
               zIndex: 1,
             }}
           >
-            <div style={{ display: 'grid', gap: '20px', alignContent: 'space-between', textAlign: 'left' }}>
+            <div style={{ display: 'grid', gap: '18px', alignContent: 'start', textAlign: 'left' }}>
               <div>
-                <h2 style={{ fontSize: '44px', lineHeight: 1.02, letterSpacing: '-0.06em', margin: '0 0 14px', maxWidth: '560px', color: '#111111', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                <div style={{ fontSize: '12px', lineHeight: 1.4, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17, 17, 17, 0.56)', marginBottom: '14px', fontWeight: 700, fontFamily: 'Inter, "Helvetica Neue", Arial, sans-serif' }}>
+                  Feature / Weekly Edit
+                </div>
+                <h2 style={{ fontSize: '44px', lineHeight: 1.1, letterSpacing: '-0.025em', margin: '0 0 16px', maxWidth: '600px', color: '#111111', fontWeight: 780, fontFamily: '"Noto Sans SC", "PingFang SC", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere', textRendering: 'optimizeLegibility' }}>
                   {featuredPodcast.title}
                 </h2>
-                <p style={{ maxWidth: '520px', color: '#1f1a24', fontSize: '18px', lineHeight: 1.7, margin: '20px 0 18px' }}>
+                <p style={{ maxWidth: '520px', color: 'rgba(17, 17, 17, 0.72)', fontSize: '16px', lineHeight: 1.78, margin: '0', fontFamily: '"Noto Serif SC", "Songti SC", serif' }}>
                   {featuredPodcast.summary}
                 </p>
+                {featuredScriptPreview && (
+                  <div style={{ maxWidth: '540px', marginTop: '20px', paddingTop: '18px', borderTop: '1px solid rgba(17, 17, 17, 0.1)' }}>
+                    <div style={{ fontSize: '12px', lineHeight: 1.4, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17, 17, 17, 0.52)', marginBottom: '10px', fontWeight: 700, fontFamily: 'Inter, "Helvetica Neue", Arial, sans-serif' }}>
+                      本期文稿
+                    </div>
+                    <p style={{ margin: 0, color: '#1a1820', fontSize: '15px', lineHeight: 1.72, fontFamily: '"Noto Serif SC", "Songti SC", serif', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 6, WebkitBoxOrient: 'vertical' }}>
+                      {featuredScriptPreview}
+                    </p>
+                  </div>
+                )}
               </div>
-              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginTop: '4px' }}>
                 <Link
                   to={`/podcasts/${featuredPodcast.id}`}
-                  style={{ textDecoration: 'none', color: '#1d1d1f', fontSize: '13px', fontWeight: 700, padding: '8px 0' }}
+                  style={{ textDecoration: 'none', color: 'rgba(17, 17, 17, 0.56)', fontSize: '13px', fontWeight: 700, padding: '6px 0' }}
                 >
                   查看详情
                 </Link>
@@ -274,14 +315,14 @@ export function PodcastListPage() {
                     </span>
                   </div>
                   <div style={{ textAlign: 'left' }}>
-                   <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.88)', marginBottom: '10px', fontWeight: 700 }}>{getCategoryLabel(featuredPodcast.category)}</div>
-                   <div style={{ fontSize: '35px', fontWeight: 700, lineHeight: 0.98, letterSpacing: '-0.06em', color: '#ffffff', marginBottom: '14px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
+                   <div style={{ fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.84)', marginBottom: '12px', fontWeight: 700 }}>{getCategoryLabel(featuredPodcast.category)}</div>
+                   <div style={{ fontSize: '35px', fontWeight: 780, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#ffffff', marginBottom: '14px', fontFamily: '"Noto Sans SC", "PingFang SC", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere', textRendering: 'optimizeLegibility' }}>
                      {featuredPodcast.title}
                     </div>
-                   <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
-                     点击卡片即可播放
-                   </div>
-                 </div>
+                   <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.76)', fontWeight: 600 }}>
+                      点击卡片即可播放
+                    </div>
+                  </div>
                </motion.div>
 
               {featuredSecondary && (

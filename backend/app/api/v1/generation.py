@@ -2,7 +2,7 @@ import uuid
 import json
 from typing import AsyncGenerator
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException
+from fastapi import APIRouter, BackgroundTasks, HTTPException, Query
 from fastapi.responses import StreamingResponse
 
 from app.core.config import settings
@@ -63,14 +63,14 @@ def trigger_generation(payload: GenerationTriggerRequest, background_tasks: Back
 
 
 @router.get("/{task_id}/stream")
-async def stream_generation_logs(task_id: str) -> StreamingResponse:
+async def stream_generation_logs(task_id: str, from_log_index: int = Query(default=0, ge=0)) -> StreamingResponse:
     async def event_generator() -> AsyncGenerator[str, None]:
         task = generation_service.get_task(task_id)
         if not task:
             yield f"data: {json.dumps(['error', 'Task not found'])}\n\n"
             return
         
-        last_processed_count = 0
+        last_processed_count = from_log_index
         
         while True:
             task = generation_service.get_task(task_id)

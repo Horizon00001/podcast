@@ -160,6 +160,7 @@ export function GeneratePage() {
   const eventSourceRef = useRef<EventSource | null>(null)
   const isGeneratingRef = useRef(false)
   const currentTaskIdRef = useRef<string | null>(null)
+  const processedLogCountRef = useRef(0)
   const restorationAttemptedRef = useRef(false)
   const hydratedFromStorageRef = useRef(false)
 
@@ -168,6 +169,7 @@ export function GeneratePage() {
   }
 
   function restoreFromLogs(logs: string[]) {
+    processedLogCountRef.current = logs.length
     setTerminalOutput(logs.join(''))
     resetProgressState()
     for (const log of logs) {
@@ -476,7 +478,7 @@ export function GeneratePage() {
           setIsGenerating(true)
           isGeneratingRef.current = true
           setTerminalOutput((prev) => `${prev}${prev ? '\n' : ''}检测到进行中的任务: ${snapshot.taskId}\n正在恢复实时日志连接...\n\n`)
-          startListeningToLogs(snapshot.taskId)
+          startListeningToLogs(snapshot.taskId, status.logs.length)
           return
         }
 
@@ -505,10 +507,10 @@ export function GeneratePage() {
     }
   }, [])
 
-  function startListeningToLogs(taskId: string) {
+  function startListeningToLogs(taskId: string, fromLogIndex = 0) {
     cleanupEventSource()
     
-    const newEventSource = api.createEventSource(taskId)
+    const newEventSource = api.createEventSource(taskId, fromLogIndex)
     eventSourceRef.current = newEventSource
     
     newEventSource.onmessage = (event) => {
@@ -523,6 +525,7 @@ export function GeneratePage() {
         
         if (data[0] === 'log') {
           // 直接追加后端传来的文本块
+          processedLogCountRef.current += 1
           appendOutput(data[1])
           handleStructuredLogChunk(data[1])
         } else if (data[0] === 'status') {
@@ -534,6 +537,7 @@ export function GeneratePage() {
             setIsGenerating(false)
             setCurrentTaskId(null)
             currentTaskIdRef.current = null
+            processedLogCountRef.current = 0
             clearActiveTaskSnapshot()
             clearPersistedGenerationViewState()
             cleanupEventSource()
@@ -542,6 +546,7 @@ export function GeneratePage() {
             setIsGenerating(false)
             setCurrentTaskId(null)
             currentTaskIdRef.current = null
+            processedLogCountRef.current = 0
             clearActiveTaskSnapshot()
             clearPersistedGenerationViewState()
             cleanupEventSource()
@@ -550,6 +555,7 @@ export function GeneratePage() {
             setIsGenerating(false)
             setCurrentTaskId(null)
             currentTaskIdRef.current = null
+            processedLogCountRef.current = 0
             clearActiveTaskSnapshot()
             clearPersistedGenerationViewState()
             cleanupEventSource()
@@ -559,6 +565,7 @@ export function GeneratePage() {
           setIsGenerating(false)
           setCurrentTaskId(null)
           currentTaskIdRef.current = null
+          processedLogCountRef.current = 0
           clearActiveTaskSnapshot()
           clearPersistedGenerationViewState()
           cleanupEventSource()
@@ -575,7 +582,7 @@ export function GeneratePage() {
       newEventSource.close()
       setTimeout(() => {
         if (isGeneratingRef.current && currentTaskIdRef.current) {
-          startListeningToLogs(currentTaskIdRef.current)
+          startListeningToLogs(currentTaskIdRef.current, Math.max(fromLogIndex, processedLogCountRef.current))
         }
       }, 3000)
     }
@@ -607,6 +614,7 @@ export function GeneratePage() {
       setIsGenerating(false)
       setCurrentTaskId(null)
       currentTaskIdRef.current = null
+      processedLogCountRef.current = 0
       clearActiveTaskSnapshot()
       clearPersistedGenerationViewState()
     }
@@ -620,6 +628,7 @@ export function GeneratePage() {
       setIsGenerating(false)
       setCurrentTaskId(null)
       currentTaskIdRef.current = null
+      processedLogCountRef.current = 0
       clearActiveTaskSnapshot()
       clearPersistedGenerationViewState()
       cleanupEventSource()

@@ -126,8 +126,13 @@ export const api = {
     }),
   getGenerationStatus: (taskId: string) =>
     request<GenerationStatusResponse>(`/generation/${taskId}`),
-  createEventSource: (taskId: string) => {
-    const url = `${BASE_URL}/generation/${taskId}/stream`
+  createEventSource: (taskId: string, fromLogIndex = 0) => {
+    const params = new URLSearchParams()
+    if (fromLogIndex > 0) {
+      params.set('from_log_index', String(fromLogIndex))
+    }
+    const suffix = params.toString()
+    const url = `${BASE_URL}/generation/${taskId}/stream${suffix ? `?${suffix}` : ''}`
     return new EventSource(url)
   },
   cancelGeneration: (taskId: string) =>

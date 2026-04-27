@@ -97,6 +97,10 @@ async def run_pipeline(
     generated_groups: list[tuple[str, Path]] = []
 
     async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
+        if check_cancelled and check_cancelled():
+            log(f"\n[取消] 跳过组 {group_index}，任务已取消")
+            raise asyncio.CancelledError("任务已取消")
+
         category = "general"
         group_title = group_items[0].get("title", category) if group_items else category
         event_key = build_cluster_key(category, group_items)
@@ -125,6 +129,9 @@ async def run_pipeline(
             return f"section={section_index + 1} type={section_type} lines={dialogue_count}"
 
         async def on_section_ready(section_index: int, section_data: dict, include_trailing_gap: bool):
+            if check_cancelled and check_cancelled():
+                log(f"[取消] {group_label} 检测到取消，跳过后续合成")
+                return
             log(f"[Section Ready] {group_label} {describe_section(section_index, section_data)}")
 
             async def render_section() -> Path:
@@ -140,6 +147,10 @@ async def run_pipeline(
 
             section_tasks.append(asyncio.create_task(render_section()))
 
+        if check_cancelled and check_cancelled():
+            log(f"\n[取消] {group_label} 脚本生成前检测到取消")
+            raise asyncio.CancelledError("任务已取消")
+
         log(f"[Script Start] {group_label}")
         await script_service.generate_and_save_streaming_sections(news_content, on_section_ready=on_section_ready)
         log(f"[Script Done] {group_label}")
@@ -147,6 +158,10 @@ async def run_pipeline(
         script_json_path = group_dir / "podcast_script.json"
         if not script_json_path.exists():
             raise FileNotFoundError(f"未生成播客脚本文件: {script_json_path}")
+
+        if check_cancelled and check_cancelled():
+            log(f"\n[取消] {group_label} TTS 合成前检测到取消")
+            raise asyncio.CancelledError("任务已取消")
 
         log(f"[TTS Wait] {group_label} waiting for {len(section_tasks)} section tasks")
         section_files = await asyncio.gather(*section_tasks)
@@ -177,11 +192,16 @@ async def run_pipeline(
         tasks.append(run_group_pipeline(revived["category"], revived["items"], revived_index))
 
     if tasks:
-        await asyncio.gather(*tasks)
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for result in results:
+            if isinstance(result, asyncio.CancelledError):
+                log("[取消] 有分组被取消")
+            elif isinstance(result, Exception):
+                log(f"[错误] 分组执行异常: {result}")
 
-    if check_cancelled and check_cancelled():
-        log("\n[取消] 任务已取消，停止执行")
-        raise asyncio.CancelledError("任务已取消")
+        if check_cancelled and check_cancelled():
+            log("\n[取消] 任务已取消，停止执行")
+            raise asyncio.CancelledError("任务已取消")
 
     if generated_links:
         used_link_set.update(generated_links)

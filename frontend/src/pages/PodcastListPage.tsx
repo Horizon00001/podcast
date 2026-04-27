@@ -344,13 +344,15 @@ export function PodcastListPage() {
                      gridTemplateColumns: '84px minmax(0, 1fr)',
                      gap: '12px',
                      alignItems: 'center',
-                     background: 'rgba(255,255,255,0.86)',
+                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.18) 100%)',
                      borderRadius: '18px',
                      padding: '14px',
-                     border: '1px solid rgba(8, 6, 13, 0.06)',
+                     border: '1px solid rgba(255, 255, 255, 0.22)',
+                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.24), 0 14px 28px rgba(53, 42, 77, 0.12)',
+                     backdropFilter: 'blur(12px)',
                      cursor: 'pointer',
-                    }}
-                   >
+                     }}
+                    >
                     <div
                       style={{
                         aspectRatio: '1 / 1',
@@ -366,11 +368,11 @@ export function PodcastListPage() {
                       <span style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 800 }}>{getCategoryLabel(featuredSecondary.category)}</span>
                     </div>
                       <div style={{ textAlign: 'left' }}>
-                        <div style={{ fontSize: '12px', color: '#6b6375', marginBottom: '4px', fontWeight: 600 }}>继续推荐</div>
+                        <div style={{ fontSize: '12px', color: 'rgba(58, 43, 81, 0.72)', marginBottom: '4px', fontWeight: 700 }}>继续推荐</div>
                         <Link
                           to={`/podcasts/${featuredSecondary.id}`}
                           onClick={(event) => event.stopPropagation()}
-                          style={{ textDecoration: 'none', color: '#111111', fontWeight: 700, lineHeight: 1.25 }}
+                          style={{ textDecoration: 'none', color: '#20172d', fontWeight: 700, lineHeight: 1.25 }}
                         >
                           <span style={{ overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
                             {featuredSecondary.title}

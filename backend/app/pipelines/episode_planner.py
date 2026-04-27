@@ -3,13 +3,26 @@ import hashlib
 import math
 import re
 from collections import defaultdict
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
 from app.core.config import settings
 from app.services.embedding_service import get_embedding_service
 from app.services.text_tokenizer import spaced_tokens, tokenize_text
+
+
+_EPISODE_PLANNER_LOGGER = None
+
+
+def set_episode_planner_logger(logger):
+    global _EPISODE_PLANNER_LOGGER
+    _EPISODE_PLANNER_LOGGER = logger
+
+
+def _log(message: str) -> None:
+    if _EPISODE_PLANNER_LOGGER is not None:
+        _EPISODE_PLANNER_LOGGER(message)
 
 
 def _clean_text(value: str) -> str:
@@ -48,31 +61,8 @@ class PlannedNewsItem:
     selection_reason: str
 
 
-@dataclass
-class EpisodeSegment:
-    segment_type: str
-    purpose: str
-    item_refs: List[str]
-    segment_thesis: str
-
-
-@dataclass
-class EpisodePlan:
-    topic_id: str
-    topic_name: str
-    title_hint: str
-    theme_statement: str
-    audience: str
-    editorial_angle: str
-    selected_items: List[PlannedNewsItem]
-    segments: List[EpisodeSegment]
-    closing_takeaway: str
-
-    def to_dict(self) -> dict:
-        return asdict(self)
-
-
 PENDING_GROUPS_FILENAME = "pending_groups.json"
+USED_ITEM_LINKS_FILENAME = "used_item_links.json"
 DEFAULT_CATEGORY_KEYWORDS = {
     "tech_ai": ["ai", "llm", "gpt", "openai", "deepseek", "anthropic", "gpu", "chip", "software", "model", "agent", "cloud", "developer", "tech", "robot", "automated", "algorithm", "apple", "google", "microsoft", "meta"],
     "business": ["market", "revenue", "funding", "acquisition", "ipo", "stock", "investment", "economy", "financial", "startup", "billion", "merger", "partnership", "财报", "融资", "并购", "上市"],
@@ -176,8 +166,6 @@ def _embedding_text(item: dict) -> str:
         part for part in [
             item.get("title", ""),
             item.get("summary", ""),
-            item.get("feed_name", ""),
-            item.get("category", ""),
         ]
         if part
     )
@@ -189,7 +177,25 @@ def _embedding_vectors(items: List[dict]) -> dict[str, list[float]]:
         return {}
 
     texts = [_embedding_text(item) for item in items]
-    vectors = service.encode_texts(texts)
+
+    def on_progress(batch_index: int, total_batches: int, batch_size: int) -> None:
+        _log(
+            f"[Embedding] batch {batch_index}/{total_batches} done size={batch_size} total_texts={len(texts)}"
+        )
+
+    def on_stats(hit_count: int, miss_count: int, total_count: int) -> None:
+        _log(
+            f"[Embedding Cache] hit={hit_count} miss={miss_count} total={total_count}"
+        )
+
+    try:
+        vectors = service.encode_texts(
+            texts,
+            progress_callback=on_progress,
+            stats_callback=on_stats,
+        )
+    except TypeError:
+        vectors = service.encode_texts(texts)
     return {
         _similarity_key(item): vector
         for item, vector in zip(items, vectors)
@@ -203,25 +209,41 @@ def _normalize_title(title: str) -> str:
     return re.sub(r"\s+", " ", title).strip()
 
 
+def build_item_key(item: dict) -> str:
+    link = (item.get("link") or "").strip().lower()
+    if link:
+        return f"link:{link}"
+
+    title = _normalize_title(item.get("title", ""))
+    summary = _normalize_title(item.get("summary", ""))
+    if title or summary:
+        return f"text:{title}|{summary}"
+
+    item_id = (item.get("item_id") or "").strip().lower()
+    if item_id:
+        return f"item:{item_id}"
+
+    return "empty:unknown"
+
+
+def normalize_stored_item_key(value: str) -> str:
+    normalized = (value or "").strip().lower()
+    if not normalized:
+        return ""
+    if normalized.startswith(("link:", "text:", "item:")):
+        return normalized
+    return f"link:{normalized}"
+
+
 def dedupe_items(items: List[dict]) -> List[dict]:
     deduped: list[dict] = []
-    seen_links: set[str] = set()
-    seen_titles: set[str] = set()
+    seen_item_keys: set[str] = set()
 
     for item in items:
-        link = (item.get("link") or "").strip()
-        if link:
-            if link in seen_links:
-                continue
-            seen_links.add(link)
-            deduped.append(item)
+        item_key = build_item_key(item)
+        if item_key in seen_item_keys:
             continue
-
-        normalized_title = _normalize_title(item.get("title", ""))
-        if normalized_title and normalized_title in seen_titles:
-            continue
-        if normalized_title:
-            seen_titles.add(normalized_title)
+        seen_item_keys.add(item_key)
         deduped.append(item)
 
     return deduped
@@ -280,6 +302,46 @@ def cluster_by_similarity(items: List[dict], threshold: float = 0.9) -> List[Lis
     return list(grouped.values())
 
 
+def _cluster_by_embedding_only(items: List[dict], threshold: float = 0.9) -> List[List[dict]]:
+    items = dedupe_items(items)
+    if len(items) <= 1:
+        return [items] if items else []
+
+    embedding_vectors = _embedding_vectors(items)
+    if not embedding_vectors:
+        return [[item] for item in items]
+
+    item_by_key = {_similarity_key(item): item for item in items}
+    keys = list(item_by_key.keys())
+    parent = {key: key for key in keys}
+
+    def find(key: str) -> str:
+        while parent[key] != key:
+            parent[key] = parent[parent[key]]
+            key = parent[key]
+        return key
+
+    def union(left: str, right: str):
+        root_left = find(left)
+        root_right = find(right)
+        if root_left != root_right:
+            parent[root_right] = root_left
+
+    for index, left_key in enumerate(keys):
+        for right_key in keys[index + 1 :]:
+            similarity = _dense_cosine(
+                embedding_vectors.get(left_key, []),
+                embedding_vectors.get(right_key, []),
+            )
+            if similarity >= threshold:
+                union(left_key, right_key)
+
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for key in keys:
+        grouped[find(key)].append(item_by_key[key])
+    return list(grouped.values())
+
+
 def _safe_slug(value: str) -> str:
     value = (value or "").strip().lower()
     value = re.sub(r"[\s/]+", "-", value)
@@ -300,23 +362,9 @@ def _group_title(group_items: List[dict], category: str) -> str:
     return title or category
 
 
-def group_items_for_podcasts(items: List[dict], threshold: float = 0.9) -> dict[str, list[list[dict]]]:
-    if settings.episode_embedding_enabled:
-        clusters = cluster_by_similarity(dedupe_items(items), threshold=threshold)
-        return {"general": clusters} if clusters else {}
-
-    anchor_buckets: dict[str, list[dict]] = defaultdict(list)
-    for item in dedupe_items(items):
-        anchor_buckets[_anchor_for_item(item)].append(item)
-
-    clusters: list[list[dict]] = []
-    for bucket_items in anchor_buckets.values():
-        if len(bucket_items) == 1:
-            clusters.append(bucket_items)
-            continue
-        bucket_clusters = cluster_by_similarity(bucket_items, threshold=threshold)
-        clusters.extend(bucket_clusters or [bucket_items])
-
+def group_items_for_podcasts(items: List[dict], threshold: float | None = None) -> dict[str, list[list[dict]]]:
+    threshold = settings.episode_cluster_threshold if threshold is None else threshold
+    clusters = _cluster_by_embedding_only(items, threshold=threshold)
     return {"general": clusters} if clusters else {}
 
 
@@ -381,77 +429,80 @@ def merge_clusters_by_signature(grouped: dict[str, list[list[dict]]]) -> dict[st
     return merged
 
 
-def build_podcast_plan(category: str, items: List[dict]) -> EpisodePlan:
-    profile_name = {"tech_ai": "今日 AI 快讯", "business": "一周商业头条", "sports": "今日新闻简报", "general": "今日新闻简报"}.get(category, "今日新闻简报")
-    selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
-    top_story_title = selected_items[0].title if selected_items else profile_name
-    theme_statement = f"本期聚焦 {top_story_title} 这条主线，观察霍尔木兹海峡局势如何分别传导到汇率安排、风险资产、避险资产和实体成本。"
-    closing_takeaway = "听完这一集，听众应该记住：同一场地缘政治冲击，会通过不同机制进入不同市场，关键是分清每一层反应各自依赖什么事实。"
-    segments: List[EpisodeSegment] = []
-    if selected_items:
-        segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
-        for index, item in enumerate(selected_items):
-            segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
-        segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
-    return EpisodePlan(category, profile_name, f"{profile_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "从一条核心新闻出发，追踪地缘政治风险如何在不同市场里被重新定价。", selected_items, segments, closing_takeaway)
-
-
-def build_group_plan(category: str, items: List[dict], topic_name: str) -> EpisodePlan:
-    selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
-    top_story_title = selected_items[0].title if selected_items else topic_name
-    theme_statement = f"本期聚焦 {top_story_title} 这条主线，观察相关消息各自揭示了局势变化的哪一面。"
-    closing_takeaway = "听完这一集，听众应该记住：把每条消息放回它对应的市场和决策场景里，往往比急着下总判断更有用。"
-    segments: List[EpisodeSegment] = []
-    if selected_items:
-        segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
-        for index, item in enumerate(selected_items):
-            segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
-        segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
-    return EpisodePlan(category, topic_name, f"{topic_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "从核心消息切入，再展开相关市场信号和后续影响。", selected_items, segments, closing_takeaway)
-
-
 def build_group_name(items: List[dict], fallback: str) -> str:
     return _safe_slug(_group_title(items, fallback))
 
 
-def save_pending_groups(pending_groups: list[dict], used_item_links: list[str], output_path) -> Path:
+def save_pending_groups(pending_groups: list[dict], output_path) -> Path:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as file:
-        json.dump({"pending_groups": pending_groups, "used_item_links": used_item_links}, file, ensure_ascii=False, indent=2)
+        json.dump({"pending_groups": pending_groups}, file, ensure_ascii=False, indent=2)
     return output_path
 
 
-def load_pending_groups(path: Path) -> tuple[list[dict], list[str]]:
+def load_pending_groups(path: Path) -> list[dict]:
     if not path.exists():
-        return [], []
+        return []
     with open(path, "r", encoding="utf-8") as file:
         data = json.load(file)
-    return data.get("pending_groups", []), data.get("used_item_links", [])
+    return data.get("pending_groups", [])
 
 
-def merge_pending_groups(pending_groups: list[dict], new_items: list[dict], threshold: float = 0.9) -> tuple[list[dict], list[dict], list[str]]:
+def save_used_item_links(used_item_links: list[str], output_path: Path) -> Path:
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as file:
+        json.dump({"used_item_links": used_item_links}, file, ensure_ascii=False, indent=2)
+    return output_path
+
+
+def load_used_item_links(path: Path, legacy_pending_path: Path | None = None) -> list[str]:
+    if path.exists():
+        with open(path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+        return [normalize_stored_item_key(value) for value in data.get("used_item_links", []) if normalize_stored_item_key(value)]
+
+    if legacy_pending_path and legacy_pending_path.exists():
+        with open(legacy_pending_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+        return [normalize_stored_item_key(value) for value in data.get("used_item_links", []) if normalize_stored_item_key(value)]
+
+    return []
+
+
+def merge_pending_groups(
+    pending_groups: list[dict],
+    new_items: list[dict],
+    threshold: float | None = None,
+) -> tuple[list[dict], list[dict], list[str]]:
     generated_groups: list[dict] = []
     remaining_pending: list[dict] = []
     consumed_links: list[str] = []
-    for pending_group in pending_groups:
+    threshold = settings.episode_cluster_threshold if threshold is None else threshold
+    merge_limit = max(int(settings.episode_pending_merge_limit), 0)
+    processable_groups = pending_groups[:merge_limit] if merge_limit else []
+    skipped_groups = pending_groups[len(processable_groups):]
+    if pending_groups:
+        _log(
+            f"[Plan Pending Detail] 本轮扫描待处理组={len(processable_groups)}/{len(pending_groups)}，跳过={len(skipped_groups)}"
+        )
+
+    for pending_group in processable_groups:
         pending_items = list(pending_group.get("items", []))
-        candidates = new_items
-        pending_anchor = _anchor_for_item(pending_items[0]) if pending_items else "general-roundup"
-        pending_vectors = _tfidf_vectors(pending_items) if pending_items else {}
-        pending_centroid: dict[str, float] = defaultdict(float)
-        for vec in pending_vectors.values():
-            for token, value in vec.items():
-                pending_centroid[token] += value
+        candidates = [item for item in new_items if item.get("link") not in {existing.get("link") for existing in pending_items}]
+        if not pending_items or not candidates:
+            remaining_pending.append(pending_group)
+            continue
+
+        merged_clusters = _cluster_by_embedding_only(pending_items + candidates, threshold=threshold)
         matched: list[dict] = []
-        for item in candidates:
-            if item.get("link") in {existing.get("link") for existing in pending_items}:
-                continue
-            if _anchor_for_item(item) != pending_anchor:
-                continue
-            item_vec = _tfidf_vectors([item]).get(_similarity_key(item), {})
-            if _cosine(pending_centroid, item_vec) >= threshold:
-                matched.append(item)
+        pending_links = {item.get("link") for item in pending_items if item.get("link")}
+        for cluster in merged_clusters:
+            cluster_links = {item.get("link") for item in cluster if item.get("link")}
+            if pending_links & cluster_links:
+                matched = [item for item in cluster if item.get("link") not in pending_links]
+                break
         if matched:
             pending_items.extend(matched)
             consumed_links.extend(item.get("link", "") for item in matched if item.get("link"))
@@ -462,6 +513,7 @@ def merge_pending_groups(pending_groups: list[dict], new_items: list[dict], thre
                 remaining_pending.append(pending_group)
         else:
             remaining_pending.append(pending_group)
+    remaining_pending.extend(skipped_groups)
     return remaining_pending, generated_groups, consumed_links
 
 
@@ -543,60 +595,3 @@ def select_items_for_topic(items: List[dict], profile: TopicProfile) -> List[Pla
     if not selected and scored_items:
         selected = scored_items[:1]
     return selected
-
-
-def _segment_purpose(segment_type: str, profile: TopicProfile) -> str:
-    mapping = {"opening": f"用节目主题 {profile.name} 建立本期讨论范围和听众期待。", "top_story": "展开信息最充分、最值得优先讲清的核心新闻。", "related_signals": "比较其他新闻与核心新闻的关联度，关联弱时分别讲清，不强行并线。", "impact": "解释这些变化对听众和行业意味着什么。", "developer_impact": "把行业变化翻译成对程序员工具、协作和职业判断的具体影响。", "closing": "自然收束讨论，回到今天最站得住的几个重点。"}
-    return mapping.get(segment_type, "围绕主题组织段落内容。")
-
-
-def build_episode_plan(topic: str, rss_data_path, topics_config_path) -> EpisodePlan:
-    profile = resolve_topic_profile(topic, topics_config_path)
-    items = load_rss_items(rss_data_path)
-    selected_items = select_items_for_topic(items, profile)
-    top_story = selected_items[0] if selected_items else None
-    top_story_title = top_story.title if top_story else profile.name
-    theme_statement = f"本期围绕“{profile.name}”展开，先抓住 {top_story_title} 这条最具代表性的线索，再看它映照出哪些更具体的行业变化。"
-    closing_takeaway = "听完这一集，听众应该记住：真正有价值的总结，来自已经讲清的事实、影响和限制条件，而不是抽象口号。"
-    segments: List[EpisodeSegment] = []
-    related_item_ids = [item.item_id for item in selected_items[1:]]
-    all_item_ids = [item.item_id for item in selected_items]
-    for segment_type in profile.structure_template:
-        if segment_type == "opening":
-            item_refs = all_item_ids[:1]
-            thesis = f"先用最具代表性的新闻把今天最值得关心的问题讲清。"
-        elif segment_type == "top_story":
-            item_refs = all_item_ids[:1]
-            thesis = f"把 {top_story_title} 讲透，作为本期的核心故事。"
-        elif segment_type == "related_signals":
-            item_refs = related_item_ids
-            thesis = "补充 1 到 3 条相关素材，说明它们分别给核心问题补上了哪一层市场信号或现实影响。"
-        elif segment_type in {"impact", "developer_impact"}:
-            item_refs = all_item_ids
-            thesis = f"只翻译那些有足够事实支撑、且 {profile.audience} 真正需要关心的影响。"
-        else:
-            item_refs = []
-            thesis = closing_takeaway
-        segments.append(EpisodeSegment(segment_type, _segment_purpose(segment_type, profile), item_refs, thesis))
-    return EpisodePlan(profile.id, profile.name, f"{profile.name} | {top_story_title}", theme_statement, profile.audience, profile.editorial_angle, selected_items, segments, closing_takeaway)
-
-
-def save_episode_plan(plan: EpisodePlan, output_path) -> Path:
-    output_path = Path(output_path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as file:
-        json.dump(plan.to_dict(), file, ensure_ascii=False, indent=2)
-    return output_path
-
-
-def format_plan_for_prompt(plan: EpisodePlan) -> str:
-    lines = ["以下是已经完成选材和编排的播客节目计划，请围绕这个计划写成一集自然、扎实、适合收听的节目。重点是把事实、影响和各自的限制条件讲清，让转场顺着内容自然发生，不要把写作安排说出口。", f"节目主题: {plan.topic_name} ({plan.topic_id})", f"目标听众: {plan.audience}", f"节目角度: {plan.editorial_angle}", f"标题建议: {plan.title_hint}", f"本期优先线索: {plan.theme_statement}", "", "已选素材:"]
-    for item in plan.selected_items:
-        lines.extend([f"- {item.item_id} | {item.title}", f"  来源: {item.feed_name} / {item.category}", f"  摘要: {item.summary or '无'}", f"  入选原因: {item.selection_reason}"])
-    lines.append("")
-    lines.append("节目结构:")
-    for segment in plan.segments:
-        refs = ", ".join(segment.item_refs) if segment.item_refs else "无新增素材"
-        lines.extend([f"- 段落类型: {segment.segment_type}", f"  目的: {segment.purpose}", f"  使用素材: {refs}", f"  这一段优先讲清的问题: {segment.segment_thesis}"])
-    lines.extend(["", f"结尾可回收的重点: {plan.closing_takeaway}"])
-    return "\n".join(lines)

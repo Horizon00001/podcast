@@ -7,13 +7,20 @@ import feedparser
 import requests
 
 
+RSS_FETCH_TIMEOUT_SECONDS = 5
+
+
 def _fetch_single_feed(feed_info):
     feed_url = feed_info["url"]
     feed_name = feed_info["name"]
     feed_id = feed_info["id"]
 
     try:
-        response = requests.get(feed_url, timeout=5, headers={"User-Agent": "PodcastPipeline/1.0"})
+        response = requests.get(
+            feed_url,
+            timeout=RSS_FETCH_TIMEOUT_SECONDS,
+            headers={"User-Agent": "PodcastPipeline/1.0"},
+        )
         response.raise_for_status()
         d = feedparser.parse(response.content)
 
@@ -42,6 +49,14 @@ def _fetch_single_feed(feed_info):
             return {"feed_id": feed_id, "feed_name": feed_name, "success": False, "message": "失败 (无内容)", "feed_data": None}
 
         return {"feed_id": feed_id, "feed_name": feed_name, "success": True, "message": "成功", "feed_data": feed_data}
+    except requests.Timeout:
+        return {
+            "feed_id": feed_id,
+            "feed_name": feed_name,
+            "success": False,
+            "message": f"超时跳过 ({RSS_FETCH_TIMEOUT_SECONDS}s)",
+            "feed_data": None,
+        }
     except Exception as e:
         return {"feed_id": feed_id, "feed_name": feed_name, "success": False, "message": f"失败 ({e})", "feed_data": None}
 

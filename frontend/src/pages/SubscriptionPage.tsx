@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../services/api'
 import { useUser } from '../context/UserContext'
-import type { CustomRSSSource, UserPreferences } from '../types/podcast'
+import type { UserPreferences } from '../types/podcast'
 
 interface RSSSource {
   id: string
@@ -41,24 +41,11 @@ function categoryLabel(category: string) {
   return labels[category] ?? category
 }
 
-function buildCustomSource(url: string, category: string): CustomRSSSource {
-  const id = `custom-${btoa(url).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12) || Date.now()}`
-  return {
-    id,
-    name: new URL(url).hostname,
-    url,
-    category,
-    enabled: true,
-  }
-}
-
 export function SubscriptionPage() {
   const { user } = useUser()
   const [sources, setSources] = useState<RSSSource[]>([])
   const [preferences, setPreferences] = useState<UserPreferences>(defaultPreferences)
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [newRSS, setNewRSS] = useState('')
-  const [newCategory, setNewCategory] = useState('tech')
   const [status, setStatus] = useState('')
 
   useEffect(() => {
@@ -101,39 +88,6 @@ export function SubscriptionPage() {
     })
   }
 
-  function addCustomRSS() {
-    try {
-      const normalized = newRSS.trim()
-      const parsed = new URL(normalized)
-      if (!['http:', 'https:'].includes(parsed.protocol)) {
-        setStatus('RSS 链接必须以 http 或 https 开头')
-        return
-      }
-      const exists = preferences.subscription.custom_rss.some((source) => source.url === normalized)
-      if (exists) {
-        setStatus('这个 RSS 源已经添加过了')
-        return
-      }
-      const source = buildCustomSource(normalized, newCategory)
-      updateSubscription((current) => ({
-        ...current,
-        custom_rss: [...current.custom_rss, source],
-        categories: Array.from(new Set([...current.categories, newCategory])),
-      }))
-      setNewRSS('')
-      setStatus('自定义 RSS 已加入，记得保存')
-    } catch {
-      setStatus('请输入有效的 RSS URL')
-    }
-  }
-
-  function removeCustomRSS(id: string) {
-    updateSubscription((current) => ({
-      ...current,
-      custom_rss: current.custom_rss.filter((source) => source.id !== id),
-    }))
-  }
-
   async function saveSettings() {
     if (!user) {
       setStatus('请先在右上角登录或创建用户')
@@ -148,76 +102,78 @@ export function SubscriptionPage() {
     }
   }
 
+  const builtinCount = preferences.subscription.rss_sources.length
+  const customCount = preferences.subscription.custom_rss.length
+  const totalCount = builtinCount + customCount
+
   return (
-    <main className="subscription-page" style={{ padding: '20px', maxWidth: '980px', margin: '0 auto', textAlign: 'left' }}>
-      <section style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(220px, 0.62fr)', gap: '14px', alignItems: 'stretch' }} className="subscription-hero">
-        <div className="subscription-hero-card" style={{ padding: '20px 22px', borderRadius: '22px', background: 'linear-gradient(135deg, #121018, #3b1b66)', color: 'white' }}>
-          <div style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.66)', fontWeight: 700 }}>Subscription</div>
-          <h1 className="subscription-title" style={{ color: 'white', margin: '8px 0 8px', fontSize: '38px', lineHeight: 1.05 }}>订阅中心</h1>
-          <p style={{ color: 'rgba(255,255,255,0.76)', maxWidth: '580px', lineHeight: 1.6, fontSize: '15px' }}>
-            这里决定生成播客时读取哪些新闻来源。保存后，生成页的“按我的订阅生成”会使用这些 RSS 源和自定义来源。
+    <main className="subscription-page" style={{ padding: '78px 24px 24px', maxWidth: '1120px', margin: '0 auto', textAlign: 'left' }}>
+      <section className="subscription-hero" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '16px', alignItems: 'stretch' }}>
+        <div className="subscription-hero-card" style={{ padding: '24px 26px', borderRadius: '24px', background: 'linear-gradient(180deg, #ffffff 0%, #faf9f7 100%)', border: '1px solid rgba(8, 6, 13, 0.08)', boxShadow: '0 20px 44px rgba(8, 6, 13, 0.05)' }}>
+          <div style={{ fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7c7288', fontWeight: 800 }}>Subscription</div>
+          <h1 className="subscription-title" style={{ margin: '10px 0 10px', fontSize: '38px', lineHeight: 1.02, letterSpacing: '-0.05em', fontWeight: 850, color: '#0f172a' }}>订阅中心</h1>
+          <p style={{ color: 'var(--text)', maxWidth: '620px', lineHeight: 1.7, fontSize: '15px' }}>
+            这里决定生成播客时默认读取哪些新闻来源。保存后，生成页里的“按我的订阅生成”会直接复用这些 RSS 源和你手动添加的自定义来源。
           </p>
-        </div>
-        <aside style={{ border: '1px solid var(--border)', borderRadius: '22px', padding: '18px', background: '#fff', boxShadow: '0 12px 28px rgba(8, 6, 13, 0.05)' }}>
-          <div style={{ color: 'var(--text)', fontSize: '13px', fontWeight: 700 }}>当前订阅</div>
-          <div style={{ marginTop: '8px', fontSize: '30px', lineHeight: 1, color: 'var(--text-h)', fontWeight: 800 }}>{preferences.subscription.rss_sources.length}</div>
-          <p style={{ marginTop: '8px', color: 'var(--text)', fontSize: '14px' }}>内置 RSS 源</p>
-          <div style={{ marginTop: '12px', fontSize: '24px', lineHeight: 1, color: 'var(--text-h)', fontWeight: 800 }}>{preferences.subscription.custom_rss.length}</div>
-          <p style={{ marginTop: '8px', color: 'var(--text)', fontSize: '14px' }}>自定义 RSS 源</p>
-        </aside>
-      </section>
-
-      {status && <div style={{ marginTop: '18px', padding: '12px 14px', borderRadius: '14px', background: 'var(--accent-bg)', color: '#ffffff', border: '1px solid var(--accent-border)' }}>{status}</div>}
-
-      <section style={{ marginTop: '18px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        {categories.map((category) => (
-          <button key={category} onClick={() => setSelectedCategory(category)} style={{ border: `1px solid ${selectedCategory === category ? 'var(--accent)' : 'var(--border)'}`, color: selectedCategory === category ? '#ffffff' : 'var(--text-h)', background: selectedCategory === category ? 'var(--accent-bg)' : '#fff', borderRadius: '999px', padding: '7px 12px', cursor: 'pointer', fontWeight: 700, fontSize: '13px' }}>
-            {category === 'all' ? '全部' : categoryLabel(category)}
-          </button>
-        ))}
-      </section>
-
-      <section style={{ marginTop: '14px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '12px' }}>
-        {filteredSources.map((source) => {
-          const checked = preferences.subscription.rss_sources.includes(source.id)
-          return (
-            <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? 'var(--accent-border)' : 'var(--border)'}`, borderRadius: '18px', padding: '14px', background: checked ? 'var(--accent-bg)' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 12px 26px rgba(24, 18, 36, 0.18)' : '0 8px 22px rgba(8, 6, 13, 0.035)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
-                <strong style={{ color: checked ? '#ffffff' : 'var(--text-h)' }}>{source.name}</strong>
-                <span style={{ color: checked ? '#ffffff' : 'var(--text)', fontWeight: 800 }}>{checked ? '已订阅' : '订阅'}</span>
+          <div style={{ marginTop: '18px', display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px' }} className="subscription-summary-grid">
+            {[
+              ['总订阅数', totalCount],
+              ['内置源', builtinCount],
+              ['自定义源', customCount],
+            ].map(([label, value]) => (
+              <div key={label} style={{ borderRadius: '18px', border: '1px solid rgba(8, 6, 13, 0.08)', background: '#fff', padding: '14px 16px' }}>
+                <div style={{ fontSize: '12px', color: '#7c7288', fontWeight: 700 }}>{label}</div>
+                <div style={{ marginTop: '8px', fontSize: '30px', lineHeight: 1, color: 'var(--text-h)', fontWeight: 850 }}>{value}</div>
               </div>
-              <div style={{ marginTop: '8px', color: checked ? 'rgba(255,255,255,0.78)' : 'var(--text)', fontSize: '13px' }}>{categoryLabel(source.category)}</div>
-              <div style={{ marginTop: '10px', color: checked ? 'rgba(255,255,255,0.62)' : '#777', fontSize: '12px', wordBreak: 'break-all' }}>{source.url}</div>
-            </button>
-          )
-        })}
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section style={{ marginTop: '18px', border: '1px solid var(--border)', borderRadius: '20px', padding: '18px', background: '#fff' }}>
-        <h2>自定义 RSS 源</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 130px auto', gap: '8px', marginTop: '12px' }} className="subscription-custom-form">
-          <input value={newRSS} onChange={(event) => setNewRSS(event.target.value)} placeholder="https://example.com/feed.xml" style={{ padding: '10px 12px', borderRadius: '12px', border: '1px solid var(--border)', color: 'var(--text-h)' }} />
-          <select value={newCategory} onChange={(event) => setNewCategory(event.target.value)} style={{ padding: '10px 12px', borderRadius: '12px', border: '1px solid var(--border)', color: 'var(--text-h)', background: '#fff' }}>
-            <option value="tech">科技</option>
-            <option value="business">商业</option>
-            <option value="sports">体育</option>
-            <option value="general">综合</option>
-          </select>
-          <button type="button" onClick={addCustomRSS} style={{ padding: '10px 16px', borderRadius: '12px', border: 'none', background: 'var(--text-h)', color: 'white', cursor: 'pointer', fontWeight: 700 }}>添加</button>
-        </div>
-        <div style={{ marginTop: '14px', display: 'grid', gap: '10px' }}>
-          {preferences.subscription.custom_rss.map((source) => (
-            <div key={source.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', border: '1px solid var(--border)', borderRadius: '16px', padding: '12px 14px' }}>
-              <span style={{ color: 'var(--text-h)', wordBreak: 'break-all' }}>{source.name} · {source.url}</span>
-              <button type="button" onClick={() => removeCustomRSS(source.id)} style={{ border: 'none', background: 'transparent', color: '#d93025', cursor: 'pointer', fontWeight: 700 }}>删除</button>
+      {status && <div style={{ marginTop: '18px', padding: '12px 14px', borderRadius: '16px', background: '#f7f4ef', color: 'var(--text-h)', border: '1px solid rgba(8, 6, 13, 0.08)', fontSize: '14px' }}>{status}</div>}
+
+      <section style={{ marginTop: '18px', border: '1px solid rgba(8, 6, 13, 0.08)', borderRadius: '22px', padding: '18px', background: '#fff' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'end', flexWrap: 'wrap' }}>
+          <div>
+            <h2>内置 RSS 源</h2>
+            <p style={{ color: 'var(--text)', fontSize: '14px', lineHeight: 1.6 }}>
+              先按分类筛选，再点击卡片切换订阅状态。这里只展示系统内置的新闻源。
+            </p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <div style={{ color: '#7c7288', fontSize: '13px', fontWeight: 700 }}>
+              当前显示 {filteredSources.length} / {sources.length} 个来源
             </div>
+            <button onClick={saveSettings} style={{ padding: '9px 14px', background: 'var(--accent)', color: 'white', border: 'none', borderRadius: '999px', cursor: 'pointer', fontSize: '13px', fontWeight: 800, whiteSpace: 'nowrap' }}>
+              保存订阅
+            </button>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '16px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {categories.map((category) => (
+            <button key={category} onClick={() => setSelectedCategory(category)} style={{ border: `1px solid ${selectedCategory === category ? 'rgba(8, 6, 13, 0.22)' : 'var(--border)'}`, color: selectedCategory === category ? 'var(--text-h)' : 'var(--text)', background: selectedCategory === category ? '#f4f1ec' : '#fff', borderRadius: '999px', padding: '8px 14px', cursor: 'pointer', fontWeight: 700, fontSize: '13px' }}>
+              {category === 'all' ? '全部' : categoryLabel(category)}
+            </button>
           ))}
         </div>
-      </section>
 
-      <button onClick={saveSettings} style={{ marginTop: '18px', padding: '13px 22px', background: 'var(--accent)', color: 'white', border: 'none', borderRadius: '999px', width: '100%', cursor: 'pointer', fontSize: '15px', fontWeight: 800 }}>
-        保存订阅
-      </button>
+        <div style={{ marginTop: '14px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+          {filteredSources.map((source) => {
+            const checked = preferences.subscription.rss_sources.includes(source.id)
+            return (
+              <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? 'rgba(8, 6, 13, 0.18)' : 'rgba(8, 6, 13, 0.08)'}`, borderRadius: '18px', padding: '16px', background: checked ? '#f7f4ef' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 14px 32px rgba(8, 6, 13, 0.07)' : '0 10px 24px rgba(8, 6, 13, 0.03)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'start' }}>
+                  <strong style={{ color: 'var(--text-h)', fontSize: '15px' }}>{source.name}</strong>
+                  <span style={{ borderRadius: '999px', padding: '5px 9px', background: checked ? 'rgba(8, 6, 13, 0.08)' : '#f6f6f8', color: checked ? 'var(--text-h)' : '#7c7288', fontWeight: 800, fontSize: '12px', whiteSpace: 'nowrap' }}>{checked ? '已订阅' : '未订阅'}</span>
+                </div>
+                <div style={{ marginTop: '10px', color: '#7c7288', fontSize: '13px', fontWeight: 700 }}>{categoryLabel(source.category)}</div>
+                <div style={{ marginTop: '10px', color: 'var(--text)', fontSize: '12px', lineHeight: 1.55, wordBreak: 'break-all' }}>{source.url}</div>
+              </button>
+            )
+          })}
+        </div>
+      </section>
 
       <style>{`
         @media (max-width: 860px) {
@@ -225,8 +181,11 @@ export function SubscriptionPage() {
             padding: 16px !important;
           }
 
-          .subscription-hero,
-          .subscription-custom-form {
+          .subscription-hero {
+            grid-template-columns: 1fr !important;
+          }
+
+          .subscription-summary-grid {
             grid-template-columns: 1fr !important;
           }
         }

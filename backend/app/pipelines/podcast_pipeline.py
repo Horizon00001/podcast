@@ -72,7 +72,13 @@ async def run_pipeline(
         log_callback(message)
 
     log("\n[1/4] 抓取 RSS 数据")
-    fetch_rss_feeds(config_path, output_dir, selected_source_ids=selected_source_ids, extra_feeds=extra_feeds)
+    fetch_rss_feeds(
+        config_path,
+        output_dir,
+        selected_source_ids=selected_source_ids,
+        extra_feeds=extra_feeds,
+        log_callback=log,
+    )
     if not rss_data_path.exists():
         raise FileNotFoundError(f"未生成 RSS 数据文件: {rss_data_path}")
 

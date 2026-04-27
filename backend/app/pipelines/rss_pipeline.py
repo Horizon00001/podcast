@@ -46,7 +46,7 @@ def _fetch_single_feed(feed_info):
         return {"feed_id": feed_id, "feed_name": feed_name, "success": False, "message": f"失败 ({e})", "feed_data": None}
 
 
-def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_feeds=None):
+def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_feeds=None, log_callback=print):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -54,7 +54,7 @@ def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_fee
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
     except Exception as e:
-        print(f"Error reading config file: {e}")
+        log_callback(f"Error reading config file: {e}")
         return
 
     feeds_to_fetch = config.get("feeds", [])
@@ -70,13 +70,15 @@ def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_fee
     all_fetched_data = []
 
     if not enabled_feeds:
+        log_callback("[RSS Queue] 没有可抓取的 RSS 源")
         output_path = output_dir / "rss_data.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump([], f, ensure_ascii=False, indent=4)
         return
 
+    log_callback(f"[RSS Queue] 本轮计划抓取 {len(enabled_feeds)} 个 RSS 源")
     for feed_info in enabled_feeds:
-        print(f"正在爬取: {feed_info['name']}... 已加入并发队列", flush=True)
+        log_callback(f"[RSS Source] 排队抓取 {feed_info['name']} ({feed_info['id']})")
 
     max_workers = min(8, len(enabled_feeds))
     indexed_results = {}
@@ -84,6 +86,7 @@ def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_fee
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         for index, feed_info in enumerate(enabled_feeds):
+            log_callback(f"[RSS Start] {feed_info['name']} ({feed_info['id']})")
             future = executor.submit(_fetch_single_feed, feed_info)
             future_to_index[future] = index
 
@@ -91,7 +94,7 @@ def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_fee
             index = future_to_index[future]
             result = future.result()
             indexed_results[index] = result
-            print(f"RSS 完成: {result['feed_name']} -> {result['message']}", flush=True)
+            log_callback(f"[RSS Done] {result['feed_name']} ({result['feed_id']}) -> {result['message']}")
 
     for index in range(len(enabled_feeds)):
         result = indexed_results.get(index)
@@ -103,4 +106,4 @@ def fetch_rss_feeds(config_path, output_dir, selected_source_ids=None, extra_fee
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(all_fetched_data, f, ensure_ascii=False, indent=4)
     except Exception as e:
-        print(f"Error saving data: {e}")
+        log_callback(f"Error saving data: {e}")

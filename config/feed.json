@@ -203,5 +203,76 @@
             "enabled": true,
             "category": "finance"
         }
+    ,
+        {
+            "id": "mit-tech-review",
+            "name": "MIT Technology Review",
+            "url": "https://www.technologyreview.com/feed/",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "google-ai-blog",
+            "name": "Google AI Blog",
+            "url": "https://feeds.feedburner.com/blogspot/gJZg",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "cnbc",
+            "name": "CNBC Top News",
+            "url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114",
+            "enabled": true,
+            "category": "finance"
+        },
+        {
+            "id": "cnn",
+            "name": "CNN Top Stories",
+            "url": "http://rss.cnn.com/rss/cnn_topstories.rss",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "sciam",
+            "name": "Scientific American",
+            "url": "https://www.scientificamerican.com/feed/",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "new-scientist",
+            "name": "New Scientist",
+            "url": "https://www.newscientist.com/feed/home",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "huxiu",
+            "name": "虎嗅",
+            "url": "https://www.huxiu.com/rss/0.xml",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "geekpark",
+            "name": "极客公园",
+            "url": "https://www.geekpark.net/rss",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "github-blog",
+            "name": "GitHub Blog",
+            "url": "https://github.blog/feed/",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "leiphone",
+            "name": "雷锋网",
+            "url": "https://www.leiphone.com/feed",
+            "enabled": true,
+            "category": "tech"
+        }
     ]
 }

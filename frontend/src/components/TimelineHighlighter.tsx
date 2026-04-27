@@ -75,30 +75,9 @@ export function TimelineHighlighter({
               display: 'flex',
               flexDirection: isHost ? 'row' : 'row-reverse',
               alignItems: 'flex-start',
-              gap: '12px',
               marginBottom: isDetail ? '24px' : '16px',
             }}
           >
-            <div
-              style={{
-                width: isDetail ? '36px' : '28px',
-                height: isDetail ? '36px' : '28px',
-                borderRadius: '50%',
-                flexShrink: 0,
-                background: isHost ? '#111111' : '#f0f0f0',
-                color: isHost ? '#ffffff' : '#111111',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: isDetail ? '13px' : '11px',
-                fontWeight: 700,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(8, 6, 13, 0.05)',
-              }}
-            >
-              {isHost ? '主' : '嘉'}
-            </div>
-            
             <motion.div
               onClick={() => handleLineClick(line.startTime)}
               whileHover={{ scale: 1.01 }}

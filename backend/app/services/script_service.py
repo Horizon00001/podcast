@@ -84,12 +84,12 @@ class ScriptService:
             dialogues=[
                 DialogueTurn(
                     speaker="A",
-                    content="刚才这条线索先放在这里，我们把镜头转到另一个同样关键的变化上。",
+                    content="刚才这条线索先放在这里，我们换到另一个也值得单独讲清的变化上。",
                     emotion="自然承接",
                 ),
                 DialogueTurn(
                     speaker="B",
-                    content="因为只有把这两个信号放在一起看，前面那个判断到底站不站得住，才会更清楚。",
+                    content="先把这一条讲完，再看下一条本身说了什么；如果两者真有关系，到那里再具体说明。",
                     emotion="简洁分析",
                 ),
             ],

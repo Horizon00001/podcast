@@ -607,3 +607,37 @@ class TestEpisodePlannerFormatPlanForPrompt:
         assert "AI News" in result
         assert "Tech listeners" in result
         assert "AI Today" in result
+
+
+class TestEpisodePlannerPlanLanguage:
+    def test_build_podcast_plan_avoids_forced_same_background_language(self):
+        items = [
+            {
+                "item_id": "1",
+                "feed_id": "ai-news",
+                "feed_name": "AI News",
+                "category": "tech_ai",
+                "title": "AI Model Released",
+                "summary": "New AI model announced",
+                "published": "2024-01-01",
+                "link": "http://example.com/1",
+            },
+            {
+                "item_id": "2",
+                "feed_id": "ai-news",
+                "feed_name": "AI News",
+                "category": "tech_ai",
+                "title": "AI Industry Growth",
+                "summary": "AI market growing fast",
+                "published": "2024-01-02",
+                "link": "http://example.com/2",
+            },
+        ]
+
+        plan = build_podcast_plan("tech_ai", items)
+
+        assert "同一个主题的不同侧面" not in plan.closing_takeaway
+        assert "不必硬归成一个大背景" in plan.closing_takeaway
+        assert "先把每条新闻各自讲清" in plan.theme_statement
+        assert "明确关系" in plan.theme_statement
+        assert plan.segments[-1].purpose == "自然收束本期内容，只回收那些已经被事实支撑的重点。"

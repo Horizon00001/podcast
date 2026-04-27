@@ -357,6 +357,9 @@ class TestScriptServiceNormalization:
             "closing",
         ]
         assert normalized.sections[2].audio_effect is None
+        assert "同一个判断" not in normalized.sections[2].dialogues[1].content
+        assert "对照着听" not in normalized.sections[2].dialogues[1].content
+        assert "如果两者真有关系，到那里再具体说明" in normalized.sections[2].dialogues[1].content
 
     def test_normalize_script_keeps_existing_transition(self):
         script = PodcastScript(

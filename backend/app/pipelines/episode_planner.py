@@ -385,29 +385,29 @@ def build_podcast_plan(category: str, items: List[dict]) -> EpisodePlan:
     profile_name = {"tech_ai": "今日 AI 快讯", "business": "一周商业头条", "sports": "今日新闻简报", "general": "今日新闻简报"}.get(category, "今日新闻简报")
     selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
     top_story_title = selected_items[0].title if selected_items else profile_name
-    theme_statement = f"本期围绕“{top_story_title}”组织内容，主线是：同一类别下聚类出的相关新闻形成一个可收听的主题包。"
-    closing_takeaway = f"听完这一集，听众应该记住：{top_story_title} 这组新闻讲的是同一个主题的不同侧面。"
+    theme_statement = f"本期围绕“{top_story_title}”组织内容，先把每条新闻各自讲清；如果它们之间确实有明确关系，再具体说明这种关系。"
+    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断；如果几条新闻只是相关，不必硬归成一个大背景。"
     segments: List[EpisodeSegment] = []
     if selected_items:
         segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
         for index, item in enumerate(selected_items):
             segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
-        segments.append(EpisodeSegment("closing", "回收主线，总结本期节目真正想表达的判断。", [], closing_takeaway))
-    return EpisodePlan(category, profile_name, f"{profile_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻聚类出的共同主线展开。", selected_items, segments, closing_takeaway)
+        segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
+    return EpisodePlan(category, profile_name, f"{profile_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻组织节目，优先分别讲清事实；只有关系明确时才点明联系。", selected_items, segments, closing_takeaway)
 
 
 def build_group_plan(category: str, items: List[dict], topic_name: str) -> EpisodePlan:
     selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
     top_story_title = selected_items[0].title if selected_items else topic_name
-    theme_statement = f"本期围绕“{top_story_title}”组织内容，主线是：同一主题下聚类出的相关新闻形成一个可收听的主题包。"
-    closing_takeaway = f"听完这一集，听众应该记住：{top_story_title} 这组新闻讲的是同一个主题的不同侧面。"
+    theme_statement = f"本期围绕“{top_story_title}”组织内容，先把每条新闻各自讲清；如果它们之间确实有明确关系，再具体说明这种关系。"
+    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断；如果几条新闻只是相关，不必硬归成一个大背景。"
     segments: List[EpisodeSegment] = []
     if selected_items:
         segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
         for index, item in enumerate(selected_items):
             segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
-        segments.append(EpisodeSegment("closing", "回收主线，总结本期节目真正想表达的判断。", [], closing_takeaway))
-    return EpisodePlan(category, topic_name, f"{topic_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻聚类出的共同主线展开。", selected_items, segments, closing_takeaway)
+        segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
+    return EpisodePlan(category, topic_name, f"{topic_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻组织节目，优先分别讲清事实；只有关系明确时才点明联系。", selected_items, segments, closing_takeaway)
 
 
 def build_group_name(items: List[dict], fallback: str) -> str:

@@ -95,6 +95,9 @@ class GenerationService:
     async def _add_log(self, task_id: str, log_message: str):
         self._with_repository(lambda repository: repository.append_log(task_id, log_message))
 
+    def _add_log_sync(self, task_id: str, log_message: str) -> None:
+        self._with_repository(lambda repository: repository.append_log(task_id, log_message))
+
     def cancel_task(self, task_id: str):
         task = self.get_task(task_id)
         if not task:
@@ -128,7 +131,7 @@ class GenerationService:
                 topic=task.topic,
                 selected_source_ids=selected_source_ids,
                 extra_feeds=extra_feeds,
-                log_callback=lambda message: asyncio.create_task(self._add_log(task_id, message)),
+                log_callback=lambda message: self._add_log_sync(task_id, message),
                 check_cancelled=check_cancelled,
             )
 

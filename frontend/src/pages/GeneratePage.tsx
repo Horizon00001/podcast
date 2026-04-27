@@ -195,9 +195,11 @@ function getPipelineSteps(args: {
 }
 
 function formatTerminalLines(output: string) {
-  return output
-    .split(/\r?\n/)
-    .filter((line, index, allLines) => line.length > 0 || index !== allLines.length - 1)
+  if (!output) {
+    return []
+  }
+
+  return output.split(/\r?\n/)
 }
 
 export function GeneratePage() {
@@ -892,8 +894,10 @@ export function GeneratePage() {
 
           <div style={{ padding: '20px', borderRadius: '28px', background: '#ffffff', border: '1px solid #e8edf3', boxShadow: '0 14px 42px rgba(15, 23, 42, 0.055)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '12px' }}>
-              <div style={{ color: '#0f172a', fontSize: '18px', fontWeight: 850 }}>实时日志</div>
-              <div style={{ color: '#64748b', fontSize: '12px' }}>{currentTaskId ? currentTaskId.slice(0, 8) : 'preview'}</div>
+              <div>
+                <div style={{ color: '#0f172a', fontSize: '18px', fontWeight: 850 }}>实时日志</div>
+                <div style={{ marginTop: '4px', color: '#64748b', fontSize: '12px' }}>{currentTaskId ? currentTaskId.slice(0, 8) : 'preview'}</div>
+              </div>
             </div>
             <div ref={terminalContainerRef} onScroll={handleTerminalScroll} style={{ height: '360px', overflowY: 'auto', padding: '14px', borderRadius: '18px', background: '#f8fafc', border: '1px solid #e2e8f0', fontFamily: 'var(--mono)', fontSize: '12px', lineHeight: 1.7 }}>
               {terminalLines.length > 0 ? terminalLines.map((line, index) => (

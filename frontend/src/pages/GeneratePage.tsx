@@ -51,6 +51,76 @@ interface GroupProgress {
   outputPath?: string
 }
 
+const ACTIVE_TASK_STORAGE_KEY = 'podcast_generate_active_task'
+
+interface ActiveTaskSnapshot {
+  taskId: string
+  updatedAt: number
+}
+
+interface PersistedGenerationViewState {
+  currentTaskId: string | null
+  isGenerating: boolean
+  terminalOutput: string
+  rssStage: 'idle' | 'running' | 'done'
+  activeGroupLabel: string | null
+  groupProgress: Record<string, GroupProgress>
+  sectionProgress: Record<string, SectionProgress>
+}
+
+const GENERATION_VIEW_STORAGE_KEY = 'podcast_generate_view_state'
+
+function loadActiveTaskSnapshot(): ActiveTaskSnapshot | null {
+  try {
+    const raw = window.sessionStorage.getItem(ACTIVE_TASK_STORAGE_KEY)
+    if (!raw) {
+      return null
+    }
+    const parsed = JSON.parse(raw) as Partial<ActiveTaskSnapshot>
+    if (!parsed.taskId) {
+      return null
+    }
+    return {
+      taskId: parsed.taskId,
+      updatedAt: typeof parsed.updatedAt === 'number' ? parsed.updatedAt : Date.now(),
+    }
+  } catch {
+    return null
+  }
+}
+
+function saveActiveTaskSnapshot(taskId: string) {
+  const snapshot: ActiveTaskSnapshot = {
+    taskId,
+    updatedAt: Date.now(),
+  }
+  window.sessionStorage.setItem(ACTIVE_TASK_STORAGE_KEY, JSON.stringify(snapshot))
+}
+
+function clearActiveTaskSnapshot() {
+  window.sessionStorage.removeItem(ACTIVE_TASK_STORAGE_KEY)
+}
+
+function loadPersistedGenerationViewState(): PersistedGenerationViewState | null {
+  try {
+    const raw = window.sessionStorage.getItem(GENERATION_VIEW_STORAGE_KEY)
+    if (!raw) {
+      return null
+    }
+    return JSON.parse(raw) as PersistedGenerationViewState
+  } catch {
+    return null
+  }
+}
+
+function savePersistedGenerationViewState(state: PersistedGenerationViewState) {
+  window.sessionStorage.setItem(GENERATION_VIEW_STORAGE_KEY, JSON.stringify(state))
+}
+
+function clearPersistedGenerationViewState() {
+  window.sessionStorage.removeItem(GENERATION_VIEW_STORAGE_KEY)
+}
+
 function parseSectionDescriptor(text: string) {
   const match = text.match(/section=(\d+) type=([^\s]+) lines=(\d+)/)
   if (!match) {
@@ -88,9 +158,21 @@ export function GeneratePage() {
   
   const logEndRef = useRef<HTMLDivElement>(null)
   const eventSourceRef = useRef<EventSource | null>(null)
+  const isGeneratingRef = useRef(false)
+  const currentTaskIdRef = useRef<string | null>(null)
+  const restorationAttemptedRef = useRef(false)
+  const hydratedFromStorageRef = useRef(false)
 
   function appendOutput(text: string) {
     setTerminalOutput((prev) => prev + text)
+  }
+
+  function restoreFromLogs(logs: string[]) {
+    setTerminalOutput(logs.join(''))
+    resetProgressState()
+    for (const log of logs) {
+      handleStructuredLogChunk(log)
+    }
   }
 
   function resetProgressState() {
@@ -263,6 +345,71 @@ export function GeneratePage() {
     }
   }, [terminalOutput])
 
+  useEffect(() => {
+    isGeneratingRef.current = isGenerating
+  }, [isGenerating])
+
+  useEffect(() => {
+    currentTaskIdRef.current = currentTaskId
+  }, [currentTaskId])
+
+  useEffect(() => {
+    const persisted = loadPersistedGenerationViewState()
+    hydratedFromStorageRef.current = true
+    if (!persisted) {
+      return
+    }
+
+    setCurrentTaskId(persisted.currentTaskId)
+    currentTaskIdRef.current = persisted.currentTaskId
+    setIsGenerating(persisted.isGenerating)
+    isGeneratingRef.current = persisted.isGenerating
+    setTerminalOutput(persisted.terminalOutput)
+    setRssStage(persisted.rssStage)
+    setActiveGroupLabel(persisted.activeGroupLabel)
+    setGroupProgress(persisted.groupProgress)
+    setSectionProgress(persisted.sectionProgress)
+  }, [])
+
+  useEffect(() => {
+    if (!hydratedFromStorageRef.current) {
+      return
+    }
+
+    const hasVisibleState = Boolean(
+      currentTaskId ||
+      terminalOutput ||
+      isGenerating ||
+      Object.keys(groupProgress).length ||
+      Object.keys(sectionProgress).length
+    )
+
+    if (!hasVisibleState) {
+      clearPersistedGenerationViewState()
+      return
+    }
+
+    savePersistedGenerationViewState({
+      currentTaskId,
+      isGenerating,
+      terminalOutput,
+      rssStage,
+      activeGroupLabel,
+      groupProgress,
+      sectionProgress,
+    })
+  }, [activeGroupLabel, currentTaskId, groupProgress, isGenerating, rssStage, sectionProgress, terminalOutput])
+
+  useEffect(() => {
+    if (currentTaskId) {
+      saveActiveTaskSnapshot(currentTaskId)
+      return
+    }
+    if (restorationAttemptedRef.current) {
+      clearActiveTaskSnapshot()
+    }
+  }, [currentTaskId, isGenerating])
+
   function cleanupEventSource() {
     if (eventSourceRef.current) {
       eventSourceRef.current.close()
@@ -305,6 +452,59 @@ export function GeneratePage() {
     void loadPreferences()
   }, [user])
 
+  useEffect(() => {
+    let cancelled = false
+
+    async function restoreActiveTaskIfNeeded() {
+      restorationAttemptedRef.current = true
+      const snapshot = loadActiveTaskSnapshot()
+      if (!snapshot?.taskId) {
+        return
+      }
+
+      try {
+        const status = await api.getGenerationStatus(snapshot.taskId)
+        if (cancelled) {
+          return
+        }
+
+        setCurrentTaskId(snapshot.taskId)
+        currentTaskIdRef.current = snapshot.taskId
+        restoreFromLogs(status.logs)
+
+        if (status.status === 'queued' || status.status === 'running') {
+          setIsGenerating(true)
+          isGeneratingRef.current = true
+          setTerminalOutput((prev) => `${prev}${prev ? '\n' : ''}检测到进行中的任务: ${snapshot.taskId}\n正在恢复实时日志连接...\n\n`)
+          startListeningToLogs(snapshot.taskId)
+          return
+        }
+
+        setIsGenerating(false)
+        isGeneratingRef.current = false
+        if (status.status === 'succeeded') {
+          setTerminalOutput((prev) => `${prev}${prev.endsWith('\n') ? '' : '\n'}\n任务全部完成。\n`)
+        } else if (status.status === 'failed') {
+          setTerminalOutput((prev) => `${prev}${prev.endsWith('\n') ? '' : '\n'}\n任务失败: ${status.message}\n`)
+        } else if (status.status === 'cancelled') {
+          setTerminalOutput((prev) => `${prev}${prev.endsWith('\n') ? '' : '\n'}\n任务已取消\n`)
+        }
+        if (status.status !== 'queued' && status.status !== 'running') {
+          clearActiveTaskSnapshot()
+        }
+      } catch (error) {
+        console.error('恢复历史任务失败:', error)
+        clearActiveTaskSnapshot()
+      }
+    }
+
+    void restoreActiveTaskIfNeeded()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   function startListeningToLogs(taskId: string) {
     cleanupEventSource()
     
@@ -332,19 +532,35 @@ export function GeneratePage() {
           if (status === 'succeeded') {
             appendOutput(`\n\n任务全部完成。\n`)
             setIsGenerating(false)
+            setCurrentTaskId(null)
+            currentTaskIdRef.current = null
+            clearActiveTaskSnapshot()
+            clearPersistedGenerationViewState()
             cleanupEventSource()
           } else if (status === 'failed') {
             appendOutput(`\n\n任务失败: ${statusMessage}\n`)
             setIsGenerating(false)
+            setCurrentTaskId(null)
+            currentTaskIdRef.current = null
+            clearActiveTaskSnapshot()
+            clearPersistedGenerationViewState()
             cleanupEventSource()
           } else if (status === 'cancelled') {
             appendOutput(`\n\n任务已取消\n`)
             setIsGenerating(false)
+            setCurrentTaskId(null)
+            currentTaskIdRef.current = null
+            clearActiveTaskSnapshot()
+            clearPersistedGenerationViewState()
             cleanupEventSource()
           }
         } else if (data[0] === 'error') {
           appendOutput(`\n系统错误: ${data[1]}\n`)
           setIsGenerating(false)
+          setCurrentTaskId(null)
+          currentTaskIdRef.current = null
+          clearActiveTaskSnapshot()
+          clearPersistedGenerationViewState()
           cleanupEventSource()
         }
       } catch (error) {
@@ -358,8 +574,8 @@ export function GeneratePage() {
       
       newEventSource.close()
       setTimeout(() => {
-        if (isGenerating && currentTaskId) {
-          startListeningToLogs(currentTaskId)
+        if (isGeneratingRef.current && currentTaskIdRef.current) {
+          startListeningToLogs(currentTaskIdRef.current)
         }
       }, 3000)
     }
@@ -379,7 +595,9 @@ export function GeneratePage() {
         use_subscriptions: useSubscriptions,
         custom_rss: useSubscriptions ? preferences.subscription.custom_rss : [],
       })
+      saveActiveTaskSnapshot(result.task_id)
       setCurrentTaskId(result.task_id)
+      currentTaskIdRef.current = result.task_id
       appendOutput(`任务已分配: ${result.task_id}\n`)
       appendOutput('正在建立实时日志连接...\n\n')
 
@@ -387,6 +605,10 @@ export function GeneratePage() {
     } catch (error) {
       appendOutput(`任务提交失败: ${(error as Error).message}\n`)
       setIsGenerating(false)
+      setCurrentTaskId(null)
+      currentTaskIdRef.current = null
+      clearActiveTaskSnapshot()
+      clearPersistedGenerationViewState()
     }
   }
 
@@ -396,6 +618,10 @@ export function GeneratePage() {
       const result = await api.cancelGeneration(currentTaskId)
       appendOutput(`\n\n${result.message} (状态: ${result.status})\n`)
       setIsGenerating(false)
+      setCurrentTaskId(null)
+      currentTaskIdRef.current = null
+      clearActiveTaskSnapshot()
+      clearPersistedGenerationViewState()
       cleanupEventSource()
     } catch (error) {
       appendOutput(`\n取消失败: ${(error as Error).message}\n`)

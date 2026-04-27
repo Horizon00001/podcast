@@ -112,7 +112,7 @@ def get_generation_task(task_id: str):
     task = generation_service.get_task(task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
-    logs = task.logs if isinstance(task.logs, list) else []
+    logs = generation_service.get_task_logs(task_id)
     return GenerationTaskStatusResponse(
         task_id=task.task_id,
         status=task.status,
@@ -121,6 +121,7 @@ def get_generation_task(task_id: str):
         topic=task.topic,
         created_at=task.created_at.isoformat(),
         updated_at=task.updated_at.isoformat(),
+        logs=logs,
     )
 
 

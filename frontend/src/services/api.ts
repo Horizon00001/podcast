@@ -19,6 +19,17 @@ export type InteractionPayload = {
   recommendation_request_id?: string
 }
 
+export type GenerationStatusResponse = {
+  task_id: string
+  status: string
+  message: string
+  rss_source: string
+  topic: string
+  created_at: string
+  updated_at: string
+  logs: string[]
+}
+
 class RequestError extends Error {
   status: number
 
@@ -114,7 +125,7 @@ export const api = {
       body: JSON.stringify(payload),
     }),
   getGenerationStatus: (taskId: string) =>
-    request<{ task_id: string; status: string; message: string }>(`/generation/${taskId}`),
+    request<GenerationStatusResponse>(`/generation/${taskId}`),
   createEventSource: (taskId: string) => {
     const url = `${BASE_URL}/generation/${taskId}/stream`
     return new EventSource(url)

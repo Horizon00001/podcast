@@ -38,9 +38,8 @@ class TestPodcastBackendCLI:
         """测试 generate-text 子命令会进入异步脚本生成流程。"""
         captured = {}
 
-        async def fake_generate_text_command(*, topic, episode_plan_path, rss_data_path, output_dir):
+        async def fake_generate_text_command(*, topic, rss_data_path, output_dir):
             captured["topic"] = topic
-            captured["episode_plan_path"] = episode_plan_path
             captured["rss_data_path"] = rss_data_path
             captured["output_dir"] = output_dir
 
@@ -51,8 +50,6 @@ class TestPodcastBackendCLI:
             "generate-text",
             "--topic",
             "tech",
-            "--episode-plan-path",
-            str(tmp_path / "episode_plan.json"),
             "--rss-data-path",
             str(tmp_path / "rss_data.json"),
             "--output-dir",
@@ -60,7 +57,6 @@ class TestPodcastBackendCLI:
         ])
 
         assert captured["topic"] == "tech"
-        assert captured["episode_plan_path"] == tmp_path / "episode_plan.json"
         assert captured["rss_data_path"] == tmp_path / "rss_data.json"
         assert captured["output_dir"] == tmp_path / "generated"
 

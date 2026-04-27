@@ -265,7 +265,7 @@ export function GlobalPlayer({ sidebarWidth = 256, desktopScale = 1 }: GlobalPla
                           width: '100%',
                           maxWidth: windowWidth > 900 ? '210px' : '240px',
                           aspectRatio: '1 / 1',
-                          ...getCoverStyle(currentPodcast.category),
+                          ...getCoverStyle(currentPodcast.category, currentPodcast.id),
                           borderRadius: '22px',
                           padding: '16px',
                           display: 'flex',
@@ -567,7 +567,7 @@ export function GlobalPlayer({ sidebarWidth = 256, desktopScale = 1 }: GlobalPla
               <div style={{
                 width: isNarrow ? '44px' : '48px',
                 height: isNarrow ? '44px' : '48px',
-                ...getCoverStyle(currentPodcast.category),
+                ...getCoverStyle(currentPodcast.category, currentPodcast.id),
                 borderRadius: '14px',
                 display: 'flex',
                 flexDirection: 'column',

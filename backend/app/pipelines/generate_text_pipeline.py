@@ -1,48 +1,47 @@
 import json
 from pathlib import Path
-from typing import Optional
-
-from app.pipelines.episode_planner import (
-    EpisodePlan,
-    EpisodeSegment,
-    PlannedNewsItem,
-    format_plan_for_prompt,
-)
+from typing import Iterable
 
 
-def load_episode_plan(episode_plan_path: Path) -> Optional[EpisodePlan]:
-    if not episode_plan_path.exists():
-        return None
+def _format_cluster_items(cluster_items: Iterable[dict]) -> str:
+    formatted_news = []
+    for item in cluster_items:
+        item_lines = []
+        title = (item.get("title") or "").strip()
+        if title:
+            item_lines.append(f"标题: {title}")
+        summary = (item.get("summary") or "").strip()
+        if summary:
+            item_lines.append(f"摘要: {summary[:400]}")
+        feed_name = (item.get("feed_name") or "").strip()
+        if feed_name:
+            item_lines.append(f"来源: {feed_name}")
+        published = (item.get("published") or "").strip()
+        if published:
+            item_lines.append(f"发布时间: {published}")
+        link = (item.get("link") or "").strip()
+        if link:
+            item_lines.append(f"链接: {link}")
+        if item_lines:
+            formatted_news.extend(item_lines)
+            formatted_news.append("")
+    return "\n".join(formatted_news).strip()
 
-    try:
-        with open(episode_plan_path, "r", encoding="utf-8") as f:
-            raw = json.load(f)
-        selected_items = [PlannedNewsItem(**item) for item in raw.get("selected_items", [])]
-        segments = [EpisodeSegment(**segment) for segment in raw.get("segments", [])]
-        return EpisodePlan(
-            topic_id=raw["topic_id"],
-            topic_name=raw["topic_name"],
-            title_hint=raw["title_hint"],
-            theme_statement=raw["theme_statement"],
-            audience=raw["audience"],
-            editorial_angle=raw["editorial_angle"],
-            selected_items=selected_items,
-            segments=segments,
-            closing_takeaway=raw["closing_takeaway"],
+
+def build_generation_input(topic: str, rss_data_path: Path | None = None, cluster_items: list[dict] | None = None) -> str:
+    if cluster_items is not None:
+        news_content = _format_cluster_items(cluster_items)
+        if not news_content:
+            return ""
+        return (
+            f"节目主题: {topic}\n"
+            "下面是同一组 embedding 聚类得到的新闻素材。请你自己判断它们的共同主线，"
+            "决定本期节目的最佳结构和转场，不要机械地逐条罗列，也不要假设第一条一定是主线。"
+            "如果某条素材更像导读、合集或背景补充，可以降低它的权重。\n\n"
+            f"候选新闻组:\n{news_content}"
         )
-    except Exception as e:
-        print(f">>> 警告：读取节目计划失败，将回退到原始新闻内容模式: {e}")
-        return None
 
-
-def build_generation_input(topic: str, rss_data_path: Path, episode_plan_path: Optional[Path] = None) -> str:
-    if episode_plan_path:
-        plan = load_episode_plan(episode_plan_path)
-        if plan is not None:
-            return format_plan_for_prompt(plan)
-        return ""
-
-    if not rss_data_path.exists():
+    if rss_data_path is None or not rss_data_path.exists():
         return ""
 
     with open(rss_data_path, "r", encoding="utf-8") as f:

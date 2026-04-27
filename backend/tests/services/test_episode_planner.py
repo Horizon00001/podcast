@@ -1,5 +1,7 @@
 import math
+import json
 import pytest
+from pathlib import Path
 
 from app.pipelines.episode_planner import (
     _clean_text,
@@ -13,17 +15,19 @@ from app.pipelines.episode_planner import (
     _anchor_for_item,
     _safe_slug,
     _group_title,
+    build_item_key,
     group_items_for_podcasts,
     merge_clusters_by_signature,
-    build_podcast_plan,
-    build_group_plan,
     build_group_name,
+    load_pending_groups,
+    load_used_item_links,
     merge_pending_groups,
+    normalize_stored_item_key,
     _score_item,
+    save_pending_groups,
+    save_used_item_links,
     select_items_for_topic,
-    format_plan_for_prompt,
     TopicProfile,
-    EpisodePlan,
 )
 
 
@@ -123,10 +127,36 @@ class TestEpisodePlannerDedupeItems:
             "https://example.com/powerbank",
         ]
 
+    def test_dedupe_items_by_same_title_and_summary_without_link(self):
+        items = [
+            {"title": "Same News", "summary": "Same summary", "link": ""},
+            {"title": "Same News", "summary": "Same summary", "link": None},
+            {"title": "Same News", "summary": "Different summary", "link": ""},
+        ]
+
+        result = dedupe_items(items)
+
+        assert len(result) == 2
+
+
+class TestEpisodePlannerItemKeys:
+    def test_build_item_key_prefers_link(self):
+        item = {"title": "News", "summary": "Summary", "link": "HTTPS://Example.com/A"}
+
+        assert build_item_key(item) == "link:https://example.com/a"
+
+    def test_build_item_key_falls_back_to_title_and_summary(self):
+        item = {"title": "Same News", "summary": "Same Summary", "link": ""}
+
+        assert build_item_key(item) == "text:same news|same summary"
+
+    def test_normalize_stored_item_key_wraps_legacy_link(self):
+        assert normalize_stored_item_key("HTTPS://Example.com/A") == "link:https://example.com/a"
+
     def test_dedupe_items_by_normalized_title_when_link_missing(self):
         items = [
-            {"title": "OpenAI Privacy Filter", "link": "", "summary": "first"},
-            {"title": "OpenAI Privacy Filter!!!", "link": "", "summary": "duplicate"},
+            {"title": "OpenAI Privacy Filter", "link": "", "summary": "same summary"},
+            {"title": "OpenAI Privacy Filter!!!", "link": "", "summary": "same summary"},
             {"title": "Different story", "link": "", "summary": "other"},
         ]
 
@@ -330,13 +360,25 @@ class TestEpisodePlannerAnchorForItem:
 class TestEpisodePlannerGroupItems:
     """Test group_items_for_podcasts function."""
 
-    def test_group_items_basic(self):
+    def test_group_items_basic(self, monkeypatch):
         from app.pipelines import episode_planner
-        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {"title": "Anthropic releases Claude update", "summary": "New Claude model news", "feed_name": "AI News", "category": "tech", "link": "http://1"},
             {"title": "Claude gets enterprise upgrade from Anthropic", "summary": "Anthropic AI product update", "feed_name": "Tech", "category": "news", "link": "http://2"},
         ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
         result = group_items_for_podcasts(items, threshold=0.1)
 
         assert "general" in result
@@ -350,8 +392,6 @@ class TestEpisodePlannerGroupItems:
         assert result == {}
 
     def test_group_items_dedupes_repeated_source_entries(self):
-        from app.pipelines import episode_planner
-        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
@@ -376,7 +416,7 @@ class TestEpisodePlannerGroupItems:
             },
         ]
 
-        result = merge_clusters_by_signature(group_items_for_podcasts(items, threshold=0.3))
+        result = group_items_for_podcasts(items, threshold=0.3)
 
         total_groups = sum(len(groups) for groups in result.values())
         total_items = sum(len(group) for groups in result.values() for group in groups)
@@ -412,6 +452,26 @@ class TestEpisodePlannerGroupItems:
         cluster_sizes = sorted(len(cluster) for cluster in grouped["general"])
         assert cluster_sizes == [1, 2]
 
+    def test_group_items_without_embeddings_keeps_items_separate(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        items = [
+            {"title": "Anthropic releases Claude update", "summary": "New Claude model news", "link": "http://1"},
+            {"title": "Claude gets enterprise upgrade from Anthropic", "summary": "Anthropic AI product update", "link": "http://2"},
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return False
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        grouped = group_items_for_podcasts(items, threshold=0.1)
+
+        cluster_sizes = sorted(len(cluster) for cluster in grouped["general"])
+        assert cluster_sizes == [1, 1]
+
 
 class TestEpisodePlannerGroupTitle:
     """Test _group_title function."""
@@ -428,40 +488,6 @@ class TestEpisodePlannerGroupTitle:
         assert _group_title([], "general") == "general"
 
 
-class TestEpisodePlannerBuildPodcastPlan:
-    """Test build_podcast_plan function."""
-
-    def test_build_podcast_plan_basic(self):
-        items = [
-            {"item_id": "1", "feed_id": "ai-news", "feed_name": "AI News", "category": "tech_ai", "title": "AI Model Released", "summary": "New AI model", "published": "2024-01-01", "link": "http://example.com/1"},
-        ]
-        result = build_podcast_plan("tech_ai", items)
-
-        assert isinstance(result, EpisodePlan)
-        assert result.topic_id == "tech_ai"
-        assert len(result.selected_items) == 1
-        assert len(result.segments) > 0
-
-    def test_build_podcast_plan_empty_items(self):
-        result = build_podcast_plan("tech_ai", [])
-
-        assert isinstance(result, EpisodePlan)
-        assert len(result.selected_items) == 0
-
-
-class TestEpisodePlannerBuildGroupPlan:
-    """Test build_group_plan function."""
-
-    def test_build_group_plan_basic(self):
-        items = [
-            {"item_id": "1", "feed_id": "ai-news", "feed_name": "AI News", "category": "tech_ai", "title": "AI News", "summary": "AI summary", "published": "2024-01-01", "link": "http://example.com/1"},
-        ]
-        result = build_group_plan("tech_ai", items, "Daily AI")
-
-        assert isinstance(result, EpisodePlan)
-        assert result.topic_name == "Daily AI"
-
-
 class TestEpisodePlannerBuildGroupName:
     """Test build_group_name function."""
 
@@ -470,6 +496,43 @@ class TestEpisodePlannerBuildGroupName:
         result = build_group_name(items, "general")
 
         assert "first-news" in result
+
+
+class TestEpisodePlannerPersistenceHelpers:
+    def test_save_and_load_pending_groups_without_used_links(self, tmp_path):
+        pending_path = tmp_path / "pending_groups.json"
+        pending_groups = [{"group_id": "g1", "items": [{"link": "http://1.com"}]}]
+
+        save_pending_groups(pending_groups, pending_path)
+        loaded = load_pending_groups(pending_path)
+
+        assert loaded == pending_groups
+
+    def test_save_and_load_used_item_links(self, tmp_path):
+        used_path = tmp_path / "used_item_links.json"
+        used_links = ["http://1.com", "http://2.com"]
+
+        save_used_item_links(used_links, used_path)
+        loaded = load_used_item_links(used_path)
+
+        assert loaded == ["link:http://1.com", "link:http://2.com"]
+
+    def test_load_used_item_links_from_legacy_pending_file(self, tmp_path):
+        pending_path = tmp_path / "pending_groups.json"
+        pending_path.write_text(
+            json.dumps(
+                {
+                    "pending_groups": [],
+                    "used_item_links": ["http://legacy.com"],
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        loaded = load_used_item_links(tmp_path / "used_item_links.json", legacy_pending_path=pending_path)
+
+        assert loaded == ["link:http://legacy.com"]
 
 
 class TestEpisodePlannerMergePendingGroups:
@@ -484,15 +547,87 @@ class TestEpisodePlannerMergePendingGroups:
         # Should not generate any new groups since topics don't match
         assert len(generated) == 0
 
-    def test_merge_pending_groups_with_match(self):
+    def test_merge_pending_groups_with_match(self, monkeypatch):
+        from app.pipelines import episode_planner
+
         pending = [{"category": "tech_ai", "items": [{"title": "AI Model Part 1", "summary": "First part of AI story", "link": "http://part1.com"}]}]
         new_items = [{"title": "AI Model Part 2", "summary": "Second part continues the AI story", "link": "http://part2.com"}]
 
-        remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.1)
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.8)
 
         assert len(generated) == 1
         assert generated[0]["category"] == "general"
         assert consumed == ["http://part2.com"]
+
+    def test_merge_pending_groups_uses_embeddings_only(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        pending = [{"category": "tech_ai", "items": [{"title": "AI Model Part 1", "summary": "First part of AI story", "link": "http://part1.com"}]}]
+        new_items = [
+            {"title": "AI Model Part 2", "summary": "Second part continues the AI story", "link": "http://part2.com"},
+            {"title": "Unrelated sports update", "summary": "Match results", "link": "http://sports.com"},
+        ]
+
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.8)
+
+        assert remaining == []
+        assert len(generated) == 1
+        assert [item["link"] for item in generated[0]["items"]] == ["http://part1.com", "http://part2.com"]
+        assert consumed == ["http://part2.com"]
+
+    def test_merge_pending_groups_respects_merge_limit(self, monkeypatch):
+        from app.pipelines import episode_planner
+
+        pending = [
+            {"category": "tech_ai", "items": [{"title": "Old 1", "summary": "", "link": "http://old1.com"}]},
+            {"category": "tech_ai", "items": [{"title": "Old 2", "summary": "", "link": "http://old2.com"}]},
+        ]
+        new_items = [{"title": "New", "summary": "", "link": "http://new.com"}]
+
+        calls = []
+
+        def fake_cluster(items, threshold=0.9):
+            calls.append([item.get("link") for item in items])
+            return [items]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_pending_merge_limit", 1)
+        monkeypatch.setattr(episode_planner, "_cluster_by_embedding_only", fake_cluster)
+
+        remaining, generated, consumed = merge_pending_groups(pending, new_items, threshold=0.8)
+
+        assert len(calls) == 1
+        assert len(remaining) == 1
+        assert remaining[0]["items"][0]["link"] == "http://old2.com"
+        assert len(generated) == 1
+        assert [item["link"] for item in generated[0]["items"]] == ["http://old1.com", "http://new.com"]
+        assert consumed == ["http://new.com"]
 
 
 class TestEpisodePlannerScoreItem:
@@ -584,62 +719,3 @@ class TestEpisodePlannerSelectItemsForTopic:
 
         # Should deduplicate - only one entry for "Same Title"
         assert len(result) == 1
-
-
-class TestEpisodePlannerFormatPlanForPrompt:
-    """Test format_plan_for_prompt function."""
-
-    def test_format_plan_for_prompt_basic(self):
-        plan = EpisodePlan(
-            topic_id="tech_ai",
-            topic_name="AI News",
-            title_hint="AI Today",
-            theme_statement="AI is advancing",
-            audience="Tech listeners",
-            editorial_angle="Coverage of AI",
-            selected_items=[],
-            segments=[],
-            closing_takeaway="Remember to follow AI news",
-        )
-
-        result = format_plan_for_prompt(plan)
-
-        assert "AI News" in result
-        assert "Tech listeners" in result
-        assert "AI Today" in result
-
-
-class TestEpisodePlannerPlanLanguage:
-    def test_build_podcast_plan_avoids_forced_same_background_language(self):
-        items = [
-            {
-                "item_id": "1",
-                "feed_id": "ai-news",
-                "feed_name": "AI News",
-                "category": "tech_ai",
-                "title": "AI Model Released",
-                "summary": "New AI model announced",
-                "published": "2024-01-01",
-                "link": "http://example.com/1",
-            },
-            {
-                "item_id": "2",
-                "feed_id": "ai-news",
-                "feed_name": "AI News",
-                "category": "tech_ai",
-                "title": "AI Industry Growth",
-                "summary": "AI market growing fast",
-                "published": "2024-01-02",
-                "link": "http://example.com/2",
-            },
-        ]
-
-        plan = build_podcast_plan("tech_ai", items)
-
-        assert "同一个主题的不同侧面" not in plan.closing_takeaway
-        assert "不必硬归成一个大背景" not in plan.closing_takeaway
-        assert "先把每条新闻各自讲清" not in plan.theme_statement
-        assert "明确关系" not in plan.theme_statement
-        assert "观察" in plan.theme_statement
-        assert "不同机制" in plan.closing_takeaway
-        assert plan.segments[-1].purpose == "自然收束本期内容，只回收那些已经被事实支撑的重点。"

@@ -162,7 +162,7 @@ export function PodcastDetailPage() {
               maxWidth: isCompact ? '100%' : `${coverSize}px`,
               minHeight: isCompact ? '260px' : `${coverSize}px`,
               justifySelf: isNarrow ? 'stretch' : 'start',
-              ...getCoverStyle(podcast.category),
+               ...getCoverStyle(podcast.category, podcast.id),
               borderRadius: '30px',
               display: 'flex',
               flexDirection: 'column',

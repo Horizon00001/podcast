@@ -13,21 +13,16 @@ from app.pipelines.episode_planner import (
     dedupe_items,
     group_items_for_podcasts,
     merge_clusters_by_signature,
-    build_podcast_plan,
-    build_group_plan,
     merge_pending_groups,
     load_topic_profiles,
-    build_episode_plan,
-    format_plan_for_prompt,
 )
 
 
 class TestEpisodePlannerFullFlow:
     """完整的播客规划流程集成测试."""
 
-    def test_classify_and_cluster_real_items(self):
+    def test_classify_and_cluster_real_items(self, monkeypatch):
         """测试真实新闻可直接聚类，不依赖前置分类."""
-        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "OpenAI Releases GPT-5",
@@ -52,15 +47,28 @@ class TestEpisodePlannerFullFlow:
             },
         ]
 
-        grouped = group_items_for_podcasts(items, threshold=0.1)
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        grouped = group_items_for_podcasts(items, threshold=0.8)
 
         assert "general" in grouped
         assert sum(len(cluster) for cluster in grouped["general"]) == 3
         assert any(len(cluster) == 2 for cluster in grouped["general"])
 
-    def test_group_items_produces_episode_groups(self):
+    def test_group_items_produces_episode_groups(self, monkeypatch):
         """测试 group_items_for_podcasts 产生正确的分组."""
-        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "Apple CEO Announces New Product",
@@ -85,14 +93,27 @@ class TestEpisodePlannerFullFlow:
             },
         ]
 
-        grouped = group_items_for_podcasts(items, threshold=0.3)
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.98, 0.02],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
+        grouped = group_items_for_podcasts(items, threshold=0.8)
 
         assert len(grouped) > 0
         assert "general" in grouped
 
     def test_deduped_duplicate_rss_entries_only_form_one_group(self):
         """重复 RSS 条目不应生成多个相同播客组."""
-        episode_planner.settings.episode_embedding_enabled = False
         items = [
             {
                 "title": "一加 Ace 6 至尊版手机规格汇总：6.78 英寸直屏、天玑 9500 等，4 月 28 日发布",
@@ -118,7 +139,7 @@ class TestEpisodePlannerFullFlow:
         ]
 
         unique_items = dedupe_items(items)
-        grouped = merge_clusters_by_signature(group_items_for_podcasts(unique_items, threshold=0.3))
+        grouped = group_items_for_podcasts(unique_items, threshold=0.3)
 
         assert len(unique_items) == 2
         total_groups = sum(len(groups) for groups in grouped.values())
@@ -127,80 +148,10 @@ class TestEpisodePlannerFullFlow:
         assert total_groups == 2
         assert total_items == 2
 
-    def test_build_podcast_plan_creates_valid_structure(self):
-        """测试 build_podcast_plan 创建有效的计划结构."""
-        items = [
-            {
-                "item_id": "1",
-                "feed_id": "ai-news",
-                "feed_name": "AI News",
-                "category": "tech_ai",
-                "title": "AI Model Released",
-                "summary": "New AI model announced",
-                "published": "2024-01-01",
-                "link": "http://example.com/1",
-            },
-            {
-                "item_id": "2",
-                "feed_id": "ai-news",
-                "feed_name": "AI News",
-                "category": "tech_ai",
-                "title": "AI Industry Growth",
-                "summary": "AI market growing fast",
-                "published": "2024-01-02",
-                "link": "http://example.com/2",
-            },
-        ]
-
-        plan = build_podcast_plan("tech_ai", items)
-
-        assert plan.topic_id == "tech_ai"
-        assert len(plan.selected_items) == 2
-        assert len(plan.segments) > 0
-        assert plan.closing_takeaway is not None
-        assert "同一个主题的不同侧面" not in plan.closing_takeaway
-        assert "不必硬归成一个大背景" not in plan.closing_takeaway
-        assert "不同机制" in plan.closing_takeaway
-
-    def test_build_group_plan(self):
-        """测试 build_group_plan 创建组计划."""
-        items = [
-            {
-                "item_id": "1",
-                "feed_id": "news",
-                "feed_name": "News",
-                "category": "tech_ai",
-                "title": "AI News 1",
-                "summary": "Summary 1",
-                "published": "2024-01-01",
-                "link": "http://1.com",
-            },
-            {
-                "item_id": "2",
-                "feed_id": "news",
-                "feed_name": "News",
-                "category": "tech_ai",
-                "title": "AI News 2",
-                "summary": "Summary 2",
-                "published": "2024-01-02",
-                "link": "http://2.com",
-            },
-        ]
-
-        plan = build_group_plan("tech_ai", items, "Daily AI Update")
-
-        assert plan.topic_id == "tech_ai"
-        assert plan.topic_name == "Daily AI Update"
-        assert len(plan.selected_items) == 2
-        assert "先把每条新闻各自讲清" not in plan.theme_statement
-        assert "明确关系" not in plan.theme_statement
-        assert "观察" in plan.theme_statement
-
-
 class TestPendingGroupsMerging:
     """待处理组合并集成测试."""
 
-    def test_merge_clusters_with_similar_items(self):
+    def test_merge_clusters_with_similar_items(self, monkeypatch):
         """测试合并相似的待处理簇."""
         # 之前的待处理组
         pending_groups = [
@@ -229,10 +180,24 @@ class TestPendingGroupsMerging:
             },
         ]
 
+        class FakeEmbeddingService:
+            def is_enabled(self):
+                return True
+
+            def encode_texts(self, texts):
+                return [
+                    [1.0, 0.0],
+                    [0.99, 0.01],
+                    [0.0, 1.0],
+                ]
+
+        monkeypatch.setattr(episode_planner.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(episode_planner, "get_embedding_service", lambda: FakeEmbeddingService())
+
         remaining, generated, consumed = merge_pending_groups(
             pending_groups,
             new_items,
-            threshold=0.2,
+            threshold=0.8,
         )
 
         assert len(generated) == 1
@@ -271,55 +236,6 @@ class TestPendingGroupsMerging:
         assert len(remaining) >= 1
         assert generated == []
         assert consumed == []
-
-
-class TestEpisodePlanFormatting:
-    """Episode plan 格式化集成测试."""
-
-    def test_format_plan_for_prompt_complete(self):
-        """测试完整的 plan 格式化输出."""
-        from app.pipelines.episode_planner import EpisodePlan, PlannedNewsItem, EpisodeSegment
-
-        plan = EpisodePlan(
-            topic_id="tech_ai",
-            topic_name="AI News",
-            title_hint="AI Today",
-            theme_statement="AI is advancing rapidly",
-            audience="Tech enthusiasts",
-            editorial_angle="Covering AI developments",
-            selected_items=[
-                PlannedNewsItem(
-                    item_id="1",
-                    feed_id="ai-news",
-                    feed_name="AI News",
-                    category="tech_ai",
-                    title="AI Model Released",
-                    summary="New AI model announced",
-                    published="2024-01-01",
-                    link="http://example.com/1",
-                    score=1.5,
-                    selection_reason="Direct match with topic",
-                )
-            ],
-            segments=[
-                EpisodeSegment(
-                    segment_type="opening",
-                    purpose="Introduce the topic",
-                    item_refs=["1"],
-                    segment_thesis="Start with the main story",
-                )
-            ],
-            closing_takeaway="Remember to follow AI news",
-        )
-
-        formatted = format_plan_for_prompt(plan)
-
-        assert "AI News" in formatted
-        assert "AI Today" in formatted
-        assert "Tech enthusiasts" in formatted
-        assert "AI Model Released" in formatted
-        assert "Remember to follow AI news" in formatted
-
 
 class TestTFIDFAndCosineIntegration:
     """TF-IDF 和余弦相似度集成测试."""

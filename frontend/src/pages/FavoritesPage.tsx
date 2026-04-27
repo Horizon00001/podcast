@@ -102,7 +102,7 @@ export function FavoritesPage() {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  ...getCoverStyle(podcast.category),
+                  ...getCoverStyle(podcast.category, podcast.id),
                   color: '#fff',
                 }}
               >

@@ -1,4 +1,5 @@
 from urllib import error as urllib_error
+import json
 
 import pytest
 
@@ -121,6 +122,29 @@ class TestDashScopeEmbeddingProvider:
         with pytest.raises(RuntimeError, match="size mismatch"):
             provider.encode_texts(["hello", "world"])
 
+    def test_encode_texts_reports_batch_progress(self, monkeypatch):
+        provider = DashScopeEmbeddingProvider(
+            model="text-embedding-v3",
+            api_key="secret",
+            batch_size=2,
+        )
+
+        def fake_encode_batch(texts):
+            return [[float(index), 1.0] for index, _ in enumerate(texts, start=1)]
+
+        monkeypatch.setattr(provider, "_encode_batch", fake_encode_batch)
+        progress = []
+
+        vectors = provider.encode_texts(
+            ["a", "b", "c"],
+            progress_callback=lambda batch_index, total_batches, batch_size: progress.append(
+                (batch_index, total_batches, batch_size)
+            ),
+        )
+
+        assert len(vectors) == 3
+        assert progress == [(1, 2, 2), (2, 2, 1)]
+
 
 class TestEmbeddingService:
     def test_disabled_provider_returns_empty(self, monkeypatch):
@@ -153,3 +177,50 @@ class TestEmbeddingService:
 
         provider = embedding_service._build_provider()
         assert isinstance(provider, DisabledEmbeddingProvider)
+
+    def test_encode_texts_uses_persistent_cache(self, monkeypatch, tmp_path):
+        monkeypatch.setattr(embedding_service.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(embedding_service.settings, "episode_embedding_cache_file", str(tmp_path / "embedding_cache.json"))
+
+        class FakeProvider:
+            def __init__(self):
+                self.calls = 0
+
+            def encode_texts(self, texts, progress_callback=None):
+                self.calls += 1
+                return [[0.1, 0.2] for _ in texts]
+
+        provider = FakeProvider()
+        service = EmbeddingService(provider)
+
+        first = service.encode_texts(["same text"])
+        second = service.encode_texts(["same text"])
+
+        assert first == [[0.1, 0.2]]
+        assert second == [[0.1, 0.2]]
+        assert provider.calls == 1
+
+        cache_path = tmp_path / "embedding_cache.json"
+        assert cache_path.exists()
+        persisted = json.loads(cache_path.read_text(encoding="utf-8"))
+        assert len(persisted) == 1
+
+    def test_encode_texts_reports_cache_hit_and_miss(self, monkeypatch, tmp_path):
+        monkeypatch.setattr(embedding_service.settings, "episode_embedding_enabled", True)
+        monkeypatch.setattr(embedding_service.settings, "episode_embedding_cache_file", str(tmp_path / "embedding_cache.json"))
+
+        class FakeProvider:
+            def encode_texts(self, texts, progress_callback=None):
+                return [[0.1, 0.2] for _ in texts]
+
+        service = EmbeddingService(FakeProvider())
+        service.encode_texts(["cached text"])
+
+        captured = []
+        result = service.encode_texts(
+            ["cached text", "new text"],
+            stats_callback=lambda hit, miss, total: captured.append((hit, miss, total)),
+        )
+
+        assert result == [[0.1, 0.2], [0.1, 0.2]]
+        assert captured == [(1, 1, 2)]

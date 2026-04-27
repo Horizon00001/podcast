@@ -134,10 +134,9 @@ class RecommendationService:
         fresh_score = build_freshness_score(podcasts)
         sequence_score = build_sequence_score(podcasts, user_recent_interactions)
 
+        # 排除用户跳过的播客，但保留已互动的（用分数降权而非彻底排除）
         interacted_items = set(user_item_weights.keys())
-        candidates = [p.id for p in podcasts if p.id not in interacted_items and p.id not in user_skipped]
-        if not candidates:
-            candidates = [p.id for p in podcasts if p.id not in user_skipped]
+        candidates = [p.id for p in podcasts if p.id not in user_skipped]
 
         # --- Strategy-based scoring ---
         strategy = StrategyFactory.get_strategy(pos_count)
@@ -152,6 +151,9 @@ class RecommendationService:
                 sequence=sequence_score.get(podcast_id, 0.0),
             )
             final_score = strategy.compute_score(ctx)
+            # 已互动过的播客适当降权（仍可推荐，但靠后）
+            interacted_penalty = 0.6 if podcast_id in interacted_items else 1.0
+            final_score *= interacted_penalty
             reason = strategy.select_reason(ctx)
             ranked.append((podcast_id, final_score, reason))
 

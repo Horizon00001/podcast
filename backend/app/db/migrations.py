@@ -7,6 +7,7 @@ def run_migrations() -> None:
     _ensure_podcasts_category_column()
     _ensure_podcasts_event_key_column()
     _ensure_podcasts_content_vector_column()
+    _ensure_podcasts_completion_stats_column()
     _ensure_users_preferences_column()
     _ensure_generation_tasks_table()
     _ensure_interactions_columns()
@@ -67,6 +68,25 @@ def _ensure_podcasts_content_vector_column() -> None:
                 "ALTER TABLE podcasts "
                 "ADD COLUMN content_vector TEXT NOT NULL DEFAULT ''"
             )
+        )
+
+
+def _ensure_podcasts_completion_stats_column() -> None:
+    inspector = inspect(engine)
+    table_names = set(inspector.get_table_names())
+    if "podcasts" not in table_names:
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("podcasts")}
+    if "completion_rate" in columns:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(
+            text("ALTER TABLE podcasts ADD COLUMN completion_rate FLOAT")
+        )
+        connection.execute(
+            text("ALTER TABLE podcasts ADD COLUMN completion_count INTEGER")
         )
 
 

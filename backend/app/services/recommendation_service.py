@@ -16,6 +16,7 @@ from app.services.recommendation.scoring import (
     POSITIVE_ACTIONS,
     ScoreContext,
     build_cf_score,
+    build_completion_score,
     build_content_score,
     build_freshness_score,
     build_hot_score,
@@ -137,6 +138,7 @@ class RecommendationService:
         content_score = build_content_score(podcasts, content_profile)
         fresh_score = build_freshness_score(podcasts)
         sequence_score = build_sequence_score(podcasts, user_recent_interactions)
+        completion_score = build_completion_score(podcasts)
 
         # 排除用户跳过的播客，但保留已互动的（用分数降权而非彻底排除）
         interacted_items = set(user_item_weights.keys())
@@ -153,6 +155,7 @@ class RecommendationService:
                 hot=hot_score.get(podcast_id, 0.0),
                 fresh=fresh_score.get(podcast_id, 0.0),
                 sequence=sequence_score.get(podcast_id, 0.0),
+                completion=completion_score.get(podcast_id, 0.0),
             )
             final_score = strategy.compute_score(ctx)
             # 已互动过的播客适当降权（仍可推荐，但靠后）

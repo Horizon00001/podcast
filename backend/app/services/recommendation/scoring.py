@@ -29,6 +29,7 @@ class ScoreContext:
     hot: float = 0.0
     fresh: float = 0.0
     sequence: float = 0.0
+    completion: float = 0.0
 
 
 # ---------------------------------------------------------------------------
@@ -279,6 +280,13 @@ def build_freshness_score(podcasts: list[Podcast]) -> dict[int, float]:
         age_days = max((now - published).total_seconds() / 86400.0, 0.0)
         freshness[podcast.id] = math.exp(-age_days / half_life_days)
     return normalize_scores(freshness)
+
+
+def build_completion_score(podcasts: list[Podcast]) -> dict[int, float]:
+    raw: dict[int, float] = {}
+    for podcast in podcasts:
+        raw[podcast.id] = podcast.completion_rate or 0.0
+    return normalize_scores(raw)
 
 
 def _sequence_text_tokens(podcast: Podcast) -> str:

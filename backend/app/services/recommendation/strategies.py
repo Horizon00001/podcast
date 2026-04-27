@@ -8,10 +8,10 @@ class ColdStartStrategy(BaseStrategy):
         return "cold-start"
 
     def compute_score(self, ctx: ScoreContext) -> float:
-        return 0.40 * ctx.hot + 0.30 * ctx.fresh + 0.30 * ctx.content
+        return 0.35 * ctx.hot + 0.25 * ctx.fresh + 0.25 * ctx.content + 0.15 * ctx.completion
 
     def select_reason(self, ctx: ScoreContext) -> str:
-        signals = {"全站热门推荐": ctx.hot, "新发布的播客": ctx.fresh}
+        signals = {"全站热门推荐": ctx.hot, "新发布的播客": ctx.fresh, "完播率较高": ctx.completion}
         return max(signals.items(), key=lambda item: item[1])[0]
 
 
@@ -25,10 +25,10 @@ class WarmUpStrategy(BaseStrategy):
         return "warm-up"
 
     def compute_score(self, ctx: ScoreContext) -> float:
-        cold = 0.40 * ctx.hot + 0.30 * ctx.fresh + 0.30 * ctx.content
+        cold = 0.35 * ctx.hot + 0.25 * ctx.fresh + 0.25 * ctx.content + 0.15 * ctx.completion
         hybrid = (
-            0.40 * ctx.cf + 0.25 * ctx.content
-            + 0.15 * ctx.hot + 0.10 * ctx.sequence + 0.10 * ctx.fresh
+            0.35 * ctx.cf + 0.20 * ctx.content
+            + 0.15 * ctx.hot + 0.10 * ctx.sequence + 0.10 * ctx.fresh + 0.10 * ctx.completion
         )
         return self._cold_ratio * cold + self._hybrid_ratio * hybrid
 
@@ -37,6 +37,7 @@ class WarmUpStrategy(BaseStrategy):
             "全站热门推荐": ctx.hot,
             "新发布的播客": ctx.fresh,
             "与你历史喜好相似": ctx.cf,
+            "完播率较高": ctx.completion,
         }
         return max(signals.items(), key=lambda item: item[1])[0]
 
@@ -48,8 +49,9 @@ class HybridStrategy(BaseStrategy):
 
     def compute_score(self, ctx: ScoreContext) -> float:
         return (
-            0.40 * ctx.cf + 0.25 * ctx.content
-            + 0.15 * ctx.hot + 0.10 * ctx.sequence + 0.10 * ctx.fresh
+            0.35 * ctx.cf + 0.20 * ctx.content
+            + 0.15 * ctx.hot + 0.10 * ctx.fresh
+            + 0.10 * ctx.sequence + 0.10 * ctx.completion
         )
 
     def select_reason(self, ctx: ScoreContext) -> str:
@@ -59,5 +61,6 @@ class HybridStrategy(BaseStrategy):
             "近期全站热度较高": ctx.hot,
             "发布时间较新": ctx.fresh,
             "与你最近的收听序列相近": ctx.sequence,
+            "完播率较高": ctx.completion,
         }
         return max(signals.items(), key=lambda item: item[1])[0]

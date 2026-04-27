@@ -301,7 +301,7 @@ export function GlobalPlayer({ sidebarWidth = 256, desktopScale = 1 }: GlobalPla
                       </div>
 
                       <div style={{ display: 'grid', gap: '14px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '16px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', width: '100%' }}>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}

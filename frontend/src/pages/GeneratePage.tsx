@@ -156,7 +156,8 @@ export function GeneratePage() {
   const [groupProgress, setGroupProgress] = useState<Record<string, GroupProgress>>({})
   const [sectionProgress, setSectionProgress] = useState<Record<string, SectionProgress>>({})
   
-  const logEndRef = useRef<HTMLDivElement>(null)
+  const terminalContainerRef = useRef<HTMLDivElement>(null)
+  const shouldAutoScrollRef = useRef(true)
   const eventSourceRef = useRef<EventSource | null>(null)
   const isGeneratingRef = useRef(false)
   const currentTaskIdRef = useRef<string | null>(null)
@@ -182,6 +183,19 @@ export function GeneratePage() {
     setActiveGroupLabel(null)
     setGroupProgress({})
     setSectionProgress({})
+  }
+
+  function isScrolledNearBottom(element: HTMLDivElement) {
+    return element.scrollHeight - element.scrollTop - element.clientHeight < 48
+  }
+
+  function handleTerminalScroll() {
+    const element = terminalContainerRef.current
+    if (!element) {
+      return
+    }
+
+    shouldAutoScrollRef.current = isScrolledNearBottom(element)
   }
 
   function updateGroup(label: string, updater: (prev: GroupProgress) => GroupProgress) {
@@ -342,9 +356,12 @@ export function GeneratePage() {
 
   // 自动滚动逻辑
   useEffect(() => {
-    if (logEndRef.current) {
-      logEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    const element = terminalContainerRef.current
+    if (!element || !shouldAutoScrollRef.current) {
+      return
     }
+
+    element.scrollTo({ top: element.scrollHeight, behavior: 'smooth' })
   }, [terminalOutput])
 
   useEffect(() => {
@@ -930,7 +947,10 @@ export function GeneratePage() {
           </div>
 
           {/* 终端内容区 */}
-          <div style={{ 
+          <div
+            ref={terminalContainerRef}
+            onScroll={handleTerminalScroll}
+            style={{ 
             padding: '15px', 
             height: '420px', 
             overflowY: 'auto', 
@@ -943,7 +963,6 @@ export function GeneratePage() {
             <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
               {terminalOutput}
             </pre>
-            <div ref={logEndRef} />
           </div>
         </div>
       )}

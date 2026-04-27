@@ -99,34 +99,6 @@
             "category": "tech"
         },
         {
-            "id": "smzdm",
-            "name": "什么值得买",
-            "url": "https://www.smzdm.com/feed",
-            "enabled": false,
-            "category": "shopping"
-        },
-        {
-            "id": "zhihu-daily",
-            "name": "知乎日报",
-            "url": "https://daily.zhihu.com/rss",
-            "enabled": false,
-            "category": "tech"
-        },
-        {
-            "id": "dw-zh",
-            "name": "DW 中文",
-            "url": "https://rss.dw.com/rss/zh/rss-zh-all.xml",
-            "enabled": false,
-            "category": "news"
-        },
-        {
-            "id": "reuters",
-            "name": "Reuters",
-            "url": "https://feeds.reuters.com/reuters/topNews",
-            "enabled": false,
-            "category": "news"
-        },
-        {
             "id": "guardian-world",
             "name": "The Guardian World",
             "url": "https://www.theguardian.com/world/rss",
@@ -148,31 +120,10 @@
             "category": "finance"
         },
         {
-            "id": "reuters-tech",
-            "name": "Reuters Technology",
-            "url": "https://www.reutersagency.com/feed/?post_type=best-sectors&best-sectors=tech&feed_id=3965",
-            "enabled": false,
-            "category": "tech"
-        },
-        {
-            "id": "ap-news",
-            "name": "AP News",
-            "url": "https://rsshub.app/apnews/topics/apf-topnews",
-            "enabled": false,
-            "category": "news"
-        },
-        {
             "id": "nature",
             "name": "Nature",
             "url": "https://www.nature.com/nature.rss",
             "enabled": true,
-            "category": "science"
-        },
-        {
-            "id": "national-geographic",
-            "name": "National Geographic",
-            "url": "https://www.nationalgeographic.com/rss",
-            "enabled": false,
             "category": "science"
         },
         {
@@ -183,27 +134,12 @@
             "category": "finance"
         },
         {
-            "id": "the-athletic",
-            "name": "The Athletic",
-            "url": "https://theathletic.com/feed/",
-            "enabled": false,
-            "category": "sports"
-        },
-        {
             "id": "fortune",
             "name": "Fortune",
             "url": "https://fortune.com/feed",
             "enabled": true,
             "category": "finance"
         },
-        {
-            "id": "economist",
-            "name": "The Economist",
-            "url": "https://www.economist.com/feeds/print-sections/77/business.xml",
-            "enabled": false,
-            "category": "finance"
-        }
-    ,
         {
             "id": "mit-tech-review",
             "name": "MIT Technology Review",
@@ -233,32 +169,11 @@
             "category": "news"
         },
         {
-            "id": "sciam",
-            "name": "Scientific American",
-            "url": "https://www.scientificamerican.com/feed/",
-            "enabled": false,
-            "category": "science"
-        },
-        {
             "id": "new-scientist",
             "name": "New Scientist",
             "url": "https://www.newscientist.com/feed/home",
             "enabled": true,
             "category": "science"
-        },
-        {
-            "id": "huxiu",
-            "name": "虎嗅",
-            "url": "https://www.huxiu.com/rss/0.xml",
-            "enabled": false,
-            "category": "tech"
-        },
-        {
-            "id": "geekpark",
-            "name": "极客公园",
-            "url": "https://www.geekpark.net/rss",
-            "enabled": false,
-            "category": "tech"
         },
         {
             "id": "github-blog",
@@ -294,20 +209,6 @@
             "url": "https://feeds.feedburner.com/ruanyifeng",
             "enabled": true,
             "category": "tech"
-        },
-        {
-            "id": "geektime",
-            "name": "极客时间",
-            "url": "https://time.geekbang.org/rss",
-            "enabled": false,
-            "category": "tech"
-        },
-        {
-            "id": "jiaoyu",
-            "name": "中国教育在线",
-            "url": "https://www.eol.cn/rss.xml",
-            "enabled": false,
-            "category": "education"
         },
         {
             "id": "infoq",
@@ -350,20 +251,6 @@
             "url": "https://abcnews.go.com/abcnews/topstories",
             "enabled": true,
             "category": "news"
-        },
-        {
-            "id": "usa-today",
-            "name": "USA Today",
-            "url": "https://rssfeeds.usatoday.com/usatoday-newstopstories",
-            "enabled": false,
-            "category": "news"
-        },
-        {
-            "id": "discover-mag",
-            "name": "Discover Magazine",
-            "url": "https://www.discovermagazine.com/feed",
-            "enabled": false,
-            "category": "science"
         },
         {
             "id": "pop-sci",

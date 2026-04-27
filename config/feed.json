@@ -308,6 +308,76 @@
             "url": "https://www.eol.cn/rss.xml",
             "enabled": true,
             "category": "education"
+        },
+        {
+            "id": "infoq",
+            "name": "InfoQ",
+            "url": "https://www.infoq.com/feed/",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "engadget",
+            "name": "Engadget",
+            "url": "https://www.engadget.com/rss.xml",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "macrumors",
+            "name": "MacRumors",
+            "url": "https://feeds.macrumors.com/MacRumors-All",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "venturebeat",
+            "name": "VentureBeat",
+            "url": "https://venturebeat.com/feed/",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "npr-hourly",
+            "name": "NPR Hourly News",
+            "url": "https://feeds.npr.org/1001/rss.xml",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "abc-news",
+            "name": "ABC News",
+            "url": "https://abcnews.go.com/abcnews/topstories",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "usa-today",
+            "name": "USA Today",
+            "url": "https://rssfeeds.usatoday.com/usatoday-newstopstories",
+            "enabled": true,
+            "category": "news"
+        },
+        {
+            "id": "discover-mag",
+            "name": "Discover Magazine",
+            "url": "https://www.discovermagazine.com/feed",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "pop-sci",
+            "name": "Popular Science",
+            "url": "https://www.popsci.com/feed/",
+            "enabled": true,
+            "category": "science"
+        },
+        {
+            "id": "polygon",
+            "name": "Polygon",
+            "url": "https://www.polygon.com/rss/index.xml",
+            "enabled": true,
+            "category": "tech"
         }
     ]
 }

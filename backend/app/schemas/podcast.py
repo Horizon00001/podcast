@@ -12,6 +12,7 @@ class PodcastBase(BaseModel):
 
 class PodcastCreate(PodcastBase):
     event_key: str = ""
+    content_vector: str = ""
     audio_url: str = ""
     script_path: str = ""
 
@@ -19,6 +20,7 @@ class PodcastCreate(PodcastBase):
 class PodcastResponse(PodcastBase):
     id: int
     event_key: str = ""
+    content_vector: str = ""
     audio_url: str = ""
     script_path: str = ""
     published_at: datetime

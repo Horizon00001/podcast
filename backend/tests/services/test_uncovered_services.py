@@ -99,7 +99,7 @@ class TestPodcastService:
         svc = PodcastService(db_session)
         svc.upsert_podcast(PodcastCreate(title="First", event_key="svc:forced", summary="old"))
         status, updated = svc.upsert_podcast(
-            PodcastCreate(title="Second", event_key="svc:forced", summary="new"),
+            PodcastCreate(title="Second", event_key="svc:forced", summary="new", content_vector="[0.4, 0.6]"),
             force=True,
         )
 
@@ -107,6 +107,7 @@ class TestPodcastService:
         assert updated is not None
         assert updated.title == "Second"
         assert updated.summary == "new"
+        assert updated.content_vector == "[0.4, 0.6]"
 
 
 class TestGenerationResultService:

@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+import json
 
 from fastapi.testclient import TestClient
 
@@ -112,9 +113,10 @@ def test_recommendations_personalized_and_skip_filtered():
         user_a_id = user_a.id
 
         p1 = Podcast(title="AI News", summary="ai model update", audio_url="", script_path="")
-        p2 = Podcast(title="AI Weekly", summary="ai product release", audio_url="", script_path="")
-        p3 = Podcast(title="Finance Daily", summary="market stocks", audio_url="", script_path="")
-        p4 = Podcast(title="AI Deep Dive", summary="ai architecture", audio_url="", script_path="")
+        p2 = Podcast(title="AI Weekly", summary="ai product release", content_vector=json.dumps([0.9, 0.1]), audio_url="", script_path="")
+        p3 = Podcast(title="Finance Daily", summary="market stocks", content_vector=json.dumps([0.0, 1.0]), audio_url="", script_path="")
+        p4 = Podcast(title="AI Deep Dive", summary="ai architecture", content_vector=json.dumps([0.95, 0.05]), audio_url="", script_path="")
+        p1.content_vector = json.dumps([1.0, 0.0])
         db.add_all([p1, p2, p3, p4])
         db.flush()
         p3_id = p3.id

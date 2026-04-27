@@ -17,11 +17,12 @@ class TestPodcastRepository:
     def test_create_and_list(self, db_session):
         repo = PodcastRepository(db_session)
         p = repo.create_podcast(PodcastCreate(
-            title="Episode 1", summary="Summary", category="tech", event_key="tech:event-1",
+            title="Episode 1", summary="Summary", category="tech", event_key="tech:event-1", content_vector="[0.1, 0.2]",
         ))
         assert p.id is not None
         assert p.title == "Episode 1"
         assert p.event_key == "tech:event-1"
+        assert p.content_vector == "[0.1, 0.2]"
         podcasts = repo.list_podcasts()
         assert len(podcasts) == 1
         assert podcasts[0].id == p.id
@@ -73,6 +74,7 @@ class TestPodcastRepository:
                 summary="Updated summary",
                 category="tech_ai",
                 event_key="tech:clustered",
+                content_vector="[0.9, 0.1]",
                 audio_url="/audio/new.mp3",
                 script_path="/output/new.json",
             ),
@@ -80,6 +82,7 @@ class TestPodcastRepository:
         assert updated.title == "New"
         assert updated.summary == "Updated summary"
         assert updated.category == "tech_ai"
+        assert updated.content_vector == "[0.9, 0.1]"
         assert updated.audio_url == "/audio/new.mp3"
 
 

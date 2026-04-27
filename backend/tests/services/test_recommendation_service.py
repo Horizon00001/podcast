@@ -1,4 +1,5 @@
 import math
+import json
 from datetime import UTC, datetime, timedelta
 from collections import defaultdict
 from unittest.mock import MagicMock
@@ -192,6 +193,16 @@ class TestRecommendationServicePureFunctions:
         result = self.service._build_sequence_score(podcasts, [])
         assert result == {}
 
+    def test_parse_content_vector_invalid_returns_empty(self):
+        assert self.service._parse_content_vector("not-json") == []
+
+    def test_parse_content_vector_json_array(self):
+        assert self.service._parse_content_vector("[1, 2.5]") == [1.0, 2.5]
+
+    def test_dense_cosine_identical_vectors(self):
+        result = self.service._dense_cosine([1.0, 2.0], [1.0, 2.0])
+        assert abs(result - 1.0) < 1e-6
+
     def test_build_sequence_score_single_recent(self, db_session):
         service = RecommendationService(db_session)
         user = User(username="seq-user", email="seq@test.com")
@@ -356,6 +367,27 @@ class TestRecommendationServiceWithDB:
 
         assert result.strategy == "warm-up"
         assert all(item.podcast_id != p2.id for item in result.items)
+
+    def test_content_vector_similarity_promotes_related_candidate(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="vector-user", email="vector@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="Seed", summary="seed", content_vector=json.dumps([1.0, 0.0]), audio_url="", script_path="")
+        p2 = Podcast(title="Similar", summary="similar", content_vector=json.dumps([0.95, 0.05]), audio_url="", script_path="")
+        p3 = Podcast(title="Different", summary="different", content_vector=json.dumps([0.0, 1.0]), audio_url="", script_path="")
+        db_session.add_all([p1, p2, p3])
+        db_session.flush()
+
+        db_session.add(Interaction(user_id=user.id, podcast_id=p1.id, action="favorite"))
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+        ids = [item.podcast_id for item in result.items]
+
+        assert ids.index(p2.id) < ids.index(p3.id)
 
     def test_skip_early_filtered_late_not_filtered(self, db_session):
         service = RecommendationService(db_session)

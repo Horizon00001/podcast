@@ -25,6 +25,7 @@ class PodcastRepository:
             summary=payload.summary,
             category=payload.category,
             event_key=payload.event_key,
+            content_vector=payload.content_vector,
             audio_url=payload.audio_url,
             script_path=payload.script_path,
         )
@@ -38,6 +39,7 @@ class PodcastRepository:
         podcast.summary = payload.summary
         podcast.category = payload.category
         podcast.event_key = payload.event_key
+        podcast.content_vector = payload.content_vector
         podcast.audio_url = payload.audio_url
         podcast.script_path = payload.script_path
         self.db.add(podcast)

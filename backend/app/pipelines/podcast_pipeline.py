@@ -17,6 +17,7 @@ from app.pipelines.episode_planner import (
 from app.pipelines.generate_text_pipeline import build_generation_input
 from app.pipelines.rss_pipeline import fetch_rss_feeds
 from app.schemas.podcast import PodcastCreate
+from app.services.embedding_service import get_embedding_service
 from app.services.podcast_service import PodcastService
 from app.services.script_service import ScriptService
 from app.services.tts_service import TTSService
@@ -68,6 +69,41 @@ def _save_combined_timing(audio_dir: Path, group_dir: Path, filename: str) -> No
     output_path = group_dir / filename
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(combined, f, ensure_ascii=False, indent=2)
+
+
+def _group_embedding_text(item: dict) -> str:
+    return " ".join(
+        part for part in [item.get("title", ""), item.get("summary", "")] if part
+    )
+
+
+def _average_vectors(vectors: list[list[float]]) -> list[float]:
+    valid_vectors = [vector for vector in vectors if vector]
+    if not valid_vectors:
+        return []
+
+    vector_size = len(valid_vectors[0])
+    if any(len(vector) != vector_size for vector in valid_vectors):
+        return []
+
+    totals = [0.0] * vector_size
+    for vector in valid_vectors:
+        for index, value in enumerate(vector):
+            totals[index] += value
+    return [value / len(valid_vectors) for value in totals]
+
+
+def _group_center_vector(group_items: list[dict]) -> list[float]:
+    service = get_embedding_service()
+    if not group_items or not service.is_enabled():
+        return []
+
+    texts = [_group_embedding_text(item) for item in group_items]
+    if not any(texts):
+        return []
+
+    vectors = service.encode_texts(texts)
+    return _average_vectors(vectors)
 
 
 async def run_pipeline(
@@ -131,7 +167,7 @@ async def run_pipeline(
         log_callback(f"已分类到类别数: {grouped_summary['category_count']}")
 
         generated_links = set()
-        generated_groups: list[tuple[str, Path]] = []
+        generated_groups: list[tuple[str, Path, str, str]] = []
 
         async def run_group_pipeline(category: str, group_items: list[dict], group_index: int):
             if check_cancelled and check_cancelled():
@@ -203,7 +239,8 @@ async def run_pipeline(
             _save_combined_timing(tts_service.audio_dir, group_dir, "podcast_timing.json")
             log(f"[Group Done] {group_label} -> {group_dir / 'audio' / 'podcast_full.mp3'}")
             generated_links.update(item.get("link", "") for item in group_items if item.get("link"))
-            generated_groups.append((group_label, group_dir, event_key))
+            center_vector = _group_center_vector(group_items)
+            generated_groups.append((group_label, group_dir, event_key, json.dumps(center_vector)))
 
         tasks = []
         log("\n[3/4] 生成脚本并合成音频")
@@ -245,7 +282,7 @@ async def run_pipeline(
         skipped_duplicate_count = 0
         try:
             podcast_service = PodcastService(db)
-            for group_name, group_dir, event_key in generated_groups:
+            for group_name, group_dir, event_key, content_vector in generated_groups:
                 script_file = group_dir / "podcast_script.json"
                 audio_file = group_dir / "audio" / "podcast_full.mp3"
                 if not script_file.exists() or not audio_file.exists():
@@ -260,6 +297,7 @@ async def run_pipeline(
                     title=title,
                     summary=summary,
                     event_key=event_key,
+                    content_vector=content_vector,
                     audio_url=audio_url,
                     script_path=script_path,
                 )

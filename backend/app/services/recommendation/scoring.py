@@ -1,4 +1,5 @@
 import math
+import json
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -47,6 +48,17 @@ def cosine_similarity(left: dict[str, float], right: dict[str, float]) -> float:
     right_norm = math.sqrt(sum(value * value for value in right.values()))
     if left_norm == 0 or right_norm == 0:
         return 0.0
+    return dot / (left_norm * right_norm)
+
+
+def dense_cosine_similarity(left: list[float], right: list[float]) -> float:
+    if not left or not right or len(left) != len(right):
+        return 0.0
+    left_norm = math.sqrt(sum(value * value for value in left))
+    right_norm = math.sqrt(sum(value * value for value in right))
+    if left_norm == 0 or right_norm == 0:
+        return 0.0
+    dot = sum(a * b for a, b in zip(left, right))
     return dot / (left_norm * right_norm)
 
 
@@ -193,43 +205,67 @@ def build_content_score(
     if not user_positive_score:
         return {}
 
-    documents: dict[int, list[str]] = {}
-    df: dict[str, int] = defaultdict(int)
+    podcast_vectors: dict[int, list[float]] = {}
     for podcast in podcasts:
-        text = " ".join(
-            [
-                podcast.title or "",
-                podcast.summary or "",
-                getattr(podcast, "category", "") or "",
-            ]
-        )
-        tokens = tokenize(text)
-        documents[podcast.id] = tokens
-        for token in set(tokens):
-            df[token] += 1
+        vector = parse_content_vector(getattr(podcast, "content_vector", ""))
+        if vector:
+            podcast_vectors[podcast.id] = vector
 
-    total_docs = max(len(documents), 1)
-    vectors: dict[int, dict[str, float]] = {}
-    for podcast_id, tokens in documents.items():
-        tf: dict[str, float] = defaultdict(float)
-        for token in tokens:
-            tf[token] += 1.0
-        length = max(len(tokens), 1)
-        vec = {}
-        for token, count in tf.items():
-            idf = math.log((1 + total_docs) / (1 + df[token])) + 1.0
-            vec[token] = (count / length) * idf
-        vectors[podcast_id] = vec
+    if not podcast_vectors:
+        return {}
 
-    profile: dict[str, float] = defaultdict(float)
-    for podcast_id, weight in user_positive_score.items():
-        for token, value in vectors.get(podcast_id, {}).items():
-            profile[token] += value * weight
+    user_vector = average_weighted_vectors(
+        [
+            (podcast_vectors[podcast_id], weight)
+            for podcast_id, weight in user_positive_score.items()
+            if podcast_id in podcast_vectors and weight > 0
+        ]
+    )
+    if not user_vector:
+        return {}
 
     score: dict[int, float] = {}
-    for podcast_id, vec in vectors.items():
-        score[podcast_id] = cosine_similarity(profile, vec)
+    for podcast_id, vector in podcast_vectors.items():
+        score[podcast_id] = max(dense_cosine_similarity(user_vector, vector), 0.0)
     return normalize_scores(score)
+
+
+def parse_content_vector(raw: str | None) -> list[float]:
+    if not raw:
+        return []
+    try:
+        data = json.loads(raw)
+    except (TypeError, json.JSONDecodeError):
+        return []
+    if not isinstance(data, list):
+        return []
+    vector: list[float] = []
+    for value in data:
+        if not isinstance(value, (int, float)):
+            return []
+        vector.append(float(value))
+    return vector
+
+
+def average_weighted_vectors(entries: list[tuple[list[float], float]]) -> list[float]:
+    valid_entries = [(vector, weight) for vector, weight in entries if vector and weight > 0]
+    if not valid_entries:
+        return []
+
+    vector_size = len(valid_entries[0][0])
+    if any(len(vector) != vector_size for vector, _ in valid_entries):
+        return []
+
+    totals = [0.0] * vector_size
+    total_weight = 0.0
+    for vector, weight in valid_entries:
+        total_weight += weight
+        for index, value in enumerate(vector):
+            totals[index] += value * weight
+
+    if total_weight <= 0:
+        return []
+    return [value / total_weight for value in totals]
 
 
 def build_freshness_score(podcasts: list[Podcast]) -> dict[int, float]:

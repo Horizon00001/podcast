@@ -23,9 +23,11 @@ from app.services.recommendation.scoring import (
     compute_reason_text,
     cosine_similarity,
     current_bucket,
+    dense_cosine_similarity,
     guess_bucket,
     normalize_action,
     normalize_scores,
+    parse_content_vector,
     play_weight,
     recency_weight,
     seed_preference_score,
@@ -38,6 +40,7 @@ class RecommendationService:
     # Backward-compatible static method proxies for existing tests.
     _tokenize = staticmethod(tokenize)
     _cosine = staticmethod(cosine_similarity)
+    _dense_cosine = staticmethod(dense_cosine_similarity)
     _normalize = staticmethod(normalize_scores)
     _play_weight = staticmethod(play_weight)
     _skip_weight = staticmethod(skip_weight)
@@ -52,6 +55,7 @@ class RecommendationService:
     _build_sequence_score = staticmethod(build_sequence_score)
     _seed_preference_score = staticmethod(seed_preference_score)
     _reason_text = staticmethod(compute_reason_text)
+    _parse_content_vector = staticmethod(parse_content_vector)
 
     def __init__(self, db: Session):
         self.db = db

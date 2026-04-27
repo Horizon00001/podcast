@@ -159,7 +159,8 @@ class TestEpisodePlannerFullFlow:
         assert len(plan.segments) > 0
         assert plan.closing_takeaway is not None
         assert "同一个主题的不同侧面" not in plan.closing_takeaway
-        assert "不必硬归成一个大背景" in plan.closing_takeaway
+        assert "不必硬归成一个大背景" not in plan.closing_takeaway
+        assert "不同机制" in plan.closing_takeaway
 
     def test_build_group_plan(self):
         """测试 build_group_plan 创建组计划."""
@@ -191,8 +192,9 @@ class TestEpisodePlannerFullFlow:
         assert plan.topic_id == "tech_ai"
         assert plan.topic_name == "Daily AI Update"
         assert len(plan.selected_items) == 2
-        assert "先把每条新闻各自讲清" in plan.theme_statement
-        assert "明确关系" in plan.theme_statement
+        assert "先把每条新闻各自讲清" not in plan.theme_statement
+        assert "明确关系" not in plan.theme_statement
+        assert "观察" in plan.theme_statement
 
 
 class TestPendingGroupsMerging:

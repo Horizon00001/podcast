@@ -637,7 +637,9 @@ class TestEpisodePlannerPlanLanguage:
         plan = build_podcast_plan("tech_ai", items)
 
         assert "同一个主题的不同侧面" not in plan.closing_takeaway
-        assert "不必硬归成一个大背景" in plan.closing_takeaway
-        assert "先把每条新闻各自讲清" in plan.theme_statement
-        assert "明确关系" in plan.theme_statement
+        assert "不必硬归成一个大背景" not in plan.closing_takeaway
+        assert "先把每条新闻各自讲清" not in plan.theme_statement
+        assert "明确关系" not in plan.theme_statement
+        assert "观察" in plan.theme_statement
+        assert "不同机制" in plan.closing_takeaway
         assert plan.segments[-1].purpose == "自然收束本期内容，只回收那些已经被事实支撑的重点。"

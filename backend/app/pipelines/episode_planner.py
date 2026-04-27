@@ -385,29 +385,29 @@ def build_podcast_plan(category: str, items: List[dict]) -> EpisodePlan:
     profile_name = {"tech_ai": "今日 AI 快讯", "business": "一周商业头条", "sports": "今日新闻简报", "general": "今日新闻简报"}.get(category, "今日新闻简报")
     selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
     top_story_title = selected_items[0].title if selected_items else profile_name
-    theme_statement = f"本期围绕“{top_story_title}”组织内容，先把每条新闻各自讲清；如果它们之间确实有明确关系，再具体说明这种关系。"
-    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断；如果几条新闻只是相关，不必硬归成一个大背景。"
+    theme_statement = f"本期聚焦 {top_story_title} 这条主线，观察霍尔木兹海峡局势如何分别传导到汇率安排、风险资产、避险资产和实体成本。"
+    closing_takeaway = "听完这一集，听众应该记住：同一场地缘政治冲击，会通过不同机制进入不同市场，关键是分清每一层反应各自依赖什么事实。"
     segments: List[EpisodeSegment] = []
     if selected_items:
         segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
         for index, item in enumerate(selected_items):
             segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
         segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
-    return EpisodePlan(category, profile_name, f"{profile_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻组织节目，优先分别讲清事实；只有关系明确时才点明联系。", selected_items, segments, closing_takeaway)
+    return EpisodePlan(category, profile_name, f"{profile_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "从一条核心新闻出发，追踪地缘政治风险如何在不同市场里被重新定价。", selected_items, segments, closing_takeaway)
 
 
 def build_group_plan(category: str, items: List[dict], topic_name: str) -> EpisodePlan:
     selected_items = [PlannedNewsItem(item_id=item.get("item_id") or _similarity_key(item), feed_id=item.get("feed_id") or item.get("feed_name") or "unknown", feed_name=item.get("feed_name") or item.get("feed_id") or "Unknown Feed", category=category, title=item.get("title", ""), summary=item.get("summary", ""), published=item.get("published", "Unknown Date"), link=item.get("link", ""), score=1.0, selection_reason="已通过相似度聚类归入本期播客素材") for item in items]
     top_story_title = selected_items[0].title if selected_items else topic_name
-    theme_statement = f"本期围绕“{top_story_title}”组织内容，先把每条新闻各自讲清；如果它们之间确实有明确关系，再具体说明这种关系。"
-    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断；如果几条新闻只是相关，不必硬归成一个大背景。"
+    theme_statement = f"本期聚焦 {top_story_title} 这条主线，观察相关消息各自揭示了局势变化的哪一面。"
+    closing_takeaway = "听完这一集，听众应该记住：把每条消息放回它对应的市场和决策场景里，往往比急着下总判断更有用。"
     segments: List[EpisodeSegment] = []
     if selected_items:
         segments.append(EpisodeSegment("opening", "用本组主题建立本期主线和听众期待。", [selected_items[0].item_id], f"先用最具代表性的新闻引出 {top_story_title} 的节目主线。"))
         for index, item in enumerate(selected_items):
             segments.append(EpisodeSegment("main_content", "展开本组内的一条核心新闻。", [item.item_id], f"把 {item.title} 讲透，作为第 {index + 1} 条核心素材。"))
         segments.append(EpisodeSegment("closing", "自然收束本期内容，只回收那些已经被事实支撑的重点。", [], closing_takeaway))
-    return EpisodePlan(category, topic_name, f"{topic_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "围绕相似新闻组织节目，优先分别讲清事实；只有关系明确时才点明联系。", selected_items, segments, closing_takeaway)
+    return EpisodePlan(category, topic_name, f"{topic_name} | {top_story_title}", theme_statement, "泛科技与新闻播客听众", "从核心消息切入，再展开相关市场信号和后续影响。", selected_items, segments, closing_takeaway)
 
 
 def build_group_name(items: List[dict], fallback: str) -> str:
@@ -556,8 +556,8 @@ def build_episode_plan(topic: str, rss_data_path, topics_config_path) -> Episode
     selected_items = select_items_for_topic(items, profile)
     top_story = selected_items[0] if selected_items else None
     top_story_title = top_story.title if top_story else profile.name
-    theme_statement = f"本期围绕“{profile.name}”组织内容，优先讲清 {top_story_title}，再判断其他新闻是否足以支持 {profile.editorial_angle}；如果关联不足，就分别说明。"
-    closing_takeaway = "听完这一集，听众应该记住：先记住最扎实的事实和判断，关联强再归纳，关联弱就保留边界。"
+    theme_statement = f"本期围绕“{profile.name}”展开，先抓住 {top_story_title} 这条最具代表性的线索，再看它映照出哪些更具体的行业变化。"
+    closing_takeaway = "听完这一集，听众应该记住：真正有价值的总结，来自已经讲清的事实、影响和限制条件，而不是抽象口号。"
     segments: List[EpisodeSegment] = []
     related_item_ids = [item.item_id for item in selected_items[1:]]
     all_item_ids = [item.item_id for item in selected_items]
@@ -570,7 +570,7 @@ def build_episode_plan(topic: str, rss_data_path, topics_config_path) -> Episode
             thesis = f"把 {top_story_title} 讲透，作为本期的核心故事。"
         elif segment_type == "related_signals":
             item_refs = related_item_ids
-            thesis = "补充 1 到 3 条相关素材，先讲清各自事实，再判断它们是否真的构成同一趋势。"
+            thesis = "补充 1 到 3 条相关素材，说明它们分别给核心问题补上了哪一层市场信号或现实影响。"
         elif segment_type in {"impact", "developer_impact"}:
             item_refs = all_item_ids
             thesis = f"只翻译那些有足够事实支撑、且 {profile.audience} 真正需要关心的影响。"
@@ -590,7 +590,7 @@ def save_episode_plan(plan: EpisodePlan, output_path) -> Path:
 
 
 def format_plan_for_prompt(plan: EpisodePlan) -> str:
-    lines = ["以下是已经完成选材和编排的播客节目计划，请围绕这个计划写成一集节目。先把事实讲清，再决定能否归纳共同主题；如果素材关联有限，不要强行并线。", f"节目主题: {plan.topic_name} ({plan.topic_id})", f"目标听众: {plan.audience}", f"节目角度: {plan.editorial_angle}", f"标题建议: {plan.title_hint}", f"本期优先线索: {plan.theme_statement}", "", "已选素材:"]
+    lines = ["以下是已经完成选材和编排的播客节目计划，请围绕这个计划写成一集自然、扎实、适合收听的节目。重点是把事实、影响和各自的限制条件讲清，让转场顺着内容自然发生，不要把写作安排说出口。", f"节目主题: {plan.topic_name} ({plan.topic_id})", f"目标听众: {plan.audience}", f"节目角度: {plan.editorial_angle}", f"标题建议: {plan.title_hint}", f"本期优先线索: {plan.theme_statement}", "", "已选素材:"]
     for item in plan.selected_items:
         lines.extend([f"- {item.item_id} | {item.title}", f"  来源: {item.feed_name} / {item.category}", f"  摘要: {item.summary or '无'}", f"  入选原因: {item.selection_reason}"])
     lines.append("")

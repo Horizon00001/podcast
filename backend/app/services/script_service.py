@@ -84,12 +84,12 @@ class ScriptService:
             dialogues=[
                 DialogueTurn(
                     speaker="A",
-                    content="刚才这条线索先放在这里，我们换到另一个也值得单独讲清的变化上。",
+                    content="阿联酋这一步更像是在提前做准备。接下来市场马上出现的另一条消息，反应就直接得多了。",
                     emotion="自然承接",
                 ),
                 DialogueTurn(
                     speaker="B",
-                    content="先把这一条讲完，再看下一条本身说了什么；如果两者真有关系，到那里再具体说明。",
+                    content="对，因为这次先动的不是政策工具，而是风险情绪本身。",
                     emotion="简洁分析",
                 ),
             ],

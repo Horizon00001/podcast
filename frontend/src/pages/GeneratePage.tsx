@@ -202,6 +202,14 @@ function formatTerminalLines(output: string) {
   return output.split(/\r?\n/)
 }
 
+function normalizeLogChunk(chunk: string) {
+  if (!chunk) {
+    return ''
+  }
+
+  return chunk.endsWith('\n') ? chunk : `${chunk}\n`
+}
+
 export function GeneratePage() {
   const { user } = useUser()
   const [rssSources, setRssSources] = useState<RSSSource[]>([])
@@ -242,12 +250,12 @@ export function GeneratePage() {
   }
 
   function appendOutput(text: string) {
-    setTerminalOutput((prev) => prev + text)
+    setTerminalOutput((prev) => prev + normalizeLogChunk(text))
   }
 
   function restoreFromLogs(logs: string[]) {
     processedLogCountRef.current = logs.length
-    setTerminalOutput(logs.join(''))
+    setTerminalOutput(logs.map((log) => normalizeLogChunk(log)).join(''))
     resetProgressState()
     for (const log of logs) {
       handleStructuredLogChunk(log)

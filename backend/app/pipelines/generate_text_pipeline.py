@@ -40,6 +40,7 @@ def build_generation_input(topic: str, rss_data_path: Path, episode_plan_path: O
         plan = load_episode_plan(episode_plan_path)
         if plan is not None:
             return format_plan_for_prompt(plan)
+        return ""
 
     if not rss_data_path.exists():
         return ""

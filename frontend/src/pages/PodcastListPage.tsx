@@ -612,7 +612,7 @@ export function PodcastListPage() {
                         event.stopPropagation()
                         handleFavoriteToggle(podcast.id)
                       }}
-                      style={{ border: `1px solid ${isFavorite(podcast.id) ? '#000000' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? '#000000' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                      style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
                     >
                       {isFavorite(podcast.id) ? '已收藏' : '收藏'}
                     </motion.button>
@@ -641,8 +641,8 @@ export function PodcastListPage() {
             style={{
               padding: '8px 16px',
               borderRadius: '40px',
-                border: `1px solid ${selectedCategory === cat.id ? '#000000' : 'var(--border)'}`,
-                background: selectedCategory === cat.id ? '#000000' : '#ffffff',
+                border: `1px solid ${selectedCategory === cat.id ? 'var(--accent-border)' : 'var(--border)'}`,
+                background: selectedCategory === cat.id ? 'var(--accent-bg)' : '#ffffff',
                 color: selectedCategory === cat.id ? '#ffffff' : '#3d3845',
                cursor: 'pointer',
                fontSize: '14px',
@@ -735,7 +735,7 @@ export function PodcastListPage() {
                       event.stopPropagation()
                       handleFavoriteToggle(podcast.id)
                     }}
-                    style={{ border: `1px solid ${isFavorite(podcast.id) ? '#000000' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? '#000000' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                    style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
   >
                     {isFavorite(podcast.id) ? '已收藏' : '收藏'}
                   </motion.button>

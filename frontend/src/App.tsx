@@ -96,10 +96,10 @@ function AccountPanel({ compact = false }: { compact?: boolean }) {
          type="submit"
          disabled={loading}
           style={{
-            border: '1px solid #000000',
+            border: '1px solid var(--accent-border)',
             color: '#ffffff',
             borderRadius: '999px',
-            background: '#000000',
+            background: 'var(--accent-bg)',
             padding: '8px 12px',
             cursor: 'pointer',
             fontWeight: 600,
@@ -126,7 +126,7 @@ function AccountEntry() {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         style={{
-          border: `1px solid ${open ? '#000000' : 'rgba(8, 6, 13, 0.08)'}`,
+          border: `1px solid ${open ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`,
           background: open ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.72)',
           borderRadius: '999px',
           padding: user ? '7px 12px 7px 7px' : '8px 13px',
@@ -149,7 +149,7 @@ function AccountEntry() {
             alignItems: 'center',
             justifyContent: 'center',
             background: user
-                ? '#000000'
+                ? 'var(--accent-bg)'
                 : 'rgba(8, 6, 13, 0.06)',
             color: user ? '#ffffff' : 'var(--text)',
             fontSize: '12px',
@@ -235,13 +235,13 @@ function NavigationRail() {
                     style={({ isActive }) => ({
                       textDecoration: 'none',
                       color: isActive ? '#ffffff' : '#3d3845',
-                      background: isActive ? '#000000' : 'transparent',
+                      background: isActive ? 'var(--accent-bg)' : 'transparent',
                       borderRadius: '10px',
                       padding: '8px 10px',
                       fontWeight: isActive ? 600 : 500,
                       fontSize: '14px',
                       transition: 'background 0.2s, color 0.2s, transform 0.2s',
-                      boxShadow: isActive ? 'inset 0 0 0 1px #000000' : 'none',
+                      boxShadow: isActive ? 'inset 0 0 0 1px var(--accent-border)' : 'none',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -280,8 +280,8 @@ function NavigationRail() {
               style={({ isActive }) => ({
                 textDecoration: 'none',
                 color: isActive ? '#ffffff' : 'var(--text)',
-                background: isActive ? '#000000' : 'transparent',
-                border: `1px solid ${isActive ? '#000000' : 'var(--border)'}`,
+                 background: isActive ? 'var(--accent-bg)' : 'transparent',
+                 border: `1px solid ${isActive ? 'var(--accent-border)' : 'var(--border)'}`,
                 borderRadius: '999px',
                 padding: '8px 14px',
                 whiteSpace: 'nowrap',

@@ -181,7 +181,7 @@ export function SubscriptionPage() {
         {filteredSources.map((source) => {
           const checked = preferences.subscription.rss_sources.includes(source.id)
           return (
-            <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? '#000000' : 'var(--border)'}`, borderRadius: '18px', padding: '14px', background: checked ? '#000000' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 12px 26px rgba(0, 0, 0, 0.14)' : '0 8px 22px rgba(8, 6, 13, 0.035)' }}>
+            <button key={source.id} type="button" onClick={() => toggleSource(source)} style={{ textAlign: 'left', border: `1px solid ${checked ? 'var(--accent-border)' : 'var(--border)'}`, borderRadius: '18px', padding: '14px', background: checked ? 'var(--accent-bg)' : '#fff', cursor: 'pointer', boxShadow: checked ? '0 12px 26px rgba(24, 18, 36, 0.18)' : '0 8px 22px rgba(8, 6, 13, 0.035)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
                 <strong style={{ color: checked ? '#ffffff' : 'var(--text-h)' }}>{source.name}</strong>
                 <span style={{ color: checked ? '#ffffff' : 'var(--text)', fontWeight: 800 }}>{checked ? '已订阅' : '订阅'}</span>

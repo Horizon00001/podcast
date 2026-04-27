@@ -273,6 +273,41 @@
             "url": "https://www.leiphone.com/feed",
             "enabled": true,
             "category": "tech"
+        },
+        {
+            "id": "ifanr",
+            "name": "爱范儿",
+            "url": "https://www.ifanr.com/feed",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "tmtpost",
+            "name": "钛媒体",
+            "url": "https://www.tmtpost.com/rss",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "ruanyifeng",
+            "name": "阮一峰的网络日志",
+            "url": "https://feeds.feedburner.com/ruanyifeng",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "geektime",
+            "name": "极客时间",
+            "url": "https://time.geekbang.org/rss",
+            "enabled": true,
+            "category": "tech"
+        },
+        {
+            "id": "jiaoyu",
+            "name": "中国教育在线",
+            "url": "https://www.eol.cn/rss.xml",
+            "enabled": true,
+            "category": "education"
         }
     ]
 }

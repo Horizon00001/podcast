@@ -21,13 +21,13 @@ class SpeechProvider(Protocol):
 class EdgeTTSProvider:
     FALLBACK_VOICES = (
         "zh-CN-XiaoxiaoNeural",
-        "zh-CN-YunxiNeural",
         "zh-CN-YunyangNeural",
+        "zh-CN-YunxiNeural",
         "zh-CN-XiaoyiNeural",
     )
 
     VOICE_MAP = {
-        "male": "zh-CN-YunxiNeural",
+        "male": "zh-CN-YunyangNeural",
         "female": "zh-CN-XiaoxiaoNeural",
     }
 

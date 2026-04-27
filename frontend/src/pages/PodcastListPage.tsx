@@ -66,7 +66,6 @@ export function PodcastListPage() {
   const [featuredScriptLines, setFeaturedScriptLines] = useState<ScriptLine[]>([])
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
   const [recommendationRequestId, setRecommendationRequestId] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('all')
   const [error, setError] = useState('')
   const [showPrefModal, setShowPrefModal] = useState(false)
   const [isEditingPrefs, setIsEditingPrefs] = useState(false)
@@ -96,10 +95,6 @@ export function PodcastListPage() {
       })
       .catch((e) => setError((e as Error).message))
   }, [user])
-
-  const filteredPodcasts = selectedCategory === 'all'
-    ? podcasts
-    : podcasts.filter(p => p.category === selectedCategory)
 
   const handlePlay = (podcast: Podcast) => {
     if (currentPodcast?.id === podcast.id) {
@@ -622,8 +617,7 @@ export function PodcastListPage() {
           </div>
         </section>
       )}
-      
-      {/* 筛选栏 */}
+
       <div style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -632,27 +626,23 @@ export function PodcastListPage() {
         paddingBottom: '14px',
         borderBottom: '1px solid var(--border)'
       }}>
-        {CATEGORIES.map(cat => (
-          <motion.button
-            key={cat.id}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setSelectedCategory(cat.id)}
-            style={{
-              padding: '8px 16px',
-              borderRadius: '40px',
-                border: `1px solid ${selectedCategory === cat.id ? 'var(--accent-border)' : 'var(--border)'}`,
-                background: selectedCategory === cat.id ? 'var(--accent-bg)' : '#ffffff',
-                color: selectedCategory === cat.id ? '#ffffff' : '#3d3845',
-               cursor: 'pointer',
-               fontSize: '14px',
-               fontWeight: 600,
-               transition: 'border 0.2s, background 0.2s, color 0.2s, transform 0.2s',
-             }}
-           >
-             {cat.name}
-           </motion.button>
-        ))}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            padding: '8px 16px',
+            borderRadius: '40px',
+            border: '1px solid rgba(61, 56, 69, 0.12)',
+            background: 'rgba(255, 255, 255, 0.9)',
+            color: '#5f5967',
+            cursor: 'default',
+            fontSize: '14px',
+            fontWeight: 600,
+            transition: 'border 0.2s, background 0.2s, color 0.2s, transform 0.2s',
+          }}
+        >
+          全部
+        </motion.button>
       </div>
 
       {error && <p style={{ color: 'red' }}>加载失败：{error}</p>}
@@ -663,7 +653,7 @@ export function PodcastListPage() {
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
         gap: '18px'
       }}>
-        {filteredPodcasts.map(podcast => {
+        {podcasts.map(podcast => {
           return (
             <motion.div
               key={podcast.id}
@@ -746,9 +736,9 @@ export function PodcastListPage() {
         })}
       </div>
 
-      {filteredPodcasts.length === 0 && (
+      {podcasts.length === 0 && (
         <div style={{ padding: '64px', textAlign: 'center', color: 'var(--text)' }}>
-          暂无播客，请去生成或调整筛选条件。
+          暂无播客，请去生成内容后再来查看。
         </div>
       )}
     </main>

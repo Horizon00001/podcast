@@ -7,31 +7,96 @@ const CATEGORY_LABELS: Record<string, string> = {
   all: '精选内容',
 }
 
-const COVER_THEMES: Record<string, { background: string; shadow: string }> = {
-  technology: {
-    background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(140, 180, 255, 0.25), transparent 50%), linear-gradient(145deg, #4b7bff 0%, #689aff 45%, #8ab2ff 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(30,60,130,0.2)',
-  },
-  finance: {
-    background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(255, 220, 190, 0.25), transparent 50%), linear-gradient(145deg, #cd9752 0%, #e0ad74 45%, #f2cca4 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(130,80,40,0.2)',
-  },
-  sports: {
-    background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(130, 240, 225, 0.25), transparent 50%), linear-gradient(145deg, #2b9ebc 0%, #44b7cc 45%, #69cdd2 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(15,100,120,0.2)',
-  },
-  entertainment: {
-    background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(255, 190, 200, 0.25), transparent 50%), linear-gradient(145deg, #e87b97 0%, #efa0b3 45%, #f6bcc8 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(160,80,110,0.2)',
-  },
-  health: {
-    background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(190, 240, 190, 0.25), transparent 50%), linear-gradient(145deg, #65af76 0%, #85c492 45%, #acd9ab 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(50,110,65,0.2)',
-  },
-  all: {
-    background: 'radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.6), transparent 30%), radial-gradient(circle at 85% 15%, rgba(120, 255, 230, 0.35), transparent 35%), radial-gradient(circle at 80% 85%, rgba(150, 130, 255, 0.4), transparent 40%), linear-gradient(148deg, #0a4c63 0%, #106c82 30%, #1b8996 55%, #2578b8 75%, #5650eb 100%)',
-    shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -28px 42px rgba(15,25,80,0.3)',
-  },
+type CoverTheme = {
+  background: string
+  shadow: string
+}
+
+const COVER_THEME_VARIANTS: Record<string, readonly CoverTheme[]> = {
+  technology: [
+    {
+      background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(140, 180, 255, 0.25), transparent 50%), linear-gradient(145deg, #4b7bff 0%, #689aff 45%, #8ab2ff 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(30,60,130,0.2)',
+    },
+    {
+      background: 'radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.46), transparent 30%), radial-gradient(circle at 84% 18%, rgba(132, 236, 255, 0.22), transparent 34%), linear-gradient(150deg, #2747c7 0%, #3968ea 38%, #4f8ff5 68%, #78baff 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 34px rgba(18,40,122,0.22)',
+    },
+    {
+      background: 'radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.4), transparent 28%), radial-gradient(circle at 82% 80%, rgba(165, 179, 255, 0.24), transparent 36%), linear-gradient(152deg, #1f5d8b 0%, #277ab1 34%, #3f96d2 66%, #84c4ff 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -24px 36px rgba(18,56,96,0.22)',
+    },
+  ],
+  finance: [
+    {
+      background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(255, 220, 190, 0.25), transparent 50%), linear-gradient(145deg, #cd9752 0%, #e0ad74 45%, #f2cca4 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(130,80,40,0.2)',
+    },
+    {
+      background: 'radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.45), transparent 28%), radial-gradient(circle at 84% 18%, rgba(255, 239, 176, 0.24), transparent 34%), linear-gradient(150deg, #8b5e2e 0%, #b6783a 38%, #d3924f 66%, #f0bf82 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 34px rgba(96,60,22,0.22)',
+    },
+    {
+      background: 'radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.38), transparent 30%), radial-gradient(circle at 82% 82%, rgba(255, 206, 154, 0.2), transparent 34%), linear-gradient(152deg, #6c4d35 0%, #98694a 38%, #c18966 70%, #e2b495 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.24), inset 0 -24px 36px rgba(84,52,28,0.2)',
+    },
+  ],
+  sports: [
+    {
+      background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(130, 240, 225, 0.25), transparent 50%), linear-gradient(145deg, #2b9ebc 0%, #44b7cc 45%, #69cdd2 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(15,100,120,0.2)',
+    },
+    {
+      background: 'radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.44), transparent 28%), radial-gradient(circle at 84% 18%, rgba(153, 255, 188, 0.22), transparent 32%), linear-gradient(150deg, #0f7f74 0%, #189f89 38%, #31bc9b 68%, #79dbc1 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 34px rgba(10,78,72,0.22)',
+    },
+    {
+      background: 'radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.42), transparent 28%), radial-gradient(circle at 82% 82%, rgba(114, 210, 255, 0.24), transparent 34%), linear-gradient(152deg, #17638f 0%, #1f85af 38%, #2da2c2 68%, #6cd0dd 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(14,64,92,0.22)',
+    },
+  ],
+  entertainment: [
+    {
+      background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(255, 190, 200, 0.25), transparent 50%), linear-gradient(145deg, #e87b97 0%, #efa0b3 45%, #f6bcc8 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(160,80,110,0.2)',
+    },
+    {
+      background: 'radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.45), transparent 28%), radial-gradient(circle at 84% 18%, rgba(255, 216, 128, 0.24), transparent 34%), linear-gradient(150deg, #b63b7b 0%, #d55387 40%, #ea7386 68%, #f4b17c 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 34px rgba(132,42,86,0.22)',
+    },
+    {
+      background: 'radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.42), transparent 28%), radial-gradient(circle at 82% 80%, rgba(196, 170, 255, 0.22), transparent 34%), linear-gradient(152deg, #7e3aa7 0%, #a14bc0 38%, #c760bf 68%, #f29ab5 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(88,34,112,0.22)',
+    },
+  ],
+  health: [
+    {
+      background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 45%), radial-gradient(circle at bottom right, rgba(190, 240, 190, 0.25), transparent 50%), linear-gradient(145deg, #65af76 0%, #85c492 45%, #acd9ab 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(50,110,65,0.2)',
+    },
+    {
+      background: 'radial-gradient(circle at 16% 15%, rgba(255, 255, 255, 0.46), transparent 28%), radial-gradient(circle at 84% 18%, rgba(244, 220, 128, 0.2), transparent 34%), linear-gradient(150deg, #3d8d53 0%, #56a96b 38%, #7cc284 68%, #c4dd8f 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 34px rgba(34,82,46,0.22)',
+    },
+    {
+      background: 'radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.42), transparent 28%), radial-gradient(circle at 82% 82%, rgba(163, 233, 214, 0.24), transparent 36%), linear-gradient(152deg, #2c7a6b 0%, #3d9a81 38%, #5cb39a 68%, #9ed4c0 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(28,76,64,0.22)',
+    },
+  ],
+  all: [
+    {
+      background: 'radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.6), transparent 30%), radial-gradient(circle at 85% 15%, rgba(120, 255, 230, 0.35), transparent 35%), radial-gradient(circle at 80% 85%, rgba(150, 130, 255, 0.4), transparent 40%), linear-gradient(148deg, #0a4c63 0%, #106c82 30%, #1b8996 55%, #2578b8 75%, #5650eb 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -28px 42px rgba(15,25,80,0.3)',
+    },
+    {
+      background: 'radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.55), transparent 28%), radial-gradient(circle at 86% 18%, rgba(255, 182, 193, 0.28), transparent 34%), radial-gradient(circle at 78% 84%, rgba(154, 240, 198, 0.24), transparent 38%), linear-gradient(148deg, #5b2d91 0%, #7e39a7 30%, #b24aa8 60%, #db6d8c 82%, #f5b16a 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -28px 42px rgba(72,22,92,0.3)',
+    },
+    {
+      background: 'radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.54), transparent 28%), radial-gradient(circle at 82% 18%, rgba(255, 220, 128, 0.26), transparent 34%), radial-gradient(circle at 82% 84%, rgba(96, 214, 174, 0.24), transparent 38%), linear-gradient(148deg, #23415f 0%, #31577f 30%, #3f6fa3 58%, #5b86c9 80%, #9bb1e8 100%)',
+      shadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -28px 42px rgba(22,34,78,0.28)',
+    },
+  ],
 }
 
 type HeroTheme = {
@@ -97,12 +162,6 @@ const FEATURED_HERO_THEMES: readonly HeroTheme[] = [
     secondaryShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -18px 28px rgba(116,42,42,0.2)',
   },
   {
-    primaryBackground: 'radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.6), transparent 25%), radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.3), transparent 35%), radial-gradient(circle at 85% 85%, rgba(167, 139, 250, 0.25), transparent 35%), linear-gradient(148deg, #334155 0%, #475569 35%, #64748b 65%, #94a3b8 100%)',
-    primaryShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -28px 42px rgba(15,23,42,0.25)',
-    secondaryBackground: 'radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.45), transparent 25%), radial-gradient(circle at 80% 22%, rgba(191, 219, 254, 0.25), transparent 32%), linear-gradient(150deg, #475569 0%, #64748b 50%, #cbd5e1 100%)',
-    secondaryShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -18px 28px rgba(15,23,42,0.2)',
-  },
-  {
     primaryBackground: 'radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4), transparent 30%), radial-gradient(circle at 90% 10%, rgba(255, 115, 115, 0.3), transparent 40%), radial-gradient(circle at 80% 90%, rgba(255, 200, 100, 0.35), transparent 45%), linear-gradient(148deg, #4a154b 0%, #902d41 35%, #cc444b 65%, #ff7f50 100%)',
     primaryShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -28px 42px rgba(45,15,45,0.4)',
     secondaryBackground: 'radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.3), transparent 30%), radial-gradient(circle at 85% 15%, rgba(255, 150, 150, 0.25), transparent 35%), linear-gradient(150deg, #601a40 0%, #a0354a 50%, #df5e55 100%)',
@@ -132,11 +191,17 @@ export function getCategoryLabel(category: string) {
 }
 
 export function getCoverTheme(category: string) {
-  return COVER_THEMES[category] ?? COVER_THEMES.all
+  const themes = COVER_THEME_VARIANTS[category] ?? COVER_THEME_VARIANTS.all
+  return themes[0]
 }
 
-export function getCoverStyle(category: string) {
-  const theme = getCoverTheme(category)
+export function getCoverStyle(category: string, variantSeed?: number | string) {
+  const themes = COVER_THEME_VARIANTS[category] ?? COVER_THEME_VARIANTS.all
+  const normalizedSeed = typeof variantSeed === 'string'
+    ? variantSeed.split('').reduce((total, char) => total + char.charCodeAt(0), 0)
+    : variantSeed ?? 0
+  const theme = themes[Math.abs(normalizedSeed) % themes.length] ?? themes[0]
+
   return {
     background: theme.background,
     boxShadow: theme.shadow,

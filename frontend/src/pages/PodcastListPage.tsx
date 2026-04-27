@@ -24,50 +24,50 @@ const PREFERENCE_CATEGORIES = CATEGORIES.filter(c => c.id !== 'all')
 const RECOMMENDATION_COVER_THEMES = [
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 230, 240, 0.5), transparent 45%), linear-gradient(145deg, #d45d9b 0%, #eb84b9 52%, #ffb6d8 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(140,50,100,0.25)',
+      'radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.52), transparent 24%), radial-gradient(circle at 82% 16%, rgba(255, 154, 210, 0.26), transparent 30%), radial-gradient(circle at 84% 84%, rgba(144, 166, 255, 0.24), transparent 36%), linear-gradient(148deg, #592786 0%, #7a35a5 30%, #a449b7 58%, #cf63ae 80%, #ea97b2 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 36px rgba(74,24,110,0.26)',
     accent: 'rgba(255, 245, 250, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(220, 245, 255, 0.5), transparent 45%), linear-gradient(145deg, #428be5 0%, #6ba9f4 52%, #a8d5ff 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(35,90,150,0.25)',
+      'radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.58), transparent 22%), radial-gradient(circle at 84% 16%, rgba(108, 248, 226, 0.24), transparent 28%), radial-gradient(circle at 82% 84%, rgba(140, 136, 255, 0.26), transparent 34%), linear-gradient(148deg, #0d4f63 0%, #136f86 30%, #1c8f9f 56%, #297dbc 78%, #5956ea 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -24px 38px rgba(16,36,92,0.28)',
     accent: 'rgba(245, 250, 255, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(230, 255, 210, 0.5), transparent 45%), linear-gradient(145deg, #55b86c 0%, #7dcb83 50%, #b8e6a9 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(45,110,60,0.25)',
+      'radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.5), transparent 24%), radial-gradient(circle at 82% 18%, rgba(154, 240, 198, 0.24), transparent 30%), radial-gradient(circle at 82% 84%, rgba(164, 224, 255, 0.22), transparent 34%), linear-gradient(148deg, #174d3c 0%, #20624c 30%, #2d7760 56%, #40927b 78%, #72b5a8 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(20,68,52,0.24)',
     accent: 'rgba(250, 255, 245, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 235, 200, 0.5), transparent 45%), linear-gradient(145deg, #e68840 0%, #f4aa65 52%, #fbc595 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(150,85,35,0.25)',
+      'radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.54), transparent 24%), radial-gradient(circle at 84% 16%, rgba(255, 204, 138, 0.28), transparent 30%), radial-gradient(circle at 82% 84%, rgba(255, 128, 142, 0.22), transparent 36%), linear-gradient(148deg, #93451e 0%, #b95d2a 28%, #d57a42 56%, #e59b63 78%, #edbc8d 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 36px rgba(104,48,20,0.24)',
     accent: 'rgba(255, 250, 240, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 225, 215, 0.5), transparent 45%), linear-gradient(145deg, #e26760 0%, #f48e7e 50%, #fcb6a5 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(140,60,50,0.25)',
+      'radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.54), transparent 24%), radial-gradient(circle at 82% 16%, rgba(255, 178, 196, 0.24), transparent 30%), radial-gradient(circle at 84% 84%, rgba(255, 216, 128, 0.22), transparent 36%), linear-gradient(148deg, #973e52 0%, #b84d64 30%, #cf696d 56%, #db8b62 78%, #e7af74 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -24px 36px rgba(103,34,50,0.24)',
     accent: 'rgba(255, 245, 245, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(255, 250, 190, 0.5), transparent 45%), linear-gradient(145deg, #a6b445 0%, #c4d265 52%, #e5e998 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(100,110,40,0.25)',
+      'radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 24%), radial-gradient(circle at 82% 18%, rgba(255, 223, 108, 0.24), transparent 30%), radial-gradient(circle at 84% 84%, rgba(96, 214, 174, 0.24), transparent 36%), linear-gradient(148deg, #345c25 0%, #4b7630 30%, #6a953d 56%, #90b44f 78%, #c5cf73 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(55,68,24,0.24)',
     accent: 'rgba(255, 255, 245, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(210, 210, 255, 0.5), transparent 45%), linear-gradient(145deg, #6c5ce7 0%, #8b7de9 52%, #b4abef 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(70,60,150,0.25)',
+      'radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.52), transparent 24%), radial-gradient(circle at 84% 16%, rgba(190, 212, 255, 0.24), transparent 30%), radial-gradient(circle at 82% 84%, rgba(156, 168, 255, 0.24), transparent 34%), linear-gradient(148deg, #422765 0%, #583682 28%, #71449e 56%, #8060b9 76%, #8d95dc 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 38px rgba(44,30,82,0.26)',
     accent: 'rgba(245, 245, 255, 0.95)',
   },
   {
     background:
-      'radial-gradient(circle at top right, rgba(200, 255, 240, 0.5), transparent 45%), linear-gradient(145deg, #00b894 0%, #2bd0b0 52%, #6bedd4 100%)',
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -20px 32px rgba(10,120,90,0.25)',
+      'radial-gradient(circle at 20% 14%, rgba(255, 255, 255, 0.52), transparent 24%), radial-gradient(circle at 80% 18%, rgba(130, 244, 210, 0.26), transparent 30%), radial-gradient(circle at 84% 84%, rgba(254, 220, 92, 0.2), transparent 34%), linear-gradient(148deg, #075340 0%, #0a684f 30%, #0d8664 56%, #1fa983 78%, #73caaf 100%)',
+    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.26), inset 0 -24px 36px rgba(6,58,44,0.24)',
     accent: 'rgba(240, 255, 250, 0.95)',
   },
 ]

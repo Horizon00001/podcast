@@ -62,53 +62,101 @@ export function TimelineHighlighter({
       style={{
         maxHeight: isDetail ? '100%' : '500px',
         overflowY: 'auto',
-        padding: isDetail ? '0 4px 0 0' : '8px',
+        padding: isDetail ? '16px 20px' : '12px',
         ...style,
       }}
     >
-      {scriptLines.map((line, idx) => (
-        <motion.div
-          key={line.id}
-          onClick={() => handleLineClick(line.startTime)}
-          whileHover={{ scale: isDetail ? 1 : 1.01 }}
-          whileTap={{ scale: 0.99 }}
-          animate={{
-            boxShadow: idx === activeIndex
-              ? isDetail
-                ? '0 12px 28px rgba(8, 6, 13, 0.08)'
-                : '0 0 12px rgba(0, 0, 0, 0.25)'
-              : '0 0 0px rgba(0, 0, 0, 0)'
-          }}
-          transition={{ duration: 0.25 }}
-          style={{
-            padding: isDetail ? '18px 20px' : '12px',
-            margin: isDetail ? '0 0 12px' : '8px 0',
-            borderRadius: isDetail ? '20px' : '12px',
-            cursor: 'pointer',
-            background: idx === activeIndex
-              ? isDetail
-                ? 'rgba(255,255,255,0.92)'
-                : 'var(--accent-bg)'
-              : isDetail
-                ? 'rgba(255,255,255,0.72)'
-                : 'var(--code-bg)',
-            borderLeft: idx === activeIndex
-              ? isDetail
-                ? '3px solid #111111'
-                : `4px solid var(--accent)`
-              : isDetail
-                ? '3px solid transparent'
-                : '4px solid transparent',
-            border: isDetail ? '1px solid rgba(8, 6, 13, 0.06)' : 'none',
-            transition: 'background 0.2s, border-left 0.2s, border 0.2s',
-          }}
-        >
-          <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '8px', color: isDetail ? '#5f5967' : 'var(--accent)', letterSpacing: isDetail ? '0.04em' : undefined, textTransform: isDetail ? 'uppercase' : undefined }}>
-            {line.speaker === 'host' ? '主持人' : '嘉宾'}
+      {scriptLines.map((line, idx) => {
+        const isHost = line.speaker === 'host' || line.speaker === 'A'
+        return (
+          <div
+            key={line.id}
+            style={{
+              display: 'flex',
+              flexDirection: isHost ? 'row' : 'row-reverse',
+              alignItems: 'flex-start',
+              gap: '12px',
+              marginBottom: isDetail ? '24px' : '16px',
+            }}
+          >
+            <div
+              style={{
+                width: isDetail ? '36px' : '28px',
+                height: isDetail ? '36px' : '28px',
+                borderRadius: '50%',
+                flexShrink: 0,
+                background: isHost ? '#111111' : '#f0f0f0',
+                color: isHost ? '#ffffff' : '#111111',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: isDetail ? '13px' : '11px',
+                fontWeight: 700,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(8, 6, 13, 0.05)',
+              }}
+            >
+              {isHost ? '主' : '嘉'}
+            </div>
+            
+            <motion.div
+              onClick={() => handleLineClick(line.startTime)}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              animate={{
+                opacity: idx === activeIndex ? 1 : 0.65,
+                y: idx === activeIndex ? 0 : 0,
+              }}
+              transition={{ duration: 0.25 }}
+              style={{
+                maxWidth: '82%',
+                padding: isDetail ? '14px 18px' : '10px 14px',
+                borderRadius: isHost 
+                  ? (isDetail ? '4px 20px 20px 20px' : '4px 16px 16px 16px') 
+                  : (isDetail ? '20px 4px 20px 20px' : '16px 4px 16px 16px'),
+                cursor: 'pointer',
+                background: idx === activeIndex
+                  ? isDetail
+                    ? 'rgba(255,255,255,0.98)'
+                    : 'var(--accent-bg)'
+                  : isDetail
+                    ? 'rgba(255,255,255,0.6)'
+                    : 'var(--code-bg)',
+                boxShadow: idx === activeIndex
+                  ? isDetail
+                    ? '0 12px 28px rgba(8, 6, 13, 0.08)'
+                    : '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  : isDetail
+                    ? '0 2px 8px rgba(8, 6, 13, 0.04)'
+                    : 'none',
+                border: isDetail 
+                  ? idx === activeIndex ? '1px solid rgba(8, 6, 13, 0.12)' : '1px solid rgba(8, 6, 13, 0.05)'
+                  : 'none',
+                transition: 'background 0.2s, box-shadow 0.2s, border 0.2s',
+                textAlign: 'left',
+              }}
+            >
+              <div style={{ 
+                fontSize: '12px', 
+                fontWeight: 700, 
+                marginBottom: '6px', 
+                color: idx === activeIndex ? (isDetail ? '#111111' : 'var(--accent)') : '#8b8494', 
+                letterSpacing: '0.04em' 
+              }}>
+                {isHost ? '主持人' : '嘉宾'}
+              </div>
+              <p style={{ 
+                margin: 0, 
+                lineHeight: isDetail ? 1.7 : 1.5, 
+                fontSize: isDetail ? '16px' : '14px', 
+                color: isDetail ? '#1d1d1f' : 'inherit' 
+              }}>
+                {line.text}
+              </p>
+            </motion.div>
           </div>
-          <p style={{ margin: 0, lineHeight: isDetail ? 1.8 : 1.5, fontSize: isDetail ? '16px' : 'inherit', color: isDetail ? '#1d1d1f' : 'inherit' }}>{line.text}</p>
-        </motion.div>
-      ))}
+        )
+      })}
     </div>
   )
 }

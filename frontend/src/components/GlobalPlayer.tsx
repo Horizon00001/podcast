@@ -301,7 +301,31 @@ export function GlobalPlayer({ sidebarWidth = 256, desktopScale = 1 }: GlobalPla
                       </div>
 
                       <div style={{ display: 'grid', gap: '14px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '16px' }}>
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => seek(Math.max(0, currentTime - 15))}
+                            style={{
+                              background: 'transparent',
+                              color: '#111111',
+                              border: '1px solid rgba(8, 6, 13, 0.1)',
+                              borderRadius: '50%',
+                              width: '40px',
+                              height: '40px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer',
+                              fontSize: '12px',
+                              fontWeight: 600,
+                              padding: 0,
+                            }}
+                            title="后退 15 秒"
+                          >
+                            -15s
+                          </motion.button>
+                          
                           <motion.button
                             whileHover={{ scale: 1.04, y: -1 }}
                             whileTap={{ scale: 0.95 }}
@@ -325,6 +349,30 @@ export function GlobalPlayer({ sidebarWidth = 256, desktopScale = 1 }: GlobalPla
                             aria-label={isPlaying ? '暂停播放' : '开始播放'}
                           >
                             {isPlaying ? 'II' : '>'}
+                          </motion.button>
+                          
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => seek(Math.min(duration, currentTime + 15))}
+                            style={{
+                              background: 'transparent',
+                              color: '#111111',
+                              border: '1px solid rgba(8, 6, 13, 0.1)',
+                              borderRadius: '50%',
+                              width: '40px',
+                              height: '40px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer',
+                              fontSize: '12px',
+                              fontWeight: 600,
+                              padding: 0,
+                            }}
+                            title="前进 15 秒"
+                          >
+                            +15s
                           </motion.button>
                         </div>
 

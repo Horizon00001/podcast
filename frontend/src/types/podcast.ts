@@ -25,7 +25,7 @@ export interface RecommendationResponse {
 // 脚本行（带时间戳）
 export interface ScriptLine {
   id: number
-  speaker: 'host' | 'guest'
+  speaker: 'host' | 'guest' | 'A' | 'B'
   text: string
   startTime: number   // 毫秒
   endTime: number

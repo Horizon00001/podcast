@@ -281,7 +281,7 @@ export function PodcastListPage() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gap: '16px', alignContent: 'space-between' }}>
+            <div style={{ display: 'grid', gap: '12px', alignContent: 'start' }}>
               <motion.div
                  whileHover={{ y: -4, boxShadow: '0 18px 40px rgba(8, 6, 13, 0.12)' }}
                  onClick={() => handlePlay(featuredPodcast)}
@@ -339,13 +339,14 @@ export function PodcastListPage() {
                    onKeyDown={(event) => handleCardKeyDown(event, featuredSecondary)}
                    role="button"
                    tabIndex={0}
-                   style={{
-                     display: 'grid',
-                     gridTemplateColumns: '84px minmax(0, 1fr)',
-                     gap: '12px',
-                     alignItems: 'center',
-                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.18) 100%)',
-                     borderRadius: '18px',
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '84px minmax(0, 1fr)',
+                      gap: '12px',
+                      alignItems: 'center',
+                      marginTop: '-2px',
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.18) 100%)',
+                      borderRadius: '18px',
                      padding: '14px',
                      border: '1px solid rgba(255, 255, 255, 0.22)',
                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.24), 0 14px 28px rgba(53, 42, 77, 0.12)',

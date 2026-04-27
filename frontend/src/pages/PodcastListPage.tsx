@@ -650,12 +650,13 @@ export function PodcastListPage() {
           style={{
             padding: '8px 16px',
             borderRadius: '40px',
-            border: '1px solid rgba(61, 56, 69, 0.12)',
-            background: 'rgba(255, 255, 255, 0.9)',
-            color: '#5f5967',
+            border: '1px solid rgba(255, 255, 255, 0.72)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(247, 242, 255, 0.82) 100%)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.7), 0 10px 24px rgba(76, 58, 108, 0.08)',
+            color: '#5a5167',
             cursor: 'default',
             fontSize: '14px',
-            fontWeight: 600,
+            fontWeight: 700,
             transition: 'border 0.2s, background 0.2s, color 0.2s, transform 0.2s',
           }}
         >
@@ -675,27 +676,28 @@ export function PodcastListPage() {
           return (
             <motion.div
               key={podcast.id}
-              whileHover={{ y: -4, boxShadow: '0 14px 34px rgba(8, 6, 13, 0.08)' }}
+              whileHover={{ y: -4, boxShadow: '0 18px 36px rgba(33, 24, 54, 0.12)' }}
               onClick={() => handlePlay(podcast)}
               onKeyDown={(event) => handleCardKeyDown(event, podcast)}
               role="button"
               tabIndex={0}
               transition={{ duration: 0.2 }}
               style={{
-                  border: '1px solid var(--border)',
+                border: '1px solid rgba(255, 255, 255, 0.72)',
                 borderRadius: '18px',
                 padding: '12px',
-                background: 'var(--bg)',
-                boxShadow: '0 10px 28px rgba(8, 6, 13, 0.04)',
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 244, 251, 0.92) 100%)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.72), 0 10px 28px rgba(40, 24, 72, 0.06)',
+                backdropFilter: 'blur(10px)',
                 cursor: 'pointer',
               }}
             >
               <div
                 style={{
                   aspectRatio: '1 / 1',
-                  borderRadius: '14px',
+                  borderRadius: '16px',
                   marginBottom: '12px',
-                  padding: '14px',
+                  padding: '16px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',

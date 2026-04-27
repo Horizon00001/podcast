@@ -297,38 +297,8 @@ export function PodcastDetailPage() {
       <section
         style={{
           display: 'grid',
-          gridTemplateColumns: isNarrow ? 'minmax(0, 1fr)' : '300px minmax(0, 1fr)',
-          gap: '20px',
-          alignItems: 'start',
         }}
       >
-        <aside
-          style={{
-            position: isNarrow ? 'static' : 'sticky',
-            top: '24px',
-            borderRadius: '26px',
-            padding: '20px',
-            background: '#f7f6f2',
-            border: '1px solid rgba(8, 6, 13, 0.06)',
-          }}
-        >
-          <div style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8b8494', fontWeight: 800, marginBottom: '12px' }}>Listening Notes</div>
-          <h2 style={{ margin: '0 0 10px', fontSize: '26px', lineHeight: 1.05, letterSpacing: '-0.05em', color: '#111111' }}>文字稿同步</h2>
-          <p style={{ margin: '0 0 16px', color: '#6b6375', fontSize: '14px', lineHeight: 1.7 }}>
-            点击任意句子跳转到对应时间。播放当前节目时，正在播放的句子会自动高亮。
-          </p>
-          <div style={{ display: 'grid', gap: '10px' }}>
-            <div style={{ padding: '13px 14px', borderRadius: '18px', background: '#ffffff', border: '1px solid rgba(8, 6, 13, 0.05)' }}>
-              <div style={{ color: '#8b8494', fontSize: '12px', fontWeight: 700, marginBottom: '4px' }}>句子数量</div>
-              <div style={{ color: '#111111', fontSize: '22px', fontWeight: 800 }}>{scriptLines.length}</div>
-            </div>
-            <div style={{ padding: '13px 14px', borderRadius: '18px', background: '#ffffff', border: '1px solid rgba(8, 6, 13, 0.05)' }}>
-              <div style={{ color: '#8b8494', fontSize: '12px', fontWeight: 700, marginBottom: '4px' }}>当前状态</div>
-              <div style={{ color: '#111111', fontSize: '15px', fontWeight: 800 }}>{isCurrent && isPlaying ? '正在播放' : isCurrent ? '已选中这一集' : '尚未播放'}</div>
-            </div>
-          </div>
-        </aside>
-
         <div
           style={{
             minHeight: '420px',

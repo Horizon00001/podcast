@@ -4,6 +4,7 @@ import random
 import re
 import subprocess
 import shutil
+import threading
 from pathlib import Path
 
 from app.core.config import settings
@@ -13,6 +14,9 @@ from .speech_provider import SpeechProvider, create_speech_provider
 
 
 class TTSService:
+    # DashScope TTS 并发限制：最多同时开 2 个 WebSocket 连接
+    _dashscope_tts_limiter = threading.Semaphore(2)
+
     AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".ogg", ".flac"}
     OPENING_LIBRARY_DIR = "opening"
     TRANSITION_LIBRARY_DIR = "transition"
@@ -220,14 +224,15 @@ class TTSService:
                 return None
 
             output_path = Path(temp_filename)
-            return asyncio.run(
-                self.speech_provider.synthesize(
-                    cleaned_text,
-                    output_path,
-                    voice=item.voice,
-                    style=item.style,
+            with self._dashscope_tts_limiter:
+                return asyncio.run(
+                    self.speech_provider.synthesize(
+                        cleaned_text,
+                        output_path,
+                        voice=item.voice,
+                        style=item.style,
+                    )
                 )
-            )
 
         if item.item_type == "silence":
             duration_ms = item.duration_ms or 0

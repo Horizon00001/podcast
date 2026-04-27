@@ -147,11 +147,12 @@ def test_create_podcast_truncates_long_title():
 
     response = client.post(
         "/api/v1/podcasts",
-        json={"title": "这是一个明显超过二十个字的播客标题用于测试截断"},
+        json={"title": "这是一个明显超过二十五个字的播客标题用于测试截断功能"},
     )
     assert response.status_code == 201
     payload = response.json()
-    assert payload["title"] == "这是一个明显超过二十个字的播客标题用于测"
+    assert len(payload["title"]) == 25
+    assert payload["title"].endswith("…")
 
 
 def test_create_podcast_invalid_category():

@@ -9,7 +9,7 @@ from app.schemas.podcast import PodcastCreate, ScriptLineResponse
 from app.schemas.script import PodcastScript
 
 ESTIMATED_CHARS_PER_SECOND = 4.0
-MAX_PODCAST_TITLE_LENGTH = 20
+MAX_PODCAST_TITLE_LENGTH = 25
 
 
 def _resolve_script_path(script_path: str) -> Path:
@@ -23,7 +23,9 @@ def normalize_podcast_title(title: str) -> str:
     normalized = (title or "").strip()
     if not normalized:
         return "未命名播客"
-    return normalized[:MAX_PODCAST_TITLE_LENGTH]
+    if len(normalized) > MAX_PODCAST_TITLE_LENGTH:
+        return normalized[:MAX_PODCAST_TITLE_LENGTH - 1] + "…"
+    return normalized
 
 
 def _flatten_to_script_lines(script: PodcastScript) -> list[ScriptLineResponse]:

@@ -1,69 +1,129 @@
 [
     {
-        "id": "fortune",
-        "name": "Fortune",
-        "category": "finance",
-        "last_updated": "2026-04-28T00:46:26.558482",
+        "id": "bbc-world",
+        "name": "BBC World News",
+        "category": "news",
+        "last_updated": "2026-04-28T14:39:37.909632",
         "entries": [
             {
-                "title": "Salesforce CEO Marc Benioff says AI won’t kill entry-level jobs. He’s hiring 1,000 new grads to prove it",
-                "link": "https://fortune.com/2026/04/27/salesforce-ceo-marc-benioff-hiring-1000-new-grads-ai-jobs/",
-                "published": "Mon, 27 Apr 2026 16:05:09 +0000",
-                "summary": "The billionaire said the SaaS giant would hire recent grads to help build its AI platforms."
+                "title": "King to defend democratic values as US state visit begins",
+                "link": "https://www.bbc.com/news/articles/c9d4dzwdp53o?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 01:44:46 GMT",
+                "summary": "King Charles will address the US Congress on Tuesday and it is expected to express sympathy over Saturday's gun attack."
             },
             {
-                "title": "United Airlines CEO says a proposed merger would benefit travelers, but American still won’t return his calls",
-                "link": "https://fortune.com/2026/04/27/united-airlines-ceo-says-proposed-merger-benefit-travelers-american/",
-                "published": "Mon, 27 Apr 2026 16:03:20 +0000",
-                "summary": "The stocks of both airlines soared two weeks ago when reports surfaced that Kirby had floated the idea of combining two of the biggest U.S. airlines to the White House."
+                "title": "BP profits more than double as Iran war sends oil prices higher",
+                "link": "https://www.bbc.com/news/articles/c2eveyvgn9no?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 06:36:33 GMT",
+                "summary": "The energy giant said it had seen an \"exceptional\" performance at its oil trading business."
             },
             {
-                "title": "Iran offers to reopen Strait of Hormuz amid oil price surge, but Trump seems unlikely to accept",
-                "link": "https://fortune.com/2026/04/27/iran-offers-to-reopen-strait-of-hormuz-oil-prices-trump-putin-nuclear/",
-                "published": "Mon, 27 Apr 2026 15:50:49 +0000",
-                "summary": "With a fragile ceasefire in place, the U.S. and Iran are locked in a standoff over the strait, through which a fifth of the world’s traded oil and gas passes in peacetime."
+                "title": "Suspect charged with attempted assassination of Trump at Washington dinner",
+                "link": "https://www.bbc.com/news/articles/cew7wez72vxo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 00:41:48 GMT",
+                "summary": "Investigators say the 31-year-old California man wanted to kill as many high-level officials as possible."
             },
             {
-                "title": "‘Capitalism works because the losers die’: Kevin O’Leary says it’s a ‘really bad idea’ for the federal government to bail out Spirit Airlines",
-                "link": "https://fortune.com/2026/04/27/kevin-oleary-spirit-airlines-federal-government-bailout-really-bad-idea/",
-                "published": "Mon, 27 Apr 2026 15:38:38 +0000",
-                "summary": "The Shark Tank star and multimillionaire investor says the Trump administration's reported $500 million rescue plan props up \"bad management\" and undermines the free market."
+                "title": "Political violence jolts the US once again - with a familiar response",
+                "link": "https://www.bbc.com/news/articles/cje4eeyq27lo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 00:19:49 GMT",
+                "summary": "In modern America, it seems violence of this kind has become an ever-present storm that can strike anywhere and at any moment."
             },
             {
-                "title": "Daughter of former Uzbek president accused of masterminding $100 million crime ring known as ‘The Office’",
-                "link": "https://fortune.com/2026/04/27/daughter-former-uzbek-president-accused-of-masterminding-crime-ring-the-office/",
-                "published": "Mon, 27 Apr 2026 15:36:31 +0000",
-                "summary": "Swiss prosecutors say Karimova developed and ran a crime ring known as “The Office” that involved several dozen people and multiple companies."
+                "title": "My tenant owes £15,000 in rent, but I can't get them out of the property",
+                "link": "https://www.bbc.com/news/articles/c30r5z3vdydo?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 23:56:45 GMT",
+                "summary": "Landlords tell BBC News why they fear new laws could make it harder to remove problematic tenants."
             },
             {
-                "title": "Incoming Apple CEO John Ternus tells Gen Z an early mistake taught him an important lesson: ‘The care you put into your work really matters’",
-                "link": "https://fortune.com/2026/04/27/incoming-apple-ceo-john-ternus-advises-gen-z-early-mistake-was-important-lesson-care-put-into-work-matters/",
-                "published": "Mon, 27 Apr 2026 15:25:13 +0000",
-                "summary": "John Ternus, the incoming CEO of Apple, advises Gen Z college graduates to pour themselves into work, build skills, and always assume they’re not the smartest in the room."
+                "title": "When Attenborough met the gorillas - the story behind his iconic TV moment",
+                "link": "https://www.bbc.com/news/articles/ce9n794g42zo?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 16:05:56 GMT",
+                "summary": "Two new documentaries explore the the fascinating tale behind the defining image of Attenborough's career."
             },
             {
-                "title": "Apple cofounder Ronald Wayne—whose stake would be worth up to $400 billion had he not sold it in 1976—says that at 91, he has no regrets",
-                "link": "https://fortune.com/2026/04/27/apple-cofounder-ronald-wayne-missed-billionaire-opportunity-no-regrets-gen-z-advice-steve-jobs-steve-wozniak/",
-                "published": "Mon, 27 Apr 2026 15:21:48 +0000",
-                "summary": "Ronald Wayne helped Steve Jobs and Steve Wozniak create Apple—but sold out just 12 days in. He never became a billionaire, but tells Fortune he has no regrets."
+                "title": "Russian superyacht sails through Strait of Hormuz despite blockade",
+                "link": "https://www.bbc.com/news/articles/cm2pn8zdxdjo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 04:17:34 GMT",
+                "summary": "The 141m-long vessel, linked to a close ally of Russian President Vladimir Putin, cleared the waterway despite an ongoing blockade."
             },
             {
-                "title": "Shell reverses course in Canada and buys ARC Resources for $14 billion, doubling down on oil and gas",
-                "link": "https://fortune.com/2026/04/27/shell-reverses-course-canada-buys-arc-resources-14-billion-oil-gas/",
-                "published": "Mon, 27 Apr 2026 14:49:49 +0000",
-                "summary": "The Montney is emerging as a hot oil and gas play as the U.S. shale basins mature."
+                "title": "Figures show rise in suicides after domestic abuse",
+                "link": "https://www.bbc.com/news/articles/cn898mrkjl5o?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 02:33:39 GMT",
+                "summary": "Police say the increase is driven by improved awareness and a change in recording incidents."
             },
             {
-                "title": "A bank robber made off with $195,000 and got caught after his cell pinged a geofence. Now SCOTUS decides whether that violated the Fourth Amendment",
-                "link": "https://fortune.com/2026/04/27/bank-robber-phone-ping-geofence-fourth-amendment-scotus/",
-                "published": "Mon, 27 Apr 2026 14:15:58 +0000",
-                "summary": "Police went to Okello Chatrie's house after his cell phone was among the devices within the vicinity of the bank at the time of the robbery."
+                "title": "Minister promises 'some form' of social media restrictions for under-16s",
+                "link": "https://www.bbc.com/news/articles/c5y7d2zx63jo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 06:31:15 GMT",
+                "summary": "Education Minister Olivia Bailey says the government will introduce “age or functionality restrictions”."
             },
             {
-                "title": "Intel’s share price just blew the doors off. One man thinks he knows the reason why",
-                "link": "https://fortune.com/2026/04/27/intel-share-price/",
-                "published": "Mon, 27 Apr 2026 13:54:27 +0000",
-                "summary": "Written off as a legacy chipmaker, Intel is staging a comeback—riding the AI boom, forging alliances, and betting big on a future it once failed to see"
+                "title": "Man who murdered British dad in Australia declared mentally unfit for trial",
+                "link": "https://www.bbc.com/news/articles/ckgp1r0lv8vo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 03:51:56 GMT",
+                "summary": "A judge found Royce Mallett's killer, who was displaying symptoms of psychosis at the time of the attack, could not be found criminally responsible."
+            },
+            {
+                "title": "Jimmy Kimmel rejects White House criticism over Melania widow joke",
+                "link": "https://www.bbc.com/news/articles/c04x40d4424o?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 06:09:43 GMT",
+                "summary": "In a parody aired days before the White House Correspondents' Dinner, Kimmel called Melania an \"expectant widow\"."
+            },
+            {
+                "title": "In pictures: King Charles and Queen Camilla begin US state visit",
+                "link": "https://www.bbc.com/news/articles/c86e6z26xdpo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 05:33:17 GMT",
+                "summary": "King Charles III and Queen Camilla were greeted by a military band and honour guard as they arrived for their four-day state visit."
+            },
+            {
+                "title": "Newspaper headlines: 'United King Don' and 'PM battles to block sleaze vote'",
+                "link": "https://www.bbc.com/news/articles/c2e2dd08rdko?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 04:25:36 GMT",
+                "summary": "King Charles III and Queen Camilla's state visit to the US dominates Tuesday's papers."
+            },
+            {
+                "title": "Why Spotify has no button to filter out AI music",
+                "link": "https://www.bbc.com/news/articles/cd7jpg4w181o?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 23:03:10 GMT",
+                "summary": "Music streamer Deezer allows users to filter out AI music, so why does Spotify not offer the same?"
+            },
+            {
+                "title": "'My husband finally got full-time care – he died a week later'",
+                "link": "https://www.bbc.com/news/articles/cpd5g905x95o?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 05:24:16 GMT",
+                "summary": "Kirsty Parsons shares details of her battle to secure adult social care support for her husband."
+            },
+            {
+                "title": "Babies among those tied up and allegedly abused in Indonesia childcare centre",
+                "link": "https://www.bbc.com/news/articles/cgj0jx4pqzvo?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 23:05:24 GMT",
+                "summary": "In a case that has gripped the nation, dozens of children have allegedly been mistreated at the centre in Yogyakarta."
+            },
+            {
+                "title": "'I had £20,000 stolen and had to fight a 13-month fraud reporting rule to get it back'",
+                "link": "https://www.bbc.com/news/articles/cpvxg1vzxzjo?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 23:03:39 GMT",
+                "summary": "Sarah has now got her money back but there are calls to reform the deadline for reporting scams to banks."
+            },
+            {
+                "title": "'My husband might give up work to care for our kids' - nursery bills in Wales highest in Britain",
+                "link": "https://www.bbc.com/news/articles/c86e6g6989qo?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 05:07:59 GMT",
+                "summary": "Parents in Wales say the cost of childcare is one of their biggest worries ahead of the election."
+            },
+            {
+                "title": "Man pleads guilty to murder two decades after death of Run DMC's Jam Master Jay",
+                "link": "https://www.bbc.com/news/articles/c78q55nxdp3o?at_medium=RSS&at_campaign=rss",
+                "published": "Mon, 27 Apr 2026 23:30:17 GMT",
+                "summary": "Jay Bryant, 52, changed his plea on Monday, admitting that he helped others get into a building to ambush the pioneering rapper and deejay."
+            },
+            {
+                "title": "Rescuers race to free survivors trapped inside train after fatal Indonesia crash",
+                "link": "https://www.bbc.com/news/articles/ckgegg8r0v1o?at_medium=RSS&at_campaign=rss",
+                "published": "Tue, 28 Apr 2026 04:18:54 GMT",
+                "summary": "Two trains collided on the outskirts of the Indonesian capital on Monday, killing at least 14 people."
             }
         ]
     }

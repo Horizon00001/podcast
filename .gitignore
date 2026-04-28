@@ -38,3 +38,6 @@ Thumbs.db
 
 # Outputs
 output/*
+
+# Local demo backups
+docs/demo_original_local.mp4

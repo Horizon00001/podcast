@@ -183,6 +183,22 @@ def test_get_podcast_script_success():
                 ],
                 "summary": "Opening section",
             },
+            {
+                "section_type": "main_content",
+                "dialogues": [
+                    {"speaker": "A", "content": "Here is the main topic.", "emotion": ""},
+                    {"speaker": "B", "content": "Let us break it down.", "emotion": ""},
+                ],
+                "summary": "Main section",
+            },
+            {
+                "section_type": "closing",
+                "dialogues": [
+                    {"speaker": "A", "content": "Thanks for listening.", "emotion": ""},
+                    {"speaker": "B", "content": "See you next time.", "emotion": ""},
+                ],
+                "summary": "Closing section",
+            },
         ],
         "total_duration": "1min",
     }
@@ -209,7 +225,7 @@ def test_get_podcast_script_success():
         response = client.get(f"/api/v1/podcasts/{podcast_id}/script")
         assert response.status_code == 200
         lines = response.json()
-        assert len(lines) == 2
+        assert len(lines) == 6
         assert lines[0]["speaker"] == "host"
         assert lines[0]["text"] == "Hello from host."
         assert lines[1]["speaker"] == "guest"

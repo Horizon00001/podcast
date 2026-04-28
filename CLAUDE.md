@@ -29,7 +29,7 @@ HTTP Request -> FastAPI Route -> Service -> Repository -> SQLAlchemy Session -> 
 
 ```bash
 # Backend - 必须使用 backend venv 中的 Python
-cd /home/default/Projects/podcast/backend
+cd /root/Projects/podcast/backend
 .venv/bin/python -m uvicorn app.main:app --reload
 
 # Backend tests
@@ -38,7 +38,7 @@ cd /home/default/Projects/podcast/backend
 .venv/bin/pytest tests/test_generation_routes.py -v
 
 # Frontend
-cd /home/default/Projects/podcast/frontend
+cd /root/Projects/podcast/frontend
 npm install
 npm run dev
 npm run lint
@@ -46,7 +46,7 @@ npm run build
 npm test
 
 # Standalone pipeline
-cd /home/default/Projects/podcast/backend
+cd /root/Projects/podcast/backend
 .venv/bin/python -m app.cli run-pipeline --topic daily-news
 
 # Focused pipeline steps
@@ -60,7 +60,7 @@ cd /home/default/Projects/podcast/backend
 ```text
 backend/
   app/
-    api/v1/           FastAPI 路由（podcasts, users, interactions, recommendations, favorites, generation）
+    api/v1/           FastAPI 路由（podcasts, users, interactions, recommendations, favorites, likes, generation）
     cli/              命令行入口（run-pipeline, fetch-rss, generate-text, synthesize-tts）
     core/             Settings 配置类
     db/               数据库初始化与迁移
@@ -73,8 +73,8 @@ backend/
 frontend/
   src/
     components/       播放器、脚本面板、时间线等 UI 组件
-    context/          User / Player / Favorites 状态管理
-    pages/            列表、详情、生成、订阅、模型、设置、收藏页面
+    context/          User / Player / Favorites / Likes 状态管理
+    pages/            列表、详情、生成、订阅、模型、设置、收藏、点赞页面
     router/           前端路由
     services/api.ts   API 客户端
     types/            TypeScript 类型定义
@@ -120,8 +120,8 @@ assets/audio/         开场、转场、结尾等音频素材
 - `backend/.env`：运行环境变量
 
 ### 注意事项
-- 历史文档里如果出现 `/root/Projects/podcast`，当前环境应改看 `/home/default/Projects/podcast`
-- `frontend/README.md` 是默认模板，不是项目指南
+- 历史文档里如果出现 `/root/Projects/podcast`，当前环境应改看 `/root/Projects/podcast`
+- `frontend/README.md` 只保留前端快速参考，项目总览看根目录 README
 - `output/` 下内容是生成产物，通常不作为源码事实依据
 
 ## 后端 API
@@ -133,6 +133,7 @@ assets/audio/         开场、转场、结尾等音频素材
 - `interactions`
 - `recommendations`
 - `favorites`
+- `likes`
 - `generation`
 
 额外顶层路由：
@@ -161,7 +162,7 @@ assets/audio/         开场、转场、结尾等音频素材
 - `id`: Integer, PK
 - `user_id`: FK -> users.id
 - `podcast_id`: FK -> podcasts.id
-- `action`: `play | pause | resume | like | favorite | skip | complete`
+- `action`: `play | pause | resume | like | favorite | skip | complete | click`
 - `listen_duration_ms`: Integer，可为空
 - `progress_pct`: Float，可为空
 - `session_id`: String(64)，可为空
@@ -173,7 +174,11 @@ assets/audio/         开场、转场、结尾等音频素材
 
 ### Favorite
 - 收藏关系单独建模在 `backend/app/models/favorite.py`
-- 前端通过 `/favorites` 路由读取和维护收藏，不再只依赖 interaction 事件模拟收藏
+- 前端通过 `/favorites` 路由读取和维护收藏
+
+### Like
+- 点赞关系单独建模在 `backend/app/models/like.py`
+- 前端通过 `/likes` 路由读取和维护点赞
 
 ### GenerationTask
 - `task_id`: String(64), PK
@@ -202,6 +207,10 @@ assets/audio/         开场、转场、结尾等音频素材
 - 管理收藏状态
 - 与 `/favorites` API 同步
 
+**LikesContext**
+- 管理点赞状态
+- 与 `/likes` API 同步
+
 ### 主要页面
 
 - `PodcastListPage`：播客列表
@@ -211,6 +220,7 @@ assets/audio/         开场、转场、结尾等音频素材
 - `ModelsPage`：脚本/TTS provider 能力与健康状态
 - `SettingsPage`：用户偏好设置
 - `FavoritesPage`：收藏列表
+- `LikesPage`：点赞列表
 
 ### 生成页重点
 
@@ -235,6 +245,10 @@ assets/audio/         开场、转场、结尾等音频素材
   - `getFavorites(userId)`
   - `addFavorite(userId, podcastId)`
   - `removeFavorite(userId, podcastId)`
+- 点赞相关接口：
+  - `getLikes(userId)`
+  - `addLike(userId, podcastId)`
+  - `removeLike(userId, podcastId)`
 
 ## Generation API
 

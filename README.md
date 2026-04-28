@@ -1,6 +1,6 @@
 # Podcast Prompt API
 
-一个用于播客脚本生成、音频合成和任务管理的全栈项目。后端提供 FastAPI 接口和命令行流水线，前端提供 Web 管理界面。
+一个用于播客脚本生成、音频合成和任务管理的全栈项目。后端提供 FastAPI 接口和 CLI 流水线，前端提供 Web 管理界面。
 
 ## 项目组成
 
@@ -14,15 +14,16 @@
 
 - RSS 源读取与筛选
 - 主题驱动的节目选材与编排
-- 基于大模型的播客脚本生成
+- 基于 `pydantic-ai` 的播客脚本生成
 - TTS 语音合成并输出音频文件
-- 生成任务创建、状态查询和 SSE 日志流
-- 播客、用户、交互和推荐相关接口
+- 生成任务创建、状态查询、取消和 SSE 日志流
+- 播客、用户、交互、点赞、收藏和推荐接口
 
 ## 技术栈
 
 - 后端：Python、FastAPI、SQLAlchemy、Pydantic
-- 前端：React、TypeScript、Vite
+- AI：`pydantic-ai` + DeepSeek 脚本模型
+- 前端：React、TypeScript、Vite、React Router
 - 数据库：SQLite，支持通过配置切换到 PostgreSQL
 - 语音：DashScope CosyVoice 或 Edge TTS
 
@@ -51,9 +52,10 @@
 
 说明：
 
-- `Settings` 会优先读取当前工作目录下的 `.env`
+- `Settings` 会优先读取 `backend/.env`
 - 从 `backend/` 启动服务时，默认数据库文件是 `backend/podcast.db`
 - 音频静态目录是仓库根目录下的 `output/audio/`
+- 播客静态音频目录挂载在 `output/podcasts/`
 
 ## 启动方式
 
@@ -62,11 +64,9 @@
 从 `backend/` 目录启动：
 
 ```bash
-# 设置 Python 输出编码为 UTF-8
-set PYTHONIOENCODING=utf-8
-cd backend
+cd /root/Projects/podcast/backend
 source .venv/bin/activate
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 服务启动后：
@@ -79,7 +79,7 @@ uvicorn app.main:app --reload
 从 `frontend/` 目录启动：
 
 ```bash
-cd frontend
+cd /root/Projects/podcast/frontend
 npm install
 npm run dev
 ```
@@ -91,17 +91,12 @@ npm run dev
 后端统一 CLI 入口在 `backend/app/cli/`，从 `backend/` 运行：
 
 ```bash
+cd /root/Projects/podcast/backend
+source .venv/bin/activate
 python -m app.cli --help
 ```
 
-可用命令：
-
-- `run-pipeline`：执行完整播客生成流水线
-- `fetch-rss`：抓取 RSS 源并输出 `rss_data.json`
-- `generate-text`：根据 RSS 和主题生成脚本
-- `synthesize-tts`：将脚本 JSON 合成为音频
-
-示例：
+常用命令：
 
 ```bash
 python -m app.cli fetch-rss
@@ -117,7 +112,7 @@ python -m app.cli run-pipeline --topic daily-news
 1. 读取 `config/feed.json`
 2. 按主题选择素材并生成节目编排
 3. 调用大模型生成结构化播客脚本
-4. 调用 TTS 合成音频并保存到 `output/audio/`
+4. 调用 TTS 合成音频并保存到 `output/`
 
 生成结果通常会落在：
 
@@ -129,31 +124,47 @@ python -m app.cli run-pipeline --topic daily-news
 
 ## API
 
+### 核心资源
+
+- `GET /health`
+- `GET /api/v1/podcasts`
+- `GET /api/v1/podcasts/{podcast_id}`
+- `GET /api/v1/podcasts/{podcast_id}/script`
+- `POST /api/v1/podcasts`
+- `GET /api/v1/users`
+- `GET /api/v1/interactions`
+- `GET /api/v1/recommendations/{user_id}`
+- `POST /api/v1/recommendations/{user_id}/preferences`
+- `GET /api/v1/favorites?user_id=...`
+- `POST /api/v1/favorites`
+- `DELETE /api/v1/favorites/{user_id}/{podcast_id}`
+- `GET /api/v1/likes?user_id=...`
+- `POST /api/v1/likes`
+- `DELETE /api/v1/likes/{user_id}/{podcast_id}`
+
 ### 生成任务
 
-- `GET /api/v1/generation/sources`：获取启用的 RSS 源
-- `GET /api/v1/generation/topics`：获取可选主题
-- `POST /api/v1/generation/trigger`：创建生成任务
-- `GET /api/v1/generation/{task_id}`：查询任务状态
-- `GET /api/v1/generation/{task_id}/stream`：订阅任务日志 SSE
+- `GET /api/v1/generation/sources`
+- `GET /api/v1/generation/topics`
+- `GET /api/v1/generation/tts/providers`
+- `GET /api/v1/generation/capabilities`
+- `GET /api/v1/generation/provider-health`
+- `POST /api/v1/generation/trigger`
+- `GET /api/v1/generation/{task_id}`
+- `GET /api/v1/generation/{task_id}/stream`
+- `DELETE /api/v1/generation/{task_id}`
 
 请求示例：
 
 ```json
 {
-  "rss_source": "espn-rpm",
-  "topic": "daily-news"
+  "rss_source": "default",
+  "topic": "daily-news",
+  "user_id": 1,
+  "use_subscriptions": false,
+  "custom_rss": []
 }
 ```
-
-### 其他资源
-
-- `GET /api/v1/podcasts`
-- `GET /api/v1/podcasts/{podcast_id}`
-- `POST /api/v1/podcasts`
-- `GET /api/v1/users`
-- `GET /api/v1/interactions`
-- `GET /api/v1/recommendations`
 
 ## 测试
 
@@ -169,7 +180,8 @@ pytest
 
 ```bash
 pytest tests/test_health.py
-pytest tests/test_generation_routes.py
+pytest tests/test_db_migrations.py
+pytest tests/test_interaction_routes.py
 pytest tests/test_podcast_routes.py
 pytest tests/test_recommendation_routes.py
 pytest tests/test_tts_provider.py
@@ -182,6 +194,7 @@ pytest tests/test_tts_provider.py
 ```bash
 npm run lint
 npm run build
+npm test
 ```
 
 `npm run build` 会先执行 TypeScript 检查，再构建前端产物。
@@ -202,12 +215,20 @@ backend/
     services/       业务逻辑
   tests/            后端测试
 frontend/
-  src/              前端源码
+  src/
+    components/     播放器、脚本面板、时间线等 UI 组件
+    context/        状态管理
+    pages/          列表、详情、生成、订阅、模型、设置、点赞、收藏页面
+    router/         前端路由
+    services/       API 客户端
+    types/          TypeScript 类型定义
 config/
   feed.json         RSS 配置
   topics.json       主题配置
 output/
   audio/            音频输出目录
+prompt.txt          剧本生成 prompt
+assets/audio/       开场、转场、结尾等音频素材
 ```
 
 ## 注意事项
@@ -215,3 +236,4 @@ output/
 - 后端启动时会自动初始化数据库并执行迁移
 - `output/` 下的生成文件通常不应手动提交
 - 如果切换 TTS 服务提供方，需要同时检查 `.env` 和后端配置是否一致
+- 音频素材按用途分目录，优先使用 `assets/audio/opening/`、`assets/audio/transition/`、`assets/audio/closing/`

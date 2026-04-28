@@ -6,12 +6,12 @@
 ## Source Of Truth
 - Prefer code and executable config over docs when they disagree.
 - `README.md` and `CLAUDE.md` are useful context, but some older workflow notes may lag behind the implementation.
-- `frontend/README.md` is the default Vite template and is not project documentation.
+- `frontend/README.md` is a quick-reference note, not the canonical project guide.
 
 ## Required Runtime
 - Backend Python must come from `backend/.venv/bin/python` after creating the venv.
 - Typical setup:
-  - `cd /home/default/Projects/podcast/backend`
+  - `cd /root/Projects/podcast/backend`
   - `python3 -m venv .venv`
   - `.venv/bin/pip install -r requirements.txt`
 - Global Python environments are missing backend dependencies such as `pydantic_ai` and `dashscope`.
@@ -50,6 +50,7 @@
   - `interactions`
   - `recommendations`
   - `favorites`
+  - `likes`
   - `generation`
 - Health endpoint is top-level `GET /health`.
 
@@ -78,6 +79,7 @@
   - `/subscriptions` subscription management
   - `/models` provider/models page
   - `/settings` settings page
+  - `/likes` likes page
   - `/favorites` favorites page
 - Default API base URL is `VITE_API_BASE_URL ?? http://localhost:8000/api/v1`.
 - Media URLs intentionally strip `/api/v1` using `MEDIA_BASE_URL`; do not prepend the API prefix to audio asset URLs.
@@ -114,4 +116,4 @@
 ## Working Notes
 - Root `package-lock.json` exists, but the active frontend project is `frontend/package.json`.
 - Generated files under `output/` are artifacts, not source of truth, unless the task is explicitly about pipeline results.
-- Some older docs still reference `/root/Projects/...`; in this environment the correct workspace path is `/home/default/Projects/podcast`.
+- Some older docs still reference `/root/Projects/...`; in this environment the correct workspace path is `/root/Projects/podcast`.

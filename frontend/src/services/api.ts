@@ -4,7 +4,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000/api
 export const MEDIA_BASE_URL = BASE_URL.replace('/api/v1', '')
 const REQUEST_TIMEOUT_MS = 8000
 
-export type InteractionAction = 'play' | 'pause' | 'resume' | 'like' | 'favorite' | 'skip' | 'complete'
+export type InteractionAction = 'play' | 'pause' | 'resume' | 'like' | 'favorite' | 'skip' | 'complete' | 'click'
 
 export type InteractionPayload = {
   user_id: number
@@ -198,6 +198,19 @@ export const api = {
     }),
   removeFavorite: (userId: number, podcastId: number) =>
     request<{ ok: boolean }>(`/favorites/${userId}/${podcastId}`, {
+      method: 'DELETE',
+    }),
+  getLikes: (userId: number) =>
+    request<Array<{ id: number; user_id: number; podcast_id: number; created_at: string }>>(
+      `/likes?user_id=${userId}`
+    ),
+  addLike: (userId: number, podcastId: number) =>
+    request<{ id: number; user_id: number; podcast_id: number; created_at: string }>('/likes', {
+      method: 'POST',
+      body: JSON.stringify({ user_id: userId, podcast_id: podcastId }),
+    }),
+  removeLike: (userId: number, podcastId: number) =>
+    request<{ ok: boolean }>(`/likes/${userId}/${podcastId}`, {
       method: 'DELETE',
     }),
 }

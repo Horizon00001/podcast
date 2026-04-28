@@ -7,6 +7,7 @@ import type { Podcast, ScriptLine } from '../types/podcast'
 import { usePlayer } from '../context/PlayerContext'
 import { useUser } from '../context/UserContext'
 import { useFavorites } from '../context/FavoritesContext'
+import { useLikes } from '../context/LikesContext'
 import { getCategoryLabel, getCoverStyle, getFeaturedHeroCoverStyle, getFeaturedHeroSecondaryCoverStyle } from '../utils/coverStyles'
 import { truncateText } from '../utils/truncate'
 
@@ -73,7 +74,8 @@ const RECOMMENDATION_COVER_THEMES = [
 ]
 
 export function PodcastListPage() {
-  const {isFavorite, toggleFavorite } = useFavorites();
+  const { isFavorite, toggleFavorite } = useFavorites()
+  const { isLiked, toggleLike } = useLikes()
   const [podcasts, setPodcasts] = useState<Podcast[]>([])
   const [featuredScriptLines, setFeaturedScriptLines] = useState<ScriptLine[]>([])
   const [recommendedIds, setRecommendedIds] = useState<number[]>([])
@@ -93,29 +95,38 @@ export function PodcastListPage() {
       .catch((e) => setError((e as Error).message))
   }, [])
 
+  const loadRecommendations = async (userId: number) => {
+    const response = await api.getRecommendations(userId)
+    setRecommendedIds(response.items.map((item) => item.podcast_id))
+    setRecommendationRequestId(response.request_id)
+    setPlayerRecommendationRequestId(response.request_id)
+    if (response.strategy === 'cold-start' && !localStorage.getItem(ONBOARDED_KEY)) {
+      setShowPrefModal(true)
+      setIsEditingPrefs(false)
+    }
+    return response
+  }
+
   useEffect(() => {
     if (!user) return
-    api.getRecommendations(user.id)
-      .then((response) => {
-        setRecommendedIds(response.items.map((item) => item.podcast_id))
-        setRecommendationRequestId(response.request_id)
-        setPlayerRecommendationRequestId(response.request_id)
-        if (response.strategy === 'cold-start' && !localStorage.getItem(ONBOARDED_KEY)) {
-          setShowPrefModal(true)
-          setIsEditingPrefs(false)
-        }
-      })
+    loadRecommendations(user.id)
       .catch((e) => setError((e as Error).message))
   }, [user])
 
-  const handlePlay = (podcast: Podcast) => {
+  const handlePlay = async (podcast: Podcast) => {
     if (currentPodcast?.id === podcast.id) {
       toggle()
-    } else {
-      play(podcast)
-      if (user) {
-        void reportAction('play', podcast, { listen_duration_ms: 0, progress_pct: 0, recommendation_request_id: recommendationRequestId })
-      }
+      return
+    }
+
+    play(podcast)
+    if (!user) return
+
+    try {
+      await reportAction('click', podcast, { recommendation_request_id: recommendationRequestId })
+      await loadRecommendations(user.id)
+    } catch (e) {
+      setError((e as Error).message)
     }
   }
 
@@ -138,10 +149,7 @@ export function PodcastListPage() {
       await api.setPreferences(user.id, pickedTags)
       localStorage.setItem(ONBOARDED_KEY, '1')
       setShowPrefModal(false)
-      const resp = await api.getRecommendations(user.id)
-      setRecommendedIds(resp.items.map((item) => item.podcast_id))
-      setRecommendationRequestId(resp.request_id)
-      setPlayerRecommendationRequestId(resp.request_id)
+      await loadRecommendations(user.id)
     } catch (e) {
       setError((e as Error).message)
     } finally {
@@ -157,9 +165,22 @@ export function PodcastListPage() {
   const handleFavoriteToggle = (podcastId: number) => {
     const podcast = podcasts.find((item) => item.id === podcastId)
     if (!podcast || !user) return
+    const wasFavorite = isFavorite(podcastId)
     toggleFavorite(podcast)
-    if (isFavorite(podcastId)) {
+    if (!wasFavorite) {
       void reportAction('favorite', podcast, {
+        recommendation_request_id: recommendationRequestId,
+      })
+    }
+  }
+
+  const handleLikeToggle = (podcastId: number) => {
+    const podcast = podcasts.find((item) => item.id === podcastId)
+    if (!podcast || !user) return
+    const wasLiked = isLiked(podcastId)
+    toggleLike(podcast)
+    if (!wasLiked) {
+      void reportAction('like', podcast, {
         recommendation_request_id: recommendationRequestId,
       })
     }
@@ -502,15 +523,18 @@ export function PodcastListPage() {
                   onKeyDown={(event) => handleCardKeyDown(event, podcast)}
                   role="button"
                   tabIndex={0}
-                  style={{
-                     border: '1px solid var(--border)',
-                     borderRadius: '18px',
-                     padding: '12px',
-                     background: 'var(--bg)',
-                     boxShadow: '0 10px 28px rgba(8, 6, 13, 0.04)',
-                     cursor: 'pointer',
-                   }}
-                 >
+                   style={{
+                      border: '1px solid var(--border)',
+                      borderRadius: '18px',
+                      padding: '12px 12px 54px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      position: 'relative',
+                      background: 'var(--bg)',
+                      boxShadow: '0 10px 28px rgba(8, 6, 13, 0.04)',
+                      cursor: 'pointer',
+                    }}
+                  >
                   <div
                     style={{
                       aspectRatio: '1 / 1',
@@ -608,27 +632,44 @@ export function PodcastListPage() {
                       </div>
                     </div>
                   </div>
-                   <Link
-                     to={`/podcasts/${podcast.id}`}
-                     onClick={(event) => event.stopPropagation()}
-                     style={{ display: 'block', fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none', fontSize: '16px', lineHeight: 1.25, textAlign: 'left' }}
-                    >
-                     {truncateText(podcast.title, 50)}
-                   </Link>
-                   <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5, textAlign: 'left' }}>{truncateText(podcast.summary, 100)}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '12px', color: '#5f5967' }}>{new Date(podcast.published_at).toLocaleDateString()}</span>
-                    <motion.button
-                      whileHover={{ scale: 1.12 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={(event) => {
-                        event.stopPropagation()
-                        handleFavoriteToggle(podcast.id)
-                      }}
-                      style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
-                    >
-                      {isFavorite(podcast.id) ? '已收藏' : '收藏'}
-                    </motion.button>
+                  <div>
+                    <div>
+                      <Link
+                        to={`/podcasts/${podcast.id}`}
+                        onClick={(event) => event.stopPropagation()}
+                        style={{ display: 'block', fontWeight: 700, color: 'var(--text-h)', textDecoration: 'none', fontSize: '16px', lineHeight: 1.25, textAlign: 'left' }}
+                      >
+                        {truncateText(podcast.title, 50)}
+                      </Link>
+                      <p style={{ fontSize: '13px', margin: '8px 0 10px', color: 'var(--text)', lineHeight: 1.5, textAlign: 'left' }}>{truncateText(podcast.summary, 100)}</p>
+                    </div>
+                    <div style={{ position: 'absolute', left: '12px', right: '12px', bottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
+                      <span style={{ fontSize: '12px', color: '#5f5967' }}>{new Date(podcast.published_at).toLocaleDateString()}</span>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <motion.button
+                          whileHover={{ scale: 1.12 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            handleLikeToggle(podcast.id)
+                          }}
+                          style={{ border: `1px solid ${isLiked(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isLiked(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isLiked(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                        >
+                          {isLiked(podcast.id) ? '已喜欢' : '喜欢'}
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.12 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            handleFavoriteToggle(podcast.id)
+                          }}
+                          style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                        >
+                          {isFavorite(podcast.id) ? '已收藏' : '收藏'}
+                        </motion.button>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
             )})}
@@ -686,6 +727,9 @@ export function PodcastListPage() {
                 border: '1px solid rgba(255, 255, 255, 0.72)',
                 borderRadius: '18px',
                 padding: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
                 background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 244, 251, 0.92) 100%)',
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.72), 0 10px 28px rgba(40, 24, 72, 0.06)',
                 backdropFilter: 'blur(10px)',
@@ -714,41 +758,57 @@ export function PodcastListPage() {
                   <div style={{ marginTop: '10px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 600 }}>{getCategoryLabel(podcast.category)}</div>
                 </div>
               </div>
-              <Link
-                to={`/podcasts/${podcast.id}`}
-                onClick={(event) => event.stopPropagation()}
-                style={{
-                  display: 'block',
-                  fontWeight: 600,
-                  color: 'var(--text-h)',
-                  textDecoration: 'none',
-                  fontSize: '18px',
-                  lineHeight: 1.25,
-                  marginBottom: '8px',
-                  textAlign: 'left'
-                }}
-              >
-                {truncateText(podcast.title, 50)}
-              </Link>
-              <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5, textAlign: 'left' }}>
-                {truncateText(podcast.summary, 100)}
-              </p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
-                <div style={{ fontSize: '12px', color: 'var(--text)' }}>
-                  {new Date(podcast.published_at).toLocaleDateString()}
-                </div>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  <motion.button
-                    whileHover={{ scale: 1.12 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={(event) => {
-                      event.stopPropagation()
-                      handleFavoriteToggle(podcast.id)
+              <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr auto', flex: 1, minHeight: 0 }}>
+                <div>
+                  <Link
+                    to={`/podcasts/${podcast.id}`}
+                    onClick={(event) => event.stopPropagation()}
+                    style={{
+                      display: 'block',
+                      fontWeight: 600,
+                      color: 'var(--text-h)',
+                      textDecoration: 'none',
+                      fontSize: '18px',
+                      lineHeight: 1.25,
+                      marginBottom: '8px',
+                      textAlign: 'left'
                     }}
-                    style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
-  >
-                    {isFavorite(podcast.id) ? '已收藏' : '收藏'}
-                  </motion.button>
+                  >
+                    {truncateText(podcast.title, 50)}
+                  </Link>
+                  <p style={{ fontSize: '14px', color: 'var(--text)', marginBottom: '12px', lineHeight: 1.5, textAlign: 'left' }}>
+                    {truncateText(podcast.summary, 100)}
+                  </p>
+                </div>
+                <div />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', textAlign: 'left', paddingTop: '12px', alignSelf: 'end' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text)' }}>
+                    {new Date(podcast.published_at).toLocaleDateString()}
+                  </div>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <motion.button
+                      whileHover={{ scale: 1.12 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        handleLikeToggle(podcast.id)
+                      }}
+                      style={{ border: `1px solid ${isLiked(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isLiked(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isLiked(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                    >
+                      {isLiked(podcast.id) ? '已喜欢' : '喜欢'}
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.12 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(event) => {
+                        event.stopPropagation()
+                        handleFavoriteToggle(podcast.id)
+                      }}
+                      style={{ border: `1px solid ${isFavorite(podcast.id) ? 'var(--accent-border)' : 'rgba(8, 6, 13, 0.08)'}`, background: isFavorite(podcast.id) ? 'var(--accent-bg)' : 'transparent', borderRadius: '999px', padding: '6px 10px', cursor: 'pointer', fontSize: '12px', color: isFavorite(podcast.id) ? '#ffffff' : 'var(--text-h)', fontWeight: 600 }}
+                    >
+                      {isFavorite(podcast.id) ? '已收藏' : '收藏'}
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </motion.div>

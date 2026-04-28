@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { PlayerProvider } from './context/PlayerContext'
 import { UserProvider, useUser } from './context/UserContext'
 import { FavoritesProvider } from './context/FavoritesContext'
+import { LikesProvider } from './context/LikesContext'
 import { GlobalPlayer } from './components/GlobalPlayer'
 
 const navIcons: Record<string, React.ReactNode> = {
@@ -36,6 +37,11 @@ const navIcons: Record<string, React.ReactNode> = {
   ),
   '/favorites': (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2.75l2.85 5.78 6.38.93-4.61 4.5 1.09 6.35L12 17.3l-5.71 3.01 1.09-6.35-4.61-4.5 6.38-.93L12 2.75z" />
+    </svg>
+  ),
+  '/likes': (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
     </svg>
   ),
@@ -52,6 +58,7 @@ const navItems = [
   { to: '/generate', label: '生成' },
   { to: '/subscriptions', label: '订阅' },
   { to: '/models', label: '模型' },
+  { to: '/likes', label: '喜欢' },
   { to: '/favorites', label: '收藏' },
   { to: '/settings', label: '设置' },
 ]
@@ -342,25 +349,26 @@ function App() {
   return (
     <UserProvider>
       <PlayerProvider>
-        <FavoritesProvider>
-          <div style={{ minHeight: '100vh', display: 'flex', background: '#ffffff' }}>
-            <NavigationRail />
-            <div
-              style={{
-                flex: 1,
-                minWidth: 0,
-                paddingBottom: isPodcastDetailPage ? '0' : '100px',
-                background: '#ffffff',
-                overflowX: 'hidden',
-              }}
-            >
-              <div className="desktop-ui-scale">
-                <AnimatedOutlet />
+        <LikesProvider>
+          <FavoritesProvider>
+            <div style={{ minHeight: '100vh', display: 'flex', background: '#ffffff' }}>
+              <NavigationRail />
+              <div
+                style={{
+                  flex: 1,
+                  minWidth: 0,
+                  paddingBottom: isPodcastDetailPage ? '0' : '100px',
+                  background: '#ffffff',
+                  overflowX: 'hidden',
+                }}
+              >
+                <div className="desktop-ui-scale">
+                  <AnimatedOutlet />
+                </div>
               </div>
+              {!isPodcastDetailPage && <GlobalPlayer sidebarWidth={SIDEBAR_WIDTH} desktopScale={DESKTOP_UI_SCALE} />}
             </div>
-            {!isPodcastDetailPage && <GlobalPlayer sidebarWidth={SIDEBAR_WIDTH} desktopScale={DESKTOP_UI_SCALE} />}
-          </div>
-          <style>{`
+            <style>{`
             .desktop-ui-scale {
               width: calc(100% / ${DESKTOP_UI_SCALE});
               min-height: calc(100vh / ${DESKTOP_UI_SCALE});
@@ -384,7 +392,8 @@ function App() {
               }
             }
           `}</style>
-        </FavoritesProvider>
+          </FavoritesProvider>
+        </LikesProvider>
       </PlayerProvider>
     </UserProvider>
   )

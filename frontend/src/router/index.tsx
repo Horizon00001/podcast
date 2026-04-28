@@ -5,7 +5,8 @@ import { PodcastDetailPage } from '../pages/PodcastDetailPage'
 import { PodcastListPage } from '../pages/PodcastListPage'
 import { SubscriptionPage } from '../pages/SubscriptionPage'
 import { SettingsPage } from '../pages/SettingsPage'
-import { FavoritesPage } from '../pages/FavoritesPage';
+import { FavoritesPage } from '../pages/FavoritesPage'
+import { LikesPage } from '../pages/LikesPage'
 import { ModelsPage } from '../pages/ModelsPage'
 
 export const router = createBrowserRouter([
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([
       { path: "subscriptions", element: <SubscriptionPage /> },
       { path: 'models', element: <ModelsPage /> },
       { path: "settings", element: <SettingsPage /> },
-      { path: 'favorites', element: <FavoritesPage /> }
+      { path: 'likes', element: <LikesPage /> },
+      { path: 'favorites', element: <FavoritesPage /> },
     ],
   },
 ])

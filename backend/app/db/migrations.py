@@ -12,6 +12,7 @@ def run_migrations() -> None:
     _ensure_generation_tasks_table()
     _ensure_interactions_columns()
     _ensure_favorites_table()
+    _ensure_likes_table()
 
 
 def _ensure_podcasts_category_column() -> None:
@@ -163,6 +164,26 @@ def _ensure_favorites_table() -> None:
         connection.execute(
             text(
                 "CREATE TABLE favorites ("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "user_id INTEGER NOT NULL REFERENCES users(id), "
+                "podcast_id INTEGER NOT NULL REFERENCES podcasts(id), "
+                "created_at DATETIME NOT NULL, "
+                "UNIQUE(user_id, podcast_id)"
+                ")"
+            )
+        )
+
+
+def _ensure_likes_table() -> None:
+    inspector = inspect(engine)
+    table_names = set(inspector.get_table_names())
+    if "likes" in table_names:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "CREATE TABLE likes ("
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 "user_id INTEGER NOT NULL REFERENCES users(id), "
                 "podcast_id INTEGER NOT NULL REFERENCES podcasts(id), "

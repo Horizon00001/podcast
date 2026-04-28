@@ -2,6 +2,13 @@
 
 一个用于播客脚本生成、音频合成和任务管理的全栈项目。后端提供 FastAPI 接口和 CLI 流水线，前端提供 Web 管理界面。
 
+## 开源与协作
+
+- 授权协议：Apache-2.0，见 `LICENSE`
+- 贡献说明：见 `CONTRIBUTING.md`
+- 安全报告：见 `SECURITY.md`
+- 提交问题前，请先查看现有 issue，避免重复
+
 ## 项目组成
 
 - `backend/`：FastAPI 后端、数据库模型、生成流水线、CLI、测试

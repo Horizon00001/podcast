@@ -10,7 +10,7 @@ type ModelSectionKey = 'script' | 'speech' | 'embedding'
 const modelSectionMeta: Array<{ key: ModelSectionKey; title: string; description: string }> = [
   {
     key: 'script',
-    title: '脚本模型',
+    title: '语言模型',
     description: '用于剧本生成服务的默认连接参数。',
   },
   {

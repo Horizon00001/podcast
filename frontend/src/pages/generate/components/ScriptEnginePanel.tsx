@@ -66,7 +66,7 @@ export function ScriptEnginePanel({
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '5px', color: 'var(--text-h)', fontWeight: 700 }}>脚本模型</label>
+            <label style={{ display: 'block', marginBottom: '5px', color: 'var(--text-h)', fontWeight: 700 }}>语言模型</label>
             <select
               value={preferences.generation.script_llm_model}
               onChange={(event) => onScriptModelChange(event.target.value)}

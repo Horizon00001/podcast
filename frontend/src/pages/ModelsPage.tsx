@@ -127,7 +127,7 @@ export function ModelsPage() {
         <div style={{ fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#7c7288', fontWeight: 800 }}>Models</div>
         <h1 className="models-title" style={{ margin: '10px 0 10px', fontSize: '38px', lineHeight: 1.02, letterSpacing: '-0.05em', fontWeight: 850, color: '#0f172a' }}>模型</h1>
         <p style={{ color: 'var(--text)', maxWidth: '700px', lineHeight: 1.7, fontSize: '15px' }}>
-          这里保存你的脚本生成、语音合成和 Embedding 服务连接参数。当前版本会把这些字段写入后端用户偏好，供后续能力接入时复用。
+          这里保存你的脚本生成、语音合成和 Embedding 服务连接参数。字段都可以留空，留空时默认走后端 `.env` 里的配置；填写后则会写入后端用户偏好，供后续能力接入时复用。
         </p>
       </section>
 
@@ -147,10 +147,10 @@ export function ModelsPage() {
 
               <div className="model-grid" style={{ marginTop: '16px', display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '14px' }}>
                 {[
-                  ['provider', 'Provider', '例如 openai_compatible / dashscope / ollama'],
-                  ['model', 'Model', '例如 deepseek-chat / cosyvoice-v2 / text-embedding-v3'],
-                  ['base_url', 'Base URL', '例如 https://api.example.com/v1'],
-                  ['api_key', 'API Key', '输入后会传给后端并保存到用户偏好'],
+                  ['provider', 'Provider', '留空则使用后端 .env 中的默认 provider'],
+                  ['model', 'Model', '留空则使用后端 .env 中的默认 model'],
+                  ['base_url', 'Base URL', '留空则使用后端 .env 中的默认地址'],
+                  ['api_key', 'API Key', '留空则使用后端 .env 中的默认密钥'],
                 ].map(([field, label, placeholder]) => (
                   <label key={field} style={{ display: 'grid', gap: '8px' }}>
                     <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-h)' }}>{label}</span>

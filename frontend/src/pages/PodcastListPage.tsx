@@ -713,7 +713,16 @@ export function PodcastListPage() {
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
         gap: '18px'
       }}>
-        {podcasts.map(podcast => {
+        {podcasts.map((podcast, index) => {
+          const allCardSeed = podcast.id * 97 + index * 53 + podcast.title.length * 11
+          const allCardStylePool = [
+            getFeaturedHeroCoverStyle(allCardSeed),
+            getFeaturedHeroSecondaryCoverStyle(allCardSeed + 7),
+            getCoverStyle(podcast.category, allCardSeed + 13),
+            getCoverStyle('all', allCardSeed + 19),
+          ]
+          const allCardCoverStyle = allCardStylePool[Math.abs(allCardSeed + index) % allCardStylePool.length]
+
           return (
             <motion.div
               key={podcast.id}
@@ -745,13 +754,39 @@ export function PodcastListPage() {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  ...getCoverStyle(podcast.category),
+                  position: 'relative',
+                  overflow: 'hidden',
+                  ...allCardCoverStyle,
                 }}
                 >
-                <span style={{ fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 700 }}>
-                  New Release
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: '-26px',
+                    top: '-24px',
+                    width: '128px',
+                    height: '128px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '-34px',
+                    bottom: '-38px',
+                    width: '148px',
+                    height: '148px',
+                    borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 68%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+                <span style={{ position: 'relative', zIndex: 1, fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.84)', fontWeight: 700 }}>
+                  Podcast / {String(index + 1).padStart(2, '0')}
                 </span>
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ position: 'relative', zIndex: 1, textAlign: 'left' }}>
                   <div style={{ fontSize: '28px', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.04em', color: '#ffffff', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflowWrap: 'anywhere' }}>
                     {podcast.title}
                   </div>

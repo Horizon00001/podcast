@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     episode_embedding_base_url: str | None = None
     episode_embedding_api_key: str | None = None
     episode_embedding_weight: float = 0.65
-    episode_cluster_threshold: float = 0.75
+    episode_cluster_threshold: float = 0.7
     episode_pending_merge_limit: int = 200
     episode_embedding_cache_file: str = "output/embedding_cache.json"
 

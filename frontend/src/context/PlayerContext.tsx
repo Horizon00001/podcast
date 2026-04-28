@@ -9,7 +9,7 @@ interface PlayerContextType {
   play: (podcast: Podcast) => void;
   pause: () => void;
   toggle: () => void;
-  reportAction: (action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite', podcast?: Podcast, payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string; recommendation_request_id?: string }) => Promise<unknown> | undefined;
+  reportAction: (action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite' | 'click', podcast?: Podcast, payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string; recommendation_request_id?: string }) => Promise<unknown> | undefined;
   setRecommendationRequestId: (id: string) => void;
   progress: number; // 0-100
   duration: number; // in seconds
@@ -206,7 +206,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   const reportAction = (
-    action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite',
+    action: 'play' | 'pause' | 'resume' | 'complete' | 'skip' | 'like' | 'favorite' | 'click',
     podcast?: Podcast,
     payload?: { listen_duration_ms?: number; progress_pct?: number; session_id?: string; recommendation_request_id?: string },
   ) => {

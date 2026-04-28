@@ -153,3 +153,34 @@ def test_recommendations_personalized_and_skip_filtered():
     assert p3_id not in ids
     assert p4_id in ids
     assert scores == sorted(scores, reverse=True)
+
+
+def test_recommendations_click_feedback_enters_warm_up():
+    init_db()
+    _reset_test_data()
+
+    db = TestingSessionLocal()
+    user_id = 0
+    try:
+        user = User(username="click-user", email="click@example.com")
+        db.add(user)
+        db.flush()
+        user_id = user.id
+
+        p1 = Podcast(title="AI Brief", summary="ai summary", audio_url="", script_path="")
+        p2 = Podcast(title="Market Brief", summary="market summary", audio_url="", script_path="")
+        db.add_all([p1, p2])
+        db.flush()
+
+        db.add(Interaction(user_id=user.id, podcast_id=p1.id, action="click"))
+        db.commit()
+    finally:
+        db.close()
+
+    response = client.get(f"/api/v1/recommendations/{user_id}")
+    assert response.status_code == 200
+    payload = response.json()
+
+    assert payload["strategy"] == "warm-up"
+    assert isinstance(payload["items"], list)
+    assert len(payload["items"]) == 2

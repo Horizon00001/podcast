@@ -14,11 +14,12 @@ ACTION_WEIGHT = {
     "like": 3.0,
     "complete": 3.0,
     "play": 1.0,
+    "click": 0.75,
     "resume": 0.5,
     "pause": 0.0,
     "skip": -2.0,
 }
-POSITIVE_ACTIONS = {"favorite", "like", "play", "complete"}
+POSITIVE_ACTIONS = {"favorite", "like", "play", "complete", "click"}
 NEGATIVE_ACTIONS = {"skip"}
 
 

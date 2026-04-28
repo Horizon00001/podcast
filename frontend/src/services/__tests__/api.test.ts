@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
+import type { InteractionPayload } from '../api'
 
 describe('API client URL construction', () => {
   it('listPodcasts calls /podcasts', async () => {
@@ -6,9 +7,6 @@ describe('API client URL construction', () => {
     vi.stubGlobal('fetch', spy)
 
     const { api } = await import('../api')
-    // Patch BASE_URL by re-importing — we verify the path logic instead.
-    // Actually, the module already resolved BASE_URL. We test via real fetch.
-    // We'll just verify the shape of the exported api object.
     expect(api).toHaveProperty('listPodcasts')
     expect(api).toHaveProperty('getPodcast')
     expect(api).toHaveProperty('getRecommendations')
@@ -34,5 +32,15 @@ describe('API client URL construction', () => {
     await expect(api.listPodcasts()).rejects.toThrow('请求失败')
 
     vi.unstubAllGlobals()
+  })
+
+  it('accepts click interaction payload', () => {
+    const payload: InteractionPayload = {
+      user_id: 1,
+      podcast_id: 2,
+      action: 'click',
+    }
+
+    expect(payload.action).toBe('click')
   })
 })

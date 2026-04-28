@@ -7,7 +7,7 @@ from pydantic import BaseModel
 class InteractionCreate(BaseModel):
     user_id: int
     podcast_id: int
-    action: Literal["play", "pause", "resume", "like", "favorite", "skip", "complete"]
+    action: Literal["play", "pause", "resume", "like", "favorite", "skip", "complete", "click"]
     listen_duration_ms: int | None = None
     progress_pct: float | None = None
     session_id: str | None = None

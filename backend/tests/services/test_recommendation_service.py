@@ -149,6 +149,10 @@ class TestRecommendationServicePureFunctions:
         mock_row.progress_pct = 0.0
         assert self.service._normalize_action("play", mock_row) == "pause"
 
+    def test_click_is_positive_signal(self):
+        assert self.service._normalize_action("click", MagicMock()) == "click"
+        assert self.service._build_hot_score(defaultdict(list, {1: ["click"]}))[1] == 1.0
+
     def test_skip_weight_early(self):
         mock_row = MagicMock()
         mock_row.progress_pct = 5.0
@@ -343,6 +347,26 @@ class TestRecommendationServiceWithDB:
         podcast_ids = [item.podcast_id for item in result.items]
         assert p2.id not in podcast_ids
         assert p1.id in podcast_ids or len(result.items) == 1
+
+    def test_click_moves_user_out_of_cold_start(self, db_session):
+        service = RecommendationService(db_session)
+
+        user = User(username="clicker", email="clicker@test.com")
+        db_session.add(user)
+        db_session.flush()
+
+        p1 = Podcast(title="AI", summary="ai", audio_url="", script_path="")
+        p2 = Podcast(title="Sports", summary="sports", audio_url="", script_path="")
+        db_session.add_all([p1, p2])
+        db_session.flush()
+
+        db_session.add(Interaction(user_id=user.id, podcast_id=p1.id, action="click"))
+        db_session.commit()
+
+        result = service.get_recommendations(user.id, limit=10)
+
+        assert result.strategy == "warm-up"
+        assert len(result.items) == 2
 
     def test_complete_boosts_positive_feedback(self, db_session):
         service = RecommendationService(db_session)
